@@ -1,0 +1,420 @@
+<div class="elearingnewui logistics_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="routesandtech">
+                <div class="row" class="element-first">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+                <h1>Routes
+                    <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>What is the nature of the goods being transported? Are they fragile or perishable?</p>
+                            </div>
+                          </div>
+                            <div class='pt-2' style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp; 
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>How time-sensitive are the deliveries? Can cost be optimized while managing TAT?</p>
+                              </div>
+                            </div>
+                        </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 routescardtbl">
+                    <div class="col-md">
+                        <div class="card h-100 p-2">
+                            <img src="assets/images/Logosticsmodelgame/indore.svg" class="img-fluid" alt="...">
+                            <h2>{{result[0]}}</h2>
+                            <div class="card-body">
+                                <table class="table h-100 rsl_tbl">
+                                    <tbody class="rsl_tbl-tbody">
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Distance, km</td>
+                                            <td>{{result[3]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Truck rest stops</td>
+                                            <td>{{result[4]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Railway station stops</td>
+                                            <td>{{result[5]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Additional baggage, metric tonnes</td>
+                                            <td>{{result[6]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Theft Risk</td>
+                                            <td>{{result[7]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Road Quality</td>
+                                            <td>{{result[8]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Diesel rate, INR per litre</td>
+                                            <td>{{result[9]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Railway rate, INR per km</td>
+                                            <td>{{result[10]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Frieght rate, INR per km</td>
+                                            <td>{{result[11]}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-footer form-check"
+                                style="display: flex; border-top: none; background: transparent; justify-content: center;">
+                                <input class="checkfrominput" type="radio" value="" [disabled]="checkdisable"
+                                    id="flexCheckDefault" style="height: 20px;
+                                width: 20px;" [checked]="result[36]=== 1"
+                                    (change)="getSelection('location',36)" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card h-100 p-2">
+                            <img src="assets/images/Logosticsmodelgame/ahmedabad.svg" class="img-fluid" alt="...">
+                            <h2>{{result[1]}}</h2>
+                            <div class="card-body">
+                                <table class="table h-100 rsl_tbl">
+                                    <tbody class="rsl_tbl-tbody">
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Distance, km</td>
+                                            <td>{{result[12]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Truck rest stops</td>
+                                            <td>{{result[13]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Railway station stops</td>
+                                            <td>{{result[14]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Additional baggage, metric tonnes</td>
+                                            <td>{{result[15]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Theft Risk</td>
+                                            <td>{{result[16]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Road Quality</td>
+                                            <td>{{result[17]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Diesel rate, INR per litre</td>
+                                            <td>{{result[18]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Railway rate, INR per km</td>
+                                            <td>{{result[19]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Frieght rate, INR per km</td>
+                                            <td>{{result[20]}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-footer form-check"
+                                style="display: flex; border-top: none; background: transparent; justify-content: center;">
+                                <input class="checkfrominput" type="radio" value="" [disabled]="checkdisable"
+                                    id="flexCheckDefault" style="height: 20px;
+                                width: 20px;" [checked]="result[37]=== 1"
+                                    (change)="getSelection('location',37)" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card h-100 p-2">
+                            <img src="assets/images/Logosticsmodelgame/mumbai.jpg" class="img-fluid" alt="...">
+                            <h2>{{result[2]}}</h2>
+                            <div class="card-body">
+                                <table class="table h-100 rsl_tbl">
+                                    <tbody class="rsl_tbl-tbody">
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Distance, km</td>
+                                            <td>{{result[21]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Truck rest stops</td>
+                                            <td>{{result[22]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Railway station stops</td>
+                                            <td>{{result[23]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Additional baggage, metric tonnes</td>
+                                            <td>{{result[24]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Theft Risk</td>
+                                            <td>{{result[25]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Road Quality</td>
+                                            <td>{{result[26]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Diesel rate, INR per litre</td>
+                                            <td>{{result[27]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Railway rate, INR per km</td>
+                                            <td>{{result[28]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Frieght rate, INR per km</td>
+                                            <td>{{result[29]}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-footer form-check"
+                                style="display: flex; border-top: none; background: transparent; justify-content: center;">
+                                <input class="checkfrominput" type="radio" value="" [disabled]="checkdisable"
+                                    id="flexCheckDefault" style="height: 20px;
+                                width: 20px;" [checked]="result[38]=== 1"
+                                    (change)="getSelection('location',38)" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="pt-5">Technology
+                    <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>What specific technological enhancements can address your logistical challenges? </p>
+                            </div>
+                          </div>
+                            <div class='pt-1' style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp;
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>What is the trade-off between cost and benefits?</p>
+                              </div>
+                            </div>
+                        </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/Logosticsmodelgame/driver.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{cardData1[0].title}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[0].id] ?
+                                    cardData1[0].description:cardData1[0].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[0].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost, INR</h3>
+                                    <h3>{{result[30]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[39]" (change)="getSelection('technology',39)"
+                                    [disabled]="disabled[0]" [disabled]="checkdisable"/>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/Logosticsmodelgame/gpstruck.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{cardData1[1].title}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[1].id] ?
+                                    cardData1[1].description:cardData1[1].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[1].id)"
+                                        [ngStyle]="{color: textshow[cardData1[1].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[1].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost, INR</h3>
+                                    <h3>{{result[31]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[40]" (change)="getSelection('technology',40)"
+                                    [disabled]="disabled[1]" [disabled]="checkdisable"/>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/Logosticsmodelgame/rfidchip.jpg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{cardData1[2].title}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[2].id] ?
+                                    cardData1[2].description:cardData1[2].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[2].id)"
+                                        [ngStyle]="{color: textshow[cardData1[2].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[2].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost, INR</h3>
+                                    <h3>{{result[32]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[41]" (change)="getSelection('technology',41)"
+                                    [disabled]="disabled[2]" [disabled]="checkdisable"/>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/Logosticsmodelgame/tatv.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{cardData1[3].title}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[3].id] ?
+                                    cardData1[3].description:cardData1[3].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[3].id)"
+                                        [ngStyle]="{color: textshow[cardData1[3].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[3].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost, INR</h3>
+                                    <h3>{{result[33]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[42]" (change)="getSelection('technology',42)"
+                                    [disabled]="disabled[3]" [disabled]="checkdisable"/>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/Logosticsmodelgame/truckaroundtime.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{cardData1[4].title}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[4].id] ?
+                                    cardData1[4].description:cardData1[4].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[4].id)"
+                                        [ngStyle]="{color: textshow[cardData1[4].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[4].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost, INR</h3>
+                                    <h3>{{result[34]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[43]" (change)="getSelection('technology',43)"
+                                    [disabled]="disabled[4]" [disabled]="checkdisable"/>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/Logosticsmodelgame/transport.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                    <h2>{{cardData1[5].title}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[5].id] ?
+                                    cardData1[5].description:cardData1[5].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[5].id)"
+                                        [ngStyle]="{color: textshow[cardData1[5].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[5].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost, INR</h3>
+                                    <h3>{{result[35]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[44]" (change)="getSelection('technology',44)"
+                                    [disabled]="disabled[5]" [disabled]="checkdisable"/>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

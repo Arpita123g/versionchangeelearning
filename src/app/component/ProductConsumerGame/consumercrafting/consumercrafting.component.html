@@ -1,0 +1,827 @@
+<div class="elearingnewui bus_iness">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="crafting">
+                <div>
+                    <div class="row" class="marketer">
+                        <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+                            style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                                <button class="food-thought-btn">Food For Thought</button></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <h1>Communication
+                        <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>Why your target market play the games? What motivates them?</p>
+                            </div>
+                          </div>
+                            <div class='pt-2' style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp; &nbsp;
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>How effective is communication strategy? Will the target market relate to it?</p>
+                              </div>
+                            </div>
+                        </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+                <div class="row g-4 pt-3">
+                    <div class="col-md-8 col-sm-12 ">
+                        <div class="card p-2">
+                            <apx-chart [series]="Gamingtriggers.series" [chart]="Gamingtriggers.chart"
+                                [dataLabels]="Gamingtriggers.dataLabels" [plotOptions]="Gamingtriggers.plotOptions"
+                                [xaxis]="Gamingtriggers.xaxis" [yaxis]="Gamingtriggers.yaxis"
+                                [tooltip]="Gamingtriggers.tooltip" [stroke]="Gamingtriggers.stroke"
+                                [fill]="Gamingtriggers.fill" [title]="Gamingtriggers.title">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="row row-cols-md-3 pt-3 g-3 input-loc-card">
+                    <div class="col-md">
+                        <div class="card input-loc-card-next"
+                            [ngClass]="{ selected: result[0] === 'Stress Buster' }">
+
+                            <label class="input-card-label">
+                                <input class="input-card-label-input" type="radio" name="cardSelectionone"
+                                    (change)="getSelectedcommunication('Stress Buster')"
+                                    [checked]="result[0] === 'Stress Buster'" [disabled]="checkdisable" />
+                                {{cardData1[0].title}}
+
+                                <p class="maincontent">{{ textshow[cardData1[0].id] ?
+                                    cardData1[0].description:cardData1[0].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[0].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </label>
+
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card input-loc-card-next"
+                            [ngClass]="{ selected: result[0] === 'Kills Boredom' }">
+                            <label class="input-card-label">
+                                <input class="input-card-label-input" type="radio" name="cardSelectionone"
+                                    (change)="getSelectedcommunication('Kills Boredom')"
+                                    [checked]="result[0] === 'Kills Boredom'" [disabled]="checkdisable" />
+                                {{cardData1[1].title}}
+
+                                <p class="maincontent">{{ textshow[cardData1[1].id] ?
+                                    cardData1[1].description:cardData1[1].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[1].id)"
+                                        [ngStyle]="{color: textshow[cardData1[1].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[1].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md">
+                        <div class="card input-loc-card-next"
+                            [ngClass]="{ selected: result[0] === 'Popularity of a game' }">
+
+                            <label class="input-card-label">
+                                <input class="input-card-label-input" type="radio" name="cardSelectionone"
+                                    (change)="getSelectedcommunication('Popularity of a game')"
+                                    [checked]="result[0] == 'Popularity of a game'" [disabled]="checkdisable" />
+                                {{cardData1[2].title}}
+
+                                <p class="maincontent">{{ textshow[cardData1[2].id] ?
+                                    cardData1[2].description:cardData1[2].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[2].id)"
+                                        [ngStyle]="{color: textshow[cardData1[2].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[2].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card input-loc-card-next"
+                            [ngClass]="{ selected: result[0] === 'Competing with others' }">
+                            <label class="input-card-label">
+                                <input class="input-card-label-input" type="radio" name="cardSelectionone"
+                                    (change)="getSelectedcommunication('Competing with others')"
+                                    [checked]="result[0] === 'Competing with others'" [disabled]="checkdisable" />
+                                {{cardData1[3].title}}
+
+                                <p class="maincontent">{{ textshow[cardData1[3].id] ?
+                                    cardData1[3].description:cardData1[3].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[3].id)"
+                                        [ngStyle]="{color: textshow[cardData1[3].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[3].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card input-loc-card-next"
+                            [ngClass]="{ selected: result[0] === 'Part of daily schedule' }">
+                            <label class="input-card-label">
+                                <input class="input-card-label-input" type="radio" name="cardSelectionone"
+                                    (change)="getSelectedcommunication('Part of daily schedule')"
+                                    [checked]="result[0] === 'Part of daily schedule'" [disabled]="checkdisable" />
+                                {{cardData1[4].title}}
+
+                                <p class="maincontent">{{ textshow[cardData1[4].id] ?
+                                    cardData1[4].description:cardData1[4].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[4].id)"
+                                        [ngStyle]="{color: textshow[cardData1[4].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[4].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card input-loc-card-next"
+                            [ngClass]="{ selected: result[0] === 'Social Interaction' }">
+                            <label class="input-card-label">
+                                <input class="input-card-label-input" type="radio" name="cardSelectionone"
+                                    (change)="getSelectedcommunication('Social Interaction')"
+                                    [checked]="result[0]==='Social Interaction'" [disabled]="checkdisable" />
+                                {{cardData1[5].title}}
+
+
+                                <p class="maincontent">{{ textshow[cardData1[5].id] ?
+                                    cardData1[5].description:cardData1[5].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[5].id)"
+                                        [ngStyle]="{color: textshow[cardData1[5].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[5].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="mt-5">
+                    <h1>Channel Mix
+                        <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>What activities does target users do in a daily time? On which platform they spend most time?</p>
+                            </div>
+                          </div>
+                            <div class='pt-2' style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp; &nbsp;
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>What will be a right mix of channels to target and re-target the users?</p>
+                              </div>
+                            </div>
+                        </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+                <div class="row row-cols-md-4 g-3 mt-2 input-img-card">
+                    <div class="col-md">
+                        <div class="card marketing-card">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/consumergame/craftingsocialmedia.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h3>Social Media</h3>
+                            </div>
+                            <div class="card-footer form-check">
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[1]" (change)="getSelection('channelmix',1)"
+                                    [disabled]="disabled[0]" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md">
+                        <div class="card marketing-card">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/consumergame/craftingshoppingsvg.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h3>Shopping</h3>
+                            </div>
+                            <div class="card-footer form-check">
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[2]" (change)="getSelection('channelmix',2)"
+                                    [disabled]="disabled[1]" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card marketing-card">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/consumergame/craftingfood.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h3>Food Ordering</h3>
+                            </div>
+                            <div class="card-footer form-check">
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[3]" (change)="getSelection('channelmix',3)"
+                                    [disabled]="disabled[2]" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card marketing-card">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/consumergame/craftingmessage.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h3>Messaging Apps</h3>
+                            </div>
+                            <div class="card-footer form-check">
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[4]" (change)="getSelection('channelmix',4)"
+                                    [disabled]="disabled[3]" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card marketing-card">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/consumergame/craftingmovietv.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h3>Movies/TV Shows</h3>
+                            </div>
+                            <div class="card-footer form-check">
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[5]" (change)="getSelection('channelmix',5)"
+                                    [disabled]="disabled[4]" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card marketing-card">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/consumergame/craftingmusic.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h3>Music</h3>
+                            </div>
+                            <div class="card-footer form-check">
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[6]" (change)="getSelection('channelmix',6)"
+                                    [disabled]="disabled[5]" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card marketing-card">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/consumergame/craftingnews.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h3>News</h3>
+                            </div>
+                            <div class="card-footer form-check">
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[7]" (change)="getSelection('channelmix',7)"
+                                    [disabled]="disabled[6]" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/consumergame/craftingsports.png"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h3>Sports</h3>
+                            </div>
+                            <div class="card-footer form-check">
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[8]" (change)="getSelection('channelmix',8)"
+                                    [disabled]="disabled[7]" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <h1>Publishing
+                        <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>What is more important control, users, reach or revenue?</p>
+                            </div>
+                          </div>
+                            <div class='pt-2' style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp; &nbsp;
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>How the balance between control, reach and revenue be achieved?</p>
+                              </div>
+                            </div>
+                        </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+                <div class="row g-4 pt-3">
+                    <div class="col-md-8 col-sm-12 ">
+                        <div class="card p-2">
+                            <apx-chart [series]="Discoveringchannel.series" [chart]="Discoveringchannel.chart"
+                                [dataLabels]="Discoveringchannel.dataLabels"
+                                [plotOptions]="Discoveringchannel.plotOptions" [xaxis]="Discoveringchannel.xaxis"
+                                [yaxis]="Discoveringchannel.yaxis" [tooltip]="Discoveringchannel.tooltip"
+                                [stroke]="Discoveringchannel.stroke" [fill]="Discoveringchannel.fill"
+                                [title]="Discoveringchannel.title">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-3 pt-3 g-3 input-loc-card">
+                    <div class="col-md">
+                        <div class="card  input-loc-card-next"
+                            [ngClass]="{ selected: result[9] === 'Self Play Store/App Store' }">
+                            <label class="input-card-label">
+                                <input class="input-card-label-input" type="radio" name="cardSelection"
+                                    (change)="getSelectedpublishing('Self Play Store/App Store')"
+                                    [checked]="result[9] === 'Self Play Store/App Store'" [disabled]="checkdisable" />
+                                {{cardData2[0].title}}
+
+                                <p class="maincontent">{{ textshow[cardData2[0].id] ?
+                                    cardData2[0].description:cardData2[0].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData2[0].id)"
+                                        [ngStyle]="{color: textshow[cardData2[0].id]?'red':'blue'}">
+                                        {{ textshow[cardData2[0].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  input-loc-card-next" [ngClass]="{ selected: result[9] === 'ZiptoLab' }">
+                            <label class="input-card-label">
+                                <input class="input-card-label-input" type="radio" name="cardSelection"
+                                    (change)="getSelectedpublishing('ZiptoLab')" [checked]="result[9] === 'ZiptoLab'"
+                                    [disabled]="checkdisable" />
+                                {{cardData2[1].title}}
+
+                                <p class="maincontent">{{ textshow[cardData2[1].id] ?
+                                    cardData2[1].description:cardData2[1].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData2[1].id)"
+                                        [ngStyle]="{color: textshow[cardData2[1].id]?'red':'blue'}">
+                                        {{ textshow[cardData2[1].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  input-loc-card-next"
+                            [ngClass]="{ selected: result[9] === 'Dueberry Labs' }">
+                            <label class="input-card-label">
+                                <input class="input-card-label-input" type="radio" name="cardSelection"
+                                    (change)="getSelectedpublishing('Dueberry Labs')"
+                                    [checked]="result[9] === 'Dueberry Labs'" [disabled]="checkdisable" />
+                                {{cardData2[2].title}}
+
+                                <p class="maincontent">{{ textshow[cardData2[2].id] ?
+                                    cardData2[2].description:cardData2[2].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData2[2].id)"
+                                        [ngStyle]="{color: textshow[cardData2[2].id]?'red':'blue'}">
+                                        {{ textshow[cardData2[2].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  input-loc-card-next"
+                            [ngClass]="{ selected: result[9] === 'Playfun Games' }">
+                            <label class="input-card-label">
+                                <input class="input-card-label-input" type="radio" name="cardSelection"
+                                    (change)="getSelectedpublishing('Playfun Games')"
+                                    [checked]="result[9] === 'Playfun Games'" [disabled]="checkdisable" />
+                                {{cardData2[3].title}}
+
+                                <p class="maincontent">{{ textshow[cardData2[3].id] ?
+                                    cardData2[3].description:cardData2[3].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData2[3].id)"
+                                        [ngStyle]="{color: textshow[cardData2[3].id]?'red':'blue'}">
+                                        {{ textshow[cardData2[3].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  input-loc-card-next"
+                            [ngClass]="{ selected: result[9] === 'Game House' }">
+                            <label class="input-card-label">
+                                <input class="input-card-label-input" type="radio" name="cardSelection"
+                                    (change)="getSelectedpublishing('Game House')"
+                                    [checked]="result[9] === 'Game House'" [disabled]="checkdisable" />
+                                {{cardData2[4].title}}
+
+                                <p class="maincontent">{{ textshow[cardData2[4].id] ?
+                                    cardData2[4].description:cardData2[4].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData2[4].id)"
+                                        [ngStyle]="{color: textshow[cardData2[4].id]?'red':'blue'}">
+                                        {{ textshow[cardData2[4].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  input-loc-card-next"
+                            [ngClass]="{ selected: result[9] === 'Social Media' }">
+                            <label class="input-card-label">
+                                <input class="input-card-label-input" type="radio" name="cardSelection"
+                                    (change)="getSelectedpublishing('Social Media')"
+                                    [checked]="result[9] === 'Social Media'" [disabled]="checkdisable" />
+                                {{cardData2[5].title}}
+
+                                <p class="maincontent">{{ textshow[cardData2[5].id] ?
+                                    cardData2[5].description:cardData2[5].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData2[5].id)"
+                                        [ngStyle]="{color: textshow[cardData2[5].id]?'red':'blue'}">
+                                        {{ textshow[cardData2[5].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mt-5">
+                    <h1>Monetization
+                        <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>Which game type would be the one target market will be attracted towards?</p>
+                            </div>
+                          </div>
+                            <div style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp; &nbsp;
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>How will you generate the revenues for present & future? Will it be enough for breakeven?</p>
+                              </div>
+                            </div>
+                        </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+                <div class="row pt-3 ">
+                    <div class="col-md-8 col-sm-12 col-lg-6">
+                        <div class="card p-2">
+                            <apx-chart [series]="Userspreference.series" [chart]="Userspreference.chart"
+                                [labels]="Userspreference.labels" [responsive]="Userspreference.responsive"
+                                [legend]="Userspreference.legend" [tooltip]="Userspreference.tooltip"
+                                [title]="Userspreference.title">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-3 pt-3 g-3 input-img-card">
+                    <div class="col-md">
+                        <div class="card  marketing-card">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/consumergame/freegamesvg.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h3>{{cardData3[0].title}}</h3>
+
+                                <p class="card-text">{{ textshow[cardData3[0].id] ?
+                                    cardData3[0].description:cardData3[0].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData3[0].id)"
+                                        [ngStyle]="{color: textshow[cardData3[0].id]?'red':'blue'}">
+                                        {{ textshow[cardData3[0].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <input class=" checkfrominput" [disabled]="checkdisable" type="radio" value=""
+                                    id="flexCheckDefault" [checked]="result[10]==='Yes'"
+                                    (change)="getSelection('monetization',10)" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/consumergame/paidgame.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h3>{{cardData3[1].title}}</h3>
+
+                                <p class="card-text">{{ textshow[cardData3[1].id] ?
+                                    cardData3[1].description:cardData3[1].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData3[1].id)"
+                                        [ngStyle]="{color: textshow[cardData3[1].id]?'red':'blue'}">
+                                        {{ textshow[cardData3[1].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <input class=" checkfrominput" [disabled]="checkdisable" type="radio" value=""
+                                    id="flexCheckDefault" [checked]="result[11]==='Yes'"
+                                    (change)="getSelection('monetization',11)" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/consumergame/playtoplay.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h3>{{cardData3[2].title}}</h3>
+
+                                <p class="card-text">{{ textshow[cardData3[2].id] ?
+                                    cardData3[2].description:cardData3[2].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData3[2].id)"
+                                        [ngStyle]="{color: textshow[cardData3[2].id]?'red':'blue'}">
+                                        {{ textshow[cardData3[2].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <input class=" checkfrominput" [disabled]="checkdisable" type="radio" value=""
+                                    id="flexCheckDefault" [checked]="result[12]==='Yes'"
+                                    (change)="getSelection('monetization',12)" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5" *ngIf="showIngameAdvertising">
+                    <h1>In-Game Advertising
+                        <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>What would be the first reaction of users when they see the ads?</p>
+                            </div>
+                          </div>
+                            <div class='pt-3' style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp; &nbsp;
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>Which type of ads will annoy them the least? Will they interact with the ads?</p>
+                              </div>
+                            </div>
+                        </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+
+                    <div class="row pt-3">
+                        <div class="col-md-8 col-sm-12 ">
+                            <div class="card p-2">
+                                <apx-chart [series]="playerreaction.series" [chart]="playerreaction.chart"
+                                    [dataLabels]="playerreaction.dataLabels" [plotOptions]="playerreaction.plotOptions"
+                                    [xaxis]="playerreaction.xaxis" [yaxis]="playerreaction.yaxis"
+                                    [tooltip]="playerreaction.tooltip" [stroke]="playerreaction.stroke"
+                                    [title]="playerreaction.title">
+                                </apx-chart>
+                            </div>
+                        </div>
+                        <div class="row row-cols-md-3 mt-2 g-3 input-img-card">
+
+                            <div class="col-md">
+                                <div class="card  marketing-card">
+                                    <div class="craftingimg">
+                                        <img src="../../../../assets/images/consumergame/addnetwork.svg"
+                                            class="card-img-top" alt="Your Image" />
+                                    </div>
+                                    <div class="card-body">
+                                        <h3>{{cardData4[0].title}}</h3>
+
+                                        <p class="card-text">{{ textshow[cardData4[0].id] ?
+                                            cardData4[0].description:cardData4[0].turncatedtext }}
+                                            <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                                (click)="toggleText(cardData4[0].id)"
+                                                [ngStyle]="{color: textshow[cardData4[0].id]?'red':'blue'}">
+                                                {{ textshow[cardData4[0].id] ? 'Show Less' : 'Show More' }}
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                            [(ngModel)]="result[13]" (change)="getSelection('ingame',13)"
+                                            [disabled]="checkdisable" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="card  marketing-card">
+                                    <div class="craftingimg">
+                                        <img src="../../../../assets/images/consumergame/banneradd.svg"
+                                            class="card-img-top" alt="Your Image" />
+                                    </div>
+                                    <div class="card-body">
+                                        <h3>{{cardData4[1].title}}</h3>
+
+                                        <p class="card-text">{{ textshow[cardData4[1].id] ?
+                                            cardData4[1].description:cardData4[1].turncatedtext }}
+                                            <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                                (click)="toggleText(cardData4[1].id)"
+                                                [ngStyle]="{color: textshow[cardData4[1].id]?'red':'blue'}">
+                                                {{ textshow[cardData4[1].id] ? 'Show Less' : 'Show More' }}
+                                            </span>
+                                        </p>
+
+                                    </div>
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                            [(ngModel)]="result[14]" (change)="getSelection('ingame',14)"
+                                            [disabled]="checkdisable" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="card  marketing-card">
+                                    <div class="craftingimg">
+                                        <img src="../../../../assets/images/consumergame/rewardedadd.svg"
+                                            class="card-img-top" alt="Your Image" />
+                                    </div>
+                                    <div class="card-body">
+                                        <h3>{{cardData4[2].title}}</h3>
+
+                                        <p class="card-text">{{ textshow[cardData4[2].id] ?
+                                            cardData4[2].description:cardData4[2].turncatedtext }}
+                                            <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                                (click)="toggleText(cardData4[2].id)"
+                                                [ngStyle]="{color: textshow[cardData4[2].id]?'red':'blue'}">
+                                                {{ textshow[cardData4[2].id] ? 'Show Less' : 'Show More' }}
+                                            </span>
+                                        </p>
+
+                                    </div>
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                            [(ngModel)]="result[15]" (change)="getSelection('ingame',15)"
+                                            [disabled]="checkdisable" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="card  marketing-card">
+                                    <div class="craftingimg">
+                                        <img src="../../../../assets/images/consumergame/interstialadd.svg"
+                                            class="card-img-top" alt="Your Image" />
+                                    </div>
+                                    <div class="card-body">
+                                        <h3>{{cardData4[3].title}}</h3>
+
+                                        <p class="card-text">{{ textshow[cardData4[3].id] ?
+                                            cardData4[3].description:cardData4[3].turncatedtext }}
+                                            <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                                (click)="toggleText(cardData4[3].id)"
+                                                [ngStyle]="{color: textshow[cardData4[3].id]?'red':'blue'}">
+                                                {{ textshow[cardData4[3].id] ? 'Show Less' : 'Show More' }}
+                                            </span>
+                                        </p>
+
+                                    </div>
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                            [(ngModel)]="result[16]" (change)="getSelection('ingame',16)"
+                                            [disabled]="checkdisable" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="card  marketing-card">
+                                    <div class="craftingimg">
+                                        <img src="../../../../assets/images/consumergame/intractiveads.svg"
+                                            class="card-img-top" alt="Your Image" />
+                                    </div>
+                                    <div class="card-body">
+                                        <h3>{{cardData4[4].title}}</h3>
+
+                                        <p class="card-text">{{ textshow[cardData4[4].id] ?
+                                            cardData4[4].description:cardData4[4].turncatedtext }}
+                                            <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                                (click)="toggleText(cardData4[4].id)"
+                                                [ngStyle]="{color: textshow[cardData4[4].id]?'red':'blue'}">
+                                                {{ textshow[cardData4[4].id] ? 'Show Less' : 'Show More' }}
+                                            </span>
+                                        </p>
+
+                                    </div>
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                            [(ngModel)]="result[17]" (change)="getSelection('ingame',17)"
+                                            [disabled]="checkdisable" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

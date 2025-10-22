@@ -1,0 +1,1712 @@
+<div class="elearingnewui casemanagement">
+        <div class="case-management-body case-management-body-marketing ">
+                <table class="table page-name">
+                        <thead>
+                                <tr>
+                                        <th>
+                                                <h2>Artisan Studio - Developers</h2>
+                                        </th>
+                                </tr>
+                        </thead>
+                </table>
+                <div class=" table-responsive mb-3 mt-3">
+                        <table class="case-management-table case-management-table-marketing-second">
+                                <thead>
+                                        <tr>
+                                                <td colspan="4" *ngFor="let round of rounds">{{round}}</td>
+                                        </tr>
+                                </thead>
+                                <tbody class="second-tbody1">
+                                        <tr>
+                                                <ng-container *ngFor="let item of data2; let i = index">
+                                                        <td *ngIf="i % 4 === 0" style="font-size: 14px;">No. of
+                                                                Resources</td>
+                                                        <td *ngIf="i % 4 === 1" style="font-size: 14px;">Development
+                                                                time, months</td>
+                                                        <td *ngIf="i % 4 === 2" style="font-size: 14px;">Cost, k INR
+                                                        </td>
+                                                        <td *ngIf="i % 4 === 3" style="font-size: 14px;">Quality Score %
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k8[index]" #k8Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k8', index, k8Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l8[index]" #l8Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l8', index, l8Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m8[index]" #m8Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m8', index, m8Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n8[index]*100" #n8Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n8', index, n8Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k9[index]" #k9Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k9', index, k9Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l9[index]" #l9Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l9', index, l9Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m9[index]" #m9Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m9', index, m9Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n9[index]*100" #n9Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n9', index, n9Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k10[index]" #k10Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k10', index, k10Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l10[index]" #l10Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l10', index, l10Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m10[index]" #m10Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m10', index, m10Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n10[index]*100" #n10Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n10', index, n10Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k11[index]" #k11Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k11', index, k11Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l11[index]" #l11Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l11', index, l11Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m11[index]" #m11Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m11', index, m11Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n11[index]*100 | number:'1.0-0'"
+                                                                        #n11Input [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n11', index, n11Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k12[index]" #k12Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k12', index, k12Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l12[index]" #l12Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l12', index, l12Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m12[index]" #m12Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m12', index, m12Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n12[index]*100" #n12Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n12', index, n12Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k13[index]" #k13Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k13', index, k13Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l13[index]" #l13Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l13', index, l13Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m13[index]" #m13Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m13', index, m13Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n13[index]*100" #n13Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n13', index, n13Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k14[index]" #k14Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k14', index, k14Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l14[index]" #l14Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l14', index, l14Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m14[index]" #m14Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m14', index, m14Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n14[index]*100" #n14Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n14', index, n14Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k15[index]" #k15Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k15', index, k15Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l15[index]" #l15Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l15', index, l15Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m15[index]" #m15Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m15', index, m15Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n15[index]*100" #n15Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n15', index, n15Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k16[index]" #k16Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k16', index, k16Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l16[index]" #l16Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l16', index, l16Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m16[index]" #m16Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m16', index, m16Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n16[index]*100" #n16Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n16', index, n16Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k17[index]" #k17Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k17', index, k17Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l17[index]" #l17Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l17', index, l17Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m17[index]" #m17Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m17', index, m17Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n17[index]*100" #n17Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n17', index, n17Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                </tbody>
+                        </table>
+                </div>
+
+                <table class="table page-name">
+                        <thead>
+                                <tr>
+                                        <th>
+                                                <h2>VR Fitness Adventure - Developers</h2>
+                                        </th>
+                                </tr>
+                        </thead>
+                </table>
+                <div class=" table-responsive mb-3 mt-3">
+                        <table class="case-management-table case-management-table-marketing-second">
+                                <thead>
+                                        <tr>
+                                                <td colspan="4" *ngFor="let round of rounds">{{round}}</td>
+                                        </tr>
+                                </thead>
+                                <tbody class="second-tbody1">
+                                        <tr>
+                                                <ng-container *ngFor="let item of data2; let i = index">
+                                                        <td *ngIf="i % 4 === 0" style="font-size: 14px;">No. of
+                                                                Resources</td>
+                                                        <td *ngIf="i % 4 === 1" style="font-size: 14px;">Development
+                                                                time, months</td>
+                                                        <td *ngIf="i % 4 === 2" style="font-size: 14px;">Cost, k INR
+                                                        </td>
+                                                        <td *ngIf="i % 4 === 3" style="font-size: 14px;">Quality Score %
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k21[index]" #k21Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k21', index, k21Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l21[index]" #l21Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l21', index, l21Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m21[index]" #m21Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m21', index, m21Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n21[index]*100" #n21Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n21', index, n21Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k22[index]" #k22Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k22', index, k22Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l22[index]" #l22Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l22', index, l22Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m22[index]" #m22Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m22', index, m22Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n22[index]*100" #n22Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n22', index, n22Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k23[index]" #k23Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k23', index, k23Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l23[index]" #l23Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l23', index, l23Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m23[index]" #m23Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m23', index, m23Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n23[index]*100" #n23Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n23', index, n23Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k24[index]" #k24Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k24', index, k24Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l24[index]" #l24Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l24', index, l24Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m24[index]" #m24Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m24', index, m24Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n24[index]*100 | number:'1.0-0'"
+                                                                        #n24Input [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n24', index, n24Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k25[index]" #k25Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k25', index, k25Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l25[index]" #l25Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l25', index, l25Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m25[index]" #m25Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m25', index, m25Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n25[index]*100" #n25Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n25', index, n25Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k26[index]" #k26Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k26', index, k26Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l26[index]" #l26Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l26', index, l26Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m26[index]" #m26Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m26', index, m26Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n26[index]*100" #n26Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n26', index, n26Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k27[index]" #k27Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k27', index, k27Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l27[index]" #l27Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l27', index, l27Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m27[index]" #m27Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m27', index, m27Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n27[index]*100" #n27Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n27', index, n27Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k28[index]" #k28Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k28', index, k28Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l28[index]" #l28Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l28', index, l28Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m28[index]" #m28Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m28', index, m28Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n28[index]*100" #n28Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n28', index, n28Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k29[index]" #k29Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k29', index, k29Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l29[index]" #l29Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l29', index, l29Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m29[index]" #m29Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m29', index, m29Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n29[index]*100" #n29Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n29', index, n29Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k30[index]" #k30Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k30', index, k30Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l30[index]" #l30Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l30', index, l30Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m30[index]" #m30Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m30', index, m30Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n30[index]*100" #n30Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n30', index, n30Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                </tbody>
+                        </table>
+                </div>
+
+                <table class="table page-name">
+                        <thead>
+                                <tr>
+                                        <th>
+                                                <h2>ARcane Adventures - Developers</h2>
+                                        </th>
+                                </tr>
+                        </thead>
+                </table>
+                <div class=" table-responsive mb-3 mt-3">
+                        <table class="case-management-table case-management-table-marketing-second">
+                                <thead>
+                                        <tr>
+                                                <td colspan="4" *ngFor="let round of rounds">{{round}}</td>
+                                        </tr>
+                                </thead>
+                                <tbody class="second-tbody1">
+                                        <tr>
+                                                <ng-container *ngFor="let item of data2; let i = index">
+                                                        <td *ngIf="i % 4 === 0" style="font-size: 14px;">No. of
+                                                                Resources</td>
+                                                        <td *ngIf="i % 4 === 1" style="font-size: 14px;">Development
+                                                                time, months</td>
+                                                        <td *ngIf="i % 4 === 2" style="font-size: 14px;">Cost, k INR
+                                                        </td>
+                                                        <td *ngIf="i % 4 === 3" style="font-size: 14px;">Quality Score %
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k34[index]" #k34Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k34', index, k34Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l34[index]" #l34Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l34', index, l34Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m34[index]" #m34Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m34', index, m34Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n34[index]*100" #n34Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n34', index, n34Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k35[index]" #k35Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k35', index, k35Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l35[index]" #l35Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l35', index, l35Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m35[index]" #m35Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m35', index, m35Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n35[index]*100" #n35Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n35', index, n35Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k36[index]" #k36Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k36', index, k36Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l36[index]" #l36Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l36', index, l36Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m36[index]" #m36Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m36', index, m36Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n36[index]*100" #n36Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n36', index, n36Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k37[index]" #k37Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k37', index, k37Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l37[index]" #l37Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l37', index, l37Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m37[index]" #m37Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m37', index, m37Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n37[index]*100 |number:'1.0-0'"
+                                                                        #n37Input [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n37', index, n37Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k38[index]" #k38Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k38', index, k38Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l38[index]" #l38Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l38', index, l38Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m38[index]" #m38Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m38', index, m38Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n38[index]*100" #n38Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n38', index, n38Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k39[index]" #k39Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k39', index, k39Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l39[index]" #l39Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l39', index, l39Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m39[index]" #m39Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m39', index, m39Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n39[index]*100" #n39Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n39', index, n39Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k40[index]" #k40Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k40', index, k40Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l40[index]" #l40Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l40', index, l40Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m40[index]" #m40Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m40', index, m40Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n40[index]*100" #n40Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n40', index, n40Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k41[index]" #k41Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k41', index, k41Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l41[index]" #l41Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l41', index, l41Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m41[index]" #m41Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m41', index, m41Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n41[index]*100" #n41Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n41', index, n41Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k42[index]" #k42Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k42', index, k42Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l42[index]" #l42Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l42', index, l42Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m42[index]" #m42Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m42', index, m42Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n42[index]*100" #n42Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n42', index, n42Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k43[index]" #k43Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k43', index, k43Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l43[index]" #l43Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l43', index, l43Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m43[index]" #m43Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m43', index, m43Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.n43[index]*100" #n43Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('n43', index, n43Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+
+                                </tbody>
+                        </table>
+                </div>
+
+                <table class="table page-name">
+                        <thead>
+                                <tr>
+                                        <th>
+                                                <h2>Marketing</h2>
+                                        </th>
+                                </tr>
+                        </thead>
+                </table>
+                <div class=" table-responsive mb-3 mt-3">
+                        <table class="case-management-table case-management-table-marketing-second">
+                                <thead>
+                                        <tr>
+                                                <td colspan="3" *ngFor="let round of rounds">{{round}}</td>
+                                        </tr>
+                                </thead>
+                                <tbody class="second-tbody">
+                                        <tr>
+                                                <ng-container *ngFor="let item of data1; let i = index">
+                                                        <td *ngIf="i % 3 === 0" style="font-size: 14px;">No. of
+                                                                Resources</td>
+                                                        <td *ngIf="i % 3 === 1" style="font-size: 14px;">Cost, k INR
+                                                        </td>
+                                                        <td *ngIf="i % 3 === 2" style="font-size: 14px;">Additional
+                                                                Quality Score %</td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k47[index]" #k47Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k47', index, k47Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l47[index]" #l47Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l47', index, l47Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m47[index]*100" #m47Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m47', index, m47Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k48[index]" #k48Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k48', index, k48Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l48[index]" #l48Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l48', index, l48Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m48[index]*100" #m48Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m48', index, m48Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k49[index]" #k49Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k49', index, k49Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l49[index]" #l49Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l49', index, l49Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m49[index]*100 | number:'1.0-0'"
+                                                                        #m49Input [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m49', index, m49Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k50[index]" #k50Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k50', index, k50Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l50[index]" #l50Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l50', index, l50Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m50[index]*100" #m50Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m50', index, m50Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k51[index]" #k51Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k51', index, k51Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l51[index]" #l51Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l51', index, l51Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m51[index]*100" #m51Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m51', index, m51Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k52[index]" #k52Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k52', index, k52Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l52[index]" #l52Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l52', index, l52Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m52[index]*100" #m52Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m52', index, m52Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k53[index]" #k53Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k53', index, k53Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l53[index]" #l53Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l53', index, l53Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m53[index]*100 | number:'1.0-0'"
+                                                                        #m53Input [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m53', index, m53Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k54[index]" #k54Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k54', index, k54Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l54[index]" #l54Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l54', index, l54Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m54[index]*100" #m54Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m54', index, m54Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k55[index]" #k55Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k55', index, k55Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l55[index]" #l55Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l55', index, l55Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m55[index]*100" #m55Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m55', index, m55Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k56[index]" #k56Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k56', index, k56Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l56[index]" #l56Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l56', index, l56Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m56[index]*100" #m56Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m56', index, m56Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                </tbody>
+                        </table>
+                </div>
+
+                <table class="table page-name">
+                        <thead>
+                                <tr>
+                                        <th>
+                                                <h2>Industry Experts</h2>
+                                        </th>
+                                </tr>
+                        </thead>
+                </table>
+                <div class=" table-responsive mb-3 mt-3">
+                        <table class="case-management-table case-management-table-marketing-second">
+                                <thead>
+                                        <tr>
+                                                <td colspan="3" *ngFor="let round of rounds">{{round}}</td>
+                                        </tr>
+                                </thead>
+                                <tbody class="second-tbody">
+                                        <tr>
+                                                <ng-container *ngFor="let item of data1; let i = index">
+                                                        <td *ngIf="i % 3 === 0" style="font-size: 14px;">No. of
+                                                                Resources</td>
+                                                        <td *ngIf="i % 3 === 1" style="font-size: 14px;">Cost, k INR
+                                                        </td>
+                                                        <td *ngIf="i % 3 === 2" style="font-size: 14px;">Additional
+                                                                Quality Score %</td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k60[index]" #k60Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k60', index, k60Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l60[index]" #l60Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l60', index, l60Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m60[index]*100 | number:'1.0-0'"
+                                                                        #m60Input [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m60', index, m60Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k61[index]" #k61Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k61', index, k61Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l61[index]" #l61Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l61', index, l61Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m61[index]*100 | number:'1.0-0'"
+                                                                        #m61Input [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m61', index, m61Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k62[index]" #k62Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k62', index, k62Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l62[index]" #l62Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l62', index, l62Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m62[index]*100 | number:'1.0-0'"
+                                                                        #m62Input [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m62', index, m62Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k63[index]" #k63Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k63', index, k63Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l63[index]" #l63Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l63', index, l63Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m63[index]*100 | number:'1.0-0'"
+                                                                        #m63Input [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m63', index, m63Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k64[index]" #k64Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k64', index, k64Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l64[index]" #l64Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l64', index, l64Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m64[index]*100 | number:'1.0-0'"
+                                                                        #m64Input [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m64', index, m64Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k65[index]" #k65Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k65', index, k65Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l65[index]" #l65Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l65', index, l65Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m65[index]*100 " #m65Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m65', index, m65Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k66[index]" #k66Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k66', index, k66Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l66[index]" #l66Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l66', index, l66Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m66[index]*100 | number:'1.0-0'"
+                                                                        #m66Input [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m66', index, m66Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k67[index]" #k67Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k67', index, k67Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l67[index]" #l67Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l67', index, l67Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m67[index]*100 | number:'1.0-0'"
+                                                                        #m67Input [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m67', index, m67Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k68[index]" #k68Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k68', index, k68Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l68[index]" #l68Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l68', index, l68Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m68[index]*100 | number:'1.0-0'"
+                                                                        #m68Input [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m68', index, m68Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+                                        <tr>
+                                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                                        <td><input [value]="res.k69[index]" #k69Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('k69', index, k69Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.l69[index]" #l69Input
+                                                                        [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('l69', index, l69Input.value)">
+                                                        </td>
+                                                        <td><input [value]="res.m69[index]*100 | number:'1.0-0'"
+                                                                        #m69Input [disabled]="defaultcase=='yes'"
+                                                                        (focusout)="writeMarketingValue('m69', index, m69Input.value)">
+                                                        </td>
+                                                </ng-container>
+                                        </tr>
+
+                                </tbody>
+                        </table>
+                </div>
+
+                <table class="table page-name">
+                        <thead>
+                                <tr>
+                                        <th>
+                                                <h2>ARtisan Studio</h2>
+                                        </th>
+                                </tr>
+                        </thead>
+                </table>
+                <div class=" table-responsive mb-3 mt-3">
+                        <table class="table case-management-table ">
+                                <thead>
+                                        <tr>
+                                                <td></td>
+                                                <td *ngFor="let round of rounds">{{round}}</td>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                                <th class="second-head" colspan="13">Name</th>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 1</td>
+                                                <td *ngFor="let capitaldata of res.l73; let i = index">
+                                                        <input [value]="res.l73[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('l73',i,inputElement.value)"
+                                                                style="width: 12.5rem !important;">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 2</td>
+                                                <td *ngFor="let capitaldata of res.l74; let i = index">
+                                                        <input [value]="res.l74[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('l74',i,inputElement.value)"
+                                                                style="width: 12.5rem !important;">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 3</td>
+                                                <td *ngFor="let capitaldata of res.l75; let i = index">
+                                                        <input [value]="res.l75[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('l75',i,inputElement.value)"
+                                                                style="width: 12.5rem !important;">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 4</td>
+                                                <td *ngFor="let capitaldata of res.l76; let i = index">
+                                                        <input [value]="res.l76[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('l76',i,inputElement.value)"
+                                                                style="width: 12.5rem !important;">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 5</td>
+                                                <td *ngFor="let capitaldata of res.l77; let i = index">
+                                                        <input [value]="res.l77[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('l77',i,inputElement.value)"
+                                                                style="width: 12.5rem !important;">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 6</td>
+                                                <td *ngFor="let capitaldata of res.l78; let i = index">
+                                                        <input [value]="res.l78[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('l78',i,inputElement.value)"
+                                                                style="width: 12.5rem !important;">
+                                                </td>
+                                        </tr>
+
+                                </tbody>
+                        </table>
+                </div>
+
+                <div class=" table-responsive mb-3 mt-3">
+                        <table class="table case-management-table ">
+                                <thead>
+                                        <tr>
+                                                <td></td>
+                                                <td *ngFor="let round of rounds">{{round}}</td>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                                <th class="second-head" colspan="13">Attractiveness</th>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 1</td>
+                                                <td *ngFor="let capitaldata of res.n73; let i = index">
+                                                        <input [value]="res.n73[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('n73',i,inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 2</td>
+                                                <td *ngFor="let capitaldata of res.n74; let i = index">
+                                                        <input [value]="res.n74[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('n74',i,inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 3</td>
+                                                <td *ngFor="let capitaldata of res.n75; let i = index">
+                                                        <input [value]="res.n75[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('n75',i,inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 4</td>
+                                                <td *ngFor="let capitaldata of res.n76; let i = index">
+                                                        <input [value]="res.n76[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('n76',i,inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 5</td>
+                                                <td *ngFor="let capitaldata of res.n77; let i = index">
+                                                        <input [value]="res.n77[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('n77',i,inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 6</td>
+                                                <td *ngFor="let capitaldata of res.n78; let i = index">
+                                                        <input [value]="res.n78[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('n78',i,inputElement.value)">
+                                                </td>
+                                        </tr>
+
+                                </tbody>
+                        </table>
+                </div>
+
+                <div class="table-responsive mb-3 mt-3">
+                        <table class="table case-management-table">
+                                <thead>
+                                        <tr>
+                                                <td></td>
+                                                <td *ngFor="let round of rounds">{{round}}</td>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                                <th class="second-head" colspan="13">Additional days</th>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 1</td>
+                                                <td *ngFor="let capitaldata of res.o73; let i = index">
+                                                        <input [value]="res.o73[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('o73', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 2</td>
+                                                <td *ngFor="let capitaldata of res.o74; let i = index">
+                                                        <input [value]="res.o74[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('o74', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 3</td>
+                                                <td *ngFor="let capitaldata of res.o75; let i = index">
+                                                        <input [value]="res.o75[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('o75', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 4</td>
+                                                <td *ngFor="let capitaldata of res.o76; let i = index">
+                                                        <input [value]="res.o76[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('o76', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 5</td>
+                                                <td *ngFor="let capitaldata of res.o77; let i = index">
+                                                        <input [value]="res.o77[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('o77', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 6</td>
+                                                <td *ngFor="let capitaldata of res.o78; let i = index">
+                                                        <input [value]="res.o78[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('o78', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                </tbody>
+                        </table>
+                </div>
+
+                <table class="table page-name">
+                        <thead>
+                                <tr>
+                                        <th>
+                                                <h2>VR Fitness Adventure</h2>
+                                        </th>
+                                </tr>
+                        </thead>
+                </table>
+                <div class="table-responsive mb-3 mt-3">
+                        <table class="table case-management-table">
+                                <thead>
+                                        <tr>
+                                                <td></td>
+                                                <td *ngFor="let round of rounds">{{round}}</td>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                                <th class="second-head" colspan="13">Name</th>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 1</td>
+                                                <td *ngFor="let capitaldata of res.l82; let i = index">
+                                                        <input [value]="res.l82[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('l82', i, inputElement.value)"
+                                                                style="width: 11rem !important;">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 2</td>
+                                                <td *ngFor="let capitaldata of res.l83; let i = index">
+                                                        <input [value]="res.l83[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('l83', i, inputElement.value)"
+                                                                style="width: 11rem !important;">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 3</td>
+                                                <td *ngFor="let capitaldata of res.l84; let i = index">
+                                                        <input [value]="res.l84[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('l84', i, inputElement.value)"
+                                                                style="width: 11rem !important;">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 4</td>
+                                                <td *ngFor="let capitaldata of res.l85; let i = index">
+                                                        <input [value]="res.l85[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('l85', i, inputElement.value)"
+                                                                style="width: 11rem !important;">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 5</td>
+                                                <td *ngFor="let capitaldata of res.l86; let i = index">
+                                                        <input [value]="res.l86[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('l86', i, inputElement.value)"
+                                                                style="width: 11rem !important;">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 6</td>
+                                                <td *ngFor="let capitaldata of res.l87; let i = index">
+                                                        <input [value]="res.l87[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('l87', i, inputElement.value)"
+                                                                style="width: 11rem !important;">
+                                                </td>
+                                        </tr>
+                                </tbody>
+                        </table>
+                </div>
+
+                <div class="table-responsive mb-3 mt-3">
+                        <table class="table case-management-table">
+                                <thead>
+                                        <tr>
+                                                <td></td>
+                                                <td *ngFor="let round of rounds">{{round}}</td>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                                <th class="second-head" colspan="13">Attractiveness</th>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 1</td>
+                                                <td *ngFor="let capitaldata of res.n82; let i = index">
+                                                        <input [value]="res.n82[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('n82', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 2</td>
+                                                <td *ngFor="let capitaldata of res.n83; let i = index">
+                                                        <input [value]="res.n83[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('n83', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 3</td>
+                                                <td *ngFor="let capitaldata of res.n84; let i = index">
+                                                        <input [value]="res.n84[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('n84', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 4</td>
+                                                <td *ngFor="let capitaldata of res.n85; let i = index">
+                                                        <input [value]="res.n85[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('n85', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 5</td>
+                                                <td *ngFor="let capitaldata of res.n86; let i = index">
+                                                        <input [value]="res.n86[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('n86', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 6</td>
+                                                <td *ngFor="let capitaldata of res.n87; let i = index">
+                                                        <input [value]="res.n87[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('n87', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                </tbody>
+                        </table>
+                </div>
+
+                <div class="table-responsive mb-3 mt-3">
+                        <table class="table case-management-table">
+                                <thead>
+                                        <tr>
+                                                <td></td>
+                                                <td *ngFor="let round of rounds">{{round}}</td>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                                <th class="second-head" colspan="13">Additional days</th>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 1</td>
+                                                <td *ngFor="let capitaldata of res.o82; let i = index">
+                                                        <input [value]="res.o82[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('o82', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 2</td>
+                                                <td *ngFor="let capitaldata of res.o83; let i = index">
+                                                        <input [value]="res.o83[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('o83', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 3</td>
+                                                <td *ngFor="let capitaldata of res.o84; let i = index">
+                                                        <input [value]="res.o84[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('o84', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 4</td>
+                                                <td *ngFor="let capitaldata of res.o85; let i = index">
+                                                        <input [value]="res.o85[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('o85', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 5</td>
+                                                <td *ngFor="let capitaldata of res.o86; let i = index">
+                                                        <input [value]="res.o86[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('o86', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 6</td>
+                                                <td *ngFor="let capitaldata of res.o87; let i = index">
+                                                        <input [value]="res.o87[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('o87', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                </tbody>
+                        </table>
+                </div>
+
+
+                <table class="table page-name">
+                        <thead>
+                                <tr>
+                                        <th>
+                                                <h2>ARcane Adventures</h2>
+                                        </th>
+                                </tr>
+                        </thead>
+                </table>
+                <div class="table-responsive mb-3 mt-3">
+                        <table class="table case-management-table">
+                                <thead>
+                                        <tr>
+                                                <td></td>
+                                                <td *ngFor="let round of rounds">{{round}}</td>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                                <th class="second-head" colspan="13">Name</th>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 1</td>
+                                                <td *ngFor="let capitaldata of res.l91; let i = index">
+                                                        <input [value]="res.l91[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('l91', i, inputElement.value)"
+                                                                style="width: 13rem !important;">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 2</td>
+                                                <td *ngFor="let capitaldata of res.l92; let i = index">
+                                                        <input [value]="res.l92[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('l92', i, inputElement.value)"
+                                                                style="width: 13rem !important;">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 3</td>
+                                                <td *ngFor="let capitaldata of res.l93; let i = index">
+                                                        <input [value]="res.l93[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('l93', i, inputElement.value)"
+                                                                style="width: 13rem !important;">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 4</td>
+                                                <td *ngFor="let capitaldata of res.l94; let i = index">
+                                                        <input [value]="res.l94[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('l94', i, inputElement.value)"
+                                                                style="width: 13rem !important;">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 5</td>
+                                                <td *ngFor="let capitaldata of res.l95; let i = index">
+                                                        <input [value]="res.l95[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('l95', i, inputElement.value)"
+                                                                style="width: 13rem !important;">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 6</td>
+                                                <td *ngFor="let capitaldata of res.l96; let i = index">
+                                                        <input [value]="res.l96[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('l96', i, inputElement.value)"
+                                                                style="width: 13rem !important;">
+                                                </td>
+                                        </tr>
+                                </tbody>
+                        </table>
+                </div>
+
+                <div class="table-responsive mb-3 mt-3">
+                        <table class="table case-management-table">
+                                <thead>
+                                        <tr>
+                                                <td></td>
+                                                <td *ngFor="let round of rounds">{{round}}</td>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                                <th class="second-head" colspan="13">Attractiveness</th>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 1</td>
+                                                <td *ngFor="let capitaldata of res.n91; let i = index">
+                                                        <input [value]="res.n91[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('n91', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 2</td>
+                                                <td *ngFor="let capitaldata of res.n92; let i = index">
+                                                        <input [value]="res.n92[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('n92', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 3</td>
+                                                <td *ngFor="let capitaldata of res.n93; let i = index">
+                                                        <input [value]="res.n93[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('n93', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 4</td>
+                                                <td *ngFor="let capitaldata of res.n94; let i = index">
+                                                        <input [value]="res.n94[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('n94', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 5</td>
+                                                <td *ngFor="let capitaldata of res.n95; let i = index">
+                                                        <input [value]="res.n95[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('n95', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 6</td>
+                                                <td *ngFor="let capitaldata of res.n96; let i = index">
+                                                        <input [value]="res.n96[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('n96', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                </tbody>
+                        </table>
+                </div>
+
+                <div class="table-responsive mb-3 mt-3">
+                        <table class="table case-management-table">
+                                <thead>
+                                        <tr>
+                                                <td></td>
+                                                <td *ngFor="let round of rounds">{{round}}</td>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                                <th class="second-head" colspan="13">Additional days</th>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 1</td>
+                                                <td *ngFor="let capitaldata of res.o91; let i = index">
+                                                        <input [value]="res.o91[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('o91', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 2</td>
+                                                <td *ngFor="let capitaldata of res.o92; let i = index">
+                                                        <input [value]="res.o92[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('o92', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 3</td>
+                                                <td *ngFor="let capitaldata of res.o93; let i = index">
+                                                        <input [value]="res.o93[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('o93', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 4</td>
+                                                <td *ngFor="let capitaldata of res.o94; let i = index">
+                                                        <input [value]="res.o94[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('o94', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 5</td>
+                                                <td *ngFor="let capitaldata of res.o95; let i = index">
+                                                        <input [value]="res.o95[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('o95', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                        <tr>
+                                                <td>Features 6</td>
+                                                <td *ngFor="let capitaldata of res.o96; let i = index">
+                                                        <input [value]="res.o96[i]" #inputElement
+                                                                [disabled]="defaultcase=='yes'"
+                                                                (focusout)="writeMarketingValue('o96', i, inputElement.value)">
+                                                </td>
+                                        </tr>
+                                </tbody>
+                        </table>
+                </div>
+
+        </div>
+</div>

@@ -1,0 +1,96 @@
+<div class="elearingnewui">
+    <div class="case-management-body-forheader">
+        <div class="returnbtn-element">
+            <div class="returnbtn" (click)="GoBack()"> Return to Case Management </div>
+        </div>
+        <div class="card case-management-body-card">
+            <div class="card-body">
+                <div class=" tab-content-body">
+                    <ul class="nav second-nav" role="tablist">
+                      
+                        <li class="nav-item active" role="presentation" data-bs-target="#informationsearch"
+                            data-bs-toggle="tab" aria-controls="informationsearch" role="tab" aria-selected="false"
+                            (click)="search('informationsearch')">
+                            <span class="nav-link" aria-current="page">Information Search</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#target" data-bs-toggle="tab"
+                            aria-controls="target" role="tab" aria-selected="false" (click)="search('target')">
+                            <span class="nav-link" aria-current="page">Target</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#conceptualizing" data-bs-toggle="tab"
+                            aria-controls="conceptualizing" role="tab" aria-selected="false"
+                            (click)="search('conceptualizing')">
+                            <span class="nav-link" aria-current="page">Conceptualizing</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#crafting" data-bs-toggle="tab"
+                            aria-controls="crafting" role="tab" aria-selected="false" (click)="search('crafting')">
+                            <span class="nav-link" aria-current="page">Crafting</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#foodrforthought" data-bs-toggle="tab"
+                            aria-controls="foodrforthought" role="tab" aria-selected="false"
+                            (click)="search('foodforthought')">
+                            <span class="nav-link" aria-current="page">Food For Thought</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#module" data-bs-toggle="tab"
+                            aria-controls="module" role="tab" aria-selected="false" (click)="search('module')" *ngIf="getSelectTab !='cesimcase'">
+                            <span class="nav-link" aria-current="page">Module</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#language" data-bs-toggle="tab"
+                            aria-controls="language" role="tab" aria-selected="false" (click)="search('language')">
+                            <span class="nav-link" aria-current="page">Language</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content tab-content-body">
+
+                    <div role="tabpanel" class="tab-pane fade show " id="informationsearch"
+                        [ngClass]="{ 'active':activeTab==='informationsearch'}">
+                        <app-consumerinformationsearch
+                            *ngIf="activeTab==='informationsearch'" [active]="activeTab==='informationsearch'" ></app-consumerinformationsearch>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="target"
+                        [ngClass]="{ 'active':activeTab==='target'}">
+                        <app-consumercasetarget *ngIf="activeTab==='target'" [active]="activeTab==='target'"></app-consumercasetarget>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="conceptualizing"
+                        [ngClass]="{ 'active':activeTab==='conceptualizing'}">
+                        <app-consumerconceptualizing
+                            *ngIf="activeTab==='conceptualizing'" [active]="activeTab==='conceptualizing'"></app-consumerconceptualizing>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="crafting"
+                        [ngClass]="{ 'active':activeTab==='craftings'}">
+                        <app-consumercasecrafting *ngIf="activeTab==='crafting'" [active]="activeTab==='crafting'"></app-consumercasecrafting>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="foodforthought"
+                        [ngClass]="{ 'active':activeTab==='foodforthought'}">
+                        <app-consumerfoodforthougth *ngIf="activeTab==='foodforthought'" [active]="activeTab==='foodforthought'"></app-consumerfoodforthougth>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="module"
+                        [ngClass]="{ 'active':activeTab==='module'}">
+                        <app-consumermodule *ngIf="activeTab==='module'" ></app-consumermodule>
+                    </div>
+                    <!-- <div role="tabpanel" class="tab-pane fade show " id="module"
+                        [ngClass]="{ 'active':activeTab==='module'}">
+                        <app-consumermodule *ngIf="activeTab==='module'"></app-consumermodule>
+                    </div> -->
+                    <div role="tabpanel" class="tab-pane fade show " id="language"
+                        [ngClass]="{ 'active':activeTab==='language'}">
+                        <app-languagecasemanagement *ngIf="activeTab==='language'" [languagebody]="languagebody"
+                            [selectedLanguage]="selectedLanguage"
+                            [apiName]="'consumerbehaviournew'" [gameNamelm]="'consumerbehaviournewlm'">
+                        </app-languagecasemanagement>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- <div>
+            <button class="mt-4 back" (click)="back()" style=" border: 3px solid #30b4cc;
+            border-radius: 6px;
+            background: transparent;
+            color: #30b4cc;
+            font-size: 20px; padding: 0.5rem 1rem;">Back</button>
+        </div> -->
+    </div>
+</div>

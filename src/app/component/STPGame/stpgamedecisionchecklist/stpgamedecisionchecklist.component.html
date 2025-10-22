@@ -1,0 +1,700 @@
+<div class="elearingnewui stp_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="decision-checklist">
+                <div class="row pb-3 d-flex align-items-center">
+                    <div class="col-6 decision-checklist-col6">
+                        <h1 class="decision-checklist-col6-h1">Decision Checklist</h1>
+                    </div>
+                    <div class="col-6 text-end">
+                        <select class="select-round" name="" id="" [(ngModel)]="roundname" (change)="roundClick()">
+                            <option class="select-round-option" value="">Select Round</option>
+                            <option class="select-round-option" *ngFor="let attempt of dropdownvalue; let i = index;"
+                                [value]=attempt>
+                                {{attempt}}</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-borderd checklisttable">
+                        <tbody class="checklisttable-body">
+                            <tr class="checklisttable-body-tr" style="border-bottom: 3px solid black;">
+                                <td></td>
+                                <td>{{playername}}</td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <th>Phase 1</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Product 1 Launch</td>
+                                <td>
+                                    <span [class]="isClass[0] ? 'defaultcolor' : 'notdefaultcolor'">{{result[0]== 1 ?
+                                        'Yes' : 'No'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Design</td>
+                                <td>
+                                    <span [class]="isClass[1] ? 'defaultcolor' : 'notdefaultcolor'">{{result[1]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Performance</td>
+                                <td>
+                                    <span [class]="isClass[2] ? 'defaultcolor' : 'notdefaultcolor'">{{result[2]
+                                        }}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Battery Life</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[3] ? 'defaultcolor' : 'notdefaultcolor'">{{result[3]=='-'?result[3]:
+                                        result[3] | number:'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Premium Camera</td>
+                                <td>
+                                    <span [class]="isClass[4] ? 'defaultcolor' : 'notdefaultcolor'">{{result[4]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            <tr class="checklisttable-body-tr">
+                                <td>Extra Memory</td>
+                                <td>
+                                    <span [class]="isClass[5] ? 'defaultcolor' : 'notdefaultcolor'">{{result[5]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Premium Display</td>
+                                <td>
+                                    <span [class]="isClass[6] ? 'defaultcolor' : 'notdefaultcolor'">{{result[6]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Durable Screen</td>
+                                <td>
+                                    <span [class]="isClass[7] ? 'defaultcolor' : 'notdefaultcolor'">{{result[7]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Securtiy</td>
+                                <td>
+                                    <span [class]="isClass[8] ? 'defaultcolor' : 'notdefaultcolor'">{{result[8]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Projected Sales, Mn units</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[9] ? 'defaultcolor' : 'notdefaultcolor'">{{result[9]=='-'?result[9]:
+                                        result[9] | number:'1.0-2'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Price, INR</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[10] ? 'defaultcolor' : 'notdefaultcolor'">{{result[10]=='-'?result[10]:
+                                        result[10] | number:'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Product 2 Launch</td>
+                                <td>
+                                    <span [class]="isClass[11] ? 'defaultcolor' : 'notdefaultcolor'">{{result[11]== 1 ?
+                                        'Yes' : 'No'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Design</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[12] ? 'defaultcolor' : 'notdefaultcolor'">{{result[12]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Performance</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[13] ? 'defaultcolor' : 'notdefaultcolor'">{{result[13]=='-'?result[13]:
+                                        result[13] | number :'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Battery Life</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[14] ? 'defaultcolor' : 'notdefaultcolor'">{{result[14]=='-'?result[14]:
+                                        result[14] | number :'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Premium Camera</td>
+                                <td>
+                                    <span [class]="isClass[15] ? 'defaultcolor' : 'notdefaultcolor'">{{result[15]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Extra Memory</td>
+                                <td>
+                                    <span [class]="isClass[16] ? 'defaultcolor' : 'notdefaultcolor'">{{result[16]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Premium Display</td>
+                                <td>
+                                    <span [class]="isClass[17] ? 'defaultcolor' : 'notdefaultcolor'">{{result[17]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Durable Screen</td>
+                                <td>
+                                    <span [class]="isClass[18] ? 'defaultcolor' : 'notdefaultcolor'">{{result[18]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Securtiy</td>
+                                <td>
+                                    <span [class]="isClass[19] ? 'defaultcolor' : 'notdefaultcolor'">{{result[19]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Projected Sales, Mn unit</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[20] ? 'defaultcolor' : 'notdefaultcolor'">{{result[20]=='-'?result[20]:
+                                        result[20] | number :'1.0-2'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Price, INR</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[21] ? 'defaultcolor' : 'notdefaultcolor'">{{result[21]=='-'?result[21]:
+                                        result[21] | number :'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Promotion, Mn INR</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[22] ? 'defaultcolor' : 'notdefaultcolor'">{{result[22]=='-'?result[22]:
+                                        result[22] | number :'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Packaging</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[89] ? 'defaultcolor' : 'notdefaultcolor'">{{result[89]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Repairability & Services</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[90] ? 'defaultcolor' : 'notdefaultcolor'">{{result[90]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Recycling</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[91] ? 'defaultcolor' : 'notdefaultcolor'">{{result[91]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Retail</td>
+                                <td>
+                                    <span [class]="isClass[26] ? 'defaultcolor' : 'notdefaultcolor'">{{result[26]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Online</td>
+                                <td>
+                                    <span [class]="isClass[27] ? 'defaultcolor' : 'notdefaultcolor'">{{result[27]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Specialist Stores</td>
+                                <td>
+                                    <span [class]="isClass[28] ? 'defaultcolor' : 'notdefaultcolor'">{{result[28]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+
+                            <tr class="checklisttable-body-tr">
+                                <th>Phase 2</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Product 1 Launch</td>
+                                <td>
+                                    <span [class]="isClass[29] ? 'defaultcolor' : 'notdefaultcolor'">{{result[29]== 1 ?
+                                        'Yes' : 'No'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Design</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[30] ? 'defaultcolor' : 'notdefaultcolor'">{{result[30]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Performance</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[31] ? 'defaultcolor' : 'notdefaultcolor'">{{result[31]=='-'?result[31]:
+                                        result[31] | number :'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Battery Life</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[32] ? 'defaultcolor' : 'notdefaultcolor'">{{result[32]=='-'?result[32]:
+                                        result[32] | number :'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Premium Camera</td>
+                                <td>
+                                    <span [class]="isClass[33] ? 'defaultcolor' : 'notdefaultcolor'">{{result[33]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            <tr class="checklisttable-body-tr">
+                                <td>Extra Memory</td>
+                                <td>
+                                    <span [class]="isClass[34] ? 'defaultcolor' : 'notdefaultcolor'">{{result[34]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Premium Display</td>
+                                <td>
+                                    <span [class]="isClass[35] ? 'defaultcolor' : 'notdefaultcolor'">{{result[35]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Durable Screen</td>
+                                <td>
+                                    <span [class]="isClass[36] ? 'defaultcolor' : 'notdefaultcolor'">{{result[36]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Securtiy</td>
+                                <td>
+                                    <span [class]="isClass[37] ? 'defaultcolor' : 'notdefaultcolor'">{{result[37]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Projected Sales, Mn units</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[38] ? 'defaultcolor' : 'notdefaultcolor'">{{result[38]=='-'?result[38]:
+                                        result[38] | number :'1.0-2'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Price, INR</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[39] ? 'defaultcolor' : 'notdefaultcolor'">{{result[39]=='-'?result[39]:
+                                        result[39] | number :'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Product 2 Launch</td>
+                                <td>
+                                    <span [class]="isClass[40] ? 'defaultcolor' : 'notdefaultcolor'">{{result[40]== 1 ?
+                                        'Yes' : 'No'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Design</td>
+                                <!-- <td>
+                                    <span [class]="isClass[41] ? 'defaultcolor' : 'notdefaultcolor'">{{result[41]=='-'?result[41]: result[41] | number :'1.0-0'}}</span>
+                                </td> -->
+                                <td>
+                                    <span [class]="isClass[41] ? 'defaultcolor' : 'notdefaultcolor'">
+                                        {{
+                                        result[41] === '-' || (result[41] !== '' && +result[41] !== +result[41])
+                                        ? result[41]
+                                        : (+result[41] | number : '1.0-0')
+                                        }}
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Performance</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[42] ? 'defaultcolor' : 'notdefaultcolor'">{{result[42]=='-'?result[42]:
+                                        result[42] | number :'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Battery Life</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[43] ? 'defaultcolor' : 'notdefaultcolor'">{{result[42]=='-'?result[42]:
+                                        result[43] | number :'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Premium Camera</td>
+                                <td>
+                                    <span [class]="isClass[44] ? 'defaultcolor' : 'notdefaultcolor'">{{result[44]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Extra Memory</td>
+                                <td>
+                                    <span [class]="isClass[45] ? 'defaultcolor' : 'notdefaultcolor'">{{result[45]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Premium Display</td>
+                                <td>
+                                    <span [class]="isClass[46] ? 'defaultcolor' : 'notdefaultcolor'">{{result[46]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Durable Screen</td>
+                                <td>
+                                    <span [class]="isClass[47] ? 'defaultcolor' : 'notdefaultcolor'">{{result[47]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Securtiy</td>
+                                <td>
+                                    <span [class]="isClass[48] ? 'defaultcolor' : 'notdefaultcolor'">{{result[48]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Projected Sales, Mn unit</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[49] ? 'defaultcolor' : 'notdefaultcolor'">{{result[49]=='-'?result[49]:
+                                        result[49] | number :'1.0-2'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Price, INR</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[50] ? 'defaultcolor' : 'notdefaultcolor'">{{result[50]=='-'?result[50]:
+                                        result[50] | number :'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Promotion, Mn INR</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[51] ? 'defaultcolor' : 'notdefaultcolor'">{{result[51]=='-'?result[51]:
+                                        result[51] | number :'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Packaging</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[92] ? 'defaultcolor' : 'notdefaultcolor'">{{result[92]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Repairability & Services</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[93] ? 'defaultcolor' : 'notdefaultcolor'">{{result[93]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Recycling</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[94] ? 'defaultcolor' : 'notdefaultcolor'">{{result[94]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Retail</td>
+                                <td>
+                                    <span [class]="isClass[55] ? 'defaultcolor' : 'notdefaultcolor'">{{result[55]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Online</td>
+                                <td>
+                                    <span [class]="isClass[56] ? 'defaultcolor' : 'notdefaultcolor'">{{result[56]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Specialist Stores</td>
+                                <td>
+                                    <span [class]="isClass[57] ? 'defaultcolor' : 'notdefaultcolor'">{{result[57]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+
+                            <tr class="checklisttable-body-tr">
+                                <th>Phase 3</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Product 1 Launch</td>
+                                <td>
+                                    <span [class]="isClass[58] ? 'defaultcolor' : 'notdefaultcolor'">{{result[58]== 1 ?
+                                        'Yes' : 'No'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Design</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[59] ? 'defaultcolor' : 'notdefaultcolor'">{{result[59]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Performance</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[60] ? 'defaultcolor' : 'notdefaultcolor'">{{result[60]=='-'?result[60]:
+                                        result[60] | number :'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Battery Life</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[61] ? 'defaultcolor' : 'notdefaultcolor'">{{result[61]=='-'?result[61]:
+                                        result[61] | number :'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Premium Camera</td>
+                                <td>
+                                    <span [class]="isClass[62] ? 'defaultcolor' : 'notdefaultcolor'">{{result[62]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            <tr class="checklisttable-body-tr">
+                                <td>Extra Memory</td>
+                                <td>
+                                    <span [class]="isClass[63] ? 'defaultcolor' : 'notdefaultcolor'">{{result[63]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Premium Display</td>
+                                <td>
+                                    <span [class]="isClass[64] ? 'defaultcolor' : 'notdefaultcolor'">{{result[64]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Durable Screen</td>
+                                <td>
+                                    <span [class]="isClass[65] ? 'defaultcolor' : 'notdefaultcolor'">{{result[65]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Securtiy</td>
+                                <td>
+                                    <span [class]="isClass[66] ? 'defaultcolor' : 'notdefaultcolor'">{{result[66]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Projected Sales, Mn units</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[67] ? 'defaultcolor' : 'notdefaultcolor'">{{result[67]=='-'?result[67]:
+                                        result[67] | number :'1.0-2'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Price, INR</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[68] ? 'defaultcolor' : 'notdefaultcolor'">{{result[68]=='-'?result[68]:
+                                        result[68] | number :'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Product 2 Launch</td>
+                                <td>
+                                    <span [class]="isClass[69] ? 'defaultcolor' : 'notdefaultcolor'">{{result[69]== 1 ?
+                                        'Yes' : 'No'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Design</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[70] ? 'defaultcolor' : 'notdefaultcolor'">{{result[70]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Performance</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[71] ? 'defaultcolor' : 'notdefaultcolor'">{{result[71]=='-'?result[71]:
+                                        result[71] | number :'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Battery Life</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[72] ? 'defaultcolor' : 'notdefaultcolor'">{{result[72]=='-'?result[72]:
+                                        result[72] | number :'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Premium Camera</td>
+                                <td>
+                                    <span [class]="isClass[73] ? 'defaultcolor' : 'notdefaultcolor'">{{result[73]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Extra Memory</td>
+                                <td>
+                                    <span [class]="isClass[74] ? 'defaultcolor' : 'notdefaultcolor'">{{result[74]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Premium Display</td>
+                                <td>
+                                    <span [class]="isClass[75] ? 'defaultcolor' : 'notdefaultcolor'">{{result[75]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Durable Screen</td>
+                                <td>
+                                    <span [class]="isClass[76] ? 'defaultcolor' : 'notdefaultcolor'">{{result[76]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Securtiy</td>
+                                <td>
+                                    <span [class]="isClass[77] ? 'defaultcolor' : 'notdefaultcolor'">{{result[77]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Projected Sales, Mn unit</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[78] ? 'defaultcolor' : 'notdefaultcolor'">{{result[78]=='-'?result[78]:
+                                        result[78] | number :'1.0-2'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Price, INR</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[79] ? 'defaultcolor' : 'notdefaultcolor'">{{result[79]=='-'?result[79]:
+                                        result[79] | number :'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Promotion, Mn INR</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[80] ? 'defaultcolor' : 'notdefaultcolor'">{{result[80]=='-'?result[80]:
+                                        result[80] | number :'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Packaging</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[95] ? 'defaultcolor' : 'notdefaultcolor'">{{result[95]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Repairability & Services</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[96] ? 'defaultcolor' : 'notdefaultcolor'">{{result[96]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Recycling</td>
+                                <td>
+                                    <span
+                                        [class]="isClass[97] ? 'defaultcolor' : 'notdefaultcolor'">{{result[97]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Retail</td>
+                                <td>
+                                    <span [class]="isClass[84] ? 'defaultcolor' : 'notdefaultcolor'">{{result[84]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Online</td>
+                                <td>
+                                    <span [class]="isClass[85] ? 'defaultcolor' : 'notdefaultcolor'">{{result[85]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Specialist Stores</td>
+                                <td>
+                                    <span [class]="isClass[86] ? 'defaultcolor' : 'notdefaultcolor'">{{result[86]== 1 ?
+                                        'Implemented' : 'Not Implemented'}}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="decision-textarea py-4" *ngIf="analysisshow">
+                        <textarea class="decision-textarea-element" rows="10" [disabled]="disabled"
+                            [(ngModel)]="useranalysisinput"
+                            placeholder="Describe your thought process behind the decision-making in 1500 characters…"
+                            (focusout)="useranalysissave()" maxlength="1500"></textarea>
+                    </div>
+                    <div class="p-0">
+                        <button class="btn_stl btn_stl-decisionchecklist" type="button" [disabled]="disabled"
+                            (click)="decisionchecklistpopup()">Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

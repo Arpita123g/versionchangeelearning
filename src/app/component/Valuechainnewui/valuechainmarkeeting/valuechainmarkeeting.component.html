@@ -1,0 +1,483 @@
+<div class="elearingnewui value_chain">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="dema_nd">
+                <div class="element-first">
+                    <div class="row">
+                        <div class="locandfoodspc" (click)="openDialog()" *ngIf="foodforthought">
+                            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                                <button class="food-thought-btn">{{language.b240}}</button></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 pb-3">
+                    <h1>
+                        {{language.b71}}
+                        <mat-icon appTippy="
+                                <div class='help-tip p-2'>
+                                    <div style='display:flex;'>
+                                        <div>
+                                        <h4 style='color: white; margin:0 auto; font-weight: 600;'></h4>
+                                        </div> &nbsp; &nbsp; &nbsp;
+                                        <div>
+                                        <p style='margin: 0 auto; color: white; font-size:13px;'>{{language.b176}}</p>
+                                        </div>
+                                    </div><br>
+                                        <div style='display:flex;'>
+                                        <div>
+                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'></h4>
+                                        </div> &nbsp; &nbsp; &nbsp;
+                                        <div>
+                                            <p style='margin: 0 auto; color: white; font-size:13px;'>{{language.b177}}</p>
+                                        </div>
+                                        </div>
+                                </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+                <div class="row invest-ment-value">
+
+                    <div class="col-md-5 d-flex align-items-end">
+                        <div>
+                            <div class="invest-ment-value-f">
+                                <img src="assets/images/valuechain/featureindex.svg" style="height: 13rem;" />
+                            </div>
+                            <div class="invest-ment-value-s">
+                                <p>{{language.b74}}</p>
+                                <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[5]"
+                                    (focusout)="inputtablevalue(5,'featureindex')" [disabled]="disabled" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 ">
+                        <div class="card p-3">
+                            <apx-chart [series]="featurelineGraph.series" [chart]="featurelineGraph.chart"
+                                [yaxis]="featurelineGraph.yaxis" [xaxis]="featurelineGraph.xaxis"
+                                [tooltip]="featurelineGraph.tooltip" [title]="featurelineGraph.title">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="row invest-ment-value pt-5 ">
+                    <div class="col-md-5 d-flex align-items-end" style="padding-left: 24px;">
+                        <div>
+                            <div class="invest-ment-value-f">
+                                <img src="assets/images/valuechain/promvaluechain.svg" style="width: 18rem;" />
+                            </div>
+                            <div class="invest-ment-value-s">
+                                <p>{{language.b75}}</p>
+                                <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[6]"
+                                    (focusout)="inputtablevalue(6,'promotion')" [disabled]="disabled" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 ">
+                        <div class="card p-3">
+                            <apx-chart [series]="PromotionlineChart.series" [chart]="PromotionlineChart.chart"
+                                [yaxis]="PromotionlineChart.yaxis" [xaxis]="PromotionlineChart.xaxis"
+                                [tooltip]="PromotionlineChart.tooltip" [title]="PromotionlineChart.title">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="row invest-ment-value pb-4 pt-5 ">
+                    <div class="col-md-3 d-flex align-items-end">
+                        <div>
+                            <div class="invest-ment-value-f">
+                                <img src="assets/images/valuechain/priceunitvalue.svg" style="height: 15rem;" />
+                            </div>
+                            <div class="invest-ment-value-s">
+                                <p>{{language.b79}}</p>
+                                <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[7]"
+                                    (focusout)="inputtablevalue(7,'priceperunit')" [disabled]="disabled" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end h-100">
+                        <div class="card p-3 ">
+                            <apx-chart style="height: 335px; display: flex; align-items: center;"
+                                [series]="MarginperunitChart.series" [chart]="MarginperunitChart.chart"
+                                [dataLabels]="MarginperunitChart.dataLabels"
+                                [plotOptions]="MarginperunitChart.plotOptions" [yaxis]="MarginperunitChart.yaxis"
+                                [xaxis]="MarginperunitChart.xaxis" [tooltip]="MarginperunitChart.tooltip"
+                                [fill]="MarginperunitChart.fill" [title]="MarginperunitChart.title">
+                            </apx-chart>
+                        </div>
+
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card p-3">
+                            <apx-chart [series]="PriceChart.series" [chart]="PriceChart.chart"
+                                [yaxis]="PriceChart.yaxis" [xaxis]="PriceChart.xaxis" [tooltip]="PriceChart.tooltip"
+                                [title]="PriceChart.title">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="py-4">
+                    <h1 class="mt-5">
+                        {{language.b84}}
+                        <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'></h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'>{{language.b178}}</p>
+                    </div>
+                  </div>
+                </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="assets/images/valuechain/distributormargin.svg" style="height: 20rem;" />
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-3">
+                            <apx-chart [series]="PerunitChart.series" [chart]="PerunitChart.chart"
+                                [dataLabels]="PerunitChart.dataLabels" [plotOptions]="PerunitChart.plotOptions"
+                                [yaxis]="PerunitChart.yaxis" [xaxis]="PerunitChart.xaxis"
+                                [tooltip]="PerunitChart.tooltip" [fill]="PerunitChart.fill"
+                                [title]="PerunitChart.title">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="row row-cols-md-3">
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="assets/images/valuechain/onlinechannel.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{cardData1[0].title[0]}}</h2>
+                                <p class="maincontent">
+                                    {{textshow[cardData1[0].id] ?cardData1[0].description:cardData1[0].turncatedtext}}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[0].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+
+                            </div>
+                            <div class="card-footer form-check">
+                                <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[8]"
+                                    (focusout)="inputtablevalue(8,'distributormargin')" [disabled]="disabled" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/valuechain/specialization.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{cardData1[1].title[0]}}</h2>
+                                <p class="maincontent">
+                                    {{textshow[cardData1[1].id] ?cardData1[1].description:cardData1[1].turncatedtext}}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[1].id)"
+                                        [ngStyle]="{color: textshow[cardData1[1].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[1].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+
+
+                            </div>
+                            <div class="card-footer form-check">
+                                <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[9]"
+                                    (change)="inputtablevalue(9,'distributormargin')" [disabled]="disabled" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/valuechain/retailer1.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+
+                                <h2>{{cardData1[2].title[0]}}</h2>
+                                <p class="maincontent">
+                                    {{textshow[cardData1[2].id] ?cardData1[2].description:cardData1[2].turncatedtext}}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[2].id)"
+                                        [ngStyle]="{color: textshow[cardData1[2].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[2].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+
+                            </div>
+                            <div class="card-footer form-check">
+                                <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[10]"
+                                    (change)="inputtablevalue(10,'distributormargin')" [disabled]="disabled" />
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="row row-cols-md-3">
+                    <div class="col-md" *ngFor="let card of cardData1; let i = index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="getImagePath(i)" class="card-img-top" alt="Card Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{ language[card.titleKey] }}</h2>
+                                <p class="maincontent">
+                                    {{
+                                    textshow[card.id]
+                                    ? language[card.descriptionKey]
+                                    : (language[card.descriptionKey]?.length > 100
+                                    ? (language[card.descriptionKey] | slice: 0:100) + '...'
+                                    : language[card.descriptionKey])
+                                    }}
+                                    <span class="mt-3" style="cursor: pointer; font-size: small"
+                                        (click)="toggleText(card.id)"
+                                        [ngStyle]="{ color: textshow[card.id] ? 'red' : 'blue' }">
+                                        {{ textshow[card.id] ? language.b242 : language.b241 }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <input class="input-no_box" placeholder="Input value here..."
+                                    [(ngModel)]="result[8 + i]" (focusout)="inputtablevalue(8 + i, 'distributormargin')"
+                                    [disabled]="disabled" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="py-4">
+                    <h1 class="mt-5">
+                        {{language.b92}}
+                        <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'></h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'> {{language.b179}}</p>
+                    </div>
+                  </div>
+                </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+                <!-- <div class="row row-cols-md-3 g-4">
+                    <div class="col-md">
+                        <div class="card  marketing-card-radio h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/valuechain/predictiveanalysis.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{cardData2[0].title[0]}}</h2>
+                                <p class="maincontent">
+                                    {{textshow[cardData2[0].id] ?cardData2[0].description:cardData2[0].turncatedtext}}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData2[0].id)"
+                                        [ngStyle]="{color: textshow[cardData2[0].id]?'red':'blue'}">
+                                        {{ textshow[cardData2[0].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="wearhousecard-cost">
+                                    <h3>Cost, mn INR</h3>
+                                    <h3>{{result[0]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[11]" (change)="inputtablevalue(11,'innovation')"
+                                    [disabled]="disabled" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card-radio h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/valuechain/subscription.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{cardData2[1].title[0]}}</h2>
+                                <p class="maincontent">
+                                    {{textshow[cardData2[1].id] ?cardData2[1].description:cardData2[1].turncatedtext}}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData2[1].id)"
+                                        [ngStyle]="{color: textshow[cardData2[1].id]?'red':'blue'}">
+                                        {{ textshow[cardData2[1].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="wearhousecard-cost">
+                                    <h3>Cost, mn INR</h3>
+                                    <h3>{{result[1]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[12]" (change)="inputtablevalue(12,'innovation')"
+                                    [disabled]="disabled" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card-radio h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/valuechain/blosckchain.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{cardData2[2].title[0]}}</h2>
+                                <p class="maincontent">
+                                    {{textshow[cardData2[2].id] ?cardData2[2].description:cardData2[2].turncatedtext}}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData2[2].id)"
+                                        [ngStyle]="{color: textshow[cardData2[2].id]?'red':'blue'}">
+                                        {{ textshow[cardData2[2].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="wearhousecard-cost">
+                                    <h3>Cost, mn INR</h3>
+                                    <h3>{{result[2]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[13]" (change)="inputtablevalue(13,'innovation')"
+                                    [disabled]="disabled" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card-radio h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/valuechain/onlinedigno.jpg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{cardData2[3].title[0]}}</h2>
+                                <p class="maincontent">
+                                    {{textshow[cardData2[3].id] ?cardData2[3].description:cardData2[3].turncatedtext}}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData2[3].id)"
+                                        [ngStyle]="{color: textshow[cardData2[3].id]?'red':'blue'}">
+                                        {{ textshow[cardData2[3].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="wearhousecard-cost">
+                                    <h3>Cost, mn INR</h3>
+                                    <h3>{{result[3]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[14]" (change)="inputtablevalue(14,'innovation')"
+                                    [disabled]="disabled" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card-radio h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/valuechain/aipersonal.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{cardData2[4].title[0]}}</h2>
+                                <p class="maincontent">
+                                    {{textshow[cardData2[4].id] ?cardData2[4].description:cardData2[4].turncatedtext}}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData2[4].id)"
+                                        [ngStyle]="{color: textshow[cardData2[4].id]?'red':'blue'}">
+                                        {{ textshow[cardData2[4].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="wearhousecard-cost">
+                                    <h3>Cost, mn INR</h3>
+                                    <h3>{{result[4]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[15]" (change)="inputtablevalue(15,'innovation')"
+                                    [disabled]="disabled" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="row row-cols-md-3 g-4">
+                    <div class="col-md" *ngFor="let card of cardData2">
+                        <div class="card marketing-card-radio h-100">
+                            <div class="craftingimg">
+                                <img [src]="card.image" class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{ language[card.titleKey] }}</h2>
+                                <p class="maincontent">
+                                    {{
+                                    textshow[card.id]
+                                    ? language[card.descriptionKey]
+                                    : (language[card.descriptionKey]?.length > 100
+                                    ? (language[card.descriptionKey] | slice: 0:100) + '...'
+                                    : language[card.descriptionKey])
+                                    }}
+                                    <span class="mt-3" style="cursor: pointer; font-size: small"
+                                        (click)="toggleText(card.id)"
+                                        [ngStyle]="{ color: textshow[card.id] ? 'red' : 'blue' }">
+                                        {{ textshow[card.id] ? language.b242 : language.b241 }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="wearhousecard-cost">
+                                    <h3> {{language.b103}}</h3>
+                                    <h3>{{ result[card.resultIndex] }}</h3>
+                                </div>
+                                <input class="checkfrominput" type="checkbox"
+                                [checked]="result[card.checkboxIndex] === 1"
+                                (change)="onCheckboxChange($event, card.checkboxIndex)"
+                                [disabled]="disabled" />
+                            <label class="form-check-label"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,133 @@
+<!-- new -->
+<div class="elearingnewui">
+    <div class="innovation-element-body">
+        <div class="case-management-body">
+            <div class="table-responsive mb-3 mt-3">
+                <div class="links">
+                    <ul>
+                        <button class="out-look-btn "
+                            [style.background-color]="round === selectedButton? 'lightgrey' : ''"
+                            *ngFor="let round of rounds; let i = index;"
+                            (click)="roundclick(i,round)">{{round}}</button>
+                    </ul>
+                </div>
+                <div class="case-texts__content">
+                    <div id="initial">
+                        <div class="case-texts__content-main">
+                            <div class=" case-texts__container">
+                                <label class="case-texts__content-after-label pb-2">Original text</label>
+                                <div class=" case-texts__container-textarea">
+                                    In the bustling startup scene of New Delhi, a team of passionate innovators embarked
+                                    on a journey to redefine reality with their ground-breaking AR/VR technology. Their
+                                    vision captured the imagination of venture capitalists, securing pre-seed funding
+                                    and propelling them into the spotlight of the tech world. With the resources at
+                                    their disposal, the team faced a critical juncture: finding their product-market fit
+                                    in an industry brimming with potential yet fraught with uncertainty. <br><br>
+
+                                    As the newly appointed strategic advisor, you brought your expertise to the table,
+                                    guiding the startup through the maze of economic trends and industry dynamics. The
+                                    AR/VR landscape, while ripe with opportunities, also posed challenges, with economic
+                                    uncertainties casting a shadow over the future. The key lay in identifying not just
+                                    the technological prowess of their product, but its resonance within the
+                                    ever-shifting market landscape. <br><br>
+
+                                    Together, you and the start-up’s leadership team embarked on a journey of discovery,
+                                    leveraging market insights and customer feedback to chart a course forward.
+                                    Balancing innovation with market demands, you navigated through the complexities of
+                                    product development and market strategy, seeking to carve out a niche amidst the
+                                    uncertainty. With each strategic decision, the startup moved closer to finding its
+                                    place in the AR/VR ecosystem, poised to make a lasting impact on the future of
+                                    digital experiences.
+
+                                </div>
+                            </div>
+                            <div class="case-texts__content-starea">
+                                <div class="case-texts__content-after">
+                                    <label class="case-texts__content-after-label">Your custom default text</label>
+                                    <st-editor name="" id="" [config]="config" [(ngModel)]="contentvalue"
+                                        [disabled]="defaultcase=='yes'" (focusout)="contentvaluechange()"></st-editor>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table page-name case-management-table">
+                <thead>
+                    <tr>
+                        <th style="background-color: #fff2e8;">
+                            <h2>Parameters</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="table-responsive">
+                <table class=" table case-management-table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="first-div">
+                                <div>Pre-seed funding, k INR</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.c8; let i = index">
+                                <input [value]="res.c8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInnovationValue('c8',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">Founders Capital, k INR</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.c9; let i = index">
+                                <input [value]="res.c9[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInnovationValue('c9',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Base technology development cost, k INR</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.c10; let i = index">
+                                <input [value]="res.c10[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInnovationValue('c10',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Total capital with company, k INR</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.c11; let i = index">
+                                <input [value]="res.c11[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInnovationValue('c11',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Minimum cash at year end, k INR</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.c12; let i = index">
+                                <input [value]="res.c12[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInnovationValue('c12',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>1 Period</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.c13; let i = index">
+                                <input [value]="res.c13[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInnovationValue('c13',i,inputElement.value)">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

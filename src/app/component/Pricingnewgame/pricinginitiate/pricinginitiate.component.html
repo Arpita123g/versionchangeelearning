@@ -1,0 +1,167 @@
+<div class="elearingnewui pricing_new">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="dema_nd">
+                <div class="element-first">
+                    <div class="row">
+                        <div class="locandfoodspc" (click)="openDialog()" *ngIf="foodforthought">
+                            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                                <button class="food-thought-btn">Food For Thought</button></span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h1>
+                        Initiate
+                        <mat-icon appTippy="
+            <div class='help-tip p-2'>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>What key factors should you consider to determine the initial pricing strategy? Think about demand, competition, and any factors that might influence passenger preferences.</p>
+                </div>
+              </div><br>
+                <div style='display:flex;'>
+                  <div>
+                    <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                  </div> &nbsp; &nbsp; &nbsp;
+                  <div>
+                    <p style='margin: 0 auto; color: white; font-size:13px;'>How can you strategically set prices to establish a competitive edge against your single competitor? Consider the balance between attracting early bookings and maximizing revenue.</p>
+                  </div>
+                </div>
+            </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+
+                <p>Price per seat, INR:</p>
+                <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[0]"
+                    (focusout)="writeData()" [disabled]="inputDisabled">
+                <div class="row row-cols-md-3 py-5 g-3">
+                    <div class="col-md-6">
+                        <div class="card" style="border: none;">
+                            <img src="assets/images/pricinggame/forinitiatetab.svg" alt="Your Image" class="img-fluid"
+                                style="width: 100%; height: 22rem;" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-2">
+                            <apx-chart [series]="priceperseatchart.series" [chart]="priceperseatchart.chart"
+                                [markers]="priceperseatchart.markers" [stroke]="priceperseatchart.stroke"
+                                [title]="priceperseatchart.title" [xaxis]="priceperseatchart.xaxis"
+                                [tooltip]="priceperseatchart.tooltip" [yaxis]="priceperseatchart.yaxis"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 py-3 g-3">
+                    <div class="col-md-6">
+                        <table class="table h-100 rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">{{result[2]}}</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Capacity</td>
+                                    <td>{{result[4]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Demand at base</td>
+                                    <td>{{result[5]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Fixed Cost, INR</td>
+                                    <td>{{result[6]|number:'1.0-0'}}</td>
+                                </tr>
+
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Base Price, INR</td>
+                                    <td>{{result[7]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cost at base, INR</td>
+                                    <td>{{costatbase|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Airport tax per flyer, INR</td>
+                                    <td>{{result[8]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table h-100 rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">{{result[3]}}</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Capacity</td>
+                                    <td>{{result[9]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Demand at base</td>
+                                    <td>{{result[5]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Fixed Cost, INR</td>
+                                    <td>{{result[6]|number:'1.0-0'}}</td>
+                                </tr>
+
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Base Price, INR</td>
+                                    <td>{{result[7]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cost at base, INR</td>
+                                    <td>{{costatbase|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Airport tax per flyer, INR</td>
+                                    <td>{{result[8]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row  mt-4">
+                    <h2>Consumer personas</h2>
+                </div>
+                <div class="main">
+                    <div class="content">
+                        Meet Aarav Sharma, a 30-year-old marketing professional from Mumbai who loves leisure travel.
+                        With a middle-income budget, Aarav values experiences and explores destinations two to three
+                        times a year. He plans well in advance using online platforms, appreciates flight comfort, and
+                        is willing to pay extra for convenience. Aarav's priorities include excellent customer service,
+                        flexible booking, and additional services like convenient baggage options. Airlines can enhance
+                        the travel experience for leisure travellers like Aarav by understanding and addressing these
+                        key preferences.
+
+                    </div>
+                    
+                    <ul class="tabrow mt-4">
+                        <li *ngFor="let season of seasons; let i = index">
+                            <img [src]="season.img" />
+                        </li>
+                    </ul>
+                </div>
+                <div class="row lst_r">
+                    <div class="col-4 lst_r-col4">
+                        <button class="mt-4 retry" (click)="gotoInnovate()" [disabled]="inputDisabled">Go To Innovate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

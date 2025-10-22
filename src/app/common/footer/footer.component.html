@@ -1,0 +1,37 @@
+<footer class="footer" role="contentinfo">
+  <mat-toolbar class="footer-toolbar">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About Us</h3>
+        <p>We are dedicated to providing the best learning experience for our students.</p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <mat-nav-list>
+          <a mat-list-item href="/about">About</a>
+          <a mat-list-item href="/contact">Contact</a>
+          <a mat-list-item href="/privacy">Privacy Policy</a>
+          <a mat-list-item href="/terms">Terms of Service</a>
+        </mat-nav-list>
+      </div>
+
+      <div class="footer-section">
+        <h3>Connect With Us</h3>
+        <div class="social-links">
+          @for (link of socialLinks(); track link.icon) {
+            <a mat-icon-button [href]="link.url" target="_blank" rel="noopener noreferrer" [attr.aria-label]="'Follow us on ' + link.icon">
+              <mat-icon>{{ link.icon }}</mat-icon>
+            </a>
+          }
+        </div>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="footer-bottom">
+      <p>&copy; {{ currentYear() }} {{ companyName() }}. All rights reserved.</p>
+    </div>
+  </mat-toolbar>
+</footer>

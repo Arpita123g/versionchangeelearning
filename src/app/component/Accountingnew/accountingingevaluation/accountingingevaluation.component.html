@@ -1,0 +1,441 @@
+<div class="elearingnewui accounting_new">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="routesandtech">
+                <div class="row" class="element-first">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="optional[3]" 
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+                <h1 *ngIf="optional[0]" >Opportunities, Balance Sheet
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'> Evaluate the benefits and risks of restructuring debt to improve the company's long-term financial stability and its impact on the balance sheet.</p>
+                        </div>
+                      </div><br>
+                        <div style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; &nbsp;
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'> Discuss the potential advantages of investing in additional fixed assets versus optimizing existing assets to enhance the balance sheet.</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card" *ngIf="optional[0]" >
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/accounting/investmentresearchdev.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[0]}}</h2>
+                                <p class="card-text">By investing in R&D, the company can develop new products and
+                                    technologies, opening up new revenue streams and ensuring long-term sustainability.
+                                    <br><br>
+
+                                    <span class="fontsizeandweight">Benefit : </span> Increase in intangible assets by
+                                    Rs. 100,000 per annum. <br><br><br>
+
+                                    <span class="fontsizeandweight">Long-term Impact : </span> Increases intangible
+                                    assets, such as patents and
+                                    intellectual
+                                    property, improving company valuation. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Investment per annum, INR</h3>
+                                    <h3>{{result[1]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="balancesheet"
+                                    [checked]="result[18]==1" (change)="getSelection('balancesheet',18)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/accounting/expensionmanufactoring.jpg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[2]}}</h2>
+                                <p class="card-text">
+                                    By expanding manufacturing facilities, the company can meet growing demand, reduce
+                                    production bottlenecks, and capitalize on economies of scale. <br><br>
+
+                                    <span class="fontsizeandweight">Benefit : </span> Increases production capacity and
+                                    efficiency. Increase in fixed
+                                    assets by
+                                    Rs. 500,000. <br><br>
+
+                                    <span class="fontsizeandweight">Long-term Impact : </span> Boosts fixed assets, such
+                                    as machinery and equipment,
+                                    supporting
+                                    future growth. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[1].id)"
+                                        [ngStyle]="{color: textshow[cardData1[1].id]?'red':'blue'}">
+
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Investment per annum, INR</h3>
+                                    <h3>{{result[3]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="balancesheet"
+                                    [checked]="result[19]==1" (change)="getSelection('balancesheet',19)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/accounting/deptrestructuring.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[4]}}</h2>
+                                <p class="card-text">By renegotiating debt terms or consolidating high-interest loans,
+                                    the company can lower its overall cost of debt and strengthen its balance sheet.
+                                    <br><br>
+
+                                    <span class="fontsizeandweight">Benefit : </span> Reduction in interest expenses by
+                                    Rs. 40,000 per annum. <br><br><br>
+
+                                    <span class="fontsizeandweight">Long-term Impact : </span> Lowers debt servicing
+                                    burden, freeing up cash flow for
+                                    investment
+                                    or dividends. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[2].id)"
+                                        [ngStyle]="{color: textshow[cardData1[2].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Investment per annum, INR</h3>
+                                    <h3>{{result[5]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="balancesheet"
+                                    [checked]="result[20]==1" (change)="getSelection('balancesheet',20)"
+                                    [disabled]="checkdisable"  />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="pt-5" *ngIf="optional[1]" >Opportunities, Income Statement
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>Assess the potential impact of introducing a new product line on the company's gross profit margin and net income.</p>
+                        </div>
+                      </div><br>
+                        <div style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; &nbsp;
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'> Explain how implementing cost reduction initiatives could affect various components of the income statement, such as cost of goods sold and operating expenses.</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card" *ngIf="optional[1]" >
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/accounting/costreductionin.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[6]}}</h2>
+                                <p class="card-text">By implementing cost-saving measures such as lean manufacturing or
+                                    outsourcing non-core activities, the company can enhance its bottom line.<br><br>
+
+                                    <span class="fontsizeandweight">Benefit : </span> Decrease in operating expenses by
+                                    Rs. 50,000 per annum.<br><br>
+
+                                    <span class="fontsizeandweight">Long-term Impact : </span> Lowers cost of goods sold
+                                    (COGS) and operating expenses,
+                                    boosting
+                                    gross and net profit margins. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Investment per annum, INR</h3>
+                                    <h3>{{result[7]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="incomestatement"
+                                    [checked]="result[21]==1" (change)="getSelection('incomestatement',21)"
+                                    [disabled]="checkdisable"  />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/accounting/premiumproductline.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[8]}}</h2>
+                                <p class="card-text">
+                                    By introducing a premium product line targeting affluent customers, the company can
+                                    tap into new market segments and increase overall profitability. <br><br>
+
+                                    <span class="fontsizeandweight">Benefit : </span> Increase in revenue by Rs. 200,000
+                                    per annum. <br><br>
+
+                                    <span class="fontsizeandweight">Long-term Impact : </span> Diversifies revenue
+                                    streams and strengthens brand
+                                    positioning.
+                                    <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[1].id)"
+                                        [ngStyle]="{color: textshow[cardData1[1].id]?'red':'blue'}">
+
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Investment per annum, INR</h3>
+                                    <h3>{{result[9]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="incomestatement"
+                                    [checked]="result[22]==1" (change)="getSelection('incomestatement',22)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/accounting/devlopmentandtraing.png"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[10]}}</h2>
+                                <p class="card-text">By investing in employee training and development, the company can
+                                    cultivate a skilled workforce, fostering innovation and long-term growth. <br><br>
+
+                                    <span class="fontsizeandweight">Benefit : </span> Increase in productivity by Rs.
+                                    60,000 per annum. <br><br>
+
+                                    <span class="fontsizeandweight">Long-term Impact : </span> Improved employee skills
+                                    and morale, leading to
+                                    higher-quality
+                                    products and customer service. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[2].id)"
+                                        [ngStyle]="{color: textshow[cardData1[2].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Investment per annum, INR</h3>
+                                    <h3>{{result[11]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="incomestatement"
+                                    [checked]="result[23]==1" (change)="getSelection('incomestatement',23)"
+                                    [disabled]="checkdisable"/>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="pt-5" *ngIf="optional[2]" >Opportunities, Cash Flow Statement
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>Analyze the potential cash flow implications of leasing equipment compared to purchasing it outright.</p>
+                        </div>
+                      </div><br>
+                        <div style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; &nbsp;
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>Discuss the risks and rewards of exploring export opportunities to diversify revenue streams and their impact on cash flow over time.</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card" *ngIf="optional[2]" >
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/accounting/workingcapitalopt.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[12]}}</h2>
+                                <p class="card-text">By streamlining inventory management, optimizing accounts
+                                    receivable and payable, and negotiating favourable payment terms with suppliers, the
+                                    company can free up cash for investment and growth. <br><br>
+
+                                    <span class="fontsizeandweight">Benefit : </span> Increase in cash flow by Rs.
+                                    50,000 per annum. <br><br>
+
+                                    <span class="fontsizeandweight">Long-term Impact : </span> Improved liquidity and
+                                    cash flow management. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Investment per annum, INR</h3>
+                                    <h3>{{result[13]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="cashflow"
+                                    [checked]="result[24]==1" (change)="getSelection('cashflow',24)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/accounting/equipmentfinancing.jpg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[14]}}</h2>
+                                <p class="card-text">
+                                    By leasing equipment instead of purchasing outright, the company can acquire
+                                    necessary assets without a large upfront investment, allowing for easier budgeting
+                                    and risk management. <br><br>
+
+                                    <span class="fontsizeandweight">Benefit : </span> Preservation of cash flow by Rs.
+                                    40,000 per annum. <br><br>
+
+                                    <span class="fontsizeandweight">Long-term Impact : </span> Conserved capital for
+                                    other purposes and flexibility in
+                                    equipment
+                                    acquisition.
+                                    <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[1].id)"
+                                        [ngStyle]="{color: textshow[cardData1[1].id]?'red':'blue'}">
+
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Investment per annum, INR</h3>
+                                    <h3>{{result[15]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="cashflow"
+                                    [checked]="result[25]==1" (change)="getSelection('cashflow',25)"
+                                    [disabled]="checkdisable"  />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/accounting/exportopporcunities.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[16]}}</h2>
+                                <p class="card-text">By tapping into international markets, the company can access new
+                                    customers and opportunities for growth, potentially boosting profitability and
+                                    resilience against local economic fluctuations. <br><br>
+
+                                    <span class="fontsizeandweight">Benefit : </span> Increase in revenue by Rs. 100,000
+                                    per annum. <br><br>
+
+                                    <span class="fontsizeandweight">Long-term Impact : </span>: Diversification of
+                                    revenue streams and reduced
+                                    dependence on
+                                    domestic market. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[2].id)"
+                                        [ngStyle]="{color: textshow[cardData1[2].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Investment per annum, INR</h3>
+                                    <h3>{{result[17]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="cashflow"
+                                    [checked]="result[26]==1" (change)="getSelection('cashflow',26)"
+                                    [disabled]="checkdisable"  />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

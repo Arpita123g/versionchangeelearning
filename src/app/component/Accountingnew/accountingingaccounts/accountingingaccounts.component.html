@@ -1,0 +1,653 @@
+<div class="elearingnewui accounting">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="inbound">
+                <div class="row" class="element-first " *ngIf="optional[3]" >
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+
+                <h1 *ngIf="optional[0]" >Balance Sheet, INR
+                    <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+              </div> &nbsp; &nbsp; &nbsp;
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px;'>How does an increase in accounts payable/receivables affect the balance sheet, and what are its implications for the company's financial position?</p>
+              </div>
+            </div><br>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>Describe the impact of purchasing new machinery and equipment on the balance sheet, considering both short-term and long-term effects.</p>
+                </div>
+              </div>
+          </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md g-3 py-3 input-img-card" *ngIf="optional[0]" >
+                    <div class="col-md-6">
+                        <div class="card mark-img">
+                            <img src="assets/images/accounting/balancesheet.svg" alt="Your Image" class="img-fluid"
+                                style="width: 51%; height: 16rem;" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-2">
+                            <apx-chart [series]="balancesheetchart.series" [chart]="balancesheetchart.chart"
+                                [dataLabels]="balancesheetchart.dataLabels"
+                                [plotOptions]="balancesheetchart.plotOptions" [yaxis]="balancesheetchart.yaxis"
+                                [xaxis]="balancesheetchart.xaxis" [fill]="balancesheetchart.fill"
+                                [title]="balancesheetchart.title" [tooltip]="balancesheetchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 g-3 py-4" *ngIf="optional[0]" >
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Assets
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <h3 style="margin: 0;font-weight: bold;">Current assets</h3>
+                                    <td></td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cash</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[0]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac9',0)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Accounts receivable</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[1]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac10',1)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Inventory</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[2]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac11',2)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Prepaid expenses</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[3]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac12',3)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Other current assets</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[4]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac13',4)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-bottom: 2px solid black;border-top: 2px solid;">
+                                    <td style="padding: 14px;">Total current assets</td>
+                                    <td style="padding-right: 24px;">{{result[5]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table rsl_tbl mt-5">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Fixed assets
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Machinery & equipment</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[12]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac17',12)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Furniture & fixtures</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[13]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac18',13)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Leasehold improvements</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[14]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac19',14)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Land & buildings</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[15]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac20',15)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Other fixed assets</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[16]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac21',16)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-bottom: 2px solid black;border-top: 2px solid;">
+                                    <td style="padding: 14px;">Total fixed assets</td>
+                                    <td style="padding-right: 24px;">{{result[17]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table rsl_tbl mt-5">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Other assets
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Intangible assets</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[23]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac25',23)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Goodwill</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[24]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac26',24)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Deposits</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[25]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac27',25)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Other assets</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[26]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac28',26)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" style="border-top: 2px solid black;">
+                                    <td style="padding: 14px;">Total other assets</td>
+                                    <td style="padding-right: 24px;">{{result[27]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-bottom: 2px solid black;border-top: 2px solid;">
+                                    <td style="padding: 14px;">Total assets</td>
+                                    <td style="padding-right: 24px;">{{result[28]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Liabilities
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <h3 style="margin: 0;font-weight: bold;">Current liabilities</h3>
+                                    <td></td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Accounts payable</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[6]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac35',6)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Accrued expenses</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[7]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac36',7)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Unearned revenue</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[8]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac37',8)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Notes, short-term</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[9]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac38',9)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Current part of long-term debt</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[10]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac39',10)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-bottom: 2px solid black;border-top: 2px solid;">
+                                    <td style="padding: 14px;">Total current liabilities</td>
+                                    <td style="padding-right: 24px;">{{result[11]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table rsl_tbl mt-5">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Long-term debt
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Bank loans payable</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[18]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac43',18)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Notes payable to stockholders</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[19]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac44',19)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>LESS: Short-term portion</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[20]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac45',20)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Other long term debt</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[21]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac46',21)" />
+                                    </td>
+                                </tr>
+                                <!-- its is a blank td dont use-->
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="padding: 25px;"></td>
+                                    <td></td>
+                                </tr>
+                                 <!-- its is a blank td -->
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-bottom: 2px solid black;border-top: 2px solid;">
+                                    <td style="padding: 14px;">Total liabilities</td>
+                                    <td style="padding-right: 24px;">{{result[22]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table rsl_tbl mt-5">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Shareholder's Equity
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <h3 style="margin: 0;font-weight: bold;padding: 12px;">Other assets</h3>
+                                    <td></td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Invested capital</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[29]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac52',29)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Retained earnings - beginning</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[30]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac53',30)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Retained earnings - current</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[31]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac54',31)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" style="border-top: 2px solid black;">
+                                    <td style="padding: 14px;">Total equity</td>
+                                    <td style="padding-right: 24px;">{{result[32]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-bottom: 2px solid black;border-top: 2px solid;">
+                                    <td style="padding: 14px;">Total liabilities & equity</td>
+                                    <td style="padding-right: 24px;">{{result[33]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 g-3 py-3" *ngIf="optional[1]" >
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Income Statement, INR
+                                        <mat-icon appTippy="
+                                        <div class='help-tip p-2'>
+                                          <div style='display:flex;'>
+                                            <div>
+                                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                            </div> &nbsp; &nbsp; &nbsp;
+                                            <div>
+                                              <p style='margin: 0 auto; color: white; font-size:13px;'>Explain how a decrease in operating expenses would affect the company's net income and profitability.</p>
+                                            </div>
+                                          </div><br>
+                                            <div style='display:flex;'>
+                                              <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                              </div> &nbsp; &nbsp; &nbsp;
+                                              <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'>Discuss the relationship between revenue recognition and its impact on the income statement.</p>
+                                              </div>
+                                            </div>
+                                        </div> ">
+                                            help_outline
+                                        </mat-icon>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Revenue</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[34]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac61',34)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cost of good sold</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[35]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac62',35)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-bottom: 2px solid black;border-top: 2px solid;">
+                                    <td style="padding: 14px;">Gross Profit</td>
+                                    <td style="padding-top: 24px;">{{result[36]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" style="border-bottom: 2px solid black;">
+                                    <td style="padding: 14px;">Operating Expense & Overhead</td>
+                                    <td style="padding-right: 14px;"></td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Sales cost</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[37]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac66',37)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Administration cost</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[38]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac67',38)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Bad debts</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[39]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac68',39)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>EBITDA</td>
+                                    <td>{{result[40]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Depreciation & Amortization</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[41]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac70',41)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>EBIT</td>
+                                    <td>{{result[42]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Interest Expense</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[43]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac73',43)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>PBT</td>
+                                    <td>{{result[44]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Tax</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[45]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac76',45)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>PAT</td>
+                                    <td>{{result[46]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="incomestatementchart.series" [chart]="incomestatementchart.chart"
+                                [dataLabels]="incomestatementchart.dataLabels"
+                                [plotOptions]="incomestatementchart.plotOptions" [yaxis]="incomestatementchart.yaxis"
+                                [xaxis]="incomestatementchart.xaxis" [fill]="incomestatementchart.fill"
+                                [title]="incomestatementchart.title" [tooltip]="incomestatementchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 g-3 py-3" *ngIf="optional[2]" >
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Cash Flow Statement, INR
+                                        <mat-icon appTippy="
+                                        <div class='help-tip p-2'>
+                                          <div style='display:flex;'>
+                                            <div>
+                                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                            </div> &nbsp; &nbsp; &nbsp;
+                                            <div>
+                                              <p style='margin: 0 auto; color: white; font-size:13px;'>Analyze the effect of receiving a large upfront payment from a customer on the cash flow statement over multiple periods.</p>
+                                            </div>
+                                          </div><br>
+                                            <div style='display:flex;'>
+                                              <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                              </div> &nbsp; &nbsp; &nbsp;
+                                              <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'>Describe how investing in research and development activities can influence cash flow, considering both immediate and future implications.</p>
+                                              </div>
+                                            </div>
+                                        </div> ">
+                                            help_outline
+                                        </mat-icon>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Opening balance</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[47]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac81',47)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cash flow from operations</td>
+                                    <td>{{result[48]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cash In</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[49]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac84',49)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cash Out</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[50]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac85',50)" />
+                                    </td>
+                                </tr>
+
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cash flow from investment</td>
+                                    <td>{{result[51]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cash In</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[52]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac88',52)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cash Out</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[53]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac89',53)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cash flow from financing</td>
+                                    <td>{{result[54]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cash In</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[55]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac92',55)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cash Out</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[56]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac93',56)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Closing cash balance</td>
+                                    <td>{{result[57]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="cashflowstatementchart.series" [chart]="cashflowstatementchart.chart"
+                                [dataLabels]="cashflowstatementchart.dataLabels"
+                                [plotOptions]="cashflowstatementchart.plotOptions"
+                                [yaxis]="cashflowstatementchart.yaxis" [xaxis]="cashflowstatementchart.xaxis"
+                                [fill]="cashflowstatementchart.fill" [title]="cashflowstatementchart.title"
+                                [tooltip]="cashflowstatementchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

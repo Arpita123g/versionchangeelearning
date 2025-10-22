@@ -1,0 +1,297 @@
+<div class="elearingnewui ecommerce">
+  <div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+  </div>
+  <div class="container">
+    <div class="body-element">
+      <div class="catelog">
+        <div class="row" class="element-first ">
+          <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+            style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+              <button class="food-thought-btn">Food For Thought</button></span>
+          </div>
+        </div>
+        <h1 class="py-4">Catalog, Market Information
+          <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'> Given the market data provided, which top 10 products do you think will appeal most to your target market, and why?</p>
+                        </div>
+                      </div><br>
+                        <div style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; &nbsp;
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>  How does the market size and competitive landscape influence your decision on which products to launch?</p>
+                          </div>
+                        </div>
+                    </div> ">
+            help_outline
+          </mat-icon>
+        </h1>
+
+        <div>
+          <div class="row table-div pb-3 table-responsive">
+            <table class="table rsl_tbl ">
+              <thead class="rsl_tbl-thead">
+                <tr class="rsl_tbl-thead-tr">
+                  <th class="rsl_tbl-thead-th" *ngFor="let col of tableData[0]; let i = index">
+                    <div class="head-icon">
+                      <span>{{ col }}</span>
+                      <mat-icon class="hint-icon" *ngIf="i > 2 && i < tableData[0].length - 1"
+                        [appTippy]="headerHints[i - 3]">
+                        help_outline
+                      </mat-icon>
+                    </div>
+                  </th>
+
+                </tr>
+              </thead>
+              <tbody class="rsl_tbl-tbody">
+                <tr class="rsl_tbl-tbody-tr" *ngFor="let row of tableData.slice(1); let i = index">
+                 
+                  <td style="text-align: center; height: 2rem; vertical-align: middle;">
+                    <input style="float: none;" class="checkfrominput_new" type="checkbox"
+                      [checked]="result.ecommercegamedata?result.ecommercegamedata[row[0]]===1:false"
+                      (click)="writegameData($event,row[0],'catalog')" />
+                  </td>
+
+
+                  <!-- Second td with rest of the row data excluding the first column -->
+                  <td *ngFor="let cell of row.slice(1); let j = index">
+                    <!-- {{ j === row.slice(1).length - 1 ? (+cell).toFixed(2) + '%' : cell }} -->
+                    {{ result.ecommerceGameCM.ecommercegameperioddata[(j === row.slice(1).length - 1 && isNumber(cell))
+                    ? (+cell).toFixed(2) + '%' : cell] }}
+                  </td>
+                </tr>
+
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <h1 class="py-4">Supplier
+          <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'> How do the sustainability and quality ratings of potential suppliers align with your brand’s values and customer expectations?</p>
+                        </div>
+                      </div><br>
+                        <div style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; &nbsp;
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'> Considering cost, quality, and sustainability, which suppliers offer the best balance to meet your production needs?</p>
+                          </div>
+                        </div>
+                    </div> ">
+            help_outline
+          </mat-icon>
+        </h1>
+        <div class="row row-cols-md-3 pb-4 supplier-table g-4">
+
+          <div class="col-md py-2" *ngFor="let table of suppliertable">
+            <table>
+              <thead>
+                <Tr>
+                  <th colspan="2">
+
+                    {{result.ecommerceGameCM.ecommercegameperioddata[table.head]}}
+
+                  </th>
+                </Tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of table.row">
+                  <td>
+
+                    {{result.ecommerceGameCM.ecommercegameperioddata[row.label]}}
+                  </td>
+                  <td style="font-size: 14px;">
+
+                    {{result.ecommerceGameCM.ecommercegameperioddata[row.value]}}
+                  </td>
+                </tr>
+                <tr *ngIf="table.hascheckbox">
+                  <td colspan="2" style="text-align: center;">
+
+                    <input type="checkbox"
+                      [checked]="result.ecommercegamedata?(result.ecommercegamedata[table.inputcell]===1?true:false):false"
+                      (click)="writegameData($event,table.inputcell,'supplier')" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+        </div>
+        <h1 class="py-4">Pricing
+          <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'> How will you determine the markup for your products based on the provided market prices to ensure competitiveness while achieving your desired profit margin?</p>
+                        </div>
+                      </div><br>
+                        <div style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; &nbsp;
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>What market share do you aim to capture in the start, and how does your pricing strategy support this goal?</p>
+                          </div>
+                        </div>
+                    </div> ">
+            help_outline
+          </mat-icon>
+        </h1>
+        <div class="row">
+          <div class="card p-2 h-100">
+            <apx-chart [series]="Markups.series" [chart]="Markups.chart" [dataLabels]="Markups.dataLabels"
+              [plotOptions]="Markups.plotOptions" [yaxis]="Markups.yaxis" [xaxis]="Markups.xaxis" [fill]="Markups.fill"
+              [title]="Markups.title" [noData]="Markups.noData" [tooltip]="Markups.tooltip">
+            </apx-chart>
+          </div>
+        </div>
+        <div>
+          <div class="row table-div-pricing  py-3 table-responsive">
+            <table class="table rsl_tbl " *ngIf="result.ecommercegamedata">
+              <thead class="rsl_tbl-thead">
+                <tr class="rsl_tbl-thead-tr">
+                  <th *ngFor="let pritem of PricingtableData[0]" class="rsl_tbl-thead-th">
+                    {{pritem}}
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="rsl_tbl-tbody">
+                <tr class="rsl_tbl-tbody-tr" *ngFor="let row of PricingtableData.slice(1) let i=index">
+                  
+                  <!-- main code -->
+                  <td style="text-align: left;">
+                    {{result.ecommercegamedata[row[0]]}}
+
+                  </td>
+                  <td>
+                    {{result.ecommercegamedata[row[1]]}}
+                  </td>
+                  <td>
+                    {{(result.ecommercegamedata[row[2]])|number:'1.0-0'}}
+                  </td>
+
+                  <td>
+                    <input class="input-no_box" type="number"
+                      [ngModel]="(result.ecommercegamedata[row[3]]*100)|number:'1.0-0'"
+                      (focusout)="writegameData($event,row[3],'price1')" />
+                  </td>
+                  <td>
+                    {{result.ecommercegamedata[row[4]]|number:'1.0-0'}}
+                  </td>
+                  <td>
+
+                    <input class="input-no_box" type="number" [ngModel]="(result.ecommercegamedata[row[5]]*100)|number:'1.0-0'"
+                      (focusout)="writegameData($event,row[5],'price2')" />
+                  </td>
+                  <td>
+                    {{result.ecommercegamedata[row[6]]|number:'1.0-0'}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <h1 class="py-4">Ordering
+          <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'> What buffering coefficient should you apply to manage the risk of stock-outs while minimizing excess inventory?</p>
+                        </div>
+                      </div><br>
+                        <div style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; &nbsp;
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>How will you calculate safety stock levels to mitigate the impact of forecast errors and shrinkage on your inventory?</p>
+                          </div>
+                        </div>
+                    </div> ">
+            help_outline
+          </mat-icon>
+        </h1>
+        <div class="row">
+          <div class="card p-2 h-100">
+            <apx-chart [series]="Ordered.series" [chart]="Ordered.chart" [dataLabels]="Ordered.dataLabels"
+              [plotOptions]="Ordered.plotOptions" [yaxis]="Ordered.yaxis" [xaxis]="Ordered.xaxis" [fill]="Ordered.fill"
+              [title]="Ordered.title" [noData]="Ordered.noData" [tooltip]="Ordered.tooltip">
+            </apx-chart>
+          </div>
+        </div>
+        <div>
+          <div class="row table-div-pricing  py-3 table-responsive">
+            <table class="table rsl_tbl " *ngIf="result.ecommercegamedata">
+              <thead class="rsl_tbl-thead">
+                <tr class="rsl_tbl-thead-tr">
+                  <th *ngFor="let ordertem of OrdertableData[0]" class="rsl_tbl-thead-th">
+                    {{ordertem}}
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="rsl_tbl-tbody">
+                <tr class="rsl_tbl-tbody-tr" *ngFor="let row of OrdertableData.slice(1) let i=index">
+                  <!-- just for testing..it will be remove -->
+                 
+                  <!-- main code -->
+                  <td style="text-align: left;">
+                    {{result.ecommercegamedata[row[0]]}}
+                  </td>
+                  <td>
+                    {{result.ecommercegamedata[row[1]]}}
+                  </td>
+                  <td>
+                    {{result.ecommercegamedata[row[2]]|number:'1.0-0'}}
+                  </td>
+                  <td>
+
+                    <input class="input-no_box" type="number" [ngModel]="result.ecommercegamedata[row[3]]"
+                      (focusout)="writegameData($event,row[3],'order')" />
+                  </td>
+                  <td>
+                    {{result.ecommercegamedata[row[4]]|number:'1.0-0'}}
+                  </td>
+                  <td>
+                    {{(result.ecommercegamedata[row[5]]*100)|number:'1.0-1'}}
+                  </td>
+                  <td>
+                    {{result.ecommercegamedata[row[6]]|number:'1.0-0'}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

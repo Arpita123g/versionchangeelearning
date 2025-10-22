@@ -1,0 +1,254 @@
+:host {
+  display: block;
+  padding: 1rem;
+}
+
+.elearning-ui {
+  .prompt-card {
+    background-color: #fff;
+    border-radius: 8px;
+    
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .inputcard {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    .borderbottom {
+      border-bottom: 1px solid #e0e0e0;
+      margin: 1rem 0;
+    }
+
+    .mar-b {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .inputcard-table {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+
+    table {
+      width: 100%;
+
+      th.mat-header-cell {
+        background-color: #8aafdf;
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 500;
+        padding: 1rem;
+      }
+
+      td.mat-cell {
+        padding: 1rem;
+      }
+
+      .hidetext {
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .edit {
+        text-align: center;
+        
+        button {
+          margin: 0 0.25rem;
+        }
+      }
+    }
+
+    .mat-paginator {
+      border-top: 1px solid #e0e0e0;
+    }
+  }
+}
+
+// Material form field overrides
+::ng-deep {
+  .mat-form-field {
+    width: 100%;
+    
+    &.w-50 {
+      width: 50%;
+    }
+  }
+
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+}
+
+// Button styles
+button {
+  &.mat-raised-button {
+    min-width: 100px;
+    
+    &[color="primary"] {
+      background-color: #1976d2;
+    }
+    
+    &[color="accent"] {
+      background-color: #ff4081;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .elearning-ui {
+    .prompt-card {
+      padding: 1rem;
+    }
+
+    .inputcard {
+      padding: 1rem;
+    }
+
+    table {
+      th.mat-header-cell,
+      td.mat-cell {
+        padding: 0.75rem;
+      }
+    }
+  }
+}
+
+.bus_iness {
+    .promptcard {
+
+        margin: 2rem 0.2rem;
+
+        .col-md {
+            h4 {
+                margin-bottom: 0;
+            }
+        }
+
+        .write_div {
+            height: 2.5rem;
+            width: 100%;
+            padding: 0.3rem;
+            border: 1px solid lightgrey;
+            border-radius: 0.2rem;
+        }
+
+        .lightbackground {
+            background-color: rgb(220, 223, 224);
+        }
+
+
+
+        .case-texts__content {
+            .case-texts__content-after {
+                st-editor {
+                    .st-editor-container {
+
+                        .st-toolbar {
+                            border: none !important;
+                            background: transparent !important;
+                            padding: 3px !important;
+                            border-bottom: 0 !important;
+                        }
+
+                        .st-area {
+                            resize: vertical;
+                            border-top: 1px solid #bdbdbd !important;
+                            min-height: 150px !important;
+                            // height: 10rem !important;
+                            overflow: scroll !important;
+                        }
+                    }
+
+
+                }
+
+            }
+        }
+    }
+}
+
+@mixin gradient-bg($start-color, $end-color) {
+    background: linear-gradient(135deg, $start-color 0%, $end-color 100%);
+  }
+
+  $text-color: #2c3e50;
+
+// for mat table...................
+::ng-deep .microsimdashboardtable td.mat-cell:last-of-type {
+    text-align: left !important;
+    padding: 5px !important;
+    font-weight: 400 !important;
+}
+
+::ng-deep .bus_iness .mat-paginator-container {
+    justify-content: center !important;
+}
+
+// check for width in table td
+::ng-deep .microsimdashboardtable th.mat-header-cell {
+    width: 20rem;
+    font-size: 0.9rem !important;
+    color: white !important;
+}
+
+::ng-deep .mat-elevation-z8 {
+    overflow-x: auto;
+}
+
+::ng-deep .microsimdashboardtable .mat-header-row {
+    background-color: #266cc38a !important;
+    border-bottom: 2px solid black;
+}
+
+
+.fixed-height-width {
+    .mat-td-height {
+        height: 100px;
+        /* Adjust the height as needed */
+        overflow: auto;
+        padding: 5px;
+        display: flex;
+    }
+}
+
+/* Modal Styles */
+.modal {
+    &-content {
+        border-radius: 12px;
+        border: none;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+        max-width: 1000px;
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    &-header {
+        @include gradient-bg(#f8f9fa, #e9ecef);
+        border-bottom: 1px solid #dee2e6;
+        border-radius: 12px 12px 0 0;
+        padding: 1.5rem 2rem;
+    }
+
+    &-title {
+        font-weight: 600;
+        color: $text-color;
+        font-size: 1.5rem;
+    }
+
+    &-body {
+        padding: 2.5rem;
+    }
+    @mixin gradient-bg($start-color, $end-color) {
+        background: linear-gradient(135deg, $start-color 0%, $end-color 100%);
+      }
+}

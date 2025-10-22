@@ -1,0 +1,722 @@
+<div class="elearingnewui casemanagement">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+      </div>
+    <div class="case-management-body case-management-body-marketing ">
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Policy Multipliers</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">FIFO</th>
+                    </tr>
+
+                    <tr>
+                        <td class="first-div">
+                            <div>Unison Limited</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.j7; let i = index">
+                            <input [value]="res.j7[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('j7',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Promton Incorporation</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.k7; let i = index">
+                            <input [value]="res.k7[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('k7',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Fix Corporate</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.l7; let i = index">
+                            <input [value]="res.l7[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('l7',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>eCom Limited</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.m7; let i = index">
+                            <input [value]="res.m7[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('m7',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">LIFO</th>
+                    </tr>
+
+                    <tr>
+                        <td class="first-div">
+                            <div>Unison Limited</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.j8; let i = index">
+                            <input [value]="res.j8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('j8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Promton Incorporation</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.k8; let i = index">
+                            <input [value]="res.k8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('k8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Fix Corporate</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.l8; let i = index">
+                            <input [value]="res.l8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('l8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>eCom Limited</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.m8; let i = index">
+                            <input [value]="res.m8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('m8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Warehouse Upgrade</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Conveyor System</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Cost/Period</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.k12; let i = index">
+                            <input [value]="res.k12[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('k12',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Productivity</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.l12; let i = index">
+                            <input [value]="res.l12[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('l12',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Efficiency</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.m12; let i = index">
+                            <input [value]="res.m12[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('m12',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Error Optimization</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.n12; let i = index">
+                            <input [value]="res.n12[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('n12',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Energy Consumption Reduction</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.o12; let i = index">
+                            <input [value]="res.o12[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('o12',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Stacker Cranes</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Cost/Period</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.k13; let i = index">
+                            <input [value]="res.k13[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('k13',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Productivity</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.l13; let i = index">
+                            <input [value]="res.l13[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('l13',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Efficiency</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.m13; let i = index">
+                            <input [value]="res.m13[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('m13',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Error Optimization</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.n13; let i = index">
+                            <input [value]="res.n13[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('n13',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Energy Consumption Reduction</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.o13; let i = index">
+                            <input [value]="res.o13[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('o13',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Stretch Warppers</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Cost/Period</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.k14; let i = index">
+                            <input [value]="res.k14[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('k14',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Productivity</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.l14; let i = index">
+                            <input [value]="res.l14[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('l14',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Efficiency</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.m14; let i = index">
+                            <input [value]="res.m14[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('m14',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Error Optimization</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.n14; let i = index">
+                            <input [value]="res.n14[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('n14',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Energy Consumption Reduction</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.o14; let i = index">
+                            <input [value]="res.o14[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('o14',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Warehouse Management System</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Cost/Period</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.k15; let i = index">
+                            <input [value]="res.k15[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('k15',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Productivity</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.l15; let i = index">
+                            <input [value]="res.l15[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('l15',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Efficiency</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.m15; let i = index">
+                            <input [value]="res.m15[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('m15',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Error Optimization</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.n15; let i = index">
+                            <input [value]="res.n15[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('n15',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Energy Consumption Reduction</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.o15; let i = index">
+                            <input [value]="res.o15[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('o15',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Shuttle System</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Cost/Period</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.k16; let i = index">
+                            <input [value]="res.k16[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('k16',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Productivity</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.l16; let i = index">
+                            <input [value]="res.l16[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('l16',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Efficiency</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.m16; let i = index">
+                            <input [value]="res.m16[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('m16',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Error Optimization</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.n16; let i = index">
+                            <input [value]="res.n16[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('n16',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Energy Consumption Reduction</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.o16; let i = index">
+                            <input [value]="res.o16[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('o16',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">No Upgrade</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Cost/Period</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.k17; let i = index">
+                            <input [value]="res.k17[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('k17',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Productivity</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.l17; let i = index">
+                            <input [value]="res.l17[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('l17',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Efficiency</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.m17; let i = index">
+                            <input [value]="res.m17[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('m17',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Error Optimization</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.n17; let i = index">
+                            <input [value]="res.n17[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('n17',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Energy Consumption Reduction</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.o17; let i = index">
+                            <input [value]="res.o17[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('o17',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12"></th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Upgrade Multiplier</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.j19; let i = index">
+                            <input [value]="res.j19[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('j19',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12"></th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Time period</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.j21; let i = index">
+                            <input [value]="res.j21[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('j21',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12"></th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Energy Consumption Rate</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.j23; let i = index">
+                            <input [value]="res.j23[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('j23',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12"></th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Warehouse Size square feet</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.j25; let i = index">
+                            <input [value]="res.j25[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('j25',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12"></th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Power consumption in warehouse, kwh</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.j27; let i = index">
+                            <input [value]="res.j27[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('j27',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Emission rate, lb/GWH</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing">
+                <thead>
+                    <tr>
+                        <td colspan="2" *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody class="first-tbody">
+                    <tr>
+                        <ng-container *ngFor="let item of data; let i = index">
+                            <td *ngIf="i % 2 === 0"></td>
+                            <td *ngIf="i % 2 !== 0">Emission rate, lb/GWH</td>
+                            
+                        </ng-container>
+                    </tr>
+                </tbody>
+                <tbody class="first-tbody-new-new">
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.i30[index]" #i30Input [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('i30', index, i30Input.value)"></td>
+                        <td><input [value]="res.j30[index]|number:'1.3-3'" #j30Input [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('j30', index, j30Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.i31[index]" #i31Input [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('i31', index, i31Input.value)"></td>
+                        <td><input [value]="res.j31[index]" #j31Input [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('j31', index, j31Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.i32[index]" #i32Input [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('i32', index, i32Input.value)"></td>
+                        <td><input [value]="res.j32[index]" #j32Input [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('j32', index, j32Input.value)"></td>
+                        </ng-container>
+                    </tr>
+
+
+
+
+
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12"></th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Conversion rate, lb to kg</div>
+                        </td>
+                        <td *ngFor="let warehousedata of res.j34; let i = index">
+                            <input [value]="res.j34[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('j34',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

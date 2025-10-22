@@ -1,0 +1,668 @@
+<div class="elearingnewui ecommerce">
+    <div class="container">
+        <div class="body-element">
+            <div class="feed_ack">
+                <div>
+                    <div class="row pb-4">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                                <div class="">
+                                    <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                        (change)="roundClick()">
+                                        <option class="select-round-option" value="">Select Round</option>
+                                        <option class="select-round-option"
+                                            *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                            {{attempt}}</option>
+
+                                    </select>
+                                </div>
+                                <div class="download_btn" matTooltiClass="primary-tooltip"
+                                    (click)="downloadreportecommerce()">
+                                    <div>
+                                        <a download matTooltip="Download"><span class="hovertext"
+                                                data-hover="Download pdf file accounting ">
+                                                <img src="assets/images/businessbasics/download.png" />
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <mat-icon class="mt-2">get_app</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1>
+                        Synopsis
+                    </h1>
+                    <div style="margin-top: 1.1rem;" *ngIf="analysisshow">
+                        <h1
+                            style="display: flex; align-items: center; gap: 5px;font-size: 1.1rem; font-weight: 600;padding: 0.6rem 0.4rem;color: white;background-color: #266cc38a;">
+                            Feedback
+                            <div style=" width: 1rem;">
+                                <mat-icon (click)="rotate();roundClick();" [@rotatedState]='state' class="sidenav-icon"
+                                    aria-hidden="false" aria-label="Example home icon">cached</mat-icon>
+                            </div>
+                        </h1>
+                    </div>
+                    <div class="decision-textarea pb-5 h-100" *ngIf="analysisshow">
+                        <div class="row">
+                            <div class="col-md" style="padding: 10px;">
+                                <div class="card feedbsck-value p-3">
+                                    <markdown [data]="feedbackvalue"></markdown>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-cols-md-2 py-3">
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Input</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Input</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">Catalog</th>
+                                        <th></th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product 1</td>
+                                        <td>{{result[0]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product 2</td>
+                                        <td>{{result[1]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product 3</td>
+                                        <td>{{result[2]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product 4</td>
+                                        <td>{{result[3]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product 5</td>
+                                        <td>{{result[4]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product 6</td>
+                                        <td>{{result[5]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product 7</td>
+                                        <td>{{result[6]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product 8</td>
+                                        <td>{{result[7]}}
+
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product 9</td>
+                                        <td>
+                                            {{result[8]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product 10</td>
+                                        <td>
+                                            {{result[9]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Markups %, Product 1</td>
+                                        <td>
+                                            {{result[10]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Markups %, Product 2</td>
+                                        <td>
+                                            {{result[11]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Markups %, Product 3</td>
+                                        <td>
+                                            {{result[12]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Markups %, Product 4</td>
+                                        <td>
+                                            {{result[13]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Markups %, Product 5</td>
+                                        <td>
+                                            {{result[14]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Markups %, Product 6</td>
+                                        <td>{{result[15]*100 |number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Markups %, Product 7</td>
+                                        <td>{{result[16]*100 |number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Markups %, Product 8</td>
+                                        <td>{{result[17]*100 |number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Markups %, Product 9</td>
+                                        <td>{{result[18]*100 |number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Markups %, Product 10</td>
+                                        <td>{{result[19]*100 |number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Estimated Market Share %, Product 1</td>
+                                        <td>{{result[20]*100 |number :'1.0-0'}} </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Estimated Market Share %, Product 2</td>
+                                        <td>{{result[21]*100 |number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Estimated Market Share %, Product 3</td>
+                                        <td>{{result[22]*100 |number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Estimated Market Share %, Product 4</td>
+                                        <td>{{result[23]*100 |number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Estimated Market Share %, Product 5</td>
+                                        <td>{{result[24]*100 |number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Estimated Market Share %, Product 6</td>
+                                        <td>{{result[25]*100 |number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Estimated Market Share %, Product 7</td>
+                                        <td>{{result[26]*100 |number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Estimated Market Share %, Product 8</td>
+                                        <td>{{result[27]*100 |number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Estimated Market Share %, Product 9</td>
+                                        <td>{{result[28]*100 |number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Estimated Market Share %, Product 10</td>
+                                        <td>{{result[29]*100 |number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Buffer Coefficient, Product 1</td>
+                                        <td>{{result[30]*100 |number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Buffer Coefficient, Product 2</td>
+                                        <td>{{result[31]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Buffer Coefficient, Product 3</td>
+                                        <td>{{result[32]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Buffer Coefficient, Product 4</td>
+                                        <td>{{result[33]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Buffer Coefficient, Product 5</td>
+                                        <td>{{result[34]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Buffer Coefficient, Product 6</td>
+                                        <td>{{result[35]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Buffer Coefficient, Product 7</td>
+                                        <td>{{result[36]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Buffer Coefficient, Product 8</td>
+                                        <td>{{result[37]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Buffer Coefficient, Product 9</td>
+                                        <td>{{result[38]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Buffer Coefficient, Product 10</td>
+                                        <td>{{result[39]}}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">Marketing</th>
+                                        <th></th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[0]}}</td>
+                                        <td>{{result[40]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[1]}}</td>
+                                        <td>{{result[41]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[2]}}</td>
+                                        <td>{{result[42]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[3]}}</td>
+                                        <td>{{result[43]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[4]}}</td>
+                                        <td>{{result[44]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[5]}}</td>
+                                        <td>{{result[45]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[6]}}</td>
+                                        <td>{{result[46]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[7]}}</td>
+                                        <td>{{result[47]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[8]}}</td>
+                                        <td>{{result[48]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Email Tool</td>
+                                        <td>{{result[49]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Welcome Email Priority</td>
+                                        <td>{{result[50]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product Highlight Email Priority</td>
+                                        <td>{{result[51]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Educational Content Email Priority</td>
+                                        <td>{{result[52]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Exclusive Offers Email Priority</td>
+                                        <td>{{result[53]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Feedback and Engagement Email Priority</td>
+                                        <td>{{result[54]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Welcome Email Leads Type</td>
+                                        <td>{{result[55]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product Highlight Email Leads Type</td>
+                                        <td>{{result[56]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Educational Content Leads Type</td>
+                                        <td>{{result[57]}}
+
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Exclusive Offers Leads Type</td>
+                                        <td>{{result[58]}}
+
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Feedback and Engagement Leads Type</td>
+                                        <td>{{result[59]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[9]}}</td>
+                                        <td>{{result[60]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[10]}}</td>
+                                        <td>{{result[61]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[11]}}</td>
+                                        <td>{{result[62]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[12]}}</td>
+                                        <td>{{result[63]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[13]}}</td>
+                                        <td>{{result[64]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">Experience</th>
+                                        <th></th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Website Design</td>
+                                        <td>{{result[65]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[14]}}</td>
+                                        <td>{{result[66]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[15]}}</td>
+                                        <td>{{result[67]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[16]}}</td>
+                                        <td>{{result[68]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[17]}}</td>
+                                        <td>{{result[69]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result1[18]}}</td>
+                                        <td>{{result[70]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Checkout Page</td>
+                                        <td>{{result[71]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[83]}}</td>
+                                        <td>{{result[72]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[84]}}</td>
+                                        <td>{{result[73]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[85]}}</td>
+                                        <td>{{result[74]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Customer Service System</td>
+                                        <td>
+                                            {{result[75]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">Operations</th>
+                                        <th></th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Packaging</td>
+                                        <td>{{result[76]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Logistics</td>
+                                        <td>{{result[77]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[86]}}</td>
+                                        <td>{{result[78]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[87]}}</td>
+                                        <td>{{result[79]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[88]}}</td>
+                                        <td>{{result[80]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[89]}}</td>
+                                        <td>{{result[81]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[90]}}</td>
+                                        <td>{{result[82]== 1 ? 'Implemented' : 'Not Implemented'}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="4">Sales, units</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">Products</th>
+                                        <th>Sales</th>
+                                        <th>Opportunity Loss</th>
+                                        <th>Inventory</th>
+                                    </tr>
+                                    <tr *ngFor="let row of resultSalesTableData" class="rsl_tbl-tbody-tr">
+                                        <td>{{ row[0] }}</td>
+                                        <td class="middleclassright">{{ row[1]=='-'?'-':row[1]|number:'1.0-0' }}</td>
+                                        <td class="middleclassright">{{ row[2]=='-'?'-':row[2]|number:'1.0-0' }}</td>
+                                        <td>{{  row[3]=='-'?'-':row[3]|number:'1.0-0' }}</td>
+                                    </tr>
+                                  
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="4">Product Margins</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">Products</th>
+                                        <th>Pricing, INR</th>
+                                        <th>Margin %</th>
+                                    </tr>
+                                    <tr *ngFor="let row of resultProductTableData" class="rsl_tbl-tbody-tr">
+                                        <td>{{ row[0] }}</td>
+                                        <td class="middleclassright">{{ row[1] |number:'1.0-0'}}</td>
+                                        <td>{{ row[2]*100 |number :'1.0-0' }}%</td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3">Income Statement, k INR</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">Parameters</th>
+                                        <th>Output</th>
+                                    </tr>
+                                    <tr *ngFor="let row of financialData" class="rsl_tbl-tbody-tr">
+                                        <td>{{ row.label }}</td>
+                                        <td>{{ row.values }}</td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3">Promotion Distribution</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">Parameters</th>
+                                        <th>Visits</th>
+                                        <th>Distribution</th>
+                                    </tr>
+                                    <tr  *ngFor="let row of resultPromotionTableData" class="rsl_tbl-tbody-tr">
+                                        <td>{{ row.label }}</td>
+                                        <td class="middleclassright">{{ row.values[0] |number :'1.0-0' }}</td>
+                                        <td>{{ row.values[1]*100 |number :'1.0-0' }}%</td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3">Website Experience</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">Parameters</th>
+                                        <th>Output</th>
+                                    </tr>
+                                    <tr *ngFor="let row of resultWebsiteTableData" class="rsl_tbl-tbody-tr">
+                                        <td>{{ row.label }}</td>
+                                        <td>{{ row.values[0]*100 |number :'1.0-1' }}%</td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3">KPI</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">Parameters</th>
+                                        <th>Output</th>
+                                    </tr>
+                                    <tr *ngFor="let row of resultKpiTableData" class="rsl_tbl-tbody-tr">
+                                        <td>{{ row.label }}</td>
+                                        <td>{{ row.values[0] }}</td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5" *ngIf="optional[0]">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3">Thinking Ability</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">Parameters</th>
+                                        <th>Output</th>
+                                    </tr>
+                                    <tr *ngFor="let row of resultThinkingAbilityTableData" class="rsl_tbl-tbody-tr">
+                                        <td>{{ row.label }}</td>
+                                        <td>{{row.values[0]*100 }}%</td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row lst_r">
+                        <div class="col-4 lst_r-col4" *ngIf="!timefinished">
+                            <button class="mt-4 retry" [disabled]="isButtonDisabled" (click)="exit()">{{retry}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

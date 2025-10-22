@@ -1,0 +1,187 @@
+<div class="elearingnewui hrp_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row" class="element-first ">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+                <h1>Employee Planning
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'> How can understanding these trends help you predict the number of new hires required for the current period?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>What insights can be gained from this information to strategically plan for the workforce in the current period?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md-5">
+                        <div class="card" style="border: none;">
+                            <div>
+                                <img src="../../../../assets/images/hrpgame/employeeplanning.svg" class="card-img-top"
+                                    alt="Your Image" style="height: 19rem;" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7">
+                        <div class="card p-2">
+                            <apx-chart [series]="employeecountchart.series" [chart]="employeecountchart.chart"
+                                [dataLabels]="employeecountchart.dataLabels"
+                                [plotOptions]="employeecountchart.plotOptions" [yaxis]="employeecountchart.yaxis"
+                                [xaxis]="employeecountchart.xaxis" [fill]="employeecountchart.fill"
+                                [title]="employeecountchart.title" [tooltip]="employeecountchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md-5">
+                        <table class="table rsl_tbl ">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Metrics
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Attrition Rate %</td>
+                                    <td>{{result[0]*100|number:'1.2-2'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Promotion Rate %</td>
+                                    <td>{{result[1]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Internal Transfer Rate %</td>
+                                    <td>{{result[2]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Voluntary Resignation %</td>
+                                    <td>{{result[3]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Employee Satisfaction Score</td>
+                                    <td>{{result[4]|number:'1.0-2'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Time duration to fill vacant position, days</td>
+                                    <td>{{result[5]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md-7">
+                        <table class="table rsl_tbl ">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Number of Employees</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <th class="rsl_tbl-tbody-th" style="width:30%"></th>
+                                    <th class="rsl_tbl-tbody-th" style="width:30%">Current Employees</th>
+                                    <th class="rsl_tbl-tbody-th" style=" width: 10%;">▲</th>
+                                    <th class="rsl_tbl-tbody-th" style="width:30%">Previous Employees</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Sales & Marketing</td>
+                                    <td class="middleclassright"><input class="input-no_box"
+                                            placeholder="Input value here..." type="number"
+                                            (focusout)="inputtablevalue('ae7',6)"
+                                            style="height: 2.6rem;width: 8rem;text-align: right;"
+                                            [(ngModel)]="result[6]" [disabled]="checkdisable">
+                                    </td>
+                                    <td class="middleclassright">{{result[7]*100|number:'1.0-0'}}%</td>
+                                    <td>{{result[8]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Logistics & Supply Chain</td>
+                                    <td class="middleclassright"><input class="input-no_box"
+                                            placeholder="Input value here..." type="number"
+                                            (focusout)="inputtablevalue('ae8',9)"
+                                            style="height: 2.6rem;width: 8rem;text-align: right;"
+                                            [(ngModel)]="result[9]" [disabled]="checkdisable">
+                                    </td>
+                                    <td class="middleclassright">{{result[10]*100|number:'1.0-0'}}%</td>
+                                    <td>{{result[11]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Design & Production</td>
+                                    <td class="middleclassright"><input class="input-no_box"
+                                            placeholder="Input value here..." type="number"
+                                            (focusout)="inputtablevalue('ae9',12)"
+                                            style="height: 2.6rem;width: 8rem;text-align: right;"
+                                            [(ngModel)]="result[12]" [disabled]="checkdisable">
+                                    </td>
+                                    <td class="middleclassright">{{result[13]*100|number:'1.0-0'}}%</td>
+                                    <td>{{result[14]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Technical</td>
+                                    <td class="middleclassright"><input class="input-no_box"
+                                            placeholder="Input value here..." type="number"
+                                            (focusout)="inputtablevalue('ae10',15)"
+                                            style="height: 2.6rem;width: 8rem;text-align: right;"
+                                            [(ngModel)]="result[15]" [disabled]="checkdisable">
+                                    </td>
+                                    <td class="middleclassright">{{result[16]*100|number:'1.0-0'}}%</td>
+                                    <td>{{result[17]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Customer Experience</td>
+                                    <td class="middleclassright"><input class="input-no_box"
+                                            placeholder="Input value here..." type="number"
+                                            (focusout)="inputtablevalue('ae11',18)"
+                                            style="height: 2.6rem;width: 8rem;text-align: right;"
+                                            [(ngModel)]="result[18]" [disabled]="checkdisable">
+                                    </td>
+                                    <td class="middleclassright">{{result[19]*100|number:'1.0-0'}}%</td>
+                                    <td>{{result[20]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Administration</td>
+                                    <td class="middleclassright"><input class="input-no_box"
+                                            placeholder="Input value here..." type="number"
+                                            (focusout)="inputtablevalue('ae12',21)"
+                                            style="height: 2.6rem;width: 8rem;text-align: right;"
+                                            [(ngModel)]="result[21]" [disabled]="checkdisable">
+                                    </td>
+                                    <td class="middleclassright">{{result[22]*100|number:'1.0-0'}}%</td>
+                                    <td>{{result[23]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

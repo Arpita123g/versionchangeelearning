@@ -1,0 +1,77 @@
+<div class="elearingnewui">
+    <div class="case-management-body-forheader">
+        <div class="returnbtn-element">
+            <div class="returnbtn" (click)="GoBack()"> Return to Case Management </div>
+        </div>
+        <div class="card case-management-body-card">
+            <div class="card-body">
+                <div class=" tab-content-body">
+                    <ul class="nav second-nav" role="tablist">
+                        <li class="nav-item active" role="presentation" data-bs-target="#market" data-bs-toggle="tab"
+                            aria-controls="market" role="tab" aria-selected="false" (click)="search('market')">
+                            <span class="nav-link" aria-current="page">Market</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#information" data-bs-toggle="tab"
+                            aria-controls="information" role="tab" aria-selected="false"
+                            (click)="search('information')">
+                            <span class="nav-link" aria-current="page">Information Search</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#phase1" data-bs-toggle="tab"
+                            aria-controls="phase1" role="tab" aria-selected="false" (click)="search('phase1')">
+                            <span class="nav-link" aria-current="page">Phase 1</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#phase2" data-bs-toggle="tab"
+                            aria-controls="phase2" role="tab" aria-selected="false" (click)="search('phase2')">
+                            <span class="nav-link" aria-current="page">Phase 2</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#phase3" data-bs-toggle="tab"
+                            aria-controls="phase3" role="tab" aria-selected="false" (click)="search('phase3')">
+                            <span class="nav-link" aria-current="page">Phase 3</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#foodrforthought" data-bs-toggle="tab"
+                            aria-controls="foodrforthought" role="tab" aria-selected="false"
+                            (click)="search('foodforthought')">
+                            <span class="nav-link" aria-current="page">Food For Thought</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#module" data-bs-toggle="tab"
+                            aria-controls="module" role="tab" aria-selected="false" (click)="search('general')">
+                            <span class="nav-link" aria-current="page">Module</span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="tab-content tab-content-body">
+
+                    <div role="tabpanel" class="tab-pane fade show active" id="market"
+                        [ngClass]="{ 'active':activeTab==='market'}">
+                        <app-stpcasemarket *ngIf="activeTab==='market'"></app-stpcasemarket>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="information"
+                        [ngClass]="{ 'active':activeTab==='information'}">
+                        <app-stpcaseinformationsearch *ngIf="activeTab==='information'"></app-stpcaseinformationsearch>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="phase1"
+                        [ngClass]="{ 'active':activeTab==='phase1'}">
+                        <app-stpcasephase1 *ngIf="activeTab==='phase1'"></app-stpcasephase1>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="phase2"
+                        [ngClass]="{ 'active':activeTab==='phase2'}">
+                        <app-stpcasephase2 *ngIf="activeTab==='phase2'"></app-stpcasephase2>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="phase3"
+                        [ngClass]="{ 'active':activeTab==='phase3'}">
+                        <app-stpcasephase3 *ngIf="activeTab==='phase3'"></app-stpcasephase3>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="foodrforthought"
+                        [ngClass]="{ 'active':activeTab==='foodforthought'}">
+                        <app-stpcasefoodforthought *ngIf="activeTab==='foodforthought'"></app-stpcasefoodforthought>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="module"
+                        [ngClass]="{ 'active':activeTab==='general'}">
+                        <app-stpcasemodule *ngIf="activeTab==='general'"></app-stpcasemodule>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

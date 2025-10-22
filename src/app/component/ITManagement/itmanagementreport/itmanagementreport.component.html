@@ -1,0 +1,332 @@
+<div class="elearingnewui It_management">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row pb-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                            <div class="">
+                                <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                    (change)="roundClick()">
+                                    <option class="select-round-option" value="">Select Round</option>
+                                    <option class="select-round-option"
+                                        *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                        {{attempt}}</option>
+
+                                </select>
+                            </div>
+
+                            <div class="download_btn" matTooltiClass="primary-tooltip"
+                                (click)="downloadreportitmanagement()">
+                                <div>
+                                    <a download matTooltip="Download"><span class="hovertext"
+                                            data-hover="Download pdf file accounting ">
+                                            <img class="download_btn-img"
+                                                src="assets/images/businessbasics/download.png" />
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <mat-icon class="mt-2">get_app</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 mb-3">
+                    <div class="col-md-5 reyapo">
+                        <h1 class="reyapo-h1">Report</h1>
+                        <p style="text-align: justify;">
+                            Excellent work. You have completed deciding what the IT infrastructure of the company would
+                            look like to make successful deliveries. In this exercise every decision you have taken
+                            shows your skills in dimensions like rigor, synthesis, structuring and business judgement.
+                        </p>
+                    </div>
+
+                    <div class="col-md-7">
+                        <div class="card rigorcard">
+                            <div class="rigorcard-icon">
+                                <mat-icon class="rigorcard-icon-mat" appTippy="<table >
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Rigor</th>
+                      <td style='padding:7px;font-size:13px'>Consistency throughout the decision-making and recommendation.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>Structuring</th>
+                      <td style='padding:7px;font-size:13px'>A logical approach to gathering and analyzing information.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>
+                        Synthesis
+                      </th>
+                      <td style='padding:7px;font-size:13px'>
+                        Approach towards interpreting all the information and making informed decisions.
+                      </td>
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Business Jugement</th>
+                      <td style='padding:7px;font-size:13px'>Ability to evaluate facts and consider risks and possible implications when making decisions.</td>
+                    </tr>
+                    </tr>
+                  </table>
+                   ">
+                                    help_outline
+                                </mat-icon>
+                            </div>
+                            <apx-chart [series]="rigorcharts.series" [chart]="rigorcharts.chart"
+                                [xaxis]="rigorcharts.xaxis" [yaxis]="rigorcharts.yaxis" [stroke]="rigorcharts.stroke"
+                                [markers]="rigorcharts.markers" [fill]="rigorcharts.fill"
+                                [title]="rigorcharts.title"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">System Architecture Cost, INR</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Y1</th>
+                                    <th>Y2 (P)</th>
+                                    <th>Y3 (P)</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Server</td>
+                                    <td class="middleclassright">{{result.itmanagementdata.n15|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result.itmanagementdata.o15|number:'1.0-0'}}</td>
+                                    <td>{{result.itmanagementdata.p15|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Network Equipment</td>
+                                    <td class="middleclassright">{{result.itmanagementdata.n16|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result.itmanagementdata.o16|number:'1.0-0'}}</td>
+                                    <td>{{result.itmanagementdata.p16|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Database</td>
+                                    <td class="middleclassright">{{result.itmanagementdata.n17|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result.itmanagementdata.o17|number:'1.0-0'}}</td>
+                                    <td>{{result.itmanagementdata.p17|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Total Cost</td>
+                                    <td class="middleclassright">{{result.itmanagementdata.n18|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result.itmanagementdata.o18|number:'1.0-0'}}</td>
+                                    <td>{{result.itmanagementdata.p18|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="systemarchitechturechart.series"
+                                [chart]="systemarchitechturechart.chart"
+                                [dataLabels]="systemarchitechturechart.dataLabels"
+                                [plotOptions]="systemarchitechturechart.plotOptions"
+                                [yaxis]="systemarchitechturechart.yaxis" [xaxis]="systemarchitechturechart.xaxis"
+                                [fill]="systemarchitechturechart.fill" [title]="systemarchitechturechart.title"
+                                [noData]="systemarchitechturechart.noData" [tooltip]="systemarchitechturechart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-5">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Data Storage Capacity</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Y1</th>
+                                    <th>Y2 (P)</th>
+                                    <th>Y3 (P)</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Daily Transaction</td>
+                                    <td class="middleclassright">{{result.itmanagementdata.m4|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result.itmanagementdata.n4|number:'1.0-0'}}</td>
+                                    <td>{{result.itmanagementdata.o4|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Required Capacity, GB</td>
+                                    <td class="middleclassright">{{result.itmanagementdata.m7|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result.itmanagementdata.n7|number:'1.0-0'}}</td>
+                                    <td>{{result.itmanagementdata.o7|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="datastoragecapacitychart.series"
+                                [chart]="datastoragecapacitychart.chart"
+                                [dataLabels]="datastoragecapacitychart.dataLabels"
+                                [plotOptions]="datastoragecapacitychart.plotOptions"
+                                [yaxis]="datastoragecapacitychart.yaxis" [xaxis]="datastoragecapacitychart.xaxis"
+                                [fill]="datastoragecapacitychart.fill" [title]="datastoragecapacitychart.title"
+                                [noData]="datastoragecapacitychart.noData" [tooltip]="datastoragecapacitychart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Development & Other Cost, INR</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Y1</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result.itmanagementdata.l21}}</td>
+                                    <td>{{result.itmanagementdata.m21|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result.itmanagementdata.l22}}</td>
+                                    <td>{{result.itmanagementdata.m22|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result.itmanagementdata.l23}}</td>
+                                    <td>{{result.itmanagementdata.m23|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result.itmanagementdata.l24}}</td>
+                                    <td>{{result.itmanagementdata.m24|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result.itmanagementdata.l25}}</td>
+                                    <td>{{result.itmanagementdata.m25|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result.itmanagementdata.l26}}</td>
+                                    <td>{{result.itmanagementdata.m26|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result.itmanagementdata.l27}}</td>
+                                    <td>{{result.itmanagementdata.m27|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result.itmanagementdata.l28}}</td>
+                                    <td>{{result.itmanagementdata.m28|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Total Cost</td>
+                                     <td>{{result.itmanagementdata.m29|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">KPI</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Y1</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Uptime</td>
+                                    <td>{{(result.itmanagementdata.m30)*100|number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Daily transaction handling capacity</td>
+                                    <td>{{result.itmanagementdata.m31|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Compliance timeline, months</td>
+                                    <td>{{result.itmanagementdata.q45|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Minimum development time, months</td>
+                                    <td>{{result.itmanagementdata.q43|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Maximum development time, months</td>
+                                    <td>{{result.itmanagementdata.q42|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Performance</td>
+                                    <td>{{(result.itmanagementdata.m56)*100|number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Security</td>
+                                    <td>{{(result.itmanagementdata.n56)*100|number:'1.0-0'}}%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="text-align: justify;"> <span style="font-size: 14px;
+                            font-weight: 500;
+                            color: #000;">Note :</span> The performance indicates speed, responsiveness,
+                            scalability and user experience while
+                            the security indicates data encryption, vulnerability management and access control. The
+                            closer both KPI's to 100 the better it is from a technology standpoint.</p>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Projected Value Earned, INR</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Y1</th>
+                                    <th>Y2 (P)</th>
+                                    <th>Y3 (P)</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Value Earned, INR</td>
+                                    <td class="middleclassright">{{result.itmanagementdata.m60|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result.itmanagementdata.n60|number:'1.0-0'}}</td>
+                                    <td>{{result.itmanagementdata.o60|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Tech Cost, INR</td>
+                                    <td class="middleclassright">{{result.itmanagementdata.m61|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result.itmanagementdata.n61|number:'1.0-0'}}</td>
+                                    <td>{{result.itmanagementdata.o61|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="text-align: justify;">
+                            <span style="font-size: 14px;
+                            font-weight: 500;
+                            color: #000;">Note :</span> The projections for year 2 and year 3 are based on certain
+                            assumptions of business
+                            which might change as per requirements.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

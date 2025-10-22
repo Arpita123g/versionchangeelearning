@@ -1,0 +1,475 @@
+
+<div class="elearingnewui bus_iness">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="feed_ack">
+                <div>
+                    <div class="row pb-4">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                                <div class="">
+                                    <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                        (change)="roundClick()">
+                                        <option class="select-round-option" value="">Select Round</option>
+                                        <option class="select-round-option"
+                                            *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                            {{attempt}}</option>
+                                    </select>
+                                </div>
+                                <div class="download_btn" matTooltiClass="primary-tooltip"
+                                    (click)="downloadreportchangemanagement()">
+                                    <div>
+                                        <a download matTooltip="Download"><span class="hovertext"
+                                                data-hover="Download pdf file accounting">
+                                                <img src="assets/images/businessbasics/download.png" />
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <mat-icon class="mt-2">get_app</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1>Synopsis
+                    </h1>
+                    <div style="margin-top: 1.1rem;" *ngIf="analysisshow">
+                        <th
+                            style="display: flex; align-items: center; gap: 5px;font-size: 1.1rem; font-weight: 600;padding: 0.6rem 0.4rem;color: white;background-color: #266cc38a;">
+                            Feedback<div style=" width: 1rem">
+                                <mat-icon (click)="rotate();roundClick();" [@rotatedState]='state' class="sidenav-icon"
+                                    aria-hidden="false" aria-label="Example home icon">cached</mat-icon>
+                            </div>
+                        </th>
+                    </div>
+                    <div class="decision-textarea pb-5 h-100" *ngIf="analysisshow">
+                        <div class="row">
+                            <div class="col-md" style="padding: 10px;">
+                                <div class="card feedbsck-value p-3">
+                                    <markdown [data]="feedbackvalue"></markdown>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-cols-md-2 pt-3">
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Decisions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Current Ratio, Electra Motors</td>
+                                        <td><span>{{result[0]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Current Ratio, Titan Motors</td>
+                                        <td><span>{{result[1]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Current Ratio, GreenSpeed Technologies</td>
+                                        <td><span>{{result[2]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Acid-test Ratio, Electra Motors</td>
+                                        <td><span>{{result[3]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Acid-test Ratio, Titan Motors</td>
+                                        <td><span>{{result[4]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Acid-test Ratio, GreenSpeed Technologies</td>
+                                        <td><span>{{result[5]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Cash Ratio, Electra Motors</td>
+                                        <td><span>{{result[6]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Cash Ratio, Titan Motors</td>
+                                        <td><span>{{result[7]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Cash Ratio, GreenSpeed Technologies</td>
+                                        <td><span>{{result[8]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Debt-to-Equity Ratio, Electra Motors</td>
+                                        <td><span>{{result[9]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Debt-to-Equity Ratio, Titan Motors</td>
+                                        <td><span>{{result[10]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Debt-to-Equity Ratio, GreenSpeed Technologies</td>
+                                        <td><span>{{result[11]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Debt Ratio, Electra Motors</td>
+                                        <td><span>{{result[12]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Debt Ratio, Titan Motors</td>
+                                        <td><span>{{result[13]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Debt Ratio, GreenSpeed Technologies</td>
+                                        <td><span>{{result[14]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Interest Coverage Ratio, Electra Motors</td>
+                                        <td><span>{{result[15]===0?'NA':result[15]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Interest Coverage Ratio, Titan Motors</td>
+                                        <td><span>{{result[16]===0?'NA':result[16]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Interest Coverage Ratio, GreenSpeed Technologies</td>
+                                        <td><span>{{result[17]===0?'NA':result[17]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Asset Turnover Ratio, Electra Motors</td>
+                                        <td><span>{{result[18]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Asset Turnover Ratio, Titan Motors</td>
+                                        <td><span>{{result[19]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Asset Turnover Ratio, GreenSpeed Technologies</td>
+                                        <td><span>{{result[20]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Inventory Turnover Ratio, Electra Motors</td>
+                                        <td><span>{{result[21]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Inventory Turnover Ratio, Titan Motors</td>
+                                        <td><span>{{result[22]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Inventory Turnover Ratio, GreenSpeed Technologies</td>
+                                        <td><span>{{result[23]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Days Sales in Inventory Ratio, Electra Motors</td>
+                                        <td><span>{{result[24]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Days Sales in Inventory Ratio, Titan Motors</td>
+                                        <td><span>{{result[25]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Days Sales in Inventory Ratio, GreenSpeed Technologies</td>
+                                        <td><span>{{result[26]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Gross Margin, Electra Motors</td>
+                                        <td><span>{{result[27]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Gross Margin, Titan Motors</td>
+                                        <td><span>{{result[28]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Gross Margin, GreenSpeed Technologies</td>
+                                        <td><span>{{result[29]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Operating Margin, Electra Motors</td>
+                                        <td><span>{{result[30]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Operating Margin, Titan Motors</td>
+                                        <td><span>{{result[31]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Operating Margin, GreenSpeed Technologies</td>
+                                        <td><span>{{result[32]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Return on Asset, Electra Motors</td>
+                                        <td><span>{{result[33]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Return on Asset, Titan Motors</td>
+                                        <td><span>{{result[34]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Return on Asset, GreenSpeed Technologies</td>
+                                        <td><span>{{result[35]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Return on Equity, Electra Motors</td>
+                                        <td><span>{{result[36]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Return on Equity, Titan Motors</td>
+                                        <td><span>{{result[37]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Return on Equity, GreenSpeed Technologies</td>
+                                        <td><span>{{result[38]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Book value per share, Electra Motors</td>
+                                        <td><span>{{result[39]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Book value per share, Titan Motors</td>
+                                        <td><span>{{result[40]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Book value per share, GreenSpeed Technologies</td>
+                                        <td><span>{{result[41]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Earnings per share, Electra Motors</td>
+                                        <td><span>{{result[42]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Earnings per share, Titan Motors</td>
+                                        <td><span>{{result[43]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Earnings per share, GreenSpeed Technologies</td>
+                                        <td><span>{{result[44]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Price-earning Ratio, Electra Motors</td>
+                                        <td><span>{{result[45]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Price-earning Ratio, Titan Motors</td>
+                                        <td><span>{{result[46]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Price-earning Ratio, GreenSpeed Technologies</td>
+                                        <td><span>{{result[47]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Portfolio 1</td>
+                                        <td><span>{{result[48]===1?'Yes':'No'}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Portfolio 2</td>
+                                        <td><span>{{result[49]===1?'Yes':'No'}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Portfolio 3</td>
+                                        <td><span>{{result[50]===1?'Yes':'No'}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Portfolio 4</td>
+                                        <td><span>{{result[51]===1?'Yes':'No'}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Portfolio 5</td>
+                                        <td><span>{{result[52]===1?'Yes':'No'}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Portfolio 6</td>
+                                        <td><span>{{result[53]===1?'Yes':'No'}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Portfolio 7</td>
+                                        <td><span>{{result[54]===1?'Yes':'No'}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Portfolio 8</td>
+                                        <td><span>{{result[55]===1?'Yes':'No'}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Portfolio 9</td>
+                                        <td><span>{{result[56]===1?'Yes':'No'}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Portfolio 10</td>
+                                        <td><span>{{result[57]===1?'Yes':'No'}}</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="5">Investment</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Electra Motors, Potfolio Allocation</td>
+                                        <td>{{result[70]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Titan Motors, Potfolio Allocation</td>
+                                        <td>{{result[71]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>GreenSpeed Technologies, Potfolio Allocation</td>
+                                        <td>{{result[72]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Electra Motors, Company Owned</td>
+                                        <td>{{result[73]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Titan Motors, Company Owned</td>
+                                        <td>{{result[74]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>GreenSpeed Technologies, Company Owned</td>
+                                        <td>{{result[75]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Portfolio Name</td>
+                                        <td>{{result[76]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Stakeholder Views</td>
+                                        <td>{{result[77]}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="col-md py-5">
+                                <table class="table rsl_tbl">
+                                    <thead class="rsl_tbl-thead">
+                                        <tr class="rsl_tbl-thead-tr">
+                                            <th class="rsl_tbl-thead-th" colspan="4">Ratio Analysis Score, %</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="rsl_tbl-tbody">
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>{{result[58]}}</td>
+                                            <td>{{result[64]*100| number:'1.0-0'}}</td>
+
+
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>{{result[59]}}</td>
+                                            <td>{{result[65]*100| number:'1.0-0'}}</td>
+
+
+                                        </tr>
+
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>{{result[60]}}</td>
+                                            <td>{{result[66]*100| number:'1.0-0'}}</td>
+
+
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>{{result[61]}}</td>
+                                            <td>{{result[67]*100| number:'1.0-0'}}</td>
+
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>{{result[62]}}</td>
+                                            <td>{{result[68]*100| number:'1.0-0'}}</td>
+
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Total Score</td>
+                                            <td>{{result[69]*100| number:'1.0-0'}}</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="col-md" *ngIf="optional[0]">
+                                <table class="table rsl_tbl">
+                                    <thead class="rsl_tbl-thead">
+                                        <tr class="rsl_tbl-thead-tr">
+                                            <th class="rsl_tbl-thead-th" colspan="2">Thinking Ability, %</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="rsl_tbl-tbody">
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Quantitative & Qualitative Analysis</td>
+                                            <td>{{result[78]*100| number: '1.0-0'}}</td>
+
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Ratio Analysis</td>
+                                            <td>{{result[79]*100| number: '1.0-0'}}</td>
+
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Investments</td>
+                                            <td>{{result[80]*100| number: '1.0-0'}}</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row lst_r">
+                    <div class="col-4 lst_r-col4" *ngIf="!timefinished">
+                        <button class="mt-4 retry"  [disabled]="isButtonDisabled"  
+                        (click)="exit()">{{retry}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

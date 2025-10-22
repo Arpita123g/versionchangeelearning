@@ -1,0 +1,157 @@
+<div class="elearingnewui product_consumer">
+    <div class="toolbar-header-main">
+    </div>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade show active" id="first" *ngIf="mainTab==='gamearena'">
+            <nav class="headerbreadcrumb">
+                <ul class="breadcrumb" role="tablist">
+                    <li role="presentation " class="breadcrumb-item active" data-bs-target="#consumerIntroduction"
+                        aria-controls="consumerIntroduction" role="tab" data-bs-toggle="tab" aria-selected="true"
+                        [ngClass]="{ 'active ':activeTab==='introduction'}" (click)="search('introduction')">
+                        <span [style.fontSize]="breadcrumbFontSize">
+                            {{ headingarray[0] }}
+                        </span>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#consumerMarket"
+                        aria-controls="consumerMarket" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        [ngClass]="{ 'active ':activeTab==='market'}" (click)="search('market')">
+                        <span [style.fontSize]="breadcrumbFontSize">
+                            {{ headingarray[1] }}
+                        </span>
+                    </li>
+                    <li role="presentation " class="breadcrumb-item " data-bs-target="#marketresearch"
+                        aria-controls="marketresearch" role="tab" data-bs-toggle="tab" aria-selected="true"
+                        [ngClass]="{ 'active ':activeTab==='informationresearch'}"
+                        (click)="search('informationresearch')">
+                        <span [style.fontSize]="breadcrumbFontSize">
+                            {{ headingarray[2] }}
+                        </span>
+                    </li>
+
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#consumerTarget"
+                        aria-controls="consumerTarget" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        [ngClass]="{ 'active ':activeTab==='target'}" (click)="search('target')">
+                        <span [style.fontSize]="breadcrumbFontSize">
+                            {{ headingarray[3] }}
+                        </span>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Conceptualizing"
+                        aria-controls="conceptualizing" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        [ngClass]="{ 'active ':activeTab==='conceptualizing'}" (click)="search('conceptualizing')">
+                        <span [style.fontSize]="breadcrumbFontSize">
+                            {{ headingarray[4] }}
+                        </span>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Crafting" aria-controls="crafting"
+                        role="tab" data-bs-toggle="tab" aria-selected="false"
+                        [ngClass]="{ 'active ':activeTab==='crafting'}" (click)="search('crafting')">
+                        <span [style.fontSize]="breadcrumbFontSize">
+                            {{ headingarray[5] }}
+                        </span>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#DecisionChecklist"
+                        aria-controls="DecisionChecklist" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        [ngClass]="{ 'active':activeTab==='decisionchecklist'}" (click)="search('decisionchecklist')">
+                        <span [style.fontSize]="breadcrumbFontSize">
+                            {{ headingarray[6] }}
+                        </span>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Report" aria-controls="report"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="search('report')"
+                        [ngClass]="{ 'active':activeTab==='report'}" [ngClass]="{ 'disabled': tabDisabled }">
+                        <span [style.fontSize]="breadcrumbFontSize">
+                            {{ headingarray[7] }}
+                        </span>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Synopsis" aria-controls="synopsis"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="search('synopsis')"
+                        [ngClass]="{ 'active':activeTab==='synopsis'}" [ngClass]="{ 'disabled': tabDisabled }">
+                        <span [style.fontSize]="breadcrumbFontSize">
+                            {{ headingarray[8] }}
+                        </span>
+                    </li>
+
+                </ul>
+            </nav>
+
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show active" id="consumerIntroduction"
+                    [ngClass]="{ 'active':activeTab==='introduction'}">
+                    <app-consumergameintroduction *ngIf="activeTab==='introduction'"></app-consumergameintroduction>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="consumerMarket"
+                    [ngClass]="{ 'active show':activeTab==='market'}">
+                    <app-consumermarket *ngIf="activeTab==='market'"></app-consumermarket>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="marketresearch"
+                    [ngClass]="{ 'active show':activeTab==='informationresearch'}">
+                    <app-marketresearch *ngIf="activeTab==='informationresearch'"></app-marketresearch>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="consumerTarget"
+                    [ngClass]="{ 'active show':activeTab==='target'}">
+                    <app-consumertarget *ngIf="activeTab==='target'"></app-consumertarget>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Conceptualizing"
+                    [ngClass]="{ 'active show':activeTab==='conceptualizing'}">
+                    <app-consumerconceptualization
+                        *ngIf="activeTab==='conceptualizing'"></app-consumerconceptualization>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Crafting"
+                    [ngClass]="{ 'active show':activeTab==='crafting'}">
+                    <app-consumercrafting *ngIf="activeTab==='crafting'"></app-consumercrafting>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="DecisionChecklist"
+                    [ngClass]="{ 'active show':activeTab==='decisionchecklist'}">
+                    <app-consumerdecisionchecklist (newItemEvent)="next($event)"
+                        *ngIf="activeTab==='decisionchecklist'"></app-consumerdecisionchecklist>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Report"
+                    [ngClass]="{ 'active show':activeTab==='report'}">
+                    <app-consumerreport *ngIf="activeTab==='report'"></app-consumerreport>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Synopsis" [ngClass]="{ 'active':activeTab==='synopsis'}">
+                    <app-consumersynopsis *ngIf="activeTab==='synopsis'"></app-consumersynopsis>
+                </div>
+            </div>
+
+
+        </div>
+        <div role="tabpanel" class="tab-pane fade show" id="second">
+            <app-reading *ngIf="toolbartab==='reading'" [gamename]="gametitle"></app-reading>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade show" id="third">
+            <nav class="headerbreadcrumb">
+                <ul class="breadcrumb" role="tablist">
+                    <li role="presentation " class="breadcrumb-item active" data-bs-target="#Individual"
+                        aria-controls="Individual" role="tab" data-bs-toggle="tab" aria-selected="true"
+                        (click)="tabclick('individual')">
+                        <div>{{forumText[0]}}</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Course" aria-controls="Course"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="tabclick('course')">
+                        <div>{{forumText[1]}}</div>
+                    </li>
+
+                </ul>
+            </nav>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show active" id="Individual">
+                    <app-forumindividual *ngIf="tabname==='individual'" ></app-forumindividual>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Course">
+                    <app-forumcourse *ngIf="tabname==='course'" ></app-forumcourse>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade show" id="fourth"
+            style="width: 90%; margin:0 auto;height:100vh;padding-top:1.5rem">
+            <app-microsimleaderboardgeneral *ngIf="toolbartab==='leaderboard'"
+                        ></app-microsimleaderboardgeneral>
+        </div>
+    </div>
+</div>

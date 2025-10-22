@@ -1,0 +1,320 @@
+<div class="elearingnewui bus_iness">
+  <div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+  </div>
+  <div class="container ">
+    <div class="body-element">
+      <div class="invest_ment">
+        <div class="element-first">
+          <div class="row">
+            <div class="investspcfood" (click)="openDialog()" *ngIf="foodforthought">
+              <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                <button   class="food-thought-btn">Food For Thought</button></span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h1>Investments</h1>
+        </div>
+        <div class="row row-cols-md-3">
+          <div class="col-md">
+            <div class="card crd1 h-100">
+              <div class="invesimg">
+                <img src="assets/images/businessbasics/interior.PNG" alt="Your Image"
+                  class="img-fluid invesimg-fluid" />
+              </div>
+              <div class="card-body crd1-card-body">
+                <h2 class="card-title crd1-card-title">
+                  Interior
+                  <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+              </div> &nbsp; &nbsp; &nbsp;
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px;'>Which type of design suits your target consumer? Do you have enough cash available?</p>
+              </div>
+            </div><br>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>What will attract more people to visit your tea shop? How will you balance revenue and cost?</p>
+                </div>
+              </div>
+          </div> ">
+                    help_outline
+                  </mat-icon>
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card crd1 h-100">
+              <div>
+                <img src="assets/images/businessbasics/equipment.PNG" alt="Your Image"
+                  class="img-fluid invesimg-fluid" />
+              </div>
+              <div class="card-body crd1-card-body">
+                <h2 class="card-title crd1-card-title">
+                  Product Mix Equipment
+                  <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+              </div> &nbsp; &nbsp; &nbsp;
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px;'>Regular tea or special tea? Does the difference in the cost of equipment justify adding special tea?</p>
+              </div>
+            </div><br>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>What will attract more people? Will people spend more money on special tea increasing your average price?</p>
+                </div>
+              </div>
+          </div> ">
+                    help_outline
+                  </mat-icon>
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card crd1 h-100">
+              <div>
+                <img src="assets/images/businessbasics/tea.PNG" alt="Your Image" class="img-fluid invesimg-fluid" />
+              </div>
+              <div class="card-body crd1-card-body">
+                <h2 class="card-title crd1-card-title">
+                  Vendor Tea and cups
+                  <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+              </div> &nbsp; &nbsp; &nbsp;
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px;'>Quality vs expense? Whom would you like to go with?</p>
+              </div>
+            </div><br>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>What your target audience will like? Would they mind paying extra for quality?</p>
+                </div>
+              </div>
+          </div> ">
+                    help_outline
+                  </mat-icon>
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <p class="py-3 note_p">
+            Note: The interior and equipment investment costs will directly
+            be paid out in cash as a one-time payment while they will
+            depreciate within 30 months for accounting purposes.
+          </p>
+        </div>
+        <div class="row investpad">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4 select-card">
+            <div class="card select-card-next">
+              <apx-chart [series]="investiment.series" [chart]="investiment.chart" [dataLabels]="investiment.dataLabels"
+                [plotOptions]="investiment.plotOptions" [yaxis]="investiment.yaxis" [xaxis]="investiment.xaxis"
+                [tooltip]="investiment.tooltip "
+                [fill]="investiment.fill" [title]="investiment.title">
+              </apx-chart>
+            </div>
+            <div class="invest-selection-card" *ngFor="let card of cardData1">
+              <div [ngClass]="{ bluebackground: c20 === card.title }" class="card p-3 mt-4 radio-card">
+                <label [for]="card.id" class="input-card-label">
+                  <input class="input-card-input" [id]="card.id" type="radio" name="cardSelection1"
+                    (change)="getSelectedsimplistic(card.title)" [checked]="c20 === card.title"
+                    [disabled]="checkdisable" />&nbsp;<span class="input-card-label-span">{{ card.title }}</span>
+                  <div [class.Moreless]="!textshow[card.id]" class="mt-3">
+                    <p class="maincontent">{{ textshow[card.id] ? card.description:card.turncatedtext }}<span
+                        class="mt-3" style="cursor: pointer;font-size: small;" (click)="toggleText(card.id)"
+                        [ngStyle]="{color: textshow[card.id]?'red':'blue'}">
+                        {{ textshow[card.id] ? 'Show Less' : 'Show More' }}
+                      </span></p>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4 select-card">
+            <div class="card select-card-next">
+              <apx-chart [series]="investimentoprtn.series" [chart]="investimentoprtn.chart"
+                [dataLabels]="investimentoprtn.dataLabels" [plotOptions]="investimentoprtn.plotOptions"
+                [yaxis]="investimentoprtn.yaxis" [xaxis]="investimentoprtn.xaxis" [fill]="investimentoprtn.fill"
+                [tooltip]="investimentoprtn.tooltip "
+                [title]="investimentoprtn.title">
+              </apx-chart>
+            </div>
+            <div class="invest-selection-card" *ngFor="let card of cardData2">
+              <div [ngClass]="{ bluebackground: c21 === card.title }" class="card p-3 mt-4 radio-card">
+                <label [for]="card.id" class="input-card-label">
+                  <input class="input-card-input" [id]="card.id" type="radio" name="cardSelection2"
+                    (change)="getSelectedata(card.title)" [checked]="c21 === card.title"
+                    [disabled]="checkdisable" />&nbsp;<span class="input-card-label-span">{{ card.title }}</span>
+                  <div [class.Moreless]="!textshow[card.id]" class="mt-3">
+                    <p class="maincontent">{{ textshow[card.id] ? card.description:card.turncatedtext }}<span
+                        class="mt-3" style="cursor: pointer;font-size: small;" (click)="toggleText(card.id)"
+                        [ngStyle]="{color: textshow[card.id]?'red':'blue'}">
+                        {{ textshow[card.id] ? 'Show Less' : 'Show More' }}
+                      </span></p>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex flex-column col-sm-12 col-md-12 col-lg-12 col-xl-4 select-card">
+            <div class="card select-card-next">
+              <apx-chart [series]="teacupscots.series" [chart]="teacupscots.chart" [dataLabels]="teacupscots.dataLabels"
+                [plotOptions]="teacupscots.plotOptions" [yaxis]="teacupscots.yaxis" [xaxis]="teacupscots.xaxis"
+                [tooltip]="teacupscots.tooltip "
+                [fill]="teacupscots.fill" [title]="teacupscots.title">
+              </apx-chart>
+            </div>
+            <div class="invest-selection-card" *ngFor="let card of cardData3">
+              <div [ngClass]="{ bluebackground: c22 === card.title }" class="card p-3 mt-4 radio-card">
+                <label [for]="card.id" class="input-card-label">
+                  <input class="input-card-input" [id]="card.id" type="radio" name="cardSelection3"
+                    (change)="getSelectedvendor(card.title)" [checked]="c22 === card.title"
+                    [disabled]="checkdisable" />&nbsp;<span class="input-card-label-span">{{ card.title }}</span>
+                  <div [class.Moreless]="!textshow[card.id]" class="mt-3">
+                    <p class="maincontent">{{ textshow[card.id] ? card.description:card.turncatedtext }}<span
+                        class="mt-3" style="cursor: pointer;font-size: small;" (click)="toggleText(card.id)"
+                        [ngStyle]="{color: textshow[card.id]?'red':'blue'}">
+                        {{ textshow[card.id] ? 'Show Less' : 'Show More' }}
+                      </span></p>
+                  </div>
+
+
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="showTechnology">
+          <h1 class="second_h1">
+            Technology
+            <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+              </div> &nbsp; &nbsp; &nbsp;
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px;'> Is it effective to deploy the technology for a tea café?</p>
+              </div>
+            </div><br>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>What would be the effect of each technology on business operations? Is investing worth it? </p>
+                </div>
+              </div>
+          </div> ">
+              help_outline
+            </mat-icon>
+          </h1>
+          <div class="row row-cols-md-2 mb-4">
+            <div class="col-md-6 technology-col">
+              <div class="technology-img-div">
+                <img src="../../../../assets/images/businessbasics/investmenttechnology.jpg"
+                  class="img-fluid technology-img">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card p-4 my-3">
+                <apx-chart [series]="technocost.series" [chart]="technocost.chart" [dataLabels]="technocost.dataLabels"
+                  [plotOptions]="technocost.plotOptions" [yaxis]="technocost.yaxis" [xaxis]="technocost.xaxis"
+                  [tooltip]="technocost.tooltip "
+                  [fill]="technocost.fill" [title]="technocost.title">
+                </apx-chart>
+              </div>
+            </div>
+          </div>
+          <div class="row row-cols-md-3 g-3 img-check mt-4">
+            <div class="col-md">
+              <div class="card h-100 img-check-card">
+                <div>
+                  <img src="assets/images/businessbasics/pointofsale.jpg" class="card-img-top" alt="Your Image" />
+                </div>
+                <div class="card-body img-check-card-body">
+                  <h3 class="img-check-card-body-h3">Point of Sale</h3>
+                  <p class="card-text"> It will help to manage inventory efficiently
+                    thereby reducing the cost of storage, sales opportunity loss
+                    and forced discounts.
+                  </p>
+                </div>
+                <div class="card-footer form-check img-check-card-footer">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                    [(ngModel)]="technology1" (change)="writeInvestment()" [disabled]="checkdisable" />
+                  <label class="form-check-label" for="flexCheckDefault">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="card h-100 img-check-card">
+                <div>
+                  <img src="assets/images/businessbasics/security.jpg" class="card-img-top" alt="Your Image" />
+                </div>
+                <div class="card-body img-check-card-body">
+                  <h3 class="img-check-card-body-h3">Security</h3>
+                  <p class="card-text">It will deter potential criminals, provide a safe
+                    environment for employees & customers, operational insights,
+                    and asset protection.
+                  </p>
+                </div>
+                <div class="card-footer form-check img-check-card-footer">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                    style="margin-top:1.6rem;" [(ngModel)]="technology2" (change)="writeInvestment()"
+                    [disabled]="checkdisable" [checked]="c28===1" />
+                  <label class="form-check-label" for="flexCheckDefault">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="card h-100 img-check-card">
+                <div>
+                  <img src="assets/images/businessbasics/wifiandmusic.jpg" class="card-img-top" alt="Your Image" />
+                </div>
+                <div class="card-body img-check-card-body">
+                  <h3 class="img-check-card-body-h3">Music & Wifi</h3>
+                  <p class="card-text"> It enhances the ambiance, encouraging customers
+                    to linger and relax, while also catering to the digital age's
+                    connectivity needs, potentially increasing sales and repeat
+                    visits.
+                  </p>
+                </div>
+                <div class="card-footer form-check img-check-card-footer">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                    [(ngModel)]="technology3" (change)="writeInvestment()" [disabled]="checkdisable"
+                    [checked]="c29===1" />
+                  <label class="form-check-label" for="flexCheckDefault">
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

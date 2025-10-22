@@ -1,0 +1,938 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+</div>
+<div class="elearingnewui stp_game">
+    <div class="container">
+        <div class="body-element">
+            <div class="feed_ack">
+                <div>
+                    <div class="row pb-4">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                                <div class="">
+                                    <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                        (change)="roundClick()">
+                                        <option class="select-round-option" value="">Select Round</option>
+                                        <option class="select-round-option"
+                                            *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                            {{attempt}}</option>
+
+                                    </select>
+                                </div>
+                                <div class="download_btn" matTooltiClass="primary-tooltip"
+                                    (click)="downloadreporthrpgame()">
+                                    <div>
+                                        <a download matTooltip="Download"><span class="hovertext"
+                                                data-hover="Download pdf file accounting ">
+                                                <img src="assets/images/businessbasics/download.png" />
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <mat-icon class="mt-2">get_app</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1>
+                        Synopsis
+                    </h1>
+                    <div style="margin-top: 1.1rem;" *ngIf="analysisshow">
+                        <h1
+                            style="display: flex; align-items: center; gap: 5px;font-size: 1.1rem; font-weight: 600;padding: 0.6rem 0.4rem;color: white;background-color: #266cc38a;">
+                            Feedback
+                            <div style=" width: 1rem;">
+                                <mat-icon (click)="rotate();roundClick();" [@rotatedState]='state' class="sidenav-icon"
+                                    aria-hidden="false" aria-label="Example home icon">cached</mat-icon>
+                            </div>
+                        </h1>
+                    </div>
+                    <div class="decision-textarea pb-5 h-100" *ngIf="analysisshow">
+                        <div class="row">
+                            <div class="col-md" style="padding: 10px;">
+                                <div class="card feedbsck-value p-3">
+                                    <markdown [data]="feedbackvalue"></markdown>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-cols-md-2 py-3">
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Decisions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Parameters</th>
+                                        <th>Input</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Phase 1</th>
+                                        <th></th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product 1 Launch</td>
+                                        <td>{{result[0]== 1 ? 'Yes' : 'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Design</td>
+                                        <td>{{result[1]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Performance</td>
+                                        <td>{{result[2]==0?'-':result[2] | number :'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Battery Life</td>
+                                        <td>{{result[3]==0?'-':result[3] | number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Premium Camera</td>
+                                        <td>{{result[4]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Extra Memory</td>
+                                        <td>{{result[5]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Premium Display</td>
+                                        <td>{{result[6]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Durable Screen</td>
+                                        <td>{{result[7]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Securtiy</td>
+                                        <td>{{result[8]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Projected Sales, Mn units</td>
+                                        <td>{{result[9]==0?'-':result[9] | number:'1.0-1'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Price, INR</td>
+                                        <td>{{result[10]==0?'-':result[10] | number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product 2 Launch</td>
+                                        <td>{{result[11]== 1 ? 'Yes' : 'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Design</td>
+                                        <td>{{result[12] }}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Performance</td>
+                                        <td>{{(result[13] === 0 || result[13] === ' ')?'-':result[13] | number
+                                            :'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Battery Life</td>
+                                        <td>{{(result[14] === 0 || result[14] === ' ')?'-':result[14] | number
+                                            :'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Premium Camera</td>
+                                        <td>{{result[15]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Extra Memory</td>
+                                        <td>{{result[16]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Premium Display</td>
+                                        <td>{{result[17]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Durable Screen</td>
+                                        <td>{{result[18]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Securtiy</td>
+                                        <td>{{result[19]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Projected Sales, Mn unit</td>
+                                        <td>{{result[20]==0?'-':result[20] |number :'1.0-1'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Price, INR</td>
+                                        <td>{{result[21]==0?'-':result[21] |number :'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Promotion, Mn INR</td>
+                                        <td>{{result[22]==0?'-':result[22] |number :'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Packaging</td>
+                                        <td>{{result[280]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Repairability & Services</td>
+                                        <td>{{result[281]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Recycling</td>
+                                        <td>{{result[282]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Retail</td>
+                                        <td>{{result[26]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Online</td>
+                                        <td>{{result[27]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Specialist Stores</td>
+                                        <td>{{result[28]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Phase 2</th>
+                                        <th></th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product 1 Launch</td>
+                                        <td>{{result[29]== 1 ? 'Yes' : 'No'}}</td>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Design</td>
+                                        <td>{{result[30]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Performance</td>
+                                        <td>{{result[31]==0?'-':result[31] |number :'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Battery Life</td>
+                                        <td>{{result[32]==0?'-':result[32] |number :'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Premium Camera</td>
+                                        <td>{{result[33]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Extra Memory</td>
+                                        <td>{{result[34]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Premium Display</td>
+                                        <td>{{result[35]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Durable Screen</td>
+                                        <td>{{result[36]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Securtiy</td>
+                                        <td>{{result[37]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Projected Sales, Mn units</td>
+                                        <td>{{result[38]=='-'?'-': result[38] |number :'1.0-1'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Price, INR</td>
+                                        <td>{{result[39]=='-'?'-': result[39] |number :'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product 2 Launch</td>
+                                        <td>{{result[40]== 1 ? 'Yes' : 'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Design</td>
+                                        <!-- <td>{{result[41]=='-'?'-': result[41]|number :'1.0-0'}}</td> -->
+                                        <td>
+                                            {{
+                                            result[41] === '-' || (result[41] !== '' && +result[41] !== +result[41])
+                                            ? result[41]
+                                            : (+result[41] | number : '1.0-0')
+                                            }}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Performance</td>
+                                        <td>{{result[42]=='-'?'-': result[42]|number :'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Battery Life</td>
+                                        <td>{{result[43]=='-'?'-': result[43]|number :'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Premium Camera</td>
+                                        <td>{{result[44]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Extra Memory</td>
+                                        <td>{{result[45]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Premium Display</td>
+                                        <td>{{result[46]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Durable Screen</td>
+                                        <td>{{result[47]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Securtiy</td>
+                                        <td>{{result[48]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Projected Sales, Mn unit</td>
+                                        <td>{{result[49]=='-'?'-': result[49]|number :'1.0-1'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Price, INR</td>
+                                        <td>{{result[50]=='-'?'-': result[50]|number :'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Promotion, Mn INR</td>
+                                        <td>{{result[51]=='-'?'-': result[51]|number :'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Packaging</td>
+                                        <td>{{result[283]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Repairability & Services</td>
+                                        <td>{{result[284]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Recycling</td>
+                                        <td>{{result[285]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Retail</td>
+                                        <td>{{result[55]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Online</td>
+                                        <td>{{result[56]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Specialist Stores</td>
+                                        <td>{{result[57]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Phase 3</th>
+                                        <th></th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product 1 Launch</td>
+                                        <td>{{result[58]== 1 ? 'Yes' : 'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Design</td>
+                                        <td>{{result[59]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Performance</td>
+                                        <td>{{(result[60] === 0 || result[60] === ' ')?'-': result[60]|number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Battery Life</td>
+                                        <td>{{(result[61] === 0 || result[61] === ' ')?'-': result[61]|number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Premium Camera</td>
+                                        <td>{{result[62]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Extra Memory</td>
+                                        <td>{{result[63]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Premium Display</td>
+                                        <td>{{result[64]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Durable Screen</td>
+                                        <td>{{result[65]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Securtiy</td>
+                                        <td>{{result[66]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Projected Sales, Mn units</td>
+                                        <td>{{(result[67] === 0 || result[67] === ' ')?'-': result[67]|number :'1.0-1'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Price, INR</td>
+                                        <td>{{(result[68] === 0 || result[68] === ' ')?'-': result[68]|number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product 2 Launch</td>
+                                        <td>{{result[69]== 1 ? 'Yes' : 'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Design</td>
+                                        <td>{{result[70]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Performance</td>
+                                        <td>{{(result[71] === 0 || result[71] === ' ')?'-': result[71]|number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Battery Life</td>
+                                        <td>{{(result[72] === 0 || result[72] === ' ')?'-': result[72]|number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Premium Camera</td>
+                                        <td>{{result[73]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Extra Memory</td>
+                                        <td>{{result[74]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Premium Display</td>
+                                        <td>{{result[75]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Durable Screen</td>
+                                        <td>{{result[76]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Securtiy</td>
+                                        <td>{{result[77]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Projected Sales, Mn unit</td>
+                                        <td>{{result[78]=='-'?'-': result[78]|number :'1.0-1'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Price, INR</td>
+                                        <td>{{(result[79] === 0 || result[79] === ' ')?'-': result[79]|number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Promotion, Mn INR</td>
+                                        <td>{{(result[80] === 0 || result[80] === ' ')?'-': result[80]|number :'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Packaging</td>
+                                        <td>{{result[286]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Repairability & Services</td>
+                                        <td>{{result[287]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Recycling</td>
+                                        <td>{{result[288]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Retail</td>
+                                        <td>{{result[84]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Online</td>
+                                        <td>{{result[85]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Specialist Stores</td>
+                                        <td>{{result[86]== 1 ? 'Implemented' : 'Not Implemented'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3">Company Sales & Market Share, Phase 3
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Parameter</th>
+                                        <th>Sales, Mn units</th>
+                                        <th>Market Share</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[87]}}</td>
+                                        <td class="middleclassright">{{result[88]=='-'?0: result[88] |number :'1.0-2'}}
+                                        </td>
+                                        <td>{{result[89]=='-'?0: result[89]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[90]}}</td>
+                                        <td class="middleclassright">{{result[91]=='-'?0: result[91] |number :'1.0-2'}}
+                                        </td>
+                                        <td>{{result[92]=='-'?0: result[92]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[93]}}</td>
+                                        <td class="middleclassright">{{result[94]=='-'?0: result[94] |number :'1.0-2'}}
+                                        </td>
+                                        <td>{{result[95]=='-'?0: result[95]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[96]}}</td>
+                                        <td class="middleclassright">{{result[97]=='-'?0: result[97] |number :'1.0-2'}}
+                                        </td>
+                                        <td>{{result[98]=='-'?0: result[98] *100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[99]}}</td>
+                                        <td class="middleclassright">{{result[100]=='-'?0: result[100] |number
+                                            :'1.0-2'}}</td>
+                                        <td>{{result[101]=='-'?0: result[101] *100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[102]}}</td>
+                                        <td class="middleclassright">{{result[103]=='-'?0: result[103]|number :'1.0-2'}}
+                                        </td>
+                                        <td>{{result[104]=='-'?0: result[104]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="4">Company Market Share, Phase 1 to 3</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Parameter</th>
+                                        <th>Phase 1</th>
+                                        <th>Phase 2</th>
+                                        <th>Phase 3</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[105]}}</td>
+                                        <td class="middleclassright">{{result[106]*100 |number :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[107]*100 |number :'1.0-0'}}%</td>
+                                        <td>{{result[108]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[109]}}</td>
+                                        <td class="middleclassright">{{result[110]*100 |number :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[111]*100 |number :'1.0-0'}}%</td>
+                                        <td>{{result[112]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[113]}}</td>
+                                        <td class="middleclassright">{{result[114]*100 |number :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[115]*100 |number :'1.0-0'}}%</td>
+                                        <td>{{result[116]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[117]}}</td>
+                                        <td class="middleclassright">{{result[118]*100 |number :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[119]*100 |number :'1.0-0'}}%</td>
+                                        <td>{{result[120]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[121]}}</td>
+                                        <td class="middleclassright">{{result[122]*100 |number :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[123]*100 |number :'1.0-0'}}%</td>
+                                        <td>{{result[124]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[125]}}</td>
+                                        <td class="middleclassright">{{result[126]*100 |number :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[127]*100 |number :'1.0-0'}}%</td>
+                                        <td>{{result[128]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="4">Product Market Share, Phase 1 to 3</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Parameter</th>
+                                        <th>Phase 1</th>
+                                        <th>Phase 2</th>
+                                        <th>Phase 3</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[129]}}</td>
+                                        <td class="middleclassright">{{result[130]=='-'?0: result[130]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[131]=='-'?0: result[131]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td>{{result[132]=='-'?0: result[132]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[133]}}</td>
+                                        <td class="middleclassright">{{result[134]=='-'?0: result[134]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[135]=='-'?0: result[135]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td>{{result[136]=='-'?0: result[136]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[137]}}</td>
+                                        <td class="middleclassright">{{result[138]=='-'?0: result[138]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[139]=='-'?0: result[139]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td>{{result[140]=='-'?0: result[140]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[141]}}</td>
+                                        <td class="middleclassright">{{result[142]=='-'?0: result[142]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[143]=='-'?0: result[143]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td>{{result[144]=='-'?0: result[144]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[145]}}</td>
+                                        <td class="middleclassright">{{result[146]=='-'?0: result[146]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[147]=='-'?0: result[147]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td>{{result[148]=='-'?0: result[148]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[149]}}</td>
+                                        <td class="middleclassright">{{result[150]=='-'?0: result[150]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[151]=='-'?0: result[151]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td>{{result[152]=='-'?0: result[152]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[153]}}</td>
+                                        <td class="middleclassright">{{result[154]=='-'?0: result[154]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[155]=='-'?0: result[155]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td>{{result[156]=='-'?0: result[156]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[157]}}</td>
+                                        <td class="middleclassright">{{result[158]=='-'?0: result[158]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[159]=='-'?0: result[159]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td>{{result[160]=='-'?0: result[160]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[161]}}</td>
+                                        <td class="middleclassright">{{result[162]=='-'?0: result[162]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[163]=='-'?0: result[163]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td>{{result[164]=='-'?0: result[164]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[165]}}</td>
+                                        <td class="middleclassright">{{result[166]=='-'?0: result[166]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[167]=='-'?0: result[167]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td>{{result[168]=='-'?0: result[168]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[169]}}</td>
+                                        <td class="middleclassright">{{result[170]=='-'?0: result[170]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[171]=='-'?0: result[171]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td>{{result[172]=='-'?0: result[172]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="4">Company Operating Margins, Phase 1 to 3
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Parameter</th>
+                                        <th>Phase 1</th>
+                                        <th>Phase 2</th>
+                                        <th>Phase 3</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[173]}}</td>
+                                        <td class="middleclassright">{{result[174]=='-'?0: result[174]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[175]=='-'?0: result[175]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td>{{result[176]=='-'?0: result[176]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[177]}}</td>
+                                        <td class="middleclassright">{{result[178]=='-'?0: result[178]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[179]=='-'?0: result[179]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td>{{result[180]=='-'?0: result[180]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[181]}}</td>
+                                        <td class="middleclassright">{{result[182]=='-'?0: result[182]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[183]=='-'?0: result[183]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td>{{result[184]=='-'?0: result[184]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[185]}}</td>
+                                        <td class="middleclassright">{{result[186]=='-'?0: result[186]*100|number
+                                            :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[187]=='-'?0: result[187]*100|number
+                                            :'1.0-0'}}%</td>
+                                        <td>{{result[188]=='-'?0: result[188]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[189]}}</td>
+                                        <td class="middleclassright">{{result[190]=='-'?0: result[190]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[191]=='-'?0: result[191]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td>{{result[192]=='-'?0: result[192]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[193]}}</td>
+                                        <td class="middleclassright">{{result[194]=='-'?0: result[194]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td class="middleclassright">{{result[195]=='-'?0: result[195]*100 |number
+                                            :'1.0-0'}}%</td>
+                                        <td>{{result[196]=='-'?0: result[196]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="4">KPI</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Parameter</th>
+                                        <th>Output</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Market Share</td>
+                                        <td>{{result[197]=='-'?0: result[197]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Revenue, Mn INR</td>
+                                        <td>{{result[198]=='-'?0: result[198] |number :'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Operating Profit/Loss, Mn INR</td>
+                                        <td>{{result[199]=='-'?0: result[199] |number :'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Operating Margin</td>
+                                        <td>{{result[200]=='-'?0: result[200]*100 |number :'1.0-1'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="4">Thinking Ability</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Parameter</th>
+                                        <th>Score</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Positioning</td>
+                                        <td>{{result[279]=='-'?0: result[279]*100 |number :'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row row-cols-md py-3">
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="7">Financial Statement, Mn INR, Phase 3
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Parameter</th>
+
+                                        <th>{{result[201]}}</th>
+                                        <th>{{result[202]}}</th>
+                                        <th>{{result[203]}}</th>
+                                        <th>{{result[204]}}</th>
+                                        <th>{{result[205]}}</th>
+                                        <th>{{result[206]}}</th>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Revenue</td>
+
+                                        <th>{{result[207]=='-'?0: result[207]| number:'1.0-0'}}</th>
+                                        <th>{{result[208]=='-'?0: result[208] | number:'1.0-0'}}</th>
+                                        <th>{{result[209]=='-'?0: result[209] | number:'1.0-0'}}</th>
+                                        <th>{{result[210]=='-'?0: result[210] | number:'1.0-0'}}</th>
+                                        <th>{{result[211]=='-'?0: result[211] | number:'1.0-0'}}</th>
+                                        <th>{{result[212]=='-'?0: result[212] | number:'1.0-0'}}</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Variable Cost</td>
+
+                                        <th>{{result[213]=='-'?0: result[213] | number:'1.0-0'}}</th>
+                                        <th>{{result[214]=='-'?0: result[214] | number:'1.0-0'}}</th>
+                                        <th>{{result[215]=='-'?0: result[215] | number:'1.0-0'}}</th>
+                                        <th>{{result[216]=='-'?0: result[216] | number:'1.0-0'}}</th>
+                                        <th>{{result[217]=='-'?0: result[217] | number:'1.0-0'}}</th>
+                                        <th>{{result[218]=='-'?0: result[218] | number:'1.0-0'}}</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Gross Profit</td>
+
+                                        <th>{{result[219]=='-'?0: result[219] | number:'1.0-0'}}</th>
+                                        <th>{{result[220]=='-'?0: result[220] | number:'1.0-0'}}</th>
+                                        <th>{{result[221]=='-'?0: result[221] | number:'1.0-0'}}</th>
+                                        <th>{{result[222]=='-'?0: result[222] | number:'1.0-0'}}</th>
+                                        <th>{{result[223]=='-'?0: result[223] | number:'1.0-0'}}</th>
+                                        <th>{{result[224]=='-'?0: result[224] | number:'1.0-0'}}</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Production Line Cost + Update Cost</td>
+
+                                        <th>{{result[225]=='-'?0: result[225] | number:'1.0-0'}}</th>
+                                        <th>{{result[226]=='-'?0: result[226] | number:'1.0-0'}}</th>
+                                        <th>{{result[227]=='-'?0: result[227] | number:'1.0-0'}}</th>
+                                        <th>{{result[228]=='-'?0: result[228] | number:'1.0-0'}}</th>
+                                        <th>{{result[229]=='-'?0: result[229] | number:'1.0-0'}}</th>
+                                        <th>{{result[230]=='-'?0: result[230] | number:'1.0-0'}}</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Administration Cost</td>
+
+                                        <th>{{result[231]=='-'?0: result[231] | number:'1.0-0'}}</th>
+                                        <th>{{result[232]=='-'?0: result[232] | number:'1.0-0'}}</th>
+                                        <th>{{result[233]=='-'?0: result[233] | number:'1.0-0'}}</th>
+                                        <th>{{result[234]=='-'?0: result[234] | number:'1.0-0'}}</th>
+                                        <th>{{result[235]=='-'?0: result[235] | number:'1.0-0'}}</th>
+                                        <th>{{result[236]=='-'?0: result[236] | number:'1.0-0'}}</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Market Research Cost</td>
+
+                                        <th>{{result[237] =='-'?0: result[237]| number:'1.0-0'}}</th>
+                                        <th>{{result[238] =='-'?0: result[238]| number:'1.0-0'}}</th>
+                                        <th>{{result[239] =='-'?0: result[239]| number:'1.0-0'}}</th>
+                                        <th>{{result[240] =='-'?0: result[240]| number:'1.0-0'}}</th>
+                                        <th>{{result[241] =='-'?0: result[241]| number:'1.0-0'}}</th>
+                                        <th>{{result[242] =='-'?0: result[242]| number:'1.0-0'}}</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Promotion Cost</td>
+
+                                        <th>{{result[243]=='-'?0: result[243] | number:'1.0-0'}}</th>
+                                        <th>{{result[244]=='-'?0: result[244] | number:'1.0-0'}}</th>
+                                        <th>{{result[245]=='-'?0: result[245] | number:'1.0-0'}}</th>
+                                        <th>{{result[246]=='-'?0: result[246] | number:'1.0-0'}}</th>
+                                        <th>{{result[247]=='-'?0: result[247] | number:'1.0-0'}}</th>
+                                        <th>{{result[248]=='-'?0: result[248] | number:'1.0-0'}}</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Channel Cost</td>
+
+                                        <th>{{result[249] =='-'?0: result[249]| number:'1.0-0'}}</th>
+                                        <th>{{result[250] =='-'?0: result[250]| number:'1.0-0'}}</th>
+                                        <th>{{result[251] =='-'?0: result[251]| number:'1.0-0'}}</th>
+                                        <th>{{result[252] =='-'?0: result[252]| number:'1.0-0'}}</th>
+                                        <th>{{result[253] =='-'?0: result[253]| number:'1.0-0'}}</th>
+                                        <th>{{result[254] =='-'?0: result[254]| number:'1.0-0'}}</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Packaging Cost</td>
+
+                                        <th>{{result[255] =='-'?0: result[255]| number:'1.0-0'}}</th>
+                                        <th>{{result[256] =='-'?0: result[256]| number:'1.0-0'}}</th>
+                                        <th>{{result[257] =='-'?0: result[257]| number:'1.0-0'}}</th>
+                                        <th>{{result[258] =='-'?0: result[258]| number:'1.0-0'}}</th>
+                                        <th>{{result[259] =='-'?0: result[259]| number:'1.0-0'}}</th>
+                                        <th>{{result[260] =='-'?0: result[260]| number:'1.0-0'}}</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Recyclying Cost</td>
+
+                                        <th>{{result[261]=='-'?0: result[261] | number:'1.0-0'}}</th>
+                                        <th>{{result[262]=='-'?0: result[262] | number:'1.0-0'}}</th>
+                                        <th>{{result[263]=='-'?0: result[263] | number:'1.0-0'}}</th>
+                                        <th>{{result[264]=='-'?0: result[264] | number:'1.0-0'}}</th>
+                                        <th>{{result[265]=='-'?0: result[265] | number:'1.0-0'}}</th>
+                                        <th>{{result[266]=='-'?0: result[266] | number:'1.0-0'}}</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Repairability Cost</td>
+
+                                        <th>{{result[267] =='-'?0: result[267]| number:'1.0-0'}}</th>
+                                        <th>{{result[268] =='-'?0: result[268]| number:'1.0-0'}}</th>
+                                        <th>{{result[269] =='-'?0: result[269]| number:'1.0-0'}}</th>
+                                        <th>{{result[270] =='-'?0: result[270]| number:'1.0-0'}}</th>
+                                        <th>{{result[271] =='-'?0: result[271]| number:'1.0-0'}}</th>
+                                        <th>{{result[272] =='-'?0: result[272]| number:'1.0-0'}}</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Operating Profit/Loss</td>
+
+                                        <th>{{result[273]=='-'?0: result[273] | number:'1.0-0'}}</th>
+                                        <th>{{result[274]=='-'?0: result[274] | number:'1.0-0'}}</th>
+                                        <th>{{result[275]=='-'?0: result[275] | number:'1.0-0'}}</th>
+                                        <th>{{result[276]=='-'?0: result[276] | number:'1.0-0'}}</th>
+                                        <th>{{result[277]=='-'?0: result[277] | number:'1.0-0'}}</th>
+                                        <th>{{result[278]=='-'?0: result[278] | number:'1.0-0'}}</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row lst_r">
+                        <div class="col-4 lst_r-col4" *ngIf="!timefinished">
+                            <button class="mt-4 retry" [disabled]="isButtonDisabled" (click)="exit()">{{retry}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

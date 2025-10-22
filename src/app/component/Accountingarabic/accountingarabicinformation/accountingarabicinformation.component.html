@@ -1,0 +1,166 @@
+<div class="elearingnewui accounting_new">
+    <div class="container">
+        <div class="body-element">
+            <div class="market-research">
+                <div class="row element-first">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+
+                <ul class="nav market-research-nav" id="nav-tab" role="tablist">
+                    <li class="nav-link active market-research-link" id="nav-Market-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Market" type="button" role="tab" aria-controls="nav-Market"
+                        aria-selected="true">Foundation
+                    </li>
+                    <li class="nav-link market-research-link" id="nav-genre-preference-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-genre-preference" type="button" role="tab"
+                        aria-controls="nav-genre-preference" aria-selected="true">Operations
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-Market" role="tabpanel">
+                        <div class="rounded-5 rtsidetable card">
+                            <ul class="list-group list-group-flush marketoutlooklist">
+
+                                <!-- For Arabic -->
+                                <li class="list-group-item" style="padding: 2rem; width: 90%; margin: 0 auto;"
+                                    *ngIf="attempt === 1">
+                                    <h2 style="text-align: right;">Establishment</h2>
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <div class="card" style="border: none;">
+                                                <div class="card-text card-text-arabic">
+                                                    <p style="text-align: justify; direction: rtl;">
+                                                        {{ informationtextround1[0].Establishment }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h2 style="text-align: right;">Investment</h2>
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <div class="card" style="border: none;">
+                                                <div class="card-text">
+                                                    <p style="text-align: justify; direction: rtl">
+                                                        {{ informationtextround1[0].Investments }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- Same for Round 2 -->
+                                <li class="list-group-item" style="padding: 2rem; width: 90%; margin: 0 auto;"
+                                    *ngIf="attempt === 2">
+                                    <h2 style="text-align: right;">Establishment</h2>
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <div class="card" style="border: none;">
+                                                <div class="card-text card-text-arabic">
+                                                    <p style="text-align: justify; direction: rtl">
+                                                        {{ informationtextround2[0].Establishment }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h2 style="text-align: right;">Investment</h2>
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <div class="card" style="border: none;">
+                                                <div class="card-text">
+                                                    <p style="text-align: justify; direction: rtl">
+                                                        {{ informationtextround2[0].Investments }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                 <!-- Same for Round 3 -->
+                                 <li class="list-group-item" style="padding: 2rem; width: 90%; margin: 0 auto;"
+                                 *ngIf="attempt === 3">
+                                 <h2 style="text-align: right;">Establishment</h2>
+                                 <div class="row">
+                                     <div class="col-md">
+                                         <div class="card" style="border: none;">
+                                             <div class="card-text card-text-arabic">
+                                                 <p style="text-align: justify; direction: rtl">
+                                                     {{ informationtextround3[0].Establishment }}
+                                                 </p>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <h2 style="text-align: right;">Investment</h2>
+                                 <div class="row">
+                                     <div class="col-md">
+                                         <div class="card" style="border: none;">
+                                             <div class="card-text">
+                                                 <p style="text-align: justify; direction: rtl">
+                                                     {{ informationtextround3[0].Investments }}
+                                                 </p>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-genre-preference" role="tabpanel">
+                        <div class="rounded-5 rtsidetable card">
+                            <ul class="list-group list-group-flush marketoutlooklist">
+
+                                <!-- Operations for Round 1 -->
+                                <li class="list-group-item" style="padding: 2rem; width: 90%; margin: 0 auto;"
+                                    *ngIf="attempt === 1">
+                                    <div class="py-2">
+                                        <p class="card-text-arabic" style="text-align: justify; direction: rtl">
+                                            <span *ngFor="let operation of informationtextround1[0].Operations">
+                                                {{ operation }}<br><br>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </li>
+
+                                <!-- Operations for Round 2 -->
+                                <li class="list-group-item" style="padding: 2rem; width: 90%; margin: 0 auto;"
+                                    *ngIf="attempt === 2">
+                                    <div class="py-2">
+                                        <p class="card-text-arabic" style="text-align: justify; direction: rtl">
+                                            <span *ngFor="let operation of informationtextround2[0].Operations">
+                                                {{ operation }}<br><br>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </li>
+
+                                 <!-- Operations for Round 3 -->
+                                 <li class="list-group-item" style="padding: 2rem; width: 90%; margin: 0 auto;"
+                                 *ngIf="attempt === 3">
+                                 <div class="py-2">
+                                     <p class="card-text-arabic" style="text-align: justify; direction: rtl">
+                                         <span *ngFor="let operation of informationtextround3[0].Operations">
+                                             {{ operation }}<br><br>
+                                         </span>
+                                     </p>
+                                 </div>
+                             </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

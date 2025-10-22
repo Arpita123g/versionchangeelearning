@@ -1,0 +1,401 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui value_chain">
+    <div class="container">
+        <div class="body-element">
+            <div class="feed_ack">
+                <div>
+                    <div class="row pb-4">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                                <div class="">
+                                    <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                        (change)="roundClick()">
+                                        <option class="select-round-option" value="">Select Round</option>
+                                        <option class="select-round-option"
+                                            *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                            {{attempt}}</option>
+
+                                    </select>
+                                </div>
+                                <div class="download_btn" matTooltiClass="primary-tooltip"
+                                    (click)="downloadreportvaluechainigment()">
+                                    <div>
+                                        <a download matTooltip="Download"><span class="hovertext"
+                                                data-hover="Download pdf file accounting ">
+                                                <img src="assets/images/businessbasics/download.png" />
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <mat-icon class="mt-2">get_app</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1>
+                        Synopsis
+                    </h1>
+                    <div style="margin-top: 1.1rem;" *ngIf="analysisshow">
+                        <h1
+                            style="display: flex; align-items: center; gap: 5px;font-size: 1.1rem; font-weight: 600;padding: 0.6rem 0.4rem;color: white;background-color: #266cc38a;">
+                            Feedback
+                            <div style=" width: 1rem;">
+                                <mat-icon (click)="rotate();roundClick();" [@rotatedState]='state' class="sidenav-icon"
+                                    aria-hidden="false" aria-label="Example home icon">cached</mat-icon>
+                            </div>
+                        </h1>
+                    </div>
+                    <div class="decision-textarea pb-5 h-100" *ngIf="analysisshow">
+                        <div class="row">
+                            <div class="col-md" style="padding: 10px;">
+                                <div class="card feedbsck-value p-3">
+                                    <markdown [data]="feedbackvalue"></markdown>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-cols-md-2 py-3">
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Decisions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Input</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Estimated Market Growth %</td>
+                                        <td>{{result[0]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Estimated Market Share %</td>
+                                        <td>{{result[1]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>In-house Capacity Utilization %</td>
+                                        <td>{{result[2]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Outsourcing Capacity Utilization %</td>
+                                        <td>{{result[3]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Additional Machinery units</td>
+                                        <td>{{result[4]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Component Supplier 1</td>
+                                        <td>{{result[5]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Component Supplier 2</td>
+                                        <td>{{result[6]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Transporter 1</td>
+                                        <td>{{result[7]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Transporter 2</td>
+                                        <td>{{result[8]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Feature Index</td>
+                                        <td>{{result[9]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Promotion, mn INR</td>
+                                        <td>{{result[10]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Pricing, INR</td>
+                                        <td>{{result[11]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Online Channel Margin %</td>
+                                        <td>{{result[12]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Speciality Stores Channel Margin %</td>
+                                        <td>{{result[13]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Retail Channel Margin %</td>
+                                        <td>{{result[14]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Predictive Analytics</td>
+                                        <td>{{result[15]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Subsciption Based Services</td>
+                                        <td>{{result[16]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Blockchain Integration</td>
+                                        <td>{{result[17]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Remote Diagnosis</td>
+                                        <td>{{result[18]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>AI-Powered Personalization</td>
+                                        <td>{{result[19]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[1]">
+                                        <td>Long-term Borrowings, mn INR</td>
+                                        <td>{{result[20]}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">KPI</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Output</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Market Share %</td>
+                                        <td>{{result[45]*100|number:'1.0-2'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Margin %</td>
+                                        <td>{{result[46]*100|number:'1.0-2'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Emergency Borrowing, mn INR</td>
+                                        <td>{{result[47]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Thinking Ability</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Output</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Demand, %</td>
+                                        <td>{{result[51]*100|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Production, %</td>
+                                        <td>{{result[52]*100|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Marketing, %</td>
+                                       <td>{{result[53]*100|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Finance, %</td>
+                                        <td>{{result[54]*100|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Operating Income, INR</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Output</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Revenue</td>
+                                        <td>{{result[21]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Variable Cost</td>
+                                        <td>{{result[22]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Gross Profit/Loss</td>
+                                        <td>{{result[23]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Component Cost</td>
+                                        <td>{{result[24]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Transportation & Inventory Cost</td>
+                                        <td>{{result[25]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Channel Cost</td>
+                                        <td>{{result[26]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Promotion Cost</td>
+                                        <td>{{result[27]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Services & Innovation Cost</td>
+                                        <td>{{result[28]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>EBITDA</td>
+                                        <td>{{result[29]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Depreciation</td>
+                                        <td>{{result[30]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>EBIT</td>
+                                        <td>{{result[31]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Interest Cost</td>
+                                        <td>{{result[32]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Profit before taxes</td>
+                                        <td>{{result[33]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Tax</td>
+                                        <td>{{result[34]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Profit/Loss</td>
+                                        <td>{{result[35]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Cash Balance, mn INR</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Output</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Cash at start of the period</td>
+                                        <td>{{result[36]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Cash from operations</td>
+                                        <td>{{result[37]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Cash from investment</td>
+                                        <td>{{result[38]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Cash from financing</td>
+                                        <td>{{cashfromfinancing|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Cash at end of the period</td>
+                                        <td>{{result[41]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Sales, mn units</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Output</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Market Size</td>
+                                        <td>{{result[42]|number:'1.0-2'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Demand</td>
+                                        <td>{{result[43]|number:'1.0-2'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Actual Sales</td>
+                                        <td>{{result[44]|number:'1.0-2'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Production, mn units</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Output</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Capacity</td>
+                                        <td>{{result[48]|number:'1.0-2'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Closing Inventory</td>
+                                        <td>{{result[49]|number:'1.0-2'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Opportunity loss</td>
+                                        <td>{{result[50]|number:'1.0-2'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="row lst_r">
+                        <div class="col-4 lst_r-col4" *ngIf="!timefinished">
+                            <button class="mt-4 retry" [disabled]="isButtonDisabled"   
+                            (click)="exit()">{{retry}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

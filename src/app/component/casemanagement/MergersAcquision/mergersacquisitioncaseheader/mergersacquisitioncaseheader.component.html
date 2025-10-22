@@ -1,0 +1,94 @@
+<div class="elearingnewui">
+    <div class="case-management-body-forheader">
+        <div class="returnbtn-element">
+            <div class="returnbtn" (click)="GoBack()"> Return to Case Management </div>
+        </div>
+        <div class="card case-management-body-card">
+            <div class="card-body">
+                <div class=" tab-content-body">
+                    <ul class="nav second-nav" role="tablist">
+                        <li class="nav-item active" role="presentation" data-bs-target="#market" data-bs-toggle="tab"
+                            aria-controls="market" role="tab" aria-selected="false" (click)="search('market')">
+                            <span class="nav-link" aria-current="page">Market</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#planning" data-bs-toggle="tab"
+                            aria-controls="planning" role="tab" aria-selected="false" (click)="search('planning')">
+                            <span class="nav-link" aria-current="page">Planning</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#assessments" data-bs-toggle="tab"
+                            aria-controls="assessments" role="tab" aria-selected="false"
+                            (click)="search('assessments')">
+                            <span class="nav-link" aria-current="page">Assessments</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#negotiation" data-bs-toggle="tab"
+                            aria-controls="negotiation" role="tab" aria-selected="false"
+                            (click)="search('negotiation')">
+                            <span class="nav-link" aria-current="page">Negotiation</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#financing" data-bs-toggle="tab"
+                            aria-controls="financing" role="tab" aria-selected="false" (click)="search('financing')">
+                            <span class="nav-link" aria-current="page">Financing</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#foodforthought" data-bs-toggle="tab"
+                            aria-controls="foodforthought" role="tab" aria-selected="false"
+                            (click)="search('foodforthought')">
+                            <span class="nav-link" aria-current="page">Food For Thought</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#module" data-bs-toggle="tab"
+                            aria-controls="module" role="tab" aria-selected="false" (click)="search('module')">
+                            <span class="nav-link" aria-current="page">Module</span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="tab-content tab-content-body">
+
+                    <div role="tabpanel" class="tab-pane fade show active" id="market"
+                        [ngClass]="{ 'active':activeTab==='market'}">
+                        <app-mergersacquisitioncasemarket
+                            *ngIf="activeTab==='market'"></app-mergersacquisitioncasemarket>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="planning"
+                        [ngClass]="{ 'active':activeTab==='planning'}">
+                        <app-mergersacquisitioncaseplanning
+                            *ngIf="activeTab==='planning'"></app-mergersacquisitioncaseplanning>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="assessments"
+                        [ngClass]="{ 'active':activeTab==='assessments'}">
+                        <app-mergersacquisitioncaseassessment
+                            *ngIf="activeTab==='assessments'"></app-mergersacquisitioncaseassessment>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="negotiation"
+                        [ngClass]="{ 'active':activeTab==='negotiation'}">
+                        <app-mergersacquisitioncasenegotiation
+                            *ngIf="activeTab==='negotiation'"></app-mergersacquisitioncasenegotiation>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="financing"
+                        [ngClass]="{ 'active':activeTab==='financing'}">
+                        <app-mergersacquisitioncasefinancing
+                            *ngIf="activeTab==='financing'"></app-mergersacquisitioncasefinancing>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="foodforthought"
+                        [ngClass]="{ 'active':activeTab==='foodforthought'}">
+                        <app-mergersacquisitioncasefoodforthought
+                            *ngIf="activeTab==='foodforthought'"></app-mergersacquisitioncasefoodforthought>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="module"
+                        [ngClass]="{ 'active':activeTab==='module'}">
+                        <app-mergersacquisitioncasemodule
+                            *ngIf="activeTab==='module'"></app-mergersacquisitioncasemodule>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- <div>
+            <button class="mt-4 back" (click)="back()" style=" border: 3px solid #30b4cc;
+            border-radius: 6px;
+            background: transparent;
+            color: #30b4cc;
+            font-size: 20px; padding: 0.5rem 1rem;">Back</button>
+        </div> -->
+    </div>
+</div>

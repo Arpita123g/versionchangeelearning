@@ -1,0 +1,162 @@
+<div class="elearingnewui casemanagement">
+    <div class="case-management-body case-management-body-marketing ">
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Task</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="13">Task Name</th>
+                    </tr>
+                    <tr *ngFor="let task of taskList; let taskIndex = index">
+                        <td>{{ task }}</td>
+                        <td *ngFor="let value of res['h' + (7 + taskIndex)]; let i = index">
+                            <textarea [value]="res['h' + (7 + taskIndex)][i]" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('h' + (7 + taskIndex), i, inputElement.value)"></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="13">Description</th>
+                    </tr>
+                    <tr *ngFor="let task of taskList; let taskIndex = index">
+                        <td>{{ task }}</td>
+                        <td *ngFor="let value of res['i' + (7 + taskIndex)]; let i = index">
+                            <textarea [value]="res['i' + (7 + taskIndex)][i]" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('i' + (7 + taskIndex), i, inputElement.value)"></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="13">Expected Workdays</th>
+                    </tr>
+                    <tr *ngFor="let task of taskList; let taskIndex = index">
+                        <td>{{ task }}</td>
+                        <td *ngFor="let value of res['j' + (7 + taskIndex)]; let i = index">
+                            <input [value]="res['j' + (7 + taskIndex)][i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('j' + (7 + taskIndex), i, inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="13">Variance</th>
+                    </tr>
+                    <tr *ngFor="let task of taskList; let taskIndex = index">
+                        <td>{{ task }}</td>
+                        <td *ngFor="let value of res['k' + (7 + taskIndex)]; let i = index">
+                            <input [value]="res['k' + (7 + taskIndex)][i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('k' + (7 + taskIndex), i, inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Start</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="13">Dependent 1</th>
+                    </tr>
+                    <tr *ngFor="let task of taskList; let taskIndex = index">
+                        <td>{{ task }}</td>
+                        <td *ngFor="let value of res['h' + (29 + taskIndex)]; let i = index">
+                            <textarea [value]="res['h' + (29 + taskIndex)][i]" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('h' + (29 + taskIndex), i, inputElement.value)"></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="13">Dependent 2</th>
+                    </tr>
+                    <tr *ngFor="let task of taskList; let taskIndex = index">
+                        <td>{{ task }}</td>
+                        <td *ngFor="let value of res['i' + (29 + taskIndex)]; let i = index">
+                            <textarea [value]="res['i' + (29 + taskIndex)][i]" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('i' + (29 + taskIndex), i, inputElement.value)"></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

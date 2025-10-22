@@ -1,0 +1,477 @@
+<div class="elearingnewui ecommerce">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="routesandtech">
+                <div class="row" class="element-first">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+                <h1>Facebook Campaign
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>Based on the metrics provided, which campaigns align best with your marketing goals, and why?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>Should you invest in A/B testing for your social media campaigns, and how do you assess the trade-off between extra cost and potential benefits?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+               
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of textLines1 ; let i = index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" [ngStyle]="{ 'height':[2].includes(i) ? '17rem' : '18rem' }"/>
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.ecommerceGameCM.ecommercegameperioddata[item.heading] }}</h2>
+                                <div class="card-text" *ngFor="let context of item.body; let g = index">
+                                    <div class="text-row"
+                                        [ngClass]="{'firstrow' : g === 0,'scndrow' : g === 1, 'thrdrow' : g === 2, 'forthrow' : g === 3}">
+                                        <div class="left-d">
+                                            <h3>{{context.title}} </h3>
+                                        </div>
+                                        <div class="right-d">
+                                            <h3> {{context.value}}</h3>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="textswcinassessment-p">
+                                    {{showAll[i] ? item.description :
+                                    item.truncatedText}}
+                                    <a type="button" (click)="toggleshow(i)"
+                                        [style.color]="showAll[i] ? 'red' : 'blue'">
+                                        {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                    </a>
+                                </div><br><br>
+                               
+                            </div>
+                            <div class="card-footer form-check_new">
+                                <div class="routesandtechcostcard pb-3">
+                                    <h3>{{ item.textname }}</h3>
+                                    <div>
+                                        <input class="checkfrominput_new" type="checkbox" value="index"
+                                            id="flexCheckDefault"
+                                            [checked]="(result.ecommercegamedata)?(result.ecommercegamedata[item.cellvalue]===1):false"
+                                            (click)="writemarketingvalue(item.cellvalue,'checkbox',$event,'','','')"
+                                            [disabled]="inputDisabled" />
+                                    </div>
+                                </div>
+                                <div class="routesandtechcostcard pb-3">
+                                    <h3>{{ item.textmonth }}</h3>
+                                    <h3>{{(result.ecommercegamedata)?(result.ecommercegamedata[item.cellvalueno]):0}}</h3>
+                                </div>
+                                <div style="height: 2rem;">
+                                    <input class="checkfrominput_new" type="checkbox" value="index"
+                                        id="flexCheckDefault"
+                                        [checked]="(result.ecommercegamedata)?(result.ecommercegamedata[item.cellvalue1]===1):false"
+                                        (click)="writemarketingvalue(item.cellvalue1,'checkbox',$event,'','','')" />
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="py-4">Instagram Campaign
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>Based on the metrics provided, which campaigns align best with your marketing goals, and why?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>Should you invest in A/B testing for your social media campaigns, and how do you assess the trade-off between extra cost and potential benefits?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of textLines2 ; let j = index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" [ngStyle]="{ 'height': j === 1 ? '17rem' : '18rem' }" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.ecommerceGameCM.ecommercegameperioddata[item.heading] }}</h2>
+                                <div class="card-text" *ngFor="let context of item.body; let k= index">
+                                    <div class="text-row"
+                                        [ngClass]="{'first-row': k === 0, 'second-row': k === 1,'third-row':k===2,'fourth-row':k===3}">
+                                        <div class="left-d">
+                                            <h3>{{context.title}} </h3>
+                                        </div>
+                                        <div class="right-d">
+                                            <h3> {{context.value}}</h3>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="textswcinassessment-p">
+                                    {{showAll[j] ? item.description :
+                                    item.truncatedText}}
+                                    <a type="button" (click)="toggleshow(j)"
+                                        [style.color]="showAll[j] ? 'red' : 'blue'">
+                                        {{showAll[j] ? 'Show Less' : 'Show More'}}
+                                    </a>
+                                </div><br><br>
+                            </div>
+                            <div class="card-footer form-check_new">
+                                <div class="routesandtechcostcard pb-3">
+                                    <h3>{{ item.textname }}</h3>
+                                    <div>
+                                        <input class="checkfrominput_new" type="checkbox" value="index"
+                                            id="flexCheckDefault"
+                                            [checked]="(result.ecommercegamedata)?(result.ecommercegamedata[item.cellvalue]===1):false"
+                                            (click)="writemarketingvalue(item.cellvalue,'checkbox',$event,'','','')" />
+                                    </div>
+                                </div>
+                                <div class="routesandtechcostcard pb-3">
+                                    <h3>{{ item.textmonth }}</h3>
+                                    <h3>{{(result.ecommercegamedata)?(result.ecommercegamedata[item.cellvalueno]):0}}</h3>
+                                </div>
+                                <div class="" style="height: 2rem;">
+                                    <input class="checkfrominput_new" type="checkbox" value="index"
+                                        id="flexCheckDefault"
+                                        [checked]="(result.ecommercegamedata)?(result.ecommercegamedata[item.costvalue]===1):false"
+                                        (click)="writemarketingvalue(item.costvalue,'checkbox',$event,'','','')" />
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="py-4">YouTube Campaign
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>Based on the metrics provided, which campaigns align best with your marketing goals, and why?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>Should you invest in A/B testing for your social media campaigns, and how do you assess the trade-off between extra cost and potential benefits?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of textLines3 ; let x = index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" [ngStyle]="{ 'height':[0,1,2].includes(x) ? '17rem' : '18rem' }"/>
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.ecommerceGameCM.ecommercegameperioddata[item.heading] }}</h2>
+                                <div class="card-text" *ngFor="let context of item.body; let k= index">
+                                    <div class="text-row"
+                                        [ngClass]="{'first-ro-w': k === 0, 'second-ro-w': k === 1,'third-ro-w':k===2,'fourth-ro-w':k===3}">
+                                        <div class="left-d">
+                                            <h3>{{context.title}} </h3>
+                                        </div>
+                                        <div class="right-d">
+                                            <h3> {{context.value}}</h3>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="textswcinassessment-p">
+                                    {{showAll[x] ? item.description :
+                                    item.truncatedText}}
+                                    <a type="button" (click)="toggleshow(x)"
+                                        [style.color]="showAll[x] ? 'red' : 'blue'">
+                                        {{showAll[x] ? 'Show Less' : 'Show More'}}
+                                    </a>
+                                </div><br><br>
+                            </div>
+                            <div class="card-footer form-check_new">
+                                <div class="routesandtechcostcard pb-3">
+                                    <h3>{{ item.textname }}</h3>
+                                    <div>
+                                        <input class="checkfrominput_new" type="checkbox" value="index"
+                                            id="flexCheckDefault"
+                                            [checked]="(result.ecommercegamedata)?(result.ecommercegamedata[item.cellvalue]===1):false"
+                                            (click)="writemarketingvalue(item.cellvalue,'checkbox',$event,'','','')" />
+                                    </div>
+                                </div>
+                                <div class="routesandtechcostcard pb-3">
+                                    <h3>{{ item.textmonth }}</h3>
+                                    <h3>{{(result.ecommercegamedata)?(result.ecommercegamedata[item.cellvalueno]):0}}</h3>
+                                </div>
+                                <div class="" style="height: 2rem;">
+                                    <input class="checkfrominput_new" type="checkbox" value="index"
+                                        id="flexCheckDefault"
+                                        [checked]="(result.ecommercegamedata)?(result.ecommercegamedata[item.costvalue]===1):false"
+                                        (click)="writemarketingvalue(item.costvalue,'checkbox',$event,'','','')" />
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="py-4">Email Tool
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>Which email tool best fits your business needs considering the features, volume capabilities, and cost?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>How will the choice of email tool impact your overall marketing strategy and customer engagement?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of textLines4; let index = index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" [ngStyle]="{ 'height':[1,2].includes(index) ? '17rem' : '18rem' }"/>
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.ecommerceGameCM.ecommercegameperioddata[item.heading] }}</h2>
+                                <div class="card-text" *ngFor="let context of item.body; let z= index">
+                                    <div class="text-row" [ngClass]="{'f-irst-row': z === 0, 's-econd-row': z === 1,'t-hird-row':z===2,'f-ourth-row':z===3,
+                                    'f-ifth-row':z===4,'s-ixth-row':z===5}">
+                                        <div class="left-d">
+                                            <h3>{{context.title}} </h3>
+                                        </div>
+                                        <div class="right-d">
+                                            <h3> {{context.value}}</h3>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card-footer form-check_new">
+                                <div class="routesandtechcostcard pb-3">
+                                    <h3>{{ item.textcost }}</h3>
+                                    <h3>{{(result.ecommerceGameCM.ecommercegameperioddata)?(result.ecommerceGameCM.ecommercegameperioddata[item.cellvalueno]):0}}</h3>
+                                </div>
+                                <div class="" style="height: 2rem;">
+                                    <input class="checkfrominput_new" type="radio"
+                                        [value]="index" name="cardSelection"
+                                        [checked]="(result.ecommercegamedata)?(result.ecommercegamedata[item.costvalue]===1):false"
+                                        (click)="writemarketingvalue(item.costvalue,'radio',$event,'aq86','aq87','aq88')"
+                                        [disabled]="inputDisabled" />
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="py-4">Campaigns
+                    <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>How would you prioritize the five email campaigns in terms of their strategic importance to your marketing objectives?</p>
+                            </div>
+                          </div>
+                            <div class='pt-2' style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp; 
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>To which subscriber segments will you send different types of emails to maximize engagement and response rates?</p>
+                              </div>
+                            </div>
+                        </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of campaightext; let a = index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" [ngStyle]="{ 'height':[1,3].includes(a) ? '17rem' : '18rem' }"/>
+                            </div>
+                            <div class="card-body pb-3">
+                                <h2>{{result.ecommerceGameCM.ecommercegameperioddata[item.heading]  }}</h2>
+                                <div class="card-text" *ngFor="let context of item.body; let x = index">
+                                    <div class="text-row pb-3" [ngClass]="{'camp1': x === 0}">
+                                        <div class="left-d">
+                                            <h3>{{context.title}} </h3>
+                                        </div>
+                                        <div class="right-d">
+                                            <h3> {{context.value}}</h3>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="textswcinassessment-p">
+                                    {{showAll[a] ? item.description :
+                                    item.truncatedText}}
+                                    <a type="button" (click)="toggleshow(a)"
+                                        [style.color]="showAll[a] ? 'red' : 'blue'">
+                                        {{showAll[a] ? 'Show Less' : 'Show More'}}
+                                    </a>
+                                </div><br><br>
+                               
+                            </div>
+                            <div class="card-footer form-check_new">
+                                <div class="routesandtechcostcard pb-3">
+                                    <h3>Priority</h3>
+                                    <select class="input-no_box-drop_New" [(ngModel)]="selectedOption[a]"
+                                    (change)="writemarketingvalue(item.priority, 'select', $event, '', '', '')">
+                                    >
+                                        <option value="" selected disabled>Select Your Option</option>
+                                        <option *ngFor="let option of options" [value]="option">{{option}}</option>
+                                    </select>
+                                </div>
+                                <div class="routesandtechcostcard pb-3">
+                                    <h3>{{ item.leads }}</h3>
+                                    <h3>{{(result.ecommercegamedata)?(result.ecommercegamedata[item.cellvalueno]):0}}</h3>
+                                </div>
+                                <div class="camp-foot ">
+                                    <label class="form-check-label" [for]="'carddrop-' + a">Choose any option
+                                    </label>
+                                    <select class="input-no_box-drop_New" [id]="'carddrop-' + a"
+                                        [(ngModel)]="campaigncardOption[a]"
+                                        (change)="writemarketingvalue(item.leadcell, 'select', $event, '', '', '')">
+                                        >
+                                        <option value="" selected disabled hidden>Select Your Option</option>
+                                        <option *ngFor="let item of campaigncard" [value]="item">{{item}}</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>Note: The emails if provided different priority will be sent in intervals of 6 days while if provided
+                    same priority will be sent at the same time.</p>
+                <h1 class="py-4">Branding Campaigns
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>Which branding campaigns should you launch to effectively enhance your online presence, and how do the costs compare to the projected business impacts?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'> How will different branding campaigns synergize with your overall marketing strategy to boost brand awareness and customer acquisition?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of brandingText ; let p = index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" [ngStyle]="{ 'height':[2,4].includes(p) ? '17rem' : '18rem' }" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.ecommerceGameCM.ecommercegameperioddata[item.heading]  }}</h2>
+                                <div class="card-text" *ngFor="let context of item.body; let g = index">
+                                    <div class="text-row"
+                                        [ngClass]="{'firstrow' : g === 0,'scndrow' : g === 1, 'thrdrow' : g === 2, 'forthrow' : g === 3}">
+                                        <div class="left-d">
+                                            <h3>{{context.title}} </h3>
+                                        </div>
+                                        <div class="right-d">
+                                            <h3> {{context.value}}</h3>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="textswcinassessment-p">
+                                    {{showAll[p] ? item.description :
+                                    item.truncatedText}}
+                                    <a type="button" (click)="toggleshow(p)"
+                                        [style.color]="showAll[p] ? 'red' : 'blue'">
+                                        {{showAll[p] ? 'Show Less' : 'Show More'}}
+                                    </a>
+                                </div><br><br>
+                               
+                            </div>
+                            <div class="card-footer form-check_new">
+                               
+                                <div class="routesandtechcostcard pb-3">
+                                    <h3>{{ item.textcost }}</h3>
+                                    <h3>{{(result.ecommerceGameCM.ecommercegameperioddata)?
+                                            (result.ecommerceGameCM.ecommercegameperioddata[item.cellvalueno]):0}}</h3>
+                                </div>
+                                <div class="" style="height: 2rem;">
+                                    <input class="checkfrominput_new" type="checkbox" value="index"
+                                        id="flexCheckDefault"
+                                        [checked]="(result.ecommercegamedata)?(result.ecommercegamedata[item.cellvalue]===1):false"
+                                        (click)="writemarketingvalue(item.cellvalue,'checkbox',$event,'','','')"
+                                         [disabled]="inputDisabled" />
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               
+            </div>
+        </div>
+    </div>
+</div>

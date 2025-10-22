@@ -1,0 +1,89 @@
+// .timerset {
+//   // position: sticky;
+//   // right: 6rem;
+//   // top: 4.6rem;
+//   // z-index: 20;
+//   position: relative;
+//   top: 0.6rem;
+// }
+
+.timerset .card {
+  min-width: 11rem;
+  margin-top: 3px;
+  // min-width: 11rem;
+  // position: absolute;
+  // top: 4.7rem;
+  // right: 1rem;
+  // z-index: 30;
+  // position: absolute;
+  // top: 0.7rem;
+  // right: 11rem;
+  // top: 6.7rem;
+  // right: 1rem;
+  // z-index: 30;
+}
+
+.count-down-timer {
+  box-shadow: 2px 6px 9px 2px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  /* background-color: #f0ebb9; */
+  max-width: 100%;
+  margin: 0px auto;
+  /* color: #040404; */
+  /* border-radius: 6px; */
+  /* padding: 6px; */
+  font-family: sans-serif;
+  /* border: 1px solid white; */
+  background: transparent;
+  border: none;
+  padding: 0.4rem;
+
+
+  >p {
+    margin: 5px 0 15px 0;
+  }
+
+  .wrapper {
+
+    .description,
+    .times {
+      display: grid;
+      grid-template-columns: repeat(4, calc(25% - 8px));
+      grid-column-gap: 10px;
+    }
+
+    .description {
+      >p {
+        margin: 0;
+        font: normal 13px sans-serif;
+        color: white;
+      }
+    }
+
+    .times {
+      p {
+        letter-spacing: 0px;
+        position: relative;
+        margin: 0;
+        color: white;
+        font: normal 12px courier, sans-serif;
+
+        ::ng-deep img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 30px;
+          display: block;
+          height: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .count-down-timer {
+    margin: 20px;
+  }
+}

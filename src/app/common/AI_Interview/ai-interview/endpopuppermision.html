@@ -1,0 +1,31 @@
+<div class="card logistics-decisionchecklistpopup">
+    <!-- <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div> -->
+    <div class="card-header decisionchecklistpopup-card-header">
+        <div>
+            <p class="decisionchecklistpopup-card-header-pclass">Warning</p>
+        </div>
+        <div>
+            <i class="bi bi-x-circle cross-circle" (click)="close()"></i>
+        </div>
+    </div>
+    <div class="card-body">
+        <p>
+            <!-- Just so you know, you are about to proceed to the
+            reports/next round. The reports will only be generated once
+            the conversation is over. A hint of conversion being over is AI
+            saying, “Thank you, the discussion is over”. Do you want to
+            proceed ahead? -->
+            Just so you know, you are about to proceed to the next round. The reports will not be generated once Skip
+            Round is pressed. A report only gets generated once conversion is over where AI says, “Thank you, the
+            discussion is over”. Do you want to skip the round?
+        </p>
+    </div>
+    <div class="card-footer decisionchecklistpopup-card-footer py-3">
+        <div><button type="button" class=" close_btn" mat-dialog-close>Close</button></div>
+        <div><button type="button" class=" save_btn" (click)="save()" [disabled]="isbuttondisabled">Skip & Proceed</button></div>
+    </div>
+
+</div>

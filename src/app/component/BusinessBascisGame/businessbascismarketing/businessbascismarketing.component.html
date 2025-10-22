@@ -1,0 +1,241 @@
+<div class="elearingnewui bus_iness">
+  <div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+  </div>
+  <div class="container">
+    <div class="body-element  ">
+      <div class="marketing">
+        <div class="element-first">
+          <div class="row">
+            <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought">
+              <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                <button   class="food-thought-btn">Food For Thought</button></span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h1>
+            Price
+            <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+              </div> &nbsp; &nbsp; &nbsp;
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px;'>What is the average price point for the target audience? </p>
+              </div>
+            </div><br>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>How will you factor elasticity and create a balance between revenue vs cost already incurred?</p>
+                </div>
+              </div>
+          </div> ">
+              help_outline
+            </mat-icon>
+          </h1>
+        </div>
+        <p class="">Set price per cup of tea, INR</p>
+        <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="c23" [disabled]="checkdisable"
+          (focusout)="writeMarketing('c23')">
+        <div class="row row-cols-md-2 mt-4 marketing-graph-card p-3">
+          <div class="col-md">
+            <div class="card marketing-graph-card-next h-100 p-3">
+              <apx-chart [series]="lineChart.series" [chart]="lineChart.chart" [markers]="lineChart.markers"
+                [stroke]="lineChart.stroke" [title]="lineChart.title" [xaxis]="lineChart.xaxis"  [tooltip]="lineChart.tooltip"
+                [yaxis]="lineChart.yaxis"></apx-chart>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card marketing-graph-card-next h-100 p-3">
+              <apx-chart [series]="perteacup.series" [chart]="perteacup.chart" [dataLabels]="perteacup.dataLabels"
+                [plotOptions]="perteacup.plotOptions" [yaxis]="perteacup.yaxis" [xaxis]="perteacup.xaxis"  [tooltip]="perteacup.tooltip"
+                [fill]="perteacup.fill" [title]="perteacup.title">
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+        <div class="row ro-cols-md-2 mt-5">
+          <div class="col-md">
+            <h1 class="Promotion ">
+              Promotion
+              <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+              </div> &nbsp; &nbsp; &nbsp;
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px;'>How much to spend to create awareness about your shop in the market?</p>
+              </div>
+            </div>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white;font-size:13px;'>Will spending more reach more audience? Which campaigns will have the maximum effect on the target audience?</p>
+                </div>
+              </div>
+          </div> ">
+                help_outline
+              </mat-icon>
+            </h1>
+            <div>
+              <p class="">Monthly Promotional Budget, INR</p>
+              <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="c24" [disabled]="checkdisable"
+                (focusout)="writeMarketing('c24')">
+            </div>
+          </div>
+          <div class="col-md ">
+            <div class="card h-100 marketing-card pt-4 ps-2">
+              <apx-chart [series]="lineChart2.series" [chart]="lineChart2.chart" [markers]="lineChart2.markers"
+                [stroke]="lineChart2.stroke" [title]="lineChart2.title" [xaxis]="lineChart2.xaxis"  [tooltip]="lineChart2.tooltip"
+                [yaxis]="lineChart2.yaxis"></apx-chart>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row row-cols-md-3 mt-4 g-3 input-img-card">
+          <div class="col-md" *ngIf="showCampaign">
+            <div class="card h-100 marketing-card">
+              <div>
+                <img src="assets/images/businessbasics/socialmedia.jpg" class="card-img-top" alt="Your Image" />
+              </div>
+              <div class="card-body">
+                <h3>Social Media</h3>
+                <p class="card-text">Create thematic content like "Study Sips" or "Corporate Calm" for promotions,
+                  featuring
+                  advantages to the target market. Engages digitally-savvy promoting the café as their go-to spot for
+                  relaxation or focused work.</p>
+              </div>
+              <div class="card-footer form-check">
+                <input class="form-check-input checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                  [(ngModel)]="campaign1" [disabled]="checkdisable" (change)="writeMarketing('campaign1')" />
+                <label class="form-check-label" for="flexCheckDefault">
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md" *ngIf="showCampaign">
+            <div class="card h-100 marketing-card">
+              <div>
+                <img src="assets/images/businessbasics/advertisment.jpg" class="card-img-top" alt="Your Image" />
+              </div>
+              <div class="card-body">
+                <h3>Local Advertising</h3>
+                <p class="card-text">Place ads in newsletters or bulletins boards, highlighting discounts for target
+                  customers. It directly targets and incentivizes the primary audience, driving them to visit with
+                  exclusive offers tailored to their group.
+                </p>
+              </div>
+              <div class="card-footer form-check">
+                <input class="form-check-input checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                  [(ngModel)]="campaign2" [disabled]="checkdisable" (change)="writeMarketing('campaign2')" />
+                <label class="form-check-label" for="flexCheckDefault">
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md" *ngIf="showCampaign">
+            <div class="card h-100 marketing-card">
+              <div>
+                <img src="assets/images/businessbasics/collabration.jpeg" class="card-img-top" alt="Your Image" />
+              </div>
+              <div class="card-body">
+                <h3>Collaborations</h3>
+                <p class="card-text">Partner with clubs or events, offering a space for meetups or co-branded
+                  merchandise.
+                  It enhances the café's reputation as a community hub, fostering loyalty among the target group by
+                  catering to their specific needs.</p>
+              </div>
+              <div class="card-footer form-check">
+                <input class="form-check-input checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                  [(ngModel)]="campaign3" [disabled]="checkdisable" (change)="writeMarketing('campaign3')" />
+                <label class="form-check-label" for="flexCheckDefault">
+                </label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <h1 class="mt-5">
+          Service
+          <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+              </div> &nbsp; &nbsp; &nbsp;
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px;'>What is more effective people serving themselves or serving them on the table?</p>
+              </div>
+            </div>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>Which is the better way to balance cost vs consumer expectation?</p>
+                </div>
+              </div>
+          </div> ">
+            help_outline
+          </mat-icon>
+        </h1>
+        <div class="row row-cols-md-2">
+          <div class="col-md-6">
+            <div class="mark-img">
+              <img src="assets/images/businessbasics/mar_eting.PNG" alt="Your Image" class="img-fluid"
+                style="width: 100%;" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card marketing-card p-4">
+              <apx-chart [series]="marketingcost.series" [chart]="marketingcost.chart"
+                [dataLabels]="marketingcost.dataLabels" [plotOptions]="marketingcost.plotOptions"
+                [yaxis]="marketingcost.yaxis" [xaxis]="marketingcost.xaxis" [tooltip]="marketingcost.tooltip" [fill]="marketingcost.fill" 
+                [title]="marketingcost.title">
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+        <div class="row row-cols-md-2 mt-4">
+          <div class="col-md">
+            <div class="card marketing-card p-3" [ngClass]="{ selected: c25 === 'Self Service' }">
+              <label class="input-card-label">
+                <input type="radio" name="cardSelection" (change)="getSelectedservice('Self Service')"
+                  [checked]="c25 === 'Self Service'" [disabled]="checkdisable" /> &nbsp; {{u27}}
+                <p class="maincontent">
+                  {{showall?w27:truncatedText}}
+                  <a (click)="toggleshow()" [style.color]="showall?'red':'blue'">{{!showall?'Show all':'Hide all'}}</a>
+                </p>
+                
+              </label>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card marketing-card p-3" [ngClass]="{ selected: c25 === 'Table Service' }">
+              <label class="input-card-label">
+                <input type="radio" name="cardSelection" (change)="getSelectedservice('Table Service')"
+                  [checked]="c25 === 'Table Service'" [disabled]="checkdisable" />&nbsp; {{u28}}
+                <p class="maincontent">
+                  {{showallnew?w28:truncatedText1}}
+                  <a (click)="toggleshow1()" [style.color]="showallnew?'red':'blue'">{{!showallnew?'Show all':'Hide
+                    all'}}</a>
+                </p>
+                
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

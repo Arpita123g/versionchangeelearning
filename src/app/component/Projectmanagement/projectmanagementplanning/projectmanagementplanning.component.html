@@ -1,0 +1,463 @@
+<div class="elearingnewui project_management">
+  <div class="container">
+    <div class="body-element">
+      <div class="projectPlanning">
+        <div class="row" class="element-first">
+          <div
+            class="marelegapfood"
+            (click)="openDialog()"
+            *ngIf="foodforthought"
+            style="text-align: right; margin: 0rem 0rem 3rem 0rem"
+          >
+            <span class="food-thought-span"
+              ><i class="bi bi-bar-chart-fill"></i>
+              <button class="food-thought-btn">Food For Thought</button></span
+            >
+          </div>
+        </div>
+
+        <h1>
+          Task Planning
+          <mat-icon
+            appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>How can you allocate tasks to optimize resource skills and minimize the overall project duration, considering their individual availability?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>Given the budget constraints, how can you judiciously use overtime to accelerate critical tasks without exceeding the allocated budget?</p>
+                          </div>
+                        </div>
+                    </div> "
+          >
+            help_outline
+          </mat-icon>
+        </h1>
+
+        <div class="row row-cols-md-3 py-3">
+          <div class="col-md">
+            <h3 style="text-align: center; font-weight: 600">Priya Sharma</h3>
+          </div>
+          <div class="col-md">
+            <h3 style="text-align: center; font-weight: 600">Rohan Kapoor</h3>
+          </div>
+          <div class="col-md">
+            <h3 style="text-align: center; font-weight: 600">Aisha Khan</h3>
+          </div>
+        </div>
+
+        <div class="row row-cols-md-3">
+          <div class="col-md-4">
+            <div class="card rigorcard" style="border: none">
+              <apx-chart
+                [series]="priyarigorcharts.series"
+                [chart]="priyarigorcharts.chart"
+                [xaxis]="priyarigorcharts.xaxis"
+                [yaxis]="priyarigorcharts.yaxis"
+                [stroke]="priyarigorcharts.stroke"
+                [markers]="priyarigorcharts.markers"
+                [fill]="priyarigorcharts.fill"
+                [title]="priyarigorcharts.title"
+              ></apx-chart>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card rigorcard" style="border: none">
+              <apx-chart
+                [series]="rohanrigorcharts.series"
+                [chart]="rohanrigorcharts.chart"
+                [xaxis]="rohanrigorcharts.xaxis"
+                [yaxis]="rohanrigorcharts.yaxis"
+                [stroke]="rohanrigorcharts.stroke"
+                [markers]="rohanrigorcharts.markers"
+                [fill]="rohanrigorcharts.fill"
+                [title]="rohanrigorcharts.title"
+              ></apx-chart>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card rigorcard" style="border: none">
+              <apx-chart
+                [series]="aisharigorcharts.series"
+                [chart]="aisharigorcharts.chart"
+                [xaxis]="aisharigorcharts.xaxis"
+                [yaxis]="aisharigorcharts.yaxis"
+                [stroke]="aisharigorcharts.stroke"
+                [markers]="aisharigorcharts.markers"
+                [fill]="aisharigorcharts.fill"
+                [title]="aisharigorcharts.title"
+              ></apx-chart>
+            </div>
+          </div>
+        </div>
+
+        <div class="row row-cols-md-2 py-3 g-3">
+          <div class="col-md">
+            <p style="text-align: center">Select a task</p>
+            <div style="text-align: center">
+              <select
+                class="input-no_box-drop_New"
+                [(ngModel)]="result[0]"
+                (focusout)="projectmanagement('as8', 0)"
+                [disabled]="checkdisable"
+              >
+                <option *ngFor="let task of tasks" [value]="task">
+                  {{ task }}
+                </option>
+              </select>
+            </div>
+            <div class="card" style="border: none">
+              <div class="card-img-top img-top-new" style="text-align: center">
+                <img
+                  src="../../../../assets/images/projectmanagement/selecttask.svg"
+                  alt="..."
+                  class="img-fluid img-img"
+                  style="height: 18rem; width: 65%"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <table class="table rsl_tbl">
+              <thead class="rsl_tbl-thead">
+                <tr class="rsl_tbl-thead-tr">
+                  <th class="rsl_tbl-thead-th" colspan="4">
+                    Time Management, Workdays
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="rsl_tbl-tbody">
+                <tr class="rsl_tbl-tbody-tr">
+                  <th class="rsl_tbl-tbody-th"></th>
+                  <th class="rsl_tbl-tbody-th">Priya Sharma</th>
+                  <th class="rsl_tbl-tbody-th">Rohan Kapoor</th>
+                  <th class="rsl_tbl-tbody-th">Aisha Khan</th>
+                </tr>
+                <tr class="rsl_tbl-tbody-tr" *ngFor="let row of timeManagement">
+                  <td>{{ row.category }}</td>
+                  <td
+                    class="middleclassright"
+                    *ngIf="row.category !== 'Overtime days'"
+                  >
+                    {{ row.values[0] | number: "1.0-0" }}
+                  </td>
+                  <td
+                    class="middleclassright"
+                    *ngIf="row.category === 'Overtime days'"
+                  >
+                    <input
+                      class="input-no_box"
+                      placeholder="Input value here..."
+                      type="number"
+                      (focusout)="inputtablevalue('ae26', 60)"
+                      style="height: 2.6rem; width: 8rem; text-align: right"
+                      [(ngModel)]="result[60]"
+                      [disabled]="checkdisable"
+                    />
+                  </td>
+
+                  <td
+                    class="middleclassright"
+                    *ngIf="row.category !== 'Overtime days'"
+                  >
+                    {{ row.values[1] | number: "1.0-0" }}
+                  </td>
+                  <td
+                    class="middleclassright"
+                    *ngIf="row.category === 'Overtime days'"
+                  >
+                    <input
+                      class="input-no_box"
+                      placeholder="Input value here..."
+                      type="number"
+                      (focusout)="inputtablevalue('ae27', 61)"
+                      style="height: 2.6rem; width: 8rem; text-align: right"
+                      [(ngModel)]="result[61]"
+                      [disabled]="checkdisable"
+                    />
+                  </td>
+
+                  <td
+                    class="middleclassright"
+                    *ngIf="row.category !== 'Overtime days'"
+                  >
+                    {{ row.values[2] | number: "1.0-0" }}
+                  </td>
+                  <td
+                    class="middleclassright"
+                    *ngIf="row.category === 'Overtime days'"
+                  >
+                    <input
+                      class="input-no_box"
+                      placeholder="Input value here..."
+                      type="number"
+                      (focusout)="inputtablevalue('ae28', 62)"
+                      style="height: 2.6rem; width: 8rem; text-align: right"
+                      [(ngModel)]="result[62]"
+                      [disabled]="checkdisable"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="row row-cols-md-2 py-3 g-3">
+          <div class="col-md">
+            <table class="table rsl_tbl">
+              <thead class="rsl_tbl-thead">
+                <tr class="rsl_tbl-thead-tr">
+                  <th class="rsl_tbl-thead-th" colspan="4">
+                    Productivity, Workdays
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="rsl_tbl-tbody">
+                <tr class="rsl_tbl-tbody-tr">
+                  <th class="rsl_tbl-tbody-th"></th>
+                  <th class="rsl_tbl-tbody-th">Expected Workdays</th>
+                  <th class="rsl_tbl-tbody-th">Skill Factor</th>
+                  <th class="rsl_tbl-tbody-th">Actual Workdays</th>
+                </tr>
+                <tr
+                  class="rsl_tbl-tbody-tr"
+                  *ngFor="let row of ProductivityworkData"
+                >
+                  <td>{{ row.name }}</td>
+                  <td class="middleclassright">
+                    {{ row.values[0] | number: "1.2-2" }}
+                  </td>
+                  <td class="middleclassright">
+                    {{ row.values[1] | number: "1.2-2" }}
+                  </td>
+                  <td>{{ row.values[2] | number: "1.2-2" }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md">
+            <table class="table rsl_tbl">
+              <thead class="rsl_tbl-thead">
+                <tr class="rsl_tbl-thead-tr">
+                  <th class="rsl_tbl-thead-th" colspan="4">
+                    Cost Management, INR
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="rsl_tbl-tbody">
+                <tr class="rsl_tbl-tbody-tr">
+                  <th class="rsl_tbl-tbody-th"></th>
+                  <th class="rsl_tbl-tbody-th">Priya Sharma</th>
+                  <th class="rsl_tbl-tbody-th">Rohan Kapoor</th>
+                  <th class="rsl_tbl-tbody-th">Aisha Khan</th>
+                </tr>
+                <tr class="rsl_tbl-tbody-tr" *ngFor="let row of costManagement">
+                  <td>{{ row.category }}</td>
+                  <td class="middleclassright">
+                    {{ row.values[0] | number: "1.0-0" }}
+                  </td>
+                  <td class="middleclassright">
+                    {{ row.values[1] | number: "1.0-0" }}
+                  </td>
+                  <td>{{ row.values[2] | number: "1.0-0" }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <h1 class="mt-5">
+          Efficiency Boosters
+          <mat-icon
+            appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>How would investing time and budget in a training workshop or mentorship program positively impact resource skills and contribute to project success?</p>
+                            </div>
+                          </div>
+                            <div class='pt-2' style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp; 
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>How can you strike a balance to ensure optimal resource capabilities without compromising project timelines?</p>
+                              </div>
+                            </div>
+                        </div> "
+          >
+            help_outline
+          </mat-icon>
+        </h1>
+        <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+          <div class="col-md" *ngFor="let card of cardData1; let i = index">
+            <div class="card marketing-card h-100">
+              <div class="craftingimg">
+                <img [src]="card.image" class="card-img-top" alt="Card Image" />
+              </div>
+              <div class="card-body">
+                <h2>{{ card.title }}</h2>
+                <p class="card-text">
+                  {{
+                    textshow[card.id] ? card.description : card.turncatedtext
+                  }}
+                  <span
+                    class="mt-3"
+                    style="cursor: pointer; font-size: small"
+                    (click)="toggleText(card.id)"
+                    [ngStyle]="{ color: textshow[card.id] ? 'red' : 'blue' }"
+                  >
+                    {{ textshow[card.id] ? "Show Less" : "Show More" }}
+                  </span>
+                </p>
+              </div>
+              <div class="card-footer form-check">
+                <div class="routesandtechcostcard">
+                  <h3>Time Reduction, days</h3>
+                  <h3>{{ card.timeReduction }}</h3>
+                </div>
+                <div class="routesandtechcostcard">
+                  <h3>Budget, INR</h3>
+                  <h3>{{ card.budget }}</h3>
+                </div>
+                <input
+                  class="checkfrominput"
+                  type="radio"
+                  [(ngModel)]="result[i + 40]"
+                  (change)="inputtablevalue('ae' + (15 + i), i + 40)"
+                  [disabled]="checkdisable"
+                />
+                <label class="form-check-label"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="mt-5">
+          Task Allocation
+          <mat-icon
+            appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>How can you manage tasks concurrently to optimize project duration and resource utilization?</p>
+                            </div>
+                          </div>
+                            <div class='pt-2' style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp; 
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>How will you incorporate contingency planning into the task allocation strategy to ensure timely project completion within the budget?</p>
+                              </div>
+                            </div>
+                        </div> "
+          >
+            help_outline
+          </mat-icon>
+        </h1>
+
+        <div class="row row-cols-md-2 py-3 g-3">
+          <div class="col-md">
+            <div class="card" style="border: none">
+              <div class="card-img-top img-top-new" style="text-align: center">
+                <img
+                  src="../../../../assets/images/projectmanagement/selecttask.svg"
+                  alt="..."
+                  class="img-fluid img-img"
+                  style="height: 18rem; width: 65%"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md">
+            <div class="card p-2">
+              <apx-chart
+                [series]="workdaysavlchart.series"
+                [chart]="workdaysavlchart.chart"
+                [dataLabels]="workdaysavlchart.dataLabels"
+                [plotOptions]="workdaysavlchart.plotOptions"
+                [yaxis]="workdaysavlchart.yaxis"
+                [xaxis]="workdaysavlchart.xaxis"
+                [fill]="workdaysavlchart.fill"
+                [title]="workdaysavlchart.title"
+                [tooltip]="workdaysavlchart.tooltip"
+              >
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+
+        <div class="row row-cols-md py-3">
+          <div class="col-md">
+            <div class="card p-2">
+              <apx-chart
+                [series]="projectshedulechart.series"
+                [chart]="projectshedulechart.chart"
+                [dataLabels]="projectshedulechart.dataLabels"
+                [plotOptions]="projectshedulechart.plotOptions"
+                [yaxis]="projectshedulechart.yaxis"
+                [xaxis]="projectshedulechart.xaxis"
+                [fill]="projectshedulechart.fill"
+                [noData]="projectshedulechart.noData"
+                [tooltip]="projectshedulechart.tooltip"
+              >
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+
+        <div class="row row-cols-md py-3">
+          <div class="col-md">
+            <table class="table rsl_tbl">
+              <thead class="rsl_tbl-thead">
+                <tr class="rsl_tbl-thead-tr">
+                  <th class="rsl_tbl-thead-th" colspan="4">Task Assignment</th>
+                </tr>
+                <tr class="rsl_tbl-thead-tr">
+                  <th class="rsl_tbl-tbody-th" style="text-align: left"></th>
+                  <th class="rsl_tbl-tbody-th" *ngFor="let person of employees">
+                    {{ person.name }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="rsl_tbl-tbody">
+                <tr
+                  class="rsl_tbl-tbody-tr"
+                  *ngFor="let task of tasks; let i = index"
+                >
+                  <td>{{ task }}</td>
+                  <td *ngFor="let person of employees">
+                    <input
+                      type="radio"
+                      [name]="'task' + i"
+                      [(ngModel)]="selectedTasks[i]"
+                      [value]="person.id"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

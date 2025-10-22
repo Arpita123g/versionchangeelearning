@@ -1,0 +1,634 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui promotion_sigment">
+    <div class="container">
+        <div class="body-element">
+            <div class="element-first">
+                <div class="row">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+            </div>
+            <h1>Website
+                <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'>How well do the chosen campaigns align with the characteristics and behavior of our website visitors, and which campaigns are likely to generate the highest conversion rates?</p>
+                    </div>
+                  </div>
+                </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <div class="row row-cols-md-3 g-3 mt-4 input-img-card">
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/promotionsigment/exclusive.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3>{{periodresult[0]}}</h3>
+
+                            <p class="maincontent">
+                                <span style="font-weight: 500;color: black;">Engagement Rate: </span><span
+                                    style="color: red;">3% to 6%</span> <br>
+                                <span style="font-weight: 500;color: black;">Conversion Rate: </span><span
+                                    style="color: red;">2% to 4%</span> <br>
+                                <span style="font-weight: 500;color: black;">Click-Through Rate (CTR): </span><span
+                                    style="color: red;">4% to 8%</span> <br>
+                                <span style="font-weight: 500;color: black;">Average Order Value (AOV): </span><span
+                                    style="color: red;">Rs. 400 to Rs 600</span> <br><br>
+                                {{showAll[0] ? cards[0].text : cards[0].truncatedText}}
+                                <a type="button" (click)="toggleshow(0)" [style.color]="showAll[0] ? 'red' : 'blue'">
+                                    {{showAll[0] ? 'Show Less' : 'Show More'}}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Cost, INR</h3>
+                                <h3>500000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="radio" value="" id="flexCheckDefault" name="website"
+                                [checked]="result[0] === 1" (click)="writepromotionsValue('website',0,$event)">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/promotionsigment/premium.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3>{{periodresult[1]}}</h3>
+
+                            <p class="maincontent">
+                                <span style="font-weight: 500;color: black;">Engagement Rate: </span><span
+                                    style="color: red;">2.5% to 5%</span> <br>
+                                <span style="font-weight: 500;color: black;">Conversion Rate: </span><span
+                                    style="color: red;">1.5% to 3%</span> <br>
+                                <span style="font-weight: 500;color: black;">Click-Through Rate (CTR): </span> <span
+                                    style="color: red;">3% to
+                                    6%</span><br>
+                                <span style="font-weight: 500;color: black;">Average Time Spent on Page: </span><span
+                                    style="color: red;">1.5 to
+                                    3 minutes</span> <br><br>
+                                {{showAll[1] ? cards[1].text : cards[1].truncatedText}}
+                                <a type="button" (click)="toggleshow(1)" [style.color]="showAll[1] ? 'red' : 'blue'">
+                                    {{showAll[1] ? 'Show Less' : 'Show More'}}
+                                </a>
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Cost, INR</h3>
+                                <h3>600000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="radio" value="" id="flexCheckDefault" name="website"
+                                [checked]="result[1] === 1" (click)="writepromotionsValue('website',1,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/promotionsigment/facecare.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3>{{periodresult[2]}}</h3>
+                            <p class="maincontent">
+                                <span style="font-weight: 500;color: black;">Engagement Rate: </span><span
+                                    style="color: red;">3% to 7%</span> <br>
+                                <span style="font-weight: 500;color: black;">Conversion Rate: </span><span
+                                    style="color: red;">2.5% to 5%</span> <br>
+                                <span style="font-weight: 500;color: black;">Click-Through Rate (CTR): </span><span
+                                    style="color: red;">5% to
+                                    9%</span> <br>
+                                <span style="font-weight: 500;color: black;">Percentage of Bundle Sales: </span><span
+                                    style="color: red;">20% to
+                                    35%</span> <br><br>
+
+                                {{showAll[2] ? cards[2].text : cards[2].truncatedText}}
+                                <a type="button" (click)="toggleshow(2)" [style.color]="showAll[2] ? 'red' : 'blue'">
+                                    {{showAll[2] ? 'Show Less' : 'Show More'}}
+                                </a>
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Cost, INR</h3>
+                                <h3>800000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="radio" value="" id="flexCheckDefault" name="website"
+                                [checked]="result[2] === 1" (click)="writepromotionsValue('website',2,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="mt-5">Social Commerce
+                <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'> How can the selected campaigns resonate with our target audience on social media, and which ones are likely to drive the most interaction and conversions?</p>
+                    </div>
+                  </div>
+                </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <div class="row row-cols-md-3 g-3 mt-4 input-img-card">
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/promotionsigment/community.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3>{{periodresult[3]}}</h3>
+                            <p class="maincontent">
+                                <span style="font-weight: 500;color: black;">Engagement Rate: </span><span
+                                    style="color: red;">4% to 8%</span> <br>
+                                <span style="font-weight: 500;color: black;">Conversion Rate: </span><span
+                                    style="color: red;">2.5% to 5%</span> <br>
+                                <span style="font-weight: 500;color: black;">Click-Through Rate (CTR): </span><span
+                                    style="color: red;">6% to
+                                    10%</span> <br>
+                                <span style="font-weight: 500;color: black;">Live Session Viewership: </span><span
+                                    style="color: red;"> 500 to 1,000 participants per session</span><br><br>
+
+                                {{showAll[3] ? cards[3].text : cards[3].truncatedText}}
+                                <a type="button" (click)="toggleshow(3)" [style.color]="showAll[3] ? 'red' : 'blue'">
+                                    {{showAll[3] ? 'Show Less' : 'Show More'}}
+                                </a>
+
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Cost, INR</h3>
+                                <h3>180000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault" name=""
+                                [checked]="result[3] === 1" (change)="writepromotionsValue('social',3,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/promotionsigment/flashsales.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3>{{periodresult[4]}}</h3>
+                            <p class="maincontent">
+                                <span style="font-weight: 500;color: black;">Engagement Rate: </span><span
+                                    style="color: red;">3.5% to 7%</span> <br>
+                                <span style="font-weight: 500;color: black;">Conversion Rate: </span><span
+                                    style="color: red;">2% to 4%</span> <br>
+                                <span style="font-weight: 500;color: black;"> Click-Through Rate (CTR): </span><span
+                                    style="color: red;">5% to
+                                    9%</span> <br>
+                                <span style="font-weight: 500;color: black;">Flash Sale Participation: </span><span
+                                    style="color: red;">300 to
+                                    500
+                                    participants per sale</span> <br><br>
+
+                                {{showAll[4] ? cards[4].text : cards[4].truncatedText}}
+                                <a type="button" (click)="toggleshow(4)" [style.color]="showAll[4] ? 'red' : 'blue'">
+                                    {{showAll[4] ? 'Show Less' : 'Show More'}}
+                                </a>
+
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Cost, INR</h3>
+                                <h3>200000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                [checked]="result[4] === 1" (change)="writepromotionsValue('social',4,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/promotionsigment/storytelling.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3>{{periodresult[5]}}</h3>
+                            <p class="maincontent">
+                                <span style="font-weight: 500;color: black;">Engagement Rate: </span><span
+                                    style="color: red;">5% to 9%</span> <br>
+                                <span style="font-weight: 500;color: black;">Conversion Rate: </span><span
+                                    style="color: red;">2.5% to 5%</span> <br>
+                                <span style="font-weight: 500;color: black;">Click-Through Rate (CTR): </span><span
+                                    style="color: red;">7% to 11%</span> <br>
+                                <span style="font-weight: 500;color: black;">Influencer Collaboration Impact:
+                                </span><span style="color: red;">20% to 30%
+                                    increase in product mentions </span>
+                                <br><br>
+                                {{showAll[5] ? cards[5].text : cards[5].truncatedText}}
+                                <a type="button" (click)="toggleshow(5)" [style.color]="showAll[5] ? 'red' : 'blue'">
+                                    {{showAll[5] ? 'Show Less' : 'Show More'}}
+                                </a>
+
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Cost, INR</h3>
+                                <h3>250000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                [checked]="result[5] === 1" (change)="writepromotionsValue('social',5,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-md-3 g-3 mt-3 input-img-card">
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/promotionsigment/skincaretopic.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3>{{periodresult[6]}}</h3>
+                            <p class="maincontent">
+                                <span style="font-weight: 500;color: black;">Engagement Rate: </span><span
+                                    style="color: red;">3.5% to 6%</span> <br>
+                                <span style="font-weight: 500;color: black;">Conversion Rate: </span><span
+                                    style="color: red;">2% to 4%</span> <br>
+                                <span style="font-weight: 500;color: black;">Click-Through Rate (CTR): </span><span
+                                    style="color: red;"> 5% to
+                                    8%</span><br>
+                                <span style="font-weight: 500;color: black;">Article Shares: </span><span
+                                    style="color: red;">200 to 400 shares
+                                    per
+                                    article</span> <br><br>
+                                {{showAll[6] ? cards[6].text : cards[6].truncatedText}}
+                                <a type="button" (click)="toggleshow(6)" [style.color]="showAll[6] ? 'red' : 'blue'">
+                                    {{showAll[6] ? 'Show Less' : 'Show More'}}
+                                </a>
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Cost, INR</h3>
+                                <h3>300000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                [checked]="result[6] === 1" (change)="writepromotionsValue('social',6,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/promotionsigment/tutorialseries.svg"
+                                class="card-img-top" alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3>{{periodresult[7]}}</h3>
+                            <p class="maincontent">
+                                <span style="font-weight: 500;color: black;">Engagement Rate: </span><span
+                                    style="color: red;">6% to 10%</span> <br>
+                                <span style="font-weight: 500;color: black;">Conversion Rate: </span><span
+                                    style="color: red;"> 3% to 6%</span><br>
+                                <span style="font-weight: 500;color: black;">Click-Through Rate (CTR): </span><span
+                                    style="color: red;">8% to
+                                    12%</span> <br>
+                                <span style="font-weight: 500;color: black;">Video Viewership: </span><span
+                                    style="color: red;">10,000 to 15,000
+                                    views per tutorial</span> <br><br>
+                                {{showAll[7] ? cards[7].text : cards[7].truncatedText}}
+                                <a type="button" (click)="toggleshow(7)" [style.color]="showAll[7] ? 'red' : 'blue'">
+                                    {{showAll[7] ? 'Show Less' : 'Show More'}}
+                                </a>
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Cost, INR</h3>
+                                <h3>400000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                [checked]="result[7] === 1" (change)="writepromotionsValue('social',7,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="mt-5">Modern Trades
+                <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'> How do the selected campaigns align with the shopping behavior of modern trade customers, and which campaigns are likely to boost product visibility and sales in this environment?</p>
+                    </div>
+                  </div>
+                </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <div class="row row-cols-md-3 g-3 mt-4 input-img-card">
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/promotionsigment/skincareshop.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3>{{periodresult[8]}}</h3>
+                            <p class="maincontent">
+                                <span style="font-weight: 500;color: black;">Engagement Rate: </span><span
+                                    style="color: red;">4% to 7%</span> <br>
+                                <span style="font-weight: 500;color: black;">Conversion Rate: </span><span
+                                    style="color: red;">2.5% to 5% </span> <br>
+                                <span style="font-weight: 500;color: black;">Workshop Attendance: </span><span
+                                    style="color: red;">100 to 150 participants per session</span>
+                                <br>
+                                <span style="font-weight: 500;color: black;">Customer Feedback Participation:
+                                </span><span style="color: red;">30% to 40%</span>
+                                <br><br>
+                                {{showAll[8] ? cards[8].text : cards[8].truncatedText}}
+                                <a type="button" (click)="toggleshow(8)" [style.color]="showAll[8] ? 'red' : 'blue'">
+                                    {{showAll[8] ? 'Show Less' : 'Show More'}}
+                                </a>
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Cost, INR</h3>
+                                <h3>750000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="radio" value="" id="flexCheckDefault"
+                                name="moderntrades" [checked]="result[8] === 1"
+                                (click)="writepromotionsValue('moderntrades',8,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/promotionsigment/promoincampaign.svg"
+                                class="card-img-top" alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3>{{periodresult[9]}}</h3>
+                            <p class="maincontent">
+                                <span style="font-weight: 500;color: black;">Engagement Rate: </span><span
+                                    style="color: red;">3.5% to 6%</span> <br>
+                                <span style="font-weight: 500;color: black;">Conversion Rate: </span><span
+                                    style="color: red;">2% to 4%</span> <br>
+                                <span style="font-weight: 500;color: black;">Percentage of Bundle Sales: </span><span
+                                    style="color: red;">15% to
+                                    25%</span> <br>
+                                <span style="font-weight: 500;color: black;">In-Store Exclusive Offer Redemption:
+                                </span> <span style="color: red;">200 to 300
+                                    redemptions</span><br><br>
+                                {{showAll[9] ? cards[9].text : cards[9].truncatedText}}
+                                <a type="button" (click)="toggleshow(9)" [style.color]="showAll[9] ? 'red' : 'blue'">
+                                    {{showAll[9] ? 'Show Less' : 'Show More'}}
+                                </a>
+
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Cost, INR</h3>
+                                <h3>500000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="radio" value="" id="flexCheckDefault"
+                                name="moderntrades" [checked]="result[9] === 1"
+                                (click)="writepromotionsValue('moderntrades',9,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/promotionsigment/loyality.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3>{{periodresult[10]}}</h3>
+                            <p class="maincontent">
+                                <span style="font-weight: 500;color: black;">Engagement Rate: </span><span
+                                    style="color: red;">4% to 7%</span> <br>
+                                <span style="font-weight: 500;color: black;">Conversion Rate: </span> <span
+                                    style="color: red;">2.5% to 5%</span><br>
+                                <span style="font-weight: 500;color: black;">Loyalty Sign-Up Rate: </span> <span
+                                    style="color: red;">20% to 30%</span><br>
+                                <span style="font-weight: 500;color: black;">Redemption Rate: </span> <span
+                                    style="color: red;">10% to 15%</span><br><br>
+                                {{showAll[10] ? cards[10].text : cards[10].truncatedText}}
+                                <a type="button" (click)="toggleshow(10)" [style.color]="showAll[10] ? 'red' : 'blue'">
+                                    {{showAll[10] ? 'Show Less' : 'Show More'}}
+                                </a>
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Cost, INR</h3>
+                                <h3>550000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="radio" value="" id="flexCheckDefault"
+                                name="moderntrades" [checked]="result[10] === 1"
+                                (click)="writepromotionsValue('moderntrades',10,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1 class="mt-5">Retailers
+                <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'>How well do the chosen campaigns cater to the preferences of retailers' customer base, and which campaigns are likely to strengthen our partnership with retailers?</p>
+                    </div>
+                  </div>
+                </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <div class="row row-cols-md-3 g-3 mt-4 input-img-card">
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/promotionsigment/popup.jpg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3>{{periodresult[11]}}</h3>
+                            <p class="maincontent">
+                                <span style="font-weight: 500;color: black;">Engagement Rate: </span> <span
+                                    style="color: red;">3.5% to
+                                    6%</span> <br>
+                                <span style="font-weight: 500;color: black;">Conversion Rate: </span> <span
+                                    style="color: red;">2% to
+                                    4%</span><br>
+                                <span style="font-weight: 500;color: black;">Event Attendee Participation: </span>
+                                <span style="color: red;">120
+                                    to 200 participants per event</span><br>
+                                <span style="font-weight: 500;color: black;">Coupon Redemption Rate: </span> <span
+                                    style="color: red;">10% to 15%</span><br><br>
+                                {{showAll[11] ? cards[11].text : cards[11].truncatedText}}
+                                <a type="button" (click)="toggleshow(11)" [style.color]="showAll[11] ? 'red' : 'blue'">
+                                    {{showAll[11] ? 'Show Less' : 'Show More'}}
+                                </a>
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Cost, INR</h3>
+                                <h3>700000</h3>
+                            </div>
+                            <input [disabled]="disabled"  class=" checkfrominput" type="radio" value="" id="flexCheckDefault" name="retailers"
+                                [checked]="result[11] === 1" (click)="writepromotionsValue('retailers',11,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/promotionsigment/premium.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3>{{periodresult[12]}}</h3>
+                            <p class="maincontent">
+                                <span style="font-weight: 500;color: black;">Engagement Rate: </span><span
+                                    style="color: red;">3% to 5.5%</span> <br>
+                                <span style="font-weight: 500;color: black;">Conversion Rate: </span><span
+                                    style="color: red;">1.5% to 3%</span> <br>
+                                <span style="font-weight: 500;color: black;">Time Spent Interacting with Displays: <span
+                                        style="color: red;">2 to 3.5 minutes</span>
+                                </span>
+                                <br>
+                                <span style="font-weight: 500;color: black;">Purchase Decision Impact: </span> <span
+                                    style="color: red;">25% to
+                                    35%</span><br><br>
+                                {{showAll[12] ? cards[12].text : cards[12].truncatedText}}
+                                <a type="button" (click)="toggleshow(12)" [style.color]="showAll[12] ? 'red' : 'blue'">
+                                    {{showAll[12] ? 'Show Less' : 'Show More'}}
+                                </a>
+
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Cost, INR</h3>
+                                <h3>650000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="radio" value="" id="flexCheckDefault" name="retailers"
+                                [checked]="result[12] === 1" (click)="writepromotionsValue('retailers',12,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/promotionsigment/promotion.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3>{{periodresult[13]}}</h3>
+                            <p class="maincontent">
+                                <span style="font-weight: 500;color: black;">Engagement Rate: </span><span
+                                    style="color: red;"> 3% to 6%</span><br>
+                                <span style="font-weight: 500;color: black;">Conversion Rate: </span><span
+                                    style="color: red;">2% to 4%</span> <br>
+                                <span style="font-weight: 500;color: black;">Redemption Rate of Exclusive Offers:
+                                </span> <span style="color: red;">12% to
+                                    18%</span> <br>
+                                <span style="font-weight: 500;color: black;">Average Basket Size Increase: </span> <span
+                                    style="color: red;">10%
+                                    to 20%</span> <br><br>
+                                {{showAll[13] ? cards[13].text : cards[13].truncatedText}}
+                                <a type="button" (click)="toggleshow(13)" [style.color]="showAll[13] ? 'red' : 'blue'">
+                                    {{showAll[13] ? 'Show Less' : 'Show More'}}
+                                </a>
+
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Cost, INR</h3>
+                                <h3>800000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="radio" value="" id="flexCheckDefault" name="retailers"
+                                [checked]="result[13] === 1" (click)="writepromotionsValue('retailers',13,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

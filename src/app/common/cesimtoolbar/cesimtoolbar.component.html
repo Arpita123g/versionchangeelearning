@@ -1,0 +1,198 @@
+<div class="elearingnewui bus_iness">
+
+
+  <div class="toolbar-header-main" *ngIf="usertype ==='student'">
+    <div class="back-b">
+      <div class="toolbar-header-2nd">
+        <div class="logo">
+          <img src="assets/images/businessbasics/logocesimnew.png" class="img-fluid logo-img" alt="Company-name" />
+        </div>
+        <div class="ist-table">
+          <table class="ist-table-right">
+            <tr>
+              <td *ngIf="enterinGame === 'enter' || enterinGame ==='voicebasedenter'"></td>
+              <td>
+                <!-- <a>Decisions area :</a> -->
+                 <a>{{toolBarArray[0]}} :</a>
+                <p>{{username}}</p>
+              </td>
+              <td *ngIf="bodyContent?(enterinGame === 'enter' || enterinGame ==='voicebasedenter'?true:false):false">
+                <!-- <a>Instructor name :</a> -->
+                  <a>{{toolBarArray[1]}} :</a>
+                <p>{{bodyContent.courseDetails.instructorname}}</p>
+              </td>
+              <td *ngIf="enterinGame === 'enter' || enterinGame ==='voicebasedenter'">
+                <!-- <a>Current round :</a> -->
+                  <a>{{toolBarArray[2]}} :</a>
+                <!-- <p>Round {{noofattempt}}</p> -->
+                 <p>{{toolBarArray[4]}} {{noofattempt}}</p>
+
+
+              </td>
+              <td *ngIf="enterinGame === 'enter' || enterinGame ==='voicebasedenter'">
+                <!-- <a>Game timer :</a> -->
+                  <a>{{toolBarArray[3]}} :</a>
+                <app-timer></app-timer>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between first-tab">
+        <div>
+
+          <ul class="nav second-nav" role="tablist" *ngIf="enterinGame==='enter'">
+            <!-- <li class="nav-item active second-nav-li" role="presentation" data-bs-target="#first" data-bs-toggle="tab" [class.disabled]="isGameArenaLocked"
+              aria-controls="first" role="tab" aria-selected="true">
+              <span class="nav-link nav-link-span" aria-current="page" [class.disabled]="isGameArenaLocked"> {{headingarray[0]}}
+                <span *ngIf="isGameArenaLocked" class="lock-badge" matTooltip="Locked">
+                  <mat-icon>lock</mat-icon>
+                </span>
+              </span>
+            </li>
+            <li class="nav-item second-nav-li" role="presentation" data-bs-target="#second" data-bs-toggle="tab"
+              aria-controls="second" role="tab" aria-selected="false" (click)="toolbartab('reading')">
+              <span class="nav-link nav-link-span" aria-current="page">{{headingarray[1]}}</span>
+            </li>
+            <li class="nav-item second-nav-li" role="presentation" data-bs-target="#third" data-bs-toggle="tab"
+              aria-controls="third" role="tab" aria-selected="false" (click)="toolbartab('forum')">
+              <span class="nav-link nav-link-span" aria-current="page">{{headingarray[2]}}</span>
+            </li>
+            <li class="nav-item second-nav-li" role="presentation" data-bs-target="#fourth" data-bs-toggle="tab"
+              aria-controls="fourth" role="tab" aria-selected="false">
+              <span class="nav-link nav-link-span" aria-current="page"
+                (click)="toolbartab('leaderboard')">{{headingarray[3]}}</span>
+            </li> -->
+            <!-- Case 1: headingarray (API-driven OR default fallback) -->
+            <!-- Case 1: headingarray-based games -->
+            <ng-container *ngIf="headingarray && headingarray.length > 0; else commonTemplate">
+              <li class="nav-item active second-nav-li" role="presentation" data-bs-target="#first" data-bs-toggle="tab"
+                [class.disabled]="isGameArenaLocked" aria-controls="first" role="tab" aria-selected="true">
+                <span class="nav-link nav-link-span" aria-current="page" [class.disabled]="isGameArenaLocked">
+                  {{headingarray[0]}}
+                  <span *ngIf="isGameArenaLocked" class="lock-badge" matTooltip="Locked">
+                    <mat-icon>lock</mat-icon>
+                  </span>
+                </span>
+              </li>
+              <li class="nav-item second-nav-li" role="presentation" data-bs-target="#second" data-bs-toggle="tab"
+                aria-controls="second" role="tab" aria-selected="false" (click)="toolbartab('reading')">
+                <span class="nav-link nav-link-span" aria-current="page">{{ headingarray[1] }}</span>
+              </li>
+
+              <li class="nav-item second-nav-li" role="presentation" data-bs-target="#third" data-bs-toggle="tab"
+                aria-controls="third" role="tab" aria-selected="false">
+                <span class="nav-link nav-link-span" aria-current="page">{{ headingarray[2] }}</span>
+              </li>
+
+              <li class="nav-item second-nav-li" role="presentation" data-bs-target="#fourth" data-bs-toggle="tab"
+                aria-controls="fourth" role="tab" aria-selected="false">
+                <span class="nav-link nav-link-span" aria-current="page" (click)="toolbartab('leaderboard')">{{
+                  headingarray[3] }}</span>
+              </li>
+            </ng-container>
+
+
+            <!-- Case 2: commonData -->
+            <ng-template #commonTemplate>
+              <li class="nav-item active second-nav-li" role="presentation" data-bs-target="#first" data-bs-toggle="tab"
+                [class.disabled]="isGameArenaLocked" aria-controls="first" role="tab" aria-selected="true">
+                <span class="nav-link nav-link-span" aria-current="page" [class.disabled]="isGameArenaLocked">
+                  {{commonData?.b2}}
+                  <span *ngIf="isGameArenaLocked" class="lock-badge" matTooltip="Locked">
+                    <mat-icon>lock</mat-icon>
+                  </span>
+                </span>
+              </li>
+              <li class="nav-item second-nav-li" role="presentation" data-bs-target="#second" data-bs-toggle="tab"
+                aria-controls="second" role="tab" aria-selected="false" (click)="toolbartab('reading')">
+                <span class="nav-link nav-link-span" >{{ commonData?.b3 }}</span>
+              </li>
+
+              <li class="nav-item second-nav-li" role="presentation" data-bs-target="#third" data-bs-toggle="tab"
+                aria-controls="third" role="tab" aria-selected="false">
+                <span class="nav-link nav-link-span">{{ commonData?.b4 }}</span>
+              </li>
+
+              <li class="nav-item second-nav-li" role="presentation" data-bs-target="#fourth" data-bs-toggle="tab"
+                aria-controls="fourth" role="tab" aria-selected="false" (click)="toolbartab('leaderboard')">
+                <span class="nav-link nav-link-span">{{ commonData?.b5 }}</span>
+              </li>
+            </ng-template>
+
+          </ul>
+          <ul class="nav second-nav" role="tablist" *ngIf="enterinGame==='voicebasedenter'">
+            <li class="nav-item  second-nav-li" role="presentation" [class.active]="currenttabb==0"
+              (click)="changetab(0)">
+              <span class="nav-link nav-link-span" aria-current="page" [class.disabled]="istimeorattemptfinish"
+                [attr.aria-disabled]="isaccepted"> CASE</span>
+            </li>
+            <li class="nav-item second-nav-li" role="presentation" [class.active]="currenttabb==1"
+              (click)="changetab(1)">
+              <span class="nav-link nav-link-span" [class.disabled]="!isaccepted||istimeorattemptfinish"
+                aria-current="page">CONVERSATION</span>
+            </li>
+            <li class="nav-item second-nav-li d-flex align-items-center" style="position: relative;" role="presentation"
+              [class.active]="currenttabb===2" (click)="changetab(2)">
+              <span class="nav-link nav-link-span" aria-current="page"
+                [class.disabled]="noofattempt==='1'?!isaccepted:false">REPORT</span>
+              <!-- <span class="nav-link nav-link-span"  aria-current="page">REPORT</span> -->
+              <!-- <mat-icon style="position: absolute; top: 3px; left: 70px;" *ngIf="isLockedReport" [ngClass]="{'disabled-icon': isLockedReport, 'enabled-icon': !isLockedReport}">lock</mat-icon> -->
+            </li>
+
+          </ul>
+
+        </div>
+
+
+        <div class="icon-nav">
+          <mat-icon (click)="home()">home</mat-icon>
+          <mat-icon (click)="gotoprofile()">account_circle</mat-icon>
+          <mat-icon (click)="openDialog()">help_outline</mat-icon>
+          <mat-icon (click)="logout()">exit_to_app</mat-icon>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="instructor-toolbar" *ngIf="usertype !=='student'">
+    <div class="toolbar-header-main">
+      <div class="back-element">
+        <div class="toolbar-header-2nd">
+          <div class="logo">
+            <img src="assets/images/businessbasics/instructor.png" class="img-fluid" style="max-width: 11rem;"
+              alt="Company-name" />
+          </div>
+          <div class="ist-table">
+            <table class="ist-table-right">
+              <tr>
+                <td></td>
+                <td *ngIf="usertype =='instructor'" style="border-right: none;">
+                  <a style="color: white;">Instructor name :</a>
+                   <!-- <a style="color: white;">{{toolBarArray[1]}} :</a> -->
+                  <p><i class="flag-united-kingdom flag"></i>{{username}}</p>
+                </td>
+
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between first-tab-instructor">
+          <div></div>
+          <div class="icon-nav">
+            <mat-icon (click)="home()">home</mat-icon>
+            <mat-icon *ngIf="usertype =='instructor'" (click)="gotoprofile()">account_circle</mat-icon>
+            <mat-icon (click)="openDialog()">help_outline</mat-icon>
+            <mat-icon (click)="logout()">exit_to_app</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

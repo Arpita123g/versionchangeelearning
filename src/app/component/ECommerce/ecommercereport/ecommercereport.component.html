@@ -1,0 +1,235 @@
+<div class="elearingnewui ecommerce">
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row pb-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                            <div class="">
+                                <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                    (change)="roundClick()">
+                                    <option class="select-round-option" value="">Select Round</option>
+                                    <option class="select-round-option"
+                                        *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                        {{attempt}}</option>
+
+                                </select>
+                            </div>
+                            <div class="download_btn" matTooltiClass="primary-tooltip"
+                                (click)="downloadreporthrpgame()">
+                                <div>
+                                    <a download matTooltip="Download"><span class="hovertext"
+                                            data-hover="Download pdf file accounting ">
+                                            <img class="download_btn-img"
+                                                src="assets/images/businessbasics/download.png" />
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <mat-icon class="mt-2">get_app</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 mb-3">
+                    <div class="col-md-5 reyapo">
+                        <h1 class="reyapo-h1">Report</h1>
+                        <p style="text-align: justify;">
+                            Excellent work. You have completed designing the e-commerce business strategy for the
+                            company to make its brand valuable in the market. In this exercise every decision you have
+                            taken shows your skills in dimensions like rigor, synthesis, structuring and business
+                            judgement.
+                        </p>
+                    </div>
+
+                    <div class="col-md-7" *ngIf="optional[0]">
+                        <div class="card rigorcard">
+                            <div class="rigorcard-icon">
+                                <mat-icon class="rigorcard-icon-mat" appTippy="<table >
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Rigor</th>
+                      <td style='padding:7px;font-size:13px'>Consistency throughout the decision-making and recommendation.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>Structuring</th>
+                      <td style='padding:7px;font-size:13px'>A logical approach to gathering and analyzing information.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>
+                        Synthesis
+                      </th>
+                      <td style='padding:7px;font-size:13px'>
+                        Approach towards interpreting all the information and making informed decisions.
+                      </td>
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Business Jugement</th>
+                      <td style='padding:7px;font-size:13px'>Ability to evaluate facts and consider risks and possible implications when making decisions.</td>
+                    </tr>
+                    </tr>
+                  </table>
+                   ">
+                                    help_outline
+                                </mat-icon>
+                            </div>
+                            <apx-chart [series]="rigorcharts.series" [chart]="rigorcharts.chart"
+                                [xaxis]="rigorcharts.xaxis" [yaxis]="rigorcharts.yaxis" [stroke]="rigorcharts.stroke"
+                                [markers]="rigorcharts.markers" [fill]="rigorcharts.fill"
+                                [title]="rigorcharts.title"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Sales, units</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Sales</th>
+                                    <th>Opportunity Loss</th>
+                                    <th>Inventory</th>
+                                </tr>
+                                <tr *ngFor="let row of resultSalesTableData" class="rsl_tbl-tbody-tr">
+                                    <td>{{ row[0] }}</td>
+                                    <td class="middleclassright">{{ row[1]|number:'1.0-0' }}</td>
+                                    <td class="middleclassright">{{ row[2]|number:'1.0-0' }}</td>
+                                    <td>{{ row[3]|number:'1.0-0' }}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="demandvssaleschart.series" [chart]="demandvssaleschart.chart"
+                                [dataLabels]="demandvssaleschart.dataLabels"
+                                [plotOptions]="demandvssaleschart.plotOptions" [yaxis]="demandvssaleschart.yaxis"
+                                [xaxis]="demandvssaleschart.xaxis" [fill]="demandvssaleschart.fill"
+                                [title]="demandvssaleschart.title" [noData]="demandvssaleschart.noData"
+                                [tooltip]="demandvssaleschart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md py-5">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Product Margins</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Pricing, INR</th>
+                                    <th>Margin %</th>
+                                </tr>
+                                <tr *ngFor="let row of resultProductTableData" class="rsl_tbl-tbody-tr">
+                                    <td>{{ row[0] }}</td>
+                                    <td class="middleclassright">{{ row[1]|number:'1.0-0' }}</td>
+                                    <td>{{ row[2]*100 |number :'1.0-0' }}%</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="marginschart.series" [chart]="marginschart.chart"
+                                [dataLabels]="marginschart.dataLabels" [plotOptions]="marginschart.plotOptions"
+                                [yaxis]="marginschart.yaxis" [xaxis]="marginschart.xaxis" [fill]="marginschart.fill"
+                                [title]="marginschart.title" [noData]="marginschart.noData"
+                                [tooltip]="marginschart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">Income Statement, k INR</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr *ngFor="let row of financialData" class="rsl_tbl-tbody-tr"
+                                    [ngStyle]="{ 'border-bottom': (row.label === 'Gross Profit/Loss' || row.label === 'Operating expense' || row.label === 'EBITDA') ? '2px solid black' : '' }">
+                                    <td>{{ row.label }}</td>
+                                    <td>{{ result[row.index] | number: '1.0-0' }}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">Promotion Distribution</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Visits</th>
+                                    <th>Distribution</th>
+                                </tr>
+                                <tr *ngFor="let row of resultPromotionTableData" class="rsl_tbl-tbody-tr">
+                                    <td>{{ row.label }}</td>
+                                    <td class="middleclassright">{{ row.values[0] |number :'1.0-0' }}</td>
+                                    <td>{{ row.values[1]*100 |number :'1.0-0' }}%</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                        <table class="table rsl_tbl mt-5">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">Website Experience</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr *ngFor="let row of resultWebsiteTableData" class="rsl_tbl-tbody-tr">
+                                    <td>{{ row.label }}</td>
+                                    <td>{{ row.values[0]*100 |number :'1.0-1' }}%</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-5">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">KPI</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr *ngFor="let row of resultKpiTableData" class="rsl_tbl-tbody-tr">
+                                    <td>{{ row.label }}</td>
+                                    <td>{{ row.values[0] }}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,193 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+</div>
+<div class="elearingnewui promotion_sigment">
+    <div class="container">
+        <div class="body-element">
+            <div class="element-first">
+                <div class="row">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">{{language.b260}}</button></span>
+                    </div>
+                </div>
+            </div>
+            <h1 *ngIf="margin">{{language.b109}}
+                <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'></h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'>{{language.b185}}</p>
+                    </div>
+                  </div>
+                    <div class='pt-2' style='display:flex;'>
+                      <div>
+                        <h4 style='color: white; margin:0 auto; font-weight: 600;'></h4>
+                      </div> &nbsp; &nbsp; &nbsp;
+                      <div>
+                        <p style='margin: 0 auto; color: white; font-size:13px;'>{{language.b186}}</p>
+                      </div>
+                    </div>
+                </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <div class="row row-cols-md-2 g-3 mt-4" *ngIf="margin">
+                <div class="col-md-6">
+                    <div class="card p-3">
+                        <apx-chart [series]="acnecreamcostpersalegraph.series" [chart]="acnecreamcostpersalegraph.chart"
+                            [dataLabels]="acnecreamcostpersalegraph.dataLabels"
+                            [plotOptions]="acnecreamcostpersalegraph.plotOptions"
+                            [yaxis]="acnecreamcostpersalegraph.yaxis" [xaxis]="acnecreamcostpersalegraph.xaxis"
+                            [fill]="acnecreamcostpersalegraph.fill" [title]="acnecreamcostpersalegraph.title"
+                            [noData]="acnecreamcostpersalegraph.noData" [tooltip]="acnecreamcostpersalegraph.tooltip">
+                        </apx-chart>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-3">
+                        <apx-chart [series]="appleciderfacewashgraph.series" [chart]="appleciderfacewashgraph.chart"
+                            [dataLabels]="appleciderfacewashgraph.dataLabels"
+                            [plotOptions]="appleciderfacewashgraph.plotOptions" [yaxis]="appleciderfacewashgraph.yaxis"
+                            [xaxis]="appleciderfacewashgraph.xaxis" [fill]="appleciderfacewashgraph.fill"
+                            [title]="appleciderfacewashgraph.title" [noData]="appleciderfacewashgraph.noData"
+                            [tooltip]="appleciderfacewashgraph.tooltip">
+                        </apx-chart>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-md-3 g-3 img-check mt-3" *ngIf="margin">
+                <div class="col-md" *ngFor="let card of cards1; let i = index">
+                    <div class="card img-check-card h-100">
+                        <div>
+                            <img [src]="card.image" class="card-img-top" alt="Card image" />
+                        </div>
+                        <div class="card-body img-check-card-body">
+                            <h3 class="img-check-card-body-h3">{{ language[card.title] }}</h3>
+                            <p class="card-text">
+                                {{ showAll[i] ? language[card.text] : truncate(language[card.truncatedText]) }}
+                                <a type="button" (click)="toggleshow(i)" [style.color]="showAll[i] ? 'red' : 'blue'">
+                                    {{ showAll[i] ? language.b262 : language.b261 }}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check img-check-card-footer">
+                            <div class="input-group mb-3">
+                                <input [disabled]="disabled" type="number" class="input-no_box"
+                                    placeholder="Input value here..." aria-describedby="basic-addon2"
+                                    [(ngModel)]="databaseresult[i]"
+                                    (focusout)="validateRange(i); writepromotionsValue('margins', i, $event)" 
+                                    [min]="periodresult[5]"
+                                    [max]="periodresult[6]" />
+                                <span class="input-group-text" id="basic-addon2">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="mt-5">{{language.b104}}
+                <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'></h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'>{{language.b184}}</p>
+                    </div>
+                  </div>
+                </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <div class="row row-cols-md-3 g-3 mt-4 input-img-card">
+                <div class="col-md" *ngFor="let card of cards2; let i = index">
+                    <div class="card marketing-card h-100">
+                        <div class="craftingimg">
+                            <img [src]="card.image" class="card-img-top" alt="Card image" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="img-check-card-body-h3">{{ language[card.title] }}</h3>
+                            <p class="maincontent">
+                                {{ showAll[i + 3] ? language[card.text] : truncate(language[card.truncatedText]) }}
+                                <a type="button" (click)="toggleshow(i + 3)"
+                                    [style.color]="showAll[i + 3] ? 'red' : 'blue'">
+                                    {{ showAll[i + 3] ? language.b262 : language.b261 }}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>{{ language.b287 }}</h3>
+                                <h3>{{ periodresult[i] | number: '1.0-0' }}</h3>
+                            </div>
+                            <input [disabled]="disabled" class="checkfrominput" type="checkbox"
+                                [(ngModel)]="databaseresult[i + 3]"
+                                (click)="writepromotionsValue('abtesting', i + 3, $event)" />
+                            <label class="form-check-label"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="mt-5">{{language.b272}}
+                <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'></h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'>{{language.b187}}</p>
+                    </div>
+                  </div>
+                    <div class='pt-2' style='display:flex;'>
+                      <div>
+                        <h4 style='color: white; margin:0 auto; font-weight: 600;'></h4>
+                      </div> &nbsp; &nbsp; &nbsp;
+                      <div>
+                        <p style='margin: 0 auto; color: white; font-size:13px;'>{{language.b188}}</p>
+                      </div>
+                    </div>
+                </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <div class="row row-cols-md-3 g-3 mt-4 input-img-card">
+                <div class="col-md" *ngFor="let card of cards3; let i = index">
+                    <div class="card marketing-card h-100">
+                        <div class="craftingimg">
+                            <img [src]="card.image" class="card-img-top" alt="Card image" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="img-check-card-body-h3">{{ language[card.title] }}</h3>
+                            <p class="maincontent">
+                                {{ showAll[i + 6] ? language[card.text] : truncate(language[card.truncatedText]) }}
+                                <a type="button" (click)="toggleshow(i+6)"
+                                    [style.color]="showAll[i+6] ? 'red' : 'blue'">
+                                    {{ showAll[i + 6] ? language.b262 : language.b261 }}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>{{ language.b118 }}</h3>
+                                <h3>{{ (periodresult[i + 3] * 100) | number: '1.0-0' }}%</h3>
+                            </div>
+                            <input [disabled]="disabled" class="checkfrominput" type="checkbox"
+                                [(ngModel)]="databaseresult[i+6]"
+                                (click)="writepromotionsValue('productfocus', i+6, $event)" />
+                            <label class="form-check-label"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="elearingnewui">
+    <div class="case-management-body-forheader">
+        <div class="returnbtn-element">
+            <div class="returnbtn" (click)="GoBack()"> Return to Case Management </div>
+        </div>
+        <div class="card case-management-body-card">
+            <div class="card-body">
+                <div class=" tab-content-body">
+                    <ul class="nav second-nav" role="tablist">
+                        <li class="nav-item active" role="presentation" data-bs-target="#market" data-bs-toggle="tab"
+                            aria-controls="market" role="tab" aria-selected="false" (click)="search('market')">
+                            <span class="nav-link" aria-current="page">Market</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#information" data-bs-toggle="tab"
+                            aria-controls="information" role="tab" aria-selected="false"
+                            (click)="search('information')">
+                            <span class="nav-link" aria-current="page">Information</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#lead" data-bs-toggle="tab"
+                            aria-controls="lead" role="tab" aria-selected="false" (click)="search('lead')">
+                            <span class="nav-link" aria-current="page">Lead</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#communication" data-bs-toggle="tab"
+                            aria-controls="communication" role="tab" aria-selected="false"
+                            (click)="search('communication')">
+                            <span class="nav-link" aria-current="page">Communication</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#resource" data-bs-toggle="tab"
+                            aria-controls="resource" role="tab" aria-selected="false" (click)="search('resource')">
+                            <span class="nav-link" aria-current="page">Resource</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#foodforthought" data-bs-toggle="tab"
+                            aria-controls="foodforthought" role="tab" aria-selected="false"
+                            (click)="search('foodforthought')">
+                            <span class="nav-link" aria-current="page">Food For Thought</span>
+                        </li>
+                       
+                        <li class="nav-item" role="presentation" data-bs-target="#language" data-bs-toggle="tab"
+                        aria-controls="language" role="tab" aria-selected="false" (click)="search('language')">
+                        <span class="nav-link" aria-current="page">Language</span>
+                    </li>
+                    </ul>
+                </div>
+                
+                <div class="tab-content tab-content-body">
+
+                    <div role="tabpanel" class="tab-pane fade show active" id="market"
+                        [ngClass]="{ 'active':activeTab==='market'}">
+                        <app-crmcasemarket *ngIf="activeTab==='market'"></app-crmcasemarket>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="information"
+                        [ngClass]="{ 'active':activeTab==='information'}">
+                        <app-crmcaseinformation *ngIf="activeTab==='information'"></app-crmcaseinformation>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="lead"
+                        [ngClass]="{ 'active':activeTab==='lead'}">
+                        <app-crmcaselead *ngIf="activeTab==='lead'"></app-crmcaselead>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="communication"
+                        [ngClass]="{ 'active':activeTab==='communication'}">
+                        <app-crmcasecommunication *ngIf="activeTab==='communication'"></app-crmcasecommunication>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="resource"
+                        [ngClass]="{ 'active':activeTab==='resource'}">
+                        <app-crmcaseresource *ngIf="activeTab==='resource'"></app-crmcaseresource>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="foodforthought"
+                        [ngClass]="{ 'active':activeTab==='foodforthought'}">
+                        <app-crmcasefoodforthought *ngIf="activeTab==='foodforthought'"></app-crmcasefoodforthought>
+                    </div>
+                    <!-- <div role="tabpanel" class="tab-pane fade show " id="module"
+                        [ngClass]="{ 'active':activeTab==='module'}">
+                        <app-crmcasemodule *ngIf="activeTab==='module'"></app-crmcasemodule>
+                    </div> -->
+                    <div role="tabpanel" class="tab-pane fade show " id="language"
+                        [ngClass]="{ 'active':activeTab==='language'}">
+                        <app-languagecasemanagement *ngIf="activeTab==='language'"
+                        [languagebody]="languagebody"
+                        [selectedLanguage]="selectedLanguage"
+                        [apiName]="'crmgame'" [gameNamelm]="'crmgamelm'"></app-languagecasemanagement >
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+        
+    </div>
+</div>

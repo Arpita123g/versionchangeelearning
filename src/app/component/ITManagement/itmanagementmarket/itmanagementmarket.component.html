@@ -1,0 +1,61 @@
+<div class="elearingnewui It_management">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="element-first">
+                <div class="row" class="marketer">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-md-2">
+                <div class="col-md ">
+                    <p class="marketpage-p" [innerHTML]="contentvalue"></p>
+                </div>
+                <div class="col-md">
+                    <div class="table-data-inmarket table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>PayGuard</th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>This Period</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <td>{{result[0]}}</td>
+                                    <td><span>{{result[1]}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>{{result[2]}}</td>
+                                    <td><span>{{result[3]}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>{{result[4]}}</td>
+                                    <td><span>{{result[5]*100|number:'1.0-0'}}%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>{{result[6]}}</td>
+                                    <td><span>{{result[7]}}</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

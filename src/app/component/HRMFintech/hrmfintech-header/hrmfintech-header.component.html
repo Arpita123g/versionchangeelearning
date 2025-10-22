@@ -1,0 +1,131 @@
+<div class="elearingnewui">
+    <div class="toolbar-header-main">
+    </div>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade show active" id="first" *ngIf="mainTab==='gamearena'">
+            <nav class="headerbreadcrumb">
+                <ul class="breadcrumb" role="tablist">
+                    <li role="presentation " class="breadcrumb-item active" data-bs-target="#Introduction"
+                        aria-controls="Introduction" role="tab" data-bs-toggle="tab" aria-selected="true"
+                        [ngClass]="{ 'active':activeTab==='introduction'}" (click)="search('introduction')">
+                        <div><span class="octicon octicon-diff-added"></span>Introduction</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Market" aria-controls="market"
+                        role="tab" data-bs-toggle="tab" aria-selected="false"
+                        [ngClass]="{ 'active':activeTab==='market'}" (click)="search('market')">
+                        <div><span class="octicon octicon-diff-added"></span>Market</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#talentacquisition"
+                        aria-controls="talentacquisition" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="search('talentacquisition')" [ngClass]="{ 'active':activeTab==='talentacquisition'}">
+                        <div>
+                            <span class="octicon octicon-comment-discussion"></span>Talent Acquisition
+                        </div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#talentmanagement"
+                        aria-controls="talentmanagement" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="search('talentmanagement')" [ngClass]="{ 'active ':activeTab==='preliminary'}">
+                        <div><span class="octicon octicon-verified"></span>Talent Management</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#organizationbudget"
+                        aria-controls="organizationbudget" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="search('organizationbudget')"
+                        [ngClass]="{ 'active ':activeTab==='organizationbudget'}">
+                        <div><span class="octicon octicon-tools"></span>Organization & Budget</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#conflict" aria-controls="conflict"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="search('conflict')"
+                        [ngClass]="{ 'active ':activeTab==='conflict'}">
+                        <div><span class="octicon octicon-tools"></span>Conflict</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#decisionchecklist"
+                        aria-controls="decisionchecklist" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="search('decisionchecklist')" [ngClass]="{ 'active ':activeTab==='decisionchecklist'}">
+                        <div><span class="octicon octicon-tools"></span>Decision Checklist</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Report" aria-controls="report"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="search('report')"
+                        [ngClass]="{ 'active':activeTab==='report'}" [ngClass]="{ 'disabled': tabDisabled }" >
+                        <div><span class="octicon octicon-tools"></span>Report</div>
+                    </li>
+                </ul>
+            </nav>
+
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show active" id="Introduction"
+                    [ngClass]="{ 'active':activeTab==='introduction'}">
+                    <app-hrmfintech-introduction *ngIf="activeTab==='introduction'"></app-hrmfintech-introduction>
+                </div>
+
+                <div role="tabpanel" class="tab-pane fade" id="Market"
+                    [ngClass]="{ 'active show':activeTab==='market'}">
+                    <app-hrmfintech-market *ngIf="activeTab==='market'"></app-hrmfintech-market>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="talentacquisition"
+                    [ngClass]="{ 'active show':activeTab==='talentacquisition'}">
+                    <app-hrmfintech-talentacq *ngIf="activeTab==='talentacquisition'"></app-hrmfintech-talentacq>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="talentmanagement"
+                    [ngClass]="{ 'active show':activeTab==='talentmanagement'}">
+                    <app-hrmfintech-talentmanagement
+                        *ngIf="activeTab==='talentmanagement'"></app-hrmfintech-talentmanagement>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="organizationbudget"
+                    [ngClass]="{ 'active show':activeTab==='organizationbudget'}">
+                    <app-hrmfintech-oraganization-budget
+                        *ngIf="activeTab==='organizationbudget'"></app-hrmfintech-oraganization-budget>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="conflict"
+                    [ngClass]="{ 'active show':activeTab==='conflict'}">
+                    <app-hrmfintech-conflict *ngIf="activeTab==='conflict'"></app-hrmfintech-conflict>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="decisionchecklist"
+                    [ngClass]="{ 'active show':activeTab==='decisionchecklist'}">
+                    <app-hrmfintech-decisionchecklist (newItemEvent)="next($event)"
+                        *ngIf="activeTab==='decisionchecklist'"></app-hrmfintech-decisionchecklist>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Report"
+                    [ngClass]="{ 'active show':activeTab==='report'}">
+                    <app-hrmfintech-report *ngIf="activeTab==='report'"></app-hrmfintech-report>
+                </div>
+            </div>
+
+
+        </div>
+        <div role="tabpanel" class="tab-pane fade show" id="second">
+            <app-reading *ngIf="toolbartab==='reading'" [gamename]="gametitle"></app-reading>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade show" id="third">
+            <nav class="headerbreadcrumb">
+                <ul class="breadcrumb" role="tablist">
+                    <li role="presentation " class="breadcrumb-item active" data-bs-target="#Individual"
+                        aria-controls="Individual" role="tab" data-bs-toggle="tab" aria-selected="true"
+                        [ngClass]="{ 'active':forumTab==='individual'}" (click)="forum('individual')">
+                        <div><span class="octicon octicon-diff-added"></span>Individual</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Course" aria-controls="Course"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="forum('course')">
+                        <div><span class="octicon octicon-diff-added"></span>Course</div>
+                    </li>
+
+                </ul>
+            </nav>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show active" id="Individual">
+                    <app-forumindividual
+                        *ngIf="forumTab==='individual'"></app-forumindividual>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Course">
+                    <app-forumcourse *ngIf="forumTab==='course'"></app-forumcourse>
+                </div>
+            </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade show" id="fourth"
+            style="width: 90%; margin:0 auto;height:100vh;padding-top:1.5rem">
+            <app-microsimleaderboardgeneral *ngIf="toolbartab==='leaderboard'"></app-microsimleaderboardgeneral>
+        </div>
+    </div>
+</div>

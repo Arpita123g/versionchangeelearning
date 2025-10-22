@@ -1,0 +1,141 @@
+<div class="elearingnewui change_management">
+    <div class="toolbar-header-main">
+    </div>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade show active" id="first" *ngIf="mainTab==='gamearena'">
+            <nav class="headerbreadcrumb">
+                <ul class="breadcrumb" role="tablist">
+                    <li role="presentation " class="breadcrumb-item active" data-bs-target="#Introduction"
+                        aria-controls="introduction" role="tab" data-bs-toggle="tab" aria-selected="true"
+                        [ngClass]="{ 'active':activeTab==='introduction'}" (click)="search('introduction')">
+                        <div><span class="octicon octicon-diff-added"></span>Introduction</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Memo" aria-controls="memo"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" [ngClass]="{ 'active':activeTab==='memo'}"
+                        (click)="search('memo')">
+                        <div><span class="octicon octicon-diff-added"></span>Memo</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#HumanDynamics"
+                        aria-controls="humandynamics" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="search('humandynamics')" [ngClass]="{ 'active':activeTab==='humandynamics'}">
+                        <div>
+                            <span class="octicon octicon-comment-discussion"></span>Human Dynamics
+                        </div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Awareness"
+                        aria-controls="awareness" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="search('awareness')" [ngClass]="{ 'active ':activeTab==='awareness'}">
+                        <div><span class="octicon octicon-verified"></span>Awareness</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Motivation"
+                        aria-controls="motivation" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="search('motivation')" [ngClass]="{ 'active ':activeTab==='motivation'}">
+                        <div><span class="octicon octicon-tools"></span>Motivation</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Commitment"
+                        aria-controls="commitment" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="search('commitment')" [ngClass]="{ 'active ':activeTab==='commitment'}">
+                        <div><span class="octicon octicon-tools"></span>Commitment</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#DecisionChecklist"
+                        aria-controls="decisionchecklist" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="search('decisionchecklist')" [ngClass]="{ 'active':activeTab==='decisionchecklist'}">
+                        <div><span class="octicon octicon-tools"></span>Decision Checklist</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Report" aria-controls="report"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="search('report')"
+                        [ngClass]="{ 'active':activeTab==='report'}" [ngClass]="{ 'disabled': tabDisabled }">
+                        <div><span class="octicon octicon-tools"></span>Report</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Synopsis" aria-controls="synopsis"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="search('synopsis')"
+                        [ngClass]="{ 'active':activeTab==='synopsis'}" [ngClass]="{ 'disabled': tabDisabled }">
+                        <div><span class="octicon octicon-tools"></span>Synopsis</div>
+                    </li>
+                </ul>
+            </nav>
+
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show active" id="Introduction"
+                    [ngClass]="{ 'active':activeTab==='introduction'}">
+                    <app-changemanagementnewintroduction
+                        *ngIf="activeTab==='introduction'"></app-changemanagementnewintroduction>
+                </div>
+
+                <div role="tabpanel" class="tab-pane fade" id="Memo" [ngClass]="{ 'active show':activeTab==='memo'}">
+                    <app-changemanagementnewmemo *ngIf="activeTab==='memo'"></app-changemanagementnewmemo>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="HumanDynamics"
+                    [ngClass]="{ 'active show':activeTab==='humandynamics'}">
+                    <app-changemanagementnewhumandynamics
+                        *ngIf="activeTab==='humandynamics'"></app-changemanagementnewhumandynamics>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Awareness"
+                    [ngClass]="{ 'active show':activeTab==='awareness'}">
+                    <app-changemanagementnewawareness
+                        *ngIf="activeTab==='awareness'"></app-changemanagementnewawareness>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Motivation"
+                    [ngClass]="{ 'active show':activeTab==='motivation'}">
+                    <app-changemanagementnewmotivation
+                        *ngIf="activeTab==='motivation'"></app-changemanagementnewmotivation>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Commitment"
+                    [ngClass]="{ 'active show':activeTab==='commitment'}">
+                    <app-changemanagementnewcommitment
+                        *ngIf="activeTab==='commitment'"></app-changemanagementnewcommitment>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="DecisionChecklist"
+                    [ngClass]="{ 'active':activeTab==='decisionchecklist'}">
+                    <app-changemanagementnewdecisionchecklist (newItemEvent)="next($event)"
+                        *ngIf="activeTab==='decisionchecklist'"></app-changemanagementnewdecisionchecklist>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Report"
+                    [ngClass]="{ 'active show':activeTab==='report'}">
+                    <app-changemanagementnewreport *ngIf="activeTab==='report'"></app-changemanagementnewreport>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Synopsis"
+                    [ngClass]="{ 'active show':activeTab==='synopsis'}">
+                    <app-changemanagementnewsynopsis *ngIf="activeTab==='synopsis'"></app-changemanagementnewsynopsis>
+                </div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade show" id="second" >
+            <app-reading *ngIf="toolbartab==='reading'"  [gamename]="gametitle"></app-reading>
+            <!-- <app-businessbascisreading ></app-businessbascisreading> -->
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade show" id="third">
+            <nav class="headerbreadcrumb">
+                <ul class="breadcrumb" role="tablist">
+                    <li role="presentation " class="breadcrumb-item active" data-bs-target="#Individual"
+                        aria-controls="Individual" role="tab" data-bs-toggle="tab" aria-selected="true"
+                        (click)="tabclick('individual')">
+                        <div><span class="octicon octicon-diff-added"></span>Individual</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Course" aria-controls="Course"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="tabclick('course')">
+                        <div><span class="octicon octicon-diff-added"></span>Course</div>
+                    </li>
+
+                </ul>
+            </nav>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show active" id="Individual">
+                    <app-forumindividual
+                        *ngIf="tabname==='individual'"></app-forumindividual>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Course">
+                    <app-forumcourse *ngIf="tabname==='course'"></app-forumcourse>
+                </div>
+            </div>
+
+            
+        </div>
+        
+        <div role="tabpanel" class="tab-pane fade show" id="fourth" style="width: 90%; margin:0 auto;height:100vh;padding-top:1.5rem">
+            <app-microsimleaderboardgeneral *ngIf="toolbartab=='leaderboard'"></app-microsimleaderboardgeneral>
+          </div>
+    </div>
+</div>

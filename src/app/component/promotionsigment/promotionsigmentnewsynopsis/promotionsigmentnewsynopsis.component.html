@@ -1,0 +1,415 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui promotion_sigment">
+    <div class="container">
+        <div class="body-element">
+            <div class="feed_ack">
+                <div>
+                    <div class="row pb-4">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                                <div class="">
+                                    <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                        (change)="roundClick()">
+                                        <option class="select-round-option" value="">Select Round</option>
+                                        <option class="select-round-option"
+                                            *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                            {{attempt}}</option>
+
+                                    </select>
+                                </div>
+                                <div class="download_btn" matTooltiClass="primary-tooltip"
+                                    (click)="downloadreportpromotionsigment()">
+                                    <div>
+                                        <a download matTooltip="Download"><span class="hovertext"
+                                                data-hover="Download pdf file accounting ">
+                                                <img src="assets/images/businessbasics/download.png" />
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <mat-icon class="mt-2">get_app</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1>
+                        Synopsis
+                    </h1>
+                    <div style="margin-top: 1.1rem;" *ngIf="analysisshow">
+                        <h1
+                            style="display: flex; align-items: center; gap: 5px;font-size: 1.1rem; font-weight: 600;padding: 0.6rem 0.4rem;color: white;background-color: #266cc38a;">
+                            Feedback
+                            <div style=" width: 1rem;">
+                                <mat-icon (click)="rotate();roundClick();" [@rotatedState]='state' class="sidenav-icon"
+                                    aria-hidden="false" aria-label="Example home icon">cached</mat-icon>
+                            </div>
+                        </h1>
+                    </div>
+                    <div class="decision-textarea pb-5 h-100" *ngIf="analysisshow">
+                        <div class="row">
+                            <div class="col-md" style="padding: 10px;">
+                                <div class="card feedbsck-value p-3">
+                                    <markdown [data]="feedbackvalue"></markdown>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-cols-md-2 py-3">
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Decisions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Website, Budgeting</td>
+                                        <td>{{result[0]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Social Commerce, Budgeting</td>
+                                        <td>{{result[1]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Modern Trade, Budgeting</td>
+                                        <td>{{result[2]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Retailers, Budgeting</td>
+                                        <td>{{result[3]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Facebook, Budgeting</td>
+                                        <td>{{result[4]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Instagram, Budgeting</td>
+                                        <td>{{result[5]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Twitter, Budgeting</td>
+                                        <td>{{result[6]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>LinkedIn, Budgeting</td>
+                                        <td>{{result[7]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>YouTube, Budgeting</td>
+                                        <td>{{result[8]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Website</td>
+                                        <td>{{result[9]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Social Commerce, Community Engagement Series</td>
+                                        <td>{{result[10]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Social Commerce, Flash Sales and Trending Topics</td>
+                                        <td>{{result[11]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Social Commerce, Visual Storytelling and Influencer Collaborations</td>
+                                        <td>{{result[12]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Social Commerce, Expert Insights and Premium Skincare Journey</td>
+                                        <td>{{result[13]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Social Commerce, Tutorial Series and Influencer Reviews</td>
+                                        <td>{{result[14]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Modern Trade</td>
+                                        <td>{{result[15]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Retailers</td>
+                                        <td>{{result[16]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Website, A/B Testing</td>
+                                        <td>{{result[17]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Social Commerce, A/B Testing</td>
+                                        <td>{{result[18]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Modern Trade & Retailers, A/B Testing</td>
+                                        <td>{{result[19]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[1]">
+                                        <td>Online Channel, Margin</td>
+                                        <td>{{result[20]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[2]">
+                                        <td>Modern Trade Channel, Margin</td>
+                                        <td>{{result[21]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[3]">
+                                        <td>Retailers Channel, Margin</td>
+                                        <td>{{result[22]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product Focus, Acne Face Cream</td>
+                                        <td>{{result[23]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product Focus, Apple Cider Face Wash</td>
+                                        <td>{{result[24]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3">Segment Sales, units</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td></td>
+                                        <td style="text-align: right;font-weight: 500; font-size: 14px;">
+                                            {{result[56]}}
+                                        </td>
+                                        <td style="text-align: right;font-weight: 500; font-size: 14px;">
+                                            {{result[57]}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[58]}}</td>
+                                        <td style="text-align: right;font-weight: 500; font-size: 12px;">
+                                            {{result[59]|number:'1.0-0'}}</td>
+                                        <td style="font-size: 12px; font-weight: 500;">{{result[60]|number:'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[61]}}</td>
+                                        <td style="text-align: right;font-weight: 500; font-size: 12px;">
+                                            {{result[62]|number:'1.0-0'}}</td>
+                                        <td style="font-size: 12px; font-weight: 500;">{{result[63]|number:'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[64]}}</td>
+                                        <td style="text-align: right;font-weight: 500; font-size: 12px;">
+                                            {{result[65]|number:'1.0-0'}}</td>
+                                        <td style="font-size: 12px; font-weight: 500;">{{result[66]|number:'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[67]}}</td>
+                                        <td style="text-align: right;font-weight: 500; font-size: 12px;">
+                                            {{result[68]|number:'1.0-0'}}</td>
+                                        <td style="font-size: 12px; font-weight: 500;">{{result[69]|number:'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                        <div class="col-md">
+                            <table class="table rsl_tbl " *ngIf="optional[0]">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Thinking Ability</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Communication Mix, %</td>
+                                        <td>{{result[53]*100|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Campaigns, %</td>
+                                        <td>{{result[54]*100|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Channels, %</td>
+                                        <td>{{result[55]*100|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3">Product Sales, units</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td></td>
+                                        <td style="text-align: right;font-weight: 500; font-size: 14px;">Acne Face
+                                            Cream
+                                        </td>
+                                        <td style="text-align: right;font-weight: 500; font-size: 14px;">Apple Cider
+                                            Face Wash</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[25]}}</td>
+                                        <td style="text-align: right;font-weight: 500; font-size: 12px;">
+                                            {{result[26]|number:'1.0-0'}}</td>
+                                        <td style="font-size: 12px; font-weight: 500;">{{result[27]|number:'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[28]}}</td>
+                                        <td style="text-align: right;font-weight: 500; font-size: 12px;">
+                                            {{result[29]|number:'1.0-0'}}</td>
+                                        <td style="font-size: 12px; font-weight: 500;">{{result[30]|number:'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[31]}}</td>
+                                        <td style="text-align: right;font-weight: 500; font-size: 12px;">
+                                            {{result[32]|number:'1.0-0'}}</td>
+                                        <td style="font-size: 12px; font-weight: 500;">{{result[33]|number:'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[34]}}</td>
+                                        <td style="text-align: right;font-weight: 500; font-size: 12px;">
+                                            {{result[35]|number:'1.0-0'}}</td>
+                                        <td style="font-size: 12px; font-weight: 500;">{{result[36]|number:'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Operating Income, INR</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Revenue</td>
+                                        <td>{{result[41]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Variable Cost</td>
+                                        <td>{{result[42]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Gross Profit</td>
+                                        <td>{{result[43]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Promotion Cost </td>
+                                        <td>{{result[44]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Operating Profit/Loss</td>
+                                        <td>{{result[45]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Promotion Cost, INR</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Communication Mix Cost</td>
+                                        <!-- <td>10000000</td> -->
+                                        <td>{{result[46]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Campaign Creation Cost</td>
+                                        <!-- <td>3030000</td> -->
+                                        <td>{{result[47]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>A/B Testing Cost</td>
+                                        <!-- <td>2160000</td> -->
+                                        <td>{{result[48]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[1]">
+                                        <td>Channel Cost</td>
+                                        <!-- <td>13133779</td> -->
+                                        <td>{{result[49]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Total Cost</td>
+                                        <!-- <td>28323779</td> -->
+                                        <td>{{result[50]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Platform Sales, units</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[25]}}</td>
+                                        <td>{{result[37]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[28]}}</td>
+                                        <td>{{result[38]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[31]}}</td>
+                                        <td>{{result[39]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{result[34]}}</td>
+                                        <td>{{result[40]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">KPI</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Operating Margin</td>
+                                        <td>{{result[51]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>ROAS</td>
+                                        <td>{{result[52]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row lst_r">
+                        <div class="col-4 lst_r-col4">
+                            <button class="mt-4 retry" [disabled]="isButtonDisabled"  [disabled]="disabled"  
+                            (click)="exit()">{{retry}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

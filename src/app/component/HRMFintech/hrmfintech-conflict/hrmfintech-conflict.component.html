@@ -1,0 +1,75 @@
+<div class="elearingnewui hrmfintech">
+    <!-- <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div> -->
+    <div class="container">
+        <div class="body-element pb-5">
+            <div class="element-first">
+                <div class="row">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+            </div>
+            <h1 class="my-5"> Conflict
+                <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>How can you assess the root cause of the conflict and suggest a solution that balances the interests of all parties involved, while ensuring long-term harmony and alignment with the organization's values and goals?</p>
+                        </div>
+                      </div>
+                    </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+
+            <div class="case">
+                <div class="casedesc">
+                    <p [innerHTML]="result.hrmGameCM.hrmgameperioddata[scenarios[attempt].case]"
+                        class="casedescparagraph"></p>
+                </div>
+                <div class="casedescdecision my-5">
+                    <h2 class="fw-bold">Q. Describe briefly what you would have done in the case before selecting
+                        available options
+                        (limit to 300 characters)</h2>
+
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Enter your description here" id="description"
+                            rows="4" style="height:100px" maxlength="300" [(ngModel)]="scenarios[attempt].description"
+                            [disabled]="lockactionclicked"></textarea>
+                        <label for="floatingTextarea2">Description</label>
+                    </div>
+                    <div class="float-end mt-3" *ngIf="scenarios[attempt].description!=''">
+                        <button type="button" class="btn_stl btn_stl-decisionchecklist"
+                            (click)="lockaction(scenarios[attempt].description)" [disabled]="lockactionclicked">Lock My
+                            Action</button>
+                    </div>
+                </div>
+            </div>
+            <div class="optionselect pb-5" *ngIf="lockactionclicked">
+                <h3 class="fw-bold">Company is debating between the following options, select the most appropriate</h3>
+
+                <ol class="list-group">
+                    <li class="list-group-item d-flex gap-5 flex-row align-items-start"
+                        *ngFor="let radioitem of scenarios[attempt].options; let i = index">
+                        <div>
+                            <input class="form-check-input me-1" style="height: 22px; width: 22px;" type="radio"
+                                name="scenarioGroupRadio" [value]="result.hrmGameCM.hrmgameperioddata[radioitem.title]"
+                                [checked]="result.decisions[radioitem.inputcell]===1" (change)="selectedIndex = i; 
+                                submitClick(selectedIndex)" [id]="radioitem.optno" [disabled]="inputDisabled">
+                        </div>
+                        <p><label class="form-check-label text-align-jutify" style="text-align: justify;"
+                                [for]="radioitem.optno">{{result.hrmGameCM.hrmgameperioddata[radioitem.title]}}</label>
+                        </p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>

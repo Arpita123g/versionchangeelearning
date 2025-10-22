@@ -1,0 +1,124 @@
+$social-colors: (
+  facebook: #4267B2,
+  twitter: #00ACEE,
+  google: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg)
+);
+
+:root {
+  --primary-color: #495057;
+  --secondary-color: #d1d1d1;
+  --background-color: #fffbef;
+  --border-radius: 15px;
+  --transition-duration: 0.5s;
+  --shadow-color: rgba(0, 0, 0, 0.8);
+}
+
+.login{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    height:100%;
+    // background:url('../../../assets/images/newbackimg.jpg');
+    background-size: cover;
+    color: var(--primary-color)
+}
+
+.logincontainer{
+    width:400px;
+    background-color: var(--background-color);
+    padding:50px 30px 10px 30px;   
+    border-radius: var(--border-radius);
+}
+
+.logintitle{
+    text-align:center;
+    font-size:30px;
+    font-weight:bold;
+    color: var(--primary-color);
+    margin-bottom:50px;
+}
+
+.inputtitle{
+    text-align:left;
+    font-size:14px;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.center{
+    display:flex;justify-content:center;
+}
+
+.mt{
+    margin-top:10px
+}
+
+.log{
+    width:100%;
+    border-radius: var(--border-radius);
+}
+
+.log-input{
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: var(--secondary-color);
+    width: 100%;
+    font-size:18px;
+    background:transparent;
+    transition: border-color var(--transition-duration);
+
+    &:focus{
+        border-color: var(--primary-color);
+    }
+}
+
+.desc{
+    text-align:right;margin-top:10px;font-weight: 500;
+}
+
+.demopadding {
+    margin:10px auto;
+    width:140px;
+    text-align:center;
+}
+.icon {
+    position:relative;
+    text-align:center;
+    width:0px;
+    height:0px;
+    padding:20px;
+    border-radius: 20px;
+    color: white;
+    float: left;
+    margin: 0 5px 0 0;
+    cursor: pointer;
+    transition: filter var(--transition-duration);
+
+    i {
+        font-size:20px;
+        position:absolute;
+        left:9px;
+        top:10px;
+    }
+
+    &.social {
+        &:hover {
+            filter: drop-shadow(0 1px 10px var(--shadow-color));
+        }
+
+        &.fb {
+            background: map-get($social-colors, facebook);
+            i { left: 13px; }
+        }
+
+        &.tw {
+            background: map-get($social-colors, twitter);
+            i { left: 11px; }
+        }
+
+        &.in {
+            background: map-get($social-colors, google);
+            i { left: 11px; }
+        }
+    }
+}

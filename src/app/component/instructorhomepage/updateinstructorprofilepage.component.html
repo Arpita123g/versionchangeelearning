@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+            <div class="inputtitle">Instructor Profile</div>
+            <div class="subtitle">You can change your password</div>
+        </div>
+    </div>
+
+    <form [formGroup]="instructorprofilegroup" class="form">
+        <!-- Profile Information -->
+        <div class="row">
+            <div class="borderbottom"></div>
+            <div class="col-6 mar-b">
+                <div class="lebel">Instructor Name</div>
+                <input 
+                    formControlName="instructorname" 
+                    class="form-control" 
+                    type="text"
+                    [attr.disabled]="true"
+                >
+            </div>
+            <div class="col-6 mar-b">
+                <div class="lebel">Instructor Email ID</div>
+                <input 
+                    formControlName="instructoremailid" 
+                    class="form-control" 
+                    type="email"
+                    [attr.disabled]="true"
+                >
+            </div>
+        </div>
+
+        <!-- Current Password -->
+        <div class="row">
+            <div class="borderbottom"></div>
+            <div class="col-6 mar-b">
+                <div class="lebel">Current Password</div>
+                <input 
+                    formControlName="instructorpassword" 
+                    class="form-control" 
+                    type="password"
+                >
+            </div>
+        </div>
+
+        <!-- Change Password Section -->
+        <div class="row">
+            <div class="col-10">
+                <div class="inputtitle">Change Password</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="borderbottom"></div>
+            <div class="col-6 mar-b">
+                <div class="lebel">New Password</div>
+                <input 
+                    formControlName="newpassword" 
+                    class="form-control" 
+                    type="password"
+                    minlength="8"
+                >
+            </div>
+            <div class="col-6 mar-b">
+                <div class="lebel">Confirm Password</div>
+                <input 
+                    formControlName="confirmpassword" 
+                    class="form-control" 
+                    type="password"
+                    minlength="8"
+                >
+            </div>
+        </div>
+
+        <!-- Save Button -->
+        <div class="row">
+            <div class="borderbottom"></div>
+            <div class="col-4"></div>
+            <div class="col-2 mar-b save" style="display:flex;align-items:center">
+                <button 
+                    class="submit-button" 
+                    (click)="update()"
+                    [disabled]="!instructorprofilegroup.valid"
+                >
+                    Save
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

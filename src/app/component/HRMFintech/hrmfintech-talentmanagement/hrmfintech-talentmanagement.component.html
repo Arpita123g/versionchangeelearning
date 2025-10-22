@@ -1,0 +1,727 @@
+<div class="elearingnewui hrmfintech">
+    <!-- <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div> -->
+    <div class="container">
+        <div class="body-element">
+
+            <div class="element-first">
+                <div class="row">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hrmfintechtab">
+                <ul id="nav-tab" role="tablist" class="nav hrmfintechtab-nav flex-nowrap align-items-center">
+                    <li *ngFor="let item of activeItems; index as i" [id]="'nav-'+item.id+'-tab'" data-bs-toggle="tab"
+                        [attr.data-bs-target]="'#nav-'+item.id" type="button" role="tab" aria-controls="nav-Memo"
+                        class="nav-link hrmfintechtab-link" [class.active]="i==0">
+                        {{item.title}}
+                    </li>
+                </ul>
+                <div id="nav-tabContent" class="tab-content" *ngIf="result.decisions">
+                    <div [id]="'nav-'+item.id" *ngFor="let item of activeItems; let i = index" role="tabpanel"
+                        class="tab-pane fade show" [class.active]="i==0">
+                        <div class="rounded border p-2" *ngIf="!item.isDiff">
+                            <h1 class="mb-5 mt-2">Compensation
+                                <mat-icon appTippy="
+                                <div class='help-tip p-2'>
+                                  <div style='display:flex;'>
+                                    <div>
+                                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                    </div> &nbsp; &nbsp;
+                                    <div>
+                                      <p style='margin: 0 auto; color: white; font-size:13px;'>Are you considering the potential long-term impact of these ratings on employee retention, morale, and development? How will your ratings affect both individual growth and overall team dynamics?</p>
+                                    </div>
+                                  </div>
+                                  <div style='display:flex; margin-top:5px'>
+                                    <div>
+                                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                    </div> &nbsp; &nbsp;
+                                    <div>
+                                      <p style='margin: 0 auto; color: white; font-size:13px;'>How do your rating decisions balance fairness and motivation across the team? Are you ensuring that high performers are rewarded appropriately while maintaining transparency and equity?</p>
+                                    </div>
+                                  </div>
+                                </div> ">
+                                    help_outline
+                                </mat-icon>
+                            </h1>
+                            <div class="row">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <img src="../../../../assets/images/hrmfintech/compensation.svg" class="img-fluid"
+                                        style="height: 250px;" />
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card p-2">
+                                        <apx-chart [series]="item.compensation.chart.series"
+                                            [chart]="item.compensation.chart.chart"
+                                            [dataLabels]="item.compensation.chart.dataLabels"
+                                            [plotOptions]="item.compensation.chart.plotOptions"
+                                            [yaxis]="item.compensation.chart.yaxis"
+                                            [xaxis]="item.compensation.chart.xaxis"
+                                            [fill]="item.compensation.chart.fill"
+                                            [title]="item.compensation.chart.title"
+                                            [noData]="item.compensation.chart.noData"
+                                            [tooltip]="item.compensation.chart.tooltip">
+                                        </apx-chart>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pt-4">
+                                <table class="table rsl_tbl table-bordered">
+                                    <thead class="rsl_tbl-thead">
+                                        <tr class="rsl_tbl-thead-tr">
+                                            <th class="rsl_tbl-thead-th text-start" rowspan="2">Ratings</th>
+                                            <th class="rsl_tbl-thead-th text-center" colspan="2"
+                                                *ngFor="let th of item.tableHeader">{{th}}</th>
+                                        </tr>
+                                        <tr class="rsl_tbl-thead-tr">
+                                            <th class="rsl_tbl-thead-th">Current Year</th>
+                                            <th class="rsl_tbl-thead-th">Previous Year</th>
+                                            <th class="rsl_tbl-thead-th">Current Year</th>
+                                            <th class="rsl_tbl-thead-th">Previous Year</th>
+                                            <th class="rsl_tbl-thead-th">Current Year</th>
+                                            <th class="rsl_tbl-thead-th">Previous Year</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="rsl_tbl-tbody">
+                                        <tr class="rsl_tbl-tbody-tr" *ngFor="let td of item.tableData">
+                                            <td [innerHTML]="td.name"></td>
+                                            <td>
+                                                <div class="input-group w-auto flex-nowrap  w-100">
+                                                    <input type="number" class="input-no_box border-end-0" min="1"
+                                                        max="100"
+                                                        [ngModel]="result.decisions[td.topcurdata1[noofattempt]] * 100| number:'1.0-0'"
+                                                        [disabled]="inputDisabled" (focusout)="validateInput($event, td.topcurdata1[noofattempt],
+                                                        [item.tableData[0].topcurdata1[noofattempt],item.tableData[1].topcurdata1[noofattempt],
+                                                        item.tableData[2].topcurdata1[noofattempt],item.tableData[3].topcurdata1[noofattempt]]
+                                                        ,'percentdata')">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </td>
+                                            <td>{{result.decisions[td.topprevdata1[noofattempt]]*100|number:'1.0-0'}}%
+                                            </td>
+                                            <td>
+                                                <div class="input-group w-auto flex-nowrap  w-100">
+                                                    <input type="number" class="input-no_box border-end-0"
+                                                        [ngModel]="result.decisions[td.topcurdata2[noofattempt]]*100| number:'1.0-0'"
+                                                        [disabled]="inputDisabled" (focusout)="validateInput($event, td.topcurdata2[noofattempt],
+                                                        [item.tableData[0].topcurdata2[noofattempt],item.tableData[1].topcurdata2[noofattempt],
+                                                        item.tableData[2].topcurdata2[noofattempt],item.tableData[3].topcurdata2[noofattempt]],
+                                                        'percentdata')">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </td>
+                                            <td>{{result.decisions[td.topprevdata2[noofattempt]]*100|number:'1.0-0'}}%
+                                            </td>
+                                            <td>
+                                                <div class="input-group w-auto flex-nowrap w-100">
+                                                    <input type="number" class="input-no_box border-end-0"
+                                                        [ngModel]="result.decisions[td.topcurdata3[noofattempt]]*100| number:'1.0-0'"
+                                                        [disabled]="inputDisabled" (focusout)="validateInput($event, td.topcurdata3[noofattempt], 
+                                                        [item.tableData[0].topcurdata3[noofattempt],item.tableData[1].topcurdata3[noofattempt],
+                                                        item.tableData[2].topcurdata3[noofattempt],item.tableData[3].topcurdata3[noofattempt]],
+                                                        'percentdata')">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </td>
+                                            <td>{{result.decisions[td.topprevdata3[noofattempt]]*100|number:'1.0-0'}}%
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h1 class="my-5">Bonus Policy
+                                <mat-icon appTippy="
+                                <div class='help-tip p-2'>
+                                  <div style='display:flex;'>
+                                    <div>
+                                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                    </div> &nbsp; &nbsp;
+                                    <div>
+                                      <p style='margin: 0 auto; color: white; font-size:13px;'>How can your bonus policy for top, senior, and junior management ensure that high-performing employees feel valued while maintaining financial sustainability? Are you considering differences in motivation and expectations at each level?</p>
+                                    </div>
+                                  </div>
+                                  <div style='display:flex; margin-top:5px'>
+                                    <div>
+                                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                    </div> &nbsp; &nbsp;
+                                    <div>
+                                      <p style='margin: 0 auto; color: white; font-size:13px;'>Are you aligning your bonus structure with the company's performance goals and long-term strategy? How will this policy affect employee retention and drive future performance across management levels?</p>
+                                    </div>
+                                  </div>
+                                </div> ">
+                                    help_outline
+                                </mat-icon>
+                            </h1>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col" *ngFor="let ipolicy of item.incentivepolicy; let k = index;">
+                                            <div class="card h-100">
+                                                <div class="card-header">
+                                                    <h4 class="card-title small m-0">{{ipolicy.name}}</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="d-flex flex-column gap-3">
+                                                        <div>
+                                                            <label [for]="'hiringfiringinpcy'+k"
+                                                                class="small text-muted">Current
+                                                                Year</label>
+                                                            <div class="input-group w-auto flex-nowrap">
+                                                                <select class="select-round input-no_box-drop w-100"
+                                                                    [(ngModel)]="result.decisions[ipolicy.curdata[noofattempt]]"
+                                                                    (change)="writehrmvalue(ipolicy.curdata[noofattempt],$event,'')"
+                                                                    [disabled]="inputDisabled">
+                                                                    <option class="select-round-option" value=0>
+                                                                        Select
+                                                                    </option>
+                                                                    <option class="select-round-option" [value]="item"
+                                                                        *ngFor="let item of incentivepolicies">{{item}}
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <label class="text-muted small">Previous Year</label>
+                                                            <h4 class="fw-bold">
+                                                                {{result.decisions[ipolicy.prevdata[noofattempt]]==0?'':result.decisions[ipolicy.prevdata[noofattempt]]}}
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card p-1 h-100">
+                                        <apx-chart [series]="item.averageSalaryGraph.chart.series"
+                                            [chart]="item.averageSalaryGraph.chart.chart"
+                                            [dataLabels]="item.averageSalaryGraph.chart.dataLabels"
+                                            [plotOptions]="item.averageSalaryGraph.chart.plotOptions"
+                                            [yaxis]="item.averageSalaryGraph.chart.yaxis"
+                                            [xaxis]="item.averageSalaryGraph.chart.xaxis"
+                                            [fill]="item.averageSalaryGraph.chart.fill"
+                                            [title]="item.averageSalaryGraph.chart.title"
+                                            [noData]="item.averageSalaryGraph.chart.noData"
+                                            [tooltip]="item.averageSalaryGraph.chart.tooltip">
+                                        </apx-chart>
+                                    </div>
+                                </div>
+                            </div>
+                            <h1 class="my-5">Paycut
+                                <mat-icon appTippy="
+                                <div class='help-tip p-2'>
+                                  <div style='display:flex;'>
+                                    <div>
+                                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                    </div> &nbsp; &nbsp;
+                                    <div>
+                                      <p style='margin: 0 auto; color: white; font-size:13px;'>How will implementing pay cuts at different management levels impact employee morale, retention, and overall productivity? Are you balancing short-term financial relief with long-term organizational stability and employee loyalty?</p>
+                                    </div>
+                                  </div>
+                                </div> ">
+                                    help_outline
+                                </mat-icon>
+                            </h1>
+
+                            <div class="row">
+                                <div class="col-md-4" *ngFor="let paycut of item.paycutdecision; let pcount = index">
+                                    <div class="card d-flex flex-row gap-2 flex-fill my-2">
+                                        <div class="d-flex align-items-center justify-content-center p-2">
+                                            <img [src]="'../../../../assets/images/hrmfintech/users/'+paycut.icon"
+                                                class="img-fluid"
+                                                style="object-fit: cover; object-position: center; height:70px; width:auto;"
+                                                alt="incentive">
+                                        </div>
+                                        <div class="card-body">
+                                            <h4 class="card-title fw-bold">{{paycut.title}}</h4>
+                                            <div>
+                                                <h6 class="card-title fw-bold">Previous year</h6>
+                                                <div class="radios d-flex flex-row gap-2">
+                                                    <input type="radio" class="btn-check" value="Yes"
+                                                        [name]="i+'optionsPrevious'+pcount" [id]="'yesPrevious'+pcount"
+                                                        [(ngModel)]="result.decisions[paycut.prevdata[noofattempt]]"
+                                                        autocomplete="off"
+                                                        [checked]="result.decisions[paycut.prevdata[noofattempt]]==='Yes'"
+                                                        disabled>
+                                                    <label class="btn btn-fill btn-outline-success"
+                                                        [for]="'yesPrevious'+pcount">Yes</label>
+
+                                                    <input type="radio" class="btn-check" value="No"
+                                                        [name]="i+'optionsPrevious'+pcount" [id]="'noPrevious'+pcount"
+                                                        [(ngModel)]="result.decisions[paycut.prevdata[noofattempt]]"
+                                                        autocomplete="off"
+                                                        [checked]="result.decisions[paycut.prevdata[noofattempt]]==='No'"
+                                                        disabled>
+                                                    <label class="btn btn-fill btn-outline-danger"
+                                                        [for]="'noPrevious'+pcount">No</label>
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <h6 class="card-title fw-bold">Current year</h6>
+                                                <div class="radios d-flex flex-row gap-2">
+                                                    <input type="radio" class="btn-check" value="Yes"
+                                                        [name]="i + 'optionsCurrent' + pcount"
+                                                        [id]="i + 'yesCurrent' + pcount"
+                                                        [checked]="result.decisions[paycut.curdata[noofattempt]] === 'Yes'"
+                                                        (click)="writehrmvalueforRadio(paycut.curdata[noofattempt], 'Yes',$event)"
+                                                        [disabled]="inputDisabled">
+                                                    <label class="btn btn-fill btn-outline-success"
+                                                        [for]="i + 'yesCurrent' + pcount">Yes</label>
+
+                                                    <input type="radio" class="btn-check" value="No"
+                                                        [name]="i + 'optionsCurrent' + pcount"
+                                                        [id]="i + 'noCurrent' + pcount"
+                                                        [checked]="result.decisions[paycut.curdata[noofattempt]] === 'No'"
+                                                        (click)="writehrmvalueforRadio(paycut.curdata[noofattempt], 'No',$event)"
+                                                        [disabled]="inputDisabled">
+                                                    <label class="btn btn-fill btn-outline-danger"
+                                                        [for]="i + 'noCurrent' + pcount">No</label>
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h1 class="my-5">Training
+                                <mat-icon appTippy="
+                                <div class='help-tip p-2'>
+                                  <div style='display:flex;'>
+                                    <div>
+                                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                    </div> &nbsp; &nbsp;
+                                    <div>
+                                      <p style='margin: 0 auto; color: white; font-size:13px;'>How can you tailor training programs to address the specific skill gaps and development needs at each management level, while ensuring alignment with overall business objectives and future growth?</p>
+                                    </div>
+                                  </div>
+                                </div> ">
+                                    help_outline
+                                </mat-icon>
+                            </h1>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="row h-100">
+                                        <div class="col"
+                                            *ngFor="let training of item.trainingofemployee; let k = index;">
+                                            <div class="card h-100">
+                                                <div class="card-header">
+                                                    <h4 class="card-title small m-0">{{training.name}}</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="d-flex flex-column gap-3">
+                                                        <div>
+                                                            <label [for]="'hiringfiringinpcy'+k"
+                                                                class="small text-muted">Current
+                                                                Year</label>
+                                                            <div class="input-group w-auto flex-nowrap">
+                                                                <select class="select-round input-no_box-drop w-100"
+                                                                    [(ngModel)]="result.decisions[training.curdata[noofattempt]]"
+                                                                    (change)="writehrmvalue(training.curdata[noofattempt],$event,'')"
+                                                                    [disabled]="inputDisabled">
+                                                                    <option class="select-round-option" value=0>
+                                                                        Select
+                                                                    </option>
+                                                                    <option class="select-round-option"
+                                                                        [value]="selectitem"
+                                                                        *ngFor="let selectitem of trainingofemployeeList">
+                                                                        {{selectitem}}
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <label class="text-muted small">Previous Year</label>
+                                                            <h4 class="fw-bold">
+                                                                {{result.decisions[training.prevdata[noofattempt]]==0?'':result.decisions[training.prevdata[noofattempt]]}}
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <apx-chart [series]="item.trainingofemployeeGraph.chart.series"
+                                            [chart]="item.trainingofemployeeGraph.chart.chart"
+                                            [dataLabels]="item.trainingofemployeeGraph.chart.dataLabels"
+                                            [plotOptions]="item.trainingofemployeeGraph.chart.plotOptions"
+                                            [yaxis]="item.trainingofemployeeGraph.chart.yaxis"
+                                            [xaxis]="item.trainingofemployeeGraph.chart.xaxis"
+                                            [fill]="item.trainingofemployeeGraph.chart.fill"
+                                            [title]="item.trainingofemployeeGraph.chart.title"
+                                            [noData]="item.trainingofemployeeGraph.chart.noData"
+                                            [tooltip]="item.trainingofemployeeGraph.chart.tooltip">
+                                        </apx-chart>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h1 class="my-5">Leadership Programme
+                                <mat-icon appTippy="
+                                <div class='help-tip p-2'>
+                                  <div style='display:flex;'>
+                                    <div>
+                                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                    </div> &nbsp; &nbsp;
+                                    <div>
+                                      <p style='margin: 0 auto; color: white; font-size:13px;'>How can leadership development and promotion opportunities be structured to cultivate future leaders at both junior and senior levels, while ensuring alignment with organizational goals and employee career growth?</p>
+                                    </div>
+                                  </div>
+                                </div> ">
+                                    help_outline
+                                </mat-icon>
+                            </h1>
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <div class="row h-100">
+                                        <div class="col"
+                                            *ngFor="let futureLeadership of item.futureleadershipseniorprogramme; let k = index;">
+                                            <div class="card h-100">
+                                                <div class="card-header">
+                                                    <h4 class="card-title small m-0">{{futureLeadership.name}}</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="d-flex flex-column gap-3">
+                                                        <div>
+                                                            <label [for]="'hiringfiringinpcy'+k"
+                                                                class="small text-muted">Current
+                                                                Year</label>
+                                                            <div class="input-group w-auto flex-nowrap">
+                                                                <select class="select-round input-no_box-drop w-100"
+                                                                    [(ngModel)]="result.decisions[futureLeadership.curdata[noofattempt]]"
+                                                                    (change)="writehrmvalue(futureLeadership.curdata[noofattempt],$event,'')"
+                                                                    [disabled]="inputDisabled">
+                                                                    <option class="select-round-option" value=0>
+                                                                        Select
+                                                                    </option>
+                                                                    <option class="select-round-option"
+                                                                        [value]="futureLeadershipItem"
+                                                                        *ngFor="let futureLeadershipItem of futureLeadershipProgrammeSeniorList">
+                                                                        {{futureLeadershipItem}}
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <label class="text-muted small">Previous Year</label>
+                                                            <h4 class="fw-bold">
+                                                                {{result.decisions[futureLeadership.prevdata[noofattempt]]==0?'':result.decisions[futureLeadership.prevdata[noofattempt]]}}
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col"
+                                            *ngFor="let futureLeadership of item.futureleadershipjuniorprogramme; let k = index;">
+                                            <div class="card h-100">
+                                                <div class="card-header">
+                                                    <h4 class="card-title small m-0">{{futureLeadership.name}}</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="d-flex flex-column gap-3">
+                                                        <div>
+                                                            <label [for]="'hiringfiringinpcy'+k"
+                                                                class="small text-muted">Current
+                                                                Year</label>
+                                                            <div class="input-group w-auto flex-nowrap">
+                                                                <select class="select-round input-no_box-drop w-100"
+                                                                    [(ngModel)]="result.decisions[futureLeadership.curdata[noofattempt]]"
+                                                                    (change)="writehrmvalue(futureLeadership.curdata[noofattempt],$event,'')"
+                                                                    [disabled]="inputDisabled">
+                                                                    <option class="select-round-option" value=0>
+                                                                        Select
+                                                                    </option>
+                                                                    <option class="select-round-option"
+                                                                        [value]="futureLeadershipItem"
+                                                                        *ngFor="let futureLeadershipItem of futureLeadershipProgrammeJuniorList">
+                                                                        {{futureLeadershipItem}}
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <label class="text-muted small">Previous Year</label>
+                                                            <h4 class="fw-bold">
+                                                                {{result.decisions[futureLeadership.prevdata[noofattempt]]==0?'':result.decisions[futureLeadership.prevdata[noofattempt]]}}
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <apx-chart [series]="item.futureleadershipGraph.chart.series"
+                                            [chart]="item.futureleadershipGraph.chart.chart"
+                                            [dataLabels]="item.futureleadershipGraph.chart.dataLabels"
+                                            [plotOptions]="item.futureleadershipGraph.chart.plotOptions"
+                                            [yaxis]="item.futureleadershipGraph.chart.yaxis"
+                                            [xaxis]="item.futureleadershipGraph.chart.xaxis"
+                                            [fill]="item.futureleadershipGraph.chart.fill"
+                                            [title]="item.futureleadershipGraph.chart.title"
+                                            [noData]="item.futureleadershipGraph.chart.noData"
+                                            [tooltip]="item.futureleadershipGraph.chart.tooltip">
+                                        </apx-chart>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rounded border p-2" *ngIf="item.isDiff">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h1 class="mb-5">Division Policy
+                                        <mat-icon appTippy="
+                                        <div class='help-tip p-2'>
+                                          <div style='display:flex;'>
+                                            <div>
+                                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                            </div> &nbsp; &nbsp;
+                                            <div>
+                                              <p style='margin: 0 auto; color: white; font-size:13px;'>How can you prioritize policies that maximize employee satisfaction and well-being across all levels while staying within budget limits? Are there any high-impact, low-cost solutions that can offer significant value?</p>
+                                            </div>
+                                          </div>
+                                          <div style='display:flex; margin-top:5px'>
+                                            <div>
+                                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                            </div> &nbsp; &nbsp;
+                                            <div>
+                                              <p style='margin: 0 auto; color: white; font-size:13px;'>Are you evaluating the long-term return on investment (ROI) of these policies in terms of employee productivity, retention, and overall organizational performance, balancing immediate costs with future gains?</p>
+                                            </div>
+                                          </div>
+                                        </div> ">
+                                            help_outline
+                                        </mat-icon>
+                                    </h1>
+                                    <table class="table rsl_tbl table-bordered mb-3">
+                                        <thead class="rsl_tbl-thead">
+                                            <tr class="rsl_tbl-thead-tr">
+                                                <th class="rsl_tbl-thead-th text-center" colspan="3">
+                                                    Division
+                                                    Policy Cost, k INR</th>
+                                            </tr>
+                                            <tr class="rsl_tbl-thead-tr">
+                                                <th class="rsl_tbl-thead-th"></th>
+                                                <th class="rsl_tbl-thead-th">Current Year</th>
+                                                <th class="rsl_tbl-thead-th">Previous Year</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="rsl_tbl-tbody">
+                                            <tr class="rsl_tbl-tbody-tr"
+                                                *ngFor="let td of item.divisionPolicyTableData">
+                                                <td *ngIf="td.status=='active'">{{td.title}}</td>
+                                                <td *ngIf="td.status=='active'">
+                                                    {{(result.management[td.curdata[noofattempt]])|number:'1.0-0'}}</td>
+                                                <td *ngIf="td.status=='active'">
+                                                    {{(result.management[td.prevdata[noofattempt]])|number:'1.0-0'}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <mat-accordion>
+                                        <mat-expansion-panel *ngFor="let divisionpolicyitem of item.divisionpolicies">
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title class="d-flex align-items-center gap-2">
+                                                    <input type="checkbox" name="divisionpolicies"
+                                                        style="height:20px; width:20px"
+                                                        [id]="result.hrmGameCM.hrmgameperioddata[divisionpolicyitem.titlecell]"
+                                                        [checked]="result.decisions[divisionpolicyitem.isSelectedcell[noofattempt]]===result.hrmGameCM.hrmgameperioddata[divisionpolicyitem.titlecell]"
+                                                        (click)="$event.stopPropagation();
+                                                        writehrmvalueforRadio(divisionpolicyitem.isSelectedcell[noofattempt],result.hrmGameCM.hrmgameperioddata[divisionpolicyitem.titlecell],$event)"
+                                                        [disabled]="inputDisabled">
+                                                    <h4 class="m-0">
+                                                        {{result.hrmGameCM.hrmgameperioddata[divisionpolicyitem.titlecell]}}
+                                                    </h4>
+                                                </mat-panel-title>
+                                                <mat-panel-description class="justify-content-end">
+                                                    <span
+                                                        class="badge bg-danger text-bg-danger">{{result.decisions[divisionpolicyitem.valuecell[noofattempt]]}}</span>
+                                                </mat-panel-description>
+
+                                            </mat-expansion-panel-header>
+                                            {{result.hrmGameCM.hrmgameperioddata[divisionpolicyitem.descriptioncell]}}
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- Diversity Policy -->
+                                    <h1 class="mb-5">Diversity Policy
+                                        <mat-icon appTippy="
+                                            <div class='help-tip p-2'>
+                                            <div style='display:flex;'>
+                                                <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                                </div> &nbsp; &nbsp;
+                                                <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'>How do you ensure that the chosen diversity and inclusion policy is both comprehensive and adaptable to the unique needs of different employee groups, while still being feasible within your organization's resources?</p>
+                                                </div>
+                                            </div>
+                                            <div style='display:flex; margin-top:5px'>
+                                                <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                                </div> &nbsp; &nbsp;
+                                                <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'>Are you aligning your diversity and inclusion policy with long-term cultural and organizational goals, ensuring it fosters an inclusive environment that benefits all employees and promotes equitable opportunities?</p>
+                                                </div>
+                                            </div>
+                                            </div> ">
+                                            help_outline
+                                        </mat-icon>
+                                    </h1>
+
+                                    <table class="table rsl_tbl table-bordered mb-3">
+                                        <thead class="rsl_tbl-thead">
+                                            <tr class="rsl_tbl-thead-tr">
+                                                <th class="rsl_tbl-thead-th text-center" colspan="3">
+                                                    Diversity Inclusion Policy Cost, k INR</th>
+                                            </tr>
+                                            <tr class="rsl_tbl-thead-tr">
+                                                <th class="rsl_tbl-thead-th"></th>
+                                                <th class="rsl_tbl-thead-th">Current Year</th>
+                                                <th class="rsl_tbl-thead-th">Previous Year</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="rsl_tbl-tbody">
+                                            <tr class="rsl_tbl-tbody-tr"
+                                                *ngFor="let td of item.diversityPolicyTableData">
+                                                <td *ngIf="td.status=='active'">{{td.title}}</td>
+                                                <td *ngIf="td.status=='active'">
+                                                    {{(result.management[td.curdata[noofattempt]])|number:'1.0-0'}}</td>
+                                                <td *ngIf="td.status=='active'">
+                                                    {{(result.management[td.prevdata[noofattempt]])|number:'1.0-0'}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <mat-accordion>
+                                        <mat-expansion-panel *ngFor="let diversitypolicyitem of item.diversitypolicies">
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title class="d-flex align-items-center gap-2">
+                                                    <input type="checkbox" name="diversitypolicies"
+                                                        style="height:20px; width:20px"
+                                                        [id]="result.hrmGameCM.hrmgameperioddata[diversitypolicyitem.titlecell]"
+                                                        [checked]="result.decisions[diversitypolicyitem.isSelectedcell[noofattempt]]===result.hrmGameCM.hrmgameperioddata[diversitypolicyitem.titlecell]"
+                                                        (click)="$event.stopPropagation();
+                                                        writehrmvalueforRadio(diversitypolicyitem.isSelectedcell[noofattempt],result.hrmGameCM.hrmgameperioddata[diversitypolicyitem.titlecell],$event)"
+                                                        [disabled]="inputDisabled">
+                                                    <h4 class="m-0">
+                                                        {{result.hrmGameCM.hrmgameperioddata[diversitypolicyitem.titlecell]}}
+                                                    </h4>
+                                                </mat-panel-title>
+                                                <mat-panel-description class="justify-content-end">
+                                                    <span
+                                                        class="badge bg-danger text-bg-danger">{{result.decisions[diversitypolicyitem.valuecell[noofattempt]]}}</span>
+                                                </mat-panel-description>
+                                            </mat-expansion-panel-header>
+                                            {{result.hrmGameCM.hrmgameperioddata[diversitypolicyitem.descriptioncell]}}
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
+                                </div>
+                            </div>
+
+                            <h1 class="my-5">Townhall Program
+                                <mat-icon appTippy="
+                                <div class='help-tip p-2'>
+                                  <div style='display:flex;'>
+                                    <div>
+                                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                    </div> &nbsp; &nbsp;
+                                    <div>
+                                      <p style='margin: 0 auto; color: white; font-size:13px;'>How can you select townhall programs that will have the greatest impact on motivation and team culture, while staying within budget? Are there creative, low-cost options that can engage employees effectively?</p>
+                                    </div>
+                                  </div>
+                                  <div style='display:flex; margin-top:5px'>
+                                    <div>
+                                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                    </div> &nbsp; &nbsp;
+                                    <div>
+                                      <p style='margin: 0 auto; color: white; font-size:13px;'>Are you considering how each program aligns with your organization's values and long-term goals, ensuring they promote not just short-term engagement but lasting commitment and awareness across teams?</p>
+                                    </div>
+                                  </div>
+                                </div> ">
+                                    help_outline
+                                </mat-icon>
+                            </h1>
+                            <div class="row g-2">
+                                <div class="col-md-7">
+                                    <mat-accordion>
+                                        <div class="row row-cols-2 g-2">
+                                            <div class="col"
+                                                *ngFor="let townhallprogrammeitem of item.townhallprogramme; let itemindex = index">
+                                                <mat-expansion-panel>
+                                                    <mat-expansion-panel-header>
+                                                        <mat-panel-title class="d-flex align-items-center gap-2">
+                                                            <input type="checkbox" name="townhallprogramme"
+                                                                style="height:20px; width:20px"
+                                                                [id]="result.hrmGameCM.hrmgameperioddata[townhallprogrammeitem.titlecell]"
+                                                                (change)="onCheckboxChange(result.hrmGameCM.hrmgameperioddata[townhallprogrammeitem.titlecell],itemindex, $event)"
+                                                                [checked]="townhallprogrammeitem.selected"
+                                                                (click)="$event.stopPropagation();"
+                                                                [disabled]="inputDisabled">
+                                                            <h4 class="m-0">
+                                                                {{result.hrmGameCM.hrmgameperioddata[townhallprogrammeitem.titlecell]}}
+                                                            </h4>
+                                                        </mat-panel-title>
+                                                        <mat-panel-description class="justify-content-end">
+                                                            <span
+                                                                class="badge bg-danger text-bg-danger">{{result.decisions[townhallprogrammeitem.valuecell[noofattempt]]}}</span>
+                                                        </mat-panel-description>
+                                                    </mat-expansion-panel-header>
+                                                    {{result.hrmGameCM.hrmgameperioddata[townhallprogrammeitem.descriptioncell]}}
+                                                </mat-expansion-panel>
+                                            </div>
+                                        </div>
+                                    </mat-accordion>
+                                </div>
+                                <div class="col-md-5">
+                                    <table class="table rsl_tbl table-bordered">
+                                        <thead class="rsl_tbl-thead">
+                                            <tr class="rsl_tbl-thead-tr">
+                                                <th class="rsl_tbl-thead-th text-center" colspan="3">
+                                                    Townhall Programme Cost, k INR</th>
+                                            </tr>
+                                            <tr class="rsl_tbl-thead-tr">
+                                                <th class="rsl_tbl-thead-th"></th>
+                                                <th class="rsl_tbl-thead-th">Current Year</th>
+                                                <th class="rsl_tbl-thead-th">Previous Year</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="rsl_tbl-tbody">
+                                            <tr class="rsl_tbl-tbody-tr" *ngFor="let td of item.townhallTableData">
+                                                <td *ngIf="td.status=='active'">{{td.title}}</td>
+                                                <td *ngIf="td.status=='active'">
+                                                    {{(result.management[td.curdata[noofattempt]])|number:'1.0-0'}}</td>
+                                                <td *ngIf="td.status=='active'">
+                                                    {{(result.management[td.prevdata[noofattempt]])|number:'1.0-0'}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

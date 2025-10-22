@@ -1,0 +1,744 @@
+<div class="elearingnewui">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="case-management-body">
+        <div class="table-responsive mb-3 mt-3">
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>Target</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="table-responsive mb-3">
+                <table class=" table case-management-table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="res!==[]">
+                        <tr>
+                            <th class="second-head" colspan="12">15-24yrs</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Population Index Advantage</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.k95; let i = index">
+                                <input [value]="res.k95[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('k95',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Metro Index</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.k100; let i = index">
+                                <input [value]="res.k100[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('k100',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Non-metro Index</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.l100; let i = index">
+                                <input [value]="res.l100[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('l100',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Both Index</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.m100; let i = index">
+                                <input [value]="res.m100[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('m100',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Male Index</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.k105; let i = index">
+                                <input [value]="res.k105[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('k105',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Female Index</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.l105; let i = index">
+                                <input [value]="res.l105[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('l105',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Both Index</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.m105; let i = index">
+                                <input [value]="res.m105[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('m105',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>NCCS A Index </div>
+                            </td>
+                            <td *ngFor="let targetdata of res.k110; let i = index">
+                                <input [value]="res.k110[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('k110',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>NCCS B Index </div>
+                            </td>
+                            <td *ngFor="let targetdata of res.l110; let i = index">
+                                <input [value]="res.l110[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('l110',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>NCCS C/D/E Index </div>
+                            </td>
+                            <td *ngFor="let targetdata of res.m110; let i = index">
+                                <input [value]="res.m110[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('m110',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">25-34yrs</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Population Index Advantage</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.k96; let i = index">
+                                <input [value]="res.k96[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('k96',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Metro Index</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.k101; let i = index">
+                                <input [value]="res.k101[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('k101',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Non-metro Index</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.l101; let i = index">
+                                <input [value]="res.l101[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('l101',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Both Index</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.m101; let i = index">
+                                <input [value]="res.m101[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('m101',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Male Index</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.k106; let i = index">
+                                <input [value]="res.k106[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('k106',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Female Index</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.l106; let i = index">
+                                <input [value]="res.l106[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('l106',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Both Index</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.m106; let i = index">
+                                <input [value]="res.m106[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('m106',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>NCCS A Index </div>
+                            </td>
+                            <td *ngFor="let targetdata of res.k111; let i = index">
+                                <input [value]="res.k111[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('k111',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>NCCS B Index </div>
+                            </td>
+                            <td *ngFor="let targetdata of res.l111; let i = index">
+                                <input [value]="res.l111[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('l111',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>NCCS C/D/E Index </div>
+                            </td>
+                            <td *ngFor="let targetdata of res.m111; let i = index">
+                                <input [value]="res.m111[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('m111',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">35+yrs</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Population Index Advantage</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.k97; let i = index">
+                                <input [value]="res.k97[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('k97',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Metro Index</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.k102; let i = index">
+                                <input [value]="res.k102[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('k102',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Non-metro Index</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.l102; let i = index">
+                                <input [value]="res.l102[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('l102',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Both Index</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.m102; let i = index">
+                                <input [value]="res.m102[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('m102',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Male Index</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.k107; let i = index">
+                                <input [value]="res.k107[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('k107',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Female Index</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.l107; let i = index">
+                                <input [value]="res.l107[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('l107',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Both Index</div>
+                            </td>
+                            <td *ngFor="let targetdata of res.m107; let i = index">
+                                <input [value]="res.m107[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('m107',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>NCCS A Index </div>
+                            </td>
+                            <td *ngFor="let targetdata of res.k112; let i = index">
+                                <input [value]="res.k112[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('k112',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>NCCS B Index </div>
+                            </td>
+                            <td *ngFor="let targetdata of res.l112; let i = index">
+                                <input [value]="res.l112[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('l112',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>NCCS C/D/E Index </div>
+                            </td>
+                            <td *ngFor="let targetdata of res.m112; let i = index">
+                                <input [value]="res.m112[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeTargetValue('m112',i,inputElement.value)">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>Graph 1</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class=" table-responsive mb-3 mt-3">
+                <table class="case-management-table case-management-table-marketing">
+                    <thead>
+                        <tr>
+                            <td colspan="2" *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody class="first-tbody" *ngIf="res!=[]">
+                        <tr>
+                            <ng-container *ngFor="let item of data1; let i = index">
+                                <td *ngIf="i % 2 === 0">Age</td>
+                                <td *ngIf="i % 2 !== 0">Total Population %</td>
+
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="res!=[]">
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b329"disabled></td>
+                                <td><input [value]="res.k116[index]*100|number:'1.2-2'" #k116Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k116', index, k116Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                    <tbody *ngIf="res!=[]">
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b303" disabled></td>
+                                <td><input [value]="res.k117[index]*100|number:'1.2-2'" #k117Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k117', index, k117Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b304" disabled></td>
+                                <td><input [value]="res.k118[index]*100|number:'1.2-2'" #k118Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k118', index, k118Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b305" disabled></td>
+                                <td><input [value]="res.k119[index]*100|number:'1.2-2'" #k119Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k119', index, k119Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b300" disabled></td>
+                                <td><input [value]="res.k120[index]*100|number:'1.2-2'" #k120Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k120', index, k120Input.value)"></td>
+                            </ng-container>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>Gamers Population</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class=" table-responsive mb-3 mt-3">
+                <table class="case-management-table case-management-table-marketing-second">
+                    <thead>
+                        <tr>
+                            <td colspan="4" *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody class="third-tbody " *ngIf="res!=[]">
+                        <tr>
+                            <ng-container *ngFor="let item of data2; let i = index">
+                                <td *ngIf="i % 4 === 0"></td>
+                                <td *ngIf="i % 4 === 1">Metro</td>
+                                <td *ngIf="i % 4 === 2">Non-Metro</td>
+                                <td *ngIf="i % 4 === 3">Both</td>
+
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b61" disabled></td>
+                                <td><input [value]="res.k124[index]*100|number:'1.2-2'" #k124Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k124', index, k124Input.value)"></td>
+                                <td><input [value]="res.l124[index]*100|number:'1.2-2'" #l124Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l124', index, l124Input.value)"></td>
+                                <td><input [value]="res.m124[index]*100|number:'1.2-2'" #m124Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('m124', index, m124Input.value)"></td>
+
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>Population Division</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class=" table-responsive mb-3 mt-3">
+                <table class="case-management-table case-management-table-marketing-second">
+                    <thead>
+                        <tr>
+                            <td colspan="4" *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody class="new-third-tbody" *ngIf="res!=[]">
+                        <tr>
+                            <ng-container *ngFor="let item of data2; let i = index">
+                                <td *ngIf="i % 4 === 0">Age</td>
+                                <td *ngIf="i % 4 === 1">Male</td>
+                                <td *ngIf="i % 4 === 2">Female</td>
+                                <td *ngIf="i % 4 === 3">Both</td>
+
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b329" disabled></td>
+                                <td><input [value]="res.k128[index]*100|number:'1.2-2'" #k128Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k128', index, k128Input.value)"></td>
+                                <td><input [value]="res.l128[index]*100|number:'1.2-2'" #l128Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l128', index, l128Input.value)"></td>
+                                <td><input [value]="res.m128[index]*100|number:'1.2-2'" #m128Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('m128', index, m128Input.value)"></td>
+
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b303" disabled></td>
+                                <td><input [value]="res.k129[index]*100|number:'1.2-2'" #k129Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k129', index, k129Input.value)"></td>
+                                <td><input [value]="res.l129[index]*100|number:'1.2-2'" #l129Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l129', index, l129Input.value)"></td>
+                                <td><input [value]="res.m129[index]*100|number:'1.2-2'" #m129Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('m129', index, m129Input.value)"></td>
+
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b304" disabled></td>
+                                <td><input [value]="res.k130[index]*100|number:'1.2-2'" #k130Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k130', index, k130Input.value)"></td>
+                                <td><input [value]="res.l130[index]*100|number:'1.2-2'" #l130Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l130', index, l130Input.value)"></td>
+                                <td><input [value]="res.m130[index]*100|number:'1.2-2'" #m130Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('m130', index, m130Input.value)"></td>
+
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b305" disabled></td>
+                                <td><input [value]="res.k131[index]*100|number:'1.2-2'" #k131Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k131', index, k131Input.value)"></td>
+                                <td><input [value]="res.l131[index]*100|number:'1.2-2'" #l131Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l131', index, l131Input.value)"></td>
+                                <td><input [value]="res.m131[index]*100|number:'1.2-2'" #m131Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('m131', index, m131Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b300" disabled></td>
+                                <td><input [value]="res.k132[index]*100|number:'1.2-2'" #k132Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k132', index, k132Input.value)"></td>
+                                <td><input [value]="res.l132[index]*100|number:'1.2-2'" #l132Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l132', index, l132Input.value)"></td>
+                                <td><input [value]="res.m132[index]*100|number:'1.2-2'" #m132Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('m132', index, m132Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>Language</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class=" table-responsive mb-3 mt-3">
+                <table class="case-management-table case-management-table-marketing-second">
+                    <thead>
+                        <tr>
+                            <td colspan="3" *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody class=" second-tbody new-second-tbody" *ngIf="res!=[]">
+                        <tr>
+                            <ng-container *ngFor="let item of data; let i = index">
+                                <td *ngIf="i % 3 === 0">Language</td>
+                                <td *ngIf="i % 3 === 1">% of Population</td>
+                                <td *ngIf="i % 3 === 2">Index Advantage</td>
+
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b67" disabled></td>
+                                <td><input [value]="res.k136[index]*100|number:'1.2-2'" #k136Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k136', index, k136Input.value)"></td>
+                                <td><input [value]="res.l136[index]" #l136Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l136', index, l136Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b68" disabled></td>
+                                <td><input [value]="res.k137[index]*100|number:'1.2-2'" #k137Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k137', index, k137Input.value)"></td>
+                                <td><input [value]="res.l137[index]" #l137Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l137', index, l137Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b69"  disabled></td>
+                                <td><input [value]="res.k138[index]*100|number:'1.2-2'" #k138Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k138', index, k138Input.value)"></td>
+                                <td><input [value]="res.l138[index]" #l138Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l138', index, l138Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b70" disabled></td>
+                                <td><input [value]="res.k139[index]*100|number:'1.2-2'" #k139Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k139', index, k139Input.value)"></td>
+                                <td><input [value]="res.l139[index]" #l139Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l139', index, l139Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b71" disabled></td>
+                                <td><input [value]="res.k140[index]*100|number:'1.2-2'" #k140Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k140', index, k140Input.value)"></td>
+                                <td><input [value]="res.l140[index]" #l140Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l140', index, l140Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b72" disabled></td>
+                                <td><input [value]="res.k141[index]*100|number:'1.2-2'" #k141Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k141', index, k141Input.value)"></td>
+                                <td><input [value]="res.l141[index]" #l141Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l141', index, l141Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b73" disabled></td>
+                                <td><input [value]="res.k142[index]*100|number:'1.2-2'" #k142Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k142', index, k142Input.value)"></td>
+                                <td><input [value]="res.l142[index]" #l142Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l142', index, l142Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b74" disabled></td>
+                                <td><input [value]="res.k143[index]*100|number:'1.2-2'" #k143Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k143', index, k143Input.value)"></td>
+                                <td><input [value]="res.l143[index]" #l143Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l143', index, l143Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b75" disabled></td>
+                                <td><input [value]="res.k144[index]*100|number:'1.2-2'" #k144Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k144', index, k144Input.value)"></td>
+                                <td><input [value]="res.l144[index]" #l144Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l144', index, l144Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b76" disabled></td>
+                                <td><input [value]="res.k145[index]*100|number:'1.2-2'" #k145Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k145', index, k145Input.value)"></td>
+                                <td><input [value]="res.l145[index]" #l145Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l145', index, l145Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b77" disabled></td>
+                                <td><input [value]="res.k146[index]*100|number:'1.2-2'" #k146Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k146', index, k146Input.value)"></td>
+                                <td><input [value]="res.l146[index]" #l146Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l146', index, l146Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b78" disabled></td>
+                                <td><input [value]="res.k147[index]*100|number:'1.2-2'" #k147Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k147', index, k147Input.value)"></td>
+                                <td><input [value]="res.l147[index]" #l147Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l147', index, l147Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>Income</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class=" table-responsive mb-3 mt-3">
+                <table class="case-management-table case-management-table-marketing-second">
+                    <thead>
+                        <tr>
+                            <td colspan="3" *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody class="second-tbody  new-second-tbody " *ngIf="res!=[]">
+                        <tr>
+                            <ng-container *ngFor="let item of data; let i = index">
+                                <td *ngIf="i % 3 === 0">Income</td>
+                                <td *ngIf="i % 3 === 1">% of Population</td>
+                                <td *ngIf="i % 3 === 2">Paying Factor</td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b80" disabled></td>
+                                <td><input [value]="res.k151[index]*100|number:'1.0-0'" #k151Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k151', index, k151Input.value)"></td>
+                                <td><input [value]="res.l151[index]" #l151Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l151', index, l151Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b81" disabled></td>
+                                <td><input [value]="res.k152[index]*100|number:'1.0-0'" #k152Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k152', index, k152Input.value)"></td>
+                                <td><input [value]="res.l152[index]" #l152Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l152', index, l152Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b82" disabled></td>
+                                <td><input [value]="res.k153[index]*100|number:'1.0-0'" #k153Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('k153', index, k153Input.value)"></td>
+                                <td><input [value]="res.l153[index]" #l153Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeTargetValue('l153', index, l153Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

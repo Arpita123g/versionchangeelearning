@@ -1,0 +1,342 @@
+<div class="elearingnewui hrp_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="routesandtech">
+                <div class="row" class="element-first">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">{{language.b254}}</button></span>
+                    </div>
+                </div>
+                <h1>{{language.b77}}
+                    <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'></h4>
+                            </div> &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>{{language.b164}}</p>
+                            </div>
+                          </div>
+                        </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/hrpgame/digitalmarketingmastery.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2 style="height: 4rem;">{{language.b78}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[0].id]
+                                    ? language[cardData1[0].description]
+                                    : (language[cardData1[0].description] | slice:0:100) + '...' }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[0].id] ? language.b256 : language.b255 }}
+                                    </span>
+                                </p>
+
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>{{language.b88}}</h3>
+                                    <h3>{{result[0]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[18]" (change)="getSelection('technology',18)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/hrpgame/advanceecommerceanalytic.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2 style="height: 4rem;">{{language.b79}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[1].id]
+                                    ? language[cardData1[1].description]
+                                    : (language[cardData1[1].description] | slice:0:100) + '...' }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[1].id)"
+                                        [ngStyle]="{color: textshow[cardData1[1].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[1].id] ? language.b256 : language.b255 }}
+                                    </span>
+                                </p>
+
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>{{language.b88}}</h3>
+                                    <h3>{{result[1]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[19]" (change)="getSelection('technology',19)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/hrpgame/augmentedrealityinfasioninecommerce.jpg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{language.b80}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[2].id]
+                                    ? language[cardData1[2].description]
+                                    : (language[cardData1[2].description] | slice:0:100) + '...' }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[2].id)"
+                                        [ngStyle]="{color: textshow[cardData1[2].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[2].id] ? language.b256 : language.b255 }}
+                                    </span>
+                                </p>
+
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>{{language.b88}}</h3>
+                                    <h3>{{result[2]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[20]" (change)="getSelection('technology',20)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/hrpgame/customerserviceexcillence.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2 style="height: 4rem;">{{language.b81}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[3].id]
+                                    ? language[cardData1[3].description]
+                                    : (language[cardData1[3].description] | slice:0:100) + '...' }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[3].id)"
+                                        [ngStyle]="{color: textshow[cardData1[3].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[3].id] ? language.b256 : language.b255 }}
+                                    </span>
+                                </p>
+
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>{{language.b88}}</h3>
+                                    <h3>{{result[3]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[21]" (change)="getSelection('technology',21)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/hrpgame/sustanableandethicalproduction.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{language.b82}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[4].id]
+                                    ? language[cardData1[4].description]
+                                    : (language[cardData1[4].description] | slice:0:100) + '...' }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[4].id)"
+                                        [ngStyle]="{color: textshow[cardData1[4].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[4].id] ? language.b256 : language.b255 }}
+                                    </span>
+                                </p>
+
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>{{language.b88}}</h3>
+                                    <h3>{{result[4]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[22]" (change)="getSelection('technology',22)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <h1 class="pt-5">{{language.b89}}
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'></h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>{{language.b165}}</p>
+                        </div>
+                      </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/hrpgame/remoteworkflexible.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2 style="height: 4rem;">{{language.b90}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[5].id]
+                                    ? language[cardData1[5].description]
+                                    : (language[cardData1[5].description] | slice:0:100) + '...' }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[5].id)"
+                                        [ngStyle]="{color: textshow[cardData1[5].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[5].id] ? language.b256 : language.b255 }}
+                                    </span>
+                                </p>
+
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>{{language.b98}}</h3>
+                                    <h3>{{result[5]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[23]" (change)="getSelection('technology',23)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/hrpgame/continuelearninganddevlopment.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{language.b91}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[6].id]
+                                    ? language[cardData1[6].description]
+                                    : (language[cardData1[6].description] | slice:0:100) + '...' }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[6].id)"
+                                        [ngStyle]="{color: textshow[cardData1[6].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[6].id] ? language.b256 : language.b255 }}
+                                    </span>
+                                </p>
+
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>{{language.b98}}</h3>
+                                    <h3>{{result[6]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[24]" (change)="getSelection('technology',24)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/hrpgame/healthandwalnesspolicy.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{language.b92}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[7].id]
+                                    ? language[cardData1[7].description]
+                                    : (language[cardData1[7].description] | slice:0:100) + '...' }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[7].id)"
+                                        [ngStyle]="{color: textshow[cardData1[7].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[7].id] ? language.b256 : language.b255 }}
+                                    </span>
+                                </p>
+
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>{{language.b98}}</h3>
+                                    <h3>{{result[7]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[25]" (change)="getSelection('technology',25)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/hrpgame/diversehiringpolicy.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{language.b93}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[8].id]
+                                    ? language[cardData1[8].description]
+                                    : (language[cardData1[8].description] | slice:0:100) + '...' }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[8].id)"
+                                        [ngStyle]="{color: textshow[cardData1[8].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[8].id] ? language.b256 : language.b255 }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>{{language.b98}}</h3>
+                                    <h3>{{result[8]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[26]" (change)="getSelection('technology',26)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

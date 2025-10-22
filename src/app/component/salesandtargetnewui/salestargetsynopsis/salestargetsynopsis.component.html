@@ -1,0 +1,507 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui sales_target">
+    <div class="container">
+        <div class="body-element">
+            <div class="feed_ack">
+                <div>
+                    <div class="row pb-4">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                                <div class="">
+                                    <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                        (change)="roundClick()">
+                                        <option class="select-round-option" value="">Select Round</option>
+                                        <option class="select-round-option"
+                                            *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                            {{attempt}}</option>
+
+                                    </select>
+                                </div>
+                                <div class="download_btn" matTooltiClass="primary-tooltip"
+                                    (click)="downloadreportsalestarget()">
+                                    <div>
+                                        <a download matTooltip="Download"><span class="hovertext"
+                                                data-hover="Download pdf file accounting ">
+                                                <img src="assets/images/businessbasics/download.png" />
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <mat-icon class="mt-2">get_app</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1>
+                        Synopsis
+                    </h1>
+                    <div style="margin-top: 1.1rem;" *ngIf="analysisshow">
+                        <th
+                            style="display: flex; align-items: center; gap: 5px;font-size: 1.1rem; font-weight: 600;padding: 0.6rem 0.4rem;color: white;background-color: #266cc38a;">
+                            Feedback<div style=" width: 1rem">
+                                <mat-icon (click)="rotate();roundClick();" [@rotatedState]='state' class="sidenav-icon"
+                                    aria-hidden="false" aria-label="Example home icon">cached</mat-icon>
+                            </div>
+                        </th>
+                    </div>
+                    <div class="decision-textarea pb-5 h-100" *ngIf="analysisshow">
+                        <div class="row">
+                            <div class="col-md" style="padding: 10px;">
+                                <div class="card feedbsck-value p-3">
+                                    <markdown [data]="feedbackvalue"></markdown>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-cols-md-2 py-3">
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Decisions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales Target, Modern Trade</td>
+                                        <td>{{result[0]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales Target, Retail</td>
+                                        <td>{{result[1]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales Target, HoReCa</td>
+                                        <td>{{result[2]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Personnel, Modern Trade</td>
+                                        <td>{{result[3]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Personnel, Retail</td>
+                                        <td>{{result[4]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Personnel, HoReCa</td>
+                                        <td>{{result[5]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Compensation Modern Trade, Business background</td>
+                                        <td>{{result[6]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Compensation Modern Trade, Non business background</td>
+                                        <td>{{result[7]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Compensation Retail, Business background</td>
+                                        <td>{{result[8]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Compensation Retail, Non business background</td>
+                                        <td>{{result[9]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Compensation HoReCa, Business background</td>
+                                        <td>{{result[10]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Compensation HoReCa, Non business background</td>
+                                        <td>{{result[11]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[1]">
+                                        <td>Bonus %, Business background</td>
+                                        <td>{{result[12]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[1]">
+                                        <td>Bonus %, Non business background</td>
+                                        <td>{{result[13]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales force Modern trade, Business background</td>
+                                        <td>{{result[14]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales force Retail, Business background</td>
+                                        <td>{{result[15]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales force HoReCa, Business background</td>
+                                        <td>{{result[16]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales Representative, Modern Trade %</td>
+                                        <td>{{result[17]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales Representative, Retail %</td>
+                                        <td>{{result[18]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales Representative, HoReCa %</td>
+                                        <td>{{result[19]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Key Account Manager, Modern Trade %</td>
+                                        <td>{{result[20]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Key Account Manager, Retail %</td>
+                                        <td>{{result[21]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Key Account Manager, HoReCa %</td>
+                                        <td>{{result[22]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Territory Sales Manager, Modern Trade %</td>
+                                        <td>{{result[23]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Territory Sales Manager, Retail %</td>
+                                        <td>{{result[24]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Territory Sales Manager, HoReCa %</td>
+                                        <td>{{result[25]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Gung Ho, Modern Trade %</td>
+                                        <td>{{result[26]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Gung Ho, Retail %</td>
+                                        <td>{{result[27]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Gung Ho, HoReCa %</td>
+                                        <td>{{result[28]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Buddy, Modern Trade %</td>
+                                        <td>{{result[29]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Buddy, Retail %</td>
+                                        <td>{{result[30]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Buddy, HoReCa %</td>
+                                        <td>{{result[31]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Consultative, Modern Trade %</td>
+                                        <td>{{result[32]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Consultative, Retail %</td>
+                                        <td>{{result[33]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Consultative, HoReCa %</td>
+                                        <td>{{result[34]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[2]">
+                                        <td>Involvement in Customers</td>
+                                        <td>{{result[35]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[2]">
+                                        <td>Sales Strategy</td>
+                                        <td>{{result[36]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[2]">
+                                        <td>Sales and Marketing Integration</td>
+                                        <td>{{result[37]}}</td>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[2]">
+                                        <td>Sales Personnel Support</td>
+                                        <td>N{{result[38]}}</td>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[3]">
+                                        <td>Best individual performer</td>
+                                        <td>{{result[39]}}</td>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[2]">
+                                        <td>Best team effort</td>
+                                        <td>{{result[40]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[3]">
+                                        <td>Friendliest Coworker</td>
+                                        <td>{{result[41]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Value Based Sales Tactics</td>
+                                        <td>{{result[42]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Trust Sales</td>
+                                        <td>{{result[43]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product Management</td>
+                                        <td>{{result[44]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>After Sales Concept</td>
+                                        <td>{{result[45]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Relationship Skills</td>
+                                        <td>{{result[46]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Key Account Management</td>
+                                        <td>{{result[47]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[4]">
+                                        <td>Adaptive Selling Style</td>
+                                        <td>{{result[48]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[4]">
+                                        <td>Negotiation Style</td>
+                                        <td>{{result[49]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[4]">
+                                        <td>Closing a Sale</td>
+                                        <td>{{result[50]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[4]">
+                                        <td>Efficient Working Method</td>
+                                        <td>{{result[51]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[5]">
+                                        <td>Sales Process Innovation</td>
+                                        <td>{{result[52]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[5]">
+                                        <td>Process Management</td>
+                                        <td>{{result[53]}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Sales Cost, k INR</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Wages Cost</td>
+                                        <td>{{result[54]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Hiring/Retrenchment Cost</td>
+                                        <td>{{result[55]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Recognition Cost</td>
+                                        <td>{{result[56]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales Development Cost</td>
+                                        <td>{{result[57]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales Training Cost</td>
+                                        <td>{{result[58]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales Process Cost</td>
+                                        <td>{{result[59]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Total Sales Cost</td>
+                                        <td>{{result[60]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Income Statement, k INR</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Revenue</td>
+                                        <td>{{result[61]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Variable Cost</td>
+                                        <td>{{result[62]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Gross Profit</td>
+                                        <td>{{result[63]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales & Channel Cost</td>
+                                        <td>{{result[64]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Operating Profit/Loss</td>
+                                        <td>{{result[65]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Segment Sales, K INR</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Easy Living</td>
+                                        <td>{{result[66]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Experiencers</td>
+                                        <td>{{result[67]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Headonistic</td>
+                                        <td>{{result[68]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Thinkers</td>
+                                        <td>{{result[69]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Product Wise Sales, K INR</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Coffino</td>
+                                        <td>{{result[70]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Nutty</td>
+                                        <td>{{result[71]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Fruitful</td>
+                                        <td>{{result[72]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Diblo</td>
+                                        <td>{{result[73]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Channel Effectiveness</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Modern Trade</td>
+                                        <td>{{result[74]*100|number:'1.1-1'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Retail</td>
+                                        <td>{{result[75]*100|number:'1.1-1'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>HoReCa</td>
+                                        <td>{{result[76]*100|number:'1.1-1'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3">Channel Sales, k INR</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td></td>
+                                        <td style="text-align: right;font-weight: 500; font-size: 14px;">Sales
+                                        </td>
+                                        <td>Projections</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Modern Trade</td>
+                                        <td style="text-align: right;font-weight: 500; font-size: 12px;">
+                                            {{result[77]|number:'1.0-0'}}</td>
+                                        <td style="font-size: 12px; font-weight: 500;">{{result[78]|number:'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Retail</td>
+                                        <td style="text-align: right;font-weight: 500; font-size: 12px;">
+                                            {{result[79]|number:'1.0-0'}}</td>
+                                        <td style="font-size: 12px; font-weight: 500;">{{result[80]|number:'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>HoReCa</td>
+                                        <td style="text-align: right;font-weight: 500; font-size: 12px;">
+                                            {{result[81]|number:'1.0-0'}}</td>
+                                        <td style="font-size: 12px; font-weight: 500;">{{result[82]|number:'1.0-0'}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5" *ngIf="optional[0]">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Thinking Ability</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales Planning </td>
+                                        <td>{{result[83]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales Composition</td>
+                                        <td>{{result[84]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales Development</td>
+                                        <td>{{result[85]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <div class="row lst_r">
+                        <div class="col-4 lst_r-col4" *ngIf="!timefinished">
+                            <button class="mt-4 retry" [disabled]="isButtonDisabled" (click)="exit()">{{retry}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

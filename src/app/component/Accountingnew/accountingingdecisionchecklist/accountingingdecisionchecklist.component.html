@@ -1,0 +1,383 @@
+<div class="elearingnewui accounting_new">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="decision-checklist">
+                <div class="row pb-3 d-flex align-items-center">
+                    <div class="col-6 decision-checklist-col6">
+                        <h1 class="decision-checklist-col6-h1">Decision Checklist</h1>
+                    </div>
+                    <div class="col-6 text-end">
+                        <select class="select-round" name="" id="" [(ngModel)]="roundname" (change)="roundClick()">
+                            <option class="select-round-option" value="">Select Round</option>
+                            <option class="select-round-option" *ngFor="let attempt of dropdownvalue; let i = index;"
+                                [value]=attempt>
+                                {{attempt}}</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-borderd checklisttable">
+                        <tbody class="checklisttable-body">
+                            <tr class="checklisttable-body-tr" style="border-bottom: 3px solid black;">
+                                <td></td>
+                                <td>{{playername}}</td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <th>Balance Sheet</th>
+                                <th></th>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Cash</td>
+                                <td><span [class]="isClass[0] ? 'defaultcolor' : 'notdefaultcolor'">{{result[0]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Accounts receivable</td>
+                                <td><span [class]="isClass[1] ? 'defaultcolor' : 'notdefaultcolor'">{{result[1]}}</span>
+                                </td>
+
+
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Inventory</td>
+                                <td><span [class]="isClass[2] ? 'defaultcolor' : 'notdefaultcolor'">{{result[2]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Prepaid expenses</td>
+                                <td><span [class]="isClass[3] ? 'defaultcolor' : 'notdefaultcolor'">{{result[3]}}</span>
+                                </td>
+
+
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Other current assets</td>
+                                <td><span [class]="isClass[4] ? 'defaultcolor' : 'notdefaultcolor'">{{result[4]}}</span>
+                                </td>
+
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Machinery & equipment</td>
+                                <td><span [class]="isClass[5] ? 'defaultcolor' : 'notdefaultcolor'">{{result[5]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Furniture & fixtures</td>
+                                <td><span [class]="isClass[6] ? 'defaultcolor' : 'notdefaultcolor'">{{result[6]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Leasehold improvements</td>
+                                <td><span [class]="isClass[7] ? 'defaultcolor' : 'notdefaultcolor'">{{result[7]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Land & buildings</td>
+                                <td><span [class]="isClass[8] ? 'defaultcolor' : 'notdefaultcolor'">{{result[8]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Other fixed assets</td>
+                                <td><span [class]="isClass[9] ? 'defaultcolor' : 'notdefaultcolor'">{{result[9]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Intangible assetss</td>
+                                <td><span
+                                        [class]="isClass[10] ? 'defaultcolor' : 'notdefaultcolor'">{{result[10]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Goodwill</td>
+                                <td><span
+                                        [class]="isClass[11] ? 'defaultcolor' : 'notdefaultcolor'">{{result[11]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Deposits</td>
+                                <td><span
+                                        [class]="isClass[12] ? 'defaultcolor' : 'notdefaultcolor'">{{result[12]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Other assets</td>
+                                <td><span
+                                        [class]="isClass[13] ? 'defaultcolor' : 'notdefaultcolor'">{{result[13]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Accounts payable</td>
+                                <td><span
+                                        [class]="isClass[14] ? 'defaultcolor' : 'notdefaultcolor'">{{result[14]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Accrued expenses</td>
+                                <td><span
+                                        [class]="isClass[15] ? 'defaultcolor' : 'notdefaultcolor'">{{result[15]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Unearned revenue</td>
+                                <td><span
+                                        [class]="isClass[16] ? 'defaultcolor' : 'notdefaultcolor'">{{result[16]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Notes, short-term</td>
+                                <td><span
+                                        [class]="isClass[17] ? 'defaultcolor' : 'notdefaultcolor'">{{result[17]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Current part of long-term debt</td>
+                                <td><span
+                                        [class]="isClass[18] ? 'defaultcolor' : 'notdefaultcolor'">{{result[18]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Bank loans payable</td>
+                                <td><span
+                                        [class]="isClass[19] ? 'defaultcolor' : 'notdefaultcolor'">{{result[19]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Notes payable to stockholders</td>
+                                <td><span
+                                        [class]="isClass[20] ? 'defaultcolor' : 'notdefaultcolor'">{{result[20]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>LESS: Short-term portion</td>
+                                <td><span
+                                        [class]="isClass[21] ? 'defaultcolor' : 'notdefaultcolor'">{{result[21]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Other long term debt</td>
+                                <td><span
+                                        [class]="isClass[22] ? 'defaultcolor' : 'notdefaultcolor'">{{result[22]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Invested capital</td>
+                                <td><span
+                                        [class]="isClass[23] ? 'defaultcolor' : 'notdefaultcolor'">{{result[23]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Retained earnings - beginning</td>
+                                <td><span
+                                        [class]="isClass[24] ? 'defaultcolor' : 'notdefaultcolor'">{{result[24]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0]" class="checklisttable-body-tr">
+                                <td>Retained earnings - current</td>
+                                <td><span
+                                        [class]="isClass[25] ? 'defaultcolor' : 'notdefaultcolor'">{{result[25]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[1]" class="checklisttable-body-tr">
+                                <th>Income Statement</th>
+                                <th></th>
+                            </tr>
+                            <tr *ngIf="optional[1]" class="checklisttable-body-tr">
+                                <td>Revenue</td>
+                                <td><span
+                                        [class]="isClass[26] ? 'defaultcolor' : 'notdefaultcolor'">{{result[26]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[1]" class="checklisttable-body-tr">
+                                <td>Cost of good sold</td>
+                                <td><span
+                                        [class]="isClass[27] ? 'defaultcolor' : 'notdefaultcolor'">{{result[27]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[1]" class="checklisttable-body-tr">
+                                <td>Sales cost</td>
+                                <td><span
+                                        [class]="isClass[28] ? 'defaultcolor' : 'notdefaultcolor'">{{result[28]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[1]" class="checklisttable-body-tr">
+                                <td>Administration cost</td>
+                                <td><span
+                                        [class]="isClass[29] ? 'defaultcolor' : 'notdefaultcolor'">{{result[29]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[1]" class="checklisttable-body-tr">
+                                <td>Bad debts</td>
+                                <td><span
+                                        [class]="isClass[30] ? 'defaultcolor' : 'notdefaultcolor'">{{result[30]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[1]" class="checklisttable-body-tr">
+                                <td>Depreciation & Amortization</td>
+                                <td><span
+                                        [class]="isClass[31] ? 'defaultcolor' : 'notdefaultcolor'">{{result[31]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[1]" class="checklisttable-body-tr">
+                                <td>Interest Expense</td>
+                                <td><span
+                                        [class]="isClass[32] ? 'defaultcolor' : 'notdefaultcolor'">{{result[32]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[1]" class="checklisttable-body-tr">
+                                <td>Tax</td>
+                                <td><span
+                                        [class]="isClass[33] ? 'defaultcolor' : 'notdefaultcolor'">{{result[33]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2]" class="checklisttable-body-tr">
+                                <th>Cash Flow Statement</th>
+                                <th></th>
+                            </tr>
+                            <tr *ngIf="optional[2]" class="checklisttable-body-tr">
+                                <td>Opening balance</td>
+                                <td><span
+                                        [class]="isClass[34] ? 'defaultcolor' : 'notdefaultcolor'">{{result[34]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2]" class="checklisttable-body-tr">
+                                <td>Operations, Cash In</td>
+                                <td><span
+                                        [class]="isClass[35] ? 'defaultcolor' : 'notdefaultcolor'">{{result[35]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2]" class="checklisttable-body-tr">
+                                <td>Operations, Cash Out</td>
+                                <td><span
+                                        [class]="isClass[36] ? 'defaultcolor' : 'notdefaultcolor'">{{result[36]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2]" class="checklisttable-body-tr">
+                                <td>Investment, Cash In</td>
+                                <td><span
+                                        [class]="isClass[37] ? 'defaultcolor' : 'notdefaultcolor'">{{result[37]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2]" class="checklisttable-body-tr">
+                                <td>Investment, Cash Out</td>
+                                <td><span
+                                        [class]="isClass[38] ? 'defaultcolor' : 'notdefaultcolor'">{{result[38]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2]" class="checklisttable-body-tr">
+                                <td>Financing, Cash In</td>
+                                <td><span
+                                        [class]="isClass[39] ? 'defaultcolor' : 'notdefaultcolor'">{{result[39]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2]" class="checklisttable-body-tr">
+                                <td>Financing, Cash Out</td>
+                                <td><span
+                                        [class]="isClass[40] ? 'defaultcolor' : 'notdefaultcolor'">{{result[40]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2]" class="checklisttable-body-tr">
+                                <th>Opportunities</th>
+                                <th></th>
+                            </tr>
+                            <tr *ngIf="optional[2]" class="checklisttable-body-tr">
+                                <td>Investment in Research and Development</td>
+                                <td><span
+                                        [class]="isClass[41] ? 'defaultcolor' : 'notdefaultcolor'">{{result[41]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2]" class="checklisttable-body-tr">
+                                <td>Expansion of Manufacturing Facilities</td>
+                                <td><span
+                                        [class]="isClass[42] ? 'defaultcolor' : 'notdefaultcolor'">{{result[42]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2]" class="checklisttable-body-tr">
+                                <td>Debt Restructuring</td>
+                                <td><span
+                                        [class]="isClass[43] ? 'defaultcolor' : 'notdefaultcolor'">{{result[43]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2]" class="checklisttable-body-tr">
+                                <td>Cost Reduction Initiatives</td>
+                                <td><span
+                                        [class]="isClass[44] ? 'defaultcolor' : 'notdefaultcolor'">{{result[44]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2]" class="checklisttable-body-tr">
+                                <td>Introduction of Premium Product Line</td>
+                                <td><span
+                                        [class]="isClass[45] ? 'defaultcolor' : 'notdefaultcolor'">{{result[45]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2]" class="checklisttable-body-tr">
+                                <td>Employee Training and Development</td>
+                                <td><span
+                                        [class]="isClass[46] ? 'defaultcolor' : 'notdefaultcolor'">{{result[46]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2]" class="checklisttable-body-tr">
+                                <td>Working Capital Optimization</td>
+                                <td><span
+                                        [class]="isClass[47] ? 'defaultcolor' : 'notdefaultcolor'">{{result[47]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2]" class="checklisttable-body-tr">
+                                <td>Equipment Lease Financing</td>
+                                <td><span
+                                        [class]="isClass[48] ? 'defaultcolor' : 'notdefaultcolor'">{{result[48]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2]" class="checklisttable-body-tr">
+                                <td>Exploring Export Opportunities</td>
+                                <td><span
+                                        [class]="isClass[49] ? 'defaultcolor' : 'notdefaultcolor'">{{result[49]}}</span>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="decision-textarea py-4" *ngIf="analysisshow">
+                        <textarea class="decision-textarea-element" rows="10" [disabled]="disabled"
+                            [(ngModel)]="useranalysisinput"
+                            placeholder="Describe your thought process behind the decision-making in 1500 characters…"
+                            (focusout)="useranalysissave()" maxlength="1500"></textarea>
+                    </div>
+                    <div class="p-0">
+                        <button class="btn_stl btn_stl-decisionchecklist" type="button" [disabled]="disabled"
+                            (click)="decisionchecklistpopup()">Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

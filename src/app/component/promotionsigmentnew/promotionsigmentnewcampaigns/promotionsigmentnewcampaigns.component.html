@@ -1,0 +1,89 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+</div>
+<div class="elearingnewui promotion_sigment">
+    <div class="container">
+        <div class="body-element">
+            <div class="element-first">
+                <div class="row">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">{{language.b260}}</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngFor="let section of sections; let sIdx = index">
+                <h1 [ngClass]="{ 'mt-5': sIdx !== 0 }">
+                    {{ language[section.title] }}
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'></h4>
+                        </div> &nbsp; &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>{{ language[section.tooltip] }}</p>
+                        </div>
+                      </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+
+                <div class="row row-cols-md-3 g-3 mt-4 input-img-card">
+                    <div class="col-md" *ngFor="let card of section.cards; let i = index">
+                        <div class="card marketing-card h-100" >
+                            <div class="craftingimg">
+                                <img [src]="card.image" class="card-img-top" alt="Card Image" />
+                            </div>
+                            <div class="card-body">
+                                <h3>{{ language[card.title] }}</h3>
+                                <div class="maincontent">
+                                    <div class="loop-content" *ngFor="let line of card.content">
+                                        <ng-container *ngIf="getLabelAndValueFromLanguage(line) as text">
+                                            <div style="font-weight: 500; color: black;">
+                                                {{ text.label }}:
+                                                <span style="color: red;">{{ text.value }}</span>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                              
+                                <div class="maincontent-element">
+                                    {{ showAll[sIdx][i] ? language[card.text] : truncate(language[card.truncatedText])
+                                    }}
+                                    <a type="button" (click)="toggleShow(sIdx, i)"
+                                    
+                                        [style.color]="showAll[sIdx][i] ? 'red' : 'blue'">
+                                        {{ showAll[sIdx][i] ? language.b262 : language.b261 }}
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="wearhousecard-cost">
+                                    <h3>{{ language.b287 }}</h3>
+                                    <h3>{{ periodresult[getFlatIndex(sIdx, i)] }}</h3>                                </div>
+
+                                <input *ngIf="sIdx === 1" [disabled]="disabled" class="checkfrominput" type="checkbox"
+                                    [checked]="result[getFlatIndex(sIdx, i)] === 1"
+                                    [name]="'checkbox-' + sIdx + '-' + i"
+                                    (change)="writepromotionsValue('website', sIdx, i, $event)" />
+
+                                <input *ngIf="sIdx !== 1" [disabled]="disabled" class="checkfrominput" type="radio"
+                                    [checked]="result[getFlatIndex(sIdx, i)] === 1" [name]="'radio-' + sIdx"
+                                    (change)="writepromotionsValue('website', sIdx, i, $event)" />
+
+                                <label class="form-check-label"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

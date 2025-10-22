@@ -1,0 +1,393 @@
+<div class="elearingnewui hrp_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="feed_ack">
+                <div>
+                    <div class="row pb-4">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                                <div class="">
+                                    <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                        (change)="roundClick()">
+                                        <option class="select-round-option" value="">{{ languageselect.toLowerCase() ===
+                                            'EU' ?
+                                            'Select Round' : 'Select Round'
+                                            }}</option>
+                                        <option class="select-round-option"
+                                            *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                            {{attempt}}</option>
+
+                                    </select>
+                                </div>
+                                <div class="download_btn" matTooltiClass="primary-tooltip"
+                                    (click)="downloadreporthrpgame()">
+                                    <div>
+                                        <a download matTooltip="Download"><span class="hovertext"
+                                                data-hover="Download pdf file accounting ">
+                                                <img src="assets/images/businessbasics/download.png" />
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <mat-icon class="mt-2">get_app</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1>
+                        {{language.b263}}
+                    </h1>
+                    <div style="margin-top: 1.1rem;" *ngIf="analysisshow">
+                        <h1
+                            style="display: flex; align-items: center; gap: 5px;font-size: 1.1rem; font-weight: 600;padding: 0.6rem 0.4rem;color: white;background-color: #266cc38a;">
+                            Feedback
+                            <div style=" width: 1rem;">
+                                <mat-icon (click)="rotate();roundClick();" [@rotatedState]='state' class="sidenav-icon"
+                                    aria-hidden="false" aria-label="Example home icon">cached</mat-icon>
+                            </div>
+                        </h1>
+                    </div>
+                    <div class="decision-textarea pb-5 h-100" *ngIf="analysisshow">
+                        <div class="row">
+                            <div class="col-md" style="padding: 10px;">
+                                <div class="card feedbsck-value p-3">
+                                    <markdown [data]="feedbackvalue"></markdown>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-cols-md-2 py-3">
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">{{language.b274}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">{{language.b151}}</th>
+                                        <th class="rsl_tbl-tbody-th">{{language.b152}}</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b33}}</td>
+                                        <td>{{result[0]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b34}}</td>
+                                        <td>{{result[1]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b35}}</td>
+                                        <td>{{result[2]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b32}}</td>
+                                        <td>{{result[3]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b268}}</td>
+                                        <td>{{result[4]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b37}}</td>
+                                        <td>{{result[5]}}</td>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b57}}</td>
+                                        <td>{{result[6]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b58}}</td>
+                                        <td>{{result[7]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b59}}</td>
+                                        <td>{{result[8]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b60}}</td>
+                                        <td>{{result[9]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b61}}</td>
+                                        <td>{{result[10]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b101}}</td>
+                                        <td>{{result[11]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b102}}</td>
+                                        <td>{{result[12]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b103}}</td>
+                                        <td>{{result[13]*100 |
+                                            number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b104}}</td>
+                                        <td>{{result[14]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b105}}</td>
+                                        <td>{{result[15]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b106}}</td>
+                                        <td>{{result[16]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b107}}</td>
+                                        <td>{{result[17]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b108}}</td>
+                                        <td>{{result[18]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b109}}</td>
+                                        <td>{{result[19]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b110}}</td>
+                                        <td>{{result[20]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b111}}</td>
+                                        <td>{{result[21]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b112}}</td>
+                                        <td>{{result[22]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b78}}</td>
+                                        <td>{{result[23]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b79}}</td>
+                                        <td>{{result[24]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b80}}</td>
+                                        <td>{{result[25]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b81}}</td>
+                                        <td>{{result[26]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b82}}</td>
+                                        <td>{{result[27]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b90}}</td>
+                                        <td>{{result[28]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b91}}</td>
+                                        <td>{{result[29]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b92}}</td>
+                                        <td>{{result[30]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b93}}</td>
+                                        <td>{{result[31]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">{{language.b124}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">{{language.b151}}</th>
+                                        <th class="rsl_tbl-tbody-th">{{language.b153}}</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b125}}</td>
+                                        <td>{{result[32]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b126}}</td>
+                                        <td>{{result[33]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b127}}</td>
+                                        <td>{{result[34]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b128}}</td>
+                                        <td>{{result[35]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b129}}</td>
+                                        <td>{{result[36]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b130}}</td>
+                                        <td>{{result[37]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" style="border-top: 2px solid black;">
+                                        <td>{{language.b131}}</td>
+                                        <td>{{result[38]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">{{language.b132}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">{{language.b151}}</th>
+                                        <th class="rsl_tbl-tbody-th">{{language.b153}}</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b133}}</td>
+                                        <td>{{result[39] | number: '1.2-2'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b134}}</td>
+                                        <td>{{result[40]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b135}}</td>
+                                        <td>{{result[41]*100 |number: '1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b136}}</td>
+                                        <td>{{result[42]*100 |number: '1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b137}}</td>
+                                        <td>{{result[43]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b138}}, %</td>
+                                        <td>{{result[44]*100 |number:'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">{{language.b154}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">{{language.b151}}</th>
+                                        <th class="rsl_tbl-tbody-th">{{language.b155}}</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b5}}</td>
+                                        <td>{{result[45]*100| number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b6}}</td>
+                                        <td>{{result[46]=== "-" ?'0' : result[46]*100| number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b270}}</td>
+                                        <td>{{result[47]*100| number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b8}}</td>
+                                        <td>{{result[48]*100| number:'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row row-cols-md py-3">
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="7">{{language.b115}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td></td>
+                                        <th>{{language.b32}}</th>
+                                        <th>{{language.b33}}</th>
+                                        <th>{{language.b34}}</th>
+                                        <th>{{language.b35}}</th>
+                                        <th>{{language.b36}}</th>
+                                        <th>{{language.b37}}</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b116}}</td>
+                                        <td class="middleclassright">{{result[49]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[50]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[51]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[52]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[53]|number:'1.0-0'}}</td>
+                                        <td>{{result[54]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b117}}</td>
+                                        <td class="middleclassright">{{result[55]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[56]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[57]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[58]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[59]|number:'1.0-0'}}</td>
+                                        <td>{{result[60]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{language.b118}}</td>
+                                        <td class="middleclassright">{{result[61]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[62]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[63]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[64]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[65]|number:'1.0-0'}}</td>
+                                        <td>{{result[66]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" style="border-top:2px solid black;">
+                                        <td>{{language.b119}}</td>
+                                        <td class="middleclassright">{{result[67]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[68]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[69]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[70]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[71]|number:'1.0-0'}}</td>
+                                        <td>{{result[72]}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row lst_r">
+                        <div class="col-4 lst_r-col4" *ngIf="!timefinished">
+                            <button class="mt-4 retry" [disabled]="isButtonDisabled" (click)="exit()">{{retry}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

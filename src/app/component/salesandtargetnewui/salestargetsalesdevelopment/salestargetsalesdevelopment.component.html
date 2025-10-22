@@ -1,0 +1,448 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui sales_target">
+    <div class="container">
+        <div class="body-element">
+            <div class="element-first">
+                <div class="row">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+            </div>
+            <h1>Sales Development
+                <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'> What long-term investments do you see as essential for achieving sustained success based on market targets and consumer segments?</p>
+                    </div>
+                  </div>
+                    <div class='pt-2' style='display:flex;'>
+                      <div>
+                        <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                      </div> &nbsp; &nbsp; &nbsp;
+                      <div>
+                        <p style='margin: 0 auto; color: white; font-size:13px;'>How will you balance short-term gains with strategic investments that align with the evolving preferences of different consumer segments?</p>
+                      </div>
+                    </div>
+                </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <div class="row row-cols-md-3 g-3 mt-4 input-img-card">
+                <div class="col-md ">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/salestarget/valuebasedsales.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[0]}}</h3>
+                            <p class="maincontent">
+                                {{showAll[0] ? cards[0].text : cards[0].truncatedText}}
+                                <a type="button" (click)="toggleshow(0)" [style.color]="showAll[0] ? 'red' : 'blue'">
+                                    {{showAll[0] ? 'Show Less' : 'Show More'}}
+                                </a>
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Investment, INR</h3>
+                                <h3>600000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value=""
+                                id="flexCheckDefault" name="" [checked]="result[0] === 1"
+                                (change)="writeSalestargetValue('development',0,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/salestarget/trustsales.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[1]}}</h3>
+                            <p class="maincontent">
+                                {{showAll[1] ? cards[1].text : cards[1].truncatedText}}
+                                <a type="button" (click)="toggleshow(1)" [style.color]="showAll[1] ? 'red' : 'blue'">
+                                    {{showAll[1] ? 'Show Less' : 'Show More'}}
+                                </a>
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Investment, INR</h3>
+                                <h3>800000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value=""
+                                id="flexCheckDefault" name="" [checked]="result[1] === 1"
+                                (change)="writeSalestargetValue('development',1,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/salestarget/productmanager.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[2]}}</h3>
+                            <p class="maincontent">
+                                {{showAll[2] ? cards[2].text : cards[2].truncatedText}}
+                                <a type="button" (click)="toggleshow(2)" [style.color]="showAll[2] ? 'red' : 'blue'">
+                                    {{showAll[2] ? 'Show Less' : 'Show More'}}
+                                </a>
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Investment, INR</h3>
+                                <h3>900000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value=""
+                                id="flexCheckDefault" name="" [checked]="result[2] === 1"
+                                (change)="writeSalestargetValue('development',2,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-md-3 g-3 mt-4 input-img-card">
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/salestarget/aftersales.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[3]}}</h3>
+                            <p class="maincontent">
+                                {{showAll[3] ? cards[3].text : cards[3].truncatedText}}
+                                <a type="button" (click)="toggleshow(3)" [style.color]="showAll[3] ? 'red' : 'blue'">
+                                    {{showAll[3] ? 'Show Less' : 'Show More'}}
+                                </a>
+
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Investment, INR</h3>
+                                <h3>550000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value=""
+                                id="flexCheckDefault" name="" [checked]="result[3] === 1"
+                                (change)="writeSalestargetValue('development',3,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/salestarget/realationshipsttus.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[4]}}</h3>
+                            <p class="maincontent">
+
+                                {{showAll[4] ? cards[4].text : cards[4].truncatedText}}
+                                <a type="button" (click)="toggleshow(4)" [style.color]="showAll[4] ? 'red' : 'blue'">
+                                    {{showAll[4] ? 'Show Less' : 'Show More'}}
+                                </a>
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Investment, INR</h3>
+                                <h3>650000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value=""
+                                id="flexCheckDefault" name="" [checked]="result[4] === 1"
+                                (change)="writeSalestargetValue('development',4,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/salestarget/keymanagement.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[5]}}</h3>
+                            <p class="maincontent">
+                                {{showAll[5] ? cards[5].text : cards[5].truncatedText}}
+                                <a type="button" (click)="toggleshow(5)" [style.color]="showAll[5] ? 'red' : 'blue'">
+                                    {{showAll[5] ? 'Show Less' : 'Show More'}}
+                                </a>
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Investment, INR</h3>
+                                <h3>720000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value=""
+                                id="flexCheckDefault" name="" [checked]="result[5] === 1"
+                                (change)="writeSalestargetValue('development',5,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1 *ngIf="salestraining" class="mt-5">Sales Training
+                <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'>How will you select sales training programs that cater to the specific needs of the sales team, considering the diversity of consumer segments?</p>
+                    </div>
+                  </div>
+                    <div class='pt-2' style='display:flex;'>
+                      <div>
+                        <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                      </div> &nbsp; &nbsp; &nbsp;
+                      <div>
+                        <p style='margin: 0 auto; color: white; font-size:13px;'>In what ways can training be chosen to enhance the team's ability to adapt to the preferences of different consumer segments?</p>
+                      </div>
+                    </div>
+                </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <div *ngIf="salestraining" class="row row-cols-md-3 g-3 mt-4 input-img-card">
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/salestarget/sellingstyle.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[6]}}</h3>
+                            <p class="maincontent">
+                                {{showAll[6] ? cards[6].text : cards[6].truncatedText}}
+                                <a type="button" (click)="toggleshow(6)" [style.color]="showAll[6] ? 'red' : 'blue'">
+                                    {{showAll[6] ? 'Show Less' : 'Show More'}}
+                                </a>
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Investment, INR</h3>
+                                <h3>750000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value=""
+                                id="flexCheckDefault" name="" [checked]="result[6] === 1"
+                                (change)="writeSalestargetValue('training',6,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/salestarget/nagotationstyel.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[7]}}</h3>
+                            <p class="maincontent">
+                                {{showAll[7] ? cards[7].text : cards[7].truncatedText}}
+                                <a type="button" (click)="toggleshow(7)" [style.color]="showAll[7] ? 'red' : 'blue'">
+                                    {{showAll[7] ? 'Show Less' : 'Show More'}}
+                                </a>
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Investment, INR</h3>
+                                <h3>850000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value=""
+                                id="flexCheckDefault" name="" [checked]="result[7] === 1"
+                                (change)="writeSalestargetValue('training',7,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/salestarget/closingsales.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[8]}}</h3>
+                            <p class="maincontent">
+                                {{showAll[8] ? cards[8].text : cards[8].truncatedText}}
+                                <a type="button" (click)="toggleshow(8)" [style.color]="showAll[8] ? 'red' : 'blue'">
+                                    {{showAll[8] ? 'Show Less' : 'Show More'}}
+                                </a>
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Investment, INR</h3>
+                                <h3>900000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value=""
+                                id="flexCheckDefault" name="" [checked]="result[8] === 1"
+                                (change)="writeSalestargetValue('training',8,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="salestraining" class="row row-cols-md-3 g-3 mt-4 input-img-card">
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/salestarget/workingmethod.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[9]}}</h3>
+                            <p class="maincontent">
+                                {{showAll[9] ? cards[9].text : cards[9].truncatedText}}
+                                <a type="button" (click)="toggleshow(9)" [style.color]="showAll[9] ? 'red' : 'blue'">
+                                    {{showAll[9] ? 'Show Less' : 'Show More'}}
+                                </a>
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Investment, INR</h3>
+                                <h3>800000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value=""
+                                id="flexCheckDefault" name="" [checked]="result[9] === 1"
+                                (change)="writeSalestargetValue('training',9,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1 *ngIf="salesprocess" class="mt-5">Sales Process
+                <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'>How will you tailor the sales process to accommodate the preferences of different consumer segments while achieving set targets?</p>
+                    </div>
+                  </div>
+                    <div class='pt-2' style='display:flex;'>
+                      <div>
+                        <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                      </div> &nbsp; &nbsp; &nbsp;
+                      <div>
+                        <p style='margin: 0 auto; color: white; font-size:13px;'>What is needed in the sales process to address the unique characteristics of each channel and product category?</p>
+                      </div>
+                    </div>
+                </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <div *ngIf="salesprocess" class="row row-cols-md-3 g-3 mt-4 input-img-card">
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/salestarget/salesinovation.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[10]}}</h3>
+                            <p class="maincontent">
+                                {{showAll[10] ? cards[10].text : cards[10].truncatedText}}
+                                <a type="button" (click)="toggleshow(10)" [style.color]="showAll[10] ? 'red' : 'blue'">
+                                    {{showAll[10] ? 'Show Less' : 'Show More'}}
+                                </a>
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Investment, INR</h3>
+                                <h3>1000000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value=""
+                                id="flexCheckDefault" name="" [checked]="result[10] === 1"
+                                (change)="writeSalestargetValue('process',10,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/salestarget/processmanagement.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[11]}}</h3>
+                            <p class="maincontent">
+                                {{showAll[11] ? cards[11].text : cards[11].truncatedText}}
+                                <a type="button" (click)="toggleshow(11)" [style.color]="showAll[11] ? 'red' : 'blue'">
+                                    {{showAll[11] ? 'Show Less' : 'Show More'}}
+                                </a>
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <div class="wearhousecard-cost">
+                                <h3>Investment, INR</h3>
+                                <h3>1200000</h3>
+                            </div>
+                            <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value=""
+                                id="flexCheckDefault" name="" [checked]="result[11] === 1"
+                                (change)="writeSalestargetValue('process',11,$event)" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+
+<div class="elearning dashboardmain">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+
+    <div class="card py-3 p-3 header-card">
+        <div class="row py-3 ">
+            <div class="header-card-element">
+                <div>
+                    <button class="enroll-button" (click)="editenrollgame()"> Register to new
+                        course</button>
+                </div>
+                <!-- <div class="circle_icon">
+                    <mat-icon (click)="goToprofile()">account_circle</mat-icon>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid dashboard ">
+        <div class="container dashboard_container py-3">
+            <div class="elearingnewui bus_iness">
+                <div *ngIf="!showcardnull">
+                    <div class="card shadow new-instructor-dash mb-3" *ngFor="let card of cardlist; let i=index "
+                        (click)="entergamearea(card)">
+                        <div class="row ">
+                            <div class="col-md-1 col-sm-12 log-left">
+                                <div class="logo-back">
+                                    <img src="../../../../assets/elearning_icon_png/cesimlogoforallgame.png" style="height: 3.5rem;">
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-sm-12">
+                                <div class="row py-1 first-row">
+                                    <div class="col-md-5 col-sm-12 ">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 ">
+                                        <p>Course Code : {{card.courseDetails.coursecode}}</p>
+                                    </div>
+                                </div>
+                                <div class="row py-1">
+                                    <div class="">
+                                        <span class="g-name"><a>
+                                                <!-- <h1>{{card.courseDetails.primarycoursename}}</h1> -->
+                                                 <h1>{{card.courseDetails.coursename}}</h1>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row py-1 first-row">
+                                    <div class="last-md-element">
+                                        <p>Round : <span class="round-p">{{ card.numberofattemptsleft === 0 ? card.previousassignedattempts : card.previousassignedattempts - card.numberofattemptsleft + 1 }}
+                                            / {{ card.previousassignedattempts }}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 time-col-element">
+                                <div class="rt-time-col">
+                                    <div class="time-col">
+
+                                        <div class="card  time-card-ele">
+                                            <div class="card-header time-card-head">
+                                                <div class="time-t"> Start Time</div>
+                                            </div>
+                                            <div class="card-body time-card-b">
+                                                <div class="time-d">
+                                                    <div>{{startdatearray[i]}}</div>
+                                                    <div>{{starttimearray[i]}}</div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="time-col">
+
+                                        <div class="card time-card-ele">
+                                            <div class="card-header time-card-head">
+                                                <div class="time-t">
+                                                    End Time
+                                                </div>
+                                            </div>
+                                            <div class="card-body time-card-b">
+                                                <div class="time-d">
+                                                    <div>{{enddatearray[i]}}</div>
+                                                    <div>{{endtimearray[i]}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- for blanck response.... -->
+                <div style="width: 65%; margin: 0 auto; text-align: center; padding-top: 5rem;" *ngIf="showcardnull">
+                    {{showcardnulltext}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

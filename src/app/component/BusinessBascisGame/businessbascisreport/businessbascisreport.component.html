@@ -1,0 +1,251 @@
+<div class="elearingnewui bus_iness">
+  <div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+  </div>
+  <div class="container">
+    <div class="body-element">
+      <div class="re_ort">
+        <div class="row pb-4">
+          <div class="col-8"></div>
+          <div class="col-4">
+            <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+              <div class="">
+                <select class="select-round" name="" id="" [(ngModel)]="roundname" (change)="roundClick()">
+                  <option class="select-round-option" value="">Select Round</option>
+                  <option class="select-round-option" *ngFor="let attempt of dropdownvalue; let i = index;"
+                    [value]=attempt>{{attempt}}</option>
+
+                </select>
+              </div>
+
+              <div class="download_btn" matTooltiClass="primary-tooltip" (click)="downloadreportbusinessbasic()">
+                <div>
+                  <a download matTooltip="Download"><span class="hovertext" data-hover="Download pdf file accounting ">
+                      <img class="download_btn-img" src="assets/images/businessbasics/download.png" />
+                    </span>
+                  </a>
+                </div>
+                <div>
+                  <mat-icon class="mt-2">get_app</mat-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row row-cols-md-2 mb-3">
+          <div class="col-md-5 reyapo">
+            <h1 class="reyapo-h1">Report</h1>
+            <p>Excellent work!</p>
+            <p style="text-align: justify;">
+              You have completed setting up your tea shop and running it for the
+              first period. In this exercise every decision you have taken shows
+              your skills in dimensions like rigor, synthesis, structuring and
+              business judgement.
+            </p>
+          </div>
+
+          <div class="col-md-7" *ngIf="optional[2]">
+            <div class="card rigorcard">
+              <div class="rigorcard-icon">
+                <mat-icon class="rigorcard-icon-mat" appTippy="<table >
+                  <tr>
+                    <th style='font-weight:500; padding:7px;font-size:14px'>Rigor</th>
+                    <td style='padding:7px;font-size:13px'>Consistency throughout the decision-making and recommendation.</td>
+                  </tr>
+                  <tr>
+                    <th style='font-weight:500 ;padding:7px;font-size:14px'>Structuring</th>
+                    <td style='padding:7px;font-size:13px'>A logical approach to gathering and analyzing information.</td>
+                  </tr>
+                  <tr>
+                    <th style='font-weight:500 ;padding:7px;font-size:14px'>
+                      Synthesis
+                    </th>
+                    <td style='padding:7px;font-size:13px'>
+                      Approach towards interpreting all the information and making informed decisions.
+                    </td>
+                  <tr>
+                    <th style='font-weight:500; padding:7px;font-size:14px'>Business Jugement</th>
+                    <td style='padding:7px;font-size:13px'>Ability to evaluate facts and consider risks and possible implications when making decisions.</td>
+                  </tr>
+                  </tr>
+                </table>
+                 ">
+                  help_outline
+                </mat-icon>
+
+
+              </div>
+
+              <apx-chart [series]="rigorcharts.series" [chart]="rigorcharts.chart" [xaxis]="rigorcharts.xaxis"
+                [yaxis]="rigorcharts.yaxis" [stroke]="rigorcharts.stroke" [markers]="rigorcharts.markers"
+                [fill]="rigorcharts.fill" [title]="rigorcharts.title"></apx-chart>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row g-4">
+          <div class="col-sm-12 col-md-12 col-lg-6 col-xl-5">
+            <table class="table h-100 rsl_tbl">
+              <thead class="rsl_tbl-thead">
+                <tr class="rsl_tbl-thead-tr">
+                  <th class="rsl_tbl-thead-th" colspan="2">Cash Balance - Fixed Cost, INR</th>
+                </tr>
+              </thead>
+              <tbody class="rsl_tbl-tbody">
+                <tr class="rsl_tbl-tbody-tr">
+                  <td>Initial Cash</td>
+                  <td>{{result[0]|number:'1.0-0'}}</td>
+                </tr>
+                <tr class="rsl_tbl-tbody-tr">
+                  <td>Interior</td>
+                  <td>{{result[1]|number:'1.0-0'}}</td>
+                </tr>
+                <tr class="rsl_tbl-tbody-tr">
+                  <td>Equipment</td>
+                  <td>{{result[2]|number:'1.0-0'}}</td>
+                </tr>
+                <tr class="rsl_tbl-tbody-tr" *ngIf="optional[1]">
+                  <td>Technology </td>
+                  <td>{{result[3]}}</td>
+
+                </tr>
+                <tr class="rsl_tbl-tbody-tr">
+                  <td>Cash Outflow</td>
+                  <td>{{result[4]|number:'1.0-0'}}</td>
+                </tr>
+                <tr class="rsl_tbl-tbody-tr">
+                  <td>Borrowings</td>
+                  <td>{{result[5]|number:'1.0-0'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-6 col-xl-7">
+            <div class="card p-4 ">
+              <apx-chart [series]="cashbalfixedcost.series" [chart]="cashbalfixedcost.chart"
+                [dataLabels]="cashbalfixedcost.dataLabels" [plotOptions]="cashbalfixedcost.plotOptions"
+                [yaxis]="cashbalfixedcost.yaxis" [xaxis]="cashbalfixedcost.xaxis" [fill]="cashbalfixedcost.fill"
+                [title]="cashbalfixedcost.title" [noData]="cashbalfixedcost.noData"
+                [tooltip]="cashbalfixedcost.tooltip">
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 py-5">
+          <div class="col-sm-12 col-md-12 col-lg-4 col-xl-5">
+            <table class="table h-100 rsl_tbl">
+              <thead class="rsl_tbl-thead">
+                <tr class="rsl_tbl-thead-tr">
+                  <th class="rsl_tbl-thead-th" colspan="2">Operational cost, INR</th>
+                </tr>
+              </thead>
+              <tbody class="rsl_tbl-tbody">
+                <tr class="rsl_tbl-tbody-tr">
+                  <td>Rent</td>
+                  <td>{{result[6]|number:'1.0-0'}}</td>
+                </tr>
+                <tr class="rsl_tbl-tbody-tr" *ngIf="optional[0]">
+                  <td>Compliance</td>
+                  <td>{{result[7]|number:'1.0-0'}}</td>
+                </tr>
+
+                <tr class="rsl_tbl-tbody-tr">
+                  <td>Maintenance </td>
+                  <td>{{result[8]|number:'1.0-0'}}</td>
+                </tr>
+                <tr class="rsl_tbl-tbody-tr">
+                  <td>Material</td>
+                  <td>{{result[9]|number:'1.0-0'}}</td>
+                </tr>
+                <tr class="rsl_tbl-tbody-tr">
+                  <td>Service</td>
+                  <td>{{result[10]|number:'1.0-0'}}</td>
+                </tr>
+                <tr class="rsl_tbl-tbody-tr">
+                  <td>Interest</td>
+                  <td>{{result[11]|number:'1.0-0'}}</td>
+                </tr>
+                <tr class="rsl_tbl-tbody-tr">
+                  <td>Promotion</td>
+                  <td>{{result[12]|number:'1.0-0'}}</td>
+                </tr>
+                <tr class="rsl_tbl-tbody-tr">
+                  <td>Total</td>
+                  <td>{{result[13]|number:'1.0-0'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-8 col-xl-7">
+            <div class="card p-4">
+              <apx-chart [series]="operationalcost.series" [chart]="operationalcost.chart"
+                [dataLabels]="operationalcost.dataLabels" [plotOptions]="operationalcost.plotOptions"
+                [yaxis]="operationalcost.yaxis" [xaxis]="operationalcost.xaxis" [fill]="operationalcost.fill"
+                [title]="operationalcost.title" [noData]="operationalcost.noData" [tooltip]="operationalcost.tooltip">
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row g-4">
+          <div class="col-sm-12 col-md-12 col-lg-6 col-xl-5">
+            <table class="table rsl_tbl">
+              <thead class="rsl_tbl-thead">
+                <tr class="rsl_tbl-thead-tr">
+                  <th class="rsl_tbl-thead-th" colspan="2">Income Statement, INR</th>
+                </tr>
+              </thead>
+              <tbody class="rsl_tbl-tbody">
+                <tr class="rsl_tbl-tbody-tr">
+                  <td>Revenue</td>
+                  <td>{{result[16]|number:'1.0-0'}}</td>
+                </tr>
+                <tr class="rsl_tbl-tbody-tr">
+                  <td>Operational Cost</td>
+                  <td>{{result[17]|number:'1.0-0'}}</td>
+                </tr>
+                <tr class="rsl_tbl-tbody-tr">
+                  <td>Depreciation</td>
+                  <td>{{result[18]|number:'1.0-0'}}</td>
+                </tr>
+                <tr class="rsl_tbl-tbody-tr">
+                  <td>Operating Profit</td>
+                  <td>{{result[19]|number:'1.0-0'}}</td>
+                </tr>
+                <tr class="rsl_tbl-tbody-tr margin-td">
+                  <td>Margin</td>
+                  <td>{{result[20]*100|number:'1.0-0'}}%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-sm-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card incomestatement-pie  p-3 ">
+
+              <apx-chart [series]="incomestatement.series" [chart]="incomestatement.chart"
+                [labels]="incomestatement.labels" [responsive]="incomestatement.responsive"
+                [title]="incomestatement.title" [legend]="incomestatement.legend" [tooltip]="incomestatement.tooltip">
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-10 mt-4">
+            <p>
+              Note: This is the first month of operations of the cafe going ahead a
+              lot of factors like market growth, competition, product mix, and cost
+              scenarios will change. The objective is to get a basic idea about
+              business while the business complexity will be present in future
+              simulation exercises.
+            </p>
+          </div>
+          <div class="col"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

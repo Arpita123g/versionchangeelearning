@@ -1,0 +1,572 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui sales_target">
+    <div class="container">
+        <div class="body-element">
+            <div class="element-first">
+                <div class="row">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+            </div>
+            <h1>Sales Force
+                <mat-icon appTippy="
+                                    <div class='help-tip p-2'>
+                                      <div style='display:flex;'>
+                                        <div>
+                                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                        </div> &nbsp; &nbsp; &nbsp;
+                                        <div>
+                                          <p style='margin: 0 auto; color: white; font-size:13px;'>How will you distribute the sales force among sales representatives, key account managers, and territory managers in each channel?</p>
+                                        </div>
+                                      </div>
+                                        <div class='pt-2' style='display:flex;'>
+                                          <div>
+                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                          </div> &nbsp; &nbsp; &nbsp;
+                                          <div>
+                                            <p style='margin: 0 auto; color: white; font-size:13px;'>Considering the varied preferences of consumer segments, how can each type of salesperson contribute to meeting specific market demands?</p>
+                                          </div>
+                                        </div>
+                                    </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <div class="row row-cols-md-3 g-3 img-check mt-3">
+                <div class="col-md">
+                    <div class="card img-check-card  h-100">
+                        <div>
+                            <img src="assets/images/salestarget/salesrepresentive.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body img-check-card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[0]}}</h3>
+                            <p class="card-text" style="margin: 0; padding: 0;">
+                            <p class="card-text"> {{showAll[0] ? cards[0].text : cards[0].truncatedText}}
+                                <a type="button" (click)="toggleshow(0)" [style.color]="showAll[0] ? 'red' : 'blue'">
+                                    {{showAll[0] ? 'Show Less' : 'Show More'}}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check img-check-card-footer">
+                            <div class="card-footer-element">
+                                <h3 class="card-footer-element_first">Modern Trade</h3>
+                                <div class="input-group mb-3 card-footer-element_sec">
+                                    <input [disabled]="disabled" type="number" class="input-no_box"
+                                        oninput="this.value = Math.max(this.value, 0)" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="databaseresult[0]"
+                                        (focusout)="writeSalestargetValue('salesforce',0,$event,'moderntrade')">
+                                    <span class="input-group-text" id="basic-addon2">%</span>
+                                </div>
+                            </div>
+                            <div class="card-footer-element">
+                                <h3 class="card-footer-element_first ">Retail</h3>
+                                <div class="input-group mb-3 card-footer-element_sec">
+                                    <input [disabled]="disabled" type="number" class="input-no_box"
+                                        oninput="this.value = Math.max(this.value, 0)" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="databaseresult[1]"
+                                        (focusout)="writeSalestargetValue('salesforce',1,$event,'retail')">
+                                    <span class="input-group-text" id="basic-addon2">%</span>
+                                </div>
+                            </div>
+                            <div class="card-footer-element">
+                                <h3 class="card-footer-element_first">HoReCa</h3>
+                                <div class="input-group mb-3 card-footer-element_sec">
+                                    <input [disabled]="disabled" type="number" class="input-no_box"
+                                        oninput="this.value = Math.max(this.value, 0)" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="databaseresult[2]"
+                                        (focusout)="writeSalestargetValue('salesforce',2,$event,'horeca')">
+                                    <span class="input-group-text" id="basic-addon2">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card img-check-card  h-100">
+                        <div>
+                            <img src="assets/images/salestarget/saleskeymanager.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body img-check-card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[1]}}</h3>
+                            <p class="card-text"> {{showAll[1] ? cards[1].text : cards[1].truncatedText}}
+                                <a type="button" (click)="toggleshow(1)" [style.color]="showAll[1] ? 'red' : 'blue'">
+                                    {{showAll[1] ? 'Show Less' : 'Show More'}}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check img-check-card-footer">
+                            <div class="card-footer-element">
+                                <h3 class="card-footer-element_first">Modern Trade</h3>
+                                <div class="input-group mb-3 card-footer-element_sec">
+                                    <input [disabled]="disabled" type="number" class="input-no_box"
+                                        oninput="this.value = Math.max(this.value, 0)" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="databaseresult[3]"
+                                        (focusout)="writeSalestargetValue('salesforce',3,$event,'moderntrade')">
+                                    <span class="input-group-text" id="basic-addon2">%</span>
+                                </div>
+                            </div>
+                            <div class="card-footer-element">
+                                <h3 class="card-footer-element_first ">Retail</h3>
+                                <div class="input-group mb-3 card-footer-element_sec">
+                                    <input [disabled]="disabled" type="number" class="input-no_box"
+                                        oninput="this.value = Math.max(this.value, 0)" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="databaseresult[4]"
+                                        (focusout)="writeSalestargetValue('salesforce',4,$event,'retail')">
+                                    <span class="input-group-text" id="basic-addon2">%</span>
+                                </div>
+                            </div>
+                            <div class="card-footer-element">
+                                <h3 class="card-footer-element_first">HoReCa</h3>
+                                <div class="input-group mb-3 card-footer-element_sec">
+                                    <input [disabled]="disabled" type="number" class="input-no_box"
+                                        oninput="this.value = Math.max(this.value, 0)" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="databaseresult[5]"
+                                        (focusout)="writeSalestargetValue('salesforce',5,$event,'horeca')">
+                                    <span class="input-group-text" id="basic-addon2">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card img-check-card  h-100">
+                        <div>
+                            <img src="assets/images/salestarget/terriorsalesmana.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body img-check-card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[2]}}</h3>
+                            <p class="card-text"> {{showAll[2] ? cards[2].text : cards[2].truncatedText}}
+                                <a type="button" (click)="toggleshow(2)" [style.color]="showAll[2] ? 'red' : 'blue'">
+                                    {{showAll[2] ? 'Show Less' : 'Show More'}}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check img-check-card-footer">
+                            <div class="card-footer-element">
+                                <h3 class="card-footer-element_first">Modern Trade</h3>
+                                <div class="input-group mb-3 card-footer-element_sec dockinputvalue-footer">
+                                    <input disabled type="number" class="dockinputvalue"
+                                        oninput="this.value = Math.max(this.value, 0)" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="databaseresult[6]" (focusout)="validateInput(6)"
+                                        (change)="validateInput(6)">
+                                    <span class="input-group-text" style="border: 2px solid;
+                                    background: #d3d3d37d;" id="basic-addon2">%</span>
+                                </div>
+                            </div>
+                            <div class="card-footer-element">
+                                <h3 class="card-footer-element_first ">Retail</h3>
+                                <div class="input-group mb-3 card-footer-element_sec  dockinputvalue-footer">
+                                    <input disabled type="number" class="dockinputvalue"
+                                        oninput="this.value = Math.max(this.value, 0)" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="databaseresult[7]" (focusout)="validateInput(7)"
+                                        (change)="validateInput(7)">
+                                    <span class="input-group-text" style="border: 2px solid;
+                                    background: #d3d3d37d;" id="basic-addon2">%</span>
+                                </div>
+                            </div>
+                            <div class="card-footer-element">
+                                <h3 class="card-footer-element_first">HoReCa</h3>
+                                <div class="input-group mb-3 card-footer-element_sec dockinputvalue-footer">
+                                    <input disabled type="number" class="dockinputvalue"
+                                        oninput="this.value = Math.max(this.value, 0)" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="databaseresult[8]" (focusout)="validateInput(8)"
+                                        (change)="validateInput(8)">
+                                    <span class="input-group-text" style="border: 2px solid;
+                                    background: #d3d3d37d;" id="basic-addon2">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1 class="mt-5">Sales Style
+                <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'>What considerations will guide the distribution of sales styles (Gung Ho, Buddy, Consultative) across the three channels?</p>
+                    </div>
+                  </div>
+                    <div class='pt-2' style='display:flex;'>
+                      <div>
+                        <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                      </div> &nbsp; &nbsp; &nbsp;
+                      <div>
+                        <p style='margin: 0 auto; color: white; font-size:13px;'>How can aligning sales styles with consumer segment preferences and channel heads enhance the effectiveness of the sales team?</p>
+                      </div>
+                    </div>
+                </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <div class="row row-cols-md-3 g-3 img-check mt-3">
+                <div class="col-md">
+                    <div class="card img-check-card h-100">
+                        <div>
+                            <img src="assets/images/salestarget/gungho.svg" class="card-img-top" alt="Your Image" />
+                        </div>
+                        <div class="card-body img-check-card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[3]}}</h3>
+                            <p class="card-text"> {{showAll[3] ? cards[3].text : cards[3].truncatedText}}
+                                <a type="button" (click)="toggleshow(3)" [style.color]="showAll[3] ? 'red' : 'blue'">
+                                    {{showAll[3] ? 'Show Less' : 'Show More'}}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check img-check-card-footer">
+                            <div class="card-footer-element">
+                                <h3 class="card-footer-element_first">Modern Trade</h3>
+                                <div class="input-group mb-3 card-footer-element_sec">
+                                    <input [disabled]="disabled" type="number" class="input-no_box"
+                                        oninput="this.value = Math.max(this.value, 0)" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="databaseresult[9]"
+                                        (focusout)="writeSalestargetValue('salesstyle',9,$event,'moderntrade')">
+                                    <span class="input-group-text" id="basic-addon2">%</span>
+                                </div>
+                            </div>
+                            <div class="card-footer-element">
+                                <h3 class="card-footer-element_first ">Retail</h3>
+                                <div class="input-group mb-3 card-footer-element_sec">
+                                    <input [disabled]="disabled" type="number" class="input-no_box"
+                                        oninput="this.value = Math.max(this.value, 0)" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="databaseresult[10]"
+                                        (focusout)="writeSalestargetValue('salesstyle',10,$event,'retail')">
+                                    <span class="input-group-text" id="basic-addon2">%</span>
+                                </div>
+                            </div>
+                            <div class="card-footer-element">
+                                <h3 class="card-footer-element_first">HoReCa</h3>
+                                <div class="input-group mb-3 card-footer-element_sec">
+                                    <input [disabled]="disabled" type="number" class="input-no_box"
+                                        oninput="this.value = Math.max(this.value, 0)" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="databaseresult[11]"
+                                        (focusout)="writeSalestargetValue('salesstyle',11,$event,'horeca')">
+                                    <span class="input-group-text" id="basic-addon2">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card img-check-card  h-100">
+                        <div>
+                            <img src="assets/images/salestarget/buddy.svg" class="card-img-top" alt="Your Image" />
+                        </div>
+                        <div class="card-body img-check-card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[4]}}</h3>
+                            <p class="card-text"> {{showAll[4] ? cards[4].text : cards[4].truncatedText}}
+                                <a type="button" (click)="toggleshow(4)" [style.color]="showAll[4] ? 'red' : 'blue'">
+                                    {{showAll[4] ? 'Show Less' : 'Show More'}}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check img-check-card-footer">
+                            <div class="card-footer-element">
+                                <h3 class="card-footer-element_first">Modern Trade</h3>
+                                <div class="input-group mb-3 card-footer-element_sec">
+                                    <input [disabled]="disabled" type="number" class="input-no_box"
+                                        oninput="this.value = Math.max(this.value, 0)" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="databaseresult[12]"
+                                        (focusout)="writeSalestargetValue('salesstyle',12,$event,'moderntrade')">
+                                    <span class="input-group-text" id="basic-addon2">%</span>
+                                </div>
+                            </div>
+                            <div class="card-footer-element">
+                                <h3 class="card-footer-element_first ">Retail</h3>
+                                <div class="input-group mb-3 card-footer-element_sec">
+                                    <input [disabled]="disabled" type="number" class="input-no_box"
+                                        oninput="this.value = Math.max(this.value, 0)" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="databaseresult[13]"
+                                        (focusout)="writeSalestargetValue('salesstyle',13,$event,'retail')">
+                                    <span class="input-group-text" id="basic-addon2">%</span>
+                                </div>
+                            </div>
+                            <div class="card-footer-element">
+                                <h3 class="card-footer-element_first">HoReCa</h3>
+                                <div class="input-group mb-3 card-footer-element_sec">
+                                    <input [disabled]="disabled" type="number" class="input-no_box"
+                                        oninput="this.value = Math.max(this.value, 0)" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="databaseresult[14]"
+                                        (focusout)="writeSalestargetValue('salesstyle',14,$event,'horeca')">
+                                    <span class="input-group-text" id="basic-addon2">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card img-check-card  h-100">
+                        <div>
+                            <img src="assets/images/salestarget/consultative.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body img-check-card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[5]}}</h3>
+                            <p class="card-text"> {{showAll[5] ? cards[5].text : cards[5].truncatedText}}
+                                <a type="button" (click)="toggleshow(5)" [style.color]="showAll[5] ? 'red' : 'blue'">
+                                    {{showAll[5] ? 'Show Less' : 'Show More'}}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check img-check-card-footer">
+                            <div class="card-footer-element">
+                                <h3 class="card-footer-element_first">Modern Trade</h3>
+                                <div class="input-group mb-3 card-footer-element_sec dockinputvalue-footer">
+                                    <input disabled type="number" class="dockinputvalue"
+                                        oninput="this.value = Math.max(this.value, 0)" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="databaseresult[15]"
+                                        (focusout)="writeSalestargetValue('salesstyle',15,$event,'moderntrade')">
+                                    <span class="input-group-text" style="border: 2px solid;
+                                    background: #d3d3d37d;" id="basic-addon2">%</span>
+                                </div>
+                            </div>
+                            <div class="card-footer-element">
+                                <h3 class="card-footer-element_first ">Retail</h3>
+                                <div class="input-group mb-3 card-footer-element_sec dockinputvalue-footer">
+                                    <input disabled type="number" class="dockinputvalue"
+                                        oninput="this.value = Math.max(this.value, 0)" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="databaseresult[16]"
+                                        (focusout)="writeSalestargetValue('salesstyle',16,$event,'retail')">
+                                    <span class="input-group-text" style="border: 2px solid;
+                                    background: #d3d3d37d;" id="basic-addon2">%</span>
+                                </div>
+                            </div>
+                            <div class="card-footer-element">
+                                <h3 class="card-footer-element_first">HoReCa</h3>
+                                <div class="input-group mb-3 card-footer-element_sec dockinputvalue-footer">
+                                    <input disabled type="number" class="dockinputvalue"
+                                        oninput="this.value = Math.max(this.value, 0)" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="databaseresult[17]"
+                                        (focusout)="writeSalestargetValue('salesstyle',17,$event,'horeca')">
+                                    <span class="input-group-text" style="border: 2px solid;
+                                    background: #d3d3d37d;" id="basic-addon2">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1 *ngIf="leadership" class="mt-5">Leadership Involvement
+                <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'>In which areas of the sales process do you believe leadership involvement is crucial for success?</p>
+                    </div>
+                  </div>
+                    <div class='pt-2' style='display:flex;'>
+                      <div>
+                        <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                      </div> &nbsp; &nbsp; &nbsp;
+                      <div>
+                        <p style='margin: 0 auto; color: white; font-size:13px;'> How can leadership involvement enhance the alignment of sales strategies with the preferences of different consumer segments?</p>
+                      </div>
+                    </div>
+                </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <div *ngIf="leadership" class="row row-cols-md-3 g-3 mt-4 input-img-card">
+                <div class="col-md ">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/salestarget/involvecustomer.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[6]}}</h3>
+                            <p class="maincontent"> {{showAll[6] ? cards[6].text : cards[6].truncatedText}}
+                                <a type="button" (click)="toggleshow(6)" [style.color]="showAll[6] ? 'red' : 'blue'">
+                                    {{showAll[6] ? 'Show Less' : 'Show More'}}
+                                </a>
+
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <input [disabled]="disabled" class=" checkfrominput" type="radio" value=""
+                                id="flexCheckDefault" name="website" [checked]="databaseresult[18] === 1"
+                                (click)="writeSalestargetValue('leadership',18,$event,'')">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/salestarget/salarystregy.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[7]}}</h3>
+                            <p class="maincontent"> {{showAll[7] ? cards[7].text : cards[7].truncatedText}}
+                                <a type="button" (click)="toggleshow(7)" [style.color]="showAll[7] ? 'red' : 'blue'">
+                                    {{showAll[7] ? 'Show Less' : 'Show More'}}
+                                </a>
+
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <input [disabled]="disabled" class=" checkfrominput" type="radio" value=""
+                                id="flexCheckDefault" name="website" [checked]="databaseresult[19] === 1"
+                                (click)="writeSalestargetValue('leadership',19,$event,'')">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/salestarget/salesandmarketingint.svg"
+                                class="card-img-top" alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[8]}}</h3>
+                            <p class="maincontent"> {{showAll[8] ? cards[8].text : cards[8].truncatedText}}
+                                <a type="button" (click)="toggleshow(8)" [style.color]="showAll[8] ? 'red' : 'blue'">
+                                    {{showAll[8] ? 'Show Less' : 'Show More'}}
+                                </a>
+
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <input [disabled]="disabled" class=" checkfrominput" type="radio" value=""
+                                id="flexCheckDefault" name="website" [checked]="databaseresult[20] === 1"
+                                (click)="writeSalestargetValue('leadership',20,$event,'')">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  marketing-card h-100">
+                        <div class="craftingimg">
+                            <img src="../../../../assets/images/salestarget/salespersonalsupp.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="img-check-card-body-h3">{{periodresult[9]}}</h3>
+                            <p class="maincontent"> {{showAll[9] ? cards[9].text : cards[9].truncatedText}}
+                                <a type="button" (click)="toggleshow(9)" [style.color]="showAll[9] ? 'red' : 'blue'">
+                                    {{showAll[9] ? 'Show Less' : 'Show More'}}
+                                </a>
+
+                                <span class="mt-3" style="cursor: pointer;font-size: small;"></span>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check">
+                            <input [disabled]="disabled" class=" checkfrominput" type="radio" value=""
+                                id="flexCheckDefault" name="website" [checked]="databaseresult[21] === 1"
+                                (click)="writeSalestargetValue('leadership',21,$event,'')">
+                            <label class="form-check-label" for="flexCheckDefault">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1 *ngIf="recognition" class="mt-5">Recognition
+                <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'>What types of recognition initiatives will resonate with the sales team and encourage optimal performance?</p>
+                    </div>
+                  </div>
+                    <div class='pt-2' style='display:flex;'>
+                      <div>
+                        <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                      </div> &nbsp; &nbsp; &nbsp;
+                      <div>
+                        <p style='margin: 0 auto; color: white; font-size:13px;'>How can recognition strategies be chosen to acknowledge achievements that align with the preferences of different consumer segments?</p>
+                      </div>
+                    </div>
+                </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <div *ngIf="recognition" class="row row-cols-md-2 g-3 mt-4">
+                <div class="col-md">
+                    <table class="table rsl_tbl">
+                        <thead class="rsl_tbl-thead">
+                            <tr class="rsl_tbl-thead-tr">
+                                <th class="rsl_tbl-thead-th" colspan="4">Recognition</th>
+                            </tr>
+                        </thead>
+                        <tbody class="rsl_tbl-tbody">
+                            <tr class="rsl_tbl-tbody-tr-head">
+                                <td></td>
+                                <td>Estimated Cost, k INR</td>
+                                <td>Current Period</td>
+                            </tr>
+                            <tr class="rsl_tbl-tbody-tr">
+                                <td>{{periodresult[10]}}</td>
+                                <td>500000</td>
+                                <td>
+                                    <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value=""
+                                        id="flexCheckDefault" [checked]="databaseresult[22] === 1"
+                                        (click)="writeSalestargetValue('recognition',22,$event,'')" />
+                                </td>
+                            </tr>
+                            <tr class="rsl_tbl-tbody-tr">
+                                <td>{{periodresult[11]}}</td>
+                                <td>600000</td>
+                                <td>
+                                    <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value=""
+                                        id="flexCheckDefault" [checked]="databaseresult[23] === 1"
+                                        (click)="writeSalestargetValue('recognition',23,$event,'')" />
+                                </td>
+                            </tr>
+                            <tr class="rsl_tbl-tbody-tr">
+                                <td>{{periodresult[12]}}</td>
+                                <td>400000</td>
+                                <td>
+                                    <input [disabled]="disabled" class=" checkfrominput" type="checkbox" value=""
+                                        id="flexCheckDefault" [checked]="databaseresult[24] === 1"
+                                        (click)="writeSalestargetValue('recognition',24,$event,'')" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

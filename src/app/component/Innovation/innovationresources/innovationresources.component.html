@@ -1,0 +1,138 @@
+<div class="elearingnewui innovation_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="routesandtech">
+                <div class="row" class="element-first">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+
+                <h1>Development
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>How can you create a balance between allocating resources based on the urgency of development, the desired level of quality, and the available budget?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>How can you prioritize development and optimize resource allocation to maximize efficiency and effectiveness in launching the product to market?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-2 py-3 g-3 input-img-card">
+                    <div class="col-md-8">
+                        <div class="row row-cols-md-3">
+                            <div class="col-md">
+                                <p>No. of Developers</p>
+                                <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[0]"
+                                    (focusout)="getSelection('Development',0,'')" [disabled]="inputDisabled">
+                            </div>
+                            <div class="col-md">
+                                <p>No. of Industry Expert</p>
+                                <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[1]"
+                                    (focusout)="getSelection('Development',1,'')" [disabled]="inputDisabled">
+                            </div>
+                            <div class="col-md">
+                                <p>No. of Marketeer</p>
+                                <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[2]"
+                                    (focusout)="getSelection('Development',2,'')" [disabled]="inputDisabled">
+                            </div>
+                        </div>
+                        <div class="row row-cols-md-3 py-5">
+                            <div class="col-md">
+                                <p>Development Time, months</p>
+                                 <h4 class="">{{result[3]|number:'1.0-1'}}</h4>
+                            </div>
+                            <div class="col-md">
+                                <p>Quality Index</p>
+                                <h4 class="">{{result[4]*100|number:'1.0-0'}}%</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card p-2">
+                            <apx-chart [series]="wageskinrchart.series" [chart]="wageskinrchart.chart"
+                                [dataLabels]="wageskinrchart.dataLabels" [plotOptions]="wageskinrchart.plotOptions"
+                                [yaxis]="wageskinrchart.yaxis" [xaxis]="wageskinrchart.xaxis"
+                                [fill]="wageskinrchart.fill" [title]="wageskinrchart.title"
+                                [noData]="wageskinrchart.noData" [tooltip]="wageskinrchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="mt-5">Features
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'> How can you prioritize feature development based on their impact on user satisfaction and market competitiveness?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>How can you strike a balance between developing essential features within a shorter timeframe and investing in more complex features that may require additional development time?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of cardData; let i=index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[i+5]}}</h2>
+                                <div class="card-text">
+                                    <div class="textswcinassessment-p"><span class="textswcinassessment">
+                                        </span> {{ item.description.description }}</div><br><br>
+                                    <div class="card-footer form-check">
+                                        <div class="routesandtechcostcard">
+                                            <h3>{{ item.description.textname }}</h3>
+                                            <h3>{{ result[i+11] }}</h3>
+                                        </div>
+                                        <div style="height: 2rem;">
+                                            <input class="checkfrominput" type="checkbox" value="index"
+                                                id="flexCheckDefault" [checked]="item.ischecked"
+                                                (change)="getSelection('Features',i,$event)"
+                                                [disabled]="inputDisabled" />
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

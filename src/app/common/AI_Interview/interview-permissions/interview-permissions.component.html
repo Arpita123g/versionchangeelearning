@@ -1,0 +1,50 @@
+<div class="permissiondialogue" role="dialog" aria-labelledby="permission-title">
+  <h3 mat-dialog-title id="permission-title" class="maintitle">Let's start the interview by enabling the permissions</h3>
+  <div mat-dialog-content>
+    <span class="blur" aria-hidden="true"></span>
+    <div class="container p-5">
+      <div class="row g-5 mainrow">
+        <div class="col-lg-8">
+          <app-webcamera></app-webcamera>
+        </div>
+        <div class="col-lg-4">
+          <div class="d-flex flex-column gap-3 align-items-center justify-content-center h-100">
+            <div>
+              <span [class.micarea]="isMicrophoneActive()">
+                <button mat-fab class="micbtn" 
+                  [style.backgroundColor]="isMicrophoneActive() ? 'red' : 'gray'"
+                  [attr.aria-label]="isMicrophoneActive() ? 'Microphone active' : 'Microphone inactive'"
+                  (click)="initAudio()">
+                  <mat-icon class="btnicon" aria-hidden="true">
+                    {{isMicrophoneActive() ? 'mic' : 'mic_off'}}
+                  </mat-icon>
+                </button>
+              </span>
+            </div>
+            <p class="mt-3">{{isMicrophoneActive() ? 'Active' : 'Click to give access'}}</p>
+            @if (isMicrophoneActive()) {
+              <div class="volume_percent">
+                <div class="volume-bar" [style.width.%]="volume()">
+                  <div class="volume-indicator"></div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <mat-dialog-actions>
+    <div class="footersection pb-4">
+      <button mat-button 
+        class="button" 
+        [mat-dialog-close]="isMicrophoneActive()" 
+        [disabled]="!isMicrophoneActive()"
+        [class.active]="isMicrophoneActive()" 
+        [attr.aria-label]="isMicrophoneActive() ? 'Start interview' : 'Enable permissions first'">
+        {{!isMicrophoneActive() ? 'Enable Permissions first' : "Perfect! Let's begin"}}
+      </button>
+    </div>
+  </mat-dialog-actions>
+</div>

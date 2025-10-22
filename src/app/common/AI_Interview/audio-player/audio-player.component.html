@@ -1,0 +1,17 @@
+<div class="audioplayer" role="group" aria-label="Audio player controls">
+    <div class="btn-group">
+        <button mat-icon-button type="button" (click)="play()" [disabled]="isPlaying() || audioBlob.size === 0" aria-label="Play">
+            <mat-icon>play_arrow</mat-icon>
+        </button>
+        <button mat-icon-button type="button" (click)="pause()" [disabled]="!isPlaying()" aria-label="Pause">
+            <mat-icon>pause</mat-icon>
+        </button>
+        <button mat-icon-button type="button" (click)="stop()" [disabled]="!isPlaying()" aria-label="Stop">
+            <mat-icon>stop</mat-icon>
+        </button>
+    </div>
+    <div class="speaker">
+        <mat-icon aria-hidden="true">volume_up</mat-icon>
+        <input type="range" min="0" max="100" [ngModel]="volume()" (ngModelChange)="setVolume($event)" aria-label="Volume control">
+    </div>
+</div>

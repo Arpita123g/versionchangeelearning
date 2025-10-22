@@ -1,0 +1,224 @@
+<div class="elearingnewui crm_game">
+  <div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">{{languageselect === "Hindi"
+      ? "लोड हो रहा है... कुछ डिजिटल जादू तैयार किया जा रहा है!"
+      : "Loading... Brewing up some digital magic!"}}</p>
+  </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="routesandtech">
+                <div class="row" class="element-first">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">{{dataoflang.b22}}</button></span>
+                    </div>
+                </div>
+                <h1>{{dataoflang.b187}}
+                    <mat-icon appTippy="
+                  <div class='help-tip p-2'>
+                    <div style='display:flex;'>
+                      <div>
+                        <!-- <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4> -->
+                      </div> &nbsp; &nbsp;
+                      <div>
+                        <p style='margin: 0 auto; color: white; font-size:13px;'> {{dataoflang.b273}}</p>
+                      </div>
+                    </div>
+                      <div class='pt-2' style='display:flex;'>
+                        <div>
+                          <!-- <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4> -->
+                        </div> &nbsp; &nbsp; 
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'> {{dataoflang.b274}}</p>
+                        </div>
+                      </div>
+                  </div> ">
+            help_outline
+          </mat-icon>
+        </h1>
+        <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+          <div class="col-md" *ngFor="let item of cardData; let i=index">
+            <div class="card marketing-card h-100">
+              <div class="craftingimg">
+                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+              </div>
+              <div class="card-body">
+                <h2>{{result[i]}}</h2>
+                <div class="card-text">
+                  <div class="textswcinassessment-p">
+                    <!-- <span class="textswcinassessment">
+                    </span> -->
+                    {{ showAll1[i] ? 
+                      dataoflang[item.description.description] : 
+                      truncate(dataoflang[item.description.description], 100) }}
+                     <!-- {{ dataoflang[item.description.description] }} -->
+                     <a type="button" 
+                     (click)="toggleShow1(i)" 
+                     [style.color]="showAll1[i] ? 'red' : 'blue'"
+                     >
+                    {{ showAll1[i] ? dataoflang.b399 : dataoflang.b398 }}
+                  </a>
+                    </div>
+                    <br><br>
+                  <div class="card-footer form-check">
+                    <div class="routesandtechcostcard">
+                      <h3>{{dataoflang[item.description.textname]  }}</h3>
+                      <h3>{{ result[i+10] }}</h3>
+                    </div>
+                    <div style="height: 2rem;">
+                      <input class="checkfrominput" type="checkbox" value="index" id="flexCheckDefault"
+                        [checked]="item.ischecked" (change)="getSelection('customerservice',i,$event)"
+                        [disabled]="inputDisabled" />
+                      <label class="form-check-label" for="flexCheckDefault">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="mt-5">{{dataoflang.b209}}
+          <mat-icon appTippy="
+                  <div class='help-tip p-2'>
+                    <div style='display:flex;'>
+                      <div>
+                        <!-- <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4> -->
+                      </div> &nbsp; &nbsp;
+                      <div>
+                        <p style='margin: 0 auto; color: white; font-size:13px;'>{{dataoflang.b275}}</p>
+                      </div>
+                    </div>
+                      <div class='pt-2' style='display:flex;'>
+                        <div>
+                          <!-- <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4> -->
+                        </div> &nbsp; &nbsp; 
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>{{dataoflang.b276}}</p>
+                        </div>
+                      </div>
+                  </div> ">
+            help_outline
+          </mat-icon>
+                </h1>
+                <div class="row row-cols-md-2 py-3 g-3 input-img-card">
+                    <div class="col-md-8">
+                        <div class="row row-cols-md-3">
+                            <div class="col-md">
+                                <p>{{dataoflang.b213}}</p>
+                                <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[28]"
+                                    (focusout)="getSelection('resource',28,'')" [disabled]="inputDisabled">
+                            </div>
+                            <div class="col-md">
+                                <p>{{dataoflang.b210}}</p>
+                                <h4 class="">{{result[25]|number:'1.0-0'}}</h4>
+                            </div>
+                            <div class="col-md">
+                                <p>{{dataoflang.b212}}</p>
+                                <h4 class="">{{result[27]|number:'1.0-0'}}</h4>
+                            </div>
+                        </div>
+                        <div class="row row-cols-md-3 py-4">
+                            <div class="col-md">
+                                <p>{{dataoflang.b214}}</p>
+                                <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[29]"
+                                    (focusout)="getSelection('resource',29,'')" [disabled]="inputDisabled">
+                            </div>
+                            <div class="col-md">
+                                <p>{{dataoflang.b211}}</p>
+                                <h4 class="">{{result[26]|number:'1.0-0'}}</h4>
+                            </div>
+                            <div class="col-md">
+                                <p>{{dataoflang.b215}}</p>
+                                <h4 class="">{{result[30]|number:'1.0-0'}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card p-2">
+                            <apx-chart [series]="resourceschart.series" [chart]="resourceschart.chart"
+                                [dataLabels]="resourceschart.dataLabels" [plotOptions]="resourceschart.plotOptions"
+                                [yaxis]="resourceschart.yaxis" [xaxis]="resourceschart.xaxis"
+                                [fill]="resourceschart.fill" [title]="resourceschart.title"
+                                [noData]="resourceschart.noData" [tooltip]="resourceschart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+        <h1 class="mt-5"> {{dataoflang.b198}}
+          <mat-icon appTippy="
+                  <div class='help-tip p-2'>
+                    <div style='display:flex;'>
+                      <div>
+                        <!-- <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4> -->
+                      </div> &nbsp; &nbsp;
+                      <div>
+                        <p style='margin: 0 auto; color: white; font-size:13px;'> {{dataoflang.b277}}</p>
+                      </div>
+                    </div>
+                      <div class='pt-2' style='display:flex;'>
+                        <div>
+                          <!-- <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4> -->
+                        </div> &nbsp; &nbsp; 
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>{{dataoflang.b278}}</p>
+                        </div>
+                      </div>
+                  </div> ">
+            help_outline
+          </mat-icon>
+        </h1>
+        <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+          <div class="col-md" *ngFor="let item of cardData1; let j=index">
+            <div class="card marketing-card h-100">
+              <div class="craftingimg">
+                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+              </div>
+              <div class="card-body">
+                <h2>{{result[j+5]}}</h2>
+                <div class="card-text">
+                  <div class="textswcinassessment-p">
+                    <!-- <span class="textswcinassessment">
+                    </span>
+                     {{dataoflang[ item.description.description] }} -->
+                     {{ showAll[j] ? 
+                      dataoflang[item.description.description] : 
+                      truncate(dataoflang[item.description.description], 100) }}
+                     <!-- <span class="textswcinassessment"> -->
+                      
+                      <a type="button" 
+                         (click)="toggleShow(j)" 
+                         [style.color]="showAll[j] ? 'red' : 'blue'"
+                         >
+                        {{ showAll[j] ? dataoflang.b399 : dataoflang.b398 }}
+                      </a>
+                    <!-- </span> -->
+                   
+                    </div>
+                    <br><br>
+                  <div class="card-footer form-check">
+                    <div class="routesandtechcostcard">
+                      <h3>{{ dataoflang[item.description.textname ]}}</h3>
+                      <h3>{{ result[j+15] }}</h3>
+                    </div>
+                    <div style="height: 2rem;">
+                      <input class="checkfrominput" type="checkbox" value="index" id="flexCheckDefault"
+                        [checked]="item.ischecked" (change)="getSelection('processstream',j,$event)"
+                        [disabled]="inputDisabled" />
+                      <label class="form-check-label" for="flexCheckDefault">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

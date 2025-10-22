@@ -1,0 +1,99 @@
+<div class="elearingnewui">
+    <div class="case-management-body-forheader">
+        <div class="returnbtn-element">
+            <div class="returnbtn" (click)="GoBack()"> Return to Case Management </div>
+        </div>
+        <div class="card case-management-body-card">
+            <div class="card-body">
+                <div class=" tab-content-body">
+                    <ul class="nav second-nav" role="tablist">
+                        <li class="nav-item active" role="presentation" data-bs-target="#observe" data-bs-toggle="tab"
+                            aria-controls="observe" role="tab" aria-selected="false" (click)="search('observe')">
+                            <span class="nav-link" aria-current="page">Observe</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#empathize" data-bs-toggle="tab"
+                            aria-controls="empathize" role="tab" aria-selected="false" (click)="search('empathize')">
+                            <span class="nav-link" aria-current="page">Empathize</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#define" data-bs-toggle="tab"
+                            aria-controls="define" role="tab" aria-selected="false" (click)="search('define')">
+                            <span class="nav-link" aria-current="page">Define</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#ideate" data-bs-toggle="tab"
+                            aria-controls="ideate" role="tab" aria-selected="false" (click)="search('ideate')">
+                            <span class="nav-link" aria-current="page">Ideate</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#prototype" data-bs-toggle="tab"
+                            aria-controls="prototype" role="tab" aria-selected="false" (click)="search('prototype')">
+                            <span class="nav-link" aria-current="page">Prototype & Test</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#execute" data-bs-toggle="tab"
+                            aria-controls="execute" role="tab" aria-selected="false" (click)="search('execute')">
+                            <span class="nav-link" aria-current="page">Execute</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#foodrforthought" data-bs-toggle="tab"
+                            aria-controls="foodrforthought" role="tab" aria-selected="false"
+                            (click)="search('foodforthought')">
+                            <span class="nav-link" aria-current="page">Food For Thought</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#module" data-bs-toggle="tab"
+                            aria-controls="module" role="tab" aria-selected="false" (click)="search('general')">
+                            <span class="nav-link" aria-current="page">Module</span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="tab-content tab-content-body">
+
+                    <div role="tabpanel" class="tab-pane fade show active" id="observe"
+                        [ngClass]="{ 'active':activeTab==='observe'}">
+                        <app-designthinkingcaseobserve *ngIf="activeTab==='observe'"></app-designthinkingcaseobserve>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="empathize"
+                        [ngClass]="{ 'active':activeTab==='empathize'}">
+                        <app-designthinkingcaseempathize
+                            *ngIf="activeTab==='empathize'"></app-designthinkingcaseempathize>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="define"
+                        [ngClass]="{ 'active':activeTab==='define'}">
+                        <app-designthinkingcasedefine *ngIf="activeTab==='define'"></app-designthinkingcasedefine>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="ideate"
+                        [ngClass]="{ 'active':activeTab==='ideate'}">
+                        <app-designthinkingcaseideate *ngIf="activeTab==='ideate'"></app-designthinkingcaseideate>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="prototype"
+                        [ngClass]="{ 'active':activeTab==='prototype'}">
+                        <app-designthinkingcaseprototype
+                            *ngIf="activeTab==='prototype'"></app-designthinkingcaseprototype>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="execute"
+                        [ngClass]="{ 'active':activeTab==='execute'}">
+                        <app-designthinkingcaseexecute *ngIf="activeTab==='execute'"></app-designthinkingcaseexecute>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="foodrforthought"
+                        [ngClass]="{ 'active':activeTab==='foodforthought'}">
+                        <app-designthinkingcasefoodforthought
+                            *ngIf="activeTab==='foodforthought'"></app-designthinkingcasefoodforthought>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="module"
+                        [ngClass]="{ 'active':activeTab==='general'}">
+                        <app-designthinkingcasemodule *ngIf="activeTab==='general'"></app-designthinkingcasemodule>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <!-- <div>
+            <button class="mt-4 back" (click)="back()" style=" border: 3px solid #30b4cc;
+            border-radius: 6px;
+            background: transparent;
+            color: #30b4cc;
+            font-size: 20px; padding: 0.5rem 1rem;">Back</button>
+        </div> -->
+    </div>
+</div>

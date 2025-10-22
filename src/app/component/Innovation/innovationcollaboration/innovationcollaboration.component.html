@@ -1,0 +1,175 @@
+<div class="elearingnewui innovation_game">
+  <div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+  </div>
+  <div class="container">
+    <div class="body-element">
+      <div class="routesandtech">
+        <div class="row" class="element-first">
+          <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+            style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+              <button class="food-thought-btn">Food For Thought</button></span>
+          </div>
+        </div>
+        <h1>Collaboration
+          <mat-icon appTippy="
+                  <div class='help-tip p-2'>
+                    <div style='display:flex;'>
+                      <div>
+                        <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                      </div> &nbsp; &nbsp;
+                      <div>
+                        <p style='margin: 0 auto; color: white; font-size:13px;'> How can you prioritize collaborations that offer the greatest reach and awareness while minimizing costs?</p>
+                      </div>
+                    </div>
+                      <div class='pt-2' style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                        </div> &nbsp; &nbsp; 
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'> How can you identify and leverage collaborations that enhance brand visibility and market positioning in a cost-effective manner?</p>
+                        </div>
+                      </div>
+                  </div> ">
+            help_outline
+          </mat-icon>
+        </h1>
+        <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+          <div class="col-md" *ngFor="let item of cardData; let i=index">
+            <div class="card marketing-card h-100">
+              <div class="craftingimg">
+                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+              </div>
+              <div class="card-body">
+                <h2>{{result[i+16]}}</h2>
+                <div class="card-text">
+                  <div class="textswcinassessment-p"><span class="textswcinassessment">
+                    </span> {{ item.description.description }}</div><br><br>
+                  <div class="card-footer form-check">
+                    <div class="routesandtechcostcard">
+                      <h3>{{ item.description.textname }}</h3>
+                      <h3>{{ result[i+21] }}</h3>
+                    </div>
+                    <div style="height: 2rem;">
+                      <input class="checkfrominput" type="checkbox" value="index" id="flexCheckDefault"
+                        [checked]="item.ischecked" (change)="getSelection('collaboration',i+26,$event)"
+                        [disabled]="inputDisabled" />
+                      <label class="form-check-label" for="flexCheckDefault">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h1 class="mt-5">Technology Adoption
+          <mat-icon appTippy="
+                  <div class='help-tip p-2'>
+                    <div style='display:flex;'>
+                      <div>
+                        <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                      </div> &nbsp; &nbsp;
+                      <div>
+                        <p style='margin: 0 auto; color: white; font-size:13px;'>How can you strategically position your company to stay relevant and ahead of competitors while managing costs?</p>
+                      </div>
+                    </div>
+                      <div class='pt-2' style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                        </div> &nbsp; &nbsp; 
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>How can you justify the investment in technology adoption based on its long-term benefits and competitive positioning?</p>
+                        </div>
+                      </div>
+                  </div> ">
+            help_outline
+          </mat-icon>
+        </h1>
+        <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+          <div class="col-md" *ngFor="let item of cardData1; let i=index">
+            <div class="card marketing-card h-100">
+              <div class="craftingimg">
+                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+              </div>
+              <div class="card-body">
+                <h2>{{result[i]}}</h2>
+                <div class="card-text">
+                  <div class="textswcinassessment-p"><span class="textswcinassessment">
+                    </span> {{ item.description.description }}</div><br><br>
+                  <div class="card-footer form-check">
+                    <div class="routesandtechcostcard">
+                      <h3>{{ item.description.textname }}</h3>
+                      <h3>{{ result[i+4] }}</h3>
+                    </div>
+                    <div style="height: 2rem;">
+                      <input class="checkfrominput" type="radio" [value]="i" name="group1" id="flexCheckDefault{{i}}"
+                        (change)="getSelection('technologyadoption',i+31,$event)" [(ngModel)]="selectedCardIndex"
+                        [disabled]="inputDisabled" />  
+                      <label class="form-check-label" for="flexCheckDefault">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h1 class="mt-5">Continous Improvement
+          <mat-icon appTippy="
+                  <div class='help-tip p-2'>
+                    <div style='display:flex;'>
+                      <div>
+                        <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                      </div> &nbsp; &nbsp;
+                      <div>
+                        <p style='margin: 0 auto; color: white; font-size:13px;'>How can you balance the need for ongoing improvement with the associated costs and resource constraints?</p>
+                      </div>
+                    </div>
+                      <div class='pt-2' style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                        </div> &nbsp; &nbsp; 
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'> How can you justify the investment in continuous improvement based on its potential to drive long-term growth, quality and success?</p>
+                        </div>
+                      </div>
+                  </div> ">
+            help_outline
+          </mat-icon>
+        </h1>
+        <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+          <div class="col-md" *ngFor="let item of cardData2; let k=index">
+            <div class="card marketing-card h-100">
+              <div class="craftingimg">
+                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+              </div>
+              <div class="card-body">
+                <h2>{{result[k]}}</h2>
+                <div class="card-text">
+                  <div class="textswcinassessment-p"><span class="textswcinassessment">
+                    </span> {{ item.description.description }}</div><br><br>
+                  <div class="card-footer form-check">
+                    <div class="routesandtechcostcard">
+                      <h3>{{ item.description.textname }}</h3>
+                      <h3>{{ result[k+12] }}</h3>
+                    </div>
+                    <div style="height: 2rem;">
+                      <input class="checkfrominput" type="radio" [value]="k" name="group2" id="flexCheckDefault1{{k}}"
+                        (change)="getSelection('continuousimprovement',k+35,$event)" [(ngModel)]="selectedCard1Index"
+                        [disabled]="inputDisabled" />
+                      <label class="form-check-label" for="flexCheckDefault">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

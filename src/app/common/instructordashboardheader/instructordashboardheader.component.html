@@ -1,0 +1,36 @@
+<div class="instructor-toolbar" role="banner">
+    <div class="toolbar-header-main">
+      <div class="toolbar-header-2nd">
+        <div class="logo">
+          <img src="assets/images/businessbasics/cesiminst.JPG" alt="Company Logo" />
+        </div>
+        <div class="toolbar-actions">
+          <span class="current-time">{{ currentTime() }}</span>
+          <button mat-button [matMenuTriggerFor]="languageMenu" aria-label="Change language">
+            <mat-icon>language</mat-icon>
+            {{ selectedLanguageName }}
+          </button>
+          <mat-menu #languageMenu="matMenu">
+            <button mat-menu-item *ngFor="let lang of languages" (click)="changeLanguage(lang.code)">
+              {{ lang.name }}
+            </button>
+          </mat-menu>
+          <button mat-raised-button color="primary" class="quick-start-btn" (click)="onButtonPress()">
+            <mat-icon>rocket_launch</mat-icon>
+            Quick Start
+          </button>
+        </div>
+        <nav class="icon-nav" role="navigation">
+          <button mat-icon-button aria-label="Profile">
+            <mat-icon>person_outline</mat-icon>
+          </button>
+          <button mat-icon-button aria-label="Help">
+            <mat-icon>help_outline</mat-icon>
+          </button>
+          <button mat-icon-button aria-label="Logout" (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+          </button>
+        </nav>
+      </div>
+    </div>
+  </div>

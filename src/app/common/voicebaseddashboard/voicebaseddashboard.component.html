@@ -1,0 +1,47 @@
+<div class="elearingnewui bus_iness">
+    <div class="newinstructor">
+        <div class="card newinstructor-card-first ">
+            <div class="card-header newinstructor-card-header-first">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab_pane-first tab-pane fade show active">
+                        <ul class="nav nav_bar" role="tablist">
+                            <li role="presentation" class=" nav_bar-li active" data-bs-target="#voicebasedstructure"
+                                aria-controls="voicebasedstructure" role="tab" data-bs-toggle="tab" aria-selected="true" (click)="tabclick('voicebasedstructure')">
+                                <span class="octicon octicon-diff-added">STRUCTURE</span>
+                            </li>
+                            <li role="presentation " class="nav_bar-li" data-bs-target="#voicebasedreport"
+                                aria-controls="voicebasedreport" role="tab" data-bs-toggle="tab" aria-selected="false" (click)="tabclick('voicebasedreport')">
+                                <span class="octicon octicon-diff-added">REPORT</span>
+                            </li>
+                            <li role="presentation " class="nav_bar-li" data-bs-target="#voicebasedsetting"
+                                aria-controls="voicebasedsetting" role="tab" data-bs-toggle="tab" aria-selected="false" (click)="tabclick('voicebasedsetting')">
+                                <span class="octicon octicon-diff-added">SETTINGS</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="card newinstructor-card">
+            <div class="card-body newinstructor-card-body vh-100">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade show active" id="voicebasedstructure">
+                        <app-voicebaseddashboardstructure *ngIf="activetab() == 'voicebasedstructure'"></app-voicebaseddashboardstructure>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="voicebasedreport">
+                        <app-voicebaseddashboardreport  *ngIf="activetab() == 'voicebasedreport'"></app-voicebaseddashboardreport>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="voicebasedsetting">
+                        <app-voicebaseddashboardsettings *ngIf="activetab() == 'voicebasedsetting'"></app-voicebaseddashboardsettings>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

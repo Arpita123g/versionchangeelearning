@@ -1,0 +1,472 @@
+<div class="elearingnewui crm_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">{{languageselect=== "Hindi"
+            ? "लोड हो रहा है... कुछ डिजिटल जादू तैयार किया जा रहा है!"
+            : "Loading... Brewing up some digital magic!"}} </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="market-research">
+                <div class="element-first">
+                    <div class="row">
+                        <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+                            style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                                <button class="food-thought-btn">{{dataoflang.b22}}</button></span>
+                        </div>
+                    </div>
+                </div>
+
+                <h1>{{dataoflang.b15}}
+                   
+                    <ng-template #helpContent>
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>{{dataoflang.b265}}</p>
+                            </div>
+                          </div>
+                          <div class='pt-2' style='display:flex;'>
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>{{dataoflang.b266}}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </ng-template>
+                      <mat-icon [appTippy]="helpContent">help_outline</mat-icon>
+                    </h1>
+                <ul class="nav market-research-nav" id="nav-tab" role="tablist">
+                    <li class="nav-link active market-research-link" id="nav-Lead-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Lead" type="button" role="tab" aria-controls="nav-Lead"
+                        aria-selected="true">
+                        {{dataoflang[languageCell[0]]}}
+                        <!-- Lead & Pipeline Management -->
+                    </li>
+                    <li class="nav-link market-research-link " id="nav-Communication-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Communication" type="button" role="tab" aria-controls="nav-Communication"
+                        aria-selected="true">
+                        <!-- Communication Strategy -->
+                        {{dataoflang[languageCell[3]]}}
+
+                    </li>
+                    <li class="nav-link market-research-link " id="nav-Customer-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Customer" type="button" role="tab" aria-controls="nav-Customer"
+                        aria-selected="true"> 
+                        <!-- Customer Service -->
+                        {{dataoflang[languageCell[4]]}}
+                    </li>
+                    <li class="nav-link market-research-link" id="nav-CrossSelling-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-CrossSelling" type="button" role="tab" aria-controls="nav-CrossSelling"
+                        aria-selected="false"> 
+                        <!-- Cross-Selling & Upselling -->
+                        {{dataoflang[languageCell[5]]}}
+                    </li>
+                    <li class="nav-link market-research-link" id="nav-Resources-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Resources" type="button" role="tab" aria-controls="nav-Resources"
+                        aria-selected="false"> 
+                        <!-- Resources & Value -->
+                        {{dataoflang[languageCell[6]]}}
+                    </li>
+                    <li class="nav-link market-research-link" id="nav-Revenue-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Revenue" type="button" role="tab" aria-controls="nav-Revenue"
+                        aria-selected="false"> 
+                        <!-- Revenue Streams -->
+                        {{dataoflang[languageCell[7]]}}
+                    </li>
+                </ul>
+
+
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-Lead" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group list-group-flush marketoutlooklist">
+                                <li class="list-group-item">
+                                    <div>
+                                        <h1 class="py-4">
+                                            {{dataoflang[languageCell[1]]}}
+                                            <!-- Lead Status Terminology -->
+                                        </h1>
+                                        <div class="row row-cols-md-3">
+                                            <div class="col-md" *ngFor="let item of cardData">
+                                                <div class="marketing-card h-100">
+                                                    <h2>{{dataoflang[item.title]}}</h2>
+                                                    <div class="card-text">
+                                                        <p class="headinghighlight">{{dataoflang[item.description]}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div>
+                                        <h1 class="py-4">
+                                            <!-- Stages in Sales Cycle -->
+                                            {{dataoflang[languageCell[2]]}}
+                                        </h1>
+                                        <div class="row row-cols-md-3">
+                                            <div class="col-md" *ngFor="let item of cardData2">
+                                                <div class="marketing-card h-100">
+                                                    <h2>{{dataoflang[item.title]}}</h2>
+                                                    <div class="card-text">
+                                                        <p class="headinghighlight">{{dataoflang[item.description]}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row row-cols-md-2 py-4">
+                                        <div class="col-md">
+                                            <div class="py-2">
+                                                <div class="card p-3">
+                                                    <apx-chart [series]="LeadConversionRate.series"
+                                                        [chart]="LeadConversionRate.chart"
+                                                        [dataLabels]="LeadConversionRate.dataLabels"
+                                                        [plotOptions]="LeadConversionRate.plotOptions"
+                                                        [yaxis]="LeadConversionRate.yaxis"
+                                                        [xaxis]="LeadConversionRate.xaxis"
+                                                        [fill]="LeadConversionRate.fill"
+                                                        [title]="LeadConversionRate.title"
+                                                        [noData]="LeadConversionRate.noData"
+                                                        [tooltip]="LeadConversionRate.tooltip">
+                                                    </apx-chart>
+
+                                                </div>
+                                                <div class="py-2">
+                                                    <p class="headinghighlight">
+                                                        <!-- The x-axis represents the data of the last 3 years where P3
+                                                        represents the previous year, while the y-axis represents the
+                                                        lead conversion rate. -->
+                                                        {{dataoflang[languageCell[8]]}}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="py-2">
+                                                <div class="card p-3">
+                                                    <apx-chart [series]="PipelineVelocitydays.series"
+                                                        [chart]="PipelineVelocitydays.chart"
+                                                        [dataLabels]="PipelineVelocitydays.dataLabels"
+                                                        [plotOptions]="PipelineVelocitydays.plotOptions"
+                                                        [yaxis]="PipelineVelocitydays.yaxis"
+                                                        [xaxis]="PipelineVelocitydays.xaxis"
+                                                        [fill]="PipelineVelocitydays.fill"
+                                                        [title]="PipelineVelocitydays.title"
+                                                        [noData]="PipelineVelocitydays.noData"
+                                                        [tooltip]="PipelineVelocitydays.tooltip">
+                                                    </apx-chart>
+                                                </div>
+                                                <div class="py-2">
+                                                    <p class="headinghighlight">
+                                                        <!-- The x-axis represents the data of the last 3 years where P3
+                                                        represents the previous year, while the y-axis represents the
+                                                        days. -->
+                                                        {{dataoflang[languageCell[9]]}}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-Communication" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group  list-group-flush marketoutlooklist">
+                                <li class="list-group-item">
+                                    <div class="row row-cols-md-2 py-4">
+                                        <div class="col-md">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="AverageLeadResponseTime.series"
+                                                    [chart]="AverageLeadResponseTime.chart"
+                                                    [dataLabels]="AverageLeadResponseTime.dataLabels"
+                                                    [plotOptions]="AverageLeadResponseTime.plotOptions"
+                                                    [yaxis]="AverageLeadResponseTime.yaxis"
+                                                    [xaxis]="AverageLeadResponseTime.xaxis"
+                                                    [fill]="AverageLeadResponseTime.fill"
+                                                    [title]="AverageLeadResponseTime.title"
+                                                    [noData]="AverageLeadResponseTime.noData"
+                                                    [tooltip]="AverageLeadResponseTime.tooltip">
+                                                </apx-chart>
+                                            </div>
+                                            <div class="py-2">
+                                                <p class="headinghighlight">
+                                                    <!-- The x-axis represents the data of the last 3 years where P3
+                                                    represents the previous year, while the y-axis represents the hours. -->
+                                                    {{dataoflang[languageCell[10]]}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="CustomerSatisfactionScore.series"
+                                                    [chart]="CustomerSatisfactionScore.chart"
+                                                    [dataLabels]="CustomerSatisfactionScore.dataLabels"
+                                                    [plotOptions]="CustomerSatisfactionScore.plotOptions"
+                                                    [yaxis]="CustomerSatisfactionScore.yaxis"
+                                                    [xaxis]="CustomerSatisfactionScore.xaxis"
+                                                    [fill]="CustomerSatisfactionScore.fill"
+                                                    [title]="CustomerSatisfactionScore.title"
+                                                    [noData]="CustomerSatisfactionScore.noData"
+                                                    [tooltip]="CustomerSatisfactionScore.tooltip">
+                                                </apx-chart>
+                                            </div>
+                                            <div class="py-2">
+                                                <p class="headinghighlight">
+                                                    <!-- The x-axis represents the data of the last 3 years where P3
+                                                    represents the previous year, while the y-axis represents the
+                                                    satisfaction score. -->
+                                                    {{dataoflang[languageCell[11]]}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-Customer" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group  list-group-flush marketoutlooklist">
+                                <li class="list-group-item">
+                                    <div class="row row-cols-md-2 py-4">
+                                        <div class="col-md">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="CustomerServiceResponseRate.series"
+                                                    [chart]="CustomerServiceResponseRate.chart"
+                                                    [dataLabels]="CustomerServiceResponseRate.dataLabels"
+                                                    [plotOptions]="CustomerServiceResponseRate.plotOptions"
+                                                    [yaxis]="CustomerServiceResponseRate.yaxis"
+                                                    [xaxis]="CustomerServiceResponseRate.xaxis"
+                                                    [fill]="CustomerServiceResponseRate.fill"
+                                                    [title]="CustomerServiceResponseRate.title"
+                                                    [noData]="CustomerServiceResponseRate.noData"
+                                                    [tooltip]="CustomerServiceResponseRate.tooltip">
+                                                </apx-chart>
+                                            </div>
+                                            <div class="py-2">
+                                                <p class="headinghighlight">
+                                                    <!-- The x-axis represents the data of the last 3 years where P3
+                                                    represents the previous year, while the y-axis represents the
+                                                    response rate.  -->
+                                                    {{dataoflang[languageCell[12]]}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="AverageResolutionTime.series"
+                                                    [chart]="AverageResolutionTime.chart"
+                                                    [dataLabels]="AverageResolutionTime.dataLabels"
+                                                    [plotOptions]="AverageResolutionTime.plotOptions"
+                                                    [yaxis]="AverageResolutionTime.yaxis"
+                                                    [xaxis]="AverageResolutionTime.xaxis"
+                                                    [fill]="AverageResolutionTime.fill"
+                                                    [title]="AverageResolutionTime.title"
+                                                    [noData]="AverageResolutionTime.noData"
+                                                    [tooltip]="AverageResolutionTime.tooltip">
+                                                </apx-chart>
+                                            </div>
+                                            <div class="py-2">
+                                                <p class="headinghighlight">
+                                                    <!-- The x-axis represents the data of the last 3 years where P3
+                                                    represents the previous year, while the y-axis represents the days. -->
+                                                    {{dataoflang[languageCell[13]]}}
+                                                </p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-CrossSelling" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group  list-group-flush marketoutlooklist">
+                                <li class="list-group-item py-3">
+                                    <div class="card p-3">
+                                        <apx-chart [series]="Rate.series" [chart]="Rate.chart"
+                                            [dataLabels]="Rate.dataLabels" [plotOptions]="Rate.plotOptions"
+                                            [yaxis]="Rate.yaxis" [xaxis]="Rate.xaxis" [fill]="Rate.fill"
+                                            [title]="Rate.title" [noData]="Rate.noData" [tooltip]="Rate.tooltip">
+                                        </apx-chart>
+                                    </div>
+                                    <div class="py-2">
+                                        <p class="headinghighlight">
+                                            <!-- The x-axis represents the data of the last 3 years where P3 represents the
+                                            previous year, while the y-axis represents the rate. -->
+                                            {{dataoflang[languageCell[14]]}}
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-Resources" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group  list-group-flush marketoutlooklist">
+                                <li class="list-group-item">
+                                    <div class="row row-cols-md-2 py-4">
+                                        <div class="col-md">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="CustomerAcquisitionCost.series"
+                                                    [chart]="CustomerAcquisitionCost.chart"
+                                                    [dataLabels]="CustomerAcquisitionCost.dataLabels"
+                                                    [plotOptions]="CustomerAcquisitionCost.plotOptions"
+                                                    [yaxis]="CustomerAcquisitionCost.yaxis"
+                                                    [xaxis]="CustomerAcquisitionCost.xaxis"
+                                                    [fill]="CustomerAcquisitionCost.fill"
+                                                    [title]="CustomerAcquisitionCost.title"
+                                                    [noData]="CustomerAcquisitionCost.noData"
+                                                    [tooltip]="CustomerAcquisitionCost.tooltip">
+                                                </apx-chart>
+                                            </div>
+                                            <div class="py-2">
+                                                <p class="headinghighlight">
+                                                    <!-- The x-axis represents the data of the last 3 years where P3
+                                                    represents the previous year, while the y-axis represents the cost. -->
+                                                    {{dataoflang[languageCell[15]]}}
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="AveragePurchaseOrder.series"
+                                                    [chart]="AveragePurchaseOrder.chart"
+                                                    [dataLabels]="AveragePurchaseOrder.dataLabels"
+                                                    [plotOptions]="AveragePurchaseOrder.plotOptions"
+                                                    [yaxis]="AveragePurchaseOrder.yaxis"
+                                                    [xaxis]="AveragePurchaseOrder.xaxis"
+                                                    [fill]="AveragePurchaseOrder.fill"
+                                                    [title]="AveragePurchaseOrder.title"
+                                                    [noData]="AveragePurchaseOrder.noData"
+                                                    [tooltip]="AveragePurchaseOrder.tooltip">
+                                                </apx-chart>
+                                            </div>
+                                            <div class="py-2">
+                                                <p class="headinghighlight">
+                                                    <!-- The x-axis represents the data of the last 3 years where P3
+                                                    represents the previous year, while the y-axis represents the order
+                                                    value. -->
+                                                    {{dataoflang[languageCell[16]]}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row row-cols-md-2">
+                                        <div class="col-md">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="Averagefrequencyper.series"
+                                                    [chart]="Averagefrequencyper.chart"
+                                                    [dataLabels]="Averagefrequencyper.dataLabels"
+                                                    [plotOptions]="Averagefrequencyper.plotOptions"
+                                                    [yaxis]="Averagefrequencyper.yaxis"
+                                                    [xaxis]="Averagefrequencyper.xaxis"
+                                                    [fill]="Averagefrequencyper.fill"
+                                                    [title]="Averagefrequencyper.title"
+                                                    [noData]="Averagefrequencyper.noData"
+                                                    [tooltip]="Averagefrequencyper.tooltip">
+                                                </apx-chart>
+                                            </div>
+                                            <div class="py-2">
+                                                <p class="headinghighlight">
+                                                    <!-- The x-axis represents the data of the last 3 years where P3
+                                                    represents the previous year, while the y-axis represents the
+                                                    frequency. -->
+                                                    {{dataoflang[languageCell[17]]}}
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="LifeSpan.series" [chart]="LifeSpan.chart"
+                                                    [dataLabels]="LifeSpan.dataLabels"
+                                                    [plotOptions]="LifeSpan.plotOptions" [yaxis]="LifeSpan.yaxis"
+                                                    [xaxis]="LifeSpan.xaxis" [fill]="LifeSpan.fill"
+                                                    [title]="LifeSpan.title" [noData]="LifeSpan.noData"
+                                                    [tooltip]="LifeSpan.tooltip">
+                                                </apx-chart>
+                                            </div>
+                                            <div class="py-2">
+                                                <p class="headinghighlight">
+                                                    <!-- The x-axis represents the data of the last 3 years where P3
+                                                    represents the previous year, while the y-axis represents the years. -->
+                                                    {{dataoflang[languageCell[18]]}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row ">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="ChurnRate.series" [chart]="ChurnRate.chart"
+                                                [dataLabels]="ChurnRate.dataLabels"
+                                                [plotOptions]="ChurnRate.plotOptions" [yaxis]="ChurnRate.yaxis"
+                                                [xaxis]="ChurnRate.xaxis" [fill]="ChurnRate.fill"
+                                                [title]="ChurnRate.title" [noData]="ChurnRate.noData"
+                                                [tooltip]="ChurnRate.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                        <div class="py-2">
+                                            <p class="headinghighlight">
+                                                <!-- The x-axis represents the data of the last 3 years where P3 represents
+                                                the previous year, while the y-axis represents the rate. -->
+                                                {{dataoflang[languageCell[19]]}}
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-Revenue" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group  list-group-flush marketoutlooklist">
+                                <li class="list-group-item">
+                                    <div class="row row-cols-md-2 py-4">
+                                        <div class="col-md">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="TotalRevenue.series" [chart]="TotalRevenue.chart"
+                                                    [dataLabels]="TotalRevenue.dataLabels"
+                                                    [plotOptions]="TotalRevenue.plotOptions"
+                                                    [yaxis]="TotalRevenue.yaxis" [xaxis]="TotalRevenue.xaxis"
+                                                    [fill]="TotalRevenue.fill" [title]="TotalRevenue.title"
+                                                    [noData]="TotalRevenue.noData" [tooltip]="TotalRevenue.tooltip">
+                                                </apx-chart>
+                                            </div>
+                                            <div class="py-2">
+                                                <p class="headinghighlight">
+                                                    <!-- The x-axis represents the data of the last 3 years where P3
+                                                    represents the previous year, while the y-axis represents the
+                                                    revenue. -->
+                                                    {{dataoflang[languageCell[20]]}}
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="RevenueDistributionIndustry.series" 
+                                                [chart]="RevenueDistributionIndustry.chart"
+                                                 [labels]="RevenueDistributionIndustry.labels" 
+                                                 [responsive]="RevenueDistributionIndustry.responsive" 
+                                                 [title]="RevenueDistributionIndustry.title" 
+                                                 [legend]="RevenueDistributionIndustry.legend" 
+                                                 [tooltip]="RevenueDistributionIndustry.tooltip">
+                                                </apx-chart>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

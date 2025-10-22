@@ -1,0 +1,233 @@
+<div class="elearingnewui capital_budget">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row pb-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                            <div class="">
+                                <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                    (change)="roundClick()">
+                                    <option class="select-round-option" value="">Select Round</option>
+                                    <option class="select-round-option"
+                                        *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                        {{attempt}}</option>
+
+                                </select>
+                            </div>
+
+                            <div class="download_btn" matTooltiClass="primary-tooltip"
+                                (click)="downloadreportcapital()">
+                                <div>
+                                    <a download matTooltip="Download"><span class="hovertext"
+                                            data-hover="Download pdf file accounting ">
+                                            <img class="download_btn-img"
+                                                src="assets/images/businessbasics/download.png" />
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <mat-icon class="mt-2">get_app</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 mb-3">
+                    <div class="col-md-5 reyapo">
+                        <h1 class="reyapo-h1">Report</h1>
+                        <p style="text-align: justify;">
+                            Excellent work. You have completed selecting multiple projects which will impact the future cash
+                             flow and benefit the firm. In this exercise every decision you have taken shows your skills in 
+                             dimensions like rigor, synthesis, structuring and business judgement.
+                        </p>
+                    </div>
+
+                    <div class="col-md-7">
+                        <div class="card rigorcard">
+                            <apx-chart [series]="rigorcharts.series" [chart]="rigorcharts.chart"
+                                [xaxis]="rigorcharts.xaxis" [yaxis]="rigorcharts.yaxis" [stroke]="rigorcharts.stroke"
+                                [markers]="rigorcharts.markers" [fill]="rigorcharts.fill"
+                                [title]="rigorcharts.title"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-3">
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="pvbargraph.series" [chart]="pvbargraph.chart"
+                                [dataLabels]="pvbargraph.dataLabels" [plotOptions]="pvbargraph.plotOptions"
+                                [yaxis]="pvbargraph.yaxis" [xaxis]="pvbargraph.xaxis" [fill]="pvbargraph.fill"
+                                [noData]="pvbargraph.noData" [tooltip]="pvbargraph.tooltip">
+                            </apx-chart>
+                        </div>
+                        <div class="pt-5">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Present Value of Cash Stream, INR
+                                            million
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Revenue</td>
+                                        <td>{{result.cbgamedata.c100|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Cost Saving</td>
+                                        <td>{{result.cbgamedata.c101|number:'1.0-0'}}</td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="budgetbar.series" [chart]="budgetbar.chart"
+                                [dataLabels]="budgetbar.dataLabels" [plotOptions]="budgetbar.plotOptions"
+                                [yaxis]="budgetbar.yaxis" [xaxis]="budgetbar.xaxis" [fill]="budgetbar.fill"
+                                [noData]="budgetbar.noData" [tooltip]="budgetbar.tooltip">
+                            </apx-chart>
+                        </div>
+                        <div class="pt-5">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Budget, INR million
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Budget Utilized</td>
+                                        <td>{{result.cbgamedata.c112|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Budget Unused</td>
+                                        <td>{{result.cbgamedata.c113|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="pvpiechart.series" [chart]="pvpiechart.chart"
+                                [labels]="pvpiechart.labels" [responsive]="pvpiechart.responsive"
+                                [title]="pvpiechart.title" [legend]="pvpiechart.legend" [tooltip]="pvpiechart.tooltip">
+                            </apx-chart>
+                        </div>
+                        <div class="pt-5">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Present Value of Divisonal Cash Stream,
+                                            INR
+                                            million
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                   
+
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Market Expansion</td>
+                                        <td>{{result.cbgamedata.c106|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Operational Efficiency</td>
+                                        <td>{{result.cbgamedata.c107|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Process Improvement</td>
+                                        <td>{{result.cbgamedata.c108|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Product Expansion</td>
+                                        <td>{{result.cbgamedata.c109|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row py-4">
+                    <div class="col">
+                        <table class="table rsl_tbl py-3">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="9">
+                                        Projects
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <th class="rsl_tbl-tbody-th" style="width: 6rem;" *ngFor="let col of tableData[0]">
+                                        {{ col }}
+                                    </th>
+                                    
+                                </tr>
+
+                                <tr class="rsl_tbl-tbody-tr" *ngFor="let row of filtertabledata.slice(1)">
+
+                                    <td *ngFor="let cell of row; let i= index" >
+                                       {{ (i===5)?((result.cbgamedata[cell]*100|number:'1.0-0')+'%'):(i===6)?(result.cbgamedata[cell]|number:'1.0-1'):(i===7)?(result.cbgamedata[cell]|number:'1.0-1'): (i===8)?(result.cbgamedata[cell]|number:'1.0-1'):   (isNumber(result.cbgamedata[cell]) ? (result.cbgamedata[cell] | number: '1.0-0') : (result.cbgamedata[cell]) )}}
+                                     </td>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">KPI
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Average discount rate across projects, %</td>
+                                    <td>{{result.cbgamedata.c127*100|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Present value of cash Stream, INR million</td>
+                                    <td>{{result.cbgamedata.c129|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Net present value of cash stream, INR million</td>
+                                    <td>{{result.cbgamedata.c128|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

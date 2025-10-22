@@ -1,0 +1,136 @@
+<div class="elearingnewui portfolio">
+    <div class="toolbar-header-main">
+    </div>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade show active" id="first">
+            <nav class="headerbreadcrumb">
+                <ul class="breadcrumb" role="tablist">
+                    <li role="presentation " class="breadcrumb-item active" data-bs-target="#portfolioIntroduction"
+                        aria-controls="portfolioIntroduction" role="tab" data-bs-toggle="tab" aria-selected="true"
+                        [ngClass]="{ 'active ':activeTab==='introduction'}" (click)="search('introduction')">
+                        <div><span class="octicon octicon-diff-added"></span>Introduction</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#portfoliomarket"
+                        aria-controls="portfoliomarket" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        [ngClass]="{ 'active ':activeTab==='market'}" (click)="search('market')">
+                        <div><span class="octicon octicon-diff-added"></span>Market</div>
+                    </li>
+                     <li role="presentation " class="breadcrumb-item " data-bs-target="#portfoliophaseone"
+                        aria-controls="portfoliophaseone" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        [ngClass]="{ 'active ':activeTab==='portfoliophaseone'}"
+                        (click)="search('portfoliophaseone')" >
+                        <div><span class="octicon octicon-diff-added"></span>Phase 1</div>
+                    </li>
+
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#portfoliophasetwo"
+                        aria-controls="portfoliophasetwo" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        [ngClass]="{ 'active ':activeTab==='portfoliophasetwo'}" 
+                        [ngClass]="{ 'disabled': phase2tabDisabled }" (click)="search('portfoliophasetwo')">
+                        <div>
+                            <span class="octicon octicon-comment-discussion"></span>Phase 2
+                        </div>
+                    </li>
+                   <li role="presentation" class="breadcrumb-item" data-bs-target="#portfoliophasethree"
+                        aria-controls="portfoliophasethree" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        [ngClass]="{ 'active ':activeTab==='portfoliophasethree'}" 
+                        [ngClass]="{ 'disabled': phase3tabDisabled }" (click)="search('portfoliophasethree')">
+                        <div><span class="octicon octicon-verified"></span>Phase 3</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#portfolioportfolioDecisionChecklist"
+                        aria-controls="portfolioportfolioDecisionChecklist" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        [ngClass]="{ 'active':activeTab==='portfolioportfolioDecisionChecklist'}" (click)="search('portfolioportfolioDecisionChecklist')">
+                        <div><span class="octicon octicon-tools"></span>Decision Checklist</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Report" aria-controls="report"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="search('report')"
+                        [ngClass]="{ 'active':activeTab==='report'}" [ngClass]="{ 'disabled': tabDisabled }">
+                        <div><span class="octicon octicon-tools"></span>Report</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Synopsis" aria-controls="synopsis"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="search('synopsis')"
+                        [ngClass]="{ 'active':activeTab==='synopsis'}" [ngClass]="{ 'disabled': tabDisabled }">
+                        <div><span class="octicon octicon-tools"></span>Synopsis</div>
+                    </li>
+
+                </ul>
+            </nav>
+
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show active" id="portfolioIntroduction"
+                    [ngClass]="{ 'active':activeTab==='introduction'}">
+                    <app-portfoliointroduction *ngIf="activeTab==='introduction'"></app-portfoliointroduction>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="portfoliomarket"
+                    [ngClass]="{ 'active show':activeTab==='market'}">
+                    <app-portfolionewmarket *ngIf="activeTab==='market'"></app-portfolionewmarket>
+                </div>
+                 <div role="tabpanel" class="tab-pane fade" id="portfoliophaseone"
+                    [ngClass]="{ 'active':activeTab==='portfoliophaseone'}">
+                    <app-portfolionewmanagementphaseone  (newItemEvent)="next($event)"
+                     *ngIf="activeTab==='portfoliophaseone'" 
+                    ></app-portfolionewmanagementphaseone>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="portfoliophasetwo"
+                    [ngClass]="{ 'active show':activeTab==='portfoliophasetwo'}">
+                    <app-portfolionewmanagementphasetwo (newItemEvent)="next($event)"
+                     *ngIf="activeTab==='portfoliophasetwo'"></app-portfolionewmanagementphasetwo>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="portfoliophasethree"
+                    [ngClass]="{ 'active show':activeTab==='portfoliophasethree'}">
+                    <app-portfolionewmanagementphasethree 
+                        *ngIf="activeTab==='portfoliophasethree'"></app-portfolionewmanagementphasethree>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="portfolioportfolioDecisionChecklist"
+                    [ngClass]="{ 'active show':activeTab==='portfolioportfolioDecisionChecklist'}">
+                    <app-portfolionewdecisionchecklist  (newItemEvent)="next($event)"
+                        *ngIf="activeTab==='portfolioportfolioDecisionChecklist'"></app-portfolionewdecisionchecklist>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Report"
+                    [ngClass]="{ 'active show':activeTab==='report'}">
+                    <app-portfoliomanagementnewreport *ngIf="activeTab==='report'"></app-portfoliomanagementnewreport>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Synopsis" [ngClass]="{ 'active':activeTab==='synopsis'}">
+                    <app-portfoliomanagementnewsynopsis *ngIf="activeTab==='synopsis'"></app-portfoliomanagementnewsynopsis>
+                </div> 
+            </div>
+
+
+        </div>
+        <div role="tabpanel" class="tab-pane fade show" id="second">
+            <app-reading *ngIf="toolbartab==='reading'"  [gamename]="gametitle"></app-reading>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade show" id="third">
+            <nav class="headerbreadcrumb">
+                <ul class="breadcrumb" role="tablist">
+                    <li role="presentation " class="breadcrumb-item active" data-bs-target="#Individual"
+                        aria-controls="Individual" role="tab" data-bs-toggle="tab" aria-selected="true"
+                        (click)="tabclick('individual')">
+                        <div><span class="octicon octicon-diff-added"></span>Individual</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Course" aria-controls="Course"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="tabclick('course')">
+                        <div><span class="octicon octicon-diff-added"></span>Course</div>
+                    </li>
+
+                </ul>
+            </nav>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show active" id="Individual">
+                    <app-forumindividual
+                        *ngIf="tabname==='individual'"></app-forumindividual>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Course">
+                    <app-forumcourse *ngIf="tabname==='course'"></app-forumcourse>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade show" id="fourth" style="width: 90%; margin:0 auto;height:100vh;padding-top:1.5rem">
+            <app-microsimleaderboardgeneral *ngIf="toolbartab==='leaderboard'"></app-microsimleaderboardgeneral>
+          </div>
+    </div>
+</div>

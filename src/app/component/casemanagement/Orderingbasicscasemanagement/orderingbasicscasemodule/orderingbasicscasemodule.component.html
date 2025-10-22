@@ -1,0 +1,100 @@
+<div class="elearingnewui">
+    <div class="case-management-body case-management-module">
+        <table class=" table  case-management-table">
+            <thead>
+                <tr>
+                    <td></td>
+                    <td *ngFor="let round of rounds">{{round}}</td>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        Food for Thought
+                    </td>
+                    <td *ngFor="let data of res.orderingBasicsCMActiveStatus; let i = index">
+                        <input class="input-check-bx" type="checkbox"
+                            [checked]="res.orderingBasicsCMActiveStatus[i].foodforthoughtstatus === 'active'"
+                            [disabled]="defaultcase=='yes'"
+                            (change)="writeModuleValue(i,'normal','yes','foodforthoughtstatus','',$event)">
+                    </td>
+                </tr>
+                <tr class=" page-name">
+                    <th colspan="11">
+                        <h2>Phase 1</h2>
+                    </th>
+                </tr>
+                <tr>
+                    <td>Ordering Cost, INR</td>
+                    <td *ngFor="let data of res.d10; let i = index">
+                        <textarea name="" id="" cols="40" rows="2" [value]="res.d10[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d10',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Stockout Cost, INR</td>
+                    <td *ngFor="let data of res.d11; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d11[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d11',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Back ordering Cost, INR</td>
+                    <td *ngFor="let data of res.d12; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d12[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d12',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Raw Material Cost, INR</td>
+                    <td *ngFor="let data of res.d13; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d13[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d13',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Holding cost</td>
+                    <td *ngFor="let data of res.d14; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d14[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d14',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Max Back Ordering</td>
+                    <td *ngFor="let data of res.d35; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d35[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d35',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Rcpt delay, week</td>
+                    <td *ngFor="let data of res.d37; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d37[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d37',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr class=" page-name">
+                    <th colspan="11">
+                        <h2>Phase 2</h2>
+                    </th>
+                </tr>
+                <tr>
+                    <td>Holding cost</td>
+                    <td *ngFor="let data of res.i37; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.i37[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','i37',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

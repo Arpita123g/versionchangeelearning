@@ -1,0 +1,59 @@
+<!-- newdesign -->
+<div class="studentlogin">
+    <div class="container-fluid homepage">
+        <nav class="navbar navtext">
+            <div class=" w-100">
+                <div class="accounttext float-end">DON'T HAVE AN ACCOUNT ?&nbsp;<button
+                        class="btn rounded-pill navtextbtn" type="button" (click)="studentsignup()">SIGN
+                        UP</button>
+                </div>
+            </div>
+        </nav>
+        <div class="midlleportion">
+            <div class="container">
+                <div class="row justify-content-around">
+                    <div class="col-md-6 midlleportioncol">
+                        <div class="manegtext mb-1 text-center">PUT THEORY INTO PRACTICE
+                        </div>
+                        <div class="card bg-transparent border-0 hompageimgcard">
+                            <img src="assets/images/Home_Page-removebg-preview.png" class="img-fluid" />
+                        </div>
+                        <div class="manegtextbelow"> GAMES ARE BEST VIEWED IN DESKTOP
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <form  (keyup.enter)="studentlogin()" [formGroup]="studentlogingroup"
+                            class=" form gamelearnigearning midlleportioncol pb-5 signinboxmain container">
+                            <div class="signintext">Sign In</div>
+                            <div class="input-group mb-3 signinbox">
+                                <span class="input-group-text" id="basic-addon1"><mat-icon>person</mat-icon></span>
+                                <input type="email" formControlName="email" class="form-control" placeholder="Email"
+                                    aria-label="Username" aria-describedby="basic-addon1" #input
+                                    [value]="input.value.toLowerCase()" name="email"
+                                    pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,20}">
+                            </div>
+                            <div class="input-group mb-3 signinbox">
+                                <span class="input-group-text" id="basic-addon1"><mat-icon>lock</mat-icon></span>
+                                <input type="password" formControlName="password" class="form-control"
+                                    placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="checkboxtext">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Remember Me
+                                    </label>
+                                </div>&nbsp;&nbsp;
+                                <div>
+                                    <a class="btn btn-link text-decoration-none text-white p-0 forgetpassword"
+                                        href="forgotpassword">Forgot Password?</a>
+                                </div>
+                            </div>
+                            <button type="submit" class="logtext mt-4" (click)="studentlogin()">LOG IN</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

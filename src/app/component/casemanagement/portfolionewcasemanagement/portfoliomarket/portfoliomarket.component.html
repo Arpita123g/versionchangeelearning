@@ -1,0 +1,173 @@
+<!-- new -->
+<div class="elearingnewui">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="businessoutlook-element-body">
+        <div class="case-management-body">
+            <div class="table-responsive mb-3 mt-3">
+                <div class="links">
+                    <ul>
+                        <button class="out-look-btn "
+                            [style.background-color]="round === selectedButton? 'lightgrey' : ''"
+                            *ngFor="let round of rounds; let i = index;"
+                            (click)="roundclick(i,round)">{{round}}</button>
+                    </ul>
+                </div>
+                <div class="case-texts__content">
+
+                    <div id="initial">
+                        <div class="case-texts__content-main">
+                            <div class=" case-texts__container">
+                                <label class="case-texts__content-after-label pb-2">Original text</label>
+                                <div class=" case-texts__container-textarea">
+                                    Keiser Capital Partners was founded in 1996 as a small sub-broking unit, with just
+                                    two people running the show. With a focus on a customer-first attitude, ethical and
+                                    transparent business practices, respect for professionalism, research-based value
+                                    investing, and implementation of cutting-edge technology has enabled us to blossom
+                                    into a 500+ member team.<br><br>
+
+                                    Today we are a well-diversified financial services firm offering a range of
+                                    financial products and services such as private wealth, retail broking and
+                                    distribution, institutional broking, asset management, investment banking, private
+                                    equity, commodity broking, currency broking, and home finance. Our diversified
+                                    client base includes retail customers (including High Net worth Individuals), mutual
+                                    funds, foreign institutional investors, financial institutions, and corporate
+                                    clients. We are headquartered in Mumbai and as of date, we have a network spread
+                                    over 50 cities and towns comprising multiple business locations operated by our
+                                    business partners, us, and 2,00,000+ customers.<br><br>
+
+                                    Research is the solid foundation on which Keiser Capital's advice is based. Almost
+                                    10% of revenue is invested in securities research, and we hire and train the best
+                                    resources to become our advisors. The firm has hired you with one objective to
+                                    manage the portfolio of our newest client for the next 3 years. In this period, the
+                                    portfolio has to produce substantial absolute returns over the market returns with
+                                    lower unsystematic risk. The portfolio can comprise capital markets such as stock
+                                    indices, commodities, bonds, funds, international stock indices and cash
+                                    equivalents.
+                                </div>
+                            </div>
+                            <div class="case-texts__content-starea">
+                                <div class="case-texts__content-after">
+                                    <label class="case-texts__content-after-label">Your custom default text</label>
+                                    <st-editor name="" id="" [config]="config" [(ngModel)]="contentvalue"
+                                        [disabled]="defaultcase=='yes'" (focusout)="contentvaluechange()"></st-editor>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" case-management-body-marketing ">
+                <table class="table page-name">
+                    <thead>
+                        <tr>
+                            <th>
+                                <!-- <h2>Max Load Capacity trucks, metric tonnes</h2> -->
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+
+                <div class=" table-responsive mb-3 mt-3">
+                    <table class="case-management-table case-management-table-marketing">
+                        <thead>
+                            <tr>
+                                <td colspan="2" *ngFor="let round of rounds">{{round}}</td>
+                                <!-- <td colspan="2">round 1</td>
+                                <td colspan="2">round 2</td>
+                                <td colspan="2">round 3</td>
+                                <td colspan="2">round 4</td>
+                                <td colspan="2">round 5</td>
+                                <td colspan="2">round 6</td>
+                                <td colspan="2">round 7</td>
+                                <td colspan="2">round 8</td>
+                                <td colspan="2">round 9</td>
+                                <td colspan="2">round 10</td> -->
+
+                            </tr>
+                        </thead>
+                        <tbody class="first-tbody">
+                        </tbody>
+                        <tbody class="first-tbody-new-new ">
+                            <tr >
+                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                    <td class="first-tbody-new-new-input "><input [value]="res.b8[index]" #b8Input [disabled]="defaultcase=='yes'"
+                                            (focusout)="writeportfolioValue('b8', index, b8Input.value)"></td>
+                                    <td><input [value]="res.c8[index]" #c8Input [disabled]="defaultcase=='yes'"
+                                            (focusout)="writeportfolioValue('c8', index, c8Input.value)"></td>
+                                </ng-container>
+                            </tr>
+                            <tr>
+                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                    <td class="first-tbody-new-new-input "><input [value]="res.b9[index]" #b9Input [disabled]="defaultcase=='yes'"
+                                            (focusout)="writeportfolioValue('b9', index, b9Input.value)"></td>
+                                    <td><input [value]="res.c9[index]" #c9Input [disabled]="defaultcase=='yes'"
+                                            (focusout)="writeportfolioValue('c9', index, c9Input.value)"></td>
+                                </ng-container>
+                            </tr>
+                            <tr>
+                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                    <td class="first-tbody-new-new-input "><input [value]="res.b10[index]" #b10Input [disabled]="defaultcase=='yes'"
+                                            (focusout)="writeportfolioValue('b10', index, b10Input.value)"></td>
+                                    <td><input [value]="res.c10[index]" #c10Input [disabled]="defaultcase=='yes'"
+                                            (focusout)="writeportfolioValue('c10', index, c10Input.value)"></td>
+                                </ng-container>
+                            </tr>
+                            <tr>
+                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                    <td class="first-tbody-new-new-input "><input [value]="res.b11[index]" #b11Input [disabled]="defaultcase=='yes'"
+                                            (focusout)="writeportfolioValue('b11', index, b11Input.value)"></td>
+                                    <td><input [value]="res.c11[index]" #c11Input [disabled]="defaultcase=='yes'"
+                                            (focusout)="writeportfolioValue('c11', index, c11Input.value)"></td>
+                                </ng-container>
+                            </tr>
+                             <tr>
+                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                    <td class="first-tbody-new-new-input "><input [value]="res.b12[index]" #b12Input [disabled]="defaultcase=='yes'"
+                                            (focusout)="writeportfolioValue('b12', index, b12Input.value)"></td>
+                                    <td><input [value]="res.c12[index]" #c12Input [disabled]="defaultcase=='yes'"
+                                            (focusout)="writeportfolioValue('c12', index, c12Input.value)"></td>
+                                </ng-container>
+                            </tr>
+                             <tr>
+                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                    <td class="first-tbody-new-new-input "><input [value]="res.b13[index]" #b13Input [disabled]="defaultcase=='yes'"
+                                            (focusout)="writeportfolioValue('b13', index, b13Input.value)"></td>
+                                    <td><input [value]="res.c13[index]" #c13Input [disabled]="defaultcase=='yes'"
+                                            (focusout)="writeportfolioValue('c13', index, c13Input.value)"></td>
+                                </ng-container>
+                            </tr>
+                             <tr>
+                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                    <td class="first-tbody-new-new-input "><input [value]="res.b14[index]" #b14Input [disabled]="defaultcase=='yes'"
+                                            (focusout)="writeportfolioValue('b14', index, b14Input.value)"></td>
+                                    <td><input [value]="res.c14[index]" #c14Input [disabled]="defaultcase=='yes'"
+                                            (focusout)="writeportfolioValue('c14', index, c14Input.value)"></td>
+                                </ng-container>
+                            </tr>
+                             <tr>
+                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                    <td class="first-tbody-new-new-input "><input [value]="res.b15[index]" #b15Input [disabled]="defaultcase=='yes'"
+                                            (focusout)="writeportfolioValue('b15', index, b15Input.value)"></td>
+                                    <td><input [value]="res.c15[index]" #c15Input [disabled]="defaultcase=='yes'"
+                                            (focusout)="writeportfolioValue('c15', index, c15Input.value)"></td>
+                                </ng-container>
+                            </tr>
+                             <tr>
+                                <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                    <td class="first-tbody-new-new-input "><input [value]="res.b16[index]" #b16Input [disabled]="defaultcase=='yes'"
+                                            (focusout)="writeportfolioValue('b16', index, b16Input.value)"></td>
+                                    <td><input [value]="res.c16[index]" #c16Input [disabled]="defaultcase=='yes'"
+                                            (focusout)="writeportfolioValue('c16', index, c16Input.value)"></td>
+                                </ng-container>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

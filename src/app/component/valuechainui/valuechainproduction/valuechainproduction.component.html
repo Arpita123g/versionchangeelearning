@@ -1,0 +1,319 @@
+<div class="elearingnewui value_chain">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="dema_nd">
+                <div class="element-first">
+                    <div class="row">
+                        <div class="locandfoodspc" (click)="openDialog()" *ngIf="foodforthought">
+                            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                                <button class="food-thought-btn">Food For Thought</button></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="py-3">
+                    <h1>
+                        Planning
+                        <mat-icon appTippy="
+            <div class='help-tip p-2'>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'> To optimize costs, what is the ideal balance between in-house production capacity and outsourcing? </p>
+                </div>
+              </div><br>
+                <div style='display:flex;'>
+                  <div>
+                    <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                  </div> &nbsp; &nbsp; &nbsp;
+                  <div>
+                    <p style='margin: 0 auto; color: white; font-size:13px;'> How should the allocation of resources be structured between in-house and outsourced capacity to ensure cost optimization while meeting the projected demand?</p>
+                  </div>
+                </div>
+            </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+                <div class="row ">
+                    <div class="col-md-3">
+                        <p> In-house Capacity Utilization %</p>
+                        <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[9]"
+                            (focusout)="inputtablevalue(9,'planning')" [disabled]="disabled">
+
+                        <div class="py-3">
+                            <p>Production Cost per unit, INR</p>
+                            <h2 class="">{{result[10]|number:'1.0-0'}}</h2>
+                        </div>
+                        <div>
+                            <p>Estimated Demand, mn</p>
+                            <h2 class="">{{result[11]}}</h2>
+                        </div>
+                        <div>
+                            <p>Allocated Capacity, mn</p>
+                            <h2 class="">{{result[12]|number:'1.0-1'}}</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <p> Outsourcing Utlilization %</p>
+                        <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[13]"
+                            (focusout)="inputtablevalue(13,'planning')" [disabled]="disabled">
+
+                        <div class="py-3">
+                            <p>Outsourcing Cost per unit, INR</p>
+                            <h2 class="">{{result[14]|number:'1.0-0'}}</h2>
+                        </div>
+                        <div>
+                            <p>Max Capacity, mn</p>
+                            <h2 class="">{{result[15]|number:'1.0-2'}}</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-3">
+                            <apx-chart [series]="ProductionPlanningChart.series" [chart]="ProductionPlanningChart.chart"
+                                [dataLabels]="ProductionPlanningChart.dataLabels"
+                                [plotOptions]="ProductionPlanningChart.plotOptions"
+                                [yaxis]="ProductionPlanningChart.yaxis" [xaxis]="ProductionPlanningChart.xaxis"
+                                [tooltip]="ProductionPlanningChart.tooltip" [fill]="ProductionPlanningChart.fill"
+                                [title]="ProductionPlanningChart.title">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 pb-3">
+                    <h1 class="mt-5">
+                        Investment
+                        <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'> What investments in machines are necessary to enhance our in-house production capabilities and efficiency? </p>
+                            </div>
+                          </div>
+                        </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+                <div class="row invest-ment-value">
+                    <div class="col-md-6 invest-ment-value-f">
+                        <img src="assets/images/valuechain/value-chain-production_investment.svg">
+                    </div>
+                    <div class="col-md-6 invest-ment-value-s">
+                        <div>
+                            <p> Additional Machines</p>
+                            <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[16]"
+                                (focusout)="inputtablevalue(16,'invesment')" [disabled]="disabled">
+
+                            <div class="py-3 ">
+                                <p>Total Production Capacity, mn</p>
+                                <h2>{{result[17]}}</h2>
+                            </div>
+                            <div>
+                                <p>Additional Machine Cost, mn INR</p>
+                                <h2>{{result[18]}}</h2>
+                            </div>
+                            <div>
+                                <p>Depreciation, Years</p>
+                                <h2>{{result[0]}}</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="py-3">
+                    <h1 class="mt-5">
+                        Component Supplier
+                        <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'> Based on considerations of cost, reliability, and supplier experience, which component suppliers or combination from the provided options align best with our strategic objectives for quality and cost-effectiveness? </p>
+                    </div>
+                  </div>
+                </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+                <div class="row row-cols-md-3">
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/valuechain/supplier1.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+
+                                <h2>{{cardData1[0].title[0]}}</h2>
+
+                                <p class="maincontent">
+                                    {{textshow[cardData1[0].id] ?cardData1[0].description:cardData1[0].turncatedtext}}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[0].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+
+                            </div>
+
+                            <div class="card-footer form-check">
+                                <div class="wearhousecard-cost">
+                                    <h3>Cost per unit, INR</h3>
+                                    <h3>{{result[2]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[19]" (change)="inputtablevalue(19,'checkbox')" [disabled]="disabled"/>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/valuechain/supplier2.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+
+                                <h2>{{cardData1[1].title[0]}}</h2>
+
+                                <p class="maincontent">
+                                    {{textshow[cardData1[1].id] ?cardData1[1].description:cardData1[1].turncatedtext}}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[1].id)"
+                                        [ngStyle]="{color: textshow[cardData1[1].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[1].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+
+                            </div>
+
+                            <div class="card-footer form-check">
+                                <div class="wearhousecard-cost">
+                                    <h3>Cost per unit, INR</h3>
+                                    <h3>{{result[4]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[20]" (change)="inputtablevalue(20,'checkbox')" [disabled]="disabled"/>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-3">
+                            <apx-chart [series]="ComponentsOrderedChart.series" [chart]="ComponentsOrderedChart.chart"
+                                [dataLabels]="ComponentsOrderedChart.dataLabels"
+                                [plotOptions]="ComponentsOrderedChart.plotOptions"
+                                [yaxis]="ComponentsOrderedChart.yaxis" [xaxis]="ComponentsOrderedChart.xaxis"
+                                [tooltip]="ComponentsOrderedChart.tooltip" [fill]="ComponentsOrderedChart.fill"
+                                [title]="ComponentsOrderedChart.title">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 pb-3">
+                    <h1 class="mt-5">
+                        Transportation
+                        <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'> Based on considerations of cost, reliability, and supplier experience, which component suppliers or combination from the provided options align best with our strategic objectives for quality and cost-effectiveness? </p>
+                    </div>
+                  </div>
+                </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+                <div class="row row-cols-md-3">
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/valuechain/transporternew1.png" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+
+                                <h2>{{cardData2[0].title[0]}}</h2>
+
+                                <p class="maincontent">
+                                    {{textshow[cardData2[0].id] ?cardData2[0].description:cardData2[0].turncatedtext}}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData2[0].id)"
+                                        [ngStyle]="{color: textshow[cardData2[0].id]?'red':'blue'}">
+                                        {{ textshow[cardData2[0].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </div>
+
+                            <div class="card-footer form-check">
+                                <div class="wearhousecard-cost">
+                                    <h3>Cost per unit, INR</h3>
+                                    <h3>{{result[6]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[21]" (change)="inputtablevalue(21,'checkbox')" [disabled]="disabled"/>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/valuechain/transporter2.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+
+                                <h2>{{cardData2[1].title[0]}}</h2>
+
+                                <p class="maincontent">
+                                    {{textshow[cardData2[1].id] ?cardData2[1].description:cardData2[1].turncatedtext}}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData2[1].id)"
+                                        [ngStyle]="{color: textshow[cardData2[1].id]?'red':'blue'}">
+                                        {{ textshow[cardData2[1].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </div>
+
+                            <div class="card-footer form-check">
+                                <div class="wearhousecard-cost">
+                                    <h3>Cost per unit, INR</h3>
+                                    <h3>{{result[8]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[22]" (change)="inputtablevalue(22,'checkbox')" [disabled]="disabled"/>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,224 @@
+<div class="elearingnewui design_thinking">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="market-research">
+                <div class="element-first">
+                    <div class="row">
+                        <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+                            style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                                <button class="food-thought-btn">Food For Thought</button></span>
+                        </div>
+                    </div>
+                </div>
+
+                <h1>Empathize
+                    <mat-icon appTippy="
+                                        <div class='help-tip p-2'>
+                                          <div style='display:flex;'>
+                                            <div>
+                                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                            </div> &nbsp; &nbsp;
+                                            <div>
+                                              <p style='margin: 0 auto; color: white; font-size:13px;'> How can you leverage the information gathered from user interviews and personas to deeply understand the user's needs and emotions, guiding your decision-making process?</p>
+                                            </div>
+                                          </div>
+                                            <div class='pt-2' style='display:flex;'>
+                                              <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                              </div> &nbsp; &nbsp; 
+                                              <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'> Considering the feedback from sentiment analysis, user journey, and features, how can you prioritize and integrate these insights to make user-centric decisions?</p>
+                                              </div>
+                                            </div>
+                                        </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+
+                <ul class="nav market-research-nav" id="nav-tab" role="tablist">
+                    <li class="nav-link active market-research-link" id="nav-userpersonas-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-userpersonas" type="button" role="tab" aria-controls="nav-userpersonas"
+                        aria-selected="true">
+                        User Personas
+                    </li>
+                    <li class="nav-link market-research-link " id="nav-userinterviews-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-userinterviews" type="button" role="tab" aria-controls="nav-userinterviews"
+                        aria-selected="true">User Interviews
+                    </li>
+                    <li class="nav-link market-research-link " id="nav-usualjourney-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-usualjourney" type="button" role="tab" aria-controls="nav-usualjourney"
+                        aria-selected="true">Usual Journey Maps
+                    </li>
+                    <li class="nav-link market-research-link" id="nav-profile-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Employees" type="button" role="tab" aria-controls="nav-Employees"
+                        aria-selected="false">Sentiment Analysis
+                    </li>
+                </ul>
+
+
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-userpersonas" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group list-group-flush marketoutlooklist">
+                                <li class="list-group-item" >
+                                    <div class="row row-cols-md-3">
+                                        <div class="col-md" *ngFor="let item of cardData; let i = index">
+                                            <div class="card marketing-card h-100">
+                                                <div class="card-body ">
+                                                    <h2>{{item.title}}</h2>
+                                                    <div class="card-text">
+                                                       <p><span class="headinghighlight">Age : </span>{{item.description.Age}}</p> 
+                                                        <p><span class="headinghighlight">Occupation : </span>{{item.description.Occupation}}</p>
+                                                        <p><span class="headinghighlight">Location : </span>{{item.description.Location}}</p>
+                                                        <p><span class="headinghighlight">Type : </span>{{item.description.type}}</p>
+                                                        <p><span class="headinghighlight">Goals : </span>{{item.description.Goals}}</p>
+                                                        <p><span class="headinghighlight">Pain Points : </span>{{item.description.Pain_Points}}</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-userinterviews" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group  list-group-flush marketoutlooklist">
+                                <li class="list-group-item" >
+                                    <div class="row row-cols-md-3">
+                                        <div class="col-md">
+                                            <div class="card marketing-card h-100">
+                                                <div class="card-body">
+                                                    <h2>Rohan</h2>
+                                                    <p class="card-text">
+                                                        I love tech, but I hate having to charge devices often. I wish
+                                                        my smartwatch could last at least 4 days on a single charge.
+                                                        Also, I want it to sync seamlessly with my phone and laptop.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="card marketing-card h-100">
+                                                <div class="card-body">
+                                                    <h2>Aarti</h2>
+                                                    <p class="card-text">
+                                                        I need something simple to understand. It would be a plus if it
+                                                        can have features in Hindi. Also, I swim daily, so water
+                                                        resistance is a must.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="card marketing-card h-100">
+                                                <div class="card-body">
+                                                    <h2>Vikram</h2>
+                                                    <p class="card-text">
+                                                        For me, it's about style and functionality. I want something
+                                                        that looks great on my wrist but doesn't burn a hole in my
+                                                        pocket.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-usualjourney" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group  list-group-flush marketoutlooklist">
+                                <li class="list-group-item" >
+                                    <div class="row row-cols-md-2">
+                                        <div class="col-md"  *ngFor="let item1 of cardData2; let i = index">
+                                            <div class="card marketing-card h-100">
+                                                <div class="card-body">
+                                                    <h2>{{item1.Title}}</h2>
+                                                    <div class="card-text2">
+                                                        <p><span class="headinghighlight">Discovery : </span>{{item1.Discovery}}</p> 
+                                                        <p><span class="headinghighlight">Consideration : </span>{{item1.Consideration}}</p> 
+                                                        <p><span class="headinghighlight">Purchase : </span>{{item1.Purchase}}</p>
+                                                        <p><span class="headinghighlight">Usage : </span>{{item1.Usage}}</p>
+                                                        <p><span class="headinghighlight">Advocacy : </span>{{item1.Advocacy}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-Employees" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group  list-group-flush marketoutlooklist">
+                                <li class="list-group-item" >
+                                    <div class="py-2">
+                                        <div class="card p-3" class="pie-card">
+                                            <apx-chart [series]="marketfeaturesfeedbackchart.series"
+                                                [chart]="marketfeaturesfeedbackchart.chart"
+                                                [labels]="marketfeaturesfeedbackchart.labels"
+                                                [responsive]="marketfeaturesfeedbackchart.responsive"
+                                                [title]="marketfeaturesfeedbackchart.title"
+                                                [legend]="marketfeaturesfeedbackchart.legend"
+                                                [tooltip]="marketfeaturesfeedbackchart.tooltip" >
+                                            </apx-chart>
+                                        </div>
+                                        <div class="py-2">
+                                            <p style="text-align: justify;"><span style="font-weight: 550;">Positive:</span> Features like health tracking, localized
+                                                language support, and
+                                                sleek design are well-received.
+                                                <span style="font-weight: 550;">Neutral:</span> Battery life is okay but could be better. Some software bugs
+                                                experienced.
+                                                <span style="font-weight: 550;">Negative:</span> Some users report syncing issues, others feel the watch is a
+                                                bit pricey.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="featureprioritieschart.series"
+                                                [chart]="featureprioritieschart.chart"
+                                                [dataLabels]="featureprioritieschart.dataLabels"
+                                                [plotOptions]="featureprioritieschart.plotOptions"
+                                                [yaxis]="featureprioritieschart.yaxis"
+                                                [xaxis]="featureprioritieschart.xaxis"
+                                                [fill]="featureprioritieschart.fill"
+                                                [title]="featureprioritieschart.title"
+                                                [noData]="featureprioritieschart.noData"
+                                                [tooltip]="featureprioritieschart.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                        <div class="py-2">
+                                            <p style="text-align: justify;">
+                                                Preference represents features or aspects that users primarily look for
+                                                in a smartwatch.
+                                                Need depicts what users see as essential or non-negotiable in their
+                                                day-to-day use.
+                                                Desire indicates what users would love to have but can do without if
+                                                other core features are present.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

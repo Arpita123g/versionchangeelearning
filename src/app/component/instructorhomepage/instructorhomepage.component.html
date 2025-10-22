@@ -1,0 +1,107 @@
+<div >
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+
+    </div>
+    <mat-card class="inputcard">
+        <div class="row">
+            <div class="col-6">
+                <div class="inputtitle"> Instructor</div>
+                <div class="subtitle">You can check your instructor table details.</div>
+            </div>
+            <div class="col-2" style="text-align:end">
+                <button class="submit-button" style="width: 130px;"  (click)="goToarchieve()"> Archive</button>
+            </div>
+            <div class="col-2" style="text-align:end">
+                <button class="submit-button" style="width: 130px;"  (click)="goTocourse()"> Course</button>
+            </div>
+            <div class="col-2" style="text-align:end">
+                <button class="submit-button" style="width: 130px;"  (click)="goToprofile()"> Profile</button>
+            </div>
+            
+        </div>
+    </mat-card>
+  
+   
+    <mat-card class="inputcard-table" style="margin-top:20px;margin-bottom:10px">
+     
+        <table  mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+            <!-- coursename Column -->
+             <ng-container matColumnDef="coursename">
+                <th mat-header-cell *matHeaderCellDef> Course Name </th>
+                <td  mat-cell *matCellDef="let element" style="text-align: center !important;" 
+                [title] = "element.courseDetails.coursename">
+                    <mat-chip color="accent" style="cursor: pointer;"  (click)="goTo(element.courseDetails.coursecode)" selected>{{modifyStr(element.courseDetails.coursename)}} </mat-chip>
+                </td>
+                <!-- <td mat-cell *matCellDef="let element" style="text-align: center !important;"> {{element.courseDetails.coursename}} </td> -->
+            </ng-container>
+
+
+            
+            <!-- coursecode Column -->
+            <ng-container matColumnDef="coursecode">
+                <th mat-header-cell *matHeaderCellDef> Course Code </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-chip color="warn" style="cursor: pointer;"  (click)="RegisterCount(element.courseDetails.coursecode)" selected>{{element.courseDetails.coursecode}} </mat-chip>
+                      </td>
+            </ng-container>
+
+              
+            <!-- studentregisteredno Column -->
+            <ng-container matColumnDef="studentregisteredno">
+                <th mat-header-cell *matHeaderCellDef> No Of Student Registered </th>
+                <td mat-cell *matCellDef="let element"> {{element.noofstudentregistered}} </td>
+            </ng-container>
+
+              <!-- totallicense Column -->
+              <ng-container matColumnDef="totallicense">
+                <th mat-header-cell *matHeaderCellDef> Total License Left </th>
+                <td mat-cell *matCellDef="let element"> {{element.totallicenseleft}} </td>
+            </ng-container>
+
+              <!-- studentattemptcourse Column -->
+              <ng-container matColumnDef="studentattemptcourse">
+                <th mat-header-cell *matHeaderCellDef> Student Attempts </th>
+                <td mat-cell *matCellDef="let element"> {{element.studentcourseattempts}} </td>
+            </ng-container>
+
+              <!-- archive Column -->
+              <ng-container matColumnDef="archive">
+                <th mat-header-cell *matHeaderCellDef> Archive </th>
+                <td mat-cell *matCellDef="let element"> {{element.archiveflag}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell class="update" *matHeaderCellDef> Update </th>
+                <td mat-cell *matCellDef="let element" class="edit"  (click)="edit(element)"> 
+                    <mat-icon class="sidenav-icon" 
+                    aria-hidden="false" aria-label="Example home icon">
+                    edit</mat-icon>
+                    
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="addtime">
+                <th mat-header-cell *matHeaderCellDef><b>Add Time</b>  </th>
+                <td mat-cell *matCellDef="let element" class="edit"  > 
+                    <mat-icon class="sidenav-icon" (click)="addtime(element)"
+                    aria-hidden="false" aria-label="Example home icon">
+                    alarm</mat-icon>
+            </ng-container>
+              
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator style="font-size:12px;margin:10px;display:flex;justify-content:center"
+                [pageSizeOptions]="[5, 10, 20, 50, 100,500,dataSource.data.length]"
+                showFirstLastButtons 
+                aria-label="Select page of periodic elements">
+            </mat-paginator>
+    </mat-card>
+</div>
+
+

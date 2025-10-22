@@ -1,0 +1,317 @@
+<!-- new design -->
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+</div>
+<div class="elearingnewui stp_game">
+    <div class="container">
+        <div class="body-element">
+            <div class="market-research">
+                <div class="element-first">
+                    <div class="row">
+                        <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+                            style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                                <button class="food-thought-btn">Food For Thought</button></span>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="py-3">Information Search
+                    <mat-icon appTippy="
+                                        <div class='help-tip p-2'>
+                                          <div style='display:flex;'>
+                                            <div>
+                                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                            </div> &nbsp; &nbsp;
+                                            <div>
+                                              <p style='margin: 0 auto; color: white; font-size:13px;'>How can understanding the preferences and price elasticity of different consumer segments help you design a product that appeals to the most profitable market?</p>
+                                            </div>
+                                          </div>
+                                            <div class='pt-2' style='display:flex;'>
+                                              <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                              </div> &nbsp; &nbsp; 
+                                              <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'>What key consumer preferences should you focus on to maximize your product's market share given the market size and segment profitability?</p>
+                                              </div>
+                                            </div>
+                                        </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+
+                <ul class="nav market-research-nav" id="nav-tab" role="tablist">
+                    <li class="nav-link active market-research-link" id="nav-Product-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Product" type="button" role="tab" aria-controls="nav-Product"
+                        aria-selected="true">
+                        Product Attributes
+                    </li>
+                    <li class="nav-link market-research-link " id="nav-Market-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Market" type="button" role="tab" aria-controls="nav-Market"
+                        aria-selected="true">Market
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-Product" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group list-group-flush marketoutlooklist">
+                                <li class="list-group-item" style="padding: 2rem; margin: 0 auto;width: 90%;">
+                                    <div class="card" style="border: none;">
+                                        <div>
+                                            <p style="text-align: justify;">
+                                                The market research has found results from surveys on product attributes
+                                                affecting purchase decisions. These attributes include performance,
+                                                battery
+                                                life, design, features, repairability & software support, packaging, and
+                                                recycling. <br><br>
+
+                                                Included are consumer preference analyses for different levels of each
+                                                attribute. The higher number represents more value to the consumer and
+                                                hence
+                                                can be related to higher demand. For example, number 8 in the
+                                                performance
+                                                preference of trendy consumers indicates that 8 out of 10 consumers
+                                                value
+                                                the mobile performance of the segment.
+                                            </p>
+
+                                        </div>
+                                        <div class="row row-cols-md-2">
+                                            <div class="col-md">
+                                                <h1 class="py-4">Performance</h1>
+                                                <div class="py-1">
+                                                    <div class="card p-3">
+                                                        <apx-chart [series]="performancepreferencechart.series"
+                                                            [chart]="performancepreferencechart.chart"
+                                                            [dataLabels]="performancepreferencechart.dataLabels"
+                                                            [plotOptions]="performancepreferencechart.plotOptions"
+                                                            [yaxis]="performancepreferencechart.yaxis"
+                                                            [xaxis]="performancepreferencechart.xaxis"
+                                                            [fill]="performancepreferencechart.fill"
+                                                            [title]="performancepreferencechart.title"
+                                                            [noData]="performancepreferencechart.noData"
+                                                            [tooltip]="performancepreferencechart.tooltip">
+                                                        </apx-chart>
+                                                    </div>
+                                                </div>
+
+                                                <div>
+                                                    <p style="text-align: justify;">
+                                                        The average performance score for smartphones across competitors
+                                                        in the market is 58, with the highest performance score being
+                                                        90.
+                                                    </p>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md">
+                                                <h1 class="py-4">Battery Life</h1>
+                                                <div class="py-1">
+                                                    <div class="card p-3">
+                                                        <apx-chart [series]="batterylifechart.series"
+                                                            [chart]="batterylifechart.chart"
+                                                            [dataLabels]="batterylifechart.dataLabels"
+                                                            [plotOptions]="batterylifechart.plotOptions"
+                                                            [yaxis]="batterylifechart.yaxis"
+                                                            [xaxis]="batterylifechart.xaxis"
+                                                            [fill]="batterylifechart.fill"
+                                                            [title]="batterylifechart.title"
+                                                            [noData]="batterylifechart.noData"
+                                                            [tooltip]="batterylifechart.tooltip">
+                                                        </apx-chart>
+                                                    </div>
+                                                </div>
+
+                                                <div>
+                                                    <p style="text-align: justify;">
+                                                        The average battery life score for smartphones across
+                                                        competitors in the market is 56, with the highest battery life
+                                                        score being 85.
+                                                    </p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h1 class="py-4">Design</h1>
+                                        <div class="py-1">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="designchart.series" [chart]="designchart.chart"
+                                                    [dataLabels]="designchart.dataLabels"
+                                                    [plotOptions]="designchart.plotOptions" [yaxis]="designchart.yaxis"
+                                                    [xaxis]="designchart.xaxis" [fill]="designchart.fill"
+                                                    [title]="designchart.title" [noData]="designchart.noData"
+                                                    [tooltip]="designchart.tooltip">
+                                                </apx-chart>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p style="text-align: justify;">
+                                                Competitors across different segments offer designs that are evenly
+                                                distributed among Avant Garde, Classic, and Sport styles.
+                                            </p>
+
+                                        </div>
+
+                                        <h1 class="py-4">Features</h1>
+                                        <div class="py-1">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="featureschart.series" [chart]="featureschart.chart"
+                                                    [dataLabels]="featureschart.dataLabels"
+                                                    [plotOptions]="featureschart.plotOptions"
+                                                    [yaxis]="featureschart.yaxis" [xaxis]="featureschart.xaxis"
+                                                    [fill]="featureschart.fill" [title]="featureschart.title"
+                                                    [noData]="featureschart.noData" [tooltip]="featureschart.tooltip">
+                                                </apx-chart>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <p style="text-align: justify;">
+                                                The most popular features offered by competitors across segments, in
+                                                order of preference, are Extra Memory, Security, Durable Screen, Premium
+                                                Camera, and Premium Display.
+                                            </p>
+
+                                        </div>
+
+                                        <h1 class="py-4">Repairability & Support</h1>
+                                        <div class="py-1">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="repairabilitysupportchart.series"
+                                                    [chart]="repairabilitysupportchart.chart"
+                                                    [dataLabels]="repairabilitysupportchart.dataLabels"
+                                                    [plotOptions]="repairabilitysupportchart.plotOptions"
+                                                    [yaxis]="repairabilitysupportchart.yaxis"
+                                                    [xaxis]="repairabilitysupportchart.xaxis"
+                                                    [fill]="repairabilitysupportchart.fill"
+                                                    [title]="repairabilitysupportchart.title"
+                                                    [noData]="repairabilitysupportchart.noData"
+                                                    [tooltip]="repairabilitysupportchart.tooltip">
+                                                </apx-chart>
+                                            </div>
+                                        </div>
+
+                                        <h1 class="py-4">Packaging</h1>
+                                        <div class="py-1">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="packagingchart.series"
+                                                    [chart]="packagingchart.chart"
+                                                    [dataLabels]="packagingchart.dataLabels"
+                                                    [plotOptions]="packagingchart.plotOptions"
+                                                    [yaxis]="packagingchart.yaxis" [xaxis]="packagingchart.xaxis"
+                                                    [fill]="packagingchart.fill" [title]="packagingchart.title"
+                                                    [noData]="packagingchart.noData" [tooltip]="packagingchart.tooltip">
+                                                </apx-chart>
+                                            </div>
+                                        </div>
+
+                                        <h1 class="py-4">Recycling</h1>
+                                        <div class="py-1">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="recyclingchart.series"
+                                                    [chart]="recyclingchart.chart"
+                                                    [dataLabels]="recyclingchart.dataLabels"
+                                                    [plotOptions]="recyclingchart.plotOptions"
+                                                    [yaxis]="recyclingchart.yaxis" [xaxis]="recyclingchart.xaxis"
+                                                    [fill]="recyclingchart.fill" [title]="recyclingchart.title"
+                                                    [noData]="recyclingchart.noData" [tooltip]="recyclingchart.tooltip">
+                                                </apx-chart>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-Market" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group  list-group-flush marketoutlooklist">
+                                <li class="list-group-item" style="padding: 2rem; width: 90%; margin: 0 auto;">
+                                    <div class="card" style="border: none;">
+                                        <div>
+                                            <p style="text-align: justify;">
+                                                The late adopters and price-conscious segments are likely to prefer a
+                                                basic product at reasonable prices whereas the enthusiasts and
+                                                tech-savvy segments are opting for interesting features and performance.
+                                                Socially conscious consumers are motivated by ideals and as such are
+                                                quite receptive to environmentally sustainable and safe products. Trendy
+                                                consumers on the other hand consider smartphones as an important part of
+                                                their self-expression and are drawn in by appealing designs and
+                                                packaging.
+                                            </p>
+
+                                        </div>
+
+                                        <h1 class="py-4">Market Size, Mn units</h1>
+                                        <div class="py-1">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="marketsizemnunitchart.series"
+                                                    [chart]="marketsizemnunitchart.chart"
+                                                    [dataLabels]="marketsizemnunitchart.dataLabels"
+                                                    [plotOptions]="marketsizemnunitchart.plotOptions"
+                                                    [yaxis]="marketsizemnunitchart.yaxis"
+                                                    [xaxis]="marketsizemnunitchart.xaxis"
+                                                    [fill]="marketsizemnunitchart.fill"
+                                                    [title]="marketsizemnunitchart.title"
+                                                    [noData]="marketsizemnunitchart.noData"
+                                                    [tooltip]="marketsizemnunitchart.tooltip">
+                                                </apx-chart>
+                                            </div>
+                                        </div>
+
+                                        <h1 class="py-4">Price Elasticity</h1>
+                                        <div class="py-1">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="priceelasticitylinechart.series"
+                                                    [chart]="priceelasticitylinechart.chart"
+                                                    [markers]="priceelasticitylinechart.markers"
+                                                    [stroke]="priceelasticitylinechart.stroke"
+                                                    [title]="priceelasticitylinechart.title"
+                                                    [xaxis]="priceelasticitylinechart.xaxis"
+                                                    [tooltip]="priceelasticitylinechart.tooltip"
+                                                    [yaxis]="priceelasticitylinechart.yaxis"></apx-chart>
+                                            </div>
+                                        </div>
+
+                                        <h1 class="py-4">Promotion Elasticity</h1>
+                                        <div class="py-1">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="promotionelasticitylinechart.series"
+                                                    [chart]="promotionelasticitylinechart.chart"
+                                                    [markers]="promotionelasticitylinechart.markers"
+                                                    [stroke]="promotionelasticitylinechart.stroke"
+                                                    [title]="promotionelasticitylinechart.title"
+                                                    [xaxis]="promotionelasticitylinechart.xaxis"
+                                                    [tooltip]="promotionelasticitylinechart.tooltip"
+                                                    [yaxis]="promotionelasticitylinechart.yaxis"></apx-chart>
+                                            </div>
+                                        </div>
+
+                                        <h1 class="py-4">Channels</h1>
+                                        <div class="py-1">
+                                            <div class="card p-3">
+                                                <apx-chart [series]="channelchart.series" [chart]="channelchart.chart"
+                                                    [dataLabels]="channelchart.dataLabels"
+                                                    [plotOptions]="channelchart.plotOptions"
+                                                    [yaxis]="channelchart.yaxis" [xaxis]="channelchart.xaxis"
+                                                    [fill]="channelchart.fill" [title]="channelchart.title"
+                                                    [noData]="channelchart.noData" [tooltip]="channelchart.tooltip">
+                                                </apx-chart>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

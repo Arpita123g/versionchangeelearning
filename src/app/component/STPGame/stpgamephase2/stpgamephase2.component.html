@@ -1,0 +1,710 @@
+<div class="elearingnewui stp_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="market-research">
+                <div class="element-first">
+                    <div class="row">
+                        <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+                            style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                                <button class="food-thought-btn">Food For Thought</button></span>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="nav market-research-nav" role="tablist">
+
+                    <li class="nav-item">
+                        <a class="nav-link active market-research-link" id="MarketMonitor-tab" data-bs-toggle="tab"
+                            data-bs-target="#MarketMonitor" role="tab" aria-controls="MarketMonitor"
+                            aria-selected="true">
+                            Market Monitor
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link market-research-link" id="Positioning-tab" data-bs-toggle="tab"
+                            data-bs-target="#Positioning" role="tab" aria-controls="Positioning" aria-selected="false">
+                            Positioning
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tab-content rtsidetable card  p-3">
+
+                    <div class="tab-pane fade show active" id="MarketMonitor" role="tabpanel"
+                        aria-labelledby="MarketMonitor-tab">
+                        <div class="rounded-5  p-4">
+                            <h1 class="py-4">Market Monitor
+                                <mat-icon appTippy="
+                                                    <div class='help-tip p-2'>
+                                                      <div style='display:flex;'>
+                                                        <div>
+                                                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                                        </div> &nbsp; &nbsp;
+                                                        <div>
+                                                          <p style='margin: 0 auto; color: white; font-size:13px;'>How can analyzing your competitors’ financial statements and market share from the previous phase help you improve your strategy in the current phase?</p>
+                                                        </div>
+                                                      </div>
+                                                        <div class='pt-2' style='display:flex;'>
+                                                          <div>
+                                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                                          </div> &nbsp; &nbsp; 
+                                                          <div>
+                                                            <p style='margin: 0 auto; color: white; font-size:13px;'> What can you learn from competitors' perceptual maps to better position your product in the market?</p>
+                                                          </div>
+                                                        </div>
+                                                    </div> ">
+                                    help_outline
+                                </mat-icon>
+                            </h1>
+                            <div class="row ">
+                                <table class="table rsl_tbl">
+                                    <thead class="rsl_tbl-thead">
+                                        <tr class="rsl_tbl-thead-tr">
+                                            <th class="rsl_tbl-thead-th" colspan="7">Financial Statement, Mn INR, Phase
+                                                2</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody class="rsl_tbl-tbody">
+                                        <!-- Table Header -->
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td></td>
+                                            <th *ngFor="let header of tableHeaders">{{ header }}</th>
+                                        </tr>
+
+                                        <!-- Table Rows -->
+                                        <tr *ngFor="let row of tableData; let isLast = last" class="rsl_tbl-tbody-tr"
+                                            [ngStyle]="{ 'border-top': row.name.includes('Production Line Cost') || isLast ? '2px solid black' : null, 
+                                                         'border-bottom': isLast ? '2px solid black' : null }">
+                                            <td>{{ row.name }}</td>
+                                            <!-- <td *ngFor="let value of row.values" class="middleclassright">{{ value }}
+                                            </td>
+                                            <td>{{ row.lastColumn }}</td> -->
+                                            <td *ngFor="let value of row.values" class="middleclassright">{{
+                                                result?.stpgamedata?.[value.toString()] |number:'1.0-0'}}</td>
+                                            <td>{{ result?.stpgamedata?.[(row.lastColumn).toString()]|number:'1.0-0' }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h1 class="py-4">Perceptual Map, Phase 1
+                                <mat-icon appTippy="
+                                                    <div class='help-tip p-2'>
+                                                      <div style='display:flex;'>
+                                                        <div>
+                                                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                                        </div> &nbsp; &nbsp;
+                                                        <div>
+                                                          <p style='margin: 0 auto; color: white; font-size:13px;'>How can analyzing your competitors’ financial statements and market share from the previous phase help you improve your strategy in the current phase?</p>
+                                                        </div>
+                                                      </div>
+                                                        <div class='pt-2' style='display:flex;'>
+                                                          <div>
+                                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                                          </div> &nbsp; &nbsp; 
+                                                          <div>
+                                                            <p style='margin: 0 auto; color: white; font-size:13px;'> What can you learn from competitors' perceptual maps to better position your product in the market?</p>
+                                                          </div>
+                                                        </div>
+                                                    </div> ">
+                                    help_outline
+                                </mat-icon>
+                            </h1>
+                            <div class="py-3 input-img-card">
+                                <div class="row ">
+                                    <div class="col-4">
+                                        <div class="card shadow stpgame-card" *ngFor="let perdata of Perceptualdata">
+                                            <div
+                                                class="radio-card d-flex flex-row align-items-center justify-content-between">
+                                                <div>
+                                                    <img src="{{perdata.img}}" class="card-img-top" alt="Your Image" />
+                                                </div>
+                                                <div>
+                                                    <h3>{{result?.stpGameCM?.stpgameperioddata[perdata.titlecell]}}</h3>
+                                                </div>
+                                                <div class=" form-check">
+                                                    <input class=" checkfrominput" type="radio" name="cardSelection"
+                                                        [checked]="result[perdata.inputcell]===1"
+                                                        (change)="writestpvalue(perdata.inputcell,'radio',$event,'cj42','cj43','cj44','cj45',4)"
+                                                        [disabled]="inputDisabled" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="card p-3 ">
+                                            <apx-chart [series]="bubblecharts.series" [chart]="bubblecharts.chart"
+                                                [xaxis]="bubblecharts.xaxis" [fill]="bubblecharts.fill"
+                                                [dataLabels]="bubblecharts.dataLabels" [title]="bubblecharts.title"
+                                                [yaxis]="bubblecharts.yaxis"
+                                                [tooltip]="bubblecharts.tooltip"></apx-chart>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h1 class="py-4">Company Sales & Share, Phase 1
+                            </h1>
+                            <div class="row">
+                                <div class="col-md-10 card p-3 ">
+                                    <apx-chart [series]="productsalesgraph.series" [chart]="productsalesgraph.chart"
+                                        [dataLabels]="productsalesgraph.dataLabels"
+                                        [plotOptions]="productsalesgraph.plotOptions" [yaxis]="productsalesgraph.yaxis"
+                                        [xaxis]="productsalesgraph.xaxis" [fill]="productsalesgraph.fill"
+                                        [title]="productsalesgraph.title" [noData]="productsalesgraph.noData"
+                                        [tooltip]="productsalesgraph.tooltip">
+                                    </apx-chart>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="Positioning" role="tabpanel" aria-labelledby="Positioning-tab">
+                        <div class="">
+                            <h1 class="py-4">Outlook
+                                <mat-icon appTippy="
+                                                                <div class='help-tip p-2'>
+                                                                  <div style='display:flex;'>
+                                                                    <div>
+                                                                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                                                    </div> &nbsp; &nbsp;
+                                                                    <div>
+                                                                      <p style='margin: 0 auto; color: white; font-size:13px;'> How does the current economic scenario and industry trend influence your decision on how much to invest in different product features?</p>
+                                                                    </div>
+                                                                  </div>
+                                                                    <div class='pt-2' style='display:flex;'>
+                                                                      <div>
+                                                                        <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                                                      </div> &nbsp; &nbsp; 
+                                                                      <div>
+                                                                        <p style='margin: 0 auto; color: white; font-size:13px;'>Considering the costs of various parameters, how can you balance between offering high-quality features and maintaining a profitable financial statement?</p>
+                                                                      </div>
+                                                                    </div>
+                                                                </div> ">
+                                    help_outline
+                                </mat-icon>
+                            </h1>
+                            <div class="row row-cols-md-2 ">
+                                <div class="col-md phaseon1">
+                                    <!-- <p>{{result.period.v7}}</p> -->
+                                    <p>The markets seem to be prioritizing increased performance when updating their
+                                        devices. Especially the trendy and tech-savvy segments are seeking devices that
+                                        can handle more demanding tasks and deliver a better user experience.
+                                        Repairability is gaining more value across all segments, driven by a campaign
+                                        led by various influencers raising awareness regarding repairability and the
+                                        environmental impact of electronic waste. Another trend observed is an increased
+                                        appreciation for quality, long-lasting devices. Additionally, the security
+                                        features are enjoying an increased interest among consumers. As smartphones
+                                        become instrumental tools in work, communication, and daily life, the security
+                                        of personal and professional data becomes a critical concern for consumers
+                                        across all segments. </p>
+                                </div>
+                                <div class="col-md">
+                                    <div class="row row-cols-md-2">
+                                        <div class="col-md">
+                                            <p>Production line cost, per product, Mn INR</p>
+                                            <h4>{{result?.stpGameCM?.stpgameperioddata?.W15}}</h4>
+                                        </div>
+                                        <div class="col-md">
+                                            <p>Administration cost, per product, Mn INR</p>
+                                            <h4>{{result?.stpGameCM?.stpgameperioddata?.W16}}</h4>
+                                        </div>
+
+                                        <div class="col-md">
+                                            <p>Market Research Report, Mn INR</p>
+                                            <h4>{{result?.stpGameCM?.stpgameperioddata?.W17}}</h4>
+                                        </div>
+                                        <div class="col-md">
+                                            <p>Repositioning cost, per product, Mn INR</p>
+                                            <h4>{{result?.stpGameCM?.stpgameperioddata?.W18}}</h4>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <h1 class="py-5">Product
+                                <mat-icon appTippy="
+                                    <div class='help-tip p-2'>
+                                        <div style='display:flex;'>
+                                        <div>
+                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                        </div> &nbsp; &nbsp;
+                                        <div>
+                                            <p style='margin: 0 auto; color: white; font-size:13px;'>When should you launch a product to align with market demand, and which features should you prioritize based on your target segment’s preferences?</p>
+                                        </div>
+                                        </div>
+                                        <div class='pt-2' style='display:flex;'>
+                                            <div>
+                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                            </div> &nbsp; &nbsp; 
+                                            <div>
+                                            <p style='margin: 0 auto; color: white; font-size:13px;'> How will the chosen attributes of your product impact its manufacturing cost, and what price should you set to achieve your desired revenue and margin?</p>
+                                            </div>
+                                        </div>
+                                    </div> ">
+                                    help_outline
+                                </mat-icon>
+                            </h1>
+
+                            <div class="d-flex flex-row gap-2 flex-wrap launch_card ">
+                                <div class="card shadow" *ngFor="let tool of tools; let toolsi=index">
+                                    <div class="card-header">
+                                        <h2 class="mb-0">{{tool.title}}</h2>
+                                        <div class="d-flex align-items-center justify-content-end gap-3 mb-1">
+                                            <p class="mb-0">Launch</p>
+                                            <input type="checkbox" class="checkfrominput_new"
+                                                [checked]="result[tool.checkcell]===1?true:false"
+                                                (click)="writestpvalue(tool.checkcell,'checkbox',$event,'','','','',0)"
+                                                [disabled]="inputDisabled">
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between mb-2">
+                                            <p class="mb-0">Design</p>
+                                            <select class="input-no_box-drop_New" [ngModel]="result[tool.designcell]"
+                                                [disabled]="inputDisabled?inputDisabled:result[tool.checkcell]===1?false:true"
+                                                (change)="writestpvalue(tool.designcell,'number',$event,'','','','',0)">
+                                                <option value="" selected disabled>Select option</option>
+                                                <option value="Classic">Classic</option>
+                                                <option value="Avant Garde">Avant Garde</option>
+                                                <option value="Sport">Sport</option>
+                                            </select>
+                                        </div>
+                                        <div *ngFor="let level of levels;let leveli=index;">
+                                            <input type="checkbox" class="btn-check" [name]="'tool'+toolsi"
+                                                [id]="'option'+toolsi+leveli" autocomplete="off"
+                                                [checked]="result[level.checkedcell[toolsi]]"
+                                                (click)="writestpvalue(level.checkedcell[toolsi],'checkbox',$event,'','','','',0)"
+                                                [disabled]="inputDisabled?inputDisabled:result[tool.checkcell]===1?false:true">
+                                            <label class="btn btn-outline-primary text-start my-1 w-100"
+                                                [for]="'option'+toolsi+leveli">
+                                                <i [ngClass]="level.icon" class="levelicon"></i> {{level.title}}
+                                            </label>
+                                        </div>
+                                        <table class="mt-2">
+                                            <tr>
+                                                <td>Performance</td>
+                                                <td>
+                                                    <input type="number" class="input-no_box"
+                                                        placeholder="Input value here..."
+                                                        [ngModel]="result[tool.performancecell]"
+                                                        [disabled]="inputDisabled?inputDisabled:result[tool.checkcell]===1?false:true"
+                                                        (focusout)="writestpvalue(tool.performancecell,'number',$event,'','','','',0)">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Battery Life</td>
+                                                <td>
+                                                    <input type="number" class="input-no_box"
+                                                        placeholder="Input value here..."
+                                                        [ngModel]="result[tool.batterycell]"
+                                                        [disabled]="inputDisabled?inputDisabled:result[tool.checkcell]===1?false:true"
+                                                        (focusout)="writestpvalue(tool.batterycell,'number',$event,'','','','',0)">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Projected Sales, Mn units</td>
+                                                <td>
+                                                    <input type="number" class="input-no_box"
+                                                        placeholder="Input value here..."
+                                                        [ngModel]="result[tool.salescell]"
+                                                        [disabled]="inputDisabled?inputDisabled:result[tool.checkcell]===1?false:true"
+                                                        (focusout)="writestpvalue(tool.salescell,'number',$event,'','','','',0)">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Price, INR</td>
+                                                <td>
+                                                    <input type="number" class="input-no_box"
+                                                        placeholder="Input value here..."
+                                                        [ngModel]="result[tool.pricecell]"
+                                                        [disabled]="inputDisabled?inputDisabled:result[tool.checkcell]===1?false:true"
+                                                        (focusout)="writestpvalue(tool.pricecell,'number',$event,'','','','',0)">
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Unit Cost, INR</td>
+                                                <td>{{result?.stpgamedata?.[tool.unitcostcell]|number:'1.0-0'}}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!-- <div class="card-footer">
+                                        <input type="checkbox" class="checkfrominput_new"
+                                            [checked]="result[tool.checkcell]===1?true:false"
+                                            (click)="writestpvalue(tool.checkcell,'checkbox',$event,'','','','',0)"
+                                            [disabled]="inputDisabled">
+                                    </div> -->
+                                </div>
+                            </div>
+
+
+
+                            <h1 class="py-5">Promotion & Packaging
+                                <mat-icon appTippy="
+                                        <div class='help-tip p-2'>
+                                            <div style='display:flex;'>
+                                            <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                            </div> &nbsp; &nbsp;
+                                            <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'>How will you allocate your promotion budget to effectively target the most responsive consumer segments while staying competitive?</p>
+                                            </div>
+                                            </div>
+                                            <div class='pt-2' style='display:flex;'>
+                                                <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                                </div> &nbsp; &nbsp; 
+                                                <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'>What type of packaging will best satisfy consumer preferences while balancing cost and sustainability, and how might this influence your brand perception?</p>
+                                                </div>
+                                            </div>
+                                        </div> ">
+                                    help_outline
+                                </mat-icon>
+                            </h1>
+
+                            <div class="row row-cols-md-2">
+                                <div class="col-md">
+                                    <div class="craftingimg-first">
+                                        <img src="../../../../assets/images/designthinking/designthinkingexcute.svg"
+                                            class="card-img-top" alt="Your Image" />
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <p>Promotion, Mn INR</p>
+                                    <input type="number" class="input-no_box" placeholder="Input value here..."
+                                        [ngModel]="result.cj60"
+                                        (focusout)="writestpvalue('cj60','number',$event,'','','','',0)"
+                                        [disabled]="inputDisabled">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="invest-selection-card col-md" *ngFor="let cardele of cardData1; let i = index">
+                                <div [ngClass]="{ bluebackground: selectedCardId1 === cardele.id }"
+                                    class="card p-3 mt-4 radio-card h-100">
+                                    <label [for]="'cardele.id' + i" class="input-card-label">
+
+                                        <div class="card-header card-first-header">
+                                            <input class="input-card-input" [id]="'cardele.id' + i" type="radio"
+                                                name="cardSelection1" [checked]="result[cardele.inputcell]===1"
+                                                (click)="writestpvalue(cardele.inputcell,'radio',$event,'cj62','cj63','cj64','',3)"
+                                                [disabled]="inputDisabled" />
+                                            &nbsp;<span class="input-card-label-span">{{
+                                                result?.stpGameCM?.stpgameperioddata[cardele.titlecell] }}</span>
+                                        </div>
+                                    </label>
+                                    <div [class.Moreless]="!textshow['cardData1_' + cardele.id]" class="mt-3">
+                                        <p class="maincontent">
+                                            {{ textshow['cardData1_' + cardele.id] ? cardele.description :
+                                            cardele.turncatedtext
+                                            }}
+                                            <span class="mt-3" style="cursor: pointer; font-size: small;"
+                                                (click)="toggleText('cardData1_' + cardele.id)"
+                                                [ngStyle]="{ color: textshow['cardData1_' + cardele.id] ? 'red' : 'blue' }">
+                                                {{ textshow['cardData1_' + cardele.id] ? 'Show Less' : 'Show More'
+                                                }}
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="routesandtechcostcard">
+                                        <h3>Cost per unit, INR</h3>
+                                        <h3>{{ result?.stpGameCM?.stpgameperioddata[cardele.costcell] }}</h3>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <h1 class="pt-3 mt-5">Repairability & Services
+                            <mat-icon appTippy="
+                                    <div class='help-tip p-2'>
+                                        <div style='display:flex;'>
+                                        <div>
+                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                        </div> &nbsp; &nbsp;
+                                        <div>
+                                            <p style='margin: 0 auto; color: white; font-size:13px;'>How will the level of repairability and support services you offer impact consumer satisfaction in your target segment and your overall costs?</p>
+                                        </div>
+                                        </div>
+                                        <div class='pt-2' style='display:flex;'>
+                                            <div>
+                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                            </div> &nbsp; &nbsp; 
+                                            <div>
+                                            <p style='margin: 0 auto; color: white; font-size:13px;'>Which repair and service standards should you adopt to align with your positioning and sustainability goals?</p>
+                                            </div>
+                                        </div>
+                                    </div> ">
+                                help_outline
+                            </mat-icon>
+                        </h1>
+                        <div class="row">
+                            <div class="invest-selection-card col-md" *ngFor="let card1 of cardData2; let j = index">
+                                <div [ngClass]="{ bluebackground: selectedCardId2 === card1.id }"
+                                    class="card p-3 mt-4 radio-card h-100">
+                                    <label [for]="'card1.id' + j" class="input-card-label">
+                                        <div class="card-header card-first-middle">
+                                            <input class="input-card-input" [id]="'card1.id' + j" type="radio"
+                                                name="cardSelection2" [checked]="result[card1.inputcell]===1"
+                                                (change)="writestpvalue(card1.inputcell,'radio',$event,'cj66','cj67','cj68','',3)"
+                                                [disabled]="inputDisabled" />
+                                            &nbsp;<span class="input-card-label-span">{{
+                                                result?.stpGameCM?.stpgameperioddata[card1.titlecell] }}</span>
+                                        </div>
+                                    </label>
+                                    <div [class.Moreless]="!textshow1['cardData2_' + card1.id]" class="mt-3">
+                                        <p class="maincontent">
+                                            {{ textshow1['cardData2_' + card1.id] ? card1.description :
+                                            card1.turncatedtext }}
+                                            <span class="mt-3" style="cursor: pointer; font-size: small;"
+                                                (click)="toggleTextnew('cardData2_' + card1.id)"
+                                                [ngStyle]="{ color: textshow1['cardData2_' + card1.id] ? 'red' : 'blue' }">
+                                                {{ textshow1['cardData2_' + card1.id] ? 'Show Less' : 'Show More' }}
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="routesandtechcostcard">
+                                        <h3>Cost per unit, INR</h3>
+                                        <h3>{{ result?.stpGameCM?.stpgameperioddata[card1.costcell] }}</h3>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <h1 class="py-4 mt-5">Recycling
+                            <mat-icon appTippy="
+                                    <div class='help-tip p-2'>
+                                        <div style='display:flex;'>
+                                        <div>
+                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                        </div> &nbsp; &nbsp;
+                                        <div>
+                                            <p style='margin: 0 auto; color: white; font-size:13px;'> Which recycling option will best meet your target consumer segment’s expectations while balancing cost and environmental impact?</p>
+                                        </div>
+                                        </div>
+                                        <div class='pt-2' style='display:flex;'>
+                                            <div>
+                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                            </div> &nbsp; &nbsp; 
+                                            <div>
+                                            <p style='margin: 0 auto; color: white; font-size:13px;'> How will your chosen recycling strategy affect your brand image and customer loyalty?</p>
+                                            </div>
+                                        </div>
+                                    </div> ">
+                                help_outline
+                            </mat-icon>
+                        </h1>
+
+                        <div class="row row-cols-md-4 g-3 input-img-card">
+                            <div class="col-md " *ngFor="let element of cardData3;let j = index">
+                                <div class="card marketing-card h-100">
+                                    <div class="craftingimg">
+                                        <img src="{{element.img}}" alt="recycling" class="card-img-top"
+                                            alt="Your Image" />
+                                    </div>
+                                    <div class="card-body">
+                                        <h2 style="height: 4rem; overflow: auto;">{{
+                                            result?.stpGameCM?.stpgameperioddata[element.titlecell] }}</h2>
+                                        <p class="card-text">
+                                            {{ textshow3[element.id] ? element.description : element.turncatedtext }}
+                                            <span class="mt-3" style="cursor: pointer; font-size: small;"
+                                                (click)="toggleText1(element.id)"
+                                                [ngStyle]="{ color: textshow3[element.id] ? 'red' : 'blue' }">
+                                                {{ textshow3[element.id] ? 'Show Less' : 'Show More' }}
+                                            </span>
+                                        </p>
+
+
+                                    </div>
+                                    <div class="card-footer form-check">
+                                        <div class="routesandtechcostcard">
+                                            <h3>Cost per employee, INR</h3>
+                                            <h3>{{ result?.stpGameCM?.stpgameperioddata[element.costcell] }}</h3>
+                                        </div>
+                                        <input class="checkfrominput" type="radio" name="cardSelection3"
+                                            [id]="'element.id' + j" [checked]="result[element.inputcell]===1"
+                                            (change)="writestpvalue(element.inputcell,'radio',$event,'cj70','cj71','cj72','cj73',4)"
+                                            [disabled]="inputDisabled" />
+                                        <label class="form-check-label" for="flexCheckDefault"></label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <h1 class="pt-3 mt-3">Channels
+                            <mat-icon appTippy="
+                                    <div class='help-tip p-2'>
+                                        <div style='display:flex;'>
+                                        <div>
+                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                        </div> &nbsp; &nbsp;
+                                        <div>
+                                            <p style='margin: 0 auto; color: white; font-size:13px;'>Which channels should you prioritize to ensure your product reaches your target consumers effectively, considering cost and consumer preferences?</p>
+                                        </div>
+                                        </div>
+                                        <div class='pt-2' style='display:flex;'>
+                                            <div>
+                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                            </div> &nbsp; &nbsp; 
+                                            <div>
+                                            <p style='margin: 0 auto; color: white; font-size:13px;'>How will the choice of distribution channels impact your product’s market penetration and overall sales?</p>
+                                            </div>
+                                        </div>
+                                    </div> ">
+                                help_outline
+                            </mat-icon>
+                        </h1>
+                        <div class="row">
+                            <div class="invest-selection-card col-md" *ngFor="let Channelsele of Channelsdata">
+                                <div [ngClass]="{ bluebackground: selectedCardId3 === Channelsele.id }"
+                                    class="card p-3 mt-4 radio-card h-100">
+                                    <label [for]="Channelsele.id" class="input-card-label">
+
+                                        <div class="card-header card-first-header">
+                                            <input class="input-card-input" [id]="Channelsele.id" type="checkbox"
+                                                value="" [checked]="result[Channelsele.inputcell]===1"
+                                                (change)="writestpvalue(Channelsele.inputcell,'checkbox',$event,'','','','',0)"
+                                                [disabled]="inputDisabled" />
+                                            &nbsp;<span class="input-card-label-span">{{
+                                                result?.stpGameCM?.stpgameperioddata[Channelsele.titlecell]}}</span>
+                                        </div>
+                                    </label>
+                                    <div [class.Moreless]="!textshowchannel['cardDatachannel_' + Channelsele.id]"
+                                        class="mt-3">
+                                        <p class="maincontent">
+                                            {{ textshowchannel['cardDatachannel_' + Channelsele.id] ?
+                                            Channelsele.description :
+                                            Channelsele.turncatedtext }}
+                                            <span class="mt-3" style="cursor: pointer; font-size: small;"
+                                                (click)="toggleTextchannel('cardDatachannel_' + Channelsele.id); $event.stopPropagation()"
+                                                [ngStyle]="{ color: textshowchannel['cardDatachannel_' + Channelsele.id] ? 'red' : 'blue' }">
+                                                {{ textshowchannel['cardDatachannel_' + Channelsele.id] ? 'Show
+                                                Less' : 'Show
+                                                More' }}
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="routesandtechcostcard">
+                                        <h3>Cost per unit, INR</h3>
+                                        <h3>{{ result?.stpGameCM?.stpgameperioddata[Channelsele.costcell] }}</h3>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <h1 class="pt-3 mt-5">Projections, Mn INR
+                            <mat-icon appTippy="
+                                    <div class='help-tip p-2'>
+                                        <div style='display:flex;'>
+                                        <div>
+                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                        </div> &nbsp; &nbsp;
+                                        <div>
+                                            <p style='margin: 0 auto; color: white; font-size:13px;'>How do your decisions on product features, pricing, promotion, and channels influence your projected financial statements?</p>
+                                        </div>
+                                        </div>
+                                        <div class='pt-2' style='display:flex;'>
+                                            <div>
+                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                            </div> &nbsp; &nbsp; 
+                                            <div>
+                                            <p style='margin: 0 auto; color: white; font-size:13px;'>What potential risks should you account for in your projections to ensure financial stability and growth?</p>
+                                            </div>
+                                        </div>
+                                    </div> ">
+                                help_outline
+                            </mat-icon>
+                        </h1>
+                        <div class="row row-cols-md-2 py-3">
+                            <div class="col-md">
+                                <table class="table rsl_tbl">
+                                    <thead class="rsl_tbl-thead">
+                                        <tr class="rsl_tbl-thead-tr">
+                                            <th class="rsl_tbl-thead-th" colspan="2">Company Wide</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="rsl_tbl-tbody">
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Revenue</td>
+                                            <td>{{result?.stpgamedata?.Y161|number:'1.0-0'}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Variable Cost</td>
+                                            <td>{{result?.stpgamedata?.Y162|number:'1.0-0'}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr" style="border-bottom: 2px solid black;">
+                                            <td>Gross Profit</td>
+                                            <td>{{result?.stpgamedata?.Y163|number:'1.0-0'}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Production Line Cost</td>
+                                            <td>{{result?.stpgamedata?.Y164|number:'1.0-0'}}</td>
+                                        </tr>
+
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Administration Cost</td>
+                                            <td>{{result?.stpgamedata?.Y165|number:'1.0-0'}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Market Research Cost</td>
+                                            <td>{{result?.stpgamedata?.Y166|number:'1.0-0'}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Promotion Cost</td>
+                                            <td>{{result?.stpgamedata?.Y167|number:'1.0-0'}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Channel Cost</td>
+                                            <td>{{result?.stpgamedata?.Y168|number:'1.0-0'}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Packaging Cost</td>
+                                            <td>{{result?.stpgamedata?.Y169|number:'1.0-0'}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Recycling Cost</td>
+                                            <td>{{result?.stpgamedata?.Y170|number:'1.0-0'}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Repairability Cost</td>
+                                            <td>{{result?.stpgamedata?.Y171|number:'1.0-0'}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr"
+                                            style="border-top:2px solid black;border-bottom: 2px solid black;">
+                                            <td>Operating Profit/Loss</td>
+                                            <td>{{result?.stpgamedata?.Y172|number:'1.0-0'}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md">
+                                <div class="card p-3 ">
+                                    <apx-chart [series]="salesgraph.series" [chart]="salesgraph.chart"
+                                        [dataLabels]="salesgraph.dataLabels" [plotOptions]="salesgraph.plotOptions"
+                                        [yaxis]="salesgraph.yaxis" [xaxis]="salesgraph.xaxis" [fill]="salesgraph.fill"
+                                        [title]="salesgraph.title" [noData]="salesgraph.noData"
+                                        [tooltip]="salesgraph.tooltip">
+                                    </apx-chart>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="retry_new mt-5" type="button" (click)="checkandgotophase2()"
+                            [disabled]="inputDisabled">Phase 3</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

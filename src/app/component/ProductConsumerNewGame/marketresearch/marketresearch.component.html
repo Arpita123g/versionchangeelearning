@@ -1,0 +1,251 @@
+<!-- new design -->
+<div class="loadingscreen" *ngIf="checkloading">
+  <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+ 
+</div>
+<div class="elearingnewui product_consumer">
+  <div class="container">
+    <div class="body-element">
+      <div class="market-research">
+        <div class="row" class="marketer">
+          <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+            style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+              <button class="food-thought-btn">{{language.b253}}</button></span>
+          </div>
+        </div>
+        <ul class="nav market-research-nav" id="nav-tab" role="tablist">
+          <li class="nav-link active market-research-link" id="nav-Market-tab" data-bs-toggle="tab"
+            data-bs-target="#nav-Market" type="button" role="tab" aria-controls="nav-Market" aria-selected="true">
+            {{language.b21}}
+          </li>
+          <li class="nav-link market-research-link " id="nav-genre-preference-tab" data-bs-toggle="tab"
+            data-bs-target="#nav-genre-preference" type="button" role="tab" aria-controls="nav-genre-preference"
+            aria-selected="true">{{language.b23}}
+          </li>
+          <li class="nav-link market-research-link" id="nav-profile-tab" data-bs-toggle="tab"
+            data-bs-target="#nav-communication-channels" type="button" role="tab"
+            aria-controls="nav-communication-channels" aria-selected="false">{{language.b38}}
+          </li>
+          <li class="nav-link market-research-link" id="nav-Monetization-tab" data-bs-toggle="tab"
+            data-bs-target="#nav-Monetization" type="button" role="tab" aria-controls="nav-Monetization"
+            aria-selected="false">{{language.b51}}
+          </li>
+        </ul>
+
+        <!--  main container  -->
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-Market" role="tabpanel">
+            <div class="rounded-5  rtsidetable card ">
+              <ul class="list-group list-group-flush marketoutlooklist">
+                <li class="list-group-item">
+                  <h2 class="h2-cls">{{language.b21}}</h2>
+                </li>
+                <li class="list-group-item">
+                  <p [innerHTML]="getFormattedText(language.b22)"></p>
+                  <!-- <p>In the bustling gaming landscape of India, mobile gaming reigns supreme with a staggering 360
+                    million
+                    enthusiasts. A remarkable three out of every four gamers gravitate towards mobile games, placing
+                    India
+                    among the top five global contenders in the mobile gaming arena. Players, on average, dedicate over
+                    an
+                    hour daily to their gaming pursuits, using mobile phones as their primary device.<br><br>
+
+                    Interestingly, an omni-channel approach is favoured, combining both online and offline experiences.
+                    As
+                    evening approaches, homes transform into gaming sanctuaries, offering players an uninterrupted
+                    experience
+                    during prime time. A dive into gaming habits reveals a versatile Indian gamer who is
+                    multi-genre-oriented,
+                    often playing more than twice a day.<br><br>
+
+                    With an insatiable appetite for novelty, there's a strong inclination towards experimentation and
+                    exploring new games. The "free-to-play" model is the go-to choice for the majority.<br><br>
+
+                    Shattering stereotypes, 45% of Indian gamers are female, with 58% of mothers identifying as gamers.
+                    Mobile
+                    gaming also appeals to the mature audience, with nearly a third aged 35 and above. When pitted
+                    against
+                    other forms of entertainment, gaming stands tall, with over 40% of gamers investing more than an
+                    hour
+                    daily, compared to the average 45 minutes spent on OTT platforms.
+                  </p> -->
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="nav-genre-preference" role="tabpanel">
+            <div class="rounded-5  rtsidetable card ">
+              <ul class="list-group  list-group-flush marketoutlooklist">
+                <li class="list-group-item">
+                  <h2 class="h2-cls">{{language.b23}}</h2>
+                </li>
+                <li class="list-group-item">
+                  <div class="py-2">
+                    <div class="card p-3">
+                      <apx-chart [series]="gamegenrepreference.series" [chart]="gamegenrepreference.chart"
+                        [dataLabels]="gamegenrepreference.dataLabels" [plotOptions]="gamegenrepreference.plotOptions"
+                        [xaxis]="gamegenrepreference.xaxis" [yaxis]="gamegenrepreference.yaxis"
+                        [tooltip]="gamegenrepreference.tooltip" [stroke]="gamegenrepreference.stroke"
+                        [title]="gamegenrepreference.title">
+                      </apx-chart>
+                    </div>
+                  </div>
+                  <div class="py-2">
+                    <p>
+                      {{language.b32}}
+                    </p>
+                  </div>
+                  <div class="py-2">
+                    <div class="card p-3">
+                      <apx-chart [series]="Malegamerspreference.series" [chart]="Malegamerspreference.chart"
+                        [dataLabels]="Malegamerspreference.dataLabels" [plotOptions]="Malegamerspreference.plotOptions"
+                        [xaxis]="Malegamerspreference.xaxis" [yaxis]="Malegamerspreference.yaxis"
+                        [tooltip]="Malegamerspreference.tooltip" [stroke]="Malegamerspreference.stroke"
+                        [title]="Malegamerspreference.title">
+                      </apx-chart>
+                    </div>
+                  </div>
+                  <div class="py-2">
+                    <div class="card p-3">
+                      <apx-chart [series]="femalegamerspreference.series" [chart]="femalegamerspreference.chart"
+                        [dataLabels]="femalegamerspreference.dataLabels"
+                        [plotOptions]="femalegamerspreference.plotOptions" [xaxis]="femalegamerspreference.xaxis"
+                        [yaxis]="femalegamerspreference.yaxis" [tooltip]="femalegamerspreference.tooltip"
+                        [stroke]="femalegamerspreference.stroke" [title]="femalegamerspreference.title">
+                      </apx-chart>
+                    </div>
+                    <div class="mt-2 mb-2">
+                      <p>{{language.b35}}</p>
+                    </div>
+                  </div>
+
+                  <div class="py-2">
+                    <div class="card p-3">
+                      <apx-chart [series]="nccsHouseholdgraph.series" [chart]="nccsHouseholdgraph.chart"
+                        [dataLabels]="nccsHouseholdgraph.dataLabels" [plotOptions]="nccsHouseholdgraph.plotOptions"
+                        [xaxis]="nccsHouseholdgraph.xaxis" [yaxis]="nccsHouseholdgraph.yaxis"
+                        [tooltip]="nccsHouseholdgraph.tooltip" [stroke]="nccsHouseholdgraph.stroke"
+                        [title]="nccsHouseholdgraph.title">
+                      </apx-chart>
+                    </div>
+                    <div class="py-2">
+                      <p>{{language.b37}}</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="nav-communication-channels" role="tabpanel">
+            <div class="rounded-5  rtsidetable card ">
+              <ul class="list-group  list-group-flush marketoutlooklist">
+                <li class="list-group-item">
+                  <h2 class="h2-cls">{{language.b38}}</h2>
+                </li>
+                <li class="list-group-item">
+                  <div class="py-2">
+                    <div class="card p-3">
+                      <apx-chart [series]="communicationchannelmalegraph.series"
+                        [chart]="communicationchannelmalegraph.chart"
+                        [dataLabels]="communicationchannelmalegraph.dataLabels"
+                        [plotOptions]="communicationchannelmalegraph.plotOptions"
+                        [xaxis]="communicationchannelmalegraph.xaxis" [yaxis]="communicationchannelmalegraph.yaxis"
+                        [tooltip]="communicationchannelmalegraph.tooltip"
+                        [stroke]="communicationchannelmalegraph.stroke" [title]="communicationchannelmalegraph.title">
+                      </apx-chart>
+                    </div>
+                    <div class="py-2">
+                      <!-- <p [innerHTML]="malegameractivitytext"></p> -->
+                      <p>{{language.b48}}</p>
+                    </div>
+                  </div>
+                  <div class="py-2">
+                    <div class="card p-3">
+                      <apx-chart [series]="communicationchannelfemalegraph.series"
+                        [chart]="communicationchannelfemalegraph.chart"
+                        [dataLabels]="communicationchannelfemalegraph.dataLabels"
+                        [plotOptions]="communicationchannelfemalegraph.plotOptions"
+                        [xaxis]="communicationchannelfemalegraph.xaxis" [yaxis]="communicationchannelfemalegraph.yaxis"
+                        [tooltip]="communicationchannelfemalegraph.tooltip"
+                        [stroke]="communicationchannelfemalegraph.stroke"
+                        [title]="communicationchannelfemalegraph.title">
+                      </apx-chart>
+                    </div>
+                    <div class="py-2">
+                      <!-- <p [innerHTML]="femalegameractivitytext"></p> -->
+                      <p>
+                        {{language.b50}}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="nav-Monetization" role="tabpanel">
+            <div class="rounded-5  rtsidetable card ">
+              <ul class="list-group  list-group-flush marketoutlooklist">
+                <li class="list-group-item">
+                  <h2 class="h2-cls">{{language.b51}}</h2>
+                </li>
+                <li class="list-group-item">
+                  <div class="py-2">
+                    <!-- <p [innerHTML]="monetizationtext"></p> -->
+                    <!-- <p>
+                      {{language.b52}}
+                    </p> -->
+                    <p [innerHTML]=getFormattedText(language.b52)></p>
+                  </div>
+                  <div class="py-2">
+                    <div class="card p-3">
+                      <apx-chart [series]="mobilegamergraph.series" [chart]="mobilegamergraph.chart"
+                        [dataLabels]="mobilegamergraph.dataLabels" [plotOptions]="mobilegamergraph.plotOptions"
+                        [xaxis]="mobilegamergraph.xaxis" [yaxis]="mobilegamergraph.yaxis"
+                        [tooltip]="mobilegamergraph.tooltip" [stroke]="mobilegamergraph.stroke"
+                        [title]="mobilegamergraph.title">
+                      </apx-chart>
+                    </div>
+                    <div class="py-2">
+                      <p>
+                        {{language.b54}}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="py-2">
+                    <div class="card p-3">
+                      <apx-chart [series]="mobileadsspendgraph.series" [chart]="mobileadsspendgraph.chart"
+                        [dataLabels]="mobileadsspendgraph.dataLabels" [plotOptions]="mobileadsspendgraph.plotOptions"
+                        [xaxis]="mobileadsspendgraph.xaxis" [yaxis]="mobileadsspendgraph.yaxis"
+                        [tooltip]="mobileadsspendgraph.tooltip" [stroke]="mobileadsspendgraph.stroke"
+                        [title]="mobileadsspendgraph.title">
+                      </apx-chart>
+                    </div>
+                    <div class="py-2">
+                      <p>
+                        {{language.b56}} </p>
+                    </div>
+                  </div>
+                  <div class="py-2">
+                    <div class="card p-3">
+                      <apx-chart [series]="mobilegamingrevenuegraph.series" [chart]="mobilegamingrevenuegraph.chart"
+                        [dataLabels]="mobilegamingrevenuegraph.dataLabels"
+                        [plotOptions]="mobilegamingrevenuegraph.plotOptions" [xaxis]="mobilegamingrevenuegraph.xaxis"
+                        [yaxis]="mobilegamingrevenuegraph.yaxis" [tooltip]="mobilegamingrevenuegraph.tooltip"
+                        [stroke]="mobilegamingrevenuegraph.stroke" [title]="mobilegamingrevenuegraph.title">
+                      </apx-chart>
+                    </div>
+                    <div class="py-2">
+                      <p>
+                        {{language.b58}}
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<!-- new student dashboard header.......... 31/01/24 -->
+<div class="elearingnewui bus_iness">
+    <div class=" newinstructor">
+        <div class="card newinstructor-card-first ">
+            <div class="card-header newinstructor-card-header-first">
+                <div class="tab-content">
+                    <div role="tabpanel" class=" tab_pane-first tab-pane fade show active">
+                        <ul class="nav nav_bar" role="tablist">
+                            <li role="presentation" class=" nav_bar-li active" data-bs-target="#microsim"
+                                aria-controls="microsim" role="tab" data-bs-toggle="tab" aria-selected="true"
+                                (click)="tabclick('microsim')">
+                                <span class="octicon octicon-diff-added"><mat-icon>sim_card</mat-icon>MICRO SIM</span>
+                            </li>
+                            <li role="presentation " class="nav_bar-li" data-bs-target="#voicebased"
+                                aria-controls="voicebased" role="tab" data-bs-toggle="tab" aria-selected="false"
+                                (click)="tabclick('voicebased')">
+                                <span class="octicon octicon-diff-added"><mat-icon>record_voice_over</mat-icon>VOICE
+                                    BASED SIM</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div role="tabpanel" class="tab_pane-second tab-pane fade show active" id="microsim">
+                        <nav>
+                        <ul class="nav nav_bar" role="tablist">
+                            <li role="presentation " class="nav_bar-li active" data-bs-target="#microsimongoing"
+                                aria-controls="microsimongoing" role="tab" data-bs-toggle="tab" aria-selected="true"
+                                [ngClass]="{ 'active': microsubtab === 'ongoing' }"
+                                
+                                (click)="microsubtabclick('ongoing')" >
+                                <span class="octicon octicon-diff-added">ONGOING</span>
+                            </li>
+                            <li role="presentation" class="nav_bar-li" data-bs-target="#microsimcompleted"
+                                aria-controls="microsimcompleted" role="tab" data-bs-toggle="tab" aria-selected="false" 
+                                (click)="microsubtabclick('completed')"  >
+                                <span class="octicon octicon-diff-added">COMPLETED</span>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade show active" id="microsimongoing">
+                            <app-studentheaderongoing *ngIf="activetab === 'microsim' && microsubtab === 'ongoing'"
+                            ></app-studentheaderongoing>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade " id="microsimcompleted">
+                            <app-studentheadercompleted *ngIf="activetab === 'microsim' && microsubtab === 'completed'"
+                             ></app-studentheadercompleted>
+                        </div>
+                        
+                    </div>
+                    </div>
+                    <div role="tabpanel" class=" tab_pane-second tab-pane fade show" id="voicebased">
+                        <nav>
+                        <ul class="nav nav_bar" role="tablist">
+                            <li role="presentation " class="nav_bar-li active" data-bs-target="#voicebaseongoing"
+                                aria-controls="voicebaseongoing" role="tab" data-bs-toggle="tab" aria-selected="true"
+                                (click)="voicesubtabclick('ongoing')">
+                                <span class="octicon octicon-diff-added">ONGOING</span>
+                            </li>
+                            <li role="presentation" class="nav_bar-li" data-bs-target="#voicebasecompleted"
+                                aria-controls="voicebasecompleted" role="tab" data-bs-toggle="tab"
+                                aria-selected="false" (click)="voicesubtabclick('completed')">
+                                <span class="octicon octicon-diff-added">COMPLETED</span>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade show  active" id="voicebaseongoing">
+                            <app-studentheaderongoing 
+                            *ngIf="activetab === 'voicebased' && voicesubtab === 'ongoing'"
+                             ></app-studentheaderongoing>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade  " id="voicebasecompleted">
+                            <app-studentheadercompleted 
+                            *ngIf="activetab === 'voicebased' && voicesubtab === 'completed'"
+                           ></app-studentheadercompleted>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="card newinstructor-card vh-100">
+            <div class="card-body newinstructor-card-body">
+                
+
+                
+            </div>
+        </div> -->
+    </div>
+</div>

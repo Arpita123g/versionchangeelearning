@@ -1,0 +1,104 @@
+<div class="bus_iness">
+    <div class="text-end pb-4 f-e-d">
+        <select  class="select-round" name="" id="" [(ngModel)]="selectedattemptValue" (change)="search(selectedattemptValue)">
+            <option *ngIf="dropdownvalue.length" class="select-round-option" [value]='' >Select Round</option>
+            <option class="select-round-option" *ngFor="let attempt of dropdownvalue" [value]=attempt >Round {{attempt}}</option>
+
+        </select>
+        <!-- <button (click)="search(selectedattemptValue)">
+            search
+        </button> -->
+        <button class="btn btn-sm btn-primary exportTable-btn shadow" (click)="exportTable()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-file-earmark-spreadsheet" viewBox="0 0 16 16">
+                <path
+                    d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V9H3V2a1 1 0 0 1 1-1h5.5v2zM3 12v-2h2v2H3zm0 1h2v2H4a1 1 0 0 1-1-1v-1zm3 2v-2h3v2H6zm4 0v-2h3v1a1 1 0 0 1-1 1h-2zm3-3h-3v-2h3v2zm-7 0v-2h3v2H6z" />
+            </svg>
+            Export Table Data
+        </button>
+
+    </div>
+
+    <!-- new mat table -->
+    <div class="mat-elevation-z8 ">
+        <table class="microsimdashboardtable" mat-table [dataSource]="dataSource" id='exportTable'>
+            
+           
+            <ng-container matColumnDef="Name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.userRegister.username}} </td>
+            </ng-container>
+
+            
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> Email id </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}}</td>
+
+            </ng-container>
+
+            <ng-container matColumnDef="KPI1">
+                <th mat-header-cell *matHeaderCellDef> {{kpiname[0]}} </th>
+                <td mat-cell *matCellDef="let element" (click)="justificationpopup(element.kpi1summary)">
+                    <mat-chip class="custom-chip" >{{element.kpi1score}} </mat-chip>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="KPI2">
+                <th mat-header-cell *matHeaderCellDef>{{kpiname[1]}}  </th>
+                <td mat-cell *matCellDef="let element" (click)="justificationpopup(element.kpi2summary)"> 
+                    <mat-chip class="custom-chip" >{{element.kpi2score}}</mat-chip>
+                 </td>
+            </ng-container>
+
+            <ng-container matColumnDef="KPI3">
+                <th mat-header-cell *matHeaderCellDef> {{kpiname[2]}} </th>
+                <td mat-cell *matCellDef="let element" (click)="justificationpopup(element.kpi3summary)"> 
+                    <mat-chip class="custom-chip" >{{element.kpi3score}}</mat-chip>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="KPI4">
+                <th mat-header-cell *matHeaderCellDef> {{kpiname[3]}}  </th>
+                <td mat-cell *matCellDef="let element" (click)="justificationpopup(element.kpi4summary)"> 
+                    <mat-chip class="custom-chip" >{{element.kpi4score}}</mat-chip>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="KPI5">
+                <th mat-header-cell *matHeaderCellDef> {{kpiname[4]}}</th>
+                <td mat-cell *matCellDef="let element" (click)="justificationpopup(element.kpi5summary)"> 
+                    <mat-chip class="custom-chip" >{{element.kpi5score}}</mat-chip>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="KPI6">
+                <th mat-header-cell *matHeaderCellDef>{{kpiname[5]}} </th>
+                <td mat-cell *matCellDef="let element" (click)="justificationpopup(element.kpi6summary)"> 
+                    <mat-chip class="custom-chip" >{{element.kpi6score}}</mat-chip>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="Transcript">
+                <th mat-header-cell *matHeaderCellDef> Transcript </th>
+                <td mat-cell *matCellDef="let element" (click)="transcriptdownload(element.attempt,
+                element.coursedetailsid,element.coursename,element.coursecode,element.studentsectionid
+                ,element.userRegister.username)"><mat-icon>download</mat-icon> </td>
+            </ng-container>
+            <ng-container matColumnDef="Avrecord">
+                <th mat-header-cell *matHeaderCellDef> Recordings </th>
+                <td mat-cell *matCellDef="let element"> - </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="Logs">
+                <th mat-header-cell *matHeaderCellDef> Logs </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-icon>info</mat-icon>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[20, 50, 100,500,dataSource.data.length]" showFirstLastButtons
+            aria-label="Select page of periodic elements">
+        </mat-paginator>
+    </div>
+    
+</div>

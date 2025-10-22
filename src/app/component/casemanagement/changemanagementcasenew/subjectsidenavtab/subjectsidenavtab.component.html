@@ -1,0 +1,43 @@
+<div class="container">
+    <!-- Left side - Subject navigation -->
+    <div class="sidenav">
+        <div (click)="toggleSubject(1)" class="tab" [class.active]="isSubject1Open">
+            <span>Subject 1</span>
+            <i [class]="isSubject1Open ? 'fa fa-chevron-up' : 'fa fa-chevron-down'"></i>
+        </div>
+
+        <div *ngIf="isSubject1Open" class="subtabs">
+            <div class="subtab" (click)="selectTopic('Topic 1')">Topic 1</div>
+            <div class="subtab" (click)="selectTopic('Topic 2')">Topic 2</div>
+        </div>
+
+        <div (click)="toggleSubject(2)" class="tab" [class.active]="isSubject2Open">
+            <span>Subject 2</span>
+            <i [class]="isSubject2Open ? 'fa fa-chevron-up' : 'fa fa-chevron-down'"></i>
+        </div>
+
+        <div *ngIf="isSubject2Open" class="subtabs">
+            <div class="subtab" (click)="selectTopic('Topic 3')">Topic 3</div>
+            <div class="subtab" (click)="selectTopic('Topic 4')">Topic 4</div>
+        </div>
+    </div>
+
+    <!-- Right side - Question and Feedback area -->
+    <div class="question-area">
+        <div *ngIf="selectedTopic">
+            <h2>{{ question }}</h2>
+
+            <div class="options">
+                <div *ngFor="let option of options; let i = index" class="option">
+                    <input type="radio" id="option{{i}}" name="question" (change)="selectOption(option)">
+                    <label for="option{{i}}">{{ option }}</label>
+                </div>
+            </div>
+
+            <!-- Feedback Area -->
+            <div class="feedback">
+                <textarea [(ngModel)]="feedback" placeholder="Your feedback here..."></textarea>
+            </div>
+        </div>
+    </div>
+</div>

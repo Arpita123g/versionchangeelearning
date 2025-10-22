@@ -1,0 +1,148 @@
+<div class="elearingnewui bus_iness">
+    <div class="toolbar-header-main">
+    </div>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade show active" id="first">
+            <nav class="headerbreadcrumb">
+                <ul class="breadcrumb" role="tablist">
+                    <li role="presentation " class="breadcrumb-item active"
+                        data-bs-target="#logisticsmodegameintroduction" aria-controls="logisticsmodegameintroduction"
+                        role="tab" data-bs-toggle="tab" aria-selected="true"
+                        [ngClass]="{ 'active show':activeTab==='introduction'}" (click)="tab('introduction')">
+                        <div><span class="octicon octicon-diff-added"></span>Introduction</div>
+                    </li>
+                    <li role="presentation " class="breadcrumb-item " data-bs-target="#logisticsmodegamemarket"
+                        aria-controls="logisticsmodegamemarket" role="tab" data-bs-toggle="tab" aria-selected="true"
+                       [ngClass]="{ 'active show':activeTab==='market'}" (click)="tab('market')">
+
+                        <div><span class="octicon octicon-diff-added"></span>Market</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#logisticsmodegameinbound"
+                        aria-controls="logisticsmodegameinbound" role="tab" data-bs-toggle="tab" aria-selected="false"
+                       [ngClass]="{ 'active show':activeTab==='inbound'}" (click)="tab('inbound')">
+                        <div><span class="octicon octicon-diff-added"></span>Inbound</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#logisticsmodegamewarehouse"
+                        aria-controls="logisticsmodegamewarehouse" role="tab" data-bs-toggle="tab" aria-selected="false"
+                       [ngClass]="{ 'active show':activeTab==='warehouse'}" (click)="tab('warehouse')">
+                        <div>
+                            <span class="octicon octicon-comment-discussion"></span>Warehouse
+                        </div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item"
+                        data-bs-target="#logisticsmodegameroutesandtechnology"
+                        aria-controls="logisticsmodegameroutesandtechnology" role="tab" data-bs-toggle="tab"
+                        aria-selected="false" 
+                        [ngClass]="{ 'active show':activeTab==='routesandtechnology'}" (click)="tab('routesandtechnology')">
+                        <div><span class="octicon octicon-verified"></span>Routes Technology</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#logisticsmodegameoutbound"
+                        aria-controls="logisticsmodegameoutbound" role="tab" data-bs-toggle="tab" aria-selected="false"
+                       [ngClass]="{ 'active show':activeTab==='outbound'}" (click)="tab('outbound')">
+                        <div><span class="octicon octicon-tools"></span>Outbound</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#logisticsmodegamedecisionchecklist"
+                        aria-controls="logisticsmodegamedecisionchecklist" role="tab" data-bs-toggle="tab"
+                        aria-selected="false"
+                        [ngClass]="{ 'active show':activeTab==='decisionchecklist'}" (click)="tab('decisionchecklist')">
+                        <div><span class="octicon octicon-tools"></span>Decision Checklist</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#logisticsmodegamereport"
+                        aria-controls="logisticsmodegamereport" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="tab('report')" [ngClass]="{ 'active ':activeTab==='report'}"
+                        [ngClass]="{ 'disabled': tabDisabled }">
+                        <div><span class="octicon octicon-tools"></span>Report</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#logisticsmodegamesynopsis"
+                        aria-controls="logisticsmodegamesynopsis" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="tab('synopsis')" [ngClass]="{ 'active':activeTab==='synopsis'}"
+                        [ngClass]="{ 'disabled': tabDisabled }">
+                        <div><span class="octicon octicon-tools"></span>Synopsis</div>
+                    </li>
+
+                </ul>
+            </nav>
+
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show active" id="logisticsmodegameintroduction"
+                    [ngClass]="{ 'active':activeTab==='introduction'}">
+                    <app-logisticsmodegameintroduction
+                        *ngIf="activeTab==='introduction'"></app-logisticsmodegameintroduction>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="logisticsmodegamemarket"
+                    [ngClass]="{ 'active show':activeTab==='market'}">
+                    <app-logisticsmodegamemarket *ngIf="activeTab==='market'"></app-logisticsmodegamemarket>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="logisticsmodegameinbound"
+                    [ngClass]="{ 'active show':activeTab==='inbound'}">
+                    <app-logisticsmodegameinbound *ngIf="activeTab==='inbound'"></app-logisticsmodegameinbound>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="logisticsmodegamewarehouse"
+                    [ngClass]="{ 'active show':activeTab==='warehouse'}">
+                    <app-logisticsmodegamewarehouse *ngIf="activeTab==='warehouse'"></app-logisticsmodegamewarehouse>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="logisticsmodegameroutesandtechnology"
+                    [ngClass]="{ 'active show':activeTab==='routesandtechnology'}">
+                    <app-logisticsmodegameroutesandtechnology
+                        *ngIf="activeTab==='routesandtechnology'"></app-logisticsmodegameroutesandtechnology>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="logisticsmodegameoutbound"
+                    [ngClass]="{ 'active show':activeTab==='outbound'}">
+                    <app-logisticsmodegameoutbound *ngIf="activeTab==='outbound'"></app-logisticsmodegameoutbound>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="logisticsmodegamedecisionchecklist"
+                    [ngClass]="{ 'active show':activeTab==='decisionchecklist'}">
+                    <app-logisticsmodegamedecisionchecklist (newItemEvent)="next($event)"
+                        *ngIf="activeTab==='decisionchecklist'"></app-logisticsmodegamedecisionchecklist>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="logisticsmodegamereport"
+                    [ngClass]="{ 'active show':activeTab==='report'}">
+                    <app-logisticsmodegamereport *ngIf="activeTab==='report'"></app-logisticsmodegamereport>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="logisticsmodegamesynopsis"
+                    [ngClass]="{ 'active show':activeTab==='synopsis'}">
+                    <app-logisticsmodegamesynopsis *ngIf="activeTab==='synopsis'"></app-logisticsmodegamesynopsis>
+                </div>
+            </div>
+
+
+        </div>
+        <div role="tabpanel" class="tab-pane fade show" id="second">
+            <app-reading *ngIf="toolbartab==='reading'" [gamename]="gametitle"></app-reading>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade show" id="third">
+            <nav class="headerbreadcrumb">
+                <ul class="breadcrumb" role="tablist">
+                    <li role="presentation " class="breadcrumb-item active" data-bs-target="#Individual"
+                        aria-controls="Individual" role="tab" data-bs-toggle="tab" aria-selected="true"
+                        (click)="tabclick('individual')">
+                        <div><span class="octicon octicon-diff-added"></span>Individual</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Course" aria-controls="Course"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="tabclick('course')">
+                        <div><span class="octicon octicon-diff-added"></span>Course</div>
+                    </li>
+
+                </ul>
+            </nav>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show active" id="Individual">
+                    <app-forumindividual
+                        *ngIf="tabname==='individual'"></app-forumindividual>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Course">
+                    <app-forumcourse *ngIf="tabname==='course'"></app-forumcourse>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade show" id="fourth"
+            style="width: 90%; margin:0 auto;height:100vh;padding-top:1.5rem">
+            <app-microsimleaderboardgeneral *ngIf="toolbartab==='leaderboard'"></app-microsimleaderboardgeneral>
+        </div>
+    </div>
+</div>

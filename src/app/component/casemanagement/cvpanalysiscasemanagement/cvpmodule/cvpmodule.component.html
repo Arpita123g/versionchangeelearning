@@ -1,0 +1,322 @@
+<div class="elearingnewui">
+    <div class="case-management-body case-management-module">
+        <table class=" table  case-management-table">
+            <thead>
+                <tr>
+                    <td></td>
+                    <td *ngFor="let round of rounds">{{round}}</td>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        Top
+                    </td>
+                    <td *ngFor="let data of res.cvpAnalysisCMActiveStatus; let i = index">
+                        <input class="input-check-bx" type="checkbox"
+                            [checked]="res.cvpAnalysisCMActiveStatus[i].topstatus === 'active'"
+                            [disabled]="defaultcase=='yes'"
+                            (change)="writeModuleValue(i,'normal','yes','topstatus','',$event)">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Food for Thought
+                    </td>
+                    <td *ngFor="let data of res.cvpAnalysisCMActiveStatus; let i = index">
+                        <input class="input-check-bx" type="checkbox"
+                            [checked]="res.cvpAnalysisCMActiveStatus[i].foodforthoughtstatus === 'active'"
+                            [disabled]="defaultcase=='yes'"
+                            (change)="writeModuleValue(i,'normal','yes','foodforthoughtstatus','',$event)">
+                    </td>
+                </tr>
+                <tr class=" page-name">
+                    <th colspan="11">
+                        <h2>Industry</h2>
+                    </th>
+                </tr>
+                <tr>
+                    <td>Market Size, mn INR</td>
+                    <td *ngFor="let data of res.d6; let i = index">
+                        <textarea name="" id="" cols="40" rows="2" [value]="res.d6[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d6',inputElement.value,'')"></textarea>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Market Size, mn units</td>
+                    <td *ngFor="let data of res.d7; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d7[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d7',inputElement.value,'')"></textarea>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Market Size Jeans, mn units</td>
+                    <td *ngFor="let data of res.d8; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d8[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d8',inputElement.value,'')"></textarea>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Market Size Tops, mn units</td>
+                    <td *ngFor="let data of res.d9; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d9[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d9',inputElement.value,'')"></textarea>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Market Growth</td>
+                    <td *ngFor="let data of res.d10; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d10[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d10',inputElement.value,'')"></textarea>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Competitor Share %</td>
+                    <td *ngFor="let data of res.d11; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d11[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d11',inputElement.value,'')"></textarea>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Industry Price, Jeans</td>
+                    <td *ngFor="let data of res.d12; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d12[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d12',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Industry Price, Tops</td>
+                    <td *ngFor="let data of res.d13; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d13[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d13',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Industry Advertising Jeans, mn INR</td>
+                    <td *ngFor="let data of res.d14; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d14[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d14',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Industry Advertising Tops, mn INR</td>
+                    <td *ngFor="let data of res.d15; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d15[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d15',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Industry Quality Control Jeans, mn INR</td>
+                    <td *ngFor="let data of res.d16; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d16[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d16',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Industry Quality Control Tops, mn INR</td>
+                    <td *ngFor="let data of res.d17; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d17[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d17',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Competitor Effect Jeans</td>
+                    <td *ngFor="let data of res.d18; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d18[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d18',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Competitor Effect Tops</td>
+                    <td *ngFor="let data of res.d19; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d19[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d19',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Administration cost as % of revenue</td>
+                    <td *ngFor="let data of res.d20; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.d20[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','d20',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+
+                <tr class=" page-name">
+                    <th colspan="11">
+                        <h2>Marketing</h2>
+                    </th>
+                </tr>
+                <tr>
+                    <td>Previous Price, Jeans</td>
+                    <td *ngFor="let data of res.g6; let i = index">
+                        <textarea class name="" id="" cols="40" row="2" [value]="res.g6[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','g6',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Previous Price, Tops</td>
+                    <td *ngFor="let data of res.g7; let i = index">
+                        <textarea class name="" id="" cols="40" row="2" [value]="res.g7[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','g7',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Previous Advertising Jeans, mn INR</td>
+                    <td *ngFor="let data of res.g8; let i = index">
+                        <textarea class name="" id="" cols="40" row="2" [value]="res.g8[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','g8',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Previous Advertising Tops, mn INR</td>
+                    <td *ngFor="let data of res.g9; let i = index">
+                        <textarea class name="" id="" cols="40" row="2" [value]="res.g9[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','g9',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Previous Quality Control Jeans, mn INR</td>
+                    <td *ngFor="let data of res.g10; let i = index">
+                        <textarea class name="" id="" cols="40" row="2" [value]="res.g10[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','g10',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Previous Quality Control Tops, mn INR</td>
+                    <td *ngFor="let data of res.g11; let i = index">
+                        <textarea class name="" id="" cols="40" row="2" [value]="res.g11[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','g11',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+
+                <tr class=" page-name">
+                    <th colspan="11">
+                        <h2>Production</h2>
+                    </th>
+                </tr>
+                <tr>
+                    <td>Base variable cost per unit Jeans, INR</td>
+                    <td *ngFor="let data of res.k6; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.k6[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','k6',inputElement.value,'')"></textarea>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Base variable cost per unit Top, INR</td>
+                    <td *ngFor="let data of res.k7; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.k7[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','k7',inputElement.value,'')"></textarea>
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td>Fixed Cost, mn INR</td>
+                    <td *ngFor="let data of res.k8; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.k8[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','k8',inputElement.value,'')"></textarea>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Depreciation, years</td>
+                    <td *ngFor="let data of res.k9; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.k9[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','k9',inputElement.value,'')"></textarea>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Capacity reduction %</td>
+                    <td *ngFor="let data of res.k10; let i = index">
+                        <textarea class name="" id="" cols="40" rows="2" [value]="res.k10[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','k10',inputElement.value,'')"></textarea>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Previous year total capacity, units</td>
+                    <td *ngFor="let data of res.k11; let i = index">
+                        <textarea class name="" id="" cols="40" row="2" [value]="res.k11[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','k11',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Machine Cost, mn INR</td>
+                    <td *ngFor="let data of res.k12; let i = index">
+                        <textarea class name="" id="" cols="40" row="2" [value]="res.k12[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','k12',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Capacity per machine</td>
+                    <td *ngFor="let data of res.k13; let i = index">
+                        <textarea class name="" id="" cols="40" row="2" [value]="res.k13[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','k13',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Min number of machine</td>
+                    <td *ngFor="let data of res.k14; let i = index">
+                        <textarea class name="" id="" cols="40" row="2" [value]="res.k14[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','k14',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Max number of machines</td>
+                    <td *ngFor="let data of res.k15; let i = index">
+                        <textarea class name="" id="" cols="40" row="2" [value]="res.k15[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','k15',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Inventory holding cost, INR</td>
+                    <td *ngFor="let data of res.k16; let i = index">
+                        <textarea class name="" id="" cols="40" row="2" [value]="res.k16[i]" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeModuleValue(i,'normal','no','k16',inputElement.value,'')"></textarea>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

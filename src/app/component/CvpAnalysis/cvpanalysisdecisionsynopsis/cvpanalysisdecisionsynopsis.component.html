@@ -1,0 +1,398 @@
+<div class="elearingnewui cvp_analysis">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="feed_ack">
+                <div>
+                    <div class="row pb-4">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                                <div class="">
+                                    <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                        (change)="roundClick()">
+                                        <option class="select-round-option" value="">Select Round</option>
+                                        <option class="select-round-option"
+                                            *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                            {{attempt}}</option>
+
+                                    </select>
+                                </div>
+                                <div class="download_btn" matTooltiClass="primary-tooltip"
+                                    (click)="downloadreportcvpanalysisigment()">
+                                    <div>
+                                        <a download matTooltip="Download"><span class="hovertext"
+                                                data-hover="Download pdf file accounting ">
+                                                <img src="assets/images/businessbasics/download.png" />
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <mat-icon class="mt-2">get_app</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1>
+                        Synopsis
+                    </h1>
+                    <div style="margin-top: 1.1rem;" *ngIf="analysisshow">
+                        <h1
+                            style="display: flex; align-items: center; gap: 5px;font-size: 1.1rem; font-weight: 600;padding: 0.6rem 0.4rem;color: white;background-color: #266cc38a;">
+                            Feedback
+                            <div style=" width: 1rem;">
+                                <mat-icon (click)="rotate();roundClick();" [@rotatedState]='state' class="sidenav-icon"
+                                    aria-hidden="false" aria-label="Example home icon">cached</mat-icon>
+                            </div>
+                        </h1>
+                    </div>
+                    <div class="decision-textarea pb-5 h-100" *ngIf="analysisshow">
+                        <div class="row">
+                            <div class="col-md" style="padding: 10px;">
+                                <div class="card feedbsck-value p-3">
+                                    <markdown [data]="feedbackvalue"></markdown>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-cols-md-2 py-3">
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Decisions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Input</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Jeans Demand, units</td>
+                                        <td>{{result[0]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Jeans Price, INR</td>
+                                        <td>{{result[1]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Jeans Advertising, mn INR</td>
+                                        <td>{{result[2]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Jeans Quality Control, mn INR</td>
+                                        <td>{{result[3]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Top Demand, units </td>
+                                        <td>{{result[4]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Top Price, INR</td>
+                                        <td>{{result[5]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Top Advertising, mn INR</td>
+                                        <td>{{result[6]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Top Quality Control, mn INR</td>
+                                        <td>{{result[7]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Number of Machinery</td>
+                                        <td>{{result[8]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Jeans Capacity Allocation</td>
+                                        <td>{{result[9]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Top Capacity Allocation</td>
+                                        <td>{{result[10]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3">Production, units</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th"  style="text-align: right;">Jeans</th>
+                                        <th class="rsl_tbl-tbody-th">Top</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Production</td>
+                                        <td class="middleclassright">{{result[35]|number:'1.0-0'}}</td>
+                                        <td>{{result[36]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Closing Inventory</td>
+                                        <td class="middleclassright">{{result[37]|number:'1.0-0'}}</td>
+                                        <td>{{result[38]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Stockout</td>
+                                        <td class="middleclassright">{{result[39]|number:'1.0-0'}}</td>
+                                        <td>{{result[40]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3">CVP Analysis, INR</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th"  style="text-align: right;">Jeans</th>
+                                        <th class="rsl_tbl-tbody-th">Top</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Price per unit</td>
+                                        <td class="middleclassright">{{result[50]|number:'1.0-0'}}</td>
+                                        <td>{{result[51]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Variable cost per unit</td>
+                                        <td class="middleclassright">{{result[52]|number:'1.0-0'}}</td>
+                                        <td>{{result[53]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Contribution per unit</td>
+                                        <td class="middleclassright">{{result[54]|number:'1.0-0'}}</td>
+                                        <td>{{result[55]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3">KPI product level</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th"  style="text-align: right;">Jeans</th>
+                                        <th class="rsl_tbl-tbody-th">Top</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Contribution Ratio</td>
+                                        <td class="middleclassright">{{result[56]*100|number:'1.0-0'}}%</td>
+                                        <td>{{result[57]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Operating Margin</td>
+                                        <td class="middleclassright">{{result[58]*100|number:'1.0-0'}}%</td>
+                                        <td>{{result[59]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Market Share</td>
+                                        <td class="middleclassright">{{result[60]*100|number:'1.0-0'}}%</td>
+                                        <td>{{result[61]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3">Operating Income, mn INR</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th"  style="text-align: right;">Jeans</th>
+                                        <th *ngIf="optional[1]"   class="rsl_tbl-tbody-th">Top</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Revenue</td>
+                                        <td class="middleclassright">{{result[15]|number:'1.0-0'}}</td>
+                                        <td *ngIf="optional[1]">{{result[16]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Production cost</td>
+                                        <td class="middleclassright">{{result[17]|number:'1.0-0'}}</td>
+                                        <td *ngIf="optional[1]">{{result[18]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Gross Profit/Loss</td>
+                                        <td class="middleclassright">{{result[19]|number:'1.0-0'}}</td>
+                                        <td *ngIf="optional[1]">{{result[20]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Advertising</td>
+                                        <td class="middleclassright">{{result[21]|number:'1.0-0'}}</td>
+                                        <td *ngIf="optional[1]">{{result[22]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Quality</td>
+                                        <td class="middleclassright">{{result[23]|number:'1.0-0'}}</td>
+                                        <td *ngIf="optional[1]">{{result[24]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Inventory holding cost</td>
+                                        <td class="middleclassright">{{result[25]|number:'1.0-0'}}</td>
+                                        <td *ngIf="optional[1]">{{result[26]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Administration</td>
+                                        <td class="middleclassright">{{result[27]|number:'1.0-0'}}</td>
+                                        <td *ngIf="optional[1]">{{result[28]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>EBITDA</td>
+                                        <td class="middleclassright">{{result[29]|number:'1.0-0'}}</td>
+                                        <td *ngIf="optional[1]">{{result[30]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Depreciation</td>
+                                        <td class="middleclassright">{{result[31]|number:'1.0-0'}}</td>
+                                        <td *ngIf="optional[1]">{{result[32]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Operating Profit/Loss</td>
+                                        <td class="middleclassright">{{result[33]|number:'1.0-0'}}</td>
+                                        <td *ngIf="optional[1]">{{result[34]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3">Sales, units</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th" style="text-align: right;">Jeans</th>
+                                        <th *ngIf="optional[1]" class="rsl_tbl-tbody-th">Top</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Demand</td>
+                                        <td class="middleclassright">{{result[11]|number:'1.0-0'}}</td>
+                                        <td *ngIf="optional[1]">{{result[12]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales</td>
+                                        <td class="middleclassright">{{result[13]|number:'1.0-0'}}</td>
+                                        <td *ngIf="optional[1]">{{result[14]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3">Break even point</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th"  style="text-align: right;">Jeans</th>
+                                        <th *ngIf="optional[1]" class="rsl_tbl-tbody-th">Top</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Breakeven sales, mn INR</td>
+                                        <td class="middleclassright">{{result[41]|number:'1.0-0'}}</td>
+                                        <td *ngIf="optional[1]">{{result[42]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Breakeven sales, units</td>
+                                        <td class="middleclassright">{{result[43]|number:'1.0-0'}}</td>
+                                        <td *ngIf="optional[1]">{{result[44]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Margin of safety, units</td>
+                                        <td class="middleclassright">{{result[45]|number:'1.0-0'}}</td>
+                                        <td *ngIf="optional[1]">{{result[46]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">KPI company-wide</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Output</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Operating Margin</td>
+                                        <td>{{result[47]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Market Share</td>
+                                        <td>{{result[48]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Operating Profit/Loss, mn INR</td>
+                                         <td>{{result[49]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5"  *ngIf="optional[0]">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Thinking Ability</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Score</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Marketing budget</td>
+                                        <td>{{result[62]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Production budget</td>
+                                        <td>{{result[63]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row lst_r">
+                        <div class="col-4 lst_r-col4" *ngIf="!timefinished">
+                            <button class="mt-4 retry" [disabled]="isButtonDisabled"  (click)="exit()">{{retry}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

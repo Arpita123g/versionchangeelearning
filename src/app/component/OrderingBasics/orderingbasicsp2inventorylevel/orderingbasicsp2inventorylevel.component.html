@@ -1,0 +1,58 @@
+<div class="elearingnewui innovation_game">
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <h1 class="pb-4">Phase 2 Inventory Level
+                    <mat-icon appTippy="
+                                        <div class='help-tip p-2'>
+                                          <div style='display:flex;'>
+                                            <div>
+                                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                            </div> &nbsp; &nbsp;
+                                            <div>
+                                              <p style='margin: 0 auto; color: white; font-size:13px;'> How will you interpret the 52-week data on ordering quantity, reorder level, inventory levels, stockout and back ordering situations, and lead times to optimize the inventory management system?</p>
+                                            </div>
+                                          </div>
+                                            <div class='pt-2' style='display:flex;'>
+                                              <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                              </div> &nbsp; &nbsp; 
+                                              <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'> What strategies can you implement based on the presented data to minimize stockouts, backorders, and associated costs, while ensuring adequate inventory levels?</p>
+                                              </div>
+                                            </div>
+                                        </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <table class="table rsl_tbl">
+                    <thead class="rsl_tbl-thead">
+                        <tr class="rsl_tbl-thead-tr">
+                            <th class="rsl_tbl-thead-th" *ngFor="let tablehead of headelement">{{tablehead}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="rsl_tbl-tbody">
+                        <tr class="rsl_tbl-tbody-tr" *ngFor="let row of tableelement ; let i=index">
+                            
+                          <td>{{i+1}}</td>
+                          <td>{{row.Order}}</td>
+                          <td>{{row.Inventory}}</td>
+                          <td>{{row.Demand}}</td>
+                          <td>{{row.Ending}}</td>
+                          <td>{{row.Back}}</td>
+                          <td>{{row.Level}}</td>
+                          <td>{{row.Stockout}}</td>
+                          <td>{{row.Orderplaced}}</td>
+                          <td>{{row.Lead|number:'1.0-0'}}</td>
+                          <td>{{row.Recpt|number:'1.0-0'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                  <p>Note: Once the order is placed there can be a delay in the receiving time which gets added over and above the lead time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

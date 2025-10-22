@@ -1,0 +1,1155 @@
+<div class="elearingnewui hrmreport">
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row pb-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                            <div class="">
+                                <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                    (change)="roundClick()">
+                                    <option class="select-round-option" value="">Select Round</option>
+                                    <option class="select-round-option"
+                                        *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                        {{attempt}}</option>
+
+                                </select>
+                            </div>
+
+                            <div class="download_btn" matTooltiClass="primary-tooltip" (click)="downloadreportforhrm()">
+                                <div>
+                                    <a download matTooltip="Download"><span class="hovertext"
+                                            data-hover="Download pdf file accounting ">
+                                            <img class="download_btn-img"
+                                                src="assets/images/businessbasics/download.png" />
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <mat-icon class="mt-2">get_app</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hrmfintechtab">
+                <ul id="nav-tab" role="tablist" class="nav hrmfintechtab-nav flex-nowrap align-items-center">
+
+                    <li id="kpi-tab'" data-bs-toggle="tab" data-bs-target="#nav-kpi" type="button" role="tab"
+                        aria-controls="nav-Memo" class="nav-link hrmfintechtab-link active">
+                        KPI
+                    </li>
+                    <li id="tools-tab'" data-bs-toggle="tab" data-bs-target="#nav-tools" type="button" role="tab"
+                        aria-controls="nav-Memo" class="nav-link hrmfintechtab-link ">
+                        Tools
+                    </li>
+                    <li id="talentacq-tab'" data-bs-toggle="tab" data-bs-target="#nav-talentacq" type="button"
+                        role="tab" aria-controls="nav-Memo" class="nav-link hrmfintechtab-link">
+                        Talent Acquisition
+                    </li>
+                    <li id="talentmgmt-tab'" data-bs-toggle="tab" data-bs-target="#nav-talentmgmt" type="button"
+                        role="tab" aria-controls="nav-Memo" class="nav-link hrmfintechtab-link">
+                        Talent Management
+                    </li>
+                </ul>
+
+                <div id="nav-tabContent" class="tab-content">
+                    <!-- kpi report  -->
+                    <div id="nav-kpi" role="tabpanel" class="tab-pane fade active show">
+                        <div class="rounded-5 rtsidetable card p-3">
+                            <div class="row row-cols-md-2 mb-3">
+                                <div class="col-md-5 reyapo">
+                                    <h1 class="reyapo-h1 mb-4">Reports</h1>
+                                    <p style="text-align: justify;">
+                                        Excellent work. You have met your organizations human resource requirements
+                                        while making crucial strategic decisions. In this exercise every decision you
+                                        have taken shows your skills in dimensions like rigor, synthesis, structuring
+                                        and business judgement.
+                                    </p>
+                                    <div>
+                                        <table class="table rsl_tbl">
+                                            <thead class="rsl_tbl-thead">
+                                                <tr class="rsl_tbl-thead-tr">
+                                                    <th class="rsl_tbl-thead-th text-start" colspan="2">Scores -
+                                                        Conflict</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="rsl_tbl-tbody">
+                                                <tr class="rsl_tbl-tbody-tr" *ngFor="let item of conflict">
+                                                    <td>{{item.title}}</td>
+                                                    <td>
+                                                        <i class="bi"
+                                                            [ngClass]="item.value.toLowerCase()=='correct'?'bi-check-circle-fill':'bi-x-circle-fill'"></i>
+                                                        {{item.value}}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table class="table rsl_tbl">
+                                            <thead class="rsl_tbl-thead">
+                                                <tr class="rsl_tbl-thead-tr">
+                                                    <th class="rsl_tbl-thead-th text-start" colspan="2">Scores -
+                                                        Thinking Ability</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="rsl_tbl-tbody">
+                                                <tr class="rsl_tbl-tbody-tr" *ngFor="let item of scores">
+                                                    <td>{{item.title}}</td>
+                                                    <td>
+
+                                                        <div class="progress" role="progressbar"
+                                                            [attr.aria-valuenow]="item.value" aria-valuemin="0"
+                                                            aria-valuemax="100">
+                                                            <div class="progress-bar" [style.width]="item.value">
+                                                                {{item.value}}</div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="card border-0 rigorcard">
+                                        <div class="rigorcard-icon float-end">
+                                            <mat-icon class="rigorcard-icon-mat float-end" appTippy="<table >
+                                <tr>
+                                  <th style='font-weight:500; padding:7px;font-size:14px'>Rigor</th>
+                                  <td style='padding:7px;font-size:13px'>Consistency throughout the decision-making and recommendation.</td>
+                                </tr>
+                                <tr>
+                                  <th style='font-weight:500 ;padding:7px;font-size:14px'>Structuring</th>
+                                  <td style='padding:7px;font-size:13px'>A logical approach to gathering and analyzing information.</td>
+                                </tr>
+                                <tr>
+                                  <th style='font-weight:500 ;padding:7px;font-size:14px'>
+                                    Synthesis
+                                  </th>
+                                  <td style='padding:7px;font-size:13px'>
+                                    Approach towards interpreting all the information and making informed decisions.
+                                  </td>
+                                <tr>
+                                  <th style='font-weight:500; padding:7px;font-size:14px'>Business Jugement</th>
+                                  <td style='padding:7px;font-size:13px'>Ability to evaluate facts and consider risks and possible implications when making decisions.</td>
+                                </tr>
+                                </tr>
+                              </table>
+                               ">
+                                                help_outline
+                                            </mat-icon>
+                                        </div>
+                                        <apx-chart [series]="rigorcharts.series" [chart]="rigorcharts.chart"
+                                            [xaxis]="rigorcharts.xaxis" [yaxis]="rigorcharts.yaxis"
+                                            [stroke]="rigorcharts.stroke" [markers]="rigorcharts.markers"
+                                            [fill]="rigorcharts.fill" [title]="rigorcharts.title"></apx-chart>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row my-5">
+                                <div class="col-md-6">
+                                    <table class="table rsl_tbl">
+                                        <thead class="rsl_tbl-thead">
+                                            <tr class="rsl_tbl-thead-tr">
+                                                <th class="rsl_tbl-thead-th" colspan="5">KPI</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="rsl_tbl-tbody">
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <th class="rsl_tbl-tbody-th"></th>
+                                                <th class="rsl_tbl-tbody-th">Sales</th>
+                                                <th class="rsl_tbl-tbody-th"
+                                                    *ngIf="optionalCaseStatus.productengstatus=='active'">Product &
+                                                    Engineering</th>
+                                                <th class="rsl_tbl-tbody-th"
+                                                    *ngIf="optionalCaseStatus.customersuccessstatus=='active'">Customer
+                                                    Success</th>
+                                                <th class="rsl_tbl-tbody-th"
+                                                    *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                    Design &
+                                                    Communication</th>
+                                            </tr>
+                                        </tbody>
+                                        <tbody class="rsl_tbl-tbody border-top-0">
+                                            <tr class="rsl_tbl-tbody-tr" *ngFor="let item of kpitable">
+                                                <td>{{item.title}}</td>
+                                                <td class="middleclassright">
+                                                    {{result.kpireport[item.cell[0][attempt]]|number:'1.0-2'}}</td>
+                                                <td class="middleclassright"
+                                                    *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                    {{result.kpireport[item.cell[1][attempt]]|number:'1.0-2'}}</td>
+                                                <td class="middleclassright"
+                                                    *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                    {{result.kpireport[item.cell[2][attempt]]|number:'1.0-2'}}</td>
+                                                <td *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                    {{result.kpireport[item.cell[3][attempt]]|number:'1.0-2'}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card p-2">
+                                        <apx-chart [series]="emloyeesatisfactionseries.series"
+                                            [chart]="emloyeesatisfactionseries.chart"
+                                            [dataLabels]="emloyeesatisfactionseries.dataLabels"
+                                            [plotOptions]="emloyeesatisfactionseries.plotOptions"
+                                            [yaxis]="emloyeesatisfactionseries.yaxis"
+                                            [xaxis]="emloyeesatisfactionseries.xaxis"
+                                            [fill]="emloyeesatisfactionseries.fill"
+                                            [title]="emloyeesatisfactionseries.title"
+                                            [noData]="emloyeesatisfactionseries.noData"
+                                            [tooltip]="emloyeesatisfactionseries.tooltip">
+                                        </apx-chart>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row my-5">
+                                <div class="col-md-6">
+                                    <table class="table rsl_tbl">
+                                        <thead class="rsl_tbl-thead">
+                                            <tr class="rsl_tbl-thead-tr">
+                                                <th class="rsl_tbl-thead-th" colspan="5">Performance Level Incremental,
+                                                    %</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="rsl_tbl-tbody">
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <th class="rsl_tbl-tbody-th"></th>
+                                                <th class="rsl_tbl-tbody-th">Sales</th>
+                                                <th class="rsl_tbl-tbody-th"
+                                                    *ngIf="optionalCaseStatus.productengstatus=='active'">Product &
+                                                    Engineering</th>
+                                                <th class="rsl_tbl-tbody-th"
+                                                    *ngIf="optionalCaseStatus.customersuccessstatus=='active'">Customer
+                                                    Success</th>
+                                                <th class="rsl_tbl-tbody-th"
+                                                    *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                    Design &
+                                                    Communication</th>
+                                            </tr>
+                                        </tbody>
+                                        <tbody class="rsl_tbl-tbody border-top-0">
+                                            <tr class="rsl_tbl-tbody-tr" *ngFor="let item of performanceleveltable">
+                                                <td>{{item.title}}</td>
+                                                <td class="middleclassright">
+                                                    {{result.kpireport[item.cell[0][attempt]]*100|number:'1.0-0'}}
+                                                </td>
+                                                <td class="middleclassright"
+                                                    *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                    {{result.kpireport[item.cell[1][attempt]]*100|number:'1.0-0'}}
+                                                </td>
+                                                <td class="middleclassright"
+                                                    *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                    {{result.kpireport[item.cell[2][attempt]]*100|number:'1.0-0'}}
+                                                </td>
+                                                <td *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                    {{result.kpireport[item.cell[3][attempt]]*100|number:'1.0-0'}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card p-2">
+                                        <apx-chart [series]="performancelevelseries.series"
+                                            [chart]="performancelevelseries.chart"
+                                            [dataLabels]="performancelevelseries.dataLabels"
+                                            [plotOptions]="performancelevelseries.plotOptions"
+                                            [yaxis]="performancelevelseries.yaxis"
+                                            [xaxis]="performancelevelseries.xaxis" [fill]="performancelevelseries.fill"
+                                            [title]="performancelevelseries.title"
+                                            [noData]="performancelevelseries.noData"
+                                            [tooltip]="performancelevelseries.tooltip">
+                                        </apx-chart>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row my-5">
+                                <div>
+                                    <table class="table rsl_tbl">
+                                        <thead class="rsl_tbl-thead">
+                                            <tr class="rsl_tbl-thead-tr">
+                                                <th class="rsl_tbl-thead-th" colspan="5">Productivity Level, %</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="rsl_tbl-tbody">
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <th class="rsl_tbl-tbody-th"></th>
+                                                <th class="rsl_tbl-tbody-th">Sales</th>
+                                                <th class="rsl_tbl-tbody-th"
+                                                    *ngIf="optionalCaseStatus.productengstatus=='active'">Product &
+                                                    Engineering</th>
+                                                <th class="rsl_tbl-tbody-th"
+                                                    *ngIf="optionalCaseStatus.customersuccessstatus=='active'">Customer
+                                                    Success</th>
+                                                <th class="rsl_tbl-tbody-th"
+                                                    *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                    Design &
+                                                    Communication</th>
+                                            </tr>
+                                        </tbody>
+                                        <tbody class="rsl_tbl-tbody border-top-0">
+                                            <tr class="rsl_tbl-tbody-tr" *ngFor="let item of Productivityleveltable">
+                                                <td>{{item.title}}</td>
+                                                <td class="middleclassright">
+                                                    {{result.kpireport[item.cell[0][attempt]]*100|number:'1.0-0'}}
+                                                </td>
+                                                <td class="middleclassright"
+                                                    *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                    {{result.kpireport[item.cell[1][attempt]]*100|number:'1.0-0'}}
+                                                </td>
+                                                <td class="middleclassright"
+                                                    *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                    {{result.kpireport[item.cell[2][attempt]]*100|number:'1.0-0'}}
+                                                </td>
+                                                <td *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                    {{result.kpireport[item.cell[3][attempt]]*100|number:'1.0-0'}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row my-5">
+                                <div class="col-md-6">
+                                    <table class="table rsl_tbl">
+                                        <thead class="rsl_tbl-thead">
+                                            <tr class="rsl_tbl-thead-tr">
+                                                <th class="rsl_tbl-thead-th" colspan="5">Stress Level, %</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="rsl_tbl-tbody">
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <th class="rsl_tbl-tbody-th"></th>
+                                                <th class="rsl_tbl-tbody-th">Sales</th>
+                                                <th class="rsl_tbl-tbody-th"
+                                                    *ngIf="optionalCaseStatus.productengstatus=='active'">Product &
+                                                    Engineering</th>
+                                                <th class="rsl_tbl-tbody-th"
+                                                    *ngIf="optionalCaseStatus.customersuccessstatus=='active'">Customer
+                                                    Success</th>
+                                                <th class="rsl_tbl-tbody-th"
+                                                    *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                    Design &
+                                                    Communication</th>
+                                            </tr>
+                                        </tbody>
+                                        <tbody class="rsl_tbl-tbody border-top-0">
+                                            <tr class="rsl_tbl-tbody-tr" *ngFor="let item of stressleveltable">
+                                                <td>{{item.title}}</td>
+                                                <td class="middleclassright">
+                                                    {{result.kpireport[item.cell[0][attempt]]*100|number:'1.0-0'}}
+                                                </td>
+                                                <td class="middleclassright"
+                                                    *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                    {{result.kpireport[item.cell[1][attempt]]*100|number:'1.0-0'}}
+                                                </td>
+                                                <td class="middleclassright"
+                                                    *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                    {{result.kpireport[item.cell[2][attempt]]*100|number:'1.0-0'}}
+                                                </td>
+                                                <td *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                    {{result.kpireport[item.cell[3][attempt]]*100|number:'1.0-0'}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-6">
+                                    <table class="table rsl_tbl">
+                                        <thead class="rsl_tbl-thead">
+                                            <tr class="rsl_tbl-thead-tr">
+                                                <th class="rsl_tbl-thead-th" colspan="5">Budget & Cost, k INR</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="rsl_tbl-tbody">
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <th class="rsl_tbl-tbody-th"></th>
+                                                <th class="rsl_tbl-tbody-th">Sales</th>
+                                                <th class="rsl_tbl-tbody-th"
+                                                    *ngIf="optionalCaseStatus.productengstatus=='active'">Product &
+                                                    Engineering</th>
+                                                <th class="rsl_tbl-tbody-th"
+                                                    *ngIf="optionalCaseStatus.customersuccessstatus=='active'">Customer
+                                                    Success</th>
+                                                <th class="rsl_tbl-tbody-th"
+                                                    *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                    Design &
+                                                    Communication</th>
+                                            </tr>
+                                        </tbody>
+                                        <tbody class="rsl_tbl-tbody border-top-0">
+
+                                            <tr class="rsl_tbl-tbody-tr" *ngFor="let item of budgetcosttable">
+                                                <td>{{item.title}}</td>
+                                                <td class="middleclassright">
+                                                    {{result.kpireport[item.cell[0][attempt]]|number:'1.0-0'}}
+                                                </td>
+                                                <td class="middleclassright"
+                                                    *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                    {{result.kpireport[item.cell[1][attempt]]|number:'1.0-0'}}
+                                                </td>
+                                                <td class="middleclassright"
+                                                    *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                    {{result.kpireport[item.cell[2][attempt]]|number:'1.0-0'}}
+                                                </td>
+                                                <td *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                    {{result.kpireport[item.cell[3][attempt]]|number:'1.0-0'}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- tools report  -->
+                    <div id="nav-tools" role="tabpanel" class="tab-pane fade show ">
+                        <div class="rounded-5 rtsidetable card p-3">
+                            <div class="pb-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="col-md">
+                                            <table class="table rsl_tbl">
+                                                <thead class="rsl_tbl-thead">
+                                                    <tr class="rsl_tbl-thead-tr">
+                                                        <th class="rsl_tbl-thead-th" colspan="2">Cost of Tools for
+                                                            Increasing Effectiveness, k INR</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="rsl_tbl-tbody">
+                                                    <tr class="rsl_tbl-tbody-tr border">
+                                                        <th class="rsl_tbl-tbody-th text-end" colspan="2">Company-wide
+                                                        </th>
+                                                    </tr>
+                                                </tbody>
+                                                <tbody class="rsl_tbl-tbody  border-top-0">
+                                                    <tr class="rsl_tbl-tbody-tr" *ngFor="let item of costoftoolstable">
+                                                        <td>{{item.title}}</td>
+                                                        <td>{{result.organizationreport[item.cell[attempt]]}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card p-2 h-100">
+                                            <apx-chart [series]="constoftoolsseries.series"
+                                                [chart]="constoftoolsseries.chart"
+                                                [dataLabels]="constoftoolsseries.dataLabels"
+                                                [plotOptions]="constoftoolsseries.plotOptions"
+                                                [yaxis]="constoftoolsseries.yaxis" [xaxis]="constoftoolsseries.xaxis"
+                                                [fill]="constoftoolsseries.fill" [title]="constoftoolsseries.title"
+                                                [noData]="constoftoolsseries.noData"
+                                                [tooltip]="constoftoolsseries.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" pb-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="col-md">
+                                            <table class="table rsl_tbl">
+                                                <thead class="rsl_tbl-thead">
+                                                    <tr class="rsl_tbl-thead-tr">
+                                                        <th class="rsl_tbl-thead-th" colspan="2">Increase in
+                                                            Effectiveness after deploying Tool, %</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="rsl_tbl-tbody">
+                                                    <tr class="rsl_tbl-tbody-tr">
+                                                        <th class="rsl_tbl-tbody-th text-end" colspan="2">Company-wide
+                                                        </th>
+                                                    </tr>
+                                                </tbody>
+                                                <tbody class="rsl_tbl-tbody  border-top-0">
+                                                    <tr class="rsl_tbl-tbody-tr"
+                                                        *ngFor="let item of increaseofeffectiveness">
+                                                        <td>{{item.title}}</td>
+                                                        <td>{{result.organizationreport[item.cell[attempt]]*100|number:'1.0-0'}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card p-2 h-100">
+                                            <apx-chart [series]="increaseofeffectivenessseries.series"
+                                                [chart]="increaseofeffectivenessseries.chart"
+                                                [dataLabels]="increaseofeffectivenessseries.dataLabels"
+                                                [plotOptions]="increaseofeffectivenessseries.plotOptions"
+                                                [yaxis]="increaseofeffectivenessseries.yaxis"
+                                                [xaxis]="increaseofeffectivenessseries.xaxis"
+                                                [fill]="increaseofeffectivenessseries.fill"
+                                                [title]="increaseofeffectivenessseries.title"
+                                                [noData]="increaseofeffectivenessseries.noData"
+                                                [tooltip]="increaseofeffectivenessseries.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pb-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="col-md">
+                                            <table class="table rsl_tbl">
+                                                <thead class="rsl_tbl-thead">
+                                                    <tr class="rsl_tbl-thead-tr">
+                                                        <th class="rsl_tbl-thead-th" colspan="2">Performance Level
+                                                            Increment, %</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="rsl_tbl-tbody">
+                                                    <tr class="rsl_tbl-tbody-tr">
+                                                        <th class="rsl_tbl-tbody-th text-end" colspan="2">Company-wide
+                                                        </th>
+                                                    </tr>
+                                                </tbody>
+                                                <tbody class="rsl_tbl-tbody border-top-0">
+                                                    <tr class="rsl_tbl-tbody-tr"
+                                                        *ngFor="let item of PerformanceLevelIncrementORG">
+                                                        <td>{{item.title}}</td>
+                                                        <td>{{result.organizationreport[item.cell[attempt]]*100|number:'1.0-0'}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- talent acq report  -->
+                    <div id="nav-talentacq" role="tabpanel" class="tab-pane fade ">
+                        <div class="rounded-5 rtsidetable card p-3">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div>
+                                        <table class="table rsl_tbl">
+                                            <thead class="rsl_tbl-thead">
+                                                <tr class="rsl_tbl-thead-tr">
+                                                    <th class="rsl_tbl-thead-th" colspan="5">Increase in Employer
+                                                        Branding %, Channel</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="rsl_tbl-tbody">
+                                                <tr class="rsl_tbl-tbody-tr">
+                                                    <th class="rsl_tbl-tbody-th"></th>
+                                                    <th class="rsl_tbl-tbody-th">Sales</th>
+                                                    <th class="rsl_tbl-tbody-th"
+                                                        *ngIf="optionalCaseStatus.productengstatus=='active'">Product &
+                                                        Engineering</th>
+                                                    <th class="rsl_tbl-tbody-th"
+                                                        *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                        Customer
+                                                        Success</th>
+                                                    <th class="rsl_tbl-tbody-th"
+                                                        *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                        Design &
+                                                        Communication</th>
+                                                </tr>
+                                            </tbody>
+                                            <tbody class="rsl_tbl-tbody border-top-0">
+                                                <tr class="rsl_tbl-tbody-tr"
+                                                    *ngFor="let item of employerbrandingchanneltable">
+                                                    <td>{{item.title}}</td>
+                                                    <td class="middleclassright">
+                                                        {{result.acquisitionreport[item.cell[0][attempt]]|number:'1.0-0'}}
+                                                    </td>
+                                                    <td class="middleclassright"
+                                                        *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                        {{result.acquisitionreport[item.cell[1][attempt]]|number:'1.0-0'}}
+                                                    </td>
+                                                    <td class="middleclassright"
+                                                        *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                        {{result.acquisitionreport[item.cell[2][attempt]]|number:'1.0-0'}}
+                                                    </td>
+                                                    <td *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                        {{result.acquisitionreport[item.cell[3][attempt]]|number:'1.0-0'}}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card p-2 w-100">
+                                        <apx-chart [series]="communicationeffectivenessseries.series"
+                                            [chart]="communicationeffectivenessseries.chart"
+                                            [dataLabels]="communicationeffectivenessseries.dataLabels"
+                                            [plotOptions]="communicationeffectivenessseries.plotOptions"
+                                            [yaxis]="communicationeffectivenessseries.yaxis"
+                                            [xaxis]="communicationeffectivenessseries.xaxis"
+                                            [fill]="communicationeffectivenessseries.fill"
+                                            [title]="communicationeffectivenessseries.title"
+                                            [noData]="communicationeffectivenessseries.noData"
+                                            [tooltip]="communicationeffectivenessseries.tooltip">
+                                        </apx-chart>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <table class="table rsl_tbl">
+                                    <thead class="rsl_tbl-thead">
+                                        <tr class="rsl_tbl-thead-tr">
+                                            <th class="rsl_tbl-thead-th" colspan="5">Number of Employees</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="rsl_tbl-tbody">
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <th class="rsl_tbl-tbody-th"></th>
+                                            <th class="rsl_tbl-tbody-th">Sales</th>
+                                            <th class="rsl_tbl-tbody-th"
+                                                *ngIf="optionalCaseStatus.productengstatus=='active'">Product &
+                                                Engineering</th>
+                                            <th class="rsl_tbl-tbody-th"
+                                                *ngIf="optionalCaseStatus.customersuccessstatus=='active'">Customer
+                                                Success
+                                            </th>
+                                            <th class="rsl_tbl-tbody-th"
+                                                *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">Design &
+                                                Communication</th>
+                                        </tr>
+                                    </tbody>
+                                    <tbody class="rsl_tbl-tbody border-top-0">
+                                        <tr class="rsl_tbl-tbody-tr" *ngFor="let item of noofemployeestable">
+                                            <td>{{item.title}}</td>
+                                            <td class="middleclassright">
+                                                {{result.acquisitionreport[item.cell[0][attempt]]|number:'1.0-0'}}
+                                            </td>
+                                            <td class="middleclassright"
+                                                *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                {{result.acquisitionreport[item.cell[1][attempt]]|number:'1.0-0'}}
+                                            </td>
+                                            <td class="middleclassright"
+                                                *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                {{result.acquisitionreport[item.cell[2][attempt]]|number:'1.0-0'}}
+                                            </td>
+                                            <td *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                {{result.acquisitionreport[item.cell[3][attempt]]|number:'1.0-0'}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div>
+                                            <table class="table rsl_tbl">
+                                                <thead class="rsl_tbl-thead">
+                                                    <tr class="rsl_tbl-thead-tr">
+                                                        <th class="rsl_tbl-thead-th" colspan="5">Gender Diversity Ratio,
+                                                            % of total employees</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="rsl_tbl-tbody">
+                                                    <tr class="rsl_tbl-tbody-tr">
+                                                        <th class="rsl_tbl-tbody-th"></th>
+                                                        <th class="rsl_tbl-tbody-th">Sales</th>
+                                                        <th class="rsl_tbl-tbody-th"
+                                                            *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                            Product & Engineering</th>
+                                                        <th class="rsl_tbl-tbody-th"
+                                                            *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                            Customer Success</th>
+                                                        <th class="rsl_tbl-tbody-th"
+                                                            *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                            Design
+                                                            & Communication</th>
+                                                    </tr>
+                                                </tbody>
+                                                <tbody class="rsl_tbl-tbody border-top-0">
+                                                    <tr class="rsl_tbl-tbody-tr"
+                                                        *ngFor="let item of genderdiversitytable">
+                                                        <td>{{item.title}}</td>
+                                                        <td class="middleclassright">
+                                                            {{result.acquisitionreport[item.cell[0][attempt]]*100|number:'1.0-1'}}%
+                                                        </td>
+                                                        <td class="middleclassright"
+                                                            *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                            {{result.acquisitionreport[item.cell[1][attempt]]*100|number:'1.0-1'}}%
+                                                        </td>
+                                                        <td class="middleclassright"
+                                                            *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                            {{result.acquisitionreport[item.cell[2][attempt]]*100|number:'1.0-1'}}%
+                                                        </td>
+                                                        <td
+                                                            *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                            {{result.acquisitionreport[item.cell[3][attempt]]*100|number:'1.0-1'}}%
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card p-2 w-100">
+                                            <apx-chart [series]="genderdiversityseries.series"
+                                                [chart]="genderdiversityseries.chart"
+                                                [dataLabels]="genderdiversityseries.dataLabels"
+                                                [plotOptions]="genderdiversityseries.plotOptions"
+                                                [yaxis]="genderdiversityseries.yaxis"
+                                                [xaxis]="genderdiversityseries.xaxis"
+                                                [fill]="genderdiversityseries.fill"
+                                                [title]="genderdiversityseries.title"
+                                                [noData]="genderdiversityseries.noData"
+                                                [tooltip]="genderdiversityseries.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div>
+                                            <table class="table rsl_tbl">
+                                                <thead class="rsl_tbl-thead">
+                                                    <tr class="rsl_tbl-thead-tr">
+                                                        <th class="rsl_tbl-thead-th" colspan="5">Cost of Recruitment, k
+                                                            INR</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="rsl_tbl-tbody">
+                                                    <tr class="rsl_tbl-tbody-tr">
+                                                        <th class="rsl_tbl-tbody-th"></th>
+                                                        <th class="rsl_tbl-tbody-th">Sales</th>
+                                                        <th class="rsl_tbl-tbody-th"
+                                                            *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                            Product & Engineering</th>
+                                                        <th class="rsl_tbl-tbody-th"
+                                                            *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                            Customer Success</th>
+                                                        <th class="rsl_tbl-tbody-th"
+                                                            *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                            Design
+                                                            & Communication</th>
+                                                    </tr>
+                                                </tbody>
+                                                <tbody class="rsl_tbl-tbody border-top-0">
+                                                    <tr class="rsl_tbl-tbody-tr"
+                                                        *ngFor="let item of costofrecruitmenttable">
+                                                        <td>{{item.title}}</td>
+                                                        <td class="middleclassright">
+                                                            {{result.acquisitionreport[item.cell[0][attempt]]|number:'1.0-0'}}
+                                                        </td>
+                                                        <td class="middleclassright"
+                                                            *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                            {{result.acquisitionreport[item.cell[1][attempt]]|number:'1.0-0'}}
+                                                        </td>
+                                                        <td class="middleclassright"
+                                                            *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                            {{result.acquisitionreport[item.cell[2][attempt]]|number:'1.0-0'}}
+                                                        </td>
+                                                        <td
+                                                            *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                            {{result.acquisitionreport[item.cell[3][attempt]]|number:'1.0-0'}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <table class="table rsl_tbl">
+                                            <thead class="rsl_tbl-thead">
+                                                <tr class="rsl_tbl-thead-tr">
+                                                    <th class="rsl_tbl-thead-th" colspan="5">Recruitment Metrics</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="rsl_tbl-tbody">
+                                                <tr class="rsl_tbl-tbody-tr">
+                                                    <th class="rsl_tbl-tbody-th"></th>
+                                                    <th class="rsl_tbl-tbody-th">Sales</th>
+                                                    <th class="rsl_tbl-tbody-th"
+                                                        *ngIf="optionalCaseStatus.productengstatus=='active'">Product &
+                                                        Engineering</th>
+                                                    <th class="rsl_tbl-tbody-th"
+                                                        *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                        Customer
+                                                        Success</th>
+                                                    <th class="rsl_tbl-tbody-th"
+                                                        *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                        Design &
+                                                        Communication</th>
+                                                </tr>
+                                            </tbody>
+                                            <tbody class="rsl_tbl-tbody border-top-0">
+                                                <tr class="rsl_tbl-tbody-tr"
+                                                    *ngFor="let item of recruitmentmatrixtable">
+                                                    <td>{{item.title}}</td>
+                                                    <td class="middleclassright">
+                                                        {{result.acquisitionreport[item.cell[0][attempt]]*100|number:'1.0-0'}}
+                                                        %
+                                                    </td>
+                                                    <td class="middleclassright"
+                                                        *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                        {{result.acquisitionreport[item.cell[1][attempt]]*100|number:'1.0-0'}}%
+                                                    </td>
+                                                    <td class="middleclassright"
+                                                        *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                        {{result.acquisitionreport[item.cell[2][attempt]]*100|number:'1.0-0'}}%
+                                                    </td>
+                                                    <td *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                        {{result.acquisitionreport[item.cell[3][attempt]]*100|number:'1.0-0'}}%
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- talent management report  -->
+                    <div id="nav-talentmgmt" role="tabpanel" class="tab-pane fade">
+                        <div class="rounded-5 rtsidetable card p-3">
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div>
+                                            <table class="table rsl_tbl">
+                                                <thead class="rsl_tbl-thead">
+                                                    <tr class="rsl_tbl-thead-tr">
+                                                        <th class="rsl_tbl-thead-th" colspan="5">Awareness Level %</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="rsl_tbl-tbody">
+                                                    <tr class="rsl_tbl-tbody-tr">
+                                                        <th class="rsl_tbl-tbody-th"></th>
+                                                        <th class="rsl_tbl-tbody-th">Sales</th>
+                                                        <th class="rsl_tbl-tbody-th"
+                                                            *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                            Product & Engineering</th>
+                                                        <th class="rsl_tbl-tbody-th"
+                                                            *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                            Customer Success</th>
+                                                        <th class="rsl_tbl-tbody-th"
+                                                            *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                            Design
+                                                            & Communication</th>
+                                                    </tr>
+                                                </tbody>
+                                                <tbody class="rsl_tbl-tbody border-top-0">
+                                                    <tr class="rsl_tbl-tbody-tr"
+                                                        *ngFor="let item of awarenessleveltable">
+                                                        <td>{{item.title}}</td>
+                                                        <td class="middleclassright">
+                                                            {{result.managementreport[item.cell[0][attempt]]*100|number:'1.0-0'}}
+                                                        </td>
+                                                        <td class="middleclassright"
+                                                            *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                            {{result.managementreport[item.cell[1][attempt]]*100|number:'1.0-0'}}
+                                                        </td>
+                                                        <td class="middleclassright"
+                                                            *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                            {{result.managementreport[item.cell[2][attempt]]*100|number:'1.0-0'}}
+                                                        </td>
+                                                        <td
+                                                            *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                            {{result.managementreport[item.cell[3][attempt]]*100|number:'1.0-0'}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card p-2 w-100">
+                                            <apx-chart [series]="awarenesslevelseries.series"
+                                                [chart]="awarenesslevelseries.chart"
+                                                [dataLabels]="awarenesslevelseries.dataLabels"
+                                                [plotOptions]="awarenesslevelseries.plotOptions"
+                                                [yaxis]="awarenesslevelseries.yaxis"
+                                                [xaxis]="awarenesslevelseries.xaxis" [fill]="awarenesslevelseries.fill"
+                                                [title]="awarenesslevelseries.title"
+                                                [noData]="awarenesslevelseries.noData"
+                                                [tooltip]="awarenesslevelseries.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="row my-5">
+                                    <div class="col-md-6">
+                                        <div>
+                                            <table class="table rsl_tbl">
+                                                <thead class="rsl_tbl-thead">
+                                                    <tr class="rsl_tbl-thead-tr">
+                                                        <th class="rsl_tbl-thead-th" colspan="5">Commitment Level %</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="rsl_tbl-tbody">
+                                                    <tr class="rsl_tbl-tbody-tr">
+                                                        <th class="rsl_tbl-tbody-th"></th>
+                                                        <th class="rsl_tbl-tbody-th">Sales</th>
+                                                        <th class="rsl_tbl-tbody-th"
+                                                            *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                            Product & Engineering</th>
+                                                        <th class="rsl_tbl-tbody-th"
+                                                            *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                            Customer Success</th>
+                                                        <th class="rsl_tbl-tbody-th"
+                                                            *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                            Design
+                                                            & Communication</th>
+                                                    </tr>
+                                                </tbody>
+                                                <tbody class="rsl_tbl-tbody border-top-0">
+                                                    <tr class="rsl_tbl-tbody-tr"
+                                                        *ngFor="let item of commitmentleveltable">
+                                                        <td>{{item.title}}</td>
+                                                        <td class="middleclassright">
+                                                            {{result.managementreport[item.cell[0][attempt]]*100|number:'1.0-0'}}
+                                                        </td>
+                                                        <td class="middleclassright"
+                                                            *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                            {{result.managementreport[item.cell[1][attempt]]*100|number:'1.0-0'}}
+                                                        </td>
+                                                        <td class="middleclassright"
+                                                            *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                            {{result.managementreport[item.cell[2][attempt]]*100|number:'1.0-0'}}
+                                                        </td>
+                                                        <td
+                                                            *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                            {{result.managementreport[item.cell[3][attempt]]*100|number:'1.0-0'}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card p-2 w-100">
+                                            <apx-chart [series]="commitmentlevelseries.series"
+                                                [chart]="commitmentlevelseries.chart"
+                                                [dataLabels]="commitmentlevelseries.dataLabels"
+                                                [plotOptions]="commitmentlevelseries.plotOptions"
+                                                [yaxis]="commitmentlevelseries.yaxis"
+                                                [xaxis]="commitmentlevelseries.xaxis"
+                                                [fill]="commitmentlevelseries.fill"
+                                                [title]="commitmentlevelseries.title"
+                                                [noData]="commitmentlevelseries.noData"
+                                                [tooltip]="commitmentlevelseries.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div>
+                                            <table class="table rsl_tbl">
+                                                <thead class="rsl_tbl-thead">
+                                                    <tr class="rsl_tbl-thead-tr">
+                                                        <th class="rsl_tbl-thead-th" colspan="5">Employee Engagement
+                                                            Score, Max Level 5</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="rsl_tbl-tbody">
+                                                    <tr class="rsl_tbl-tbody-tr">
+                                                        <th class="rsl_tbl-tbody-th"></th>
+                                                        <th class="rsl_tbl-tbody-th">Sales</th>
+                                                        <th class="rsl_tbl-tbody-th"
+                                                            *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                            Product & Engineering</th>
+                                                        <th class="rsl_tbl-tbody-th"
+                                                            *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                            Customer Success</th>
+                                                        <th class="rsl_tbl-tbody-th"
+                                                            *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                            Design
+                                                            & Communication</th>
+                                                    </tr>
+                                                </tbody>
+                                                <tbody class="rsl_tbl-tbody border-top-0">
+                                                    <tr class="rsl_tbl-tbody-tr"
+                                                        *ngFor="let item of employeeengagementtable">
+                                                        <td>{{item.title}}</td>
+                                                        <td class="middleclassright">
+                                                            {{result.managementreport[item.cell[0][attempt]]|number:'1.0-2'}}
+                                                        </td>
+                                                        <td class="middleclassright"
+                                                            *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                            {{result.managementreport[item.cell[1][attempt]]|number:'1.0-2'}}
+                                                        </td>
+                                                        <td class="middleclassright"
+                                                            *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                            {{result.managementreport[item.cell[2][attempt]]|number:'1.0-2'}}
+                                                        </td>
+                                                        <td
+                                                            *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                            {{result.managementreport[item.cell[3][attempt]]|number:'1.0-2'}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card p-2 w-100">
+                                            <apx-chart [series]="employeeengagementseries.series"
+                                                [chart]="employeeengagementseries.chart"
+                                                [dataLabels]="employeeengagementseries.dataLabels"
+                                                [plotOptions]="employeeengagementseries.plotOptions"
+                                                [yaxis]="employeeengagementseries.yaxis"
+                                                [xaxis]="employeeengagementseries.xaxis"
+                                                [fill]="employeeengagementseries.fill"
+                                                [title]="employeeengagementseries.title"
+                                                [noData]="employeeengagementseries.noData"
+                                                [tooltip]="employeeengagementseries.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div>
+                                            <table class="table rsl_tbl">
+                                                <thead class="rsl_tbl-thead">
+                                                    <tr class="rsl_tbl-thead-tr">
+                                                        <th class="rsl_tbl-thead-th" colspan="5">Cost of Learning &
+                                                            Management, k INR</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="rsl_tbl-tbody">
+                                                    <tr class="rsl_tbl-tbody-tr">
+                                                        <th class="rsl_tbl-tbody-th"></th>
+                                                        <th class="rsl_tbl-tbody-th">Sales</th>
+                                                        <th class="rsl_tbl-tbody-th"
+                                                            *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                            Product & Engineering</th>
+                                                        <th class="rsl_tbl-tbody-th"
+                                                            *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                            Customer Success</th>
+                                                        <th class="rsl_tbl-tbody-th"
+                                                            *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                            Design
+                                                            & Communication</th>
+                                                    </tr>
+                                                </tbody>
+                                                <tbody class="rsl_tbl-tbody border-top-0">
+                                                    <tr class="rsl_tbl-tbody-tr"
+                                                        *ngFor="let item of costoflearningtable">
+                                                        <td>{{item.title}}</td>
+                                                        <td class="middleclassright">
+                                                            {{result.managementreport[item.cell[0][attempt]]|number:'1.0-0'}}
+
+                                                        </td>
+                                                        <td class="middleclassright"
+                                                            *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                            {{result.managementreport[item.cell[1][attempt]]|number:'1.0-0'}}
+                                                        </td>
+                                                        <td class="middleclassright"
+                                                            *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                            {{result.managementreport[item.cell[2][attempt]]|number:'1.0-0'}}
+                                                        </td>
+                                                        <td
+                                                            *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                            {{result.managementreport[item.cell[3][attempt]]|number:'1.0-0'}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card p-2 w-100">
+                                            <apx-chart [series]="costoflearningseries.series"
+                                                [chart]="costoflearningseries.chart"
+                                                [dataLabels]="costoflearningseries.dataLabels"
+                                                [plotOptions]="costoflearningseries.plotOptions"
+                                                [yaxis]="costoflearningseries.yaxis"
+                                                [xaxis]="costoflearningseries.xaxis" [fill]="costoflearningseries.fill"
+                                                [title]="costoflearningseries.title"
+                                                [noData]="costoflearningseries.noData"
+                                                [tooltip]="costoflearningseries.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        <table class="table rsl_tbl">
+                                            <thead class="rsl_tbl-thead">
+                                                <tr class="rsl_tbl-thead-tr">
+                                                    <th class="rsl_tbl-thead-th" colspan="5">Learning Index</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="rsl_tbl-tbody">
+                                                <tr class="rsl_tbl-tbody-tr">
+                                                    <th class="rsl_tbl-tbody-th"></th>
+                                                    <th class="rsl_tbl-tbody-th">Sales</th>
+                                                    <th class="rsl_tbl-tbody-th"
+                                                        *ngIf="optionalCaseStatus.productengstatus=='active'">Product &
+                                                        Engineering</th>
+                                                    <th class="rsl_tbl-tbody-th"
+                                                        *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                        Customer
+                                                        Success</th>
+                                                    <th class="rsl_tbl-tbody-th"
+                                                        *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                        Design &
+                                                        Communication</th>
+                                                </tr>
+                                            </tbody>
+                                            <tbody class="rsl_tbl-tbody border-top-0">
+                                                <tr class="rsl_tbl-tbody-tr" *ngFor="let item of learningindextable">
+                                                    <td>{{item.title}}</td>
+                                                    <td class="middleclassright">
+                                                        {{checkPercent(item.title)?(result.managementreport[item.cell[0][attempt]]*100|number:'1.0-2')
+                                                        :(result.managementreport[item.cell[0][attempt]]|number:'1.0-0')
+                                                        }}
+                                                    </td>
+                                                    <td class="middleclassright"
+                                                        *ngIf="optionalCaseStatus.productengstatus=='active'">
+                                                        {{checkPercent(item.title)?(result.managementreport[item.cell[1][attempt]]*100|number:'1.0-2')
+                                                        :(result.managementreport[item.cell[1][attempt]]|number:'1.0-0')
+                                                        }}
+                                                    </td>
+                                                    <td class="middleclassright"
+                                                        *ngIf="optionalCaseStatus.customersuccessstatus=='active'">
+                                                        {{checkPercent(item.title)?(result.managementreport[item.cell[2][attempt]]*100|number:'1.0-2')
+                                                        :(result.managementreport[item.cell[2][attempt]]|number:'1.0-0')
+                                                        }}
+                                                    </td>
+                                                    <td *ngIf="optionalCaseStatus.designcommunicationstatus=='active'">
+                                                        {{checkPercent(item.title)?(result.managementreport[item.cell[3][attempt]]*100|number:'1.0-2')
+                                                        :(result.managementreport[item.cell[3][attempt]]|number:'1.0-0')
+                                                        }}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row lst_r">
+                <div class="col-4 lst_r-col4" *ngIf="!timefinished">
+                    <button class="mt-4 retry" [disabled]="isButtonDisabled" (click)="exit()">{{retry}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

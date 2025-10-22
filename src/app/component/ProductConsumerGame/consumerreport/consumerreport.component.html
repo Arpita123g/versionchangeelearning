@@ -1,0 +1,286 @@
+<div class="elearingnewui bus_iness">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row pb-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                            <div class="">
+                                <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                    (change)="roundClick()">
+                                    <option class="select-round-option" value="">Select Round</option>
+                                    <option class="select-round-option"
+                                        *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                        {{attempt}}</option>
+                                </select>
+                            </div>
+                            <div class="download_btn" matTooltiClass="primary-tooltip"
+                                (click)="downloadreportconsumer()">
+                                <div>
+                                    <a download matTooltip="Download"><span class="hovertext"
+                                            data-hover="Download pdf file accounting ">
+                                            <img class="download_btn-img"
+                                                src="assets/images/businessbasics/download.png" />
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <mat-icon class="mt-2">get_app</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 mb-3">
+                    <div class="col-md-5 reyapo">
+                        <h1 class="reyapo-h1">Report</h1>
+                        <p style="text-align: justify;">
+                            Excellent work. You have completed research on making the game user-friendly and attractive
+                            to target consumers. In this exercise every decision you have taken shows your skills in
+                            dimensions like rigor, synthesis, structuring and business judgement.
+                        </p>
+                    </div>
+                    <div class="col-md-7" *ngIf="optional[4]">
+                        <div class="card rigorcard">
+                            <div class="rigorcard-icon">
+                                <mat-icon class="rigorcard-icon-mat" appTippy="<table >
+                  <tr>
+                    <th style='font-weight:500; padding:7px;font-size:14px'>Rigor</th>
+                    <td style='padding:7px;font-size:13px'>Consistency throughout the decision-making and recommendation.</td>
+                  </tr>
+                  <tr>
+                    <th style='font-weight:500 ;padding:7px;font-size:14px'>Structuring</th>
+                    <td style='padding:7px;font-size:13px'>A logical approach to gathering and analyzing information.</td>
+                  </tr>
+                  <tr>
+                    <th style='font-weight:500 ;padding:7px;font-size:14px'>
+                      Synthesis
+                    </th>
+                    <td style='padding:7px;font-size:13px'>
+                      Approach towards interpreting all the information and making informed decisions.
+                    </td>
+                  <tr>
+                    <th style='font-weight:500; padding:7px;font-size:14px'>Business Jugement</th>
+                    <td style='padding:7px;font-size:13px'>Ability to evaluate facts and consider risks and possible implications when making decisions.</td>
+                  </tr>
+                  </tr>
+                </table>
+                 ">
+                                    help_outline
+                                </mat-icon>
+                            </div>
+                            <apx-chart [series]="rigorcharts.series" [chart]="rigorcharts.chart"
+                                [xaxis]="rigorcharts.xaxis" [yaxis]="rigorcharts.yaxis" [stroke]="rigorcharts.stroke"
+                                [markers]="rigorcharts.markers" [fill]="rigorcharts.fill"
+                                [title]="rigorcharts.title"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <table class="table h-100 rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Target Demographics</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Total Population (%)</td>
+                                    <td>{{result[0]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Gamers Population</td>
+                                    <td>{{result[1]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Population Division</td>
+                                    <td>{{result[2]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Language 1</td>
+                                    <td>{{result[4]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Language 2</td>
+                                    <td>{{result[5]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Language 3</td>
+                                    <td>{{result[6]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Language 4</td>
+                                    <td>{{result[7]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" *ngIf="optional[0]">
+                                    <td>Income</td>
+                                    <td>{{result[3]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-4 ">
+                            <apx-chart [series]="marketpercent.series" [chart]="marketpercent.chart"
+                                [dataLabels]="marketpercent.dataLabels" [plotOptions]="marketpercent.plotOptions"
+                                [yaxis]="marketpercent.yaxis" [xaxis]="marketpercent.xaxis" [fill]="marketpercent.fill"
+                                [title]="marketpercent.title" [tooltip]="marketpercent.tooltip"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-5">
+                    <div class="col-md">
+                        <table class="table h-100 rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Elements at conceptualization</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Genre</td>
+                                    <td>{{result[8]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" *ngIf="optional[1]">
+
+                                    <td>Situational Elements 1</td>
+                                    <td>{{result[9]}}</td>
+                                </tr>
+
+                                <tr class="rsl_tbl-tbody-tr" *ngIf="optional[1]">
+
+                                    <td>Situational Element 2</td>
+                                    <td>{{result[10]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" *ngIf="optional[2]">
+
+                                    <td>Social Element 1</td>
+                                    <td>{{result[11]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" *ngIf="optional[2]">
+                                    <td>Social Element 2</td>
+                                    <td>{{result[12]}}</td>
+
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" *ngIf="optional[2]">
+                                    <td>Social Element 3</td>
+                                    <td>{{result[13]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Lifestyle Element</td>
+                                    <td>{{result[14]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <table class="table h-100 rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Monetization</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Publishing</td>
+                                    <td>{{result[19]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Monetization</td>
+                                    <td>{{result[20]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" *ngIf="optional[3]">
+                                    <td>Ads Network</td>
+                                    <td>{{result[21]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" *ngIf="optional[3]">
+                                    <td>Banner Ads</td>
+                                    <td>{{result[22]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" *ngIf="optional[3]">
+                                    <td>Rewarded Ads</td>
+                                    <td>{{result[23]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" *ngIf="optional[3]">
+                                    <td>Interstitial Ads</td>
+                                    <td>{{result[24]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" *ngIf="optional[3]">
+                                    <td> Interactive Ads</td>
+                                    <td>{{result[25]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <table class="table h-100 rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Market</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Market Share, %</td>
+                                    <td>{{result[26]*100|number:'1.1-1'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Number of users, mn</td>
+                                    <td>{{result[27]}}</td>
+
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" *ngIf="optional[0] || optional[3]">
+                                    <td>Paying Customers, %</td>
+                                    <td>{{result[28]*100|number:'1.1-1'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" *ngIf="optional[0] || optional[3]">
+                                    <td>Number of paying customers, mn</td>
+                                    <td>{{result[29]}}</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Communication</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Communication</td>
+                                    <td>{{result[15]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Channel 1</td>
+                                    <td>{{result[16]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Channel 2</td>
+                                    <td>{{result[17]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Channel 3</td>
+                                    <td>{{result[18]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

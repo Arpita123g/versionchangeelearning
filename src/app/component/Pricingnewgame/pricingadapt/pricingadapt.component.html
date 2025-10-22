@@ -1,0 +1,321 @@
+<div class="elearingnewui pricing_new">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="dema_nd">
+                <div class="element-first">
+                    <div class="row">
+                        <div class="locandfoodspc" (click)="openDialog()" *ngIf="foodforthought">
+                            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                                <button class="food-thought-btn">Food For Thought</button></span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h1>
+                        Adapt
+                        <mat-icon appTippy="
+            <div class='help-tip p-2'>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'> In the final stretch, what promotional activities could you implement to create a sense of urgency and encourage last-minute bookings? Consider the psychology of promotions.</p>
+                </div>
+              </div><br>
+                <div style='display:flex;'>
+                  <div>
+                    <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                  </div> &nbsp; &nbsp; &nbsp;
+                  <div>
+                    <p style='margin: 0 auto; color: white; font-size:13px;'>Given the pricing strategies employed in initial phases, how can you leverage additional services or perks to create a memorable and attractive offer for potential customers?</p>
+                  </div>
+                </div>
+            </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+
+                <p>Price per seat, INR:</p>
+                <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[12]"
+                    (focusout)="getSelection('price', 12)" [disabled]="inputDisabled">
+                <div class="row row-cols-md-3 py-5 g-3">
+                    <div class="col-md-6">
+                        <div class="card" style="border: none;">
+                            <img src="assets/images/pricinggame/foradapttab.svg" alt="Your Image" class="img-fluid"
+                                style="width: 100%;height: 22rem;" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-2">
+                            <apx-chart [series]="priceperseatchart.series" [chart]="priceperseatchart.chart"
+                                [markers]="priceperseatchart.markers" [stroke]="priceperseatchart.stroke"
+                                [title]="priceperseatchart.title" [xaxis]="priceperseatchart.xaxis"
+                                [tooltip]="priceperseatchart.tooltip" [yaxis]="priceperseatchart.yaxis"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 py-3 g-3">
+                    <div class="col-md-6">
+                        <table class="table h-100 rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">SkyVista's deferred revenue up to Innovate
+                                        Phase</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Price</td>
+                                    <td>{{result[13]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Capacity</td>
+                                    <td>{{result[14]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Sales</td>
+                                    <td>{{result[15]|number:'1.0-0'}}</td>
+                                </tr>
+
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Revenue, INR</td>
+                                    <td>{{result[16]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table h-100 rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Jupiter's deferred revenue up to Innovate
+                                        Phase</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Price</td>
+                                    <td>{{result[17]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Capacity</td>
+                                    <td>{{result[18]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Sales</td>
+                                    <td>{{result[19]|number:'1.0-0'}}</td>
+                                </tr>
+
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Revenue, INR</td>
+                                    <td>{{result[20]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <h1 class="pt-5">Service</h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/pricinggame/sandwichmeal.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[0]}}</h2>
+                                <p class="card-text">
+                                    {{ textshow[cardData1[0].id] ?
+                                        cardData1[0].description:cardData1[0].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[0].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost per flyer, INR</h3>
+                                    <h3>{{result[6]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" value="" id="flexCheckDefault"
+                                    [disabled]="disabled[0]" [disabled]="inputDisabled" 
+                                    (change)="getSelection('service', 21)" [checked]="result[21] === 1"/>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/pricinggame/flexiblebooking.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[1]}}</h2>
+                                <p class="card-text">
+                                    {{ textshow[cardData1[1].id] ?
+                                        cardData1[1].description:cardData1[1].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[1].id)"
+                                        [ngStyle]="{color: textshow[cardData1[1].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[1].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost per flyer, INR</h3>
+                                    <h3>{{result[7]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" value="" id="flexCheckDefault"
+                                    [disabled]="disabled[1]" [disabled]="inputDisabled" 
+                                    (change)="getSelection('service', 22)" [checked]="result[22] === 1"/>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/pricinggame/additionalbaggage.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[2]}}</h2>
+                                <p class="card-text">
+                                    {{ textshow[cardData1[2].id] ?
+                                        cardData1[2].description:cardData1[2].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[2].id)"
+                                        [ngStyle]="{color: textshow[cardData1[2].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[2].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost per flyer, INR</h3>
+                                    <h3>{{result[8]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" value="" id="flexCheckDefault"
+                                    [disabled]="disabled[2]" [disabled]="inputDisabled" 
+                                    (change)="getSelection('service', 23)" [checked]="result[23] === 1"/>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="pt-5">Promotion</h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/pricinggame/bookingdiscount.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[3]}}</h2>
+                                <p class="card-text">
+                                    {{ textshow[cardData2[0].id] ?
+                                        cardData2[0].description:cardData2[0].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                        {{ textshow[cardData2[0].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost, INR</h3>
+                                    <h3>{{result[9]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" value="" id="flexCheckDefault"
+                                    [disabled]="inputDisabled"  (change)="getSelection('promotion', 24)" 
+                                    [checked]="result[24] === 1"
+                                    />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/pricinggame/flyingprogram.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[4]}}</h2>
+                                <p class="card-text">
+                                    {{ textshow[cardData2[1].id] ?
+                                        cardData2[1].description:cardData2[1].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[1].id)"
+                                        [ngStyle]="{color: textshow[cardData1[1].id]?'red':'blue'}">
+                                        {{ textshow[cardData2[1].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost, INR</h3>
+                                    <h3>{{result[10]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" value="" id="flexCheckDefault"
+                                    [disabled]="inputDisabled" (change)="getSelection('promotion', 25)" 
+                                    [checked]="result[25] === 1"/>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/pricinggame/partnership.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[5]}}</h2>
+                                <p class="card-text">
+                                    {{ textshow[cardData2[2].id] ?
+                                        cardData2[2].description:cardData2[2].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[2].id)"
+                                        [ngStyle]="{color: textshow[cardData1[2].id]?'red':'blue'}">
+                                        {{ textshow[cardData2[2].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost, INR</h3>
+                                    <h3>{{result[11]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" value="" id="flexCheckDefault"
+                                    [disabled]="inputDisabled"  (change)="getSelection('promotion', 26)" 
+                                    [checked]="result[26] === 1"/>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

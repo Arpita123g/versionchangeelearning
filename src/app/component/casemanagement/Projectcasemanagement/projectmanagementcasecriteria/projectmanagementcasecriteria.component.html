@@ -1,0 +1,38 @@
+<div class="elearingnewui casemanagement">
+    <div class="case-management-body case-management-body-marketing ">
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Value of Completing Task, INR</td>
+                        <td *ngFor="let capitaldata of res.t6; let i = index">
+                            <input [value]="res.t6[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('t6',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Penalty of delaying Task per day, INR
+                        </td>
+                        <td *ngFor="let capitaldata of res.t7; let i = index">
+                            <input [value]="res.t7[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('t7',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Penalty of remaining Task per day, INR</td>
+                        <td *ngFor="let capitaldata of res.t8; let i = index">
+                            <input [value]="res.t8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('t8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+<!-- <div class="logoutmsg">
+    <div class="central" mat-dialog-content>
+        <div>
+            <div>{{message}}</div>
+        </div>
+    </div>
+
+    <div mat-dialog-actions>
+        <button type="button" class="btn btn-danger" (click)="onDismiss()" mat-dialog-close>No</button>
+        <button type="button" class="btn btn-primary" (click)="onConfirm()" mat-dialog-close>Yes</button>
+    </div>
+</div> -->
+
+<!-- <div class="container p-0">
+    <div class="card-header confirmtxt mb-3" style="background-color: #1f589f;color: white; font-weight: 400;">Logout?
+        <i class="bi bi-x-lg" style="float: right; color: white; " mat-dialog-close></i>
+    </div>
+    <div class="card-body">
+        <span>
+            <span class="svgtxt">Do you really want to logout?</span>
+        </span>
+        <div class="btncls mt-3">
+            <button type="reset" class="btn btn-primary" style="border: 1px solid #1f589f; background-color: #1f589f; color: white;" type="button" (click)="onConfirm()" mat-dialog-close>Yes</button>
+            <button type="reset" class="btn btn-secondary" style="border: 1px solid #1f589f; color: #1f589f; background-color: white;" type="button" (click)="onDismiss()" mat-dialog-close>No</button>
+        </div>
+    </div>
+</div> -->
+
+
+<!-- <div class="matopenc">
+    <div class="matcloseo">
+        <h3 class="card-title">
+            Logout?
+            <i class="bi bi-x-lg" style="float: right; color: white;" mat-dialog-close></i>
+        </h3>
+        
+    </div>
+    <form class="form" [formGroup]="myForm">
+        <div class="card-body">
+            <div class="form-group">
+                <div class="alert alert-custom alert-default" role="alert">
+                    <div class="alert-icon"><i class="flaticon-warning text-primary"></i></div>
+                    <div class="alert-text">
+                        Do you really want to logout?
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="twobtncan">
+            
+            <button type="reset" class="btn btn-primary mr-2 custom-button" style="border: 1px solid #1f589f; background-color: #1f589f; color: white;" type="button" (click)="onConfirm()" mat-dialog-close>Yes</button>
+            <button type="reset" class="btn btn-secondary" style="border: 1px solid #1f589f; color: #1f589f; background-color: white;" type="button" (click)="onDismiss()" mat-dialog-close>No</button>
+        </div>       
+    </form>
+</div> -->
+<div *ngIf="usertype() == 'student'">
+    <div class="card logout-popup-std">
+        <div class="card-header logout-popup-cardhead">
+            <span>Logout?</span>
+            <i class="bi bi-x-circle" mat-dialog-close></i>
+        </div>
+        <div class="card-body">
+            <p>Do you really want to logout?</p>
+        </div>
+        <div class="card-footer">
+            <button class="btn-yes" (click)="onYesClick()">Yes</button>
+            <button class="btn-no" (click)="onNoClick()">No</button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="usertype() !=='student'">
+    <div class="card logout-popupp-ins">
+        <div class="card-header logout-popup-not-cardhead">
+            <span>Logout?</span>
+            <i class="bi bi-x-circle" mat-dialog-close></i>
+        </div>
+        <div class="card-body">
+            <p>Do you really want to logout?</p>
+        </div>
+        <div class="card-footer">
+            <button class="btn-yes" (click)="onYesClick()">Yes</button>
+            <button class="btn-no" (click)="onNoClick()">No</button>
+        </div>
+    </div>
+</div>

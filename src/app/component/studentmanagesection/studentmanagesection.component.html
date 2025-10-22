@@ -1,0 +1,68 @@
+<div >
+    <mat-card class="inputcard p-3">
+        <div class="row">
+            <div class="col-6">
+                <div class="inputtitle"> Student Management Section</div>
+                <div class="subtitle">You can checked student management section</div>
+            </div>
+
+        </div>
+    </mat-card>
+
+    <mat-card class="inputcard-table p-3" style="margin-top:20px;margin-bottom:10px">
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+            <ng-container matColumnDef="studentname">
+                <th mat-header-cell *matHeaderCellDef> Student Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.userRegister.username}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="emailid">
+                <th mat-header-cell *matHeaderCellDef> Email Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.userRegister.email}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="changepassword">
+                <th mat-header-cell *matHeaderCellDef> Change Password </th>
+                <td mat-cell *matCellDef="let element"> {{element.userRegister.password}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="deletefromcoursecode">
+                <th mat-header-cell *matHeaderCellDef> Delete From Course Code </th>
+                <td mat-cell *matCellDef="let element"> {{element.coursecode}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell class="update" *matHeaderCellDef> edit </th>
+                <td mat-cell *matCellDef="let element" class="edit" (click)="edit(element)">
+                    <mat-icon class="sidenav-icon" aria-hidden="false" aria-label="Example home icon">
+                        edit</mat-icon>
+
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="delete">
+                <th mat-header-cell class="deletecourse" *matHeaderCellDef> delete</th>
+                <td mat-cell *matCellDef="let element" class="delete" style="cursor: pointer;">
+                    <button [class]="StatusClass" (click)="delete(element)" selected>Inactive
+                    </button>
+                    <!-- <mat-icon class="sidenav-icon" 
+                    aria-hidden="false" aria-label="Example home icon">
+                    delete</mat-icon> -->
+
+                </td>
+            </ng-container>
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator style="font-size:12px;margin:10px;display:flex;justify-content:center"
+            [pageSizeOptions]="[20, 50, 100, 500,dataSource.data.length]" showFirstLastButtons
+            aria-label="Select page of periodic elements">
+        </mat-paginator>
+    </mat-card>
+</div>

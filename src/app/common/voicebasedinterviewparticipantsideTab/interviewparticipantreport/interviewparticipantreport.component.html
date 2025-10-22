@@ -1,0 +1,76 @@
+<div class="elearingnewui bus_iness pt-5">
+    <div class="text-end pb-4 f-e-d">
+      <!-- Round Dropdown -->
+      <select class="select-round" [(ngModel)]="roundname" (change)="roundClick()">
+        <option class="select-round-option" disabled value="Round 0">Select Round</option>
+        <option *ngFor="let attempt of dropdownvalue" [ngValue]="attempt">
+          {{ attempt }}
+        </option>
+      </select>
+  
+      <!-- Download Report Button -->
+      <div class="download_btn" (click)="downloadreportvoicebased()">
+        <div>
+          <a download matTooltip="Download">
+            <span class="hovertext" data-hover="Download pdf for interview">
+              <img class="download_btn-img" src="assets/images/businessbasics/download.png" />
+            </span>
+          </a>
+        </div>
+        <div>
+          <mat-icon class="mt-2">get_app</mat-icon>
+        </div>
+      </div>
+  
+      <!-- Transcript Download -->
+      <button class="btn btn-sm btn-primary exportTable-btn shadow" (click)="transcriptdownload()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+          class="bi bi-file-earmark-spreadsheet" viewBox="0 0 16 16">
+          <path
+            d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V9H3V2a1 1 0 0 1 1-1h5.5v2zM3 12v-2h2v2H3zm0 1h2v2H4a1 1 0 0 1-1-1v-1zm3 2v-2h3v2H6zm4 0v-2h3v1a1 1 0 0 1-1 1h-2zm3-3h-3v-2h3v2zm-7 0v-2h3v2H6z" />
+        </svg>
+        Transcript Download
+      </button>
+    </div>
+  
+    <!-- Report Table -->
+    <div class="voicebased-report-ai">
+      <div class="table-responsive ins-participant-rslt shadow">
+        <table class="table rsl_tbl">
+          <thead class="rsl_tbl-thead">
+            <tr class="rsl_tbl-thead-tr">
+              <th class="rsl_tbl-thead-th">Parameters</th>
+              <th class="rsl_tbl-thead-th">Score</th>
+              <th class="rsl_tbl-thead-th">Summary</th>
+            </tr>
+          </thead>
+          <tbody class="rsl_tbl-tbody">
+            <tr class="rsl_tbl-tbody-tr" *ngFor="let i of [1,2,3,4,5,6]">
+              <td>{{ participantReportData['kpi' + i] || '-' }}</td>
+              <td>{{ participantReportData['kpi' + i + 'score'] || '-' }}</td>
+              <td>
+                <div class="rsl_tbl-tbody-tr-td-markdown">
+                  <markdown [data]="participantReportData['kpi' + i + 'summary'] || '-'"></markdown>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <!-- Note -->
+      <p class="py-3 note_p">
+        Note: If your report isn’t generated it means we’re not done yet. Whether you’ve stepped away
+        mid-chat or we’re still talking in the conversation tab, let’s wrap that up first. Once we’re
+        done, you’ll have your report ready in no time.
+      </p>
+  
+      <!-- Next Round Button -->
+      <div class="pb-5 nxt-rd-btn">
+        <button class="primary-btn" (click)="nextRound()" [disabled]="isNextRoundDisabled">
+          {{ retry }}
+        </button>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,28 @@
+<div class="webcam" role="region" aria-label="Webcam feed">
+    <div class="maincam">
+        @if (enableWebcamFlag()) {
+            <ack-webcam 
+                [options]="options" 
+                (onCamSuccess)="onCamSuccessHandler($event)"
+                (onCamError)="onCamErrorHandler($event)" 
+                class="maincam" 
+                [facingMode]="'user'" 
+                [useParentWidthHeight]="true" 
+                [reflect]="true"
+                aria-label="Webcam feed">
+            </ack-webcam>
+        }
+    </div>
+
+    <div class="permission">
+        <button 
+            mat-icon-button 
+            [style.background-color]="enableWebcamFlag() ? '#4CAF50' : '#f44336'" 
+            (click)="enableWebcamFlag.set(!enableWebcamFlag())"
+            [attr.aria-label]="enableWebcamFlag() ? 'Disable webcam' : 'Enable webcam'">
+            <mat-icon [style.color]="'white'" aria-hidden="true">
+                {{enableWebcamFlag() ? 'videocam' : 'videocam_off'}}
+            </mat-icon>
+        </button>
+    </div>
+</div>

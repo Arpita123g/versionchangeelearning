@@ -1,0 +1,212 @@
+<div class="elearingnewui project_management">
+  <div class="container">
+    <div class="body-element">
+      <div class="feed_ack">
+        <div>
+          <div class="row pb-4">
+            <div class="col-8"></div>
+            <div class="col-4">
+              <div style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: end;
+                  gap: 20px;
+                ">
+                <div class="">
+                  <select class="select-round" name="" id="" [(ngModel)]="roundname" (change)="roundClick()">
+                    <option class="select-round-option" value="">
+                      Select Round
+                    </option>
+                    <option class="select-round-option" *ngFor="let attempt of dropdownvalue; let i = index"
+                      [value]="attempt">
+                      {{ attempt }}
+                    </option>
+                  </select>
+                </div>
+                <div class="download_btn" matTooltiClass="primary-tooltip" (click)="downloadreportprojectmanagement()">
+                  <div>
+                    <a download matTooltip="Download"><span class="hovertext"
+                        data-hover="Download pdf file accounting ">
+                        <img src="assets/images/businessbasics/download.png" />
+                      </span>
+                    </a>
+                  </div>
+                  <div>
+                    <mat-icon class="mt-2">get_app</mat-icon>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h1>Synopsis</h1>
+          <div style="margin-top: 1.1rem">
+            <th style="
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                padding: 0.6rem 0.4rem;
+                color: white;
+                background-color: #266cc38a;
+              ">
+              Feedback
+              <div style="width: 1rem">
+                <mat-icon (click)="rotate(); roundClick()" [@rotatedState]="state" class="sidenav-icon"
+                  aria-hidden="false" aria-label="Example home icon">cached</mat-icon>
+              </div>
+            </th>
+          </div>
+          <div class="decision-textarea pb-5 h-100">
+            <div class="row">
+              <div class="col-md" style="padding: 10px">
+                <div class="card feedbsck-value p-3">
+                  <markdown [data]="feedbackvalue"></markdown>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row row-cols-md-2 py-3">
+            <div class="col-md">
+              <table class="table rsl_tbl">
+                <thead class="rsl_tbl-thead">
+                  <tr class="rsl_tbl-thead-tr">
+                    <th class="rsl_tbl-thead-th" colspan="2">Decisions</th>
+                  </tr>
+                </thead>
+                <tbody class="rsl_tbl-tbody" [class.border-top-0]="i != 0"
+                  [style.border-top]="i == 0 ? '3px solid black' : ''"
+                  *ngFor="let tableitem of tableData; let i = index">
+                  <tr class="rsl_tbl-tbody-tr" *ngIf="tableitem.status == 'active'">
+                    <th class="rsl_tbl-tbody-th">{{ tableitem.title }}</th>
+                    <th class="rsl_tbl-tbody-th">{{ tableitem.title1 }}</th>
+                  </tr>
+                  <ng-container *ngIf="tableitem.status === 'active'">
+                    <tr class="rsl_tbl-tbody-tr" *ngFor="let bodyitem of tableitem.body">
+                      <td>{{ bodyitem.title }}</td>
+                      <td>
+                        <span [class]="
+                            bodyitem.isClass
+                              ? 'defaultcolor'
+                              : 'notdefaultcolor'
+                          ">
+                          {{
+                          checkPercent(bodyitem.title)
+                          ? (bodyitem.value )
+                          : bodyitem.value
+                          }}
+                        </span>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="col-md">
+              <table class="table rsl_tbl py-3">
+                <thead class="rsl_tbl-thead">
+                  <tr class="rsl_tbl-thead-tr">
+                    <th class="rsl_tbl-thead-th" colspan="2">Value Creation</th>
+                  </tr>
+                </thead>
+                <tbody class="rsl_tbl-tbody">
+                  <tr class="rsl_tbl-tbody-tr">
+                    <th class="rsl_tbl-tbody-th">Parameters</th>
+                    <th class="rsl_tbl-tbody-th">Output</th>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr" *ngFor="let item of valueData">
+                    <td>{{ item.label }}</td>
+                    <td>{{ item.value }}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr" *ngFor="let item of costData">
+                    <td>{{ item.label }}</td>
+                    <td>{{ item.value }}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>{{ valueCreated.label }}</td>
+                    <td>{{ valueCreated.value }}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <table class="table rsl_tbl mt-5">
+                <thead class="rsl_tbl-thead">
+                  <tr class="rsl_tbl-thead-tr">
+                    <th class="rsl_tbl-thead-th" colspan="2">KPI</th>
+                  </tr>
+                </thead>
+                <tbody class="rsl_tbl-tbody">
+                  <tr class="rsl_tbl-tbody-tr">
+                    <th class="rsl_tbl-tbody-th">Parameters</th>
+                    <th class="rsl_tbl-tbody-th">Output</th>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr" *ngFor="let item of kpiData">
+                    <td>{{ item.label }}</td>
+                    <td>{{ item.value }}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <table class="table rsl_tbl mt-5">
+                <thead class="rsl_tbl-thead">
+                  <tr class="rsl_tbl-thead-tr">
+                    <th class="rsl_tbl-thead-th" colspan="2">
+                      Thinking Ability
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="rsl_tbl-tbody">
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td class="rsl_tbl-tbody-th">Parameter</td>
+                    <td class="rsl_tbl-tbody-th">Score</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr" *ngFor="let item of thinkingabality">
+                    <td>{{ item.label }}</td>
+                    <td>{{ item.value }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="row row-cols-md py-3">
+            <div class="col-md">
+              <table class="table rsl_tbl">
+                <thead class="rsl_tbl-thead">
+                  <tr class="rsl_tbl-thead-tr">
+                    <th class="rsl_tbl-thead-th" colspan="4">
+                      Project Tracking
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="rsl_tbl-tbody">
+                  <tr class="rsl_tbl-tbody-tr">
+                    <th class="rsl_tbl-tbody-th">Parameter</th>
+                    <th class="rsl_tbl-tbody-th">Planned Duration, days</th>
+                    <th class="rsl_tbl-tbody-th">Actual Duration, days</th>
+                    <th class="rsl_tbl-tbody-th">Completion Status</th>
+                  </tr>
+                  <tr *ngFor="let task of project; let i = index" class="rsl_tbl-tbody-tr">
+                    <td>{{ task.tasks }}</td>
+                    <td class="middleclassright">{{ task.planned }}</td>
+                    <td class="middleclassright">{{ task.actual }}</td>
+                    <td>{{ task.status }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="row lst_r">
+            <div class="col-4 lst_r-col4">
+              <button class="mt-4 retry" [disabled]="isButtonDisabled" (click)="exit()">
+                {{ retry }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

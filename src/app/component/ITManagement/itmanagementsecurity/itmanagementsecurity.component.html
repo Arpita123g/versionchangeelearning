@@ -1,0 +1,150 @@
+<div class="elearingnewui It_management">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="routesandtech">
+                <div class="row" class="element-first">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+                <h1>Systems
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>Which security features align with business requirements, cost considerations, and implementation time to mitigate potential risks?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>How do security features impact system performance and overall business strategy?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of cardData; let i=index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.itManagementCM.itmanagementperioddata[item.title]}}</h2>
+                                <div class="card-text">
+                                    <div class="textswcinassessment-p">
+                                        <span class="textswcinassessment">
+                                        </span> {{showAll[i] ? item.description.text :
+                                        item.description.truncatedText}}
+                                        <a type="button" (click)="toggleshow(i)"
+                                            [style.color]="showAll[i] ? 'red' : 'blue'">
+                                            {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                        </a>
+                                    </div><br><br>
+                                    <div class="card-footer form-check">
+                                        <div class="routesandtechcostcard">
+                                            <h3>{{ result.itManagementCM.itmanagementperioddata[item.description.textname] }}</h3>
+                                            <h3>{{ result.itManagementCM.itmanagementperioddata[item.description.cellvalue]  }}</h3>
+                                        </div>
+                                        <div class="routesandtechcostcard">
+                                            <h3>{{ result.itManagementCM.itmanagementperioddata[item.description.textmonth] }}</h3>
+                                            <h3>{{ result.itManagementCM.itmanagementperioddata[item.description.cellvalue1]  }}</h3>
+                                        </div>
+                                        <div style="height: 2rem;">
+                                            <input class="checkfrominput" type="checkbox" value="index"
+                                                id="flexCheckDefault" 
+                                                [checked]="(result.itmanagementdata)?(result.itmanagementdata[item.databasecellname]===1):false"
+                                                (change)="writeGameData(item.databasecellname,$event)"
+                                                [disabled]="inputDisabled" />
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="mt-5">Compliances
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>Which compliance requirements align with cost, time, and process complexity to ensure regulatory adherence?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'> How do compliance measures impact development timelines and budget allocations for strategic planning?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of cardData1; let i=index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.itManagementCM.itmanagementperioddata[item.title]}}</h2>
+                                <div class="card-text">
+                                    <div class="textswcinassessment-p">
+                                        <span class="textswcinassessment">
+                                        </span> {{showAll[i] ? item.description.text :
+                                        item.description.truncatedText}}
+                                        <a type="button" (click)="toggleshow(i)"
+                                            [style.color]="showAll[i] ? 'red' : 'blue'">
+                                            {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                        </a>
+                                    </div><br><br>
+                                    <div class="card-footer form-check">
+                                        <div class="routesandtechcostcard">
+                                            <h3>{{ result.itManagementCM.itmanagementperioddata[item.description.textname] }}</h3>
+                                            <h3>{{ result.itManagementCM.itmanagementperioddata[item.description.cellvalue]  }}</h3>
+                                        </div>
+                                        <div class="routesandtechcostcard">
+                                            <h3>{{ result.itManagementCM.itmanagementperioddata[item.description.textmonth] }}</h3>
+                                            <h3>{{ result.itManagementCM.itmanagementperioddata[item.description.cellvalue1]  }}</h3>
+                                        </div>
+                                        <div style="height: 2rem;">
+                                            <input class="checkfrominput" type="checkbox" value="index"
+                                                id="flexCheckDefault" 
+                                                [checked]="(result.itmanagementdata)?(result.itmanagementdata[item.databasecellname]===1):false"
+                                                (change)="writeGameData(item.databasecellname,$event)"
+                                                [disabled]="inputDisabled" />
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

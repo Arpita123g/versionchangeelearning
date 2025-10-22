@@ -1,0 +1,88 @@
+<div class="elearingnewui">
+    <div class="case-management-body-forheader">
+        <div class="returnbtn-element">
+            <div class="returnbtn" (click)="GoBack()"> Return to Case Management </div>
+        </div>
+        <div class="card case-management-body-card">
+            <div class="card-body">
+                <div class=" tab-content-body">
+                    <ul class="nav second-nav" role="tablist">
+                        <li class="nav-item active" role="presentation" data-bs-target="#market" data-bs-toggle="tab"
+                            aria-controls="market" role="tab" aria-selected="false" (click)="search('market')">
+                            <span class="nav-link" aria-current="page">Market</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#demand" data-bs-toggle="tab"
+                            aria-controls="demand" role="tab" aria-selected="false" (click)="search('demand')">
+                            <span class="nav-link" aria-current="page">Demand Forecast</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#supply" data-bs-toggle="tab"
+                            aria-controls="supply" role="tab" aria-selected="false" (click)="search('supply')">
+                            <span class="nav-link" aria-current="page">Supply Forecast</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#planning" data-bs-toggle="tab"
+                            aria-controls="planning" role="tab" aria-selected="false" (click)="search('planning')">
+                            <span class="nav-link" aria-current="page">Analysis & Planning</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#implementation" data-bs-toggle="tab"
+                            aria-controls="implementation" role="tab" aria-selected="false" (click)="search('implementation')">
+                            <span class="nav-link" aria-current="page">Implementation</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#foodrforthought" data-bs-toggle="tab"
+                            aria-controls="foodrforthought" role="tab" aria-selected="false"
+                            (click)="search('foodforthought')">
+                            <span class="nav-link" aria-current="page">Food For Thought</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#module" data-bs-toggle="tab"
+                            aria-controls="module" role="tab" aria-selected="false" (click)="search('general')">
+                            <span class="nav-link" aria-current="page">Module</span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="tab-content tab-content-body">
+
+                    <div role="tabpanel" class="tab-pane fade show active" id="market"
+                        [ngClass]="{ 'active':activeTab==='market'}">
+                        <app-hrpcasemarket *ngIf="activeTab==='market'"></app-hrpcasemarket>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="demand"
+                        [ngClass]="{ 'active':activeTab==='demand'}">
+                        <app-hrpcasedemandforecast *ngIf="activeTab==='demand'"></app-hrpcasedemandforecast>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="supply"
+                        [ngClass]="{ 'active':activeTab==='supply'}">
+                        <app-hrpcasesupplyforecast *ngIf="activeTab==='supply'"></app-hrpcasesupplyforecast>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="planning"
+                        [ngClass]="{ 'active':activeTab==='planning'}">
+                        <app-hrpcaseanalysisandplanning *ngIf="activeTab==='planning'"></app-hrpcaseanalysisandplanning>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="implementation"
+                        [ngClass]="{ 'active':activeTab==='implementation'}">
+                        <app-hrpcaseimplementation *ngIf="activeTab==='implementation'"></app-hrpcaseimplementation>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="foodrforthought"
+                        [ngClass]="{ 'active':activeTab==='foodforthought'}">
+                        <app-hrpcasefoodforthought *ngIf="activeTab==='foodforthought'"></app-hrpcasefoodforthought>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="module"
+                        [ngClass]="{ 'active':activeTab==='general'}">
+                        <app-hrpcasemodule *ngIf="activeTab==='general'"></app-hrpcasemodule>
+                    </div>
+
+                    
+
+                </div>
+            </div>
+            
+
+        </div>
+        <!-- <div>
+            <button class="mt-4 back" (click)="back()" style=" border: 3px solid #30b4cc;
+            border-radius: 6px;
+            background: transparent;
+            color: #30b4cc;
+            font-size: 20px; padding: 0.5rem 1rem;">Back</button>
+        </div> -->
+    </div>
+</div>

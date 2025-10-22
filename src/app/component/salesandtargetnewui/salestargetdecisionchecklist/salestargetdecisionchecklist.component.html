@@ -1,0 +1,375 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui sales_target">
+    <div class="container">
+        <div class="body-element">
+            <div class="decision-checklist">
+                <div class="row pb-3 d-flex align-items-center">
+                    <div class="col-6 decision-checklist-col6">
+                        <h1 class="decision-checklist-col6-h1">Decision Checklist</h1>
+                    </div>
+                    <div class="col-6 text-end">
+                        <select class="select-round" name="" id="" [(ngModel)]="roundname" (change)="roundClick()">
+                            <option class="select-round-option" value="">Select Round</option>
+                            <option class="select-round-option" *ngFor="let attempt of dropdownvalue; let i = index;"
+                                [value]=attempt>
+                                {{attempt}}</option>
+
+                        </select>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-borderd checklisttable">
+                        <tbody class="checklisttable-body">
+                            <tr class="checklisttable-body-tr" style="border-bottom: 3px solid black;">
+                                <td></td>
+                                <td>{{playername}}</td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <th>Sales Planning</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Sales Target, Modern Trade</td>
+                                <td><span [class]="isClass[0] ? 'defaultcolor' : 'notdefaultcolor'">{{result[0]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Sales Target, Retail</td>
+                                <td><span [class]="isClass[1] ? 'defaultcolor' : 'notdefaultcolor'">{{result[1]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Sales Target, HoReCa</td>
+                                <td><span [class]="isClass[2] ? 'defaultcolor' : 'notdefaultcolor'">{{result[2]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Personnel, Modern Trade</td>
+                                <td><span [class]="isClass[3] ? 'defaultcolor' : 'notdefaultcolor'">{{result[3]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Personnel, Retail</td>
+                                <td><span [class]="isClass[4] ? 'defaultcolor' : 'notdefaultcolor'">{{result[4]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Personnel, HoReCa</td>
+                                <td><span [class]="isClass[5] ? 'defaultcolor' : 'notdefaultcolor'">{{result[5]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Compensation Modern Trade, Business background</td>
+                                <td><span [class]="isClass[6] ? 'defaultcolor' : 'notdefaultcolor'">{{result[6]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Compensation Modern Trade, Non business background</td>
+                                <td><span [class]="isClass[7] ? 'defaultcolor' : 'notdefaultcolor'">{{result[7]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Compensation Retail, Business background</td>
+                                <td><span [class]="isClass[8] ? 'defaultcolor' : 'notdefaultcolor'">{{result[8]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Compensation Retail, Non business background</td>
+                                <td><span [class]="isClass[9] ? 'defaultcolor' : 'notdefaultcolor'">{{result[9]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Compensation HoReCa, Business background</td>
+                                <td><span
+                                        [class]="isClass[10] ? 'defaultcolor' : 'notdefaultcolor'">{{result[10]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Compensation HoReCa, Non business background</td>
+                                <td><span
+                                        [class]="isClass[11] ? 'defaultcolor' : 'notdefaultcolor'">{{result[11]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[1]">
+                                <td>Bonus %, Business background</td>
+                                <td><span
+                                        [class]="isClass[12] ? 'defaultcolor' : 'notdefaultcolor'">{{result[12]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[1]">
+                                <td>Bonus %, Non business background</td>
+                                <td><span
+                                        [class]="isClass[13] ? 'defaultcolor' : 'notdefaultcolor'">{{result[13]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Sales force Modern trade, Business background</td>
+                                <td><span
+                                        [class]="isClass[14] ? 'defaultcolor' : 'notdefaultcolor'">{{result[14]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Sales force Retail, Business background</td>
+                                <td><span
+                                        [class]="isClass[15] ? 'defaultcolor' : 'notdefaultcolor'">{{result[15]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Sales force HoReCa, Business background</td>
+                                <td><span
+                                        [class]="isClass[16] ? 'defaultcolor' : 'notdefaultcolor'">{{result[16]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <th>Sales Composition</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Sales Representative, Modern Trade %</td>
+                                <td><span
+                                        [class]="isClass[17] ? 'defaultcolor' : 'notdefaultcolor'">{{result[17]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Sales Representative, Retail %</td>
+                                <td><span
+                                        [class]="isClass[18] ? 'defaultcolor' : 'notdefaultcolor'">{{result[18]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Sales Representative, HoReCa %</td>
+                                <td><span
+                                        [class]="isClass[19] ? 'defaultcolor' : 'notdefaultcolor'">{{result[19]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Key Account Manager, Modern Trade %</td>
+                                <td><span
+                                        [class]="isClass[20] ? 'defaultcolor' : 'notdefaultcolor'">{{result[20]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Key Account Manager, Retail %</td>
+                                <td><span
+                                        [class]="isClass[21] ? 'defaultcolor' : 'notdefaultcolor'">{{result[21]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Key Account Manager, HoReCa %</td>
+                                <td><span
+                                        [class]="isClass[22] ? 'defaultcolor' : 'notdefaultcolor'">{{result[22]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Territory Sales Manager, Modern Trade %</td>
+                                <td><span
+                                        [class]="isClass[23] ? 'defaultcolor' : 'notdefaultcolor'">{{result[23]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Territory Sales Manager, Retail %</td>
+                                <td><span
+                                        [class]="isClass[24] ? 'defaultcolor' : 'notdefaultcolor'">{{result[24]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Territory Sales Manager, HoReCa %</td>
+                                <td><span
+                                        [class]="isClass[25] ? 'defaultcolor' : 'notdefaultcolor'">{{result[25]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Gung Ho, Modern Trade %</td>
+                                <td><span
+                                        [class]="isClass[26] ? 'defaultcolor' : 'notdefaultcolor'">{{result[26]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Gung Ho, Retail %</td>
+                                <td><span
+                                        [class]="isClass[27] ? 'defaultcolor' : 'notdefaultcolor'">{{result[27]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Gung Ho, HoReCa %</td>
+                                <td><span
+                                        [class]="isClass[28] ? 'defaultcolor' : 'notdefaultcolor'">{{result[28]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Buddy, Modern Trade %</td>
+                                <td><span
+                                        [class]="isClass[29] ? 'defaultcolor' : 'notdefaultcolor'">{{result[29]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Buddy, Retail %</td>
+                                <td><span
+                                        [class]="isClass[30] ? 'defaultcolor' : 'notdefaultcolor'">{{result[30]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Buddy, HoReCa %</td>
+                                <td><span
+                                        [class]="isClass[31] ? 'defaultcolor' : 'notdefaultcolor'">{{result[31]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Consultative, Modern Trade %</td>
+                                <td><span
+                                        [class]="isClass[32] ? 'defaultcolor' : 'notdefaultcolor'">{{result[32]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Consultative, Retail %</td>
+                                <td><span
+                                        [class]="isClass[33] ? 'defaultcolor' : 'notdefaultcolor'">{{result[33]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Consultative, HoReCa %</td>
+                                <td><span
+                                        [class]="isClass[34] ? 'defaultcolor' : 'notdefaultcolor'">{{result[34]*100|number:'1.0-0'}}%</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[2]">
+                                <td>Involvement in Customers</td>
+                                <td><span
+                                        [class]="isClass[35] ? 'defaultcolor' : 'notdefaultcolor'">{{result[35]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[2]">
+                                <td>Sales Strategy</td>
+                                <td><span
+                                        [class]="isClass[36] ? 'defaultcolor' : 'notdefaultcolor'">{{result[36]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[2]">
+                                <td>Sales and Marketing Integration</td>
+                                <td><span
+                                        [class]="isClass[37] ? 'defaultcolor' : 'notdefaultcolor'">{{result[37]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[2]">
+                                <td>Sales Personnel Support</td>
+                                <td><span
+                                        [class]="isClass[38] ? 'defaultcolor' : 'notdefaultcolor'">{{result[38]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[3]">
+                                <td>Best individual performer</td>
+                                <td><span
+                                        [class]="isClass[39] ? 'defaultcolor' : 'notdefaultcolor'">{{result[39]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[3]">
+                                <td>Best team effort</td>
+                                <td><span
+                                        [class]="isClass[40] ? 'defaultcolor' : 'notdefaultcolor'">{{result[40]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[3]">
+                                <td>Friendliest Coworker</td>
+                                <td><span
+                                        [class]="isClass[41] ? 'defaultcolor' : 'notdefaultcolor'">{{result[41]}}</span>
+                                </td>
+                            </tr>
+
+                            <tr class="checklisttable-body-tr">
+                                <th>Sales Development</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Value Based Sales Tactics</td>
+                                <td><span
+                                        [class]="isClass[42] ? 'defaultcolor' : 'notdefaultcolor'">{{result[42]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Trust Sales</td>
+                                <td><span
+                                        [class]="isClass[43] ? 'defaultcolor' : 'notdefaultcolor'">{{result[43]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Product Management</td>
+                                <td><span
+                                        [class]="isClass[44] ? 'defaultcolor' : 'notdefaultcolor'">{{result[44]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>After Sales Concept</td>
+                                <td><span
+                                        [class]="isClass[45] ? 'defaultcolor' : 'notdefaultcolor'">{{result[45]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Relationship Skills</td>
+                                <td><span
+                                        [class]="isClass[46] ? 'defaultcolor' : 'notdefaultcolor'">{{result[46]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Key Account Management</td>
+                                <td><span
+                                        [class]="isClass[47] ? 'defaultcolor' : 'notdefaultcolor'">{{result[47]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[4]">
+                                <td>Adaptive Selling Style</td>
+                                <td><span
+                                        [class]="isClass[48] ? 'defaultcolor' : 'notdefaultcolor'">{{result[48]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[4]">
+                                <td>Negotiation Style</td>
+                                <td><span
+                                        [class]="isClass[49] ? 'defaultcolor' : 'notdefaultcolor'">{{result[49]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[4]">
+                                <td>Closing a Sale</td>
+                                <td><span
+                                        [class]="isClass[50] ? 'defaultcolor' : 'notdefaultcolor'">{{result[50]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[4]">
+                                <td>Efficient Working Method</td>
+                                <td><span
+                                        [class]="isClass[51] ? 'defaultcolor' : 'notdefaultcolor'">{{result[51]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[5]">
+                                <td>Sales Process Innovation</td>
+                                <td><span
+                                        [class]="isClass[52] ? 'defaultcolor' : 'notdefaultcolor'">{{result[52]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[5]">
+                                <td>Process Management</td>
+                                <td><span
+                                        [class]="isClass[53] ? 'defaultcolor' : 'notdefaultcolor'">{{result[53]}}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="decision-textarea py-4" *ngIf="analysisshow">
+                        <textarea class="decision-textarea-element" rows="10" [disabled]="disabled"
+                            [(ngModel)]="useranalysisinput"
+                            placeholder="Describe your thought process behind the decision-making in 1500 characters…"
+                            (focusout)="useranalysissave()" maxlength="1500"></textarea>
+                    </div>
+                    <div class="p-0">
+                        <button class="btn_stl btn_stl-decisionchecklist" type="button" [disabled]="disabled"
+                            (click)="decisionchecklistpopup()">Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

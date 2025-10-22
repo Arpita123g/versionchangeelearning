@@ -1,0 +1,31 @@
+<div>
+    <div class="row">
+        <div class="col-10">
+            <div class="inputtitle">Update Chapter </div>
+            <div class="subtitle">You can update Chapter with respective details</div>
+        </div>
+    </div>
+    <form [formGroup]="createchaptergroup" class="form">
+        <div class="row">
+            <div class="borderbottom"></div>
+            <div class="col-6 mar-b">
+                <div class="lebel">Chapter Name</div>
+                <input formControlName="chaptername" class="form-control" type="text">
+            </div>
+            <div class="col-6 mar-b">
+                <div class="lebel">Prompt List </div>
+                <select #inputElement formControlName="prompt" class="form-control" id="myDatalistInput"
+                    (change)="getPromptValue(inputElement.selectedIndex)">
+                    <option value="">Select Prompt </option>
+                    <option *ngFor="let promptvalue of promptlist; let i=index" [value]="promptvalue.promptname">
+                        {{promptvalue.promptname}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-2 mar-b save" style="display:flex;align-items:center">
+                <button class="submit-button" (click)="updatechapter()">Update</button>
+            </div>
+        </div>
+    </form>
+</div>

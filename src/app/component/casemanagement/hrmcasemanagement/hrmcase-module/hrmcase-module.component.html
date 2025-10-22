@@ -1,0 +1,102 @@
+<div class="elearingnewui casemanagement">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="case-management-body case-management-body-hrm">
+        <table class="table case-management-table">
+            <thead>
+                <tr>
+                    <td>Type</td>
+                    <td>Value</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of generalInfoData; let i=index;">
+                    <td>{{item.title}}</td>
+                    <td>
+                        <textarea cols="35" rows="2" [value]="res[item.cell] [i]||''" #inputElement
+                            [disabled]="defaultcase=='yes'"
+                            (focusout)="writeHRMValue(item.cell, 0, inputElement.value)"></textarea>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="table-responsive mb-3 mt-3">
+            <table class="table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round  of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of moduleData ;let j=index">
+                        <td>{{item.title}}</td>
+                        <td *ngFor="let inputdata of item.values | slice:0:5;let i = index">
+                            <input type="checkbox" class="shadow-none" [value]="inputdata" [checked]="inputdata==='active'" 
+                            [disabled]="defaultcase=='yes'"
+                            (change)="writeModuleValue(i,'normal','yes',item.statusname,'',$event,j)" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngFor="let table of textData">
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <td>
+                            <h2>{{table.title}}</h2>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+            <div *ngIf="table.specialTable">
+                <div class="table-responsive mb-3 mt-3" *ngFor="let spcltableitem  of table.specialTable">
+                    <table class="table case-management-table">
+                        <thead>
+                            <tr>
+                                <th *ngFor="let head of spcltableitem.title"
+                                    [colSpan]="spcltableitem.title.length==1?spcltableitem.cell[0].length:1"
+                                    style="font-weight: 600 !important;">
+                                    {{head}}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of spcltableitem.cell">
+                                <td *ngFor="let inputdata of row">
+                                    <textarea cols="35" rows="2" [value]="res[inputdata][0]||''" #inputElement
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeHRMValue(inputdata, 0, inputElement.value)"></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="table-responsive mb-3 mt-3">
+                <table class="table case-management-table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round  of rounds">{{round}}</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of table.tableData">
+                            
+                            <td>{{item.title}}</td>
+                            <td *ngFor="let cell of item.cell; let i=index;">
+                                <textarea cols="35" rows="2" [value]="res[cell] [i]||''" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeHRMValue(cell, i, inputElement.value)"></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

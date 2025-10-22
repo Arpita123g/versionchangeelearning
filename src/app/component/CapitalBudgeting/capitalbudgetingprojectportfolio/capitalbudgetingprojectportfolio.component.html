@@ -1,0 +1,175 @@
+<div class="elearingnewui capital_budgeting">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="row" class="element-first">
+                <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                    style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                    <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                        <button class="food-thought-btn">Food For Thought</button></span>
+                </div>
+            </div>
+            <h1>Project Portfolio
+                <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>How will you use the information provided for each project, including investment, expected cash flow, and duration, to estimate an appropriate discount rate for each project? </p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>How might the risk associated with a project influence its discount rate and expected cash flow?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <hr>
+            <h1>Market Expansion
+            </h1>
+
+            <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                <div class="col-md" *ngFor="let item of marketExpression ; let i = index">
+                    <div class="card marketing-card h-100">
+                        <div class="craftingimg">
+                            <img [src]="item.img" class="card-img-top" alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h2>{{item.heading }}</h2>
+                            <div class="card-text">
+                                <div class="textswcinassessment-p">
+                                    {{item.description}}
+                                </div>
+                            </div>
+                            <br><br>
+                        </div>
+                        <div class="card-footer form-check_new">
+                            <div *ngFor="let context of item.body">
+                                <div class="routesandtechcostcard">
+                                    <h3>{{result.cbGameCM.cbgameperioddata[context.title]}}</h3>
+                                    <h3>{{result.cbGameCM.cbgameperioddata[context.value]}}</h3>
+                                </div>
+                            </div>
+                            <div class="input-element-div">
+                                <p>Expected Discount Rate % </p>
+                                <input class="input-no_box-drop_New" type="number" [ngModel]="result.cbgamedata?((result.cbgamedata[item.ExpectedRate]*100)|number:'1.0-2'):''"
+                                (focusout)="writegameData($event,item.ExpectedRate)"  [disabled]="inputDisabled"/>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1 class="py-4">Operational Efficiency </h1>
+            <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                <div class="col-md" *ngFor="let item of operationalEfficiency ; let i = index">
+                    <div class="card marketing-card h-100">
+                        <div class="craftingimg">
+                            <img [src]="item.img" class="card-img-top" alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h2>{{item.heading }}</h2>
+                            <div class="card-text">
+                                <div class="textswcinassessment-p">
+                                    {{item.description}}
+
+                                </div>
+                            </div>
+                            <br><br>
+                        </div>
+                        <div class="card-footer form-check_new">
+                            <div *ngFor="let context of item.body;">
+                                <div class="routesandtechcostcard">
+                                    <h3>{{result.cbGameCM.cbgameperioddata[context.title]}}</h3>
+                                    <h3>{{result.cbGameCM.cbgameperioddata[context.value]}}</h3>
+                                </div>
+                            </div>
+                            <div class="input-element-div">
+                                <p>Expected Discount Rate % </p>
+                                <input class="input-no_box-drop_New" type="number" [ngModel]="result.cbgamedata?((result.cbgamedata[item.ExpectedRate]*100)|number:'1.0-2'):''"
+                                (focusout)="writegameData($event,item.ExpectedRate)"  [disabled]="inputDisabled"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1 class="py-4">Process Improvement</h1>
+            <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                <div class="col-md" *ngFor="let item of processImprovement; ">
+                    <div class="card marketing-card h-100">
+                        <div class="craftingimg">
+                            <img [src]="item.img" class="card-img-top" alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h2>{{item.heading }}</h2>
+                            <div class="card-text">
+                                <div class="textswcinassessment-p">
+                                    {{item.description}}
+
+                                </div>
+                            </div>
+                            <br><br>
+                        </div>
+                        <div class="card-footer form-check_new">
+                            <div *ngFor="let context of item.body;">
+                                <div class="routesandtechcostcard">
+                                    <h3>{{result.cbGameCM.cbgameperioddata[context.title]}}</h3> 
+                                     <h3>{{result.cbGameCM.cbgameperioddata[context.value]}}</h3>
+                                </div>
+                            </div>
+                            <div class="input-element-div">
+                                <p>Expected Discount Rate % </p>
+                                <input class="input-no_box-drop_New" type="number" [ngModel]="result.cbgamedata?((result.cbgamedata[item.ExpectedRate]*100)|number:'1.0-2'):''"
+                                (focusout)="writegameData($event,item.ExpectedRate)"  [disabled]="inputDisabled"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1 class="py-4">Product Expansion </h1>
+            <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                <div class="col-md" *ngFor="let item of productExpansion ; let i = index">
+                    <div class="card marketing-card h-100">
+                        <div class="craftingimg">
+                            <img [src]="item.img" class="card-img-top" alt="Your Image" />
+                        </div>
+                        <div class="card-body">
+                            <h2>{{item.heading }}</h2>
+                            <div class="card-text">
+                                <div class="textswcinassessment-p">
+                                    {{item.description}}
+
+                                </div>
+                            </div>
+                            <br><br>
+                        </div>
+                        <div class="card-footer form-check_new">
+                            <div *ngFor="let context of item.body;">
+                                <div class="routesandtechcostcard">
+                                   <h3>{{result.cbGameCM.cbgameperioddata[context.title]}}</h3>
+                                    <h3>{{result.cbGameCM.cbgameperioddata[context.value]}}</h3>
+                                </div>
+                            </div>
+                            <div class="input-element-div">
+                                <p>Expected Discount Rate % </p>
+                                <input class="input-no_box-drop_New" type="number" [ngModel]="result.cbgamedata?((result.cbgamedata[item.ExpectedRate]*100)|number:'1.0-2'):''"
+                                (focusout)="writegameData($event,item.ExpectedRate)"   [disabled]="inputDisabled"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>

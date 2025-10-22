@@ -1,0 +1,430 @@
+<div class="elearingnewui accounting_new">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="feed_ack">
+                <div>
+                    <div class="row pb-4">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                                <div class="">
+                                    <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                        (change)="roundClick()">
+                                        <option class="select-round-option" value="">Select Round</option>
+                                        <option class="select-round-option"
+                                            *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                            {{attempt}}</option>
+
+                                    </select>
+                                </div>
+                                <div class="download_btn" matTooltiClass="primary-tooltip"
+                                    (click)="downloadreportaccountingArabic()">
+                                    <div>
+                                        <a download matTooltip="Download"><span class="hovertext"
+                                                data-hover="Download pdf file accounting ">
+                                                <img src="assets/images/businessbasics/download.png" />
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <mat-icon class="mt-2">get_app</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1>
+                        Synopsis
+                    </h1>
+                    <div style="margin-top: 1.1rem;" *ngIf="analysisshow">
+                        <h1
+                            style="display: flex; align-items: center; gap: 5px;font-size: 1.1rem; font-weight: 600;padding: 0.6rem 0.4rem;color: white;background-color: #266cc38a;">
+                            Feedback
+                            <div style=" width: 1rem;">
+                                <mat-icon (click)="rotate();roundClick();" [@rotatedState]='state' class="sidenav-icon"
+                                    aria-hidden="false" aria-label="Example home icon">cached</mat-icon>
+                            </div>
+                        </h1>
+                    </div>
+                    <div class="decision-textarea pb-5 h-100" *ngIf="analysisshow">
+                        <div class="row">
+                            <div class="col-md" style="padding: 10px;">
+                                <div class="card feedbsck-value p-3">
+                                    <markdown [data]="feedbackvalue"></markdown>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-cols-md-2 py-3">
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2"> القرارات </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody" *ngIf="totalOptionalcase">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th"> المعلمة </th>
+                                        <th class="rsl_tbl-tbody-th"> مدخل </th>
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <th> الميزانية العمومية </th>
+                                        <th></th>
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> نقدي </td>
+                                        <td>{{result[0]}}</td>
+                                    </tr>
+                                     <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> الحسابات المستحقة </td>
+                                        <td>{{result[1]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> جرد </td>
+                                        <td>{{result[2]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> المصاريف المدفوعة مقدما </td>
+                                        <td>{{result[3]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> الأصول المتداولة الأخرى </td>
+                                        <td>{{result[4]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> الآلات والمعدات </td>
+                                        <td>{{result[5]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> الأثاث والتجهيزات </td>
+                                        <td>{{result[6]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> تحسينات الإيجار </td>
+                                        <td>{{result[7]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> الأراضي والمباني </td>
+                                        <td>{{result[8]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> الأصول الثابتة الأخرى </td>
+                                        <td>{{result[9]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> الأصول غير الملموسة </td>
+                                        <td>{{result[10]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> حسن النية </td>
+                                        <td>{{result[11]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> الودائع </td>
+                                        <td>{{result[12]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> أصول أخرى </td>
+                                        <td>{{result[13]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> الحسابات الدائنة </td>
+                                        <td>{{result[14]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> المصروفات المستحقة </td>
+                                        <td>{{result[15]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> الإيرادات غير المستحقة </td>
+                                        <td>{{result[16]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> ملاحظات قصيرة المدى </td>
+                                        <td>{{result[17]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> الجزء الحالي من الديون الطويلة الأجل </td>
+                                        <td>{{result[18]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> قروض بنكية مستحقة الدفع </td>
+                                        <td>{{result[19]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> الأوراق المالية المستحقة الدفع للمساهمين </td>
+                                        <td>{{result[20]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> أقل: الجزء قصير الأجل </td>
+                                        <td>{{result[21]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> ديون أخرى طويلة الأجل </td>
+                                        <td>{{result[22]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> رأس المال المستثمر </td>
+                                        <td>{{result[23]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> الأرباح المحتجزة - البداية </td>
+                                        <td>{{result[24]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> الأرباح المحتجزة - الحالية </td>
+                                        <td>{{result[25]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <th> بيان الدخل </th>
+                                        <th></th>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td> ربح </td>
+                                        <td>{{result[26]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td> تكلفة البضاعة المباعة </td>
+                                        <td>{{result[27]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td> تكلفة المبيعات </td>
+                                        <td>{{result[28]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td> تكاليف الإدارة </td>
+                                        <td>{{result[29]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td> الديون المعدومة </td>
+                                        <td>{{result[30]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td> الاستهلاك والإطفاء </td>
+                                        <td>{{result[31]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td> مصاريف الفائدة </td>
+                                        <td>{{result[32]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td> ضريبة </td>
+                                        <td>{{result[33]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <th> بيان التدفق النقدي </th>
+                                        <th></th>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td> الرصيد الافتتاحي </td>
+                                        <td>{{result[34]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td> العمليات، النقد الداخل </td>
+                                        <td>{{result[35]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td> العمليات، السحب النقدي </td>
+                                        <td>{{result[36]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td> الاستثمار، النقد الداخل </td>
+                                        <td>{{result[37]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td> الاستثمار، السحب النقدي </td>
+                                        <td>{{result[38]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td> التمويل، النقد الداخل </td>
+                                        <td>{{result[39]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td>  السحب النقدي التمويل </td>
+                                        <td>{{result[40]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[3]" class="rsl_tbl-tbody-tr">
+                                        <th> فرص </th>
+                                        <th></th>
+                                    </tr>
+                                   <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> الاستثمار في البحث والتطوير </td>
+                                        <td>{{result[41]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> توسيع مرافق التصنيع </td>
+                                        <td>{{result[42]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> إعادة هيكلة الديون </td>
+                                        <td>{{result[43]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td> مبادرات خفض التكاليف </td>
+                                        <td>{{result[44]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td> مقدمة لسلسلة المنتجات المتميزة </td>
+                                        <td>{{result[45]}}</td>
+                                    </tr>
+                                     <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td> تدريب وتطوير الموظفين </td>
+                                        <td>{{result[46]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td> تحسين رأس المال العامل </td>
+                                        <td>{{result[47]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td> تمويل تأجير المعدات </td>
+                                        <td>{{result[48]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td> استكشاف فرص التصدير </td>
+                                        <td>{{result[49]}}</td>
+                                    </tr> 
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md">
+                            <table   class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr  class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3"> النتائج </th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngIf="totalOptionalcase" class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th"> المعلمة </th>
+                                        <th class="rsl_tbl-tbody-th"> الناتج </th>
+                                    </tr>
+                                   <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td> الميزانية العمومية </td>
+                                        <td>{{result[50]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td> بيان الدخل </td>
+                                        <td>{{result[51]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td> بيان التدفق النقدي </td>
+                                        <td>{{result[52]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3"> مؤشر الأداء الرئيسي </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                     <tr class="rsl_tbl-tbody-tr">
+                                        <td> المجموع الكلي للنقاط </td>
+                                        <td>{{result[65]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td> إنشاء القيمة لمدة عام </td>
+                                        <td>{{result[66]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td> إنشاء القيمة لمدة 3 أعوام </td>
+                                        <td>{{result[67]}}</td> 
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="4">Investment</th>
+                                    </tr>
+                                </thead>
+                                <tbody  *ngIf="totalOptionalcase" class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th"> المعلمة </th>
+                                        <th class="rsl_tbl-tbody-th" style="text-align: right;"> احتمالية الموافقة </th>
+                                        <th class="rsl_tbl-tbody-th" style="text-align: right;"> إنشاء القيمة لمدة عام
+                                        </th>
+                                        <th class="rsl_tbl-tbody-th"> إنشاء القيمة لمدة 3 أعوام  </th>
+                                    </tr>
+
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>{{result[53]}}</td>
+                                        <td class="middleclassright">{{result[54]}}</td>
+                                        <td class="middleclassright">{{result[55]}}</td>
+                                        <td>{{result[56]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                         <td>{{result[57]}}</td>
+                                        <td class="middleclassright">{{result[58]}}</td>
+                                        <td class="middleclassright">{{result[59]}}</td>
+                                        <td>{{result[60]}}</td> 
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                     <td>{{result[61]}}</td>
+                                        <td class="middleclassright">{{result[62]}}</td>
+                                         <td class="middleclassright">{{result[63]}}</td> 
+                                        <td>{{result[64]}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5" *ngIf="optional[3]" >
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2"> القدرة على التفكير </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th"> المعلمة </th>
+                                        <th class="rsl_tbl-tbody-th"> نتيجة ٪ </th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td> الحسابات </td>
+                                        <td>{{result[68]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row lst_r">
+                        <div class="col-4 lst_r-col4" *ngIf="!timefinished">
+                            <button class="mt-4 retry"  [disabled]="isButtonDisabled" (click)="exit()">{{retry}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

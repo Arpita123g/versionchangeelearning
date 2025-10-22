@@ -1,0 +1,458 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui sales_target">
+    <div class="container">
+        <div class="body-element">
+            <div class="element-first">
+                <div class="row">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+            </div>
+            <h1>Target & Team
+                <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'> What factors from past sales performance and market analysis will you consider when setting sales targets for each channel?</p>
+                    </div>
+                  </div>
+                    <div class='pt-2' style='display:flex;'>
+                      <div>
+                        <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                      </div> &nbsp; &nbsp; &nbsp;
+                      <div>
+                        <p style='margin: 0 auto; color: white; font-size:13px;'> How will you align sales targets with the preferences of different consumer segments and product categories in the market?</p>
+                      </div>
+                    </div>
+                </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <div class="row row-cols-md-2 g-3 mt-2">
+                <div class="col-md">
+                    <table class="table rsl_tbl">
+                        <thead class="rsl_tbl-thead">
+                            <tr class="rsl_tbl-thead-tr">
+                                <th class="rsl_tbl-thead-th" colspan="4">Estimated Sales, k INR</th>
+                            </tr>
+                        </thead>
+                        <tbody class="rsl_tbl-tbody">
+                            <tr class="rsl_tbl-tbody-tr-head">
+                                <td></td>
+                                <td>Modern Trade</td>
+                                <td>Retail</td>
+                                <td>HoReCa</td>
+                            </tr>
+                            <tr class="rsl_tbl-tbody-tr">
+                                <td>Estimated Sales, k INR</td>
+                                <td>
+                                    <input [disabled]="disabled" #input type="number" min="0" max="50000"
+                                        class="input-no_box" placeholder="Input value here..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                        [(ngModel)]="result[0]" required
+                                        (focusout)="writesalestargetValue(0,'av7','nonpercentage','estimatedsales')">
+                                </td>
+                                <td>
+                                    <input [disabled]="disabled" #input type="number" class="input-no_box"
+                                        placeholder="Input value here..." aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" [(ngModel)]="result[1]" min="0" max="50000"
+                                        (focusout)="writesalestargetValue(1,'aw7','nonpercentage','estimatedsales')">
+                                </td>
+                                <td>
+                                    <input [disabled]="disabled" #input type="number" class="input-no_box"
+                                        placeholder="Input value here..." aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" [(ngModel)]="result[2]" min="0" max="50000"
+                                        (focusout)="writesalestargetValue(2,'ax7','nonpercentage','estimatedsales')">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row row-cols-md-2 g-3 mt-2">
+                <div class="col-md">
+                    <div class="card p-3">
+                        <apx-chart [series]="costinrgraph.series" [chart]="costinrgraph.chart"
+                            [dataLabels]="costinrgraph.dataLabels" [plotOptions]="costinrgraph.plotOptions"
+                            [yaxis]="costinrgraph.yaxis" [xaxis]="costinrgraph.xaxis" [fill]="costinrgraph.fill"
+                            [title]="costinrgraph.title" [noData]="costinrgraph.noData"
+                            [tooltip]="costinrgraph.tooltip">
+                        </apx-chart>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card p-3">
+                        <apx-chart [series]="attritiongraph.series" [chart]="attritiongraph.chart"
+                            [dataLabels]="attritiongraph.dataLabels" [plotOptions]="attritiongraph.plotOptions"
+                            [yaxis]="attritiongraph.yaxis" [xaxis]="attritiongraph.xaxis" [fill]="attritiongraph.fill"
+                            [title]="attritiongraph.title" [noData]="attritiongraph.noData"
+                            [tooltip]="attritiongraph.tooltip">
+                        </apx-chart>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-cols-md-2 g-3 mt-4">
+                <div class="col-md">
+                    <div class="card p-3">
+                        <apx-chart [series]="employeesgraph.series" [chart]="employeesgraph.chart"
+                            [dataLabels]="employeesgraph.dataLabels" [plotOptions]="employeesgraph.plotOptions"
+                            [yaxis]="employeesgraph.yaxis" [xaxis]="employeesgraph.xaxis" [fill]="employeesgraph.fill"
+                            [title]="employeesgraph.title" [noData]="employeesgraph.noData"
+                            [tooltip]="employeesgraph.tooltip">
+                        </apx-chart>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <table class="table rsl_tbl">
+                        <thead class="rsl_tbl-thead">
+                            <tr class="rsl_tbl-thead-tr">
+                                <th class="rsl_tbl-thead-th" colspan="5">Number of People
+                                    <mat-icon appTippy="
+                                    <div class='help-tip p-2'>
+                                      <div style='display:flex;'>
+                                        <div>
+                                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                        </div> &nbsp; &nbsp; &nbsp;
+                                        <div>
+                                          <p style='margin: 0 auto; color: white; font-size:13px;'> How will you determine the optimal number of employees needed in each channel to meet the set sales targets?</p>
+                                        </div>
+                                      </div>
+                                        <div class='pt-2' style='display:flex;'>
+                                          <div>
+                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                          </div> &nbsp; &nbsp; &nbsp;
+                                          <div>
+                                            <p style='margin: 0 auto; color: white; font-size:13px;'> Considering the diversity of product preferences in different segments, how will you allocate resources across channels to ensure effective coverage keeping in mind the attrition rate?</p>
+                                          </div>
+                                        </div>
+                                    </div> ">
+                                        help_outline
+                                    </mat-icon>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="rsl_tbl-tbody">
+                            <tr class="rsl_tbl-tbody-tr-head">
+                                <td></td>
+                                <td>Personnel</td>
+                                <td>Current Period, INR</td>
+                                <td>%</td>
+                                <td>Previous Period, INR</td>
+                            </tr>
+                            <tr class="rsl_tbl-tbody-tr">
+                                <td>Modern Trade</td>
+                                <td>
+                                    <input [disabled]="disabled" #input type="number" class="input-no_box"
+                                        placeholder="Input value here..." aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" [(ngModel)]="result[3]" min="10" max="40"
+                                        (focusout)="writesalestargetValue(3,'av10','nonpercentage','noofpeople')">
+                                </td>
+                                <td>{{result[6]}}</td>
+                                <td>{{result[7]*100|number:'1.0-0'}}%</td>
+                                <td>{{result[8]}}</td>
+                            </tr>
+                            <tr class="rsl_tbl-tbody-tr">
+                                <td>Retail</td>
+                                <td>
+                                    <input [disabled]="disabled" #input type="number" class="input-no_box"
+                                        placeholder="Input value here..." aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" [(ngModel)]="result[4]" min="10" max="40"
+                                        (focusout)="writesalestargetValue(4,'av11','nonpercentage','noofpeople')">
+                                </td>
+                                <td>{{result[9]}}</td>
+                                <td>{{result[10]*100|number:'1.0-0'}}%</td>
+                                <td>{{result[11]}}</td>
+                            </tr>
+                            <tr class="rsl_tbl-tbody-tr">
+                                <td>HoReCa</td>
+                                <td>
+                                    <input [disabled]="disabled" #input type="number" class="input-no_box"
+                                        placeholder="Input value here..." aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" [(ngModel)]="result[5]" min="10" max="40"
+                                        (focusout)="writesalestargetValue(5,'av12','nonpercentage','noofpeople')">
+                                </td>
+                                <td>{{result[12]}}</td>
+                                <td>{{result[13]*100|number:'1.0-0'}}%</td>
+                                <td>{{result[14]}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <h1 class="mt-5">Compensation, INR/month
+                <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'>What factors related to business and non-business backgrounds will influence your decision on compensation structures for sales team members?</p>
+                    </div>
+                  </div>
+                    <div class='pt-2' style='display:flex;'>
+                      <div>
+                        <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                      </div> &nbsp; &nbsp; &nbsp;
+                      <div>
+                        <p style='margin: 0 auto; color: white; font-size:13px;'> How can you design compensation packages that motivate employees while considering the targets?</p>
+                      </div>
+                    </div>
+                </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <div class="row row-cols-md g-3 mt-4">
+                <div class="col-md">
+                    <div class="card p-3">
+                        <apx-chart [series]="compensationgraph.series" [chart]="compensationgraph.chart"
+                            [dataLabels]="compensationgraph.dataLabels" [plotOptions]="compensationgraph.plotOptions"
+                            [yaxis]="compensationgraph.yaxis" [xaxis]="compensationgraph.xaxis"
+                            [fill]="compensationgraph.fill" [title]="compensationgraph.title"
+                            [noData]="compensationgraph.noData" [tooltip]="compensationgraph.tooltip"
+                            >
+                        </apx-chart>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-md g-3 mt-4">
+                <div class="col-md">
+                    <table class="table rsl_tbl">
+                        <thead class="rsl_tbl-thead">
+                            <tr class="rsl_tbl-thead-tr">
+                                <th class="rsl_tbl-thead-th" colspan="10">Compensation, INR/month</th>
+                            </tr>
+                        </thead>
+                        <tbody class="rsl_tbl-tbody">
+                            <tr class="rsl_tbl-tbody-tr-head">
+                                <td></td>
+                                <td colspan="3" style="text-align: center;
+                                border-right: 1px solid black;">Modern Trade</td>
+                                <td colspan="3" style="text-align: center;
+                                border-right: 1px solid black;">Retail</td>
+                                <td colspan="3" style="text-align: center;">HoReCa</td>
+                            </tr>
+                            <tr class="rsl_tbl-tbody-tr">
+                                <td></td>
+                                <td>Current Period</td>
+                                <td>%</td>
+                                <td style="border-right: 1px solid black;">Previous Period</td>
+                                <td>Current Period</td>
+                                <td>%</td>
+                                <td style="
+                                border-right: 1px solid black;">Previous Period</td>
+                                <td>Current Period</td>
+                                <td>%</td>
+                                <td>Previous Period</td>
+                            </tr>
+                            <tr class="rsl_tbl-tbody-tr">
+                                <td>Business background</td>
+                                <td>
+                                    <input [disabled]="disabled" #input type="number" class="input-no_box"
+                                        placeholder="Input value here..." aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" [(ngModel)]="result[15]" min="20000" max="70000"
+                                        (focusout)="writesalestargetValue(15,'av15','nonpercentage','compensation')">
+                                </td>
+                                <td>{{result[21]*100| number:'1.0-0'}}</td>
+                                <td style="
+                                border-right: 1px solid black;">{{periodresult[0]}}</td>
+                                <td>
+                                    <input [disabled]="disabled" #input type="number" class="input-no_box"
+                                        placeholder="Input value here..." aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" [(ngModel)]="result[16]" min="20000" max="70000"
+                                        (focusout)="writesalestargetValue(16,'aw15','nonpercentage','compensation')">
+                                </td>
+                                <td>{{result[22]*100| number:'1.0-0'}}</td>
+                                <td style="
+                                border-right: 1px solid black;">{{periodresult[1]}}</td>
+                                <td>
+                                    <input [disabled]="disabled" #input type="number" class="input-no_box"
+                                        placeholder="Input value here..." aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" [(ngModel)]="result[17]" min="20000" max="70000"
+                                        (focusout)="writesalestargetValue(17,'ax15','nonpercentage','compensation')">
+                                </td>
+                                <td>{{result[23]*100| number:'1.0-0'}}</td>
+                                <td>{{periodresult[2]}}</td>
+                            </tr>
+                            <tr class="rsl_tbl-tbody-tr">
+                                <td>Non-business background</td>
+                                <td>
+                                    <input [disabled]="disabled" #input type="number" class="input-no_box"
+                                        placeholder="Input value here..." aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" [(ngModel)]="result[18]" min="20000" max="70000"
+                                        (focusout)="writesalestargetValue(18,'av16','nonpercentage','compensation')">
+                                </td>
+                                <td>{{result[24]*100| number:'1.0-0'}}</td>
+                                <td style="
+                                border-right: 1px solid black;">{{periodresult[3]}}</td>
+                                <td>
+                                    <input [disabled]="disabled" #input type="number" class="input-no_box"
+                                        placeholder="Input value here..." aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" [(ngModel)]="result[19]" min="20000" max="70000"
+                                        (focusout)="writesalestargetValue(19,'aw16','nonpercentage','compensation')">
+                                </td>
+                                <td>{{result[25]*100| number:'1.0-0'}}</td>
+                                <td style="
+                                border-right: 1px solid black;">{{periodresult[4]}}</td>
+                                <td>
+                                    <input [disabled]="disabled" #input type="number" class="input-no_box"
+                                        placeholder="Input value here..." aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" [(ngModel)]="result[20]" min="20000" max="70000"
+                                        (focusout)="writesalestargetValue(20,'ax16','nonpercentage','compensation')">
+                                </td>
+                                <td>{{result[26]*100| number:'1.0-0'}}</td>
+                                <td>{{periodresult[5]}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row row-cols-md-2 g-3 mt-4">
+                <div class="col-md">
+                    <table class="table rsl_tbl">
+                        <thead class="rsl_tbl-thead">
+                            <tr class="rsl_tbl-thead-tr">
+                                <th class="rsl_tbl-thead-th" colspan="4">Sales force business backgrounds
+                                    <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'>What balance between business and non-business background would you aim for in your sales team, considering the market dynamics and product preferences?</p>
+                    </div>
+                  </div>
+                    <div class='pt-2' style='display:flex;'>
+                      <div>
+                        <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                      </div> &nbsp; &nbsp; &nbsp;
+                      <div>
+                        <p style='margin: 0 auto; color: white; font-size:13px;'>How might background diversity contribute to addressing the unique needs of different consumer segments while achieving sales targets?</p>
+                      </div>
+                    </div>
+                </div> ">
+                                        help_outline
+                                    </mat-icon>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="rsl_tbl-tbody">
+                            <tr class="rsl_tbl-tbody-tr-head">
+                                <td></td>
+                                <td>Current Period</td>
+                                <td>%</td>
+                                <td>Previous Period</td>
+                            </tr>
+                            <tr class="rsl_tbl-tbody-tr">
+                                <td>Modern Trade</td>
+                                <td>
+                                    <input [disabled]="disabled" #input type="number" class="input-no_box"
+                                        placeholder="Input value here..." aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" [(ngModel)]="result[27]" min="0" max="100"
+                                        (focusout)="writesalestargetValue(27,'av23','percentage','salesforce')">
+                                </td>
+                                <td>{{result[32]*100| number:'1.0-0'}}</td>
+                                <td>{{periodresult[6]}}</td>
+                            </tr>
+                            <tr class="rsl_tbl-tbody-tr">
+                                <td>Retail</td>
+                                <td>
+                                    <input [disabled]="disabled" #input type="number" class="input-no_box"
+                                        placeholder="Input value here..." aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" [(ngModel)]="result[28]" min="0" max="100"
+                                        (focusout)="writesalestargetValue(28,'av24','percentage','salesforce')">
+                                </td>
+                                <td>{{result[33]*100| number:'1.0-0'}}</td>
+                                <td>{{periodresult[7]}}</td>
+                            </tr>
+                            <tr class="rsl_tbl-tbody-tr">
+                                <td>HoReCa</td>
+                                <td>
+                                    <input [disabled]="disabled" #input type="number" class="input-no_box"
+                                        placeholder="Input value here..." aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" [(ngModel)]="result[29]" min="0" max="100"
+                                        (focusout)="writesalestargetValue(29,'av25','percentage','salesforce')">
+                                </td>
+                                <td>{{result[34]*100| number:'1.0-0'}}</td>
+                                <td>{{periodresult[8]}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md" *ngIf="bonustotal">
+                    <table class="table rsl_tbl">
+                        <thead class="rsl_tbl-thead">
+                            <tr class="rsl_tbl-thead-tr">
+                                <th class="rsl_tbl-thead-th" colspan="4">Bonus, % of total compensation
+                                    <mat-icon appTippy="
+                                    <div class='help-tip p-2'>
+                                      <div style='display:flex;'>
+                                        <div>
+                                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                        </div> &nbsp; &nbsp; &nbsp;
+                                        <div>
+                                          <p style='margin: 0 auto; color: white; font-size:13px;'>How will you structure the bonus system to align with sales targets and motivate employees effectively?</p>
+                                        </div>
+                                      </div>
+                                        <div class='pt-2' style='display:flex;'>
+                                          <div>
+                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                          </div> &nbsp; &nbsp; &nbsp;
+                                          <div>
+                                            <p style='margin: 0 auto; color: white; font-size:13px;'> In what ways can bonus incentives be tailored to optimize the costs?</p>
+                                          </div>
+                                        </div>
+                                    </div> ">
+                                        help_outline
+                                    </mat-icon>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="rsl_tbl-tbody">
+                            <tr class="rsl_tbl-tbody-tr-head">
+                                <td></td>
+                                <td>Current Period</td>
+                                <td>%</td>
+                                <td>Previous Period</td>
+                            </tr>
+                            <tr class="rsl_tbl-tbody-tr">
+                                <td>Business background</td>
+                                <td>
+                                    <input [disabled]="disabled" #input type="number" class="input-no_box"
+                                        placeholder="Input value here..." aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" [(ngModel)]="result[30]" min="0" max="100"
+                                        (focusout)="writesalestargetValue(30,'av19','percentage','salesforce')">
+                                </td>
+                                <td>{{result[35]*100| number:'1.0-0'}}</td>
+                                <td>{{periodresult[9]}}</td>
+                            </tr>
+                            <tr class="rsl_tbl-tbody-tr">
+                                <td>Non-business background</td>
+                                <td>
+                                    <input [disabled]="disabled" #input type="number" class="input-no_box"
+                                        placeholder="Input value here..." aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2" [(ngModel)]="result[31]" min="0" max="100"
+                                        (focusout)="writesalestargetValue(31,'av20','percentage','salesforce')">
+                                </td>
+                                <td>{{result[36]*100| number:'1.0-0'}}</td>
+                                <td>{{periodresult[10]}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

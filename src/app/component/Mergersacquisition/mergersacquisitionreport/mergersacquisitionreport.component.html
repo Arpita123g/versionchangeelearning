@@ -1,0 +1,295 @@
+<div class="elearingnewui mergers_aquisition">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row pb-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                            <div class="">
+                                <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                    (change)="roundClick()">
+                                    <option class="select-round-option" value="">Select Round</option>
+                                    <option class="select-round-option"
+                                        *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                        {{attempt}}</option>
+
+                                </select>
+                            </div>
+
+                            <div class="download_btn" matTooltiClass="primary-tooltip"
+                                (click)="downloadreportmergersacquisition()">
+                                <div>
+                                    <a download matTooltip="Download"><span class="hovertext"
+                                            data-hover="Download pdf file accounting ">
+                                            <img class="download_btn-img"
+                                                src="assets/images/businessbasics/download.png" />
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <mat-icon class="mt-2">get_app</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 mb-3">
+                    <div class="col-md-5 reyapo">
+                        <h1 class="reyapo-h1">Approval</h1>
+                        <p style="text-align: justify;">
+                            Excellent work. You have completed your proposal suggesting the firm which could be a
+                            potential option for a merger or acquisition. In this exercise every decision you have taken
+                            shows your skills in dimensions like rigor, synthesis, structuring and business judgement.
+                        </p>
+                    </div>
+
+                    <div class="col-md-7" *ngIf="optional[0]">
+                        <div class="card rigorcard">
+                            <div class="rigorcard-icon">
+                                <mat-icon class="rigorcard-icon-mat" appTippy="<table >
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Rigor</th>
+                      <td style='padding:7px;font-size:13px'>Consistency throughout the decision-making and recommendation.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>Structuring</th>
+                      <td style='padding:7px;font-size:13px'>A logical approach to gathering and analyzing information.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>
+                        Synthesis
+                      </th>
+                      <td style='padding:7px;font-size:13px'>
+                        Approach towards interpreting all the information and making informed decisions.
+                      </td>
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Business Jugement</th>
+                      <td style='padding:7px;font-size:13px'>Ability to evaluate facts and consider risks and possible implications when making decisions.</td>
+                    </tr>
+                    </tr>
+                  </table>
+                   ">
+                                    help_outline
+                                </mat-icon>
+                            </div>
+                            <apx-chart [series]="rigorcharts.series" [chart]="rigorcharts.chart"
+                                [xaxis]="rigorcharts.xaxis" [yaxis]="rigorcharts.yaxis" [stroke]="rigorcharts.stroke"
+                                [markers]="rigorcharts.markers" [fill]="rigorcharts.fill"
+                                [title]="rigorcharts.title"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-3">
+                    
+
+                    <div class="col-md-4 mark-dow">
+
+
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">{{result[0]}}</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td class="mark-dow-td" style="text-align: left;">
+                                        <markdown [data]="result[1]"></markdown>
+                                    </td>
+                                </tr>
+                               
+
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+
+
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body p-0">
+                                <table class="table rsl_tbl" style="border: 1px solid lightgray; margin: 0;">
+                                    <thead class="rsl_tbl-thead">
+                                        <tr class="rsl_tbl-thead-tr">
+                                            <th class="rsl_tbl-thead-th" colspan="2">Expected Financial Benefit</th>
+                                        </tr>
+                                    </thead>
+                                    <div class="card-text">
+                                        <p style="padding: 10px;text-align: justify;">{{result[2]}}</p>
+                                    </div>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card p-0" style="border: none;">
+                            <div class="card-body p-0">
+                                <table class="table rsl_tbl mt-5" style="border: 1px solid lightgrey;">
+                                    <thead class="rsl_tbl-thead">
+                                        <tr class="rsl_tbl-thead-tr">
+                                            <th class="rsl_tbl-thead-th" colspan="2">Synergy Benefits</th>
+                                        </tr>
+                                    </thead>
+
+                                    <div class="card-text">
+                                        <p style="padding: 10px;text-align: justify;">{{result[4]}}</p>
+                                    </div>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body p-0">
+                                <table class="table rsl_tbl" style="border: 1px solid lightgray;margin: 0;">
+                                    <thead class="rsl_tbl-thead">
+                                        <tr class="rsl_tbl-thead-tr">
+                                            <th class="rsl_tbl-thead-th" colspan="2">Cultural Integration Ease, Max
+                                                10
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <div class="card-text">
+                                        <p style="padding: 10px;text-align: justify;">{{result[3]}}</p>
+                                    </div>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card p-0" style="border: none;">
+                            <div class="card-body p-0">
+                                <table class="table rsl_tbl mt-5" style="border: 1px solid lightgrey;">
+                                    <thead class="rsl_tbl-thead">
+                                        <tr class="rsl_tbl-thead-tr">
+                                            <th class="rsl_tbl-thead-th" colspan="2">Strategic Importance, Max 10
+                                            </th>
+                                        </tr>
+                                    </thead>
+
+                                    <div class="card-text">
+                                        <p style="padding: 10px;text-align: justify;">{{result[5]}}</p>
+                                    </div>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Earned Value</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>BID Price, INR million</td>
+                                    <td>{{result[6] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>ASK - BID Spread, INR million</td>
+                                    <td>{{result[7] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Offer Status</td>
+                                    <td>{{result[8]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Financing the deal</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cash, INR million</td>
+                                    <td>{{result[9] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Loan, INR million</td>
+                                    <td>{{result[10] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Stock, INR million</td>
+                                    <td>{{result[11] | number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="row row-cols-md-2 py-3">
+                   
+
+
+                    <div class="col-md mark-dow">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Shareholders Perspective</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td class="mark-dow-td" style="text-align: left;">
+                                        <markdown [data]="result[12]"></markdown>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Proposed Structure</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Target Stake</td>
+                                    <td>{{result[13]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>MAI Stake</td>
+                                    <td>{{result[14]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table rsl_tbl mt-5">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Shareholders Perspective</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Likelihood of Board Approval, Max 5</td>
+                                    <td>{{result[15]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

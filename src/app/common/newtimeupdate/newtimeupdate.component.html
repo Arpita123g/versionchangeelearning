@@ -1,0 +1,32 @@
+<div class="card logout-popup-not">
+  <div class="card-header logout-popup-not-cardhead">
+      <span>Schedule</span>
+      <i class="bi bi-x-circle" mat-dialog-close></i>
+  </div>
+  <div class="card-body logout-popup-not-cardhead-cardbody">
+      <p>{{message}}</p>
+      <form [formGroup]="timegroup" class="form pt-2">
+          <div class="row row-cols-md-2">
+              <div class="col-md">
+                  <div class="lebel pb-1"> Start Time </div>
+                  <input type="datetime-local" value="13-03-2023 15:05:08" id="appt" formControlName="starttime"
+                      class="form-control" name="appt" min="09:00" max="18:00" required>
+
+              </div>
+              <div class="col-md">
+                  <div class="lebel pb-1">End Time </div>
+                  <input type="datetime-local" id="appt" formControlName="endtime" class="form-control" name="appt"
+                      min="09:00" max="18:00" required>
+              </div>
+          </div>
+
+
+      </form>
+  </div>
+
+
+  <div class="card-footer pt-4 logout-popup-not-cardhead-cardfooter">
+      <button class="btn-yes" (click)="timeAdd()">Update</button>
+      <button class="btn-no" mat-dialog-close>Cancel</button>
+  </div>
+</div>

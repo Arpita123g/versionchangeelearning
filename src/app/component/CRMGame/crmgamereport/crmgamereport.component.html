@@ -1,0 +1,345 @@
+<div class="elearingnewui crm_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">{{languageselect=== "Hindi"
+            ? "लोड हो रहा है... कुछ डिजिटल जादू तैयार किया जा रहा है!"
+            : "Loading... Brewing up some digital magic!"}} </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row pb-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                            <div class="">
+                                <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                    (change)="roundClick()">
+                                    <option class="select-round-option" value="">
+                                        {{ languageselect.toLowerCase()  === 'hindi' ? 'दौर का चयन करें' : 'Select Round' }}
+                                    </option>
+                                    <option class="select-round-option"
+                                        *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                        {{attempt}}</option>
+
+                                </select>
+                            </div>
+
+                            <div class="download_btn" matTooltiClass="primary-tooltip"
+                                (click)="downloadreporthrpgame()">
+                                <div>
+                                    <a download matTooltip="Download"><span class="hovertext"
+                                            data-hover="Download pdf file accounting ">
+                                            <img class="download_btn-img"
+                                                src="assets/images/businessbasics/download.png" />
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <mat-icon class="mt-2">get_app</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 mb-3">
+                    <div class="col-md-5 reyapo">
+                        <h1 class="reyapo-h1">{{dataoflang.b19}}</h1>
+                        <p style="text-align: justify;">
+                            <!-- Excellent work. You have completed enhancing and optimizing the CRM for your technology
+                            company. In this exercise every decision you have taken shows your skills in dimensions like
+                            rigor, synthesis, structuring and business judgement. -->
+                            {{dataoflang.b255}}
+                        </p>
+                    </div>
+
+                    <div class="col-md-7" *ngIf="optional[0]">
+                        <div class="card rigorcard">
+                            <div class="rigorcard-icon">
+                                <mat-icon class="rigorcard-icon-mat" appTippy="<table >
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>{{dataoflang.b257}} </th>
+                      <td style='padding:7px;font-size:13px'>{{dataoflang.b403}} </td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>{{dataoflang.b258}} </th>
+                      <td style='padding:7px;font-size:13px'>{{dataoflang.b404}} </td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>
+                        {{dataoflang.b259}} 
+                      </th>
+                      <td style='padding:7px;font-size:13px'>
+                        {{dataoflang.b405}} 
+                      </td>
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>{{dataoflang.b260}} </th>
+                      <td style='padding:7px;font-size:13px'>{{dataoflang.b406}} </td>
+                    </tr>
+                    </tr>
+                  </table>
+                   ">
+                                    help_outline
+                                </mat-icon>
+                            </div>
+                            <apx-chart [series]="rigorcharts.series" [chart]="rigorcharts.chart"
+                                [xaxis]="rigorcharts.xaxis" [yaxis]="rigorcharts.yaxis" [stroke]="rigorcharts.stroke"
+                                [markers]="rigorcharts.markers" [fill]="rigorcharts.fill"
+                                [title]="rigorcharts.title"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <!-- <th class="rsl_tbl-thead-th" colspan="2">Lead Pipeline Count</th> -->
+                                    <th class="rsl_tbl-thead-th" colspan="2">{{dataoflang.b248}}                                   
+                                    </th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>High Priority</td> -->
+                                    <td>{{dataoflang.b228}}</td>                                   
+                                    <td>{{result[0]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Medium Priority</td> -->
+                                    <td>{{dataoflang.b229}}</td>                                   
+                                    <td>{{result[1]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Low Priority</td> -->
+                                    <td>{{dataoflang.b230}}</td>                                   
+                                    <td>{{result[2]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="pipelinemanageementchart.series"
+                                [chart]="pipelinemanageementchart.chart"
+                                [dataLabels]="pipelinemanageementchart.dataLabels"
+                                [plotOptions]="pipelinemanageementchart.plotOptions"
+                                [yaxis]="pipelinemanageementchart.yaxis" [xaxis]="pipelinemanageementchart.xaxis"
+                                [fill]="pipelinemanageementchart.fill" [title]="pipelinemanageementchart.title"
+                                [noData]="pipelinemanageementchart.noData" [tooltip]="pipelinemanageementchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row row-cols-md-2 py-5">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <!-- <th class="rsl_tbl-thead-th" colspan="2">Sales Conversion Chances</th> -->
+                                    <th class="rsl_tbl-thead-th" colspan="2">{{dataoflang.b249}}</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>High Priority</td> -->
+                                    <td>{{dataoflang.b228}}</td>                                   
+                                    <td>{{result[3]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Medium Priority</td> -->
+                                    <td>{{dataoflang.b229}}</td>                                   
+                                    <td>{{result[4]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Low Priority</td> -->
+                                    <td>{{dataoflang.b230}}</td>                                   
+                                    <td>{{result[5]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="saleconversionchancechart.series"
+                                [chart]="saleconversionchancechart.chart"
+                                [dataLabels]="saleconversionchancechart.dataLabels"
+                                [plotOptions]="saleconversionchancechart.plotOptions"
+                                [yaxis]="saleconversionchancechart.yaxis" [xaxis]="saleconversionchancechart.xaxis"
+                                [fill]="saleconversionchancechart.fill" [title]="saleconversionchancechart.title"
+                                [noData]="saleconversionchancechart.noData"
+                                [tooltip]="saleconversionchancechart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <!-- <th class="rsl_tbl-thead-th" colspan="3">Resource Allocation, hours</th> -->
+                                    <th class="rsl_tbl-thead-th" colspan="3">{{dataoflang.b250}}</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <th></th>
+                                    <!-- <th>Sales</th>
+                                    <th>Service</th> -->
+                                    <th>{{dataoflang.b253}}</th>
+                                    <th>{{dataoflang.b254}}</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Allocated</td> -->
+                                    <td>{{dataoflang.b231}}</td>                                   
+                                    <td class="middleclassright">{{result[19]|number:'1.0-0'}}</td>
+                                    <td>{{result[22]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Required</td> -->
+                                    <td>{{dataoflang.b232}}</td>                                   
+                                    <td class="middleclassright">{{result[20]|number:'1.0-0'}}</td>
+                                    <td>{{result[23]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Surplus (+)/Deficit (-)</td> -->
+                                    <td>{{dataoflang.b233}}</td>                                   
+                                    <td class="middleclassright">{{result[21]|number:'1.0-0'}}</td>
+                                    <td>{{result[24]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="resourceallocationchart.series" [chart]="resourceallocationchart.chart"
+                                [dataLabels]="resourceallocationchart.dataLabels"
+                                [plotOptions]="resourceallocationchart.plotOptions"
+                                [yaxis]="resourceallocationchart.yaxis" [xaxis]="resourceallocationchart.xaxis"
+                                [fill]="resourceallocationchart.fill" [title]="resourceallocationchart.title"
+                                [noData]="resourceallocationchart.noData" [tooltip]="resourceallocationchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-5">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <!-- <th class="rsl_tbl-thead-th" colspan="2">Value Creation, INR</th> -->
+                                    <th class="rsl_tbl-thead-th" colspan="2">{{dataoflang.b252}}</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Previous Period CLV</td> -->
+                                    <td>{{dataoflang.b239}}</td>
+                                    <td>{{result[10]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Expected New CLV</td> -->
+                                    <td>{{dataoflang.b240}}</td>
+                                    <td>{{result[11]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Increment (+)/Reduction (-) CLV</td> -->
+                                    <td>{{dataoflang.b241}}</td>
+                                    <td>{{result[12]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Chances of achieving Increment (+)/Reduction (-)</td> -->
+                                    <td>{{dataoflang.b242}}</td>
+                                    <td>{{result[13]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-bottom: 2px solid black;border-top: 2px solid black;">
+                                    <!-- <td>Expected New
+                                        Value</td> -->
+                                        <td>{{dataoflang.b243}}</td>
+                                    <td>{{result[14]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Resource Cost</td> -->
+                                    <td>{{dataoflang.b244}}</td>
+                                    <td>{{result[15]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Streamlining Cost</td> -->
+                                    <td>{{dataoflang.b245}}</td>
+                                    <td>{{result[16]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-bottom: 2px solid black;border-top: 2px solid black;">
+                                    <!-- <td>Total Cost</td> -->
+                                    <td>{{dataoflang.b246}}</td>
+                                    <td>{{result[17]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-bottom: 2px solid black;border-top: 2px solid black;">
+                                    <!-- <td>Value Creation</td> -->
+                                    <td>{{dataoflang.b247}}</td>
+                                    <td>{{result[18]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <!-- <th class="rsl_tbl-thead-th" colspan="2">KPI Variation</th> -->
+                                    <th class="rsl_tbl-thead-th" colspan="2">{{dataoflang.b251}}</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <th>Increament (+)/Reduction (-) compared to last period P3</th> -->
+                                    <th>{{dataoflang.b234}}</th>
+                                    <th></th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Cross selling & upselling opportunities</td> -->
+                                    <td>{{dataoflang.b235}}</td>
+                                    <td>{{result[6]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Customer service response rate</td> -->
+                                    <td>{{dataoflang.b236}}</td>
+                                    <td>{{result[7]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Average resolution time</td> -->
+                                    <td>{{dataoflang.b237}}</td>
+                                    <td>{{result[8]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Pipeline Velocity, days</td> -->
+                                    <td>{{dataoflang.b238}}</td>
+                                    <td>{{result[9]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

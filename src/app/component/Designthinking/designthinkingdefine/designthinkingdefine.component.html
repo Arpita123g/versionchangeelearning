@@ -1,0 +1,163 @@
+<div class="elearingnewui design_thinking">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="routesandtech">
+                <div class="row" class="element-first">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+
+                <h1>SWOT Analysis
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'> In setting the marketing mix, how can you strike a balance between pricing, advertising, warranty, and channel investments to create a cohesive and effective strategy?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>How can you adapt your execution plan based on market dynamics, ensuring flexibility while staying true to your initial decisions in pricing, advertising, warranty, and channel investments?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row py-3">
+                    <div class="col-md img-col">
+                        <img src="assets/images/designthinking/swotimg.svg" class="img-fluid">
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 g-5 py-5">
+                    <div class="col-md gap-analysis">
+                        <h1>GAP Analysis</h1>
+                        <div class="card mt-5">
+                            <h2>Battery Life</h2>
+                            <div class="card-body">
+                                <p>85% preference, but most brands offer only 1-2 days of battery life.</p>
+                                <p> Gap: Extended battery life of 3-4 days.</p>
+                            </div>
+                        </div>
+                        <div class="card mt-2">
+                            <h2>Affordability</h2>
+                            <div class="card-body">
+                                <p>65% users prioritize this, but top-tier smartwatches are expensive.</p>
+                                <p> Gap: A mid-range smartwatch with premium features.</p>
+                            </div>
+                        </div>
+                        <div class="card mt-2">
+                            <h2>Localization</h2>
+                            <div class="card-body">
+                                <p> 60% showed preference, but few international brands cater specifically to Indian
+                                    preferences. </p>
+                                <p> Gap: Features like regional language support and local payment integration.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md gap-analysis">
+                        <h1>Constraints</h1>
+                        <div class="card mt-5">
+                            <h2>Budget</h2>
+                            <div class="card-body">
+                                <p>Limited R&D funds compared to global competitors..</p>
+                            </div>
+                        </div>
+                        <div class="card mt-2">
+                            <h2>Manufacturing</h2>
+                            <div class="card-body">
+                                <p> Achieving a balance between quality and affordability in production.</p>
+                            </div>
+                        </div>
+                        <div class="card mt-2">
+                            <h2>Time</h2>
+                            <div class="card-body">
+                                <p> Rapidly evolving market; delay in launch might result in outdated technology.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card mt-2">
+                            <h2>Market Perception</h2>
+                            <div class="card-body">
+                                <p> Being perceived as a local brand might be a challenge when competing against
+                                    international giants.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-3">
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="batterylifechart.series" [chart]="batterylifechart.chart"
+                                [dataLabels]="batterylifechart.dataLabels" [plotOptions]="batterylifechart.plotOptions"
+                                [yaxis]="batterylifechart.yaxis" [xaxis]="batterylifechart.xaxis"
+                                [fill]="batterylifechart.fill" [title]="batterylifechart.title"
+                                [noData]="batterylifechart.noData" [tooltip]="batterylifechart.tooltip">
+                            </apx-chart>
+                        </div>
+                        <div class="py-4">
+                            <p style="text-align: center;">Target: Battery Life, Days</p>
+                            <div class="form-check" >
+                                <input type="number" class="input-no_box" placeholder="Input value here..."
+                                [(ngModel)]="result[0]"  (focusout)="getSelection('batterylife',0)" 
+                                [disabled]="checkdisable">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="affordabilitychart.series" [chart]="affordabilitychart.chart"
+                                [dataLabels]="affordabilitychart.dataLabels" [plotOptions]="affordabilitychart.plotOptions"
+                                [yaxis]="affordabilitychart.yaxis" [xaxis]="affordabilitychart.xaxis"
+                                [fill]="affordabilitychart.fill" [title]="affordabilitychart.title"
+                                [noData]="affordabilitychart.noData" [tooltip]="affordabilitychart.tooltip">
+                            </apx-chart>
+                        </div>
+                        <div class="py-4">
+                            <p style="text-align: center;">Target: Affordability, INR</p>
+                            <div class="form-check" >
+                                <input type="number" class="input-no_box" placeholder="Input value here..."
+                                [(ngModel)]="result[1]"   (focusout)="getSelection('Affordability',1)" 
+                                [disabled]="checkdisable">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="localizationchart.series" [chart]="localizationchart.chart"
+                                [dataLabels]="localizationchart.dataLabels" [plotOptions]="localizationchart.plotOptions"
+                                [yaxis]="localizationchart.yaxis" [xaxis]="localizationchart.xaxis"
+                                [fill]="localizationchart.fill" [title]="localizationchart.title"
+                                [noData]="localizationchart.noData" [tooltip]="localizationchart.tooltip">
+                            </apx-chart>
+                        </div>
+                        <div class="py-4">
+                            <p style="text-align: center;">Target: Localization, %</p>
+                            <div class="form-check">
+                                <input type="number" class="input-no_box" placeholder="Input value here..." 
+                                [(ngModel)]="result[2]"   (focusout)="getSelection('localization',2)" 
+                                [disabled]="checkdisable">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

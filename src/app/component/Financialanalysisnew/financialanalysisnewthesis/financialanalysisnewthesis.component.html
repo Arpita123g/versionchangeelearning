@@ -1,0 +1,621 @@
+<div class="elearingnewui bus_iness">
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row" class="element-first ">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+                <h1 style="padding-left: 1rem;">Thesis</h1>
+                <div class="row row-cols-md">
+                    <div class="col-md">
+                        <div class="card-body">
+                            <fieldset [disabled]="isDisabled">
+                                <table class="table table-bordered rainputtable table rsl_tbl">
+                                    <thead class="rsl_tbl-thead">
+                                        <tr class="rsl_tbl-thead-tr w-100">
+                                            <th
+                                                style="color: white; font-weight: 600; padding: 1rem 0.4rem; font-size: 1.1rem; width: 25%;">
+                                                Ratio Analysis</th>
+                                            <th
+                                                style="color: white; font-weight: 600; padding: 1rem 0.4rem; font-size: 1.1rem; width: 25%;">
+                                                Electra Motors</th>
+                                            <th
+                                                style="color: white; font-weight: 600; padding: 1rem 0.4rem; font-size: 1.1rem; width: 25%;">
+                                                Titan Motors</th>
+                                            <th
+                                                style="color: white; font-weight: 600; padding: 1rem 0.4rem; font-size: 1.1rem;">
+                                                GreenSpeed Technologies</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="rsl_tbl-tbody">
+                                        <tr class="rsl_tbl-tbody-tr" style="border-bottom: 2px solid;">
+                                            <h2 colspan="4">Liquidity Ratio
+                                                <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+              </div> &nbsp; &nbsp; &nbsp;
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px;'>How does the current ratio reflect the short-term financial health of each company, and what implications does it have on their ability to meet short-term obligations?</p>
+              </div>
+            </div><br>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>When calculating the cash ratio, how does the company's ability to cover short-term liabilities with cash compare to its overall liquidity, and what risks or advantages does this present?</p>
+                </div>
+              </div>
+          </div> ">
+                                                    help_outline
+                                                </mat-icon>
+                                            </h2>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Current Ratio</td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[0]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('ak5',i[0])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [2,1,0]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[1]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('al5',i[1])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [2,0,1]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[2]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('am5',i[2])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [1,0,2]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Acid-test Ratio</td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[3]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('ak6',i[3])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [3,5,4]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[4]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('al6',i[4])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [5,3,4]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[5]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('am6',i[5])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [4,3,5]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Cash Ratio</td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[6]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('ak7',i[6])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [7,8,6]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[7]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('al7',i[7])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [6,7,8]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[8]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('am7',i[8])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [6,7,8]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr" style="border-bottom: 2px solid;">
+                                            <h2 colspan="4">Leverage Ratio
+                                                <mat-icon appTippy="
+                                                <div class='help-tip p-2'>
+                                                <div style='display:flex;'>
+                                                <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                                </div> &nbsp; &nbsp; &nbsp;
+                                                <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'> Analyzing the debt to equity ratio, what insights can you derive about the capital structure, and how might the level of debt influence the company's financial risk?</p>
+                                                </div>
+                                                </div><br>
+                                                <div style='display:flex;'>
+                                                <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                                </div> &nbsp; &nbsp; &nbsp;
+                                                <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'>Considering the interest coverage ratio, how capable is the company in meeting interest obligations, and what does this indicate about its financial stability?</p>
+                                                </div>
+                                                </div>
+                                                </div> ">
+                                                    help_outline
+                                                </mat-icon>
+                                            </h2>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Debt to Equity Ratio</td>
+
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[9]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('ak10',i[9])">
+
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [9,10,11]">
+                                                        {{(dropdownvalue[x]*100|number:'1.0-0')}}%
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[10]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('al10',i[10])">
+
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [10,9,11]">
+                                                        {{dropdownvalue[x]*100|number:'1.0-0'}}%
+                                                    </option>
+
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[11]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('am10',i[11])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [11,10,9]">
+                                                        {{dropdownvalue[x]*100|number:'1.0-0'}}%
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Debt Ratio</td>
+
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[12]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('ak11',i[12])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [12,14,13]">
+                                                        {{dropdownvalue[x]*100|number:'1.0-0'}}%
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[13]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('al11',i[13])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [13,12,14]">
+                                                        {{dropdownvalue[x]*100|number:'1.0-0'}}%
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[14]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('am11',i[14])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [12,13,14]">
+                                                        {{dropdownvalue[x]*100|number:'1.0-0'}}%
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Interest Coverage Ratio</td>
+
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[15]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('ak12',i[15])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [16,17,15]">
+                                                        {{dropdownvalue[x]===0?'NA':dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[16]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('al12',i[16])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [15,16,17]">
+                                                        {{dropdownvalue[x]===0?'NA':dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[17]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('am12',i[17])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [17,15,16]">
+                                                        {{dropdownvalue[x]===0?'NA':dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr" style="border-bottom: 2px solid;">
+                                            <h2 colspan="4">Efficiency Ratio
+                                                <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+              </div> &nbsp; &nbsp; &nbsp;
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px;'> Interpreting the asset turnover ratio, how efficiently is the company utilizing its assets to generate revenue, and what does this suggest about its operational efficiency?</p>
+              </div>
+            </div><br>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>Analyzing the inventory turnover, how effective is the company in managing its inventory, and how might this impact its overall financial performance?</p>
+                </div>
+              </div>
+          </div> ">
+                                                    help_outline
+                                                </mat-icon>
+                                            </h2>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Asset Turnover Ratio</td>
+
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[18]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('ak15',i[18])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [18,19,20]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[19]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('al15',i[19])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [20,19,18]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[20]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('am15',i[20])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [19,20,18]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Inventory Turnover Ratio</td>
+
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[21]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('ak16',i[21])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [21,22,23]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[22]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('al16',i[22])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [23,22,21]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[23]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('am16',i[23])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [23,22,21]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Days Sales in Inventory Ratio</td>
+
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[24]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('ak17',i[24])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [25,26,24]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[25]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('al17',i[25])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [26,25,24]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[26]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('am17',i[26])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [24,25,26]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr" style="border-bottom: 2px solid;">
+                                            <h2 colspan="4">Profitability Ratio
+                                                <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+              </div> &nbsp; &nbsp; &nbsp;
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px;'> When calculating the return on equity (ROE) and return on assets (ROA), how do these ratios complement each other in assessing the company's profitability and financial efficiency?</p>
+              </div>
+            </div><br>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>How does the gross margin ratio reflect the company's ability to control production costs and generate profit, and what factors might influence this margin?</p>
+                </div>
+              </div>
+          </div> ">
+                                                    help_outline
+                                                </mat-icon>
+                                            </h2>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Gross Margin Ratio</td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[27]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('ak20',i[27])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [27,28,29]">
+                                                        {{dropdownvalue[x]*100|number:'1.0-0'}}%
+                                                    </option>
+
+
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[28]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('al20',i[28])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [28,29,27]">
+                                                        {{dropdownvalue[x]*100|number:'1.0-0'}}%
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[29]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('am20',i[29])">
+
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [29,27,28]">
+                                                        {{dropdownvalue[x]*100|number:'1.0-0'}}%
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Operating Margin Ratio</td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[30]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('ak21',i[30])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [30,31,32]">
+                                                        {{dropdownvalue[x]*100|number:'1.0-0'}}%
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[31]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('al21',i[31])">
+
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [31,30,32]">
+                                                        {{dropdownvalue[x]*100|number:'1.0-0'}}%
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[32]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('am21',i[32])">
+
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [30,32,31]">
+                                                        {{dropdownvalue[x]*100|number:'1.0-0'}}%
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Return on Asset Ratio</td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[33]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('ak22',i[33])">
+
+                                                   <option value="{{dropdownvalue[x]}}" *ngFor="let x of [33,35,34]">
+                                                        {{dropdownvalue[x]*100|number:'1.0-0'}}%
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[34]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('al22',i[34])">
+
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [33,34,35]">
+                                                        {{dropdownvalue[x]*100|number:'1.0-0'}}%
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[35]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('am22',i[35])">
+
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [33,35,34]">
+                                                        {{dropdownvalue[x]*100|number:'1.0-0'}}%
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Return on Equity Ratio</td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[36]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('ak23',i[36])">
+
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [36,37,38]">
+                                                        {{dropdownvalue[x]*100|number:'1.0-0'}}%
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[37]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('al23',i[37])">
+
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [36,38,37]">
+                                                        {{dropdownvalue[x]*100|number:'1.0-0'}}%
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[38]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('am23',i[38])">
+
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [37,38,36]">
+                                                        {{dropdownvalue[x]*100|number:'1.0-0'}}%
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr" style="border-bottom: 2px solid;">
+                                            <h2 colspan="4">Market Value Ratio
+                                                <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+              </div> &nbsp; &nbsp; &nbsp;
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px;'>Interpreting the P/E ratio, what insights can you gain about the market's perception of the company's future earnings potential, and how might this influence investment decisions?</p>
+              </div>
+            </div><br>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>Considering the book value of shares, how does this metric reflect the intrinsic value of the company, and how might it influence long-term investment strategies?</p>
+                </div>
+              </div>
+          </div> ">
+                                                    help_outline
+                                                </mat-icon>
+                                            </h2>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Book value per share Ratio</td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[39]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('ak26',i[39])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [40,41,39]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[40]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('al26',i[40])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [41,39,40]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[41]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('am26',i[41])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [39,40,41]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Earnings per share Ratio</td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[42]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('ak27',i[42])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [43,44,42]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[43]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('al27',i[43])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [44,42,43]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[44]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('am27',i[44])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [42,43,44]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Price-earning Ratio</td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[45]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('ak28',i[45])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [46,47,45]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[46]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('al28',i[46])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [47,45,46]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select form-select-lg" [(ngModel)]="i[47]"
+                                                    [disabled]="isDisabled" (change)="writefsaValue('am28',i[47])">
+                                                    <option value="{{dropdownvalue[x]}}" *ngFor="let x of [45,46,47]">
+                                                        {{dropdownvalue[x]}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

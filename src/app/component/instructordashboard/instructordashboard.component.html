@@ -1,0 +1,105 @@
+
+<div class="container-fluid p-3">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="instructor-design">
+        
+        <div class="  first_row mb-4 righthand mt-1">
+            <div class="first_row-rightside ">
+                <div class="download_btn " matTooltip="Download pdf file Instructor Guide_Microsim & Sim">
+                    <a href="../../../assets/images/Instructor Guide_Microsim & Sim.pdf" download><span
+                            class="hovertext" data-hover="Download pdf file Instructor Guide_Microsim & Sim ">
+                            <img style="height: 45px; cursor: pointer;" src="assets/icons/downloadicon.png">
+
+                        </span>
+                    </a>
+                </div>
+                <mat-icon (click)="goToarchieve()" matTooltip="Archive">archive</mat-icon>
+                <mat-icon (click)="goToprofile()" matTooltip="Profile">account_circle</mat-icon>
+            </div>
+
+        </div>
+        <div class="instructor-card-pre_div" >
+
+
+            <div class=" card instructor-card shadow" *ngFor="let card of cardlist; let i=index ">
+                <div class="card-header instructor-card_header">
+                    <h4> Course Code : <strong> {{card.courseDetails.coursecode}}</strong> </h4>
+                    <mat-icon class="instructor-card_header-maticon"
+                        (click)="RegisterCount(card.courseDetails.coursecode)">arrow_right_al</mat-icon>
+
+                </div>
+                <div class="card-body instructor-card_body">
+                    <div class="image">
+                        <img src="{{imageiconarray[i]}}" class=" img-fluid">
+                    </div>
+                </div>
+                <div class="chatfor-instruc">
+                    <i class="bi bi-chat-square-quote-fill" style="font-size: 25px;" matTooltip="Chat with Student" (click)="instructorchart(card.courseDetails.coursecode)"></i>
+                </div>
+               
+                <div class="card-footer instructor-card_footer">
+                    <div>
+                        <h3 class="course_name">
+                            <div><a (click)="goTo(card.courseDetails.coursecode)">{{card.courseDetails.simulation}}
+                                </a>
+                            </div>
+                        </h3>
+                        <hr style="width: 50%; margin: 0 auto;">
+                    </div>
+                    <div class="row last-row mb-1 mt-4">
+                        <div class="col-9">Student Registered</div>
+                        <div class="col-3 lightback">
+                            {{card.noofstudentregistered}}
+                        </div>
+                    </div>
+                    <div class="row last-row mb-1">
+                        <div class="col-9">Student Attempts</div>
+                        <div class="col-3 attempts">
+                            {{card.studentcourseattempts}}
+                        </div>
+                    </div>
+                    <div class="row last-row mb-1">
+                        <div class="col-9">Archieve</div>
+                        <div class="col-3 lightback">
+                            {{card.archiveflag}}
+                        </div>
+                    </div>
+                    <div class="row last-row mb-4">
+                        <div class="col-9 ">License Left:</div>
+                        <div class="col-3 licenseleft">
+                            {{card.totallicenseleft}}
+                        </div>
+                    </div>
+                    
+                    <div class="attemptestimebutton ">
+                        <div>
+                            <button class="btn-clss-attempts" (click)="edit(card)">
+                                <span><mat-icon>edit</mat-icon></span>
+                                Attempts</button>
+                        </div>
+                        <div>
+                            <button class="btn-clss-time" (click)="addtime(card)">
+                                <span><mat-icon>access_time</mat-icon></span>
+                                Schedule</button>
+                        </div>
+                    </div>
+                    <div class="primary-selection-game" (click)="primarycoursename(card)" *ngIf="card.courseDetails.asprimary==='yes'">
+                        <div>
+                            <p class="primary-selection-game-p-class">Primary
+                            </p>
+                        </div>
+                        <div>
+                            <mat-icon style="color: white;">arrow_right_alt</mat-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

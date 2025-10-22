@@ -1,0 +1,241 @@
+<div class="elearingnewui ecommerce">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="routesandtech">
+                <div class="row" class="element-first">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+                <h1>Packaging
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>What type of packaging aligns best with your product needs and sustainability goals, considering the environmental impact and cost?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>How will your choice of packaging influence customer perception and brand image?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of cardData; let i=index">
+                        <div class="card marketing-card h-100" [ngClass]="{ bluebackground: selectedCardId1 === item.id }">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.ecommerceGameCM.ecommercegameperioddata[item.title]  }}</h2>
+                                <div class="card-text">
+                                    <div class="textswcinassessment-p">
+                                        <span class="textswcinassessment">
+                                        </span> {{showAll[i] ? item.description.text :
+                                        item.description.truncatedText}}
+                                        <a type="button" (click)="toggleshow(i)"
+                                            [style.color]="showAll[i] ? 'red' : 'blue'">
+                                            {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                        </a>
+                                    </div><br><br>
+                                    
+                                </div>
+                            </div>
+                            <div class="card-footer form-check_new">
+                                <div class="routesandtechcostcard">
+                                    <h3>{{result.ecommerceGameCM.ecommercegameperioddata[item.description.textname]  }}</h3>
+                                    <h3>{{result.ecommerceGameCM.ecommercegameperioddata[item.description.cellvalue]  }}</h3>
+                                </div>
+                                <div class="routesandtechcostcard">
+                                    <h3>{{result.ecommerceGameCM.ecommercegameperioddata[item.description.textmonth]  }}</h3>
+                                    <h3>{{result.ecommerceGameCM.ecommercegameperioddata[item.description.cellvalue1]  }}</h3>
+                                </div>
+                                <div class="routesandtechcostcard">
+                                    <h3>{{result.ecommerceGameCM.ecommercegameperioddata[item.description.textpack]  }}</h3>
+                                    <h3>{{result.ecommerceGameCM.ecommercegameperioddata[item.description.cellvalue2]  }}</h3>
+                                </div>
+                                <div style="height: 2rem;">
+                                    <input class="checkfrominput_new" type="radio" value="index"
+                                    id="{{item.id + i}}"  name="ecommerceOptions"
+                                    [checked]="result.ecommercegamedata[item.databasecellname]===1"
+                                    (click)="writeecommercevalue(item.databasecellname,'radio',$event,'aq134','aq135','aq136')"
+                                    [disabled]="inputDisabled" />
+                                    <label class="form-check-label" [for]="item.id + i">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="mt-5">Logistics
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>Which logistics partner provides the optimal balance between speed, warehouse cost, delivery cost, and return cost for your business model?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>How do the different logistics options affect your ability to meet customer expectations for delivery times and service quality?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of cardData1; let i=index">
+                        <div class="card marketing-card h-100" [ngClass]="{ bluebackground: selectedCardId2 === item.id }">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" [ngStyle]="{ 'height': i === 0 ? '17rem' : '18rem' }"/>
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.ecommerceGameCM.ecommercegameperioddata[item.title]  }}</h2>
+                                <div class="card-text">
+                                    <div class="textswcinassessment-p">
+                                        <!-- <span class="textswcinassessment"></span> -->
+                                         <!-- {{showAll[i] ? item.description.text :
+                                        item.description.truncatedText}}
+                                        <a type="button" (click)="toggleshow(i)"
+                                            [style.color]="showAll[i] ? 'red' : 'blue'">
+                                            {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                        </a> -->
+                                        <p style="height:5rem; overflow: auto;">Storage Method: {{item.description.storage}}</p>
+                                        <p style="height:5rem; overflow: auto;">Delivery Method: {{item.description.delivery}}</p>
+                                        <p style="height:3.5rem; overflow: auto;">Reach: {{item.description.reach}}</p>
+                                        <p style="height:4.5rem; overflow: auto;">Performance Metrics: {{item.description.performance}}</p>
+                                        <p style="height:4.5rem; overflow: auto;">Delivery Time: {{item.description.dtime}}</p>
+
+                                    </div><br>
+                                    
+                                </div>
+                            </div>
+                            <div class="card-footer form-check_new">
+                                <div class="routesandtechcostcard">
+                                    <h3>{{result.ecommerceGameCM.ecommercegameperioddata[item.description.textname]  }}</h3>
+                                    <h3>{{result.ecommerceGameCM.ecommercegameperioddata[item.description.cellvalue]  }}</h3>
+                                </div>
+                                <div class="routesandtechcostcard">
+                                    <h3>{{result.ecommerceGameCM.ecommercegameperioddata[item.description.textmonth]  }}</h3>
+                                    <h3>{{result.ecommerceGameCM.ecommercegameperioddata[item.description.cellvalue1]  }}</h3>
+                                </div>
+                                <div class="routesandtechcostcard">
+                                    <h3>{{result.ecommerceGameCM.ecommercegameperioddata[item.description.textcost]  }}</h3>
+                                    <h3>{{result.ecommerceGameCM.ecommercegameperioddata[item.description.cellvalue2]  }}</h3>
+                                </div>
+                                <div class="routesandtechcostcard">
+                                    <h3>{{result.ecommerceGameCM.ecommercegameperioddata[item.description.textdel]  }}</h3>
+                                    <h3>{{result.ecommerceGameCM.ecommercegameperioddata[item.description.cellvalue3]  }}</h3>
+                                </div>
+                                <div style="height: 2rem;">
+                                    <input class="checkfrominput_new" type="radio" value="index"
+                                    id="{{item.id + i}}"  name="ecommerceOptions1"
+                                    [checked]="result.ecommercegamedata[item.databasecellname]===1"
+                                        (click)="writeecommercevalue(item.databasecellname,'radio',$event,'aq139','aq140','aq141')"
+                                        [disabled]="inputDisabled" />
+                                    <label class="form-check-label" [for]="item.id + i">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="mt-5">Streamlining Process
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>Which processes can you implement to streamline operations and reduce costs without compromising quality or customer satisfaction?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>How do the costs and benefits of these streamlining options compare, and which offer the most significant impact on your business efficiency?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of cardData2; let i=index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" [ngStyle]="{ 'height': i === 1 ? '17rem' : '18rem' }"/>
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.ecommerceGameCM.ecommercegameperioddata[item.title]  }}</h2>
+                                <div class="card-text">
+                                    <div>
+                                        <p *ngFor="let text of item.pretext; let v = index" [ngClass]="{'textrowfst' : v === 0,'textrowsnd' : v === 1, 'textrowtrd' : v === 2}" style="margin-bottom: 10px;">{{text}}</p>
+                                        
+                                    </div>
+                                    <div class="textswcinassessment-p">
+                                        <span class="textswcinassessment">
+                                        </span> {{showAll[i] ? item.description.text :
+                                        item.description.truncatedText}}
+                                        <a type="button" (click)="toggleshow(i)"
+                                            [style.color]="showAll[i] ? 'red' : 'blue'">
+                                            {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                        </a>
+                                    </div><br><br>
+                                    
+                                </div>
+                            </div>
+                            <div class="card-footer form-check_new">
+                                <div class="routesandtechcostcard">
+                                    <h3>{{result.ecommerceGameCM.ecommercegameperioddata[item.description.textname]  }}</h3>
+                                    <h3>{{result.ecommerceGameCM.ecommercegameperioddata[item.description.cellvalue]  }}</h3>
+                                </div>
+                                <div class="routesandtechcostcard">
+                                    <h3>{{result.ecommerceGameCM.ecommercegameperioddata[item.description.textmonth]  }}</h3>
+                                    <h3>{{result.ecommerceGameCM.ecommercegameperioddata[item.description.cellvalue1]  }}</h3>
+                                </div>
+                                <div style="height: 2rem;">
+                                    <input class="checkfrominput_new" type="checkbox" value="index"
+                                        id="flexCheckDefault"
+                                        [checked]="result.ecommercegamedata[item.databasecellname]===1"
+                                        (click)="writeecommercevalue(item.databasecellname,'checkbox',$event,'','','')"
+                                        [disabled]="inputDisabled" />
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

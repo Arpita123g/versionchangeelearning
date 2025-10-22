@@ -1,0 +1,93 @@
+<div class="elearingnewui">
+    <div class="case-management-body-forheader">
+        <div class="returnbtn-element">
+            <div class="returnbtn" (click)="GoBack()"> Return to Case Management </div>
+        </div>
+        <div class="card case-management-body-card">
+            <div class="card-body">
+                <div class=" tab-content-body">
+                    <ul class="nav second-nav" role="tablist">
+                        <li class="nav-item active" role="presentation" data-bs-target="#outlook" data-bs-toggle="tab"
+                            aria-controls="outlook" role="tab" aria-selected="false" (click)="search('outlook')">
+                            <span class="nav-link" aria-current="page">Market Outlook</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#location" data-bs-toggle="tab"
+                            aria-controls="location" role="tab" aria-selected="false" (click)="search('location')">
+                            <span class="nav-link" aria-current="page">Information Search</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#demand" data-bs-toggle="tab"
+                            aria-controls="demand" role="tab" aria-selected="false" (click)="search('demand')">
+                            <span class="nav-link" aria-current="page">Sales Planning</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#investment" data-bs-toggle="tab"
+                            aria-controls="investment" role="tab" aria-selected="false" (click)="search('investment')">
+                            <span class="nav-link" aria-current="page">Sales Composition</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#marketing" data-bs-toggle="tab"
+                            aria-controls="marketing" role="tab" aria-selected="false" (click)="search('marketing')">
+                            <span class="nav-link" aria-current="page">Sales Development</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#foodrforthought" data-bs-toggle="tab"
+                            aria-controls="foodrforthought" role="tab" aria-selected="false"
+                            (click)="search('foodforthought')">
+                            <span class="nav-link" aria-current="page">Food For Thought</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#module" data-bs-toggle="tab"
+                            aria-controls="module" role="tab" aria-selected="false" (click)="search('general')">
+                            <span class="nav-link" aria-current="page">Module</span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="tab-content tab-content-body">
+
+                    <div role="tabpanel" class="tab-pane fade show active" id="outlook"
+                        [ngClass]="{ 'active':activeTab==='outlook'}">
+                        <app-salestargetcasemarketoutlook
+                            *ngIf="activeTab==='outlook'"></app-salestargetcasemarketoutlook>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="location"
+                        [ngClass]="{ 'active':activeTab==='location'}">
+                        <app-salestargetcaseinformationsearch
+                            *ngIf="activeTab==='location'"></app-salestargetcaseinformationsearch>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="demand"
+                        [ngClass]="{ 'active':activeTab==='demand'}">
+                        <app-salestargetcaseplanning *ngIf="activeTab==='demand'"></app-salestargetcaseplanning>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="investment"
+                        [ngClass]="{ 'active':activeTab==='investment'}">
+                        <app-salestargetcasecomposition
+                            *ngIf="activeTab==='investment'"></app-salestargetcasecomposition>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="marketing"
+                        [ngClass]="{ 'active':activeTab==='marketing'}">
+                        <app-salestargetcasedevelopment
+                            *ngIf="activeTab==='marketing'"></app-salestargetcasedevelopment>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="foodrforthought"
+                        [ngClass]="{ 'active':activeTab==='foodforthought'}">
+                        <app-salestargetcasefoodforthought
+                            *ngIf="activeTab==='foodforthought'"></app-salestargetcasefoodforthought>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="module"
+                        [ngClass]="{ 'active':activeTab==='general'}">
+                        <app-salestargetcasemodule *ngIf="activeTab==='general'"></app-salestargetcasemodule>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <!-- <div>
+            <button class="mt-4 back" (click)="back()" style=" border: 3px solid #30b4cc;
+            border-radius: 6px;
+            background: transparent;
+            color: #30b4cc;
+            font-size: 20px; padding: 0.5rem 1rem;">Back</button>
+        </div> -->
+    </div>
+</div>

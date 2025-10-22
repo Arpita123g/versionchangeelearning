@@ -1,0 +1,73 @@
+<div class="elearingnewui mergers_aquisition">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="routesandtech">
+                <div class="row" class="element-first">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+                <h1>Preliminary Assessments
+                    <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>When presented with potential target options, what factors should you consider to decide which company to delve into for a detailed analysis?</p>
+                            </div>
+                          </div>
+                            <div class='pt-1' style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp;
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>How can focusing on growth, efficiency, or cost management help in aligning the chosen target with the strategic objectives of your company?</p>
+                              </div>
+                            </div>
+                        </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card" *ngIf="cardData&&cardData.length>0">
+
+                    <div class="col-md" *ngFor="let item of cardData; let i=index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{item.title}}</h2>
+                                <div class="card-text">
+                                    <div class="textswcinassessment-p"><span class="textswcinassessment">Profile : </span> {{ item.description.profile }}</div><br><br>
+                                    <div class="textswcinassessment-p"><span class="textswcinassessment">Advantage : </span> {{ item.description.advantage }}</div><br><br>
+                                    <span class="textswcinassessment">Financials & Valuation :</span><br>
+                                    <div class="textswcinassessment-pp">- Revenue :<span style="color: red;font-size: 15px;font-weight: 500;"> {{ item.description.Financials_Valuation.revenue }}</span> <br>
+                                    - Gross Margin : <span style="color: red;font-size: 15px;font-weight: 500;">  {{ item.description.Financials_Valuation.gross_margin }}</span><br>
+                                    - Net Margin : <span style="color: red;font-size: 15px;font-weight: 500;">  {{ item.description.Financials_Valuation.net_margin }}</span><br>
+                                    - Valuation : <span style="color: red;font-size: 15px;font-weight: 500;">  {{ item.description.Financials_Valuation.valuation }}</span></div><br><br>
+                                    <span class="textswcinassessment">Shareholder Structure : </span> {{ item.description.shareholder_structure }}
+                                  </div>
+                                  
+                            <div class="card-footer form-check">
+                                <input class="checkfrominput" type="radio" value="index" id="flexCheckDefault"
+                                     [checked]="item.ischecked" (change)="getSelection(item.databasecellname, $event)"
+                                    [disabled]="inputDisabled" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

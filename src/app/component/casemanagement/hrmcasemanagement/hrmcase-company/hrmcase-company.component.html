@@ -1,0 +1,85 @@
+<div class="elearingnewui casemanagement">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="case-management-body case-management-body-hrm">
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Training Programs</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive">
+            <table class="table case-management-table ">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Budget Provided by the Company</td>
+                        <td *ngFor="let round of rounds; let i = index">
+                            <input [value]="res['e' + (15 + i)][i] || 0" #inputElement
+                                [disabled]="defaultcase === 'yes'"
+                                (focusout)="writeHRMValue('e' + (15 + i), i, inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Market Volume of Clients, units</td>
+                        <td *ngFor="let round of rounds; let i = index">
+                            <input [value]="res['e' + (23 + i)][i]  || 0" #inputElement
+                                [disabled]="defaultcase === 'yes'"
+                                (focusout)="writeHRMValue('e' + (23 + i), i, inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+
+            <div class="table-responsive mb-3 mt-3">
+                <table class="case-management-table case-management-table-hrm-second">
+                    <thead>
+                        <tr>
+                            <td colspan="4" *ngFor="let round  of rounds">{{round}}</td>
+                        </tr>
+                    </thead>
+                    <tbody class="second-tbody title-tbody">
+                        <tr>
+                            <ng-container *ngFor="let round of rounds;" class="second-tbody-container">
+                                <td *ngFor="let heading of generalheading" class="second-tbody-td">{{ heading }}
+                                </td>
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                    <ng-container *ngFor="let item of companydata ;let j =index">
+                        <thead>
+                            <tr>
+                                <th colspan="40" class="second-tbody-title">
+                                    {{item.title}}
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="second-tbody">
+                            <tr>
+                                <td *ngFor="let cell of item.cell;let i = index">
+                                    <input type="text" [value]="res[cell][getJValue(i)]|| 0 " #inputElement
+                                        [disabled]="defaultcase === 'yes'"
+                                        (focusout)="writeHRMValue(cell, getJValue(i), inputElement.value)" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </ng-container>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

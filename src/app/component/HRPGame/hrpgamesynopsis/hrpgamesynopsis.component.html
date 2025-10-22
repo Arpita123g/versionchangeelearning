@@ -1,0 +1,389 @@
+<div class="elearingnewui hrp_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="feed_ack">
+                <div>
+                    <div class="row pb-4">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                                <div class="">
+                                    <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                        (change)="roundClick()">
+                                        <option class="select-round-option" value="">Select Round</option>
+                                        <option class="select-round-option"
+                                            *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                            {{attempt}}</option>
+
+                                    </select>
+                                </div>
+                                <div class="download_btn" matTooltiClass="primary-tooltip"
+                                    (click)="downloadreporthrpgame()">
+                                    <div>
+                                        <a download matTooltip="Download"><span class="hovertext"
+                                                data-hover="Download pdf file accounting ">
+                                                <img src="assets/images/businessbasics/download.png" />
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <mat-icon class="mt-2">get_app</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1>
+                        Synopsis
+                    </h1>
+                    <div style="margin-top: 1.1rem;" *ngIf="analysisshow">
+                        <h1
+                            style="display: flex; align-items: center; gap: 5px;font-size: 1.1rem; font-weight: 600;padding: 0.6rem 0.4rem;color: white;background-color: #266cc38a;">
+                            Feedback
+                            <div style=" width: 1rem;">
+                                <mat-icon (click)="rotate();roundClick();" [@rotatedState]='state' class="sidenav-icon"
+                                    aria-hidden="false" aria-label="Example home icon">cached</mat-icon>
+                            </div>
+                        </h1>
+                    </div>
+                    <div class="decision-textarea pb-5 h-100" *ngIf="analysisshow">
+                        <div class="row">
+                            <div class="col-md" style="padding: 10px;">
+                                <div class="card feedbsck-value p-3">
+                                    <markdown [data]="feedbackvalue"></markdown>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-cols-md-2 py-3">
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Input</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th  style="text-align: left;">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Input</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales & Marketing</td>
+                                        <td>{{result[0]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Logistics & Supply Chain</td>
+                                        <td>{{result[1]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Design & Production</td>
+                                        <td>{{result[2]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Technicals</td>
+                                        <td>{{result[3]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Customer Experience</td>
+                                        <td>{{result[4]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Administration</td>
+                                        <td>{{result[5]}}</td>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Online Job Portals</td>
+                                        <td>{{result[6]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Campus Recruitment</td>
+                                        <td>{{result[7]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Employee Referral Programs</td>
+                                        <td>{{result[8]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Social Media and Company Website</td>
+                                        <td>{{result[9]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Recruitment Agencies and Headhunters</td>
+                                        <td>{{result[10]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales & Marketing, New Joinee Hike %</td>
+                                        <td>{{result[11]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Logistics & Supply Chain, New Joinee Hike %</td>
+                                        <td>{{result[12]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Design & Production, New Joinee Hike %</td>
+                                        <td>{{result[13]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Technical, New Joinee Hike %</td>
+                                        <td>{{result[14]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Customer Experience, New Joinee Hike %</td>
+                                        <td>{{result[15]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Administration, New Joinee Hike %</td>
+                                        <td>{{result[16]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sales & Marketing, Existing Employee Hike %</td>
+                                        <td>{{result[17]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Logistics & Supply Chain, Existing Employee Hike %</td>
+                                        <td>{{result[18]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Design & Production, Existing Employee Hike %</td>
+                                        <td>{{result[19]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Technical, Existing Employee Hike %</td>
+                                        <td>{{result[20]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Customer Experience, Existing Employee Hike %</td>
+                                        <td>{{result[21]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Administration, Existing Employee Hike %</td>
+                                        <td>{{result[22]*100}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Digital Marketing Mastery</td>
+                                        <td>{{result[23]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Advanced E-commerce Analytics</td>
+                                        <td>{{result[24]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Augmented Reality (AR) in Fashion E-commerce</td>
+                                        <td>{{result[25]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Customer Service Excellence</td>
+                                        <td>{{result[26]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sustainable Fashion and Ethical Production</td>
+                                        <td>{{result[27]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Remote Work Flexibility Policy</td>
+                                        <td>{{result[28]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Continuous Learning and Development Policy</td>
+                                        <td>{{result[29]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Comprehensive Health and Wellness Policy</td>
+                                        <td>{{result[30]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Inclusive and Diverse Hiring Policy</td>
+                                        <td>{{result[31]==1?'Yes':'No'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Cost, K INR</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">Parameter</th>
+                                        <th class="rsl_tbl-tbody-th">Output</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Incremental salary, existing employees</td>
+                                        <td>{{result[32]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>New hires, salary</td>
+                                        <td>{{result[33]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Contract employees</td>
+                                        <td>{{result[34]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Branding</td>
+                                        <td>{{result[35]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Training</td>
+                                        <td>{{result[36]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Policies</td>
+                                        <td>{{result[37]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" style="border-top: 2px solid black;">
+                                        <td>Total</td>
+                                        <td>{{result[38]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">KPI</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">Parameter</th>
+                                        <th class="rsl_tbl-tbody-th">Output</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Employee Satisfaction Score</td>
+                                        <td>{{result[39] | number: '1.2-2'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Average time to fill position, days</td>
+                                        <td>{{result[40]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Average efficiency across organization</td>
+                                        <td>{{result[41]*100 |number: '1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Employees participation in training</td>
+                                        <td>{{result[42]*100 |number: '1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Cost per employee, k INR</td>
+                                        <td>{{result[43]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Recruitment metrics, %</td>
+                                        <td>{{result[44]*100 |number:'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Thinking Ability</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Score %</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Demand Forecasting </td>
+                                        <td>{{result[45]*100| number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Supply Forecasting</td>
+                                        <td>{{result[46]=== "-" ?'0' : result[46]*100| number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Analysis & Planning </td>
+                                        <td>{{result[47]*100| number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Implementation</td>
+                                        <td>{{result[48]*100| number:'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row row-cols-md py-3">
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="7">Employees Count</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td></td>
+                                        <th>Technical</th>
+                                        <th>Sales & Marketing</th>
+                                        <th>Logistics & Supply Chain</th>
+                                        <th>Design & Production</th>
+                                        <th>Customer Support</th>
+                                        <th>Administration</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Existing employees</td>
+                                        <td class="middleclassright">{{result[49]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[50]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[51]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[52]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[53]|number:'1.0-0'}}</td>
+                                        <td>{{result[54]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>New joinees</td>
+                                        <td class="middleclassright">{{result[55]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[56]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[57]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[58]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[59]|number:'1.0-0'}}</td>
+                                        <td>{{result[60]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Contract employees</td>
+                                        <td class="middleclassright">{{result[61]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[62]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[63]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[64]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[65]|number:'1.0-0'}}</td>
+                                        <td>{{result[66]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" style="border-top:2px solid black;">
+                                        <td>Total employees</td>
+                                        <td class="middleclassright">{{result[67]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[68]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[69]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[70]|number:'1.0-0'}}</td>
+                                        <td class="middleclassright">{{result[71]|number:'1.0-0'}}</td>
+                                        <td>{{result[72]}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row lst_r">
+                        <div class="col-4 lst_r-col4" *ngIf="!timefinished">
+                            <button class="mt-4 retry" [disabled]="isButtonDisabled" (click)="exit()">{{retry}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

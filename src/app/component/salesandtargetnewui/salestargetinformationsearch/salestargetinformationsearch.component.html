@@ -1,0 +1,323 @@
+<!-- new design -->
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui sales_target">
+    <div class="container">
+        <div class="body-element">
+            <div class="market-research">
+                <div class="element-first">
+                    <div class="row">
+                        <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+                            style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                                <button class="food-thought-btn">Food For Thought</button></span>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav market-research-nav" id="nav-tab" role="tablist">
+                    <li class="nav-link active market-research-link" id="nav-Market-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Market" type="button" role="tab" aria-controls="nav-Market"
+                        aria-selected="true">
+                        Market
+                    </li>
+                    <li class="nav-link market-research-link " id="nav-genre-preference-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-genre-preference" type="button" role="tab"
+                        aria-controls="nav-genre-preference" aria-selected="true">Products
+                    </li>
+                    <li class="nav-link market-research-link" id="nav-profile-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-sales-channels" type="button" role="tab" aria-controls="nav-sales-channels"
+                        aria-selected="false">Channel
+                    </li>
+                </ul>
+
+
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-Market" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group list-group-flush marketoutlooklist">
+                                <li class="list-group-item" style="padding: 2rem; width: 90%; margin: 0 auto;">
+                                    <!-- <p [innerHTML]="markettext"></p> -->
+                                    <p style="text-align: justify;">The soft drinks market in the Maharashtra region
+                                        demonstrated its potential last year with a market size of Rs. 195 million. As
+                                        per the latest market analysis, the forecast for the current year indicates a
+                                        promising 10% growth, signifying a flourishing market landscape. Notably, our
+                                        company, having held a substantial 19.5% share of the market in the previous
+                                        period, is well-positioned to leverage this expansion.<br><br>
+
+                                        In line with the market's growth, our consumer segments have high expectations
+                                        for our products. Each drink, from Coffino to Diblo, caters to unique consumer
+                                        preferences, offering options that are both health-conscious and premium. This
+                                        diversity aligns well with the discerning tastes of the region's consumers.
+                                        However, it's essential to note that while the market is expanding, the margins
+                                        within the industry can be slim. Therefore, decisions regarding sales strategies
+                                        and channel investments must be made carefully to maximize profitability and
+                                        market share. Careful consideration of channel selection, sales development, and
+                                        sales effort will be crucial to succeed in this market.<br><br>
+                                    </p>
+                                    <h2>Market size</h2>
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="marketsizegraph.series" [chart]="marketsizegraph.chart"
+                                                [dataLabels]="marketsizegraph.dataLabels"
+                                                [plotOptions]="marketsizegraph.plotOptions"
+                                                [yaxis]="marketsizegraph.yaxis" [xaxis]="marketsizegraph.xaxis"
+                                                [fill]="marketsizegraph.fill" [title]="marketsizegraph.title"
+                                                [noData]="marketsizegraph.noData" [tooltip]="marketsizegraph.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                    </div>
+                                    <div class="py-2">
+                                        <p>
+                                            The x-axis represents segments while the y-axis represents the market size
+                                            estimates of the company for the period.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-genre-preference" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group  list-group-flush marketoutlooklist">
+                                <li class="list-group-item" style="padding: 2rem; width: 90%; margin: 0 auto;">
+                                    <div class="py-2">
+                                        <p style="text-align: justify;">
+                                            Pablo, Inc. is currently selling four products in the non-carbonated segment
+                                            of the market. The following are the details of the products: <br><br>
+
+                                            <span style="font-weight: 500;color: black;">Coffino :</span>
+                                            It’s for individuals looking for a light, coffee-flavoured drink
+                                            that's also diet-friendly.
+                                            The marketing strategy is to emphasize the combination of cocoa, milk, and
+                                            coffee, highlighting its diet-conscious nature. The company is positioning
+                                            it as a guilt-free coffee indulgence. <br><br>
+
+                                            <span style="font-weight: 500;color: black;">Nutty :</span>
+                                            It’s targeted towards consumers looking for health-conscious options
+                                            who appreciate premium products. The marketing strategy is promoting Nutty
+                                            as a premium, healthy drink with nuts and berries. The company usually
+                                            highlight its nutritional value and the use of high-quality ingredients.
+                                            <br><br>
+
+                                            <span style="font-weight: 500;color: black;">Fruitful :</span>
+                                            It’s for organic and diet-conscious consumers who enjoy
+                                            pomegranates and berries.
+                                            The marketing team highlights the organic nature of Fruitful and its light,
+                                            diet-friendly profile. It appeals to those seeking a refreshing and healthy
+                                            beverage option. <br><br>
+
+                                            <span style="font-weight: 500;color: black;">Diblo :</span>
+                                            It’s targeted towards health enthusiasts and individuals who
+                                            appreciate herbal drinks.
+                                            Diblo is positioned as a premium, herbal, and healthy drink. It is
+                                            positioned in the market to highlight the use of herbs and their potential
+                                            health benefits. <br>
+
+                                        </p>
+                                    </div>
+                                    <h2>Price</h2>
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="pricegraph.series" [chart]="pricegraph.chart"
+                                                [dataLabels]="pricegraph.dataLabels"
+                                                [plotOptions]="pricegraph.plotOptions" [yaxis]="pricegraph.yaxis"
+                                                [xaxis]="pricegraph.xaxis" [fill]="pricegraph.fill"
+                                                [title]="pricegraph.title" [noData]="pricegraph.noData"
+                                                [tooltip]="pricegraph.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                    </div>
+                                    <div class="py-2">
+                                        <p>
+                                            The x-axis represents products while the y-axis represents the price set by
+                                            the company for the period.
+                                        </p>
+                                    </div>
+                                    <h2>Product Sales</h2>
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="productsalesgraph.series"
+                                                [chart]="productsalesgraph.chart"
+                                                [dataLabels]="productsalesgraph.dataLabels"
+                                                [plotOptions]="productsalesgraph.plotOptions"
+                                                [yaxis]="productsalesgraph.yaxis" [xaxis]="productsalesgraph.xaxis"
+                                                [fill]="productsalesgraph.fill" [title]="productsalesgraph.title"
+                                                [noData]="productsalesgraph.noData"
+                                                [tooltip]="productsalesgraph.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                    </div>
+                                    <div class="py-2">
+                                        <p>
+                                            The x-axis represents the product while the y-axis represents the sales by
+                                            the company for the previous period.
+                                        </p>
+                                    </div>
+                                    <h2>Product Margin</h2>
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="grossmarginproductgraph.series"
+                                                [chart]="grossmarginproductgraph.chart"
+                                                [dataLabels]="grossmarginproductgraph.dataLabels"
+                                                [plotOptions]="grossmarginproductgraph.plotOptions"
+                                                [yaxis]="grossmarginproductgraph.yaxis"
+                                                [xaxis]="grossmarginproductgraph.xaxis"
+                                                [fill]="grossmarginproductgraph.fill"
+                                                [title]="grossmarginproductgraph.title"
+                                                [noData]="grossmarginproductgraph.noData"
+                                                [tooltip]="grossmarginproductgraph.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                        <div class="mt-2 mb-2">
+                                            <p>
+                                                The x-axis represents the product while the y-axis represents the gross
+                                                margin over each product.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="consumerpreferencegraph.series"
+                                                [chart]="consumerpreferencegraph.chart"
+                                                [dataLabels]="consumerpreferencegraph.dataLabels"
+                                                [plotOptions]="consumerpreferencegraph.plotOptions"
+                                                [yaxis]="consumerpreferencegraph.yaxis"
+                                                [xaxis]="consumerpreferencegraph.xaxis"
+                                                [fill]="consumerpreferencegraph.fill"
+                                                [title]="consumerpreferencegraph.title"
+                                                [noData]="consumerpreferencegraph.noData"
+                                                [tooltip]="consumerpreferencegraph.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                        <div class="py-2">
+                                            <p>The x-axis represents a segment while the y-axis represents the product
+                                                preference over different segments.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-sales-channels" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group  list-group-flush marketoutlooklist">
+                                <li class="list-group-item" style="padding: 2rem; width: 90%; margin: 0 auto;">
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="channelpreferencegarph.series"
+                                                [chart]="channelpreferencegarph.chart"
+                                                [dataLabels]="channelpreferencegarph.dataLabels"
+                                                [plotOptions]="channelpreferencegarph.plotOptions"
+                                                [yaxis]="channelpreferencegarph.yaxis"
+                                                [xaxis]="channelpreferencegarph.xaxis"
+                                                [fill]="channelpreferencegarph.fill"
+                                                [title]="channelpreferencegarph.title"
+                                                [noData]="channelpreferencegarph.noData"
+                                                [tooltip]="channelpreferencegarph.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                        <div class="py-2">
+                                            <p>The x-axis represents a segment while the y-axis represents the channel
+                                                preference of different segments.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <h2>Channel Contribution</h2>
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="channelsalesgraph.series"
+                                                [chart]="channelsalesgraph.chart"
+                                                [dataLabels]="channelsalesgraph.dataLabels"
+                                                [plotOptions]="channelsalesgraph.plotOptions"
+                                                [yaxis]="channelsalesgraph.yaxis" [xaxis]="channelsalesgraph.xaxis"
+                                                [fill]="channelsalesgraph.fill" [title]="channelsalesgraph.title"
+                                                [noData]="channelsalesgraph.noData"
+                                                [tooltip]="channelsalesgraph.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                        <div class="py-2">
+                                            <p>
+                                                The x-axis represents the channel while the y-axis represents the sales
+                                                amount across channels.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <h2>Channel Managers</h2>
+                                    <div class="py-2">
+                                        <p style="text-align: justify;">The on-field sales representative in the market
+                                            is managed by three channel
+                                            managers who report directly to the sales head. The information mentioned
+                                            below is a brief description of channel managers: <br><br>
+                                        </p>
+                                        <!-- <div class="row row-cols-md-3">
+                                            <div class="col-md">
+                                                <p style="text-align: justify;padding: 10px;">
+                                                    <span style="font-weight: 500;color: black;">Rajas Shah - Modern Trade : </span>
+                                                    {{ getRajasContent() }}
+                                                    <a type="button" (click)="toggleRajas()" [style.color]="rajasButtonColor">{{ showRajas ? 'Show Less' : 'Show More' }}</a>
+
+                                                </p>
+                                                <p style="text-align: justify;padding: 10px;">
+                                                    <span style="font-weight: 500;color: black;">Ruchita Roy - HoReCa :</span>
+                                                    {{ getRuchitaContent() }}
+                                                    <a type="button" (click)="toggleRuchita()" [style.color]="ruchitaButtonColor">{{ showRuchita ? 'Show Less' : 'Show More' }}</a>
+
+                                                </p>
+                                                <p style="text-align: justify;padding: 10px;">
+                                                    <span style="font-weight: 500;color: black;">Shruti Mishra - Retail
+                                                        :</span>
+                                                    {{ getShrutiContent() }}
+                                                    <a type="button" (click)="toggleShruti()" [style.color]="shrutiButtonColor">{{ showShruti ? 'Show Less' : 'Show More' }}</a>
+
+                                                </p>
+                                            </div>
+                                          </div> -->
+
+
+
+                                        <div class="row row-cols-md-3">
+                                            <div class="col-md">
+                                                <p style="text-align: justify;padding: 10px;"><span
+                                                        style="font-weight: 500;color: black;">Rajas Shah - Modern
+                                                        Trade : </span>
+                                                    {{ getRajasContent() }}
+                                                    <a type="button" (click)="toggleRajas()"
+                                                        [style.color]="rajasButtonColor">{{ showRajas ? 'Show Less' :
+                                                        'Show More' }}</a>
+                                                </p>
+                                            </div>
+                                            <div class="col-md">
+                                                <p style="text-align: justify;padding: 10px;">
+                                                    <span style="font-weight: 500;color: black;">Ruchita Roy - HoReCa :
+                                                    </span>
+                                                    {{ getRuchitaContent() }}
+                                                    <a type="button" (click)="toggleRuchita()"
+                                                        [style.color]="ruchitaButtonColor">{{ showRuchita ? 'Show Less'
+                                                        : 'Show More' }}</a>
+                                                </p>
+                                            </div>
+                                            <div class="col-md">
+                                                <p style="text-align: justify;padding: 10px;">
+                                                    <span style="font-weight: 500;color: black;">Shruti Mishra - Retail
+                                                        : </span>
+                                                    {{ getShrutiContent() }}
+                                                    <a type="button" (click)="toggleShruti()"
+                                                        [style.color]="shrutiButtonColor">{{ showShruti ? 'Show Less' :
+                                                        'Show More' }}</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

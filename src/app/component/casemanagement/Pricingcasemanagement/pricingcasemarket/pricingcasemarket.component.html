@@ -1,0 +1,96 @@
+<div class="elearingnewui">
+    <div class="valuechain-element-body">
+        <div class="links">
+            <ul>
+                <button class="out-look-btn " [style.background-color]="round === selectedButton? 'lightgrey' : ''"
+                    *ngFor="let round of rounds; let i = index;" (click)="roundclick(i,round)">{{round}}</button>
+            </ul>
+        </div>
+        <div class="case-texts__content">
+            <div id="initial">
+                <div class="case-texts__content-main">
+                    <div class=" case-texts__container">
+                        <label class="case-texts__content-after-label pb-2">Original text</label>
+                        <div class=" case-texts__container-textarea">
+                            In the dynamic landscape of India's aviation market, SkyVista Airways is gearing up for a
+                            significant milestone—the launch of the "TechExpress Route" connecting Mumbai and Bangalore.
+                            With urbanization and thriving tech sectors fueling demand, the corridor presents a
+                            lucrative opportunity for SkyVista, especially considering the current single-player
+                            scenario dominated by Jupiter Airlines. As the airline prepares for its inaugural flight in
+                            90 days, it introduces a strategic pricing approach that spans three phases of ticket sales.
+                            The pricing strategy is pivotal, aiming not only to meet the immediate demand but also to
+                            establish a solid foundation for future operations on this strategically crucial route.
+                            <br><br>
+                            As the countdown to the maiden flight begins, SkyVista's team delves into a thorough
+                            analysis of industry trends to shape its pricing strategy. With urbanization driving
+                            increased travel needs between the tech hubs of Mumbai and Bangalore, SkyVista recognizes
+                            the importance of setting competitive prices to secure market share. The presence of a
+                            single competitor, Jupiter Airlines, adds complexity to the pricing dynamics, underscoring
+                            the significance of a well-thought-out strategy.
+                            <br><br>
+                            SkyVista further acknowledges the diverse needs of its potential customers, identifying two
+                            primary segments—leisure and business travellers. Tailoring its pricing strategy
+                            accordingly, SkyVista aims to attract leisure travellers with competitive pricing while
+                            ensuring flexibility and additional services to meet the preferences of discerning business
+                            travellers. Your strategic moves will enhance the overall appeal of SkyVista's offering,
+                            addressing the needs of passengers while building anticipation for the inaugural journey on
+                            the TechExpress Route. SkyVista Airways stands ready to make a lasting impact, strategically
+                            navigating the intricate landscape of consumer expectations and industry dynamics.
+                        </div>
+                    </div>
+                    <div class="case-texts__content-starea">
+                        <div class="case-texts__content-after">
+                            <label class="case-texts__content-after-label">Your custom default text</label>
+                            <st-editor name="" id="" [config]="config" [(ngModel)]="contentvalue"
+                                [disabled]="defaultcase=='yes'" (focusout)="contentvaluechange()"></st-editor>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="elearingnewui casemanagement">
+            <div class="case-management-body case-management-body-marketing ">
+
+                <div class=" table-responsive mb-3 mt-3">
+                    <table class="table case-management-table ">
+                        <thead>
+                            <tr>
+                                <td></td>
+                                <td *ngFor="let round of rounds">{{round}}</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th class="second-head" colspan="13">Duration</th>
+                            </tr>
+                            <tr>
+                                <td>Initiate Phase, days</td>
+                                <td *ngFor="let capitaldata of res.c8; let i = index">
+                                    <input [value]="res.c8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeMarketingValue('c8',i,inputElement.value)">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Innovate Phase, days
+                                </td>
+                                <td *ngFor="let capitaldata of res.c9; let i = index">
+                                    <input [value]="res.c9[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeMarketingValue('c9',i,inputElement.value)">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Adapt Phase, days
+                                </td>
+                                <td *ngFor="let capitaldata of res.c10; let i = index">
+                                    <input [value]="res.c10[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeMarketingValue('c10',i,inputElement.value)">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

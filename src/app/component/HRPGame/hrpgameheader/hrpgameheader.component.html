@@ -1,0 +1,157 @@
+<div class="elearingnewui hrp_game">
+    <div class="toolbar-header-main">
+    </div>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade show active" id="first" *ngIf="mainTab==='gamearena'">
+            <nav class="headerbreadcrumb">
+                <ul class="breadcrumb" role="tablist">
+                    <li role="presentation " class="breadcrumb-item active" data-bs-target="#Introduction"
+                        aria-controls="Introduction" role="tab" data-bs-toggle="tab" aria-selected="true"
+                        [ngClass]="{ 'active':activeTab==='introduction'}" (click)="search('introduction')">
+                        <div class="tabfontsizedec"><span class="octicon octicon-diff-added"></span>Introduction</div>
+                    </li>
+
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Market" aria-controls="market"
+                        role="tab" data-bs-toggle="tab" aria-selected="false"
+                        [ngClass]="{ 'active':activeTab==='market'}" (click)="search('market')">
+                        <div class="tabfontsizedec"><span class="octicon octicon-diff-added"></span>Market</div>
+                    </li>
+
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Demand Forecasting"
+                        aria-controls="demand forecasting" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="search('demand forecasting')" [ngClass]="{ 'active':activeTab==='demand forecasting'}">
+                        <div class="tabfontsizedec">
+                            <span class="octicon octicon-comment-discussion"></span>Demand Forecasting
+                        </div>
+                    </li>
+
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Supply Forecasting"
+                        aria-controls="supply forecasting" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="search('supply forecasting')"
+                        [ngClass]="{ 'active ':activeTab==='supply forecasting'}">
+                        <div class="tabfontsizedec"><span class="octicon octicon-verified"></span>Supply Forecasting
+                        </div>
+                    </li>
+
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Analysis & Planning"
+                        aria-controls="analysis & planning" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="search('analysis & planning')"
+                        [ngClass]="{ 'active':activeTab==='analysis & planning'}">
+                        <div class="tabfontsizedec">
+                            <span class="octicon octicon-comment-discussion"></span>Analysis & Planning
+                        </div>
+                    </li>
+
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Implementation"
+                        aria-controls="implementation" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="search('implementation')" [ngClass]="{ 'active ':activeTab==='implementation'}">
+                        <div class="tabfontsizedec"><span class="octicon octicon-verified"></span>Implementation</div>
+                    </li>
+
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#DecisionChecklist"
+                        aria-controls="DecisionChecklist" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="search('decisionchecklist')" [ngClass]="{ 'active':activeTab==='decisionchecklist'}">
+                        <div class="tabfontsizedec"><span class="octicon octicon-tools"></span>Decision Checklist</div>
+                    </li>
+
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Report" aria-controls="report"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="search('report')"
+                        [ngClass]="{ 'active':activeTab==='report'}" [ngClass]="{ 'disabled': tabDisabled }">
+                        <div class="tabfontsizedec"><span class="octicon octicon-tools"></span>Report</div>
+                    </li>
+
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Feedback" aria-controls="feedback"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="search('feedback')"
+                        [ngClass]="{ 'active':activeTab==='feedback'}" [ngClass]="{ 'disabled': tabDisabled }">
+                        <div class="tabfontsizedec"><span class="octicon octicon-tools"></span>Synopsis</div>
+                    </li>
+                </ul>
+            </nav>
+
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show active" id="Introduction"
+                    [ngClass]="{ 'active':activeTab==='introduction'}">
+                    <app-hrpgameintroduction *ngIf="activeTab==='introduction'"></app-hrpgameintroduction>
+                </div>
+
+                <div role="tabpanel" class="tab-pane fade" id="Market"
+                    [ngClass]="{ 'active show':activeTab==='market'}">
+                    <app-hrpgamemarket *ngIf="activeTab==='market'"></app-hrpgamemarket>
+                </div>
+
+                <div role="tabpanel" class="tab-pane fade" id="Demand Forecasting"
+                    [ngClass]="{ 'active show':activeTab==='demand forecasting'}">
+                    <app-hrpgamedemandforecasting
+                        *ngIf="activeTab==='demand forecasting'"></app-hrpgamedemandforecasting>
+                </div>
+
+                <div role="tabpanel" class="tab-pane fade" id="Supply Forecasting"
+                    [ngClass]="{ 'active show':activeTab==='supply forecasting'}">
+                    <app-hrpgamesupplyforecasting
+                        *ngIf="activeTab==='supply forecasting'"></app-hrpgamesupplyforecasting>
+                </div>
+
+                <div role="tabpanel" class="tab-pane fade" id="Analysis & Planning"
+                    [ngClass]="{ 'active show':activeTab==='analysis & planning'}">
+                    <app-hrpgameanalysisandplanning
+                        *ngIf="activeTab==='analysis & planning'"></app-hrpgameanalysisandplanning>
+                </div>
+
+                <div role="tabpanel" class="tab-pane fade" id="Implementation"
+                    [ngClass]="{ 'active show':activeTab==='implementation'}">
+                    <app-hrpgameimplementation *ngIf="activeTab==='implementation'"></app-hrpgameimplementation>
+                </div>
+
+                <div role="tabpanel" class="tab-pane fade" id="DecisionChecklist"
+                    [ngClass]="{ 'active':activeTab==='decisionchecklist'}">
+                    <app-hrpgamedecisionchecklist (newItemEvent)="next($event)"
+                        *ngIf="activeTab==='decisionchecklist'"></app-hrpgamedecisionchecklist>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Report"
+                    [ngClass]="{ 'active show':activeTab==='report'}">
+                    <app-hrpgamereport *ngIf="activeTab==='report'"></app-hrpgamereport>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Feedback" [ngClass]="{ 'active':activeTab==='feedback'}">
+                    <app-hrpgamesynopsis *ngIf="activeTab==='feedback'"></app-hrpgamesynopsis>
+                </div>
+            </div>
+
+
+        </div>
+        <div role="tabpanel" class="tab-pane fade show" id="second">
+            <app-reading *ngIf="toolbartab==='reading'" [gamename]="gametitle"></app-reading>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade show" id="third">
+            <nav class="headerbreadcrumb">
+                <ul class="breadcrumb" role="tablist">
+                    <li role="presentation " class="breadcrumb-item active" data-bs-target="#Individual"
+                        aria-controls="Individual" role="tab" data-bs-toggle="tab" aria-selected="true"
+                        [ngClass]="{ 'active':forumTab==='individual'}" (click)="forum('individual')">
+                        <div><span class="octicon octicon-diff-added"></span>Individual</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Course" aria-controls="Course"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="forum('course')">
+                        <div><span class="octicon octicon-diff-added"></span>Course</div>
+                    </li>
+
+                </ul>
+            </nav>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show active" id="Individual">
+                    <app-forumindividual
+                        *ngIf="forumTab==='individual'"></app-forumindividual>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Course">
+                    <app-forumcourse *ngIf="forumTab==='course'"></app-forumcourse>
+                </div>
+            </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade show" id="fourth"
+            style="width: 90%; margin:0 auto;height:100vh;padding-top:1.5rem">
+            <app-microsimleaderboardgeneral *ngIf="toolbartab==='leaderboard'"></app-microsimleaderboardgeneral>
+        </div>
+    </div>
+</div>

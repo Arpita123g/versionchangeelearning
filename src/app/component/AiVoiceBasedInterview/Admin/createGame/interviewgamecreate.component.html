@@ -1,0 +1,349 @@
+<mat-card class="inputcard shadow p-3">
+  <div class="row">
+    <div class="col-10">
+      <div class="inputtitle"> Create Game</div>
+      <div class="subtitle">You can create your game </div>
+    </div>
+    <div class="col-2">
+      <button class="primary-btn" (click)="toggleadd()"> Add </button>
+    </div>
+  </div>
+
+  <form [formGroup]="creategamegroup" class="form">
+    <div class=" row g-3 " *ngIf="isadd" [@inOutAnimation]>
+      <div class="borderbottom"></div>
+
+      <div class="col-6 mar-b">
+        <label for="productType" class="form-label">Product Type</label>
+        <select class="form-select" id="productType" name="productType" formControlName="selectProductType">
+          <option value="">Select Product Type</option>
+          <option value="Non-Ai">Non-Ai</option>
+          <option value="Non-AI-Coach">Non-AI-Coach</option>
+          <option value="Language Lab">Language Lab</option>
+          <option value="Others">Others</option>
+        </select>
+      </div>
+      <div class="col-6 mar-b">
+        <label for="newGameName" class="form-label">Game Name</label>
+        <input type="text" class="form-control" id="newGameName" formControlName="gamename" name="newGameName"
+          placeholder="Enter game name">
+      </div>
+
+      <div class=" savebtnalign">
+        <button class="primary-btn" (click)="gameCreate()"> Create </button>
+      </div>
+    </div>
+  </form>
+</mat-card>
+<!-- <div class="inputtitle"> Create Question</div> -->
+<div class="">
+
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+         <div class="row g-3">
+
+            <div class="col-md-6">
+              <label for="productType" class="form-label">Product Type</label>
+              <select class="form-select" id="productType" name="productType" [(ngModel)]="selectedProductType"
+                (change)="getGameList($event)">
+                <option value="">Select Product Type</option>
+                <option value="Non-Ai">Non-Ai</option>
+                <option value="Non-AI-Coach">Non-Ai-Coach</option>
+                <!-- <option value="Language Lab">Language Lab</option> -->
+                <option value="Others">Others</option>
+              </select>
+            </div>
+
+
+            <div class="col-md-6 d-flex align-items-end gap-3">
+              <div class="flex-grow-1">
+                <label for="gameList1" class="form-label">Game List </label>
+                <select class="form-select " id="gameName" name="gameName" [(ngModel)]="selectedGame"
+                  (change)="getQuestionList($event)">
+                  <option value="">Select Game</option>
+                  <option *ngFor="let game of gameListArray; let i=index" [value]="game.aigameid">
+                    {{game.aigamename}}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <!-- [disabled]="isGameNotSelected" -->
+            <div class="col-md-6 d-flex align-items-end gap-3">
+              <div class="flex-grow-1">
+                <label for="gameList2" class="form-label ">Question Set List</label>
+                <select class="form-select" id="questionset" name="questionset" (change)="onQuestionSelect($event)"
+                  [(ngModel)]="selectedQuestionset">
+                  <option value="">Select Question Set</option>
+                  <option *ngFor="let question of QustionListArray; let i=index" [value]="i">
+                    {{question.aiquestionsetname}}
+                  </option>
+                </select>
+              </div>
+              <!-- [disabled]="isGameNotSelected"  -->
+              <div class="col-md-2 d-flex justify-content-center" *ngIf="isQuestionNotSelected">
+                <button class="addbtn btn-primary d-flex align-items-center justify-content-center"
+                  (click)="showAIDetails()">
+                  <i class="bi bi-plus-lg"></i>Create
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+
+
+          <!-- AI Evaluation Details Card -->
+          <div *ngIf="showAIDetailsCard||!isQuestionNotSelected" class="mt-0">
+            <div class="card ai-details-card">
+              <div class="card-body">
+                <form [formGroup]="createquestionsetgroup" class="form">
+                  <div class="row g-3">
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <div class="form-label">Question Set Name</div>
+                        <input class="form-control" placeholder="Enter question set name"
+                          formControlName="questionSetName">
+                      </div>
+                    </div>
+                    <div class="col-6 mar-b" *ngIf="selectedProductType==='Others'">
+                      <div class="form-label"> System Prompt </div>
+                      <textarea class="form-control" maxlength="32500" formControlName="systemPrompt"
+                        rows="4"></textarea>
+                    </div>
+                    <div class="col-6 mar-b" *ngIf="selectedProductType==='Others'">
+                      <div class="form-label">General Prompt</div>
+                      <textarea class="form-control" maxlength="32500" formControlName="generalPrompt"
+                        rows="4"></textarea>
+                    </div>
+                    <div class="col-6 mar-b"
+                      *ngIf="(selectedProductType==='Non-Ai')||(selectedProductType==='Non-AI-Coach')">
+                      <div class="form-label"> Evaluation System Prompt </div>
+                      <textarea class="form-control" maxlength="32500" formControlName="evaluationSystemPrompt"
+                        rows="4"></textarea>
+                    </div>
+                    <div class="col-6 mar-b"
+                      *ngIf="(selectedProductType==='Non-Ai')||(selectedProductType==='Non-AI-Coach')">
+                      <div class="form-label">Evaluation General Prompt</div>
+                      <textarea class="form-control" maxlength="32500" formControlName="evaluationGeneralPrompt"
+                        rows="4"></textarea>
+                    </div>
+                    <div class="col-6 mar-b" *ngIf="selectedProductType==='Non-AI-Coach'">
+                      <div class="form-label"> Feedback System Prompt </div>
+                      <textarea class="form-control" maxlength="32500" formControlName="feedbackSystemPrompt"
+                        rows="4"></textarea>
+                    </div>
+                    <div class="col-6 mar-b" *ngIf="selectedProductType==='Non-AI-Coach'">
+                      <div class="form-label">Feedback General Prompt</div>
+                      <textarea class="form-control" maxlength="32500" formControlName="feedbackGeneralPrompt"
+                        rows="4"></textarea>
+                    </div>
+
+
+                  </div>
+                </form>
+                <div class="mt-4" *ngIf="selectedProductType!='Others'">
+                  <button type="button" class="btn btn-success px-4" (click)="addQuestion()">Add Questions
+                    +</button>
+
+                  <div *ngFor="let question of questions; let i = index" class="mt-3">
+                    <textarea class="form-control" [(ngModel)]="question.aiquestion" [name]="'question_' + i"
+                      placeholder="Enter Question">
+                        </textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="assign pt-4" *ngIf="isQuestionNotSelected">
+            <button type="button" class="primary-btn" (click)="saveClicked('save')">Save</button>
+          </div>
+          <div class="assign pt-4" *ngIf="!isQuestionNotSelected">
+            <button type="button" class="primary-btn" (click)="saveClicked('update')">Update</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+<!--  -->
+
+<!-- <div class="card inputcard-table">
+
+  <div class="row" style="margin: 18px 15px 0px 15px;">
+    <div class="col-10">
+    </div>
+    <div class="col-2 p-0" *ngIf="searchFlag === 'instructor'">
+      <mat-label>Product Type</mat-label>
+      <mat-form-field>
+
+        <mat-select [(ngModel)]="selectedProductTypeForTable" name="food" (selectionChange)="getTableData()">
+
+          <mat-option value="">Select Product Type</mat-option>
+          <mat-option value="All">All</mat-option>
+          <mat-option value="Non-Ai">Non-Ai</mat-option>
+          <mat-option value="Non-AI-Coach">Non-Ai-Coach</mat-option>
+          <mat-option value="Others">Others</mat-option>
+
+        </mat-select>
+      </mat-form-field>
+      
+    </div>
+    
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
+
+    <ng-container matColumnDef="game">
+      <th mat-header-cell *matHeaderCellDef>Game Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.aiGame.aigamename}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="product">
+      <th mat-header-cell *matHeaderCellDef>Product Type</th>
+      <td mat-cell *matCellDef="let element"> {{element.aiGame.producttype}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="questionSet">
+      <th mat-header-cell *matHeaderCellDef>Question Set Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.aiquestionsetname}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="questionlist" class="forzindex">
+      <th mat-header-cell *matHeaderCellDef class="question-header"> Question List </th>
+
+      <td mat-cell *matCellDef="let element" class="questionlist text-start p-0" style="text-align:left"
+        (click)="questionlist(element)">
+        <mat-icon class="sidenav-icon" aria-hidden="false" aria-label="Toggle row"
+          (click)="questionlist(element); $event.stopPropagation()">
+          {{ element.isExpanded ? 'arrow_drop_up' : 'arrow_drop_down' }}
+        </mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+        <div class="row student-element-detail" [@detailExpand]="element.isExpanded ? 'expanded' : 'collapsed'">
+          <table style="background-color: rgba(233, 233, 233, 0.979);" mat-table [dataSource]="element.questions">
+            <ng-container matColumnDef="questionlist">
+              <th mat-header-cell *matHeaderCellDef style="padding-left: 16px;"><b>Question List</b></th>
+
+              <td mat-cell *matCellDef="let question" class="text-start" style="font-size: 14px;
+    font-weight: 400;">{{ question.aiquestion }}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="['questionlist']"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['questionlist'];"></tr>
+          </table>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="table-element-row"
+      [class.table-expanded-row]="element.isExpanded"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="table-detail-row" [hidden]="!row.isExpanded">
+    </tr>
+
+
+  </table>
+  <mat-paginator class="paginator" [pageSizeOptions]="[5, 10, 20, 30, 50]" showFirstLastButtons></mat-paginator>
+  
+</div> -->
+
+
+<div class="card inputcard-table">
+
+  <div class="row" style="margin: 18px 15px 0px 15px;">
+    <div class="col-10">
+    </div>
+    <div class="col-2 p-0" *ngIf="searchFlag === 'instructor'">
+      <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-label>Product Type</mat-label>
+        <mat-select [(ngModel)]="selectedProductTypeForTable" name="food" (selectionChange)="getTableData()">
+          <mat-option value="">Select Product Type</mat-option>
+          <mat-option value="All">All</mat-option>
+          <mat-option value="Non-Ai">Non-Ai</mat-option>
+          <mat-option value="Non-AI-Coach">Non-Ai-Coach</mat-option>
+          <mat-option value="Others">Others</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    
+    
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
+
+    <ng-container matColumnDef="game">
+      <th mat-header-cell *matHeaderCellDef>Game Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.aiGame.aigamename}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="product">
+      <th mat-header-cell *matHeaderCellDef>Product Type</th>
+      <td mat-cell *matCellDef="let element"> {{element.aiGame.producttype}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="questionSet">
+      <th mat-header-cell *matHeaderCellDef>Question Set Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.aiquestionsetname}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="questionlist" class="forzindex">
+      <!-- <th mat-header-cell *matHeaderCellDef> Question List </th> -->
+      <th mat-header-cell *matHeaderCellDef class="question-header"> Question List </th>
+
+      <td mat-cell *matCellDef="let element" class="questionlist text-start p-0" style="text-align:left"
+        (click)="questionlist(element)">
+        <mat-icon class="sidenav-icon" aria-hidden="false" aria-label="Toggle row"
+          (click)="questionlist(element); $event.stopPropagation()">
+          {{ element.isExpanded ? 'arrow_drop_up' : 'arrow_drop_down' }}
+        </mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+        <div class="row student-element-detail" [@detailExpand]="element.isExpanded ? 'expanded' : 'collapsed'">
+          <table style="background-color: rgba(233, 233, 233, 0.979);" mat-table [dataSource]="element.questions">
+            <ng-container matColumnDef="questionlist">
+              <th mat-header-cell *matHeaderCellDef style="padding-left: 16px;"><b>Question List</b></th>
+
+              <td mat-cell *matCellDef="let question" class="text-start" style="font-size: 14px;
+    font-weight: 400;">{{ question.aiquestion }}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="['questionlist']"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['questionlist'];"></tr>
+          </table>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="table-element-row"
+      [class.table-expanded-row]="element.isExpanded"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="table-detail-row" [hidden]="!row.isExpanded">
+    </tr>
+
+
+  </table>
+  <mat-paginator class="paginator" [pageSizeOptions]="[5, 10, 20, 30, 50]" showFirstLastButtons></mat-paginator>
+  
+</div>
+
+
+
+

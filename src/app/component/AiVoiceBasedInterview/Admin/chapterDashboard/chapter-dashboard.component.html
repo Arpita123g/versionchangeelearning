@@ -1,0 +1,92 @@
+<div class="chapter-dashboard">
+  <div class="dashboard-header">
+    <div class="header-content">
+      <h1 class="dashboard-title">
+        <mat-icon class="title-icon">school</mat-icon>
+        Chapter Dashboard
+      </h1>
+      <p class="dashboard-subtitle">Track your progress through the AI Interview chapters</p>
+      <div class="progress-overview">
+        <div class="progress-item">
+          <span class="progress-number">{{getCompletedChapters()}}</span>
+          <span class="progress-label">Completed</span>
+        </div>
+        <div class="progress-item">
+          <span class="progress-number">{{chapters.length}}</span>
+          <span class="progress-label">Total</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chapters-grid">
+    <div class="chapter-card" *ngFor="let chapter of chapters; let i=index" [ngClass]="{
+        'locked': !(chapter.isEnabled ?? false), 
+        'completed': chapter.status === 'completed',
+        'ready-to-unlock': (chapter.isEnabled ?? false) && chapter.status === 'not-started'
+      }">
+
+      <div class="card-header-attractive">
+        <div class="chapter-badge-attractive">{{i+1}}</div>
+        <div class="chapter-header-main">
+          <div class="chapter-title-row">
+            <span class="chapter-title-attractive">{{chapter.chaptername}}</span>
+          </div>
+          <div class="chapter-type-row">
+            <span class="chapter-type-attractive">{{chapter.producttype}}</span>
+          </div>
+          <div class="chapter-status-row">
+            <span class="chapter-status-attractive" [ngClass]="getStatusClass(chapter.status)">
+              <mat-icon class="status-icon-attractive">{{getStatusIcon(chapter.status)}}</mat-icon>
+              {{getStatusText(chapter.status)}}
+            </span>
+            <mat-icon *ngIf="!(chapter.isEnabled ?? false)" class="lock-attractive">lock</mat-icon>
+            <mat-icon *ngIf="chapter.isEnabled ?? false" class="unlock-attractive">lock_open</mat-icon>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="chapter-info">
+          <div class="info-item">
+            <mat-icon class="info-icon">repeat</mat-icon>
+            <span class="info-text">
+              Round {{
+                (chapter.attemptsLeft == 0)
+                  ? chapter.previousassignedattempts
+                  : (chapter.previousassignedattempts - (chapter.attemptsLeft ?? chapter.previousassignedattempts) + 1)
+              }}
+              of {{chapter.previousassignedattempts}}
+            </span>
+          </div>
+          <div class="info-item" *ngIf="chapter.attemptsLeft !== undefined">
+            <mat-icon class="info-icon">timer</mat-icon>
+            <span class="info-text">{{chapter.status==='completed'?0 :chapter.attemptsLeft}} attempts left</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+       
+        <button mat-raised-button [color]="(chapter.isEnabled ?? false) ? 'primary' : 'warn'"
+          (click)="startChapter(chapter.chapterattempts, chapter, i)"
+          [disabled]="!(chapter.isEnabled ?? false)  || startChapterLoadingIndex === i"
+          class="start-button"
+          [matTooltip]="!(chapter.isEnabled ?? false) ? (chapter.unlockReason ?? 'Chapter is locked') : 'Click to start chapter'"
+          matTooltipPosition="above">
+          <mat-spinner *ngIf="startChapterLoadingIndex === i" diameter="20"></mat-spinner>
+          <mat-icon *ngIf="startChapterLoadingIndex !== i" class="button-icon">{{(chapter.isEnabled ?? false) ?
+            'play_arrow' : 'lock'}}</mat-icon>
+          <span class="button-text">
+            {{ startChapterLoadingIndex === i 
+              ?  'Loading...' 
+              :(chapter.isEnabled ?? false) 
+               ? (chapter.status==='completed'? "View" : "Start Chapter") 
+               : 'Locked'
+            }}
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

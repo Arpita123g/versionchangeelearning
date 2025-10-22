@@ -1,0 +1,237 @@
+// voicebasedainterview.component.scss
+
+.interview-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  
+    &:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    }
+  }
+  
+  .question-title {
+    font-size: 1.75rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    line-height: 1.4;
+    position: relative;
+    padding-bottom: 0.75rem;
+  
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #3498db, #2980b9);
+      border-radius: 2px;
+    }
+  }
+  
+  .answer-box {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+  
+    &:focus-within {
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    }
+  }
+  
+  .transcript {
+    width: 100%;
+    min-height: 150px;
+    padding: 1rem;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #2c3e50;
+    resize: vertical;
+    font-family: inherit;
+  
+    &:focus {
+      outline: none;
+    }
+  
+    &::placeholder {
+      color: #94a3b8;
+    }
+  }
+  
+  .controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+  
+    button {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+  
+      &:first-child {
+        background: #3498db;
+        color: white;
+  
+        &:hover:not(:disabled) {
+          background: #2980b9;
+          transform: translateY(-1px);
+        }
+      }
+  
+      &:last-child {
+        background: #e74c3c;
+        color: white;
+  
+        &:hover:not(:disabled) {
+          background: #c0392b;
+          transform: translateY(-1px);
+        }
+      }
+  
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+    }
+  }
+  
+  .feedback {
+    background: #f1f8ff;
+    border-left: 4px solid #3498db;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    animation: slideIn 0.3s ease;
+  
+    p {
+      margin: 0;
+      color: #2c3e50;
+      font-size: 1rem;
+      line-height: 1.6;
+  
+      strong {
+        color: #3498db;
+      }
+    }
+  }
+  
+  .navigation {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+  
+    button {
+      padding: 0.75rem 2rem;
+      background: #2ecc71;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+  
+      &:hover:not(:disabled) {
+        background: #27ae60;
+        transform: translateY(-1px);
+      }
+  
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+    }
+  }
+  
+  .final-message {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: #f8fafc;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 0.5s ease;
+  
+    h2 {
+      color: #2ecc71;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+  
+    p {
+      color: #2c3e50;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  // Responsive Design
+  @media (max-width: 768px) {
+    .interview-container {
+      margin: 1rem;
+      padding: 1.5rem;
+    }
+  
+    .question-title {
+      font-size: 1.5rem;
+    }
+  
+    .controls {
+      flex-direction: column;
+      
+      button {
+        width: 100%;
+      }
+    }
+  
+    .navigation button {
+      width: 100%;
+    }
+  }

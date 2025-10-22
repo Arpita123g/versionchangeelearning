@@ -1,0 +1,125 @@
+<div class="container-fluid register">
+    <div class="generatefir">
+        <mat-card>
+            <div class="row mt-4">
+                <div class="col-10">
+                    <div class="inputtitle"><mat-card-title>Generate Refresh Token</mat-card-title></div>
+                    
+                </div>
+                <div class="col-2" style="text-align:end">
+                    <button class="submit-button" style="width: 130px;" (click)="errorlog()"> Error Log</button>
+                </div>
+            </div>
+            
+            <mat-card-content>
+                <div class="row mt-4">
+                    <div class="col-6">
+                        <mat-form-field appearance="fill" class="w-100">
+                            <mat-label>Email</mat-label>
+                            <input matInput type="email" [(ngModel)]="email" required>
+                        </mat-form-field>
+
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field appearance="fill" class="w-100">
+                            <mat-label>Client ID</mat-label>
+                            <input matInput type="email" [(ngModel)]="clientid" required>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field appearance="fill" class="w-100">
+                            <mat-label>Refresh Token</mat-label>
+                            <input matInput type="email" [(ngModel)]="refreshtoken" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field appearance="fill" class="w-100">
+                            <mat-label>Client Screct</mat-label>
+                            <input matInput type="email" [(ngModel)]="clientserect" required>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field appearance="fill" class="w-100">
+                            <mat-label>User Limit</mat-label>
+                            <input matInput type="email" [(ngModel)]="userlimit" required>
+                        </mat-form-field>
+                    </div>
+
+                    <button mat-button class="submit-button float-end" (click)="submit()">Submit</button>
+                </div>
+
+
+
+
+            </mat-card-content>
+            <mat-card-content>
+                <div>
+
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="inputcard-table" style="margin-top:20px;margin-bottom:10px">
+
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef> Email </th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-chip color="accent" style="cursor: pointer;" (click)="goTo(element.driveemail)"
+                            selected>{{modifyStr(element.driveemail)}} </mat-chip>
+                        <!-- (click)="goTo(element.driveemail)" selected> </mat-chip> -->
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="activeusercount">
+                    <th mat-header-cell *matHeaderCellDef> Activeusercount </th>
+                    <td mat-cell *matCellDef="let element"> {{element.activeusercount}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef> Status </th>
+                    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="createdat">
+                    <th mat-header-cell *matHeaderCellDef>Created at </th>
+                    <td mat-cell *matCellDef="let element"> {{element.createdat}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="update">
+                    <th mat-header-cell class="update" *matHeaderCellDef> Update </th>
+                    <td mat-cell *matCellDef="let element" class="edit" (click)="update(element)">
+                        <mat-icon class="sidenav-icon" aria-hidden="false" aria-label="Example home icon">
+                            edit</mat-icon>
+
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="delete">
+                    <th mat-header-cell class="update" *matHeaderCellDef> Delete </th>
+                    <td mat-cell *matCellDef="let element" class="edit" (click)="delete(element)">
+                        <mat-icon class="sidenav-icon" aria-hidden="false" aria-label="Example home icon">
+                            delete</mat-icon>
+
+                    </td>
+                </ng-container>
+
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator style="font-size:12px;margin:10px;display:flex;justify-content:center"
+                [pageSizeOptions]="[5, 10, 20, 50, 100,500,dataSource.data.length]" showFirstLastButtons
+                aria-label="Select page of periodic elements">
+            </mat-paginator>
+        </mat-card>
+    </div>
+
+
+</div>

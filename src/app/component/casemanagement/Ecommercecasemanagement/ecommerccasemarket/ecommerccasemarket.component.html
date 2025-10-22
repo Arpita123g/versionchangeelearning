@@ -1,0 +1,93 @@
+<!-- new -->
+<div class="elearingnewui">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="businessoutlook-element-body">
+        <div class="case-management-body">
+            <div class="table-responsive mb-3 mt-3">
+                <div class="links">
+                    <ul>
+                        <button class="out-look-btn "
+                            [style.background-color]="round === selectedButton? 'lightgrey' : ''"
+                            *ngFor="let round of rounds; let i = index;"
+                            (click)="roundclick(i,round)">{{round}}</button>
+                    </ul>
+                </div>
+                <div class="case-texts__content">
+
+                    <div id="initial">
+                        <div class="case-texts__content-main">
+                            <div class=" case-texts__container">
+                                <label class="case-texts__content-after-label pb-2">Original text</label>
+                                <div class=" case-texts__container-textarea">
+                                    In Delhi, you are launching Seamseco, an e-commerce venture dedicated to fast
+                                    fashion for young Indians, with a twist—every item is eco-friendly. Aimed at
+                                    blending trendy fashion with sustainability, Seamseco offers a range of stylish
+                                    clothing for men and women, all made from sustainable materials. The headquarters in
+                                    Delhi, a hub of both fashion and commerce, serves as the perfect launchpad for a
+                                    brand that promises to marry modern aesthetics with ethical practices. <br><br>
+
+                                    To kickstart the venture, you have to meticulously curate a catalog of sustainable
+                                    garments, selecting items that not only appeal to fashion-conscious youth but also
+                                    uphold the brand’s commitment to the environment. Each product is carefully sourced
+                                    to ensure it meets stringent eco-friendly standards, from raw materials to
+                                    production processes. This catalog isn’t just a sales tool—it’s a statement of
+                                    purpose, educating customers about the positive impact of their purchase choices on
+                                    the environment. While the market provides ample data due to the presence of 20
+                                    established competitors in the same category, Seamseco must carve out its own niche
+                                    to capture and grow its customer base. <br><br>
+
+                                    Once the catalog is in place, attention turns to marketing and customer experience.
+                                    Seamseco will have to adopt innovative digital marketing strategies, leveraging
+                                    social media and influencer partnerships to reach its target audience effectively.
+                                    The website has to be crafted to ensure a user-friendly experience, featuring easy
+                                    navigation and a streamlined checkout process. Concurrently, operational efficiency
+                                    should be prioritized to support a smooth supply chain and eco-friendly shipping
+                                    methods, ensuring that Seamseco delivers not only style but sustainability, right to
+                                    the customer’s doorstep.
+
+                                </div>
+                            </div>
+                            <div class="case-texts__content-starea">
+                                <div class="case-texts__content-after">
+                                    <label class="case-texts__content-after-label">Your custom default text</label>
+                                    <st-editor name="" id="" [config]="config" [(ngModel)]="contentvalue"
+                                        [disabled]="defaultcase=='yes'" (focusout)="contentvaluechange()"></st-editor>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="table-responsive">
+                <table class=" table case-management-table">
+
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="second-head" colspan="12"></th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Competitors</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.c7; let i = index">
+                                <input [value]="res.c7[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('c7',i,inputElement.value)">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

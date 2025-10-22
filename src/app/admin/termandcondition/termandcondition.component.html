@@ -1,0 +1,51 @@
+<div class="elearingnewui">
+    <div class="condition-body">
+        <mat-card class="condition-card">
+            <div class="d-flex justify-content-end mb-4" *ngIf="showdownload">
+                <button mat-icon-button class="download_btn" matTooltip="Download Market Study">
+                    <a href="../../../assets/images/Market Study_Voice Recognition.pdf" download>
+                        <mat-icon>get_app</mat-icon>
+                    </a>
+                </button>
+            </div>
+            <div>
+                <!-- <p class="content-p" *ngFor="let termtext of termdata.content">{{termtext}}
+                </p> -->
+                <p class="content-p" *ngFor="let termtext of termdata.content; let i = index">
+                    {{showAll[i] ? termtext : turncatedtext(termtext)}}
+                    <button mat-button color="primary" (click)="toggleshow(i)">
+                        {{showAll[i] ? 'Show Less' : 'Show More'}}
+                    </button>
+                </p>
+                <div>
+                    <div class="oval">
+                    </div>
+                    <div class="ovaltext">
+                        <ul>
+                            <h2>Instructions</h2>
+                            <li *ngFor="let litext of termdata.instructiontext">
+                                {{litext}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-3">
+                <p class="m-0">{{termdata.contenttext2}}</p>
+                <div class="check-div py-2">
+                    <mat-checkbox
+                        [disabled]="isaccepted"
+                        [checked]="acceptTerm"
+                        (change)="toggleStartButton($event)">
+                        <span class="checkbox-p" (click)="openconditonpop()">I Accept all Term & Condition</span>
+                    </mat-checkbox>
+                </div>
+                <p class="con-dition">Accept the terms and conditions before proceeding.</p>
+                <div class="py-2">
+                    <button mat-raised-button color="primary" (click)="gotToAIinterview()">Start</button>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

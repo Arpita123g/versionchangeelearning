@@ -1,0 +1,95 @@
+<div class="elearingnewui bus_iness">
+    <div class="">
+        <div class="card promptcard p-4">
+            <div class="row row-cols-md-2 g-3">
+                <div class="col-md">
+                    <h4>Choose Simulation</h4>
+                    <select class="write_div" [(ngModel)]="selectedgame">
+                        <option value="">Select E-Learning name </option>
+                        <option value="Interview">Interview</option>
+                        <option value="Negotiation">Negotiation</option>
+                        <option value="Ethics">Ethics</option>
+                        <option value="Communication">Communication</option>
+                        <option value="Recruitment">Recruitment</option>
+                        <option value="Language Lab">Language Lab</option>
+                    </select>
+                </div>
+                <div class="col-md">
+                    <h4>Prompt Name</h4>
+                    <input [(ngModel)]="promptname" class="write_div">
+                </div>
+            </div>
+            <div class="row row-cols-md-2 g-3 pt-3">
+                <div class="col-md prompt-texts__content-after">
+                    <h4>System Prompt</h4>
+                    <textarea class="prompt-text" name="" id="" [(ngModel)]="systempromptvalue"
+                        maxlength="32500"></textarea>
+                </div>
+                <div class="col-md prompt-texts__content-after">
+                    <h4>General Prompt</h4>
+                    <textarea name="" class="prompt-text" id="" [(ngModel)]="generatepromptvalue"
+                        maxlength="32500"></textarea>
+                </div>
+
+
+            </div>
+            <div class="assign pt-3">
+                <button class="primary-btn" (click)="addPrompt()">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- new mat table -->
+    <div class="mat-elevation-z8 ">
+        <table class="microsimdashboardtable" mat-table [dataSource]="dataSource" id='exportTable'>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="simulation">
+                <th mat-header-cell *matHeaderCellDef style="width: 4rem;"> Simulation </th>
+                <td mat-cell *matCellDef="let element">{{element.simulationname}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="promptName">
+                <th mat-header-cell *matHeaderCellDef style="width: 4rem;"> Prompt Name </th>
+                <td mat-cell *matCellDef="let element">{{element.promptname}}</td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="systemPrompt">
+                <th mat-header-cell *matHeaderCellDef style="width: 10rem;"> System Prompt </th>
+                <td mat-cell *matCellDef="let element" class="fixed-height-width">
+                    <div class="mat-td-height">
+                        <div class="d-flex flex-row gap-2 justify-content-between w-100 align-items-start">
+                            <!-- <span>{{element.systemprompt}}</span> -->
+                            <markdown [data]="element.systemprompt"></markdown>
+                            <mat-icon (click)="openPromptDialog(element,'systemPrompt')">edit</mat-icon>
+                        </div>
+
+                    </div>
+                </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="generatePrompt">
+                <th mat-header-cell *matHeaderCellDef style="width: 10rem;"> Generate Prompt </th>
+                <td mat-cell *matCellDef="let element" class="fixed-height-width">
+                    <div class="mat-td-height">
+                        <div class="d-flex flex-row gap-2 justify-content-between w-100 align-items-start">
+                            <!-- <span>{{element.generalprompt}}</span> -->
+                            <markdown [data]="element.generalprompt"></markdown>
+                            <mat-icon (click)="openPromptDialog(element,'generatePrompt')">edit</mat-icon>
+                        </div>
+                    </div>
+
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[20, 50, 100, 500,dataSource.data.length]" showFirstLastButtons
+            aria-label="Select page of periodic elements">
+        </mat-paginator>
+    </div>
+</div>

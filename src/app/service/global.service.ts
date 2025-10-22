@@ -1,0 +1,113 @@
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class GlobalService {
+
+  
+  constructor() { }
+  username = new BehaviorSubject('');
+  usermobile = new BehaviorSubject('');
+  useremail = new BehaviorSubject('');
+  userpassword = new BehaviorSubject('');
+  islogin = new BehaviorSubject(false);
+  role = new BehaviorSubject('');
+  loginmode = new BehaviorSubject('');
+  userdata = new BehaviorSubject({});
+  usersocityid = new BehaviorSubject(0);
+  casemanagementid = new BehaviorSubject(0);
+  consumerbehaviourcmid = new BehaviorSubject(0);
+  logisticscmid = new BehaviorSubject(0); 
+  round = new BehaviorSubject(0);
+  userobj = new BehaviorSubject({});
+  isSuper=new BehaviorSubject(false);
+  coursecode = new BehaviorSubject('');
+  studentemail = new BehaviorSubject('');
+  coursename = new BehaviorSubject('');
+  studentsectionid = new BehaviorSubject('');
+  coursedetailsid = new BehaviorSubject('');
+  userregisterid = new BehaviorSubject('');
+  accesstoken = new BehaviorSubject('');
+  studentspreadsheetid = new BehaviorSubject('');
+  outputresult = new BehaviorSubject({});
+  outputactualresult = new BehaviorSubject({});
+  secondoutputresult = new BehaviorSubject({});
+  ecopaperresultanalysis = new BehaviorSubject({});
+  bagsresultanalysis = new BehaviorSubject({});
+  towelresultanalysis = new BehaviorSubject({});
+  sheetid = new BehaviorSubject('');
+  firstresultdescription = new BehaviorSubject('');
+  secondresultdescription = new BehaviorSubject('');
+  secondsubmitclick = new BehaviorSubject('');
+  firstprojectionresult = new BehaviorSubject({});
+  CEquestionAnswer = new BehaviorSubject({});
+  t2MEquestionAnswer = new BehaviorSubject({});
+  tech1option = new BehaviorSubject('');
+  technology2option = new BehaviorSubject('');
+  technology3option = new BehaviorSubject('');
+  technologyToInvest = new BehaviorSubject('');
+  T2CEquestionAnswer = new BehaviorSubject('');
+  MEquestionAnswer = new BehaviorSubject('');
+  BquestionAnswer = new BehaviorSubject('');
+  previousresultsfirst = new BehaviorSubject({});
+  previousresultssecond = new BehaviorSubject({});
+  previousresultsthird = new BehaviorSubject({});
+  puttingvaluethird = new BehaviorSubject({});
+  puttingvaluefourth = new BehaviorSubject({});
+  noofattempts = new BehaviorSubject('');
+  issubmitteddata = new BehaviorSubject('');
+  pricefirst = new BehaviorSubject('');
+  pricesecond = new BehaviorSubject('');
+  pricethird = new BehaviorSubject('');
+  isbackclicked = new BehaviorSubject('');
+  putteddata = new BehaviorSubject({});
+  expiredpasscheck = new BehaviorSubject('');
+  usermode = new BehaviorSubject('');
+  language = new BehaviorSubject('');
+  snapshotstep = new BehaviorSubject(0);
+  stepstatus = new BehaviorSubject('');
+  prvsnapshotstep = new BehaviorSubject(0);
+  decisiontab = new BehaviorSubject(0);
+  roundcompletestatus = new BehaviorSubject('');
+  clientsecret = new BehaviorSubject('');
+  refreshtoken = new BehaviorSubject('');
+  clientid = new BehaviorSubject('');
+  drivemailconfigurationid = new BehaviorSubject('');
+  driveemail = new BehaviorSubject('');
+  studentelementdetails = new BehaviorSubject({});
+  instructorelementdetails = new BehaviorSubject({});
+  driveemailauth = new BehaviorSubject('');
+  drivepasswordauth = new BehaviorSubject('');
+  timercounting  = new BehaviorSubject('');
+  endtime = new BehaviorSubject('');
+  chatbody = new BehaviorSubject({});
+  p1letter = new BehaviorSubject('');
+  p1number = new BehaviorSubject('');
+  p2letter = new BehaviorSubject('');
+  p2number = new BehaviorSubject('');
+  p3letter = new BehaviorSubject('');
+  p3number = new BehaviorSubject('');
+  p4letter = new BehaviorSubject('');
+  p4number = new BehaviorSubject('');
+  p5letter = new BehaviorSubject('');
+  p5number = new BehaviorSubject('');
+  p6letter = new BehaviorSubject('');
+  p6number = new BehaviorSubject('');
+  currenttoken = new BehaviorSubject('');
+  gamename = new BehaviorSubject('');
+  questionanswerpage = new BehaviorSubject(0);
+  instructorname = new BehaviorSubject("");
+  casemanagementcoursedetails = new BehaviorSubject({});
+  instructorcarddetails = new BehaviorSubject ({});
+  instructoractivetab = new BehaviorSubject('');
+  microvoicetab = new BehaviorSubject('');
+  acceptTerm = new BehaviorSubject(false);
+  interviewcomplete = new BehaviorSubject(false);
+  toolbartab= new BehaviorSubject('');
+  remainingcredit = new BehaviorSubject(-1);
+  timefinished= new BehaviorSubject(false);
+  studentchapterattempts= new BehaviorSubject(0);
+
+}

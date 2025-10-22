@@ -1,0 +1,686 @@
+<div class="elearingnewui casemanagement">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="case-management-body case-management-body-marketing ">
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Max Load Capacity trucks, metric tonnes</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing">
+                <thead>
+                    <tr>
+                        <td colspan="2" *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody class="first-tbody">
+                </tbody>
+                <tbody class="first-tbody-new-new ">
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.ad7[index]" #ad7Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ad7', index, ad7Input.value)"></td>
+                            <td><input [value]="res.ae7[index]" #ae7Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ae7', index, ae7Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.ad8[index]" #ad8Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ad8', index, ad8Input.value)"></td>
+                            <td><input [value]="res.ae8[index]" #ae8Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ae8', index, ae8Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.ad9[index]" #ad9Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ad9', index, ad9Input.value)"></td>
+                            <td><input [value]="res.ae9[index]" #ae9Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ae9', index, ae9Input.value)"></td>
+                        </ng-container>
+                    </tr>
+
+
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Average speed of trucks, kmph</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Small Trucks</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae12; let i = index">
+                            <input [value]="res.ae12[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae12',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Open Body Trucks</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae13; let i = index">
+                            <input [value]="res.ae13[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae13',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Covered Container</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae14; let i = index">
+                            <input [value]="res.ae14[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae14',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Milegae trucks, kmpl</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Small Trucks</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae17; let i = index">
+                            <input [value]="res.ae17[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae17',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Open Body Trucks</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae18; let i = index">
+                            <input [value]="res.ae18[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae18',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Covered Container</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae19; let i = index">
+                            <input [value]="res.ae19[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae19',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Fragility Chances trucks</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Small Trucks</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae22; let i = index">
+                            <input [value]="res.ae22[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae22',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Open Body Trucks</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae23; let i = index">
+                            <input [value]="res.ae23[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae23',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Covered Container</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae24; let i = index">
+                            <input [value]="res.ae24[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae24',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Price per mt-km trucks</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Small Trucks</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae27; let i = index">
+                            <input [value]="res.ae27[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae27',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Open Body Trucks</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae28; let i = index">
+                            <input [value]="res.ae28[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae28',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Covered Container</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae29; let i = index">
+                            <input [value]="res.ae29[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae29',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Price per mt-km other modes</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Rail</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae32; let i = index">
+                            <input [value]="res.ae32[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae32',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Air</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae33; let i = index">
+                            <input [value]="res.ae33[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae33',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Average speed kmph other modes</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Rail</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae36; let i = index">
+                            <input [value]="res.ae36[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae36',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Air</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae37; let i = index">
+                            <input [value]="res.ae37[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae37',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Maximum load capacity per trip other modes, metric tonnes</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing">
+                <thead>
+                    <tr>
+                        <td colspan="2" *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody class="first-tbody">
+                </tbody>
+                <tbody>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.ad40[index]" #ad40Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ad40', index, ad40Input.value)"></td>
+                            <td><input [value]="res.ae40[index]" #ae40Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ae40', index, ae40Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.ad41[index]" #ad41Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ad41', index, ad41Input.value)"></td>
+                            <td><input [value]="res.ae41[index]" #ae41Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ae41', index, ae41Input.value)"></td>
+                        </ng-container>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Damage chances other modes</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Rail</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae44; let i = index">
+                            <input [value]="res.ae44[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae44',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Air</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae45; let i = index">
+                            <input [value]="res.ae45[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae45',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12"></th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>TAT Penalty Factor</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae47; let i = index">
+                            <input [value]="res.ae47[i]*100" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae47',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12"></th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Underutilization Opportunity Cost, INR</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae49; let i = index">
+                            <input [value]="res.ae49[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae49',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Emission, other modes</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing">
+                <thead>
+                    <tr>
+                        <td colspan="2" *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody class="first-tbody">
+                    <tr>
+
+                    </tr>
+                </tbody>
+                <tbody class="first-tbody-new-new">
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.ad52[index]" #ad52Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ad52', index, ad52Input.value)"></td>
+                            <td><input [value]="res.ae52[index]|number:'1.3-3'" #ae52Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ae52', index, ae52Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.ad53[index]" #ad53Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ad53', index, ad53Input.value)"></td>
+                            <td><input [value]="res.ae53[index]|number:'1.2-2'" #ae53Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ae53', index, ae53Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.ad54[index]" #ad54Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ad54', index, ad54Input.value)"></td>
+                            <td><input [value]="res.ae54[index]|number:'1.4-4'" #ae54Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ae54', index, ae54Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.ad55[index]" #ad55Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ad55', index, ad55Input.value)"></td>
+                            <td><input [value]="res.ae55[index]|number:'1.4-4'" #ae55Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ae55', index, ae55Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.ad56[index]" #ad56Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ad56', index, ad56Input.value)"></td>
+                            <td><input [value]="res.ae56[index]|number:'1.4-4'" #ae56Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ae56', index, ae56Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.ad57[index]" #ad57Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ad57', index, ad57Input.value)"></td>
+                            <td><input [value]="res.ae57[index]|number:'1.4-4'" #ae57Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ae57', index, ae57Input.value)"></td>
+                        </ng-container>
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing-second">
+                <thead>
+                    <tr>
+                        <td colspan="3" *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody class="second-tbody">
+                    <tr>
+                        <ng-container *ngFor="let item of data1; let i = index">
+                            <td *ngIf="i % 3 === 0">Number of Trips</td>
+                            <td *ngIf="i % 3 === 1">Min</td>
+                            <td *ngIf="i % 3 === 2">Max</td>
+
+                        </ng-container>
+                    </tr>
+                </tbody>
+                <tbody class="second-tbody-new">
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.ad60[index]" #ad60Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ad60', index, ad60Input.value)"></td>
+                            <td><input [value]="res.ae60[index]" #ae60Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ae60', index, ae60Input.value)"></td>
+                            <td><input [value]="res.af60[index]" #af60Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('af60', index, af60Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.ad61[index]" #ad61Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ad61', index, ad61Input.value)"></td>
+                            <td><input [value]="res.ae61[index]" #ae61Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ae61', index, ae61Input.value)"></td>
+                            <td><input [value]="res.af61[index]" #af61Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('af61', index, af61Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.ad62[index]" #ad62Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ad62', index, ad62Input.value)"></td>
+                            <td><input [value]="res.ae62[index]" #ae62Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ae62', index, ae62Input.value)"></td>
+                            <td><input [value]="res.af62[index]" #af62Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('af62', index, af62Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing-second">
+                <thead>
+                    <tr>
+                        <td colspan="3" *ngFor="let round of rounds">{{round}}</td>
+
+
+                    </tr>
+                </thead>
+                <tbody class="second-tbody">
+                    <tr>
+                        <ng-container *ngFor="let item of data1; let i = index">
+                            <td *ngIf="i % 3 === 0">Number of Trips</td>
+                            <td *ngIf="i % 3 === 1">Min</td>
+                            <td *ngIf="i % 3 === 2">Max</td>
+
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.ad65[index]" #ad65Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ad65', index, ad65Input.value)"></td>
+                            <td><input [value]="res.ae65[index]" #ae65Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ae65', index, ae65Input.value)"></td>
+                            <td><input [value]="res.af65[index]" #af65Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('af65', index, af65Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.ad66[index]" #ad66Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ad66', index, ad66Input.value)"></td>
+                            <td><input [value]="res.ae66[index]" #ae66Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('ae66', index, ae66Input.value)"></td>
+                            <td><input [value]="res.af66[index]" #af66Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('af66', index, af66Input.value)"></td>
+                        </ng-container>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Lead</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12"></th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Rail</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae69; let i = index">
+                            <input [value]="res.ae69[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae69',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Air</div>
+                        </td>
+                        <td *ngFor="let outbounddata of res.ae70; let i = index">
+                            <input [value]="res.ae70[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae70',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Goal to be optimized</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="first-div">
+                            <div>Effectiveness (logistics cost as a percentage of revenue)</div>
+                        </td>
+                        <td *ngFor="let commitment of res.ae73; let i = index">
+                            <input [value]="res.ae73[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ae73',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,211 @@
+<!-- new design -->
+
+<div class="elearingnewui hrp_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="market-research">
+                <div class="element-first">
+                    <div class="row">
+                        <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+                            style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                                <button class="food-thought-btn">Food For Thought</button></span>
+                        </div>
+                    </div>
+                </div>
+
+                <h1>Demand Forecasting
+                    <mat-icon appTippy="
+                                        <div class='help-tip p-2'>
+                                          <div style='display:flex;'>
+                                            <div>
+                                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                            </div> &nbsp; &nbsp;
+                                            <div>
+                                              <p style='margin: 0 auto; color: white; font-size:13px;'>How can aligning workforce estimation with departmental goals help in efficient resource allocation?</p>
+                                            </div>
+                                          </div>
+                                            <div class='pt-2' style='display:flex;'>
+                                              <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                              </div> &nbsp; &nbsp; 
+                                              <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'>What factors should you consider to optimize workforce planning for each department?</p>
+                                              </div>
+                                            </div>
+                                        </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <ul class="nav market-research-nav" id="nav-tab" role="tablist">
+                    <li class="nav-link active market-research-link" id="nav-Organizational-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Organizational" type="button" role="tab" aria-controls="nav-Organizational"
+                        aria-selected="true">
+                        Organizational Structure
+                    </li>
+                    <li class="nav-link market-research-link " id="nav-Strategic-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Strategic" type="button" role="tab" aria-controls="nav-Strategic"
+                        aria-selected="true">Strategic Objectives
+                    </li>
+                    <li class="nav-link market-research-link" id="nav-profile-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Employees" type="button" role="tab" aria-controls="nav-Employees"
+                        aria-selected="false">Current Employees & Efficiency
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-Organizational" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group list-group-flush marketoutlooklist">
+                                <li class="list-group-item" style="padding: 2rem; margin: 0 auto;">
+                                    <div class="card" style="border: none;">
+                                        <img src="../../../../assets/images/hrpgame/TrendyThreadImage.png"
+                                            class="card-img-top" alt="Your Image" />
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-Strategic" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group  list-group-flush marketoutlooklist">
+                                <li class="list-group-item" style="padding: 2rem; width: 90%; margin: 0 auto;">
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="citieschart.series" [chart]="citieschart.chart"
+                                                [dataLabels]="citieschart.dataLabels"
+                                                [plotOptions]="citieschart.plotOptions" [yaxis]="citieschart.yaxis"
+                                                [xaxis]="citieschart.xaxis" [fill]="citieschart.fill"
+                                                [title]="citieschart.title" [noData]="citieschart.noData"
+                                                [tooltip]="citieschart.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                    </div>
+                                    <div class="py-2">
+                                        <p>
+                                            The x-axis represents the current operations and future operations plan,
+                                            while the y-axis represents the number of cities.
+                                        </p>
+                                    </div>
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="productionlinechart.series"
+                                                [chart]="productionlinechart.chart"
+                                                [dataLabels]="productionlinechart.dataLabels"
+                                                [plotOptions]="productionlinechart.plotOptions"
+                                                [yaxis]="productionlinechart.yaxis" [xaxis]="productionlinechart.xaxis"
+                                                [fill]="productionlinechart.fill" [title]="productionlinechart.title"
+                                                [noData]="productionlinechart.noData"
+                                                [tooltip]="productionlinechart.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                    </div>
+                                    <div class="py-2">
+                                        <p>
+                                            The x-axis represents the current operating and future production plan,
+                                            while the y-axis represents the number of production lines.
+                                        </p>
+                                    </div>
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="customersatisfactionratechart.series"
+                                                [chart]="customersatisfactionratechart.chart"
+                                                [dataLabels]="customersatisfactionratechart.dataLabels"
+                                                [plotOptions]="customersatisfactionratechart.plotOptions"
+                                                [yaxis]="customersatisfactionratechart.yaxis"
+                                                [xaxis]="customersatisfactionratechart.xaxis"
+                                                [fill]="customersatisfactionratechart.fill"
+                                                [title]="customersatisfactionratechart.title"
+                                                [noData]="customersatisfactionratechart.noData"
+                                                [tooltip]="customersatisfactionratechart.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                        <div class="mt-2 mb-2">
+                                            <p>
+                                                The x-axis represents the current rate and plan to achieve, while the
+                                                y-axis represents the percentage of happy customers.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="py-2">
+                                        <p style="text-align: justify;"> <span
+                                                style="font-size: 16px;font-weight: 500;color: black;">Technology
+                                                Objective : </span> Incorporate
+                                            Augmented Reality (AR) for virtual try-ons
+                                            and AI-driven personalized recommendations for users within the next 18
+                                            months.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-Employees" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group  list-group-flush marketoutlooklist">
+                                <li class="list-group-item" style="padding: 2rem; width: 90%; margin: 0 auto;">
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="staffefficiencychart.series"
+                                                [chart]="staffefficiencychart.chart"
+                                                [dataLabels]="staffefficiencychart.dataLabels"
+                                                [plotOptions]="staffefficiencychart.plotOptions"
+                                                [yaxis]="staffefficiencychart.yaxis"
+                                                [xaxis]="staffefficiencychart.xaxis" [fill]="staffefficiencychart.fill"
+                                                [title]="staffefficiencychart.title"
+                                                [noData]="staffefficiencychart.noData"
+                                                [tooltip]="staffefficiencychart.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                        <div class="py-2">
+                                            <p>The x-axis represents the department, the y-axis represents the existing
+                                                number of employees and the line indicates the average efficiency of
+                                                employees in each department.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="estimatdeadditionalchart.series"
+                                                [chart]="estimatdeadditionalchart.chart"
+                                                [dataLabels]="estimatdeadditionalchart.dataLabels"
+                                                [plotOptions]="estimatdeadditionalchart.plotOptions"
+                                                [yaxis]="estimatdeadditionalchart.yaxis"
+                                                [xaxis]="estimatdeadditionalchart.xaxis"
+                                                [fill]="estimatdeadditionalchart.fill"
+                                                [title]="estimatdeadditionalchart.title"
+                                                [noData]="estimatdeadditionalchart.noData"
+                                                [tooltip]="estimatdeadditionalchart.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                        <div class="py-2">
+                                            <p>
+                                                The x-axis represents the department, the y-axis represents the number
+                                                of additional hours required in every department to achieve the
+                                                strategic objective. An average employee works for 8 hours each day for
+                                                220 days. For the administration department, the common practice is that
+                                                1 employee is hired for every 10 new joinees in the organization.
+                                            </p>
+                                        </div>
+                                        <div class="py-2 bottom" >
+                                            <p style="color:#FF474C">
+                                                If the company isn't able to hire the sufficient employees, the
+                                                contractual workers will be hired who comes at 12% higher cost than
+                                                current employees salary.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

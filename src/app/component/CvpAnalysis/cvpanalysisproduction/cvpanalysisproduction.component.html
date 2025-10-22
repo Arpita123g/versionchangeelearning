@@ -1,0 +1,247 @@
+<div class="elearingnewui cvp_analysis">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="inbound">
+                <div class="row" class="element-first ">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+
+                <h1>Production Budget
+                </h1>
+                <div class="row row-cols-md g-3 py-3 input-img-card">
+                    <div class="col-md-6">
+                        <div class="card mark-img">
+                            <img src="assets/images/cvpanalysis/productionbudgetimage.svg" alt="Your Image"
+                                class="img-fluid" style="width: 65%;" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-2">
+                            <apx-chart [series]="capacityutilizationchart.series"
+                                [chart]="capacityutilizationchart.chart" [markers]="capacityutilizationchart.markers"
+                                [stroke]="capacityutilizationchart.stroke" [title]="capacityutilizationchart.title"
+                                [xaxis]="capacityutilizationchart.xaxis" [tooltip]="capacityutilizationchart.tooltip"
+                                [yaxis]="capacityutilizationchart.yaxis"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 g-3 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Planning
+                                        <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp; 
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>Considering the provided data how can these factors help you estimate a realistic sales forecast for the upcoming period?</p>
+                            </div>
+                          </div>
+                            <div class='pt-2' style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp;
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>How important is pricing in the current market conditions, and how can you set a competitive yet profitable price?</p>
+                              </div>
+                            </div>
+                        </div> ">
+                                            help_outline
+                                        </mat-icon>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Production Capacity, units</td>
+                                    <td>{{result[0]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>New capacity, units</td>
+                                    <td>{{result[1]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Total Production Capacity, units</td>
+                                    <td>{{result[2]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Production Planning, units</td>
+                                    <td>{{result[3]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Capacity Utilization, %</td>
+                                    <td>{{result[4]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Investments
+                                        <mat-icon appTippy="
+                                        <div class='help-tip p-2'>
+                                          <div style='display:flex;'>
+                                            <div>
+                                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                            </div> &nbsp; &nbsp; 
+                                            <div>
+                                              <p style='margin: 0 auto; color: white; font-size:13px;'> How can this investment contribute to long-term growth without compromising short-term financial stability?</p>
+                                            </div>
+                                          </div>
+                                        </div> ">
+                                            help_outline
+                                        </mat-icon>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Number of Machinery</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[5]" [disabled]="checkdisable" (focusout)="inputtablevalue(5,'machinery')" />
+                                    </td>
+
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Machinery Cost, mn INR</td>
+                                    <td>{{result[6]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 g-3 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Jeans Planning
+                                        <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp; 
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>How can you strike a balance to ensure efficient production and meet market demand?</p>
+                            </div>
+                          </div>
+                            <div class='pt-2' style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp;
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>How can you manage inventory levels to prevent stockouts while minimizing excess stock? Consider the impact on costs and customer satisfaction.</p>
+                              </div>
+                            </div>
+                        </div> ">
+                                            help_outline
+                                        </mat-icon>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Capacity Allocation %</td>
+                                    <td>
+                                    <input class="input-no_box" placeholder="Input value here" [(ngModel)]="result[7]"
+                                    [disabled]="checkdisable" (focusout)="inputtablevalue(7,'capacity')" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Variable cost per unit, INR</td>
+                                    <td>{{result[8]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Production, units</td>
+                                    <td>{{result[9]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Inventory, units</td>
+                                    <td>{{result[10]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Inventory,mn INR</td>
+                                    <td>{{result[11]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md" *ngIf="topstatus">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Top Planning
+                                        <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp; 
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>How can you strike a balance to ensure efficient production and meet market demand?</p>
+                            </div>
+                          </div>
+                            <div class='pt-2' style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp;
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>How can you manage inventory levels to prevent stockouts while minimizing excess stock? Consider the impact on costs and customer satisfaction.</p>
+                              </div>
+                            </div>
+                        </div> ">
+                                            help_outline
+                                        </mat-icon>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Capacity Allocation %</td>
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[12]" [disabled]="checkdisable" (focusout)="inputtablevalue(12,'capacity')" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Variable cost per unit, INR</td>
+                                    <td>{{result[13]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Production, units</td>
+                                    <td>{{result[14]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Inventory, units</td>
+                                    <td>{{result[15]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Inventory,mn INR</td>
+                                    <td>{{result[16]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

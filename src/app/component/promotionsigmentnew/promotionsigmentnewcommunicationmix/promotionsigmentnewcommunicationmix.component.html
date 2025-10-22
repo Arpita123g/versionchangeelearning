@@ -1,0 +1,322 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+</div>
+<div class="elearingnewui promotion_sigment">
+    <div class="container">
+        <div class="body-element">
+            <div class="element-first">
+                <div class="row">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">{{language.b260}}</button></span>
+                    </div>
+                </div>
+            </div>
+            <h1>{{language.b60}}
+                <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'></h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'>{{language.b178}}</p>
+                    </div>
+                </div>
+                </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <div class="row row-cols-md-2 g-3 img-check mt-4">
+                <div class="col-md-4">
+                    <div class="card h-100 img-check-card">
+                        <div>
+                            <img src="assets/images/promotionsigment/website.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body img-check-card-body">
+                            <h3 class="img-check-card-body-h3">{{language.b61}}</h3>
+
+                            <p class="card-text">
+                                {{showAll[0] ? language[cards[0].text] :truncate( language[cards[0].truncatedText])}}
+                                <a type="button" (click)="toggleshow(0)" [style.color]="showAll[0] ? 'red' : 'blue'">
+                                    {{showAll[0] ? language.b262 : language.b261}}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check img-check-card-footer">
+                            <div class="input-group mb-3">
+                                <input [disabled]="disabled" #input type="number" class="input-no_box"
+                                    placeholder="Input value here..." aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2" [(ngModel)]="result[0]"
+                                    (focusout)="writepromotionsValue(0,'platformbudget')">
+                                <span class="input-group-text" id="basic-addon2">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card p-3">
+                        <apx-chart [series]="allocatedbudgetgraph.series" [chart]="allocatedbudgetgraph.chart"
+                            [dataLabels]="allocatedbudgetgraph.dataLabels"
+                            [plotOptions]="allocatedbudgetgraph.plotOptions" [yaxis]="allocatedbudgetgraph.yaxis"
+                            [xaxis]="allocatedbudgetgraph.xaxis" [fill]="allocatedbudgetgraph.fill"
+                            [title]="allocatedbudgetgraph.title" [noData]="allocatedbudgetgraph.noData"
+                            [tooltip]="allocatedbudgetgraph.tooltip">
+                        </apx-chart>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-md-3 g-3 img-check mt-3">
+                <div class="col-md">
+                    <div class="card  img-check-card">
+                        <div>
+                            <img src="assets/images/promotionsigment/socialcommerce.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body img-check-card-body">
+                            <h3 class="img-check-card-body-h3">{{language.b52}}</h3>
+
+                            <p class="card-text">
+                                {{showAll[1] ? language[cards[1].text] : truncate(language[cards[1].truncatedText])}}
+                                <a type="button" (click)="toggleshow(1)" [style.color]="showAll[1] ? 'red' : 'blue'">
+                                    {{showAll[1] ? language.b262 : language.b261}}
+                                </a>
+                            </p>
+
+                        </div>
+                        <div class="card-footer form-check img-check-card-footer">
+                            <div class="input-group mb-3">
+                                <input [disabled]="disabled" type="number" #input class="input-no_box"
+                                    placeholder="Input value here..." aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2" [(ngModel)]="result[1]"
+                                    (focusout)="writepromotionsValue(1,'platformbudget')">
+                                <span class="input-group-text" id="basic-addon2">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  img-check-card">
+                        <div>
+                            <img src="assets/images/promotionsigment/trade.svg" class="card-img-top" alt="Your Image" />
+                        </div>
+                        <div class="card-body img-check-card-body">
+                            <h3 class="img-check-card-body-h3">{{language.b53}}</h3>
+
+                            <p class="card-text">
+                                {{showAll[2] ? language[cards[2].text] : truncate(language[cards[2].truncatedText])}}
+                                <a type="button" (click)="toggleshow(2)" [style.color]="showAll[2] ? 'red' : 'blue'">
+                                    {{showAll[2] ? language.b262 : language.b261}}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check img-check-card-footer">
+                            <div class="input-group mb-3">
+                                <input [disabled]="disabled" type="number" class="input-no_box"
+                                    placeholder="Input value here..." aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2" [(ngModel)]="result[2]"
+                                    (focusout)="writepromotionsValue(2,'platformbudget')">
+                                <span class="input-group-text" id="basic-addon2">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  img-check-card">
+                        <div>
+                            <img src="assets/images/promotionsigment/retailer.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body img-check-card-body">
+                            <h3 class="img-check-card-body-h3">{{language.b54}}</h3>
+
+                            <p class="card-text">
+                                {{showAll[3] ? language[cards[3].text] : truncate(language[cards[3].truncatedText])}}
+                                <a type="button" (click)="toggleshow(3)" [style.color]="showAll[3] ? 'red' : 'blue'">
+                                    {{showAll[3] ? language.b262 : language.b261}}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check img-check-card-footer">
+                            <div class="input-group mb-3">
+                                <input disabled type="number" class="input-no_box" placeholder="Input value here..."
+                                    aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                    [(ngModel)]="result[3]">
+                                <span class="input-group-text" id="basic-addon2">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="mt-5">{{language.b67}}
+                <mat-icon appTippy="
+                <div class='help-tip p-2'>
+                  <div style='display:flex;'>
+                    <div>
+                      <h4 style='color: white; margin:0 auto; font-weight: 600;'></h4>
+                    </div> &nbsp; &nbsp; &nbsp;
+                    <div>
+                      <p style='margin: 0 auto; color: white; font-size:13px;'>{{language.b179}}</p>
+                    </div>
+                </div>
+                </div> ">
+                    help_outline
+                </mat-icon>
+            </h1>
+            <div class="row row-cols-md g-3 img-check mt-4">
+                <div class="col-md-6">
+                    <div class="card p-3">
+                        <apx-chart [series]="allocatedbudgetgraph1.series" [chart]="allocatedbudgetgraph1.chart"
+                            [dataLabels]="allocatedbudgetgraph1.dataLabels"
+                            [plotOptions]="allocatedbudgetgraph1.plotOptions" [yaxis]="allocatedbudgetgraph1.yaxis"
+                            [xaxis]="allocatedbudgetgraph1.xaxis" [fill]="allocatedbudgetgraph1.fill"
+                            [title]="allocatedbudgetgraph1.title" [noData]="allocatedbudgetgraph1.noData"
+                            [tooltip]="allocatedbudgetgraph1.tooltip">
+                        </apx-chart>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-md-3 g-3 img-check mt-3">
+                <div class="col-md">
+                    <div class="card  img-check-card">
+                        <div>
+                            <img src="assets/images/promotionsigment/facebook.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body img-check-card-body">
+                            <h3 class="img-check-card-body-h3">{{language.b34}}</h3>
+
+                            <p class="card-text">
+                                {{showAll[4] ? language[cards[4].text] : truncate(language[cards[4].truncatedText])}}
+                                <a type="button" (click)="toggleshow(4)" [style.color]="showAll[4] ? 'red' : 'blue'">
+                                    {{showAll[4] ? language.b262 : language.b261}}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check img-check-card-footer">
+                            <div class="input-group mb-3">
+                                <input [disabled]="disabled" type="number" class="input-no_box"
+                                    placeholder="Input value here..." aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2" [(ngModel)]="result[4]"
+                                    (focusout)="writepromotionsValue(4,'socialbudget')">
+                                <span class="input-group-text" id="basic-addon2">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  img-check-card">
+                        <div>
+                            <img src="assets/images/promotionsigment/instagram.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body img-check-card-body">
+                            <h3 class="img-check-card-body-h3">{{language.b35}}</h3>
+
+                            <p class="card-text">
+                                {{showAll[5] ? language[cards[5].text] : truncate(language[cards[5].truncatedText])}}
+                                <a type="button" (click)="toggleshow(5)" [style.color]="showAll[5] ? 'red' : 'blue'">
+                                    {{showAll[5] ? language.b262 : language.b261}}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check img-check-card-footer">
+                            <div class="input-group mb-3">
+                                <input [disabled]="disabled" type="number" class="input-no_box"
+                                    placeholder="Input value here..." aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2" [(ngModel)]="result[5]"
+                                    (focusout)="writepromotionsValue(5,'socialbudget')">
+                                <span class="input-group-text" id="basic-addon2">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  img-check-card">
+                        <div>
+                            <img src="assets/images/promotionsigment/twitter.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body img-check-card-body">
+                            <h3 class="img-check-card-body-h3">{{language.b68}}</h3>
+
+                            <p class="card-text">
+                                {{showAll[6] ? language[cards[6].text] : truncate(language[cards[6].truncatedText])}}
+                                <a type="button" (click)="toggleshow(6)" [style.color]="showAll[6] ? 'red' : 'blue'">
+                                    {{showAll[6] ? language.b262 : language.b261}}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check img-check-card-footer">
+                            <div class="input-group mb-3">
+                                <input [disabled]="disabled" type="number" class="input-no_box"
+                                    placeholder="Input value here..." aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2" [(ngModel)]="result[6]"
+                                    (focusout)="writepromotionsValue(6,'socialbudget')">
+                                <span class="input-group-text" id="basic-addon2">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-md-3 g-3 img-check mt-3">
+                <div class="col-md">
+                    <div class="card  img-check-card">
+                        <div>
+                            <img src="assets/images/promotionsigment/linkdine.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body img-check-card-body">
+                            <h3 class="img-check-card-body-h3">{{language.b69}}</h3>
+
+                            <p class="card-text">
+                                {{showAll[7] ? language[cards[7].text] : truncate(language[cards[7].truncatedText])}}
+                                <a type="button" (click)="toggleshow(7)" [style.color]="showAll[7] ? 'red' : 'blue'">
+                                    {{showAll[7] ? language.b262 : language.b261}}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check img-check-card-footer">
+                            <div class="input-group mb-3">
+                                <input [disabled]="disabled" type="number" class="input-no_box"
+                                    placeholder="Input value here..." aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2" [(ngModel)]="result[7]"
+                                    (focusout)="writepromotionsValue(7,'socialbudget')">
+                                <span class="input-group-text" id="basic-addon2">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card  img-check-card">
+                        <div>
+                            <img src="assets/images/promotionsigment/youtube.svg" class="card-img-top"
+                                alt="Your Image" />
+                        </div>
+                        <div class="card-body img-check-card-body">
+                            <h3 class="img-check-card-body-h3">{{language.b37}}</h3>
+
+                            <p class="card-text">
+                                {{showAll[8] ? language[cards[8].text] : truncate(language[cards[8].truncatedText])}}
+                                <a type="button" (click)="toggleshow(8)" [style.color]="showAll[8] ? 'red' : 'blue'">
+                                    {{showAll[8] ? language.b262 : language.b261}}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer form-check img-check-card-footer">
+                            <div class="input-group mb-3">
+                                <input disabled type="number" class="input-no_box" placeholder="Input value here..."
+                                    aria-label="Recipient's username" aria-describedby="basic-addon2"
+                                    [(ngModel)]="result[8]">
+                                <span class="input-group-text" id="basic-addon2">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,140 @@
+<div class="elearingnewui">
+    <div class="toolbar-header-main">
+    </div>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade show active" id="first" *ngIf="mainTab==='gamearena'">
+            <nav class="headerbreadcrumb">
+                <ul class="breadcrumb" role="tablist">
+                    <li role="presentation " class="breadcrumb-item active" data-bs-target="#Introduction"
+                        aria-controls="Introduction" role="tab" data-bs-toggle="tab" aria-selected="true"
+                        [ngClass]="{ 'active':activeTab==='introduction'}" (click)="search('introduction')">
+                        <div><span class="octicon octicon-diff-added"></span>Introduction</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Market" aria-controls="market"
+                        role="tab" data-bs-toggle="tab" aria-selected="false"
+                        [ngClass]="{ 'active':activeTab==='market'}" (click)="search('market')">
+                        <div><span class="octicon octicon-diff-added"></span>Market</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Planning" aria-controls="planning"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="search('planning')"
+                        [ngClass]="{ 'active':activeTab==='planning'}">
+                        <div>
+                            <span class="octicon octicon-comment-discussion"></span>Planning
+                        </div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Preliminary"
+                        aria-controls="preliminary" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="search('preliminary')" [ngClass]="{ 'active ':activeTab==='preliminary'}">
+                        <div><span class="octicon octicon-verified"></span>Preliminary Assessments</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Negotiation"
+                        aria-controls="negotiation" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="search('negotiation')" [ngClass]="{ 'active ':activeTab==='negotiation'}">
+                        <div><span class="octicon octicon-tools"></span>Negotiation</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Financing"
+                        aria-controls="financing" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="search('financing')" [ngClass]="{ 'active ':activeTab==='financing'}">
+                        <div><span class="octicon octicon-tools"></span>Financing</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#DecisionChecklist"
+                        aria-controls="DecisionChecklist" role="tab" data-bs-toggle="tab" aria-selected="false"
+                        (click)="search('decisionchecklist')" [ngClass]="{ 'active':activeTab==='decisionchecklist'}">
+                        <div><span class="octicon octicon-tools"></span>Decision Checklist</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Report" aria-controls="report"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="search('report')"
+                        [ngClass]="{ 'active':activeTab==='report'}" [ngClass]="{ 'disabled': tabDisabled }">
+                        <div><span class="octicon octicon-tools"></span>Report</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Feedback" aria-controls="feedback"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="search('feedback')"
+                        [ngClass]="{ 'active':activeTab==='feedback'}" [ngClass]="{ 'disabled': tabDisabled }">
+                        <div><span class="octicon octicon-tools"></span>Synopsis</div>
+                    </li>
+
+                </ul>
+            </nav>
+
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show active" id="Introduction"
+                    [ngClass]="{ 'active':activeTab==='introduction'}">
+                    <app-mergersacquisitionintroduction
+                        *ngIf="activeTab==='introduction'"></app-mergersacquisitionintroduction>
+                </div>
+
+                <div role="tabpanel" class="tab-pane fade" id="Market"
+                    [ngClass]="{ 'active show':activeTab==='market'}">
+                    <app-mergersacquisitionmarket *ngIf="activeTab==='market'"></app-mergersacquisitionmarket>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Planning"
+                    [ngClass]="{ 'active show':activeTab==='planning'}">
+                    <app-mergersacquisitionplanning *ngIf="activeTab==='planning'"></app-mergersacquisitionplanning>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Preliminary"
+                    [ngClass]="{ 'active show':activeTab==='preliminary'}">
+                    <app-mergersacquisitionpreliminaryassessments
+                        *ngIf="activeTab==='preliminary'"></app-mergersacquisitionpreliminaryassessments>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Negotiation"
+                    [ngClass]="{ 'active show':activeTab==='negotiation'}">
+                    <app-mergersacquisitionnegotiation
+                        *ngIf="activeTab==='negotiation'"></app-mergersacquisitionnegotiation>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Financing"
+                    [ngClass]="{ 'active show':activeTab==='financing'}">
+                    <app-mergersacquisitionfinancing *ngIf="activeTab==='financing'"></app-mergersacquisitionfinancing>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="DecisionChecklist"
+                    [ngClass]="{ 'active':activeTab==='decisionchecklist'}">
+                    <app-mergersacquisitiondecisionchecklist (newItemEvent)="next($event)"
+                        *ngIf="activeTab==='decisionchecklist'"></app-mergersacquisitiondecisionchecklist>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Report"
+                    [ngClass]="{ 'active show':activeTab==='report'}">
+                    <app-mergersacquisitionreport *ngIf="activeTab==='report'"></app-mergersacquisitionreport>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Feedback" [ngClass]="{ 'active':activeTab==='feedback'}">
+                    <app-mergersacquisitionsynopsis *ngIf="activeTab==='feedback'"></app-mergersacquisitionsynopsis>
+                </div>
+            </div>
+
+
+        </div>
+        <div role="tabpanel" class="tab-pane fade show" id="second">
+            <app-reading *ngIf="toolbartab==='reading'" [gamename]="gametitle"></app-reading>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade show" id="third">
+            <nav class="headerbreadcrumb">
+                <ul class="breadcrumb" role="tablist">
+                    <li role="presentation " class="breadcrumb-item active" data-bs-target="#Individual"
+                        aria-controls="Individual" role="tab" data-bs-toggle="tab" aria-selected="true"
+                        [ngClass]="{ 'active':forumTab==='individual'}" (click)="forum('individual')">
+                        <div><span class="octicon octicon-diff-added"></span>Individual</div>
+                    </li>
+                    <li role="presentation" class="breadcrumb-item" data-bs-target="#Course" aria-controls="Course"
+                        role="tab" data-bs-toggle="tab" aria-selected="false" (click)="forum('course')">
+                        <div><span class="octicon octicon-diff-added"></span>Course</div>
+                    </li>
+
+                </ul>
+            </nav>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show active" id="Individual">
+                    <app-forumindividual
+                        *ngIf="forumTab==='individual'"></app-forumindividual>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="Course">
+                    <app-forumcourse *ngIf="forumTab==='course'"></app-forumcourse>
+                </div>
+            </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade show" id="fourth"
+            style="width: 90%; margin:0 auto;height:100vh;padding-top:1.5rem">
+            <app-microsimleaderboardgeneral *ngIf="toolbartab==='leaderboard'"></app-microsimleaderboardgeneral>
+        </div>
+    </div>
+</div>

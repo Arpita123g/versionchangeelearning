@@ -1,0 +1,205 @@
+<div class="elearingnewui innovation_game">
+  <div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+  </div>
+  <div class="container">
+    <div class="body-element">
+      <div class="routesandtech">
+        <div class="row" class="element-first">
+          <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+            style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+              <button class="food-thought-btn">Food For Thought</button></span>
+          </div>
+        </div>
+
+        <h1>Pricing
+          <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'> How can you align the pricing structure with the perceived value of the product and the willingness of customers to pay?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>How can you differentiate the pricing packages based on the level of value addition and premium features included?</p>
+                          </div>
+                        </div>
+                    </div> ">
+            help_outline
+          </mat-icon>
+        </h1>
+        <div class="row row-cols-md-2 py-3 g-3 input-img-card">
+          <div class="col-md-6">
+            <div class="card" style="border: none;">
+              <div class="card-img-top img-top-new" style="text-align: center;">
+                <img src="../../../../assets/images/innovation/pricinginmarketingtab.jpg" alt="..."
+                  class="img-fluid img-img" style="height: 17rem;
+                                    width: 74%;">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card p-2">
+              <apx-chart [series]="refrencespriceperuserchart.series" [chart]="refrencespriceperuserchart.chart"
+                [dataLabels]="refrencespriceperuserchart.dataLabels"
+                [plotOptions]="refrencespriceperuserchart.plotOptions" [yaxis]="refrencespriceperuserchart.yaxis"
+                [xaxis]="refrencespriceperuserchart.xaxis" [fill]="refrencespriceperuserchart.fill"
+                [title]="refrencespriceperuserchart.title" [noData]="refrencespriceperuserchart.noData"
+                [tooltip]="refrencespriceperuserchart.tooltip">
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+        <div class="market_inovation_table py-5">
+          <table class="table-bordered ">
+            <thead>
+              <tr>
+                <td></td>
+                <td colspan="3" class="text-center">Plan</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let feature of result.slice(0, 15) ; let i = index">
+                <td>{{ feature }}</td>
+
+                <td *ngFor="let plan of plans ; let j = index">
+                  <div class="plan-content">
+                    <i [class]="plan.icon"></i> {{ plan.name }}
+                    <input type="checkbox" class="plancheck" (click)="checkInputValues(i,j,$event)"
+                      [checked]="checkboxValues[i][j]" [disabled]="inputDisabled?inputDisabled:disabled[i][j]">
+                  </div>
+
+                </td>
+              </tr>
+              <tr>
+                <td>Price per user per year, k INR</td>
+
+                <td *ngFor="let input of inputs; let j = index">
+                  <input type="number" placeholder="Input value here..." class="input-no_box"
+                    [(ngModel)]="numberValues[j]" (focusout)="getSelection('price',j,'')"
+                    [disabled]="inputDisabled?inputDisabled:pricedisabled[j]">
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <h1 class="mt-1">Promotions
+          <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>How can you optimize the promotion budget to maximize awareness and attractiveness of the new product while staying within budget constraints?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>How can you tailor the promotion budget to resonate with the preferences and behavior of the target market?</p>
+                          </div>
+                        </div>
+                    </div> ">
+            help_outline
+          </mat-icon>
+        </h1>
+        <div class="row row-cols-md-2 py-3 g-3 input-img-card">
+          <div class="col-md-6">
+            <div class="row row-cols-md">
+              <div class="col-md">
+                <div>
+                  <div class="card-img-top img-top-new" style="text-align: center;">
+                    <img src="../../../../assets/images/innovation/promotionimg.svg" alt="..." class="img-fluid img-img"
+                      style="height: 16rem;
+                                        width: 80%;">
+                  </div>
+
+                  <div style="text-align: center;">
+                    <p>Yearly Promotion budget, k INR</p>
+                    <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[63]"
+                      (focusout)="getSelection('promotions',63,'')" [disabled]="inputDisabled">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card p-2">
+              <apx-chart [series]="awarnessreachchart.series" [chart]="awarnessreachchart.chart"
+                [markers]="awarnessreachchart.markers" [stroke]="awarnessreachchart.stroke"
+                [title]="awarnessreachchart.title" [xaxis]="awarnessreachchart.xaxis"
+                [tooltip]="awarnessreachchart.tooltip" [yaxis]="awarnessreachchart.yaxis"></apx-chart>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="mt-5">Distribution
+          <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>  How can you prioritize distribution channels that offer the best balance between cost and market reach?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>How can you leverage distribution channels that align with the preferences and purchasing behavior of the target audience?</p>
+                          </div>
+                        </div>
+                    </div> ">
+            help_outline
+          </mat-icon>
+        </h1>
+        <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+          <div class="col-md" *ngFor="let item of cardData; let i=index">
+            <div class="card marketing-card h-100">
+              <div class="craftingimg">
+                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+              </div>
+              <div class="card-body">
+                <h2>{{result[i+64]}}</h2>
+                <div class="card-text">
+                  <div class="textswcinassessment-p"><span class="textswcinassessment">
+                    </span> {{ result[i+67] }}</div><br><br>
+                  <div class="card-footer form-check">
+                    <div class="routesandtechcostcard">
+                      <h3>{{ item.description.textname }}</h3>
+                      <h3>{{ result[i+70] }}</h3>
+                    </div>
+                    <div style="height: 2rem;">
+                      <input class="checkfrominput" type="checkbox" value="index" id="flexCheckDefault"
+                        [checked]="item.ischecked" (change)="getSelection('distribution',i,$event)"
+                        [disabled]="inputDisabled" />
+                      <label class="form-check-label" for="flexCheckDefault">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,113 @@
+<div class="pb-4 ins-ai-side" mat-dialog-content>
+    <div>
+        <input type="checkbox" [(ngModel)]="isChecked" [disabled]="!disabledcheckbox" class="custom-checkbox"
+            (click)="assesmentcheckboxclick($event)">
+        <span (click)="openDialog()" style="cursor: pointer; text-decoration: underline; color: orange;">{{text}}</span>
+    </div>
+    <div>
+        Remaining Credit : <span class="ai-side">{{remainingCredit}}</span>
+    </div>
+
+</div>
+
+<div class="aiassesment">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="table table-responsive pb-4">
+        <table class="table-bordered aiassesment-table ">
+            <thead class="aiassesment-table-head">
+                <tr class="aiassesment-table-row">
+                    <th>Round 1</th>
+                    <th>Round 2</th>
+                    <th>Round 3</th>
+                    <th>Round 4</th>
+                    <th>Round 5</th>
+                    <th>Round 6</th>
+                    <th>Round 7</th>
+                    <th>Round 8</th>
+                    <th>Round 9</th>
+                    <th>Round 10</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" [checked]="round[1]=='yes'" [disabled]="disabledbasedcheckbox[1]"
+                            (change)="updateassesment(1,$event)"></td>
+                    <td><input type="checkbox" [checked]="round[2]=='yes'" [disabled]="disabledbasedcheckbox[2]"
+                            (change)="updateassesment(2,$event)"></td>
+                    <td><input type="checkbox" [checked]="round[3]=='yes'" [disabled]="disabledbasedcheckbox[3]"
+                            (change)="updateassesment(3,$event)"></td>
+                    <td><input type="checkbox" [checked]="round[4]=='yes'" [disabled]="disabledbasedcheckbox[4]"
+                            (change)="updateassesment(4,$event)"></td>
+                    <td><input type="checkbox" [checked]="round[5]=='yes'" [disabled]="disabledbasedcheckbox[5]"
+                            (change)="updateassesment(5,$event)"></td>
+                    <td><input type="checkbox" [checked]="round[6]=='yes'" [disabled]="disabledbasedcheckbox[6]"
+                            (change)="updateassesment(6,$event)"></td>
+                    <td><input type="checkbox" [checked]="round[7]=='yes'" [disabled]="disabledbasedcheckbox[7]"
+                            (change)="updateassesment(7,$event)"></td>
+                    <td><input type="checkbox" [checked]="round[8]=='yes'" [disabled]="disabledbasedcheckbox[8]"
+                            (change)="updateassesment(8,$event)"></td>
+                    <td><input type="checkbox" [checked]="round[9]=='yes'" [disabled]="disabledbasedcheckbox[9]"
+                            (change)="updateassesment(9,$event)"></td>
+                    <td><input type="checkbox" [checked]="round[10]=='yes'" [disabled]="disabledbasedcheckbox[10]"
+                            (change)="updateassesment(10,$event)"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="text-end pb-2" style="height: 4rem;">
+    <select class="select-round" name="" id="" [(ngModel)]="selectedattemptValue"
+        (change)="getAssesmentstudentList(selectedattemptValue)">
+        <option class="select-round-option" value="">Select Round</option>
+        <option class="select-round-option" *ngFor="let attempt of dropdownvalue" [value]=attempt>Round {{attempt}}
+        </option>
+    </select>
+</div>
+<div>
+    <p class="mat-elevation-z8_p">Cesim AI may produce inaccurate information.</p>
+</div>
+
+<div class="mat-elevation-z8 bus_iness">
+    <table class="microsimdashboardtable" mat-table [dataSource]="dataSource">
+
+
+        <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef style="width: 4rem;"> Name </th>
+            <td mat-cell *matCellDef="let element" class="fixed-height-width">{{element.userRegister.username}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef style="width: 10rem;"> Email id </th>
+            <td mat-cell *matCellDef="let element" class="fixed-height-width">{{element.userRegister.email}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="sentiment">
+            <th mat-header-cell *matHeaderCellDef style="width: 10rem;">Player Analysis</th>
+            <td mat-cell *matCellDef="let element" class="fixed-height-width">{{element.studentsentiment}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="response">
+            <th mat-header-cell *matHeaderCellDef> Response </th>
+            <td mat-cell *matCellDef="let element" class="fixed-height-width">
+                <div class="mat-td-height">
+                    <markdown [data]="element.gptresponse"></markdown>
+                </div>
+
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="dataSource.data!==null?[20, 50, 100, 500,dataSource.data.length]:[0]"
+        showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator>
+</div>

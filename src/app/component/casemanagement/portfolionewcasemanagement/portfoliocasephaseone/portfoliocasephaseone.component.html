@@ -1,0 +1,1208 @@
+<div class="elearingnewui casemanagement">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="case-management-body case-management-body-marketing ">
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Outlook P1</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3 mt-3">
+            <table class=" table  case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="first-div">Risk-free Rate, %</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f9; let i = index">
+                            <input [value]="res.f9[i]*100| number:'1.2-2'" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f9',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Expected Market Return, %</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f10; let i = index">
+                            <input [value]="res.f10[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f10',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing-second">
+                <thead>
+                    <tr>
+                        <td colspan="10" *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody class="second-tbody">
+                    <tr>
+                        <ng-container *ngFor="let item of data; let i = index">
+                            <td class="ccc" style="min-width: 150px; padding-left: 10px; text-align: left; "
+                                *ngIf="i % 10 === 0">Previous Year data historical return trend</td>
+                            <td *ngIf="i % 10 === 1">PY1</td>
+                            <td *ngIf="i % 10 === 2">PY2</td>
+                            <td *ngIf="i % 10 === 3">PY3</td>
+                            <td *ngIf="i % 10 === 4">PY4</td>
+                            <td *ngIf="i % 10 === 5">PY5</td>
+                            <td *ngIf="i % 10 === 6">PY6</td>
+                            <td *ngIf="i % 10 === 7">PY7</td>
+                            <td *ngIf="i % 10 === 8">PY8</td>
+                            <td *ngIf="i % 10 === 9">PY9</td>
+                        </ng-container>
+
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td class="dd">
+                                <input [value]="res.e13[index]" #e13Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('e13', index, e13Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.f13[index]*100| number:'1.2-2'" #f13Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('f13', index, f13Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.g13[index]*100| number:'1.2-2'" #g13Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('g13', index, g13Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.h13[index]*100| number:'1.2-2'" #h13Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('h13', index, h13Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.i13[index]*100| number:'1.2-2'" #i13Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('i13', index, i13Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.j13[index]*100| number:'1.2-2'" #j13Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('j13', index, j13Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.k13[index]*100| number:'1.2-2'" #k13Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('k13', index, k13Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.l13[index]*100| number:'1.2-2'" #l13Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('l13', index, l13Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.m13[index]*100| number:'1.2-2'" #m13Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('m13', index, m13Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.n13[index]*100| number:'1.2-2'" #n13Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('n13', index, n13Input.value)">
+                            </td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td class="dd">
+                                <input [value]="res.e14[index]" #e14Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('e14', index, e14Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.f14[index]*100| number:'1.2-2'" #f14Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('f14', index, f14Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.g14[index]*100| number:'1.2-2'" #g14Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('g14', index, g14Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.h14[index]*100| number:'1.2-2'" #h14Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('h14', index, h14Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.i14[index]*100| number:'1.2-2'" #i14Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('i14', index, i14Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.j14[index]*100| number:'1.2-2'" #j14Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('j14', index, j14Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.k14[index]*100| number:'1.2-2'" #k14Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('k14', index, k14Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.l14[index]*100| number:'1.2-2'" #l14Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('l14', index, l14Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.m14[index]*100| number:'1.2-2'" #m14Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('m14', index, m14Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.n14[index]*100| number:'1.2-2'" #n14Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('n14', index, n14Input.value)">
+                            </td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td class="dd">
+                                <input [value]="res.e15[index]" #e15Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('e15', index, e15Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.f15[index]*100| number:'1.2-2'" #f15Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('f15', index, f15Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.g15[index]*100| number:'1.2-2'" #g15Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('g15', index, g15Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.h15[index]*100| number:'1.2-2'" #h15Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('h15', index, h15Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.i15[index]*100| number:'1.2-2'" #i15Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('i15', index, i15Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.j15[index]*100| number:'1.2-2'" #j15Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('j15', index, j15Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.k15[index]*100| number:'1.2-2'" #k15Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('k15', index, k15Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.l15[index]*100| number:'1.2-2'" #l15Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('l15', index, l15Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.m15[index]*100| number:'1.2-2'" #m15Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('m15', index, m15Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.n15[index]*100| number:'1.2-2'" #n15Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('n15', index, n15Input.value)">
+                            </td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td class="dd">
+                                <input [value]="res.e16[index]" #e16Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('e16', index, e16Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.f16[index]*100| number:'1.2-2'" #f16Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('f16', index, f16Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.g16[index]*100| number:'1.2-2'" #g16Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('g16', index, g16Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.h16[index]*100| number:'1.2-2'" #h16Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('h16', index, h16Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.i16[index]*100| number:'1.2-2'" #i16Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('i16', index, i16Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.j16[index]*100| number:'1.2-2'" #j16Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('j16', index, j16Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.k16[index]*100| number:'1.2-2'" #k16Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('k16', index, k16Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.l16[index]*100| number:'1.2-2'" #l16Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('l16', index, l16Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.m16[index]*100| number:'1.2-2'" #m16Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('m16', index, m16Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.n16[index]*100| number:'1.2-2'" #n16Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('n16', index, n16Input.value)">
+                            </td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td class="dd">
+                                <input [value]="res.e17[index]" #e17Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('e17', index, e17Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.f17[index]*100| number:'1.2-2'" #f17Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('f17', index, f17Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.g17[index]*100| number:'1.2-2'" #g17Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('g17', index, g17Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.h17[index]*100| number:'1.2-2'" #h17Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('h17', index, h17Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.i17[index]*100| number:'1.2-2'" #i17Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('i17', index, i17Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.j17[index]*100| number:'1.2-2'" #j17Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('j17', index, j17Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.k17[index]*100| number:'1.2-2'" #k17Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('k17', index, k17Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.l17[index]*100| number:'1.2-2'" #l17Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('l17', index, l17Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.m17[index]*100| number:'1.2-2'" #m17Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('m17', index, m17Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.n17[index]*100| number:'1.2-2'" #n17Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('n17', index, n17Input.value)">
+                            </td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td class="dd">
+                                <input [value]="res.e18[index]" #e18Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('e18', index, e18Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.f18[index]*100| number:'1.2-2'" #f18Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('f18', index, f18Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.g18[index]*100| number:'1.2-2'" #g18Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('g18', index, g18Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.h18[index]*100| number:'1.2-2'" #h18Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('h18', index, h18Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.i18[index]*100| number:'1.2-2'" #i18Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('i18', index, i18Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.j18[index]*100| number:'1.2-2'" #j18Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('j18', index, j18Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.k18[index]*100| number:'1.2-2'" #k18Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('k18', index, k18Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.l18[index]*100| number:'1.2-2'" #l18Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('l18', index, l18Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.m18[index]*100| number:'1.2-2'" #m18Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('m18', index, m18Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.n18[index]*100| number:'1.2-2'" #n18Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('n18', index, n18Input.value)">
+                            </td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td class="dd">
+                                <input [value]="res.e19[index]" #e19Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('e19', index, e19Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.f19[index]*100| number:'1.2-2'" #f19Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('f19', index, f19Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.g19[index]*100| number:'1.2-2'" #g19Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('g19', index, g19Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.h19[index]*100| number:'1.2-2'" #h19Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('h19', index, h19Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.i19[index]*100| number:'1.2-2'" #i19Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('i19', index, i19Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.j19[index]*100| number:'1.2-2'" #j19Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('j19', index, j19Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.k19[index]*100| number:'1.2-2'" #k19Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('k19', index, k19Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.l19[index]*100| number:'1.2-2'" #l19Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('l19', index, l19Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.m19[index]*100| number:'1.2-2'" #m19Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('m19', index, m19Input.value)">
+                            </td>
+                            <td>
+                                <input [value]="res.n19[index]*100| number:'1.2-2'" #n19Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writephaseonevalue('n19', index, n19Input.value)">
+                            </td>
+                        </ng-container>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Period Indian Stocks</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+
+        <div class="table-responsive mb-3 mt-3">
+            <table class=" table  case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="first-div">Average Daily Return Nifty</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f22; let i = index">
+                            <input [value]="res.f22[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f22',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Std. Err of Daily Return Nifty</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f23; let i = index">
+                            <input [value]="res.f23[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f23',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Number of Trading Days</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f24; let i = index">
+                            <input [value]="res.f24[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f24',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Actual Ann Return</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f25; let i = index">
+                            <input [value]="res.f25[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f25',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Std. Err of Annual Return</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f26; let i = index">
+                            <input [value]="res.f26[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f26',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Beta Coefficient</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f27; let i = index">
+                            <input [value]="res.f27[i] | number:'1.2-2'" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f27',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Period Indian Commodity</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+
+        <div class="table-responsive mb-3 mt-3">
+            <table class=" table  case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="first-div">Average Daily Return Comm</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f30; let i = index">
+                            <input [value]="res.f30[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f30',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Std. Err of Daily Return Comm</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f31; let i = index">
+                            <input [value]="res.f31[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f31',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Number of Trading Days</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f32; let i = index">
+                            <input [value]="res.f32[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f32',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Actual Ann Return</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f33; let i = index">
+                            <input [value]="res.f33[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f33',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Std. Err of Annual Return</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f34; let i = index">
+                            <input [value]="res.f34[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f34',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Beta Coefficient</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f35; let i = index">
+                            <input [value]="res.f35[i] | number:'1.2-2'" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f35',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Period Mutual Fund</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+
+        <div class="table-responsive mb-3 mt-3">
+            <table class=" table  case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="first-div">Average Daily Return MF</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f38; let i = index">
+                            <input [value]="res.f38[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f38',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Std. Err of Daily Return MF</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f39; let i = index">
+                            <input [value]="res.f39[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f39',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Number of Trading Days</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f40; let i = index">
+                            <input [value]="res.f40[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f40',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Actual Ann Return</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f41; let i = index">
+                            <input [value]="res.f41[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f41',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Std. Err of Annual Return</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f42; let i = index">
+                            <input [value]="res.f42[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f42',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Beta Coefficient</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f43; let i = index">
+                            <input [value]="res.f43[i] | number:'1.2-2'" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f43',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Period CB</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+
+        <div class="table-responsive mb-3 mt-3">
+            <table class=" table  case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="first-div">Average Daily Return MF</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f46; let i = index">
+                            <input [value]="res.f46[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f46',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Std. Err of Daily Return MF</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f47; let i = index">
+                            <input [value]="res.f47[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f47',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Number of Trading Days</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f48; let i = index">
+                            <input [value]="res.f48[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f48',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Actual Ann Return</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f49; let i = index">
+                            <input [value]="res.f49[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f49',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Std. Err of Annual Return</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f50; let i = index">
+                            <input [value]="res.f50[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f50',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Beta Coefficient</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f51; let i = index">
+                            <input [value]="res.f51[i] | number:'1.2-2'" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f51',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Period PSU</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+
+        <div class="table-responsive mb-3 mt-3">
+            <table class=" table  case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="first-div">Average Daily Return MF</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f54; let i = index">
+                            <input [value]="res.f54[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f54',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Std. Err of Daily Return MF</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f55; let i = index">
+                            <input [value]="res.f55[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f55',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Number of Trading Days</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f56; let i = index">
+                            <input [value]="res.f56[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f56',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Actual Ann Return</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f57; let i = index">
+                            <input [value]="res.f57[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f57',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Std. Err of Annual Return</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f58; let i = index">
+                            <input [value]="res.f58[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f58',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Beta Coefficient</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f59; let i = index">
+                            <input [value]="res.f59[i] | number:'1.2-2'" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f59',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Period US Stocks</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+
+        <div class="table-responsive mb-3 mt-3">
+            <table class=" table  case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="first-div">Average Daily Return MF</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f62; let i = index">
+                            <input [value]="res.f62[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f62',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Std. Err of Daily Return MF</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f63; let i = index">
+                            <input [value]="res.f63[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f63',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Number of Trading Days</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f64; let i = index">
+                            <input [value]="res.f64[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f64',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Actual Ann Return</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f65; let i = index">
+                            <input [value]="res.f65[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f65',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Std. Err of Annual Return</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f66; let i = index">
+                            <input [value]="res.f66[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f66',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Beta Coefficient</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f67; let i = index">
+                            <input [value]="res.f67[i] | number:'1.2-2'" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f67',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Period Cash</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+
+        <div class="table-responsive mb-3 mt-3">
+            <table class=" table  case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="first-div">Average Daily Return MF</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f70; let i = index">
+                            <input [value]="res.f70[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f70',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Std. Err of Daily Return MF</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f71; let i = index">
+                            <input [value]="res.f71[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f71',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Number of Trading Days</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f72; let i = index">
+                            <input [value]="res.f72[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f72',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Actual Ann Return</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f73; let i = index">
+                            <input [value]="res.f73[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f73',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Std. Err of Annual Return</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f74; let i = index">
+                            <input [value]="res.f74[i]*100| number:'1.2-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f74',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Beta Coefficient</div>
+                        </td>
+                        <td *ngFor="let portfoliodata of res.f75; let i = index">
+                            <input [value]="res.f75[i]| number:'1.2-2'" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f75',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+
+        <!-- <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Location</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Jayanagar - Bengaluru University</th>
+                    </tr>
+
+                    <tr>
+                        <td class="first-div">
+                            <div>Rental per month, INR</div>
+                        </td>
+                        <td *ngFor="let rentaldata of res.e7; let i = index">
+                            <input [value]="res.e7[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('e7',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Standard size of tea shop, sq ft</div>
+                        </td>
+                        <td *ngFor="let capitaldata of res.f7; let i = index">
+                            <input [value]="res.f7[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f7',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="second-head" colspan="12">Whitefield - ITPL Corporate Park</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Rental per month, INR</div>
+                        </td>
+                        <td *ngFor="let capitaldata of res.e8; let i = index">
+                            <input [value]="res.e8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('e8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Standard size of tea shop, sq ft</div>
+                        </td>
+                        <td *ngFor="let capitaldata of res.f8; let i = index">
+                            <input [value]="res.f8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Licenses & Regulation</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive">
+            <table class="table case-management-table">
+                <thead>
+
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">In-House Compliance
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td class="first-div">
+                            <div>Monthly Cost, INR</div>
+                        </td>
+                        <td *ngFor="let capitaldata of res.e11; let i = index">
+                            <input [value]="res.e11[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('e11',i,inputElement.value)">
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Delay</div>
+                        </td>
+                        <td *ngFor="let capitaldata of res.f11; let i = index">
+                            <input [value]="res.f11[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f11',i,inputElement.value)">
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <th class="second-head" colspan="12">Outsourcing to Compliance Agencies</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Monthly Cost, INR</div>
+                        </td>
+                        <td *ngFor="let capitaldata of res.e12; let i = index">
+                            <input [value]="res.e12[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('e12',i,inputElement.value)">
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Delay</div>
+                        </td>
+                        <td *ngFor="let capitaldata of res.f12; let i = index">
+                            <input [value]="res.f12[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('f12',i,inputElement.value)">
+                        </td>
+                        
+                    </tr>
+                    
+                </tbody>
+
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Interest</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="first-div">Interest Cost/month, %</div>
+                        </td>
+                        <td *ngFor="let capitaldata of res.e15; let i = index">
+                            <input [value]="res.e15[i]*100" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writephaseonevalue('e15',i,inputElement.value)">
+                        </td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
+
+    </div>
+</div>

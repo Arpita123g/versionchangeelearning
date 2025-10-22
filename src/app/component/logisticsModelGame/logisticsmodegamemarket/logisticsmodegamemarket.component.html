@@ -1,0 +1,181 @@
+<div class="elearingnewui logistics_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="element-first">
+                <div class="row" class="marketer">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+            </div>
+            <h1>Market</h1>
+            <div class="row row-cols-md-2">
+                <div class="col-md ">
+                    <p class="marketpage-p" [innerHTML]="contentvalue"></p>
+                    
+                    
+
+                </div>
+                <div class="col-md table-data-inmarket table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameters</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>This Period</td>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Order, metric tonnes</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>{{result[0]}}</td>
+                                <td><span>{{result[1]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{result[2]}}</td>
+                                <td><span>{{result[3]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{result[4]}}</td>
+                                <td><span>{{result[5]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{result[6]}}</td>
+                                <td><span>{{result[7]}}</span></td>
+                            </tr>
+                            <tr>
+                                <th>Contractual TAT, days</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>{{result[8]}}</td>
+                                <td><span>{{result[9]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{result[10]}}</td>
+                                <td><span>{{result[11]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{result[12]}}</td>
+                                <td><span>{{result[13]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{result[14]}}</td>
+                                <td><span>{{result[15]}}</span></td>
+                            </tr>
+
+                            <tr>
+                                <th>Company Rate, INR per mt-km</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <!-- <td >Air</td>
+                                    <td><span>12.0</span></td> -->
+                                <td>{{result[16]}}</td>
+                                <td><span>{{result[17]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{result[18]}}</td>
+                                <td><span>{{result[19]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{result[20]}}</td>
+                                <td><span>{{result[21]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{result[22]}}</td>
+                                <td><span>{{result[23]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{result[24]}}</td>
+                                <td><span>{{result[25]}}</span></td>
+                            </tr>
+
+                            <tr>
+                                <th>Workforce</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>Maximum distance covered by a truck in a day, km</td>
+                                <td><span>{{result[26]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Helpers accompanying drivers in a trip</td>
+                                <td><span>{{result[27]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Number of helpers required to handle a load of 20 MT</td>
+                                <td><span>{{result[28]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Number of drivers available in a fleet</td>
+                                <td><span>{{result[29]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Number of helpers available in a fleet</td>
+                                <td><span>{{result[30]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Wage of a driver per day, INR</td>
+                                <td><span>{{result[31]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Wage of a helper per day, INR</td>
+                                <td><span>{{result[32]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Incremental wage of contractual employees over normal wage
+                                </td>
+                                <td><span>{{result[33]*100}}%</span></td>
+                            </tr>
+                            <tr>
+                                <th>Fragility Contract</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>{{result[34]}}</td>
+                                <td><span>{{result[35]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{result[36]}}</td>
+                                <td><span>{{result[37]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{result[38]}}</td>
+                                <td><span>{{result[39]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{result[40]}}</td>
+                                <td><span>{{result[41]}}</span></td>
+                            </tr>
+                            <tr>
+                                <th>Other Information - Inbound Logistics </th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>Distance for a round trip, km</td>
+                                <td><span>{{result[42]}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Diesel cost per litre, INR</td>
+                                <td><span>{{result[43]}}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

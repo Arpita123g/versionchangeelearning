@@ -1,0 +1,38 @@
+:root {
+  --loading-bg: rgba(255, 255, 255, 0.4);
+  --loading-spinner-color: crimson;
+  --loading-spinner-size: 100px;
+  --loading-text-size: 20px;
+  --loading-text-weight: 500;
+  --loading-blur: 10px;
+  --loading-saturate: 200%;
+}
+
+.loadingscreen {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+  background: var(--loading-bg);
+  backdrop-filter: saturate(var(--loading-saturate)) blur(var(--loading-blur));
+}
+
+.loadingscreen {
+  .loadingspinner {
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    font-size: calc(var(--loading-spinner-size) * 0.3);
+    height: var(--loading-spinner-size);
+    width: var(--loading-spinner-size);
+    color: var(--loading-spinner-color);
+  }
+
+  .loadingspinnertxt {
+    position: absolute;
+    top: 55%;
+    left: 40%;
+    font-size: var(--loading-text-size);
+    font-weight: var(--loading-text-weight);
+  }
+}

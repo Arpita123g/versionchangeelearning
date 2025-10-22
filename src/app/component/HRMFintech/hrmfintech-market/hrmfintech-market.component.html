@@ -1,0 +1,58 @@
+<div class="elearingnewui hrmfintech">
+    <!-- <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div> -->
+    <div class="container">
+        <div class="body-element">
+            <div class="element-first">
+                <div class="row">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-cols-md-2 intro_nd align-items-start">
+                <div class="col-md intro">
+                    <div class="intro-text" *ngFor="let item of marketdata">
+                        <ng-container *ngIf="item.round === numberofattempts">
+                            <p class="marketpage-p" *ngFor="let desc of item.description">
+                                {{desc}}
+                            </p>
+                        </ng-container> 
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="hrmfintechtab">
+                        <ul id="nav-tab" role="tablist"
+                            class="nav hrmfintechtab-nav flex-nowrap align-items-center overflow-auto">
+                            <li *ngFor="let item of activeItems; index as i" [id]="'nav-'+item.id+'-tab'"
+                                data-bs-toggle="tab" [attr.data-bs-target]="'#nav-'+item.id" type="button" role="tab"
+                                aria-controls="nav-Memo" class="nav-link hrmfintechtab-link" [class.active]="i==0"
+                               >
+                                {{item.title}}
+                            </li>
+                        </ul>
+                        <div id="nav-tabContent" class="tab-content">
+                            <div [id]="'nav-'+item.id" *ngFor="let item of activeItems; index as i" role="tabpanel"
+                                class="tab-pane fade show" [class.active]="i==0" >
+                                <div class="rounded-5 rtsidetable card border-bottom-0">
+                                    <table class="table rsl_tbl  mb-0">
+                                        <tbody class="rsl_tbl-tbody">
+                                            <tr class="rsl_tbl-tbody-tr" *ngFor="let td of item.tabledata">
+                                                <td>{{td.name}}</td>
+                                                <td>{{containsPercentage(td.name)?(result[td.cell[numberofattempts]]*100|number:'1.0-0'): (result[td.cell[numberofattempts]]|number:'1.0-0')}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

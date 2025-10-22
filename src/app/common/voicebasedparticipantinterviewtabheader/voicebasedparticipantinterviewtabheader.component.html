@@ -1,0 +1,46 @@
+<div class="elearingnewui bus_iness">
+    
+    <div class="tab-content">
+
+        <div role="tabpanel" class="tab-pane fade show" [class.active]="currenttabb()==0" id="voicebasedparticipantinterviewcase">
+            <app-interviewparticipantcase ></app-interviewparticipantcase>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade show "[class.active]="currenttabb()==1" id="voicebasedparticipantinterviewconversation">
+            <app-interviewparticipantconversation></app-interviewparticipantconversation>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade show "[class.active]="currenttabb()==2" id="voicebasedparticipantinterviewreport">
+            <app-interviewparticipantreport></app-interviewparticipantreport>
+        </div>
+    </div>
+</div>
+
+<mat-tab-group class="interview-tabs" (selectedTabChange)="navigateTo($event.tab.textLabel)">
+  <mat-tab label="Interview">
+    <div class="tab-content">
+      <h2>Welcome to the Interview</h2>
+      <p>Please complete all rounds of the interview process.</p>
+    </div>
+  </mat-tab>
+  <mat-tab label="Report">
+    <div class="tab-content">
+      <h2>Interview Report</h2>
+      <p>View your interview performance and feedback.</p>
+    </div>
+  </mat-tab>
+  <mat-tab label="Conversation">
+    <div class="tab-content">
+      <h2>Interview Conversation</h2>
+      <p>Review your interview conversations.</p>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
+<div class="user-info">
+  <span class="user-name">{{ userName() }}</span>
+  <button mat-icon-button (click)="logout()" [disabled]="isLoading()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</div>
+

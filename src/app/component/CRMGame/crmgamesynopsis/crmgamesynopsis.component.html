@@ -1,0 +1,403 @@
+<div class="elearingnewui crm_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">{{languageselect === "Hindi"
+            ? "लोड हो रहा है... कुछ डिजिटल जादू तैयार किया जा रहा है!"
+            : "Loading... Brewing up some digital magic!"}} </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="feed_ack">
+                <div>
+                    <div class="row pb-4">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                                <div class="">
+                                    <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                        (change)="roundClick()">
+                                        <option class="select-round-option" value="">
+                                            {{ languageselect.toLowerCase()  === 'hindi' ? 'दौर का चयन करें' : 'Select Round' }}
+                                        </option>
+                                        <option class="select-round-option"
+                                            *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                            {{attempt}}</option>
+
+                                    </select>
+                                </div>
+                                <div class="download_btn" matTooltiClass="primary-tooltip"
+                                    (click)="downloadreporthrpgame()">
+                                    <div>
+                                        <a download matTooltip="Download"><span class="hovertext"
+                                                data-hover="Download pdf file accounting ">
+                                                <img src="assets/images/businessbasics/download.png" />
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <mat-icon class="mt-2">get_app</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1>
+                        {{dataoflang.b21}}
+                    </h1>
+                    <div style="margin-top: 1.1rem;" *ngIf="analysisshow">
+                        <h1
+                            style="display: flex; align-items: center; gap: 5px;font-size: 1.1rem; font-weight: 600;padding: 0.6rem 0.4rem;color: white;background-color: #266cc38a;">
+                            Feedback
+                            <div style=" width: 1rem;">
+                                <mat-icon (click)="rotate();roundClick();" [@rotatedState]='state' class="sidenav-icon"
+                                    aria-hidden="false" aria-label="Example home icon">cached</mat-icon>
+                            </div>
+                        </h1>
+                    </div>
+                    <div class="decision-textarea pb-5 h-100" *ngIf="analysisshow">
+                        <div class="row">
+                            <div class="col-md" style="padding: 10px;">
+                                <div class="card feedbsck-value p-3">
+                                    <markdown [data]="feedbackvalue"></markdown>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-cols-md-2 py-3">
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2"> {{dataoflang.b36}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="text-align: left;">{{dataoflang.b261}}</th>
+                                        <th class="rsl_tbl-tbody-th">{{dataoflang.b263}}</th>
+                                    </tr>
+
+                                    
+                                    <!-- Loop through Leads 1-25 -->
+                                    <tr class="rsl_tbl-tbody-tr" *ngFor="let res of result.slice(0, 25); let i = index">
+                                        <td>{{dataoflang.b79}} {{ i + 1 }}</td>
+                                        <td>{{ res }}</td>
+                                    </tr>
+
+                                   
+                                    <!-- Loop through periodresult and corresponding result values -->
+                                    <tr class="rsl_tbl-tbody-tr"
+                                        *ngFor="let pr of periodresult.slice(0, 9); let i = index">
+                                        <td>{{ pr }}</td>
+                                        <td>{{ result[25 + i] }}</td>
+                                    </tr>
+
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{dataoflang.b221}}</td>
+                                        <td>{{result[34]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{dataoflang.b222}}</td>
+                                        <td>{{result[35]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{dataoflang.b223}}</td>
+                                        <td>{{result[36]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{dataoflang.b224}}</td>
+                                        <td>{{result[37]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{dataoflang.b225}}</td>
+                                        <td>{{result[38]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{dataoflang.b226}}</td>
+                                        <td>{{result[39]}}</td>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{dataoflang.b158}}</td>
+                                        <td>{{result[40]}}</td>
+                                    </tr>
+                                   
+                                    <tr class="rsl_tbl-tbody-tr"
+                                        *ngFor="let pr of periodresult.slice(9, 13); let i = index">
+                                        <td>{{ pr }}</td>
+                                        <td>{{ result[41 + i] }}</td>
+                                    </tr>
+
+                                    <!-- Implemented/Not Implemented rows -->
+                                    <tr class="rsl_tbl-tbody-tr"
+                                        *ngFor="let pr of periodresult.slice(13, 18); let i = index">
+                                        <td>{{ pr }}</td>
+                                        <td>{{ result[45 + i] === 1 ? dataoflang.b396 : dataoflang.b397 }}</td>
+
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{dataoflang.b213}}</td>
+                                        <td>{{result[50]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{dataoflang.b214}}</td>
+                                        <td>{{result[51]}}</td>
+                                    </tr>
+                                    
+                                    <!-- Additional Implemented/Not Implemented rows -->
+                                    <tr class="rsl_tbl-tbody-tr"
+                                        *ngFor="let pr of periodresult.slice(18, 23); let i = index">
+                                        <td>{{ pr }}</td>
+                                        <td>{{ result[52 + i] === 1 ?  dataoflang.b396 : dataoflang.b397 }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <!-- <th class="rsl_tbl-thead-th" colspan="2">Value Creation, INR</th> -->
+                                        <th class="rsl_tbl-thead-th" colspan="2">{{dataoflang.b228}}</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <th style="text-align: left;">Parameter</th>
+                                        <th class="rsl_tbl-tbody-th">Output</th> -->
+                                        <th style="text-align: left;">{{dataoflang.b261}}</th>
+                                        <th class="rsl_tbl-tbody-th">{{dataoflang.b263}}</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Previous Period CLV</td> -->
+                                        <td>{{dataoflang.b239}}</td>
+                                        <td>{{result[67]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Expected New CLV</td> -->
+                                        <td>{{dataoflang.b240}}</td>
+                                        <td>{{result[68]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Increment (+)/Reduction (-) CLV</td> -->
+                                        <td>{{dataoflang.b241}}</td>
+                                        <td>{{result[69]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Chances of achieving Increment (+)/Reduction (-)</td> -->
+                                        <td>{{dataoflang.b242}}</td>
+                                        <td>{{result[70]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Expected New Value</td> -->
+                                        <td>{{dataoflang.b243}}</td>
+                                        <td>{{result[71]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Resource Cost</td> -->
+                                        <td>{{dataoflang.b244}}</td>
+                                        <td>{{result[72]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Streamlining Cost</td> -->
+                                        <td>{{dataoflang.b245}}</td>
+                                        <td>{{result[73]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Total Cost</td> -->
+                                        <td>{{dataoflang.b246}}</td>
+                                        <td>{{result[74]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Value Creation</td> -->
+                                        <td>{{dataoflang.b247}}</td>
+                                        <td>{{result[75]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <!-- <th class="rsl_tbl-thead-th" colspan="2">KPI Variation</th> -->
+                                        <th class="rsl_tbl-thead-th" colspan="2">{{dataoflang.b251}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <th style="text-align: left;">Increament (+)/Reduction (-) compared to last
+                                            period P3</th> -->
+                                            <th style="text-align: left;">{{dataoflang.b234}}</th>
+                                        <th class="rsl_tbl-tbody-th"></th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Cross selling & upselling opportunities</td> -->
+                                        <td>{{dataoflang.b235}}</td>
+                                        <td>{{result[63]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Customer service response rate</td> -->
+                                        <td>{{dataoflang.b236}}</td>
+                                        <td>{{result[64]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Average resolution time</td> -->
+                                        <td>{{dataoflang.b237}}</td>
+                                        <td>{{result[65]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Pipeline Velocity, days</td> -->
+                                        <td>{{dataoflang.b238}}</td>
+                                        <td>{{result[66]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <!-- <th class="rsl_tbl-thead-th" colspan="2">Lead Pipeline Count</th> -->
+                                        <th class="rsl_tbl-thead-th" colspan="2">{{dataoflang.b248}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <th style="text-align: left;">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Output</th> -->
+                                        <th style="text-align: left;">{{dataoflang.b261}}</th>
+                                        <th class="rsl_tbl-tbody-th">{{dataoflang.b263}}</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{dataoflang.b228}}</td>
+                                        <td>{{result[57]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Medium Priority</td> -->
+                                        <td>{{dataoflang.b229}}</td>
+                                        <td>{{result[58]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Low Priority</td> -->
+                                        <td>{{dataoflang.b230}}</td>
+                                        <td>{{result[59]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <!-- <th class="rsl_tbl-thead-th" colspan="2">Sales Conversion Chances</th> -->
+                                        <th class="rsl_tbl-thead-th" colspan="2">{{dataoflang.b249}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <th style="text-align: left;">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Output</th> -->
+                                        <th style="text-align: left;">{{dataoflang.b261}}</th>
+                                        <th class="rsl_tbl-tbody-th">{{dataoflang.b263}}</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>High Priority</td> -->
+                                        <td>{{dataoflang.b228}}</td>
+                                        <td>{{result[60]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Medium Priority</td> -->
+                                        <td>{{dataoflang.b229}}</td>
+                                        <td>{{result[61]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Low Priority</td> -->
+                                        <td>{{dataoflang.b230}}</td>
+                                        <td>{{result[62]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">{{dataoflang.b394}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <th style="text-align: left;">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Score %</th> -->
+                                        <th style="text-align: left;">{{dataoflang.b261}}</th>
+                                        <th class="rsl_tbl-tbody-th">{{dataoflang.b264}} %</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{dataoflang.b79}}</td>
+                                        <td>{{result[82]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{dataoflang.b17}}</td>
+                                        <td>{{result[83]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{dataoflang.b18}}</td>
+                                        <td>{{result[84]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <!-- <th class="rsl_tbl-thead-th" colspan="3">Resource Allocation, hours</th> -->
+                                        <th class="rsl_tbl-thead-th" colspan="3">{{dataoflang.b250}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <th style="text-align: left;">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Sales</th>
+                                        <th class="rsl_tbl-tbody-th">Service</th> -->
+                                        <th style="text-align: left;">{{dataoflang.b261}}</th>
+                                        <th class="rsl_tbl-tbody-th">{{dataoflang.b253}}</th>
+                                        <th class="rsl_tbl-tbody-th">{{dataoflang.b254}}</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Allocated</td> -->
+                                        <td>{{dataoflang.b231}}</td>
+                                        <td class="middleclassright">{{result[76]|number:'1.0-0'}}</td>
+                                        <td>{{result[77]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Required</td> -->
+                                        <td>{{dataoflang.b232}}</td>
+                                        <td class="middleclassright">{{result[78]|number:'1.0-0'}}</td>
+                                        <td>{{result[79]|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td>Surplus (+)/Deficit (-)</td> -->
+                                        <td>{{dataoflang.b233}}</td>
+                                        <td class="middleclassright">{{result[80]|number:'1.0-0'}}</td>
+                                        <td>{{result[81]|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row lst_r">
+                        <div class="col-4 lst_r-col4" *ngIf="!timefinished">
+                            <button class="mt-4 retry" [disabled]="isButtonDisabled" (click)="exit()">{{retry}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

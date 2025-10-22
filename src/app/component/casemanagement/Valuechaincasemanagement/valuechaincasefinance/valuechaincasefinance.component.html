@@ -1,0 +1,44 @@
+<div class="elearingnewui casemanagement">
+    <div class="case-management-body case-management-body-marketing">
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="table case-management-table ">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cash at Beginning, mn INR</td>
+                        <td *ngFor="let capitaldata of res.t6; let i = index">
+                            <input [value]="res.t6[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeFinanceValue('t6',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Long term Interest rate</td>
+                        <td *ngFor="let capitaldata of res.t7; let i = index">
+                            <input [value]="res.t7[i]*100" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeFinanceValue('t7',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Emergency loans interest rate</td>
+                        <td *ngFor="let capitaldata of res.t8; let i = index">
+                            <input [value]="res.t8[i]*100" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeFinanceValue('t8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tax Rate</td>
+                        <td *ngFor="let capitaldata of res.t9; let i = index">
+                            <input [value]="res.t9[i]*100" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeFinanceValue('t9',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

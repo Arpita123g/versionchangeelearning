@@ -1,0 +1,361 @@
+<div class="elearingnewui hrmfintech">
+    <!-- <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div> -->
+    <div class="container">
+        <div class="body-element">
+
+            <div class="element-first">
+                <div class="row">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hrmfintechtab">
+                <ul id="nav-tab" role="tablist" class="nav hrmfintechtab-nav flex-nowrap align-items-center">
+                    <li *ngFor="let item of activeItems; index as i" [id]="'nav-'+item.id+'-tab'" data-bs-toggle="tab"
+                        [attr.data-bs-target]="'#nav-'+item.id" type="button" role="tab" aria-controls="nav-Memo"
+                        class="nav-link hrmfintechtab-link" [class.active]="i==0">
+                        {{item.title}}
+                    </li>
+                </ul>
+                <div id="nav-tabContent" class="tab-content">
+                    <div [id]="'nav-'+item.id" *ngFor="let item of activeItems; index as j" role="tabpanel"
+                        class="tab-pane fade show" [class.active]="j==0">
+                        <div class="rounded-5 rtsidetable card p-3">
+                            <h1 class="mb-5 mt-2">Hiring Channel
+                                <mat-icon appTippy="
+                                    <div class='help-tip p-2'>
+                                      <div style='display:flex;'>
+                                        <div>
+                                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                        </div> &nbsp; &nbsp;
+                                        <div>
+                                          <p style='margin: 0 auto; color: white; font-size:13px;'>How does each hiring channel align with the specific needs and experience levels required for top, senior, and junior management roles? Are you balancing cost, time, and quality effectively for each level?</p>
+                                        </div>
+                                      </div>
+                                      <div style='display:flex;'>
+                                        <div>
+                                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                        </div> &nbsp; &nbsp;
+                                        <div>
+                                          <p style='margin: 0 auto; color: white; font-size:13px;'>What are the long-term impacts of using different hiring channels on company culture and talent retention, especially for leadership roles?</p>
+                                        </div>
+                                      </div>
+                                    </div> ">
+                                    help_outline
+                                </mat-icon>
+                            </h1>
+
+                            <div class="row">
+                                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                    <img src="../../../../assets/images/hrmfintech/hiringchannel.svg" class="img-fluid"
+                                        style="height: 250px;" />
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card p-2 h-100">
+                                        <apx-chart [series]="item.hiringChannelGraph.chart.series"
+                                            [chart]="item.hiringChannelGraph.chart.chart"
+                                            [dataLabels]="item.hiringChannelGraph.chart.dataLabels"
+                                            [plotOptions]="item.hiringChannelGraph.chart.plotOptions"
+                                            [yaxis]="item.hiringChannelGraph.chart.yaxis"
+                                            [xaxis]="item.hiringChannelGraph.chart.xaxis"
+                                            [fill]="item.hiringChannelGraph.chart.fill"
+                                            [title]="item.hiringChannelGraph.chart.title"
+                                            [tooltip]="item.hiringChannelGraph.chart.tooltip">
+                                        </apx-chart>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <table class="table rsl_tbl table-bordered">
+                                    <thead class="rsl_tbl-thead">
+                                        <tr class="rsl_tbl-thead-tr">
+                                            <th class="rsl_tbl-thead-th text-start" rowspan="2">Hiring Channel</th>
+                                            <th class="rsl_tbl-thead-th" colspan="2"
+                                                *ngFor="let th of item.tableHeader">{{th}}</th>
+                                        </tr>
+                                        <tr class="rsl_tbl-thead-tr">
+                                            <th class="rsl_tbl-thead-th">Current Year</th>
+                                            <th class="rsl_tbl-thead-th">Previous Year</th>
+                                            <th class="rsl_tbl-thead-th">Current Year</th>
+                                            <th class="rsl_tbl-thead-th">Previous Year</th>
+                                            <th class="rsl_tbl-thead-th">Current Year</th>
+                                            <th class="rsl_tbl-thead-th">Previous Year</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="rsl_tbl-tbody" *ngIf="result.decisions">
+                                        <tr class="rsl_tbl-tbody-tr" *ngFor="let td of item.tableData">
+                                            <td>{{td.name}}</td>
+
+                                            <td>
+                                                <select class="select-round input-no_box-drop w-100"
+                                                    [ngModel]="result.decisions[td.topcurshell1[noofattempt]]"
+                                                    (change)="writehrmvalue(td.topcurshell1[noofattempt], $event)"
+                                                    [disabled]="inputDisabled">
+                                                    <option class="select-round-option" value=0>Select</option>
+                                                    <option class="select-round-option" [value]="item"
+                                                        *ngFor="let item of selectOptions">
+                                                        {{item}}
+                                                    </option>
+                                                </select>
+                                                
+
+                                            </td>
+                                            <td>{{result.decisions[td.topprevshell1[noofattempt]]==0?'':result.decisions[td.topprevshell1[noofattempt]]
+                                                }}</td>
+                                            <td>
+                                                <select class="select-round input-no_box-drop w-100"
+                                                    [ngModel]="result.decisions[td.topcurshell2[noofattempt]]"
+                                                    (change)="writehrmvalue(td.topcurshell2[noofattempt],$event)"
+                                                    [disabled]="inputDisabled">
+                                                    <option class="select-round-option" value=0>Select</option>
+                                                    <option class="select-round-option" [value]="item"
+                                                        *ngFor="let item of selectOptions">{{item}}</option>
+                                                </select>
+                                            </td>
+                                            <td>{{result.decisions[td.topprevshell2[noofattempt]]==0?'':result.decisions[td.topprevshell2[noofattempt]]
+                                                }}</td>
+                                            <td>
+                                                <select class="select-round input-no_box-drop w-100"
+                                                    [ngModel]="result.decisions[td.topcurshell3[noofattempt]]"
+                                                    (change)="writehrmvalue(td.topcurshell3[noofattempt],$event)"
+                                                    [disabled]="inputDisabled">
+                                                    <option class="select-round-option" value=0>Select</option>
+                                                    <option class="select-round-option" [value]="item"
+                                                        *ngFor="let item of selectOptions">{{item}}</option>
+                                                </select>
+                                            </td>
+                                            <td>{{result.decisions[td.topprevshell3[noofattempt]]==0?'':result.decisions[td.topprevshell3[noofattempt]]
+                                                }}</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="hiringfiringuserdata">
+                                <h1 class="my-5 pt-4">Hiring & Retrenchment
+                                    <mat-icon appTippy="
+                                    <div class='help-tip p-2'>
+                                      <div style='display:flex;'>
+                                        <div>
+                                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                        </div> &nbsp; &nbsp;
+                                        <div>
+                                          <p style='margin: 0 auto; color: white; font-size:13px;'>What factors, such as budget constraints, business forecasts, and skill gaps, are influencing your hiring or firing decisions across management levels?</p>
+                                        </div>
+                                      </div>
+                                      <div style='display:flex;'>
+                                        <div>
+                                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                        </div> &nbsp; &nbsp;
+                                        <div>
+                                          <p style='margin: 0 auto; color: white; font-size:13px;'>How will your decision to hire or fire at each management level impact overall team dynamics, productivity, and long-term growth?</p>
+                                        </div>
+                                      </div>
+                                    </div> ">
+                                        help_outline
+                                    </mat-icon>
+                                </h1>
+                                <div class="cardtype mt-4" *ngIf="result.decisions">
+                                    <h3 class="fw-bold mb-3">Hiring (Units)</h3>
+                                    <div class="row">
+                                        <div class="col-md-8 row row-cols-4 gx-1">
+                                            <div class="col" *ngFor="let hired of item.hiringData; let k = index;">
+                                                <div class="card h-100">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title small m-0" [innerHTML]="hired.title"></h4>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="d-flex flex-column gap-3">
+                                                            <div>
+                                                                <label [for]="'hiringfiringinpcy'+k"
+                                                                    class="small text-muted">Current
+                                                                    Year</label>
+                                                                <div class="input-group w-auto flex-nowrap">
+
+                                                                    <input type="number"
+                                                                        class="form-control input-no_box p-1"
+                                                                        [ngModel]="result.decisions[hired.cyshellvalue[noofattempt]]|number:'1.0-2'"
+                                                                        [id]="'hiringfiringinpcy'+j+'-'+k"
+                                                                        (focusout)="writehrmvalue(hired.cyshellvalue[noofattempt],$event)"
+                                                                        [disabled]="inputDisabled">
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <label class="text-muted small">Previous Year</label>
+
+                                                                <h2 class="fw-bold">
+                                                                    {{result.decisions[hired.pvshellvalue[noofattempt]]|number:'1.0-2'}}
+                                                                </h2>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <div class="card rounded h-100 w-100">
+                                                <apx-chart [series]="item.hiringGraph.chart.series"
+                                                    [chart]="item.hiringGraph.chart.chart"
+                                                    [dataLabels]="item.hiringGraph.chart.dataLabels"
+                                                    [plotOptions]="item.hiringGraph.chart.plotOptions"
+                                                    [yaxis]="item.hiringGraph.chart.yaxis"
+                                                    [xaxis]="item.hiringGraph.chart.xaxis"
+                                                    [fill]="item.hiringGraph.chart.fill"
+                                                    [title]="item.hiringGraph.chart.title"
+                                                    [tooltip]="item.hiringGraph.chart.tooltip">
+                                                </apx-chart>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row pt-3">
+                                        <div class="col-md-5" style="padding:0 2px;">
+                                            <div class="card h-100">
+                                                <div class="row g-0">
+                                                    <div class="col-md-4">
+                                                        <img src="../../../../assets/images/hrmfintech/hiringvendor.svg"
+                                                            class="img-fluid rounded-start" style="height:100px"
+                                                            alt="hiringvendor">
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="card-body d-flex align-items-center h-100 justify-content-between"
+                                                            *ngIf="result.decisions">
+                                                            <h4 class="card-title m-0">Vendor Hiring</h4>
+                                                            <div class="form-check check-box-div">
+                                                                <input type="checkbox" id="flexCheckDefault"
+                                                                    class="form-check-input bottomcheckbox"
+                                                                    [checked]="result.decisions[item.vendorData[noofattempt]]==='Yes'"
+                                                                    (change)="writehrmvalue(item.vendorData[noofattempt],$event)"
+                                                                    [disabled]="inputDisabled" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div>
+                                    <h1 class="my-5">Outsourcing
+                                        <mat-icon appTippy="
+                                        <div class='help-tip p-2'>
+                                          <div style='display:flex;'>
+                                            <div>
+                                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                            </div> &nbsp; &nbsp;
+                                            <div>
+                                              <p style='margin: 0 auto; color: white; font-size:13px;'> How will outsourcing impact your control over quality and timelines compared to managing the work internally? Have you evaluated the trade-offs in terms of cost, efficiency, and expertise?</p>
+                                            </div>
+                                          </div>
+                                          <div style='display:flex;'>
+                                            <div>
+                                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                            </div> &nbsp; &nbsp;
+                                            <div>
+                                              <p style='margin: 0 auto; color: white; font-size:13px;'>Are you considering the long-term benefits or risks of outsourcing, such as dependency on external partners, scalability, and potential knowledge gaps within your organization?</p>
+                                            </div>
+                                          </div>
+                                        </div> ">
+                                            help_outline
+                                        </mat-icon>
+                                    </h1>
+                                    <div class="row" *ngIf="result.decisions">
+                                        <div class="col-md-5">
+                                            <div class="card h-100">
+                                                <div class="row g-0">
+                                                    <div class="col-md-4">
+                                                        <img src="../../../../assets/images/hrmfintech/outsorcingjunior.svg"
+                                                            class="img-fluid rounded-start" style="height:95px"
+                                                            alt="outsorcingjunior">
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="card-body d-flex align-items-center h-100 justify-content-between"
+                                                            *ngIf="result.decisions">
+                                                            <h4 class="card-title m-0">Outsourcing, Junior Management
+                                                            </h4>
+                                                            <div class="form-check check-box-div">
+                                                                <input type="checkbox"
+                                                                    class="form-check-input bottomcheckbox"
+                                                                    [checked]="result.decisions[item.outsourceData[noofattempt]]==='Yes'"
+                                                                    (change)="writehrmvalue(item.outsourceData[noofattempt],$event)"
+                                                                    [disabled]="inputDisabled" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <br />
+                                <div class="cardtype mt-4"></div>
+                                <h3 class="fw-bold mb-3">Retrenchment (Number of people)</h3>
+                                <div class="row">
+                                    <div class="col-md-6 row row-cols-3 gx-1">
+                                        <div class="col" *ngFor="let fired of item.firingData; let k = index;">
+                                            <div class="card h-100">
+                                                <div class="card-header">
+                                                    <h4 class="card-title small m-0">{{fired.title}}</h4>
+                                                </div>
+                                                <div class="card-body" *ngIf="result.decisions">
+                                                    <div class="d-flex flex-column gap-3">
+                                                        <div>
+                                                            <label [for]="'hiringfiringinpcy'+k"
+                                                                class="small text-muted">Current
+                                                                Year</label>
+                                                            <div class="input-group  w-auto flex-nowrap"
+                                                                *ngIf="result.decisions">
+                                                                <input type="number" class="form-control input-no_box"
+                                                                    [ngModel]="result.decisions[fired.cyshellvalue[noofattempt]]|number:'1.0-2'"
+                                                                    [id]="'hiringfiringinpcy'+j+'-'+k"
+                                                                    (focusout)="writehrmvalue(fired.cyshellvalue[noofattempt],$event)"
+                                                                    [disabled]="inputDisabled" />
+                                                            </div>
+                                                        </div>
+                                                        <div *ngIf="result.decisions">
+                                                            <label class="text-muted small">Previous Year</label>
+                                                            <h2 class="fw-bold">
+                                                                {{result.decisions[fired.pvshellvalue[noofattempt]]|number:'1.0-2'}}
+                                                            </h2>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card rounded w-100">
+                                            <apx-chart [series]="item.firingGraph.chart.series"
+                                                [chart]="item.firingGraph.chart.chart"
+                                                [dataLabels]="item.firingGraph.chart.dataLabels"
+                                                [plotOptions]="item.firingGraph.chart.plotOptions"
+                                                [yaxis]="item.firingGraph.chart.yaxis"
+                                                [xaxis]="item.firingGraph.chart.xaxis"
+                                                [fill]="item.firingGraph.chart.fill"
+                                                [title]="item.firingGraph.chart.title"
+                                                [tooltip]="item.firingGraph.chart.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

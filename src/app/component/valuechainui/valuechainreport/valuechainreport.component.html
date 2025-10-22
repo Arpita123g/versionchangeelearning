@@ -1,0 +1,308 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui value_chain">
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row pb-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                            <div class="">
+                                <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                    (change)="roundClick()">
+                                    <option class="select-round-option" value="">Select Round</option>
+                                    <option class="select-round-option"
+                                        *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                        {{attempt}}</option>
+
+                                </select>
+                            </div>
+
+                            <div class="download_btn" matTooltiClass="primary-tooltip"
+                                (click)="downloadreportvaluechain()">
+                                <div>
+                                    <a download matTooltip="Download"><span class="hovertext"
+                                            data-hover="Download pdf file accounting ">
+                                            <img class="download_btn-img"
+                                                src="assets/images/businessbasics/download.png" />
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <mat-icon class="mt-2">get_app</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 mb-3">
+                    <div class="col-md-5 reyapo">
+                        <h1 class="reyapo-h1">Report</h1>
+                        <p style="text-align: justify;">
+                            Excellent work. You have completed creating value for the company while making crucial
+                            day-to-day decisions. In this exercise every decision you have taken shows your skills in
+                            dimensions like rigor, synthesis, structuring and business judgement.
+                        </p>
+                    </div>
+
+                    <div class="col-md-7" *ngIf="optional[0]">
+                        <div class="card rigorcard">
+                            <div class="rigorcard-icon">
+                                <mat-icon class="rigorcard-icon-mat" appTippy="<table >
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Rigor</th>
+                      <td style='padding:7px;font-size:13px'>Consistency throughout the decision-making and recommendation.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>Structuring</th>
+                      <td style='padding:7px;font-size:13px'>A logical approach to gathering and analyzing information.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>
+                        Synthesis
+                      </th>
+                      <td style='padding:7px;font-size:13px'>
+                        Approach towards interpreting all the information and making informed decisions.
+                      </td>
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Business Jugement</th>
+                      <td style='padding:7px;font-size:13px'>Ability to evaluate facts and consider risks and possible implications when making decisions.</td>
+                    </tr>
+                    </tr>
+                  </table>
+                   ">
+                                    help_outline
+                                </mat-icon>
+                            </div>
+                            <apx-chart [series]="rigorcharts.series" [chart]="rigorcharts.chart"
+                                [xaxis]="rigorcharts.xaxis" [yaxis]="rigorcharts.yaxis" [stroke]="rigorcharts.stroke"
+                                [markers]="rigorcharts.markers" [fill]="rigorcharts.fill"
+                                [title]="rigorcharts.title"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Cash Balance, mn INR</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cash at start of the period</td>
+                                    <td>{{result[0]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cash from operations</td>
+                                    <td>{{result[1]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cash from investment</td>
+                                    <td>{{result[2]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cash from financing</td>
+                                    <td>{{cashfromfinancing|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cash at end of the period</td>
+                                    <td>{{result[5]|number:'1.0-0'}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="col-md">
+                            <div class="card p-3 ">
+                                <apx-chart [series]="cashmanagementchart.series" [chart]="cashmanagementchart.chart"
+                                    [dataLabels]="cashmanagementchart.dataLabels"
+                                    [plotOptions]="cashmanagementchart.plotOptions" [yaxis]="cashmanagementchart.yaxis"
+                                    [xaxis]="cashmanagementchart.xaxis" [fill]="cashmanagementchart.fill"
+                                    [title]="cashmanagementchart.title" [noData]="cashmanagementchart.noData"
+                                    [tooltip]="cashmanagementchart.tooltip">
+                                </apx-chart>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Sales, mn units</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Market Size</td>
+                                    <td>{{result[6]|number:'1.0-2'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Demand</td>
+                                    <td>{{result[7]|number:'1.0-2'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Actual Sales</td>
+                                    <td>{{result[8]|number:'1.0-2'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-3 ">
+                            <apx-chart [series]="salesunitschart.series" [chart]="salesunitschart.chart"
+                                [dataLabels]="salesunitschart.dataLabels" [plotOptions]="salesunitschart.plotOptions"
+                                [yaxis]="salesunitschart.yaxis" [xaxis]="salesunitschart.xaxis"
+                                [fill]="salesunitschart.fill" [title]="salesunitschart.title"
+                                [noData]="salesunitschart.noData" [tooltip]="salesunitschart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Production, mn units</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Capacity</td>
+                                    <td>{{result[9]|number:'1.0-2'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Closing Inventory</td>
+                                    <td>{{result[10]|number:'1.0-2'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Opportunity loss</td>
+                                    <td>{{result[11]|number:'1.0-2'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-3 ">
+                            <apx-chart [series]="productionunitschart.series" [chart]="productionunitschart.chart"
+                                [dataLabels]="productionunitschart.dataLabels"
+                                [plotOptions]="productionunitschart.plotOptions" [yaxis]="productionunitschart.yaxis"
+                                [xaxis]="productionunitschart.xaxis" [fill]="productionunitschart.fill"
+                                [title]="productionunitschart.title" [noData]="productionunitschart.noData"
+                                [tooltip]="productionunitschart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl ">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Income Statement, mn INR</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Revenue</td>
+                                    <td>{{result[12]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Variable Cost</td>
+                                    <td>{{result[13]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                            <tbody class="rsl_tbl-tbody" style="border-top: none;">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <th style="border-bottom: 2px solid black;">Gross Profit/Loss</th>
+                                    <td style="border-bottom: 2px solid black;">{{result[14]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Component Cost</td>
+                                    <td>{{result[15]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Transportation & Inventory Cost</td>
+                                    <td>{{result[16]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Channel Cost</td>
+                                    <td>{{result[17]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Promotion Cost</td>
+                                    <td>{{result[18]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Services & Innovation Cost</td>
+                                    <td>{{result[19]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <th>EBITDA</th>
+                                    <td style="border-bottom: 2px solid black;">{{result[20]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Depreciation</td>
+                                    <td>{{result[21]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <th>EBIT</th>
+                                    <td style="border-bottom: 2px solid black;">{{result[22]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Interest Cost</td>
+                                    <td>{{result[23]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <th>Profit before taxes</th>
+                                    <td style="border-bottom: 2px solid black;">{{result[24]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Tax</td>
+                                    <td>{{result[25]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <th>Profit/Loss</th>
+                                    <td style="border-bottom: 2px solid black;">{{result[26]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">KPI</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Market Share %</td>
+                                    <td>{{result[27]*100|number:'1.0-2'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Margin %</td>
+                                    <td>{{result[28]*100|number:'1.0-2'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Emergency Borrowing, mn INR</td>
+                                    <td>{{result[29]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="file-preview-container" role="region" aria-label="File preview">
+  @if (isLoading) {
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  }
+
+  @if (error) {
+    <div class="error-message" role="alert">
+      <mat-icon color="warn">error</mat-icon>
+      <span>{{ error }}</span>
+    </div>
+  }
+
+  @if (safeUrl) {
+    <div class="preview-content">
+      <div class="file-header">
+        <mat-icon [color]="getFileIcon() === 'picture_as_pdf' ? 'warn' : 'primary'">
+          {{ getFileIcon() }}
+        </mat-icon>
+        <span class="file-name">{{ fileName }}</span>
+      </div>
+
+      <div class="preview-frame">
+        <iframe
+          [src]="safeUrl"
+          title="File preview"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+          sandbox="allow-same-origin allow-scripts allow-forms"
+        ></iframe>
+      </div>
+
+      <div class="preview-actions">
+        <button
+          mat-button
+          color="primary"
+          (click)="downloadFile()"
+          aria-label="Download file"
+        >
+          <mat-icon>download</mat-icon>
+          Download
+        </button>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,63 @@
+<div class="elearingnewui">
+    <!-- <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div> -->
+    <div class="case-management-body">
+        <div class=" table-responsive mb-3 mt-3">
+            <table class=" table table-bordered  case-management-table foodrforthought">
+                <thead>
+                    <tr>
+                        <td>SL NO.</td>
+                        <td>Text</td>
+                        <td>Option</td>
+                        <td>Feedback</td>
+                        <td>Score</td>
+                        <td>Rigor</td>
+                        <td>Structuring</td>
+                        <td>Synthesis</td>
+                        <td>Business Judgement</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let key of questionanswerpaper; let i=index">
+                        <td>Q.{{i+1}}</td>
+                        <td><textarea name="" id="" cols="40" rows="3" [value]="key.question[0]" #inputElement
+                                (focusout)="writeFoodForThoughtValue(key.question[1], i, inputElement.value)"
+                                [disabled]="defaultcase=='yes'"></textarea></td>
+                        <td><textarea name="" id="" cols="40" rows="4" [value]="item"
+                                *ngFor="let item of key.option[0] ;let j = index" #inputElement
+                                (focusout)="writeFoodForThoughtValue(key.option[1][j],i,inputElement.value)"
+                                [disabled]="defaultcase=='yes'"></textarea></td>
+
+                        <td><textarea name="" id="" cols="40" rows="4" [value]="item"
+                                *ngFor="let item of key.feedback[0] ;let j = index" #inputElement
+                                (focusout)="writeFoodForThoughtValue(key.feedback[1][j],i,inputElement.value)"
+                                [disabled]="defaultcase=='yes'"></textarea></td>
+                        <td><input type="text" [value]="item" *ngFor="let item of key.score[0] ;let j = index"
+                                #inputElement
+                                (focusout)="writeFoodForThoughtValue(key.score[1][j],i,inputElement.value)"
+                                [disabled]="defaultcase=='yes'" /></td>
+                        <td><input type="text" [value]="item" *ngFor="let item of key.rigor[0] ;let j = index"
+                                #inputElement
+                                (focusout)="writeFoodForThoughtValue(key.rigor[1][j],i,inputElement.value)"
+                                [disabled]="defaultcase=='yes'" /></td>
+                        <td><input type="text" [value]="item" *ngFor="let item of key.structuring[0] ;let j = index"
+                                #inputElement
+                                (focusout)="writeFoodForThoughtValue(key.structuring[1][j],i,inputElement.value)"
+                                [disabled]="defaultcase=='yes'" /></td>
+                        <td><input type="text" [value]="item" *ngFor="let item of key.synthesis[0] ;let j = index"
+                                #inputElement
+                                (focusout)="writeFoodForThoughtValue(key.synthesis[1][j],i,inputElement.value)"
+                                [disabled]="defaultcase=='yes'" /></td>
+                        <td><input type="text" [value]="item" *ngFor="let item of key.business[0] ;let j = index"
+                                #inputElement
+                                (focusout)="writeFoodForThoughtValue(key.business[1][j],i,inputElement.value)"
+                                [disabled]="defaultcase=='yes'" /></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

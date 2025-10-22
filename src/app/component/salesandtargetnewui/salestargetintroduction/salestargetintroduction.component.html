@@ -1,0 +1,109 @@
+<!-- new -->
+<div class="elearingnewui sales_target">
+    <div class="container">
+        <div class="body-element indroduction-tab">
+            <div class="element-first">
+                <div class="row">
+                    <div class="introductn" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <h1 class="pb-5">How It Works?</h1>
+                </div>
+            </div>
+            <div class="row row-cols-md-3">
+                <div class="col-md" *ngFor="let card of cards; let i = index">
+                    <div class="card crd1">
+                        <div class="card-img-top img-top-new">
+                            <img [src]="card.image" alt="..." class="img_heightwidth">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">{{card.title}}</h2>
+                            <p class="card-text">
+                                {{showAll[i] ? card.text : card.truncatedText}}
+                                <a type="button" (click)="toggleshow(i)" [style.color]="showAll[i] ? 'red' : 'blue'">
+                                    {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-md">
+                    <div class="card crd1">
+                        <div class="card-img-top img-top-new">
+                            <img src="assets/images/salestarget/salesinfosearch.svg" alt="..." class="img_heightwidth">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">Information Search</h2>
+                            <p class="card-text">You'll have to dig deeper into market data, customer feedback, and past
+                                sales reports. Your goal is to analyze this information to identify trends and patterns
+                                that can help you make informed decisions. Staying informed and adaptive is key to
+                                success.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card crd1">
+                        <div class="card-img-top img-top-new">
+                            <img src="../../../../assets/images/salestarget/salesplanning.svg" alt="..."
+                                class="img_heightwidth">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">Sales Planning</h2>
+                            <p class="card-text">It's time to assemble your sales team. You'll need to hire individuals
+                                based on your business's specific requirements. You'll encounter candidates from various
+                                backgrounds, each with unique skills and experience. Make choices that align with your
+                                team's goals and budget.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card crd1">
+                        <div class="card-img-top img-top-new">
+                            <img src="assets/images/salestarget/salescomposition.svg" alt="..." class="img_heightwidth">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">Sales Composition</h2>
+                            <p class="card-text">Determine the composition of your sales team. Decide whether you'll
+                                have an inside sales team, a field sales team, or a combination of both. Assign
+                                leadership roles, and consider providing recognition or incentives for top performers to
+                                boost motivation and morale.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card crd1">
+                        <div class="card-img-top img-top-new">
+                            <img src="assets/images/salestarget/salesdevelopment.svg" alt="..." class="img_heightwidth">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">Sales Development</h2>
+                            <p class="card-text">Your sales team's success relies on their skills and knowledge.
+                                Identify the specific training needs your team has. Tailor the training to your
+                                business's unique requirements, whether it's product knowledge, sales techniques, or
+                                customer service.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card crd1">
+                        <div class="card-img-top img-top-new">
+                            <img src="assets/images/salestarget/salesreport.svg" alt="..." class="img_heightwidth">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">Reports</h2>
+                            <p class="card-text">It's time to evaluate your sales team's performance. You'll receive
+                                reports on sales figures, and other relevant key performance indicators (KPIs). These
+                                reports will provide valuable insights that can guide your future decisions and strategy
+                                adjustments.</p>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>

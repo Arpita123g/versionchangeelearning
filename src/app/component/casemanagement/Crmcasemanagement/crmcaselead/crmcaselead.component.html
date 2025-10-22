@@ -1,0 +1,47 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui casemanagement">
+    <div class="case-management-body case-management-body-marketing ">
+        <div *ngFor="let lead of leads">
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>{{ lead.name }}</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="table-responsive mb-3 mt-3">
+                <table class="table case-management-table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{ round }}</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let row of lead.rows">
+                            <tr>
+                                <td>{{ row.label }}</td>
+                                <!-- <td *ngFor="let capitaldata of res[row.key]; let i = index">
+                                    <input style="width:9rem !important" [value]="res[row.key][i]" #inputElement
+                                        [disabled]="defaultcase == 'yes'"
+                                        (focusout)="writeMarketingValue(row.key, i, inputElement.value)">
+                                </td> -->
+                                <td *ngFor="let capitaldata of res[row.key]; let i = index">
+                                    <input style="width:9rem !important" [value]="res[row.key][i]" #inputElement
+                                        [disabled]=" defaultcase == 'yes' || 
+                                        (row.label !== 'Lead Score' && row.label !== 'Probability of conversion')"
+                                        (focusout)="writeMarketingValue(row.key, i, inputElement.value)">
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

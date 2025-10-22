@@ -1,0 +1,157 @@
+<div class="elearingnewui bus_iness">
+    <div class="newinstructor">
+        <div class="card newinstructor-card-first">
+            <div class="card-header newinstructor-card-header-first">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab_pane-first tab-pane fade show active">
+                        <ul class="nav nav_bar" role="tablist">
+                            <li role="presentation" 
+                                class="nav_bar-li" 
+                                [class.active]="activetab() === 'microsim'"
+                                (click)="tabclick('microsim')">
+                                <span class="octicon octicon-diff-added">
+                                    <mat-icon>sim_card</mat-icon>MICRO SIM
+                                </span>
+                            </li>
+                            <li role="presentation" 
+                                class="nav_bar-li" 
+                                [class.active]="activetab() === 'voicebased'"
+                                (click)="tabclick('voicebased')">
+                                <span class="octicon octicon-diff-added">
+                                    <mat-icon>record_voice_over</mat-icon>VOICE BASED SIM
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    @if (activetab() === 'microsim') {
+                        <div role="tabpanel" class="tab_pane-second tab-pane fade show active">
+                            <nav>
+                                <ul class="nav nav_bar" role="tablist">
+                                    <li role="presentation" 
+                                        class="nav_bar-li" 
+                                        [class.active]="microsimsubtab() === 'ongoing'"
+                                        (click)="microsimtabclick('ongoing')">
+                                        <span class="octicon octicon-diff-added">ONGOING</span>
+                                    </li>
+                                    <li role="presentation" 
+                                        class="nav_bar-li" 
+                                        [class.active]="microsimsubtab() === 'completed'"
+                                        (click)="microsimtabclick('completed')">
+                                        <span class="octicon octicon-diff-added">COMPLETED</span>
+                                    </li>
+                                    <li role="presentation" 
+                                        class="nav_bar-li" 
+                                        [class.active]="microsimsubtab() === 'archive'"
+                                        (click)="microsimtabclick('archive')">
+                                        <span class="octicon octicon-diff-added">ARCHIVE</span>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div class="tab-content">
+                                @if (microsimsubtab() === 'ongoing') {
+                                    <app-microsimongoing></app-microsimongoing>
+                                }
+                                @if (microsimsubtab() === 'completed') {
+                                    <app-microsimcompleted></app-microsimcompleted>
+                                }
+                                @if (microsimsubtab() === 'archive') {
+                                    <app-microsimarchive></app-microsimarchive>
+                                }
+                            </div>
+                        </div>
+                    }
+
+                    @if (activetab() === 'voicebased') {
+                        <div role="tabpanel" class="tab_pane-second tab-pane fade show">
+                            <nav>
+                                <ul class="nav nav_bar" role="tablist">
+                                    <li role="presentation" 
+                                        class="nav_bar-li" 
+                                        [class.active]="voicebasedsubtab() === 'ongoing'"
+                                        (click)="voicebasedtabclick('ongoing')">
+                                        <span class="octicon octicon-diff-added">ONGOING</span>
+                                    </li>
+                                    <li role="presentation" 
+                                        class="nav_bar-li" 
+                                        [class.active]="voicebasedsubtab() === 'completed'"
+                                        (click)="voicebasedtabclick('completed')">
+                                        <span class="octicon octicon-diff-added">COMPLETED</span>
+                                    </li>
+                                    <li role="presentation" 
+                                        class="nav_bar-li" 
+                                        [class.active]="voicebasedsubtab() === 'archive'"
+                                        (click)="voicebasedtabclick('archive')">
+                                        <span class="octicon octicon-diff-added">ARCHIVE</span>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div class="tab-content">
+                                @if (voicebasedsubtab() === 'ongoing') {
+                                    <app-voicebaseongoing></app-voicebaseongoing>
+                                }
+                                @if (voicebasedsubtab() === 'completed') {
+                                    <app-voicebasecompleted></app-voicebasecompleted>
+                                }
+                                @if (voicebasedsubtab() === 'archive') {
+                                    <app-voicebasearchive></app-voicebasearchive>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- new........ -->
+<!-- <div class="elearingnewui bus_iness">
+    <div class="container newinstructor">
+        <div class="card newinstructor-card vh-100 mt-3">
+            <div class="card-header newinstructor-card-header">
+                <ul class="nav nav_bar" role="tablist">
+                    <li role="presentation" class=" nav_bar-li active" data-bs-target="#microsim"
+                        aria-controls="microsim" role="tab" data-bs-toggle="tab" aria-selected="true">
+                        <span class="octicon octicon-diff-added">MICRO SIM</span>
+                    </li>
+                    <li role="presentation " class="nav_bar-li" data-bs-target="#voicebased"
+                        aria-controls="voicebased" role="tab" data-bs-toggle="tab" aria-selected="false">
+                        <span class="octicon octicon-diff-added">VOICE BASED</span>
+                    </li>
+                </ul>
+                <ul class="nav nav_bar" role="tablist">
+                    <li role="presentation " class="nav_bar-li " data-bs-target="#microsimongoing"
+                        aria-controls="microsimongoing" role="tab" data-bs-toggle="tab" aria-selected="false">
+                        <span class="octicon octicon-diff-added">ONGOING</span>
+                    </li>
+                    <li role="presentation" class="nav_bar-li" data-bs-target="#microsimcompleted"
+                        aria-controls="microsimcompleted" role="tab" data-bs-toggle="tab" aria-selected="false">
+                        <span class="octicon octicon-diff-added">COMPLETED</span>
+                    </li>
+                    <li role="presentation" class="nav_bar-li" data-bs-target="#microsimarchive"
+                        aria-controls="microsimarchive" role="tab" data-bs-toggle="tab" aria-selected="false">
+                        <span class="octicon octicon-diff-added">ARCHIVE</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card-body newinstructor-card-body">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane  active " id="microsimongoing">
+                        <app-microsimongoing></app-microsimongoing>
+                    </div>
+                    <div role="tabpanel" class="tab-pane   " id="microsimcompleted">
+                        <app-microsimcompleted></app-microsimcompleted>
+                    </div>
+                    <div role="tabpanel" class="tab-pane   " id="microsimarchive">
+                        <app-microsimarchive></app-microsimarchive>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

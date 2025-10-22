@@ -1,0 +1,33 @@
+<!-- new -->
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+</div>
+<div class="elearingnewui change_management">
+    <div class="container">
+        <div class="body-element">
+            <div class="row" class="element-first ">
+                <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+                    style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                    <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                        <button class="food-thought-btn">{{foodvalue}}</button></span>
+                </div>
+            </div>
+            <div class="d-flex intro_nd">
+                <div class="intro">
+                    <div class="intro-text">
+                        <p class="marketpage-p" [innerHTML]="contentvalue"></p>
+                    </div>
+                </div>
+                <div class="text-center w-50">
+                    <div>
+                        <!-- <img src="assets/images/changemanagementnew/marketmemo.png" class="img-fluid"> -->
+                        <img [src]="languagePrimary === 'french' 
+                        ? 'assets/images/changemanagementnew/memoimagefrench.png'  
+                        : 'assets/images/changemanagementnew/marketmemo.png'" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

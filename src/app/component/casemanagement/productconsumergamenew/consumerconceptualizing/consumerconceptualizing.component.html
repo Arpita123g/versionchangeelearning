@@ -1,0 +1,718 @@
+<div class="elearingnewui casemanagement">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="case-management-body case-management-body-marketing ">
+
+
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <h2>Conceptualizing</h2>
+                </tr>
+                <tr>
+                    <h3>Age 15-24yrs</h3>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td colspan="3" *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody class="first-tbody">
+                    <tr>
+                        <ng-container>
+                            <td></td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <ng-container *ngFor="let item of data; let i = index">
+
+                            <td *ngIf="i % 3 === 0">Male</td>
+                            <td *ngIf="i % 3 === 1">Female</td>
+                            <td *ngIf="i % 3 === 2">Both</td>
+                           
+                        </ng-container>
+                    </tr>
+                </tbody>
+                <tbody class="frst-left-tbody" *ngIf="res!=[]">
+                    <tr>
+                        <td>Action/Adventure
+                        </td>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.q96[index]" #q96Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('q96', index, q96Input.value)"></td>
+                            <td><input [value]="res.r96[index]" #r96Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('r96', index, r96Input.value)"></td>
+                            <td><input [value]="res.s96[index]" #s96Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('s96', index, s96Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td>Racing/Sports
+                        </td>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.q97[index]" #q97Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('q97', index, q97Input.value)"></td>
+                            <td><input [value]="res.r97[index]" #r97Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('r97', index, r97Input.value)"></td>
+                            <td><input [value]="res.s97[index]" #s97Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('s97', index, s97Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td>
+                            Puzzle/Quiz/Words</td>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.q98[index]" #q98Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('q98', index, q98Input.value)"></td>
+                            <td><input [value]="res.r98[index]" #r98Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('r98', index, r98Input.value)"></td>
+                            <td><input [value]="res.s98[index]" #s98Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('s98', index, s98Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td>Strategy/Role Playing</td>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.q99[index]" #q99Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('q99', index, q99Input.value)"></td>
+                            <td><input [value]="res.r99[index]" #r99Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('r99', index, r99Input.value)"></td>
+                            <td><input [value]="res.s99[index]" #s99Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('s99', index, s99Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td>
+                            Casino/Card/Betting</td>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.q100[index]" #q100Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('q100', index, q100Input.value)"></td>
+                            <td><input [value]="res.r100[index]" #r100Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('r100', index, r100Input.value)"></td>
+                            <td><input [value]="res.s100[index]" #s100Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('s100', index, s100Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <h3>Age 25-34yrs</h3>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td colspan="3" *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody class="first-tbody">
+                    <tr>
+                        <ng-container>
+                            <td></td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <ng-container *ngFor="let item of data; let i = index">
+
+                            <td *ngIf="i % 3 === 0">Male</td>
+                            <td *ngIf="i % 3 === 1">Female</td>
+                            <td *ngIf="i % 3 === 2">Both</td>
+                            
+                        </ng-container>
+                    </tr>
+                </tbody>
+                <tbody class="frst-left-tbody" *ngIf="res!=[]">
+                    <tr>
+                        <td>Action/Adventure
+                        </td>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.t96[index]" #t96Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('t96', index, t96Input.value)"></td>
+                            <td><input [value]="res.u96[index]" #u96Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('u96', index, u96Input.value)"></td>
+                            <td><input [value]="res.v96[index]" #v96Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('v96', index, v96Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td>Racing/Sports
+                        </td>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.t97[index]" #t97Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('t97', index, t97Input.value)"></td>
+                            <td><input [value]="res.u97[index]" #u97Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('u97', index, u97Input.value)"></td>
+                            <td><input [value]="res.v97[index]" #v97Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('v97', index, v97Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td>
+                            Puzzle/Quiz/Words</td>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.t98[index]" #t98Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('t98', index, t98Input.value)"></td>
+                            <td><input [value]="res.u98[index]" #u98Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('u98', index, u98Input.value)"></td>
+                            <td><input [value]="res.v98[index]" #v98Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('v98', index, v98Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td>Strategy/Role Playing</td>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.t99[index]" #t99Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('t99', index, t99Input.value)"></td>
+                            <td><input [value]="res.u99[index]" #u99Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('u99', index, u99Input.value)"></td>
+                            <td><input [value]="res.v99[index]" #v99Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('v99', index, v99Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td>
+                            Casino/Card/Betting</td>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.t100[index]" #t100Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('t100', index, t100Input.value)"></td>
+                            <td><input [value]="res.u100[index]" #u100Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('u100', index, u100Input.value)"></td>
+                            <td><input [value]="res.v100[index]" #v100Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('v100', index, v100Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <h3>Age 35+yrs</h3>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td colspan="3" *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody class="first-tbody">
+                    <tr>
+                        <ng-container>
+                            <td></td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                            <td colspan="3">Genres</td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <ng-container *ngFor="let item of data; let i = index">
+
+                            <td *ngIf="i % 3 === 0">Male</td>
+                            <td *ngIf="i % 3 === 1">Female</td>
+                            <td *ngIf="i % 3 === 2">Both</td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+                <tbody class="frst-left-tbody" *ngIf="res!=[]">
+                    <tr>
+                        <td>Action/Adventure
+                        </td>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.w96[index]" #w96Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('w96', index, w96Input.value)"></td>
+                            <td><input [value]="res.x96[index]" #x96Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('x96', index, x96Input.value)"></td>
+                            <td><input [value]="res.y96[index]" #y96Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('y96', index, y96Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td>Racing/Sports
+                        </td>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.w97[index]" #w97Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('w97', index, w97Input.value)"></td>
+                            <td><input [value]="res.x97[index]" #x97Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('x97', index, x97Input.value)"></td>
+                            <td><input [value]="res.y97[index]" #y97Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('y97', index, y97Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td>
+                            Puzzle/Quiz/Words</td>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.w98[index]" #w98Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('w98', index, w98Input.value)"></td>
+                            <td><input [value]="res.x98[index]" #x98Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('x98', index, x98Input.value)"></td>
+                            <td><input [value]="res.y98[index]" #y98Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('y98', index, y98Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td>Strategy/Role Playing</td>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.w99[index]" #w99Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('w99', index, w99Input.value)"></td>
+                            <td><input [value]="res.x99[index]" #x99Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('x99', index, x99Input.value)"></td>
+                            <td><input [value]="res.y99[index]" #y99Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('y99', index, y99Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td>
+                            Casino/Card/Betting</td>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.w100[index]" #w100Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('w100', index, w100Input.value)"></td>
+                            <td><input [value]="res.x100[index]" #x100Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('x100', index, x100Input.value)"></td>
+                            <td><input [value]="res.y100[index]" #y100Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('y100', index, y100Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Graph-Genres</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing">
+                <thead>
+                    <tr>
+                        <td colspan="2" *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody class="first-tbody">
+                    <tr>
+                        <ng-container *ngFor="let item of data1; let i = index">
+                            <td *ngIf="i % 2 === 0">Genres</td>
+                            <td *ngIf="i % 2 !== 0">% Gaming</td>
+                            
+                        </ng-container>
+                    </tr>
+                </tbody>
+                <tbody class="new-first-tbody" *ngIf="res!=[]">
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="languageData.b25" disabled></td>
+                            <td><input [value]="res.q104[index]*100|number:'1.0-0'" #q104Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('q104', index, q104Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="languageData.b26" disabled></td>
+                            <td><input [value]="res.q105[index]*100|number:'1.0-0'" #q105Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('q105', index, q105Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="languageData.b27" disabled></td>
+                            <td><input [value]="res.q106[index]*100|number:'1.0-0'" #q106Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('q106', index, q106Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="languageData.b28" disabled></td>
+                            <td><input [value]="res.q107[index]*100|number:'1.0-0'" #q107Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('q107', index, q107Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="languageData.b29" disabled></td>
+                            <td><input [value]="res.q108[index]*100|number:'1.0-0'" #q108Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('q108', index, q108Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Situational Element</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody *ngIf="res!=[]">
+                    <tr>
+                        <th class="second-head" colspan="12">Index</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Playfulness</div>
+                        </td>
+                        <td *ngFor="let conceptdata of res.q111; let i = index">
+                            <input [value]="res.q111[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeConceptualizingValue('q111',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Cultural Norms</div>
+                        </td>
+                        <td *ngFor="let conceptdata of res.q112; let i = index">
+                            <input [value]="res.q112[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeConceptualizingValue('q112',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Ease of use</div>
+                        </td>
+                        <td *ngFor="let conceptdata of res.q113; let i = index">
+                            <input [value]="res.q113[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeConceptualizingValue('q113',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Continuance Intention</div>
+                        </td>
+                        <td *ngFor="let conceptdata of res.q114; let i = index">
+                            <input [value]="res.q114[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeConceptualizingValue('q114',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Graph - Situational Element</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing-second">
+                <thead>
+                    <tr>
+                        <td colspan="3" *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody class="second-tbody new-second-tbody" *ngIf="res!=[]">
+                    <tr>
+                        <ng-container *ngFor="let item of data; let i = index">
+                            <td *ngIf="i % 3 === 0">Situational Element</td>
+                            <td *ngIf="i % 3 === 1">Immersion Level</td>
+                            <td *ngIf="i % 3 === 2">Emotional Resonance</td>
+                            
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="languageData.b95" disabled></td>
+                            <td><input [value]="res.q118[index]*100|number:'1.0-0'" #q118Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('q118', index, q118Input.value)"></td>
+                            <td><input [value]="res.r118[index]*100|number:'1.0-0'" #r118Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('r118', index, r118Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="languageData.b96" disabled></td>
+                            <td><input [value]="res.q119[index]*100|number:'1.0-0'" #q119Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('q119', index, q119Input.value)"></td>
+                            <td><input [value]="res.r119[index]*100|number:'1.0-0'" #r119Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('r119', index, r119Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="languageData.b97" disabled></td>
+                            <td><input [value]="res.q120[index]*100|number:'1.0-0'" #q120Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('q120', index, q120Input.value)"></td>
+                            <td><input [value]="res.r120[index]*100|number:'1.0-0'" #r120Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('r120', index, r120Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="languageData.b98" disabled></td>
+                            <td><input [value]="res.q121[index]*100|number:'1.0-0'" #q121Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('q121', index, q121Input.value)"></td>
+                            <td><input [value]="res.r121[index]*100|number:'1.0-0'" #r121Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeConceptualizingValue('r121', index, r121Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Social Elements</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody *ngIf="res!=[]">
+                    <tr>
+                        <th class="second-head" colspan="12">Index</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Chat Functionality</div>
+                        </td>
+                        <td *ngFor="let conceptdata of res.q125; let i = index">
+                            <input [value]="res.q125[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeConceptualizingValue('q125',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Leaderboards & Activity Feeds</div>
+                        </td>
+                        <td *ngFor="let conceptdata of res.q126; let i = index">
+                            <input [value]="res.q126[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeConceptualizingValue('q126',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">User Trading</div>
+                        </td>
+                        <td *ngFor="let conceptdata of res.q127; let i = index">
+                            <input [value]="res.q127[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeConceptualizingValue('q127',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Push Notification</div>
+                        </td>
+                        <td *ngFor="let conceptdata of res.q128; let i = index">
+                            <input [value]="res.q128[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeConceptualizingValue('q128',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Community</div>
+                        </td>
+                        <td *ngFor="let conceptdata of res.q129; let i = index">
+                            <input [value]="res.q129[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeConceptualizingValue('q129',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Social Media Integration</div>
+                        </td>
+                        <td *ngFor="let conceptdata of res.q130; let i = index">
+                            <input [value]="res.q130[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeConceptualizingValue('q130',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Lifestyle Elements</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody *ngIf="res!=[]">
+                    <tr>
+                        <th class="second-head" colspan="12">Index</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Active</div>
+                        </td>
+                        <td *ngFor="let conceptdata of res.q134; let i = index">
+                            <input [value]="res.q134[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeConceptualizingValue('q134',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Healthy</div>
+                        </td>
+                        <td *ngFor="let conceptdata of res.q135; let i = index">
+                            <input [value]="res.q135[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeConceptualizingValue('q135',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Solo </div>
+                        </td>
+                        <td *ngFor="let conceptdata of res.q136; let i = index">
+                            <input [value]="res.q136[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeConceptualizingValue('q136',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Rural</div>
+                        </td>
+                        <td *ngFor="let conceptdata of res.q137; let i = index">
+                            <input [value]="res.q137[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeConceptualizingValue('q137',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Urban</div>
+                        </td>
+                        <td *ngFor="let conceptdata of res.q138; let i = index">
+                            <input [value]="res.q138[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeConceptualizingValue('q138',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Nomadic</div>
+                        </td>
+                        <td *ngFor="let conceptdata of res.q139; let i = index">
+                            <input [value]="res.q139[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeConceptualizingValue('q139',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Bohemian</div>
+                        </td>
+                        <td *ngFor="let conceptdata of res.q140; let i = index">
+                            <input [value]="res.q140[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeConceptualizingValue('q140',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Digital</div>
+                        </td>
+                        <td *ngFor="let conceptdata of res.q141; let i = index">
+                            <input [value]="res.q141[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeConceptualizingValue('q141',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

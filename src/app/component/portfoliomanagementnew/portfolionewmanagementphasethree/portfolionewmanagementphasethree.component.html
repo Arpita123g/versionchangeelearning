@@ -1,0 +1,539 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui portfolio_new">
+    <div class="container">
+        <div class="body-element">
+            <div class="market-research">
+                <div class="element-first">
+                    <div class="row">
+                        <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+                            style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                                <button class="food-thought-btn">Food For Thought</button></span>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="nav market-research-nav" id="nav-tab" role="tablist">
+                    <li class="nav-link market-research-link active" id="nav-genre-preference-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-genre-preference" type="button" role="tab"
+                        aria-controls="nav-genre-preference" aria-selected="true">Market Monitor
+                    </li>
+                    <li class="nav-link  market-research-link" id="nav-Market-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Market" type="button" role="tab" aria-controls="nav-Market"
+                        aria-selected="true">
+                        Allocation
+                    </li>
+                </ul>
+
+
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-genre-preference" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <h1>Market Monitor
+                                <mat-icon appTippy="
+                            <div class='help-tip p-2'>
+                              <div style='display:flex;'>
+                                <div>
+                                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                </div> &nbsp; &nbsp; &nbsp;
+                                <div>
+                                  <p style='margin: 0 auto; color: white; font-size:13px;'>  Reflecting on the historical return trend, what insights can you gather about the performance of various securities in previous years?</p>
+                                </div>
+                              </div><br>
+                                <div style='display:flex;'>
+                                  <div>
+                                    <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                  </div> &nbsp; &nbsp; &nbsp;
+                                  <div>
+                                    <p style='margin: 0 auto; color: white; font-size:13px;'> How would you utilize average annualized returns trends to make informed decisions regarding your portfolio composition?</p>
+                                  </div>
+                                </div>
+                            </div> ">
+                                    help_outline
+                                </mat-icon>
+                            </h1>
+                            <ul class="list-group  list-group-flush marketoutlooklist" style="border: none;">
+                                <li class="list-group-item">
+                                    <div class="row table-responsive">
+                                        <div class="col-md-6">
+                                            <img class="card-img-left example-card-img-responsive" style="height: 22rem;
+                                            width: 100%;"
+                                                src="/assets/images/portfoliomanagementnew/portfolioimageforphase3.svg" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <table class="table table-bordered Monitor_table">
+                                                <thead>
+                                                    <tr>
+                                                        <th colspan="2">
+                                                            Phase 2
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Portfolio Return</td>
+                                                        <td>{{(result[36]*100)|number:'1.0-2'}}%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Portfolio Risk</td>
+                                                        <td>{{(result[37]*100)|number:'1.0-2'}}%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Portfolio Beta</td>
+                                                        <td>{{(result[38])|number:'1.0-2'}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Treynor Measure</td>
+                                                        <td>{{(result[39])|number:'1.0-2'}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Sharpe Ratio</td>
+                                                        <td>{{(result[40])|number:'1.0-2'}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Jenson's Alpha</td>
+                                                        <td>{{(result[41]*100)|number:'1.0-2'}}%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>CAPM</td>
+                                                        <td>{{(result[42]*100)|number:'1.0-2'}}%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Fama Measure</td>
+                                                        <td>{{(result[43]*100)|number:'1.0-2'}}%</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="py-3">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="marketmonitorchart.series"
+                                                [chart]="marketmonitorchart.chart"
+                                                [markers]="marketmonitorchart.markers"
+                                                [stroke]="marketmonitorchart.stroke" 
+                                                [title]="marketmonitorchart.title"
+                                                [colors]="marketmonitorchart.colors"
+                                                [xaxis]="marketmonitorchart.xaxis"
+                                                [tooltip]="marketmonitorchart.tooltip"
+                                                [yaxis]="marketmonitorchart.yaxis"></apx-chart>
+                                        </div>
+                                    </div>
+                                    <div class="py-3">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="AverageAnnualizedReturngraph.series"
+                                                [chart]="AverageAnnualizedReturngraph.chart"
+                                                [dataLabels]="AverageAnnualizedReturngraph.dataLabels"
+                                                [plotOptions]="AverageAnnualizedReturngraph.plotOptions"
+                                                [yaxis]="AverageAnnualizedReturngraph.yaxis"
+                                                [xaxis]="AverageAnnualizedReturngraph.xaxis"
+                                                [fill]="AverageAnnualizedReturngraph.fill"
+                                                [title]="AverageAnnualizedReturngraph.title"
+                                                [tooltip]="AverageAnnualizedReturngraph.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade " id="nav-Market" role="tabpanel">
+                        <h1>Allocation
+                            <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+              </div> &nbsp; &nbsp; &nbsp;
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px;'> How does the described risk-free rate and market return influence your decision-making process regarding portfolio allocation?</p>
+              </div>
+            </div><br>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'> With the given capital available and economic scenario, how would you adjust your portfolio allocation to optimize returns while managing risks effectively?</p>
+                </div>
+              </div>
+          </div> ">
+                                help_outline
+                            </mat-icon>
+                        </h1>
+                        <div class="row row-cols-md-2 phasewidthinportfolio">
+                            <div class="col-md-9">
+                                <div class="card flex-row portfoliobackground">
+                                    <a href="assets/images/portfoliomanagementnew/Historical Data_Phase 3.xlsx"
+                                        download>
+                                        <div class="download_btn" matTooltiClass="primary-tooltip">
+                                            <div>
+                                                <a download matTooltip="Download Historical Data Phase 3"><span
+                                                        class="hovertext" data-hover="Download pdf file accounting ">
+                                                        <img class="download_btn-img"
+                                                            src="assets/images/businessbasics/download.png" />
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <mat-icon class="mt-2">get_app</mat-icon>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="row portfolioimageset">
+                                        <div class="col-md-4 imagesetuoinportfolio">
+                                            <img class="card-img-left example-card-img-responsive"
+                                                src="/assets/images/portfoliomanagementnew/portfolioavatar.png" />
+                                        </div>
+
+                                        <div class="col-md-8 portfoliopaddiing">
+                                            <div class="card-body">
+                                                <p class="card-text">The upcoming year brings challenges for Dalal
+                                                    Street amid uncertainty and high market valuations. Investor
+                                                    reactions may fluctuate due to fears of Fed rate hikes, war,
+                                                    inflation, and recession projections, leading to bouts of FOMO among
+                                                    new investors. While IT and pharma sectors contract, traditional
+                                                    sectors like power and utilities are expected to perform well.
+                                                    Rising interest rates may negatively impact debt funds, with
+                                                    corporate and PSU funds considered safer investments. In the US,
+                                                    economic resilience suggests a strong year ahead, with sectors like
+                                                    financials, industrials, and materials showing outperformance
+                                                    despite inflationary pressures.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card alocation-element-div">
+                                    <div class="alocation-element">
+
+                                        <h2>{{result[0]}}</h2>
+                                        <p>{{result[1]*100|number:'1.0-2'}}%</p>
+                                    </div>
+                                    <div class="alocation-element">
+
+                                        <h2>{{result[2]}}</h2>
+                                        <p>{{result[3]*100|number:'1.0-2'}}%</p>
+                                    </div>
+                                    <div class="alocation-element">
+                                        <h2>Available Capital, k INR</h2>
+                                        <p>{{getLastFiveDigits(result[4])}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <h1>Correlation
+                            <mat-icon appTippy="
+                            <div class='help-tip p-2'>
+                              <div style='display:flex;'>
+                                <div>
+                                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                </div> &nbsp; &nbsp; &nbsp;
+                                <div>
+                                  <p style='margin: 0 auto; color: white; font-size:13px;'>   Considering the estimated return and beta associated with each security, how do you interpret their respective risk-return profiles?</p>
+                                </div>
+                              </div><br>
+                                <div style='display:flex;'>
+                                  <div>
+                                    <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                  </div> &nbsp; &nbsp; &nbsp;
+                                  <div>
+                                    <p style='margin: 0 auto; color: white; font-size:13px;'>  How would you leverage the information on correlation between different securities to construct a diversified portfolio that minimizes risk while maximizing returns?</p>
+                                  </div>
+                                </div>
+                            </div> ">
+                                help_outline
+                            </mat-icon>
+                        </h1>
+                        <div class="card phasewidthinportfolio">
+                            <div class="table-responsive">
+                                <table class="table table-bordered thirdtable">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Indian Stocks</th>
+                                            <th>Indian Commodity</th>
+                                            <th>Hybrid Fund</th>
+                                            <th>Corporate Bond</th>
+                                            <th>PSU Bond</th>
+                                            <th>US Stocks</th>
+                                            <th>Cash & Cash Equivalent</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="tdd">
+                                            <th>Expected Return</th>
+
+                                            <td>{{result[5]*100|number:'1.0-0'}}%</td>
+                                            <td>{{result[6]*100|number:'1.0-0'}}%</td>
+                                            <td>{{result[7]*100|number:'1.0-0'}}%</td>
+                                            <td>{{result[8]*100|number:'1.0-0'}}%</td>
+                                            <td>{{result[9]*100|number:'1.0-0'}}%</td>
+                                            <td>{{result[10]*100|number:'1.0-0'}}%</td>
+                                            <td class="tdlastchild">{{result[11]*100|number:'1.0-0'}}%</td>
+
+
+                                        </tr>
+                                        <tr class="secondtable tdd">
+                                            <th>Beta</th>
+
+                                            <td>{{result[12]|number:'1.0-2'}}</td>
+                                            <td>{{result[13]|number:'1.0-2'}}</td>
+                                            <td>{{result[14]|number:'1.0-2'}}</td>
+                                            <td>{{result[15]|number:'1.0-5'}}</td>
+                                            <td>{{result[16]|number:'1.0-2'}}</td>
+                                            <td>{{result[17]|number:'1.0-2'}}</td>
+                                            <td class="tdlastchild">{{result[18]|number:'1.0-5'}}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                        </tr>
+
+
+                                        <tr class="tdd">
+                                            <th>Indian Stocks</th>
+                                            <td class="tdlastchild">1.00</td>
+
+
+                                        </tr>
+                                        <tr class="tdd">
+                                            <th>Indian Commodity</th>
+                                            <td>0.50</td>
+                                            <td class="tdlastchild">1.00</td>
+
+                                        </tr>
+                                        <tr class="tdd">
+                                            <th>Hybrid Fund</th>
+                                            <td>0.50</td>
+                                            <td>0.21</td>
+                                            <td class="tdlastchild">1.00</td>
+
+                                        </tr>
+                                        <tr class="tdd">
+                                            <th>Corporate Bond</th>
+                                            <td>0.48</td>
+                                            <td>0.19</td>
+                                            <td>0.99</td>
+                                            <td class="tdlastchild">1.00</td>
+
+                                        </tr>
+                                        <tr class="tdd">
+                                            <th>PSU Bond</th>
+                                            <td>0.50</td>
+                                            <td>0.24</td>
+                                            <td>0.97</td>
+                                            <td>1.00</td>
+                                            <td class="tdlastchild">1.00</td>
+
+                                        </tr>
+                                        <tr class="tdd">
+                                            <th>US Stocks</th>
+                                            <td>(0.16)</td>
+                                            <td>(0.11)</td>
+                                            <td>(0.01)</td>
+                                            <td>(0.04)</td>
+                                            <td>(0.03)</td>
+                                            <td class="tdlastchild">(1.00)</td>
+
+                                        </tr>
+                                        <tr class=" secondtable tdd">
+                                            <th>Cash & Cash Equivalent</th>
+                                            <td>0.60</td>
+                                            <td>0.21</td>
+                                            <td>1.00</td>
+                                            <td>0.91</td>
+                                            <td>0.96</td>
+                                            <td>0.02</td>
+                                            <td class="tdlastchild">1.00</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+
+                        <h1>Portfolio Allocation
+                            <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+              </div> &nbsp; &nbsp; &nbsp;
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px;'>  Given the risk and returns associated with each security, how do you determine the optimal allocation of capital to achieve your investment objectives?</p>
+              </div>
+            </div><br>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>  How does your assessment of the client's risk tolerance and the need for portfolio diversification influence your decisions regarding portfolio allocation?</p>
+                </div>
+              </div>
+          </div> ">
+                                help_outline
+                            </mat-icon>
+                        </h1>
+                        <div class="row row-cols-md-2 phasewidthinportfolio">
+                            <div class="col-md-9">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered secondtable-phaseone">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Securities
+                                                </th>
+                                                <th>
+                                                    Allocation
+                                                </th>
+                                                <th>
+                                                    Value, k INR
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Indian Stocks</td>
+                                                <td>
+                                                    <span>
+                                                        <input class="input-no_box" type="number"
+                                                            oninput="this.value = Math.max(this.value, 0)" [ngClass]="{'disabled-bg': inputDisabled}"
+                                                            placeholder="Input value here..." [(ngModel)]="result[19]"
+                                                            (focusout)="inputtablevalue(19)" [disabled]="inputDisabled">
+                                                        <div class="input-group-text" id="basic-addon2" [ngClass]="{'disabled-bg': inputDisabled}">%</div>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    {{result[26]}}
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Indian Commodity</td>
+                                                <td>
+                                                    <span>
+                                                        <input class="input-no_box" type="number"
+                                                            oninput="this.value = Math.max(this.value, 0)" [ngClass]="{'disabled-bg': inputDisabled}"
+                                                            placeholder="Input value here..." [(ngModel)]="result[20]"
+                                                            (focusout)="inputtablevalue(20)" [disabled]="inputDisabled">
+                                                        <div class="input-group-text" id="basic-addon2" [ngClass]="{'disabled-bg': inputDisabled}">%</div>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    {{result[27]}}
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Hybrid Fund</td>
+                                                <td>
+                                                    <span>
+                                                        <input class="input-no_box" type="number"
+                                                            oninput="this.value = Math.max(this.value, 0)" [ngClass]="{'disabled-bg': inputDisabled}"
+                                                            placeholder="Input value here..." [(ngModel)]="result[21]"
+                                                            (focusout)="inputtablevalue(21)" [disabled]="inputDisabled">
+                                                        <div class="input-group-text" id="basic-addon2" [ngClass]="{'disabled-bg': inputDisabled}">%</div>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    {{result[28]}}
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Corporate Bond</td>
+                                                <td>
+                                                    <span>
+                                                        <input class="input-no_box" type="number"
+                                                            oninput="this.value = Math.max(this.value, 0)"[ngClass]="{'disabled-bg': inputDisabled}"
+                                                            placeholder="Input value here..." [(ngModel)]="result[22]"
+                                                            (focusout)="inputtablevalue(22)" [disabled]="inputDisabled">
+                                                        <div class="input-group-text" id="basic-addon2" [ngClass]="{'disabled-bg': inputDisabled}">%</div>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    {{result[29]}}
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>PSU Bond</td>
+                                                <td>
+                                                    <span>
+                                                        <input class="input-no_box" type="number"
+                                                            oninput="this.value = Math.max(this.value, 0)" [ngClass]="{'disabled-bg': inputDisabled}"
+                                                            placeholder="Input value here..." [(ngModel)]="result[23]"
+                                                            (focusout)="inputtablevalue(23)" [disabled]="inputDisabled">
+                                                        <div class="input-group-text" id="basic-addon2" [ngClass]="{'disabled-bg': inputDisabled}">%</div>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    {{result[30]}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>US Stocks</td>
+                                                <td>
+                                                    <span>
+                                                        <input class="input-no_box" type="number"
+                                                            oninput="this.value = Math.max(this.value, 0)" [ngClass]="{'disabled-bg': inputDisabled}"
+                                                            placeholder="Input value here..." [(ngModel)]="result[24]"
+                                                            (focusout)="inputtablevalue(24)" [disabled]="inputDisabled">
+                                                        <div class="input-group-text" id="basic-addon2" [ngClass]="{'disabled-bg': inputDisabled}">%</div>
+                                                    </span>
+
+                                                </td>
+                                                <td>
+                                                    {{result[31]}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cash Equivalents</td>
+                                                <td>
+                                                    <span>
+                                                        <input class="input-no_box1" type="number"
+                                                            oninput="this.value = Math.max(this.value, 0)" disabled
+                                                            [(ngModel)]="result[25]" (focusout)="inputtablevalue(25)"
+                                                            [disabled]="inputDisabled">
+                                                        <div class="input-group-text1" id="basic-addon2">%</div>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    {{result[32]}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card alocation-element-div">
+                                    <div class="alocation-element">
+                                        <h2>Expected Return</h2>
+                                        <p>{{result[33]*100|number:'1.0-2'}}%</p>
+                                    </div>
+                                    <div class="alocation-element">
+                                        <h2>Expected Risk</h2>
+                                        <p>{{result[34]*100|number:'1.0-2'}}%</p>
+                                    </div>
+                                    <div class="alocation-element">
+                                        <h2>Portfolio Beta</h2>
+                                        <p>{{result[35]|number:'1.0-2'}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

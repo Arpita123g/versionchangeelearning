@@ -1,0 +1,72 @@
+
+
+<div class="elearingnewui bus_iness">
+  <!-- <div class="loadingscreen" *ngIf="checkloading">
+      <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+      <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+  </div> -->
+  <div *ngFor="let carddata of cardlistdata">
+      <div class="card shadow new-instructor-dash">
+          <div class="row row-cols-md-2">
+              <div class="col-md-1 col-sm-12 log-left">
+                  <div class="logo-back">
+                      <img src="../../../../assets/elearning_icon_png/Accounting.png">
+                  </div>
+              </div>
+              <div class="col-md-11 col-sm-12">
+                  <div class="row py-1 first-row">
+                      <div class="col-md-6 col-sm-12 ">
+                          <p>Course Code : {{carddata.courseDetails.coursecode}}</p>
+                      </div>
+                      <!-- <div class="col-md-6 col-sm-12 ">
+                     <span class="last-md">
+                      <p>
+                          <span class="time-c">{{card.courseDetails.starttime}} - {{card.courseDetails.endtime}}</span>
+                      </p>
+                     </span>
+                  </div> -->
+                  </div>
+
+                  <div class="row py-1">
+                      <div class="col-md-9 col-sm-12">
+                          <span class="g-name">
+                              <h1>{{carddata.coursename}}</h1>
+                          </span>
+                      </div>
+                      <div class="col-md-3">
+                          <div class="checkboxdirection">
+                              <div class="checkbox-wrapper-31">
+                                  <input type="checkbox" (change)="primarygameselect(carddata)"
+                                      [checked]="carddata.asprimary==='yes'">
+                                  <svg viewBox="0 0 35.6 35.6">
+                                      <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+                                      <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+                                      <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
+                                  </svg>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row row-cols-md-2 link-back py-2">
+                      <div class="col-md-6">
+                          <div class="c-name">
+                              <p> COURSE NAME : </p>
+                              <p class="copy-p" (click)="CopyGame1(carddata)">Copy</p>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="c-managage">
+                              <p> Case Management : </p>
+                              <i style="font-size: 22px; cursor: pointer;" matTooltip="Go to case management"
+                                  class="bi bi-file-earmark-ruled" (click)="gotTocasemanagement(carddata)">
+                              </i>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+</div>

@@ -1,0 +1,26 @@
+<div class="card p-4 courseassignpopup">
+    <div class="row row-cols-md-2 g-3">
+        <div class="col-md">
+            <h4>Course Code</h4>
+            <div class="write_div lightbackground">{{data.courseDetails.coursecode}}</div>
+        </div>
+        <div class="col-md">
+            <h4>Simulation Name</h4>
+            <div class="write_div lightbackground">{{data.courseDetails.simulation}}</div>
+        </div>
+        <div class="col-md">
+            <h4>Select Case</h4>
+            <select #inputElement class="write_div" [(ngModel)]="selectcasename" (change)="casenamechange(inputElement.selectedIndex )">
+                <option  [value]='' selected disabled>Select Case</option>
+                <option *ngFor="let casename of casedata;let i = index" [value]='casename.coursename' >{{casename.coursename}}</option>
+            </select>
+        </div>
+        <div class="col-md">
+            <h4>New Case Name</h4>
+            <input class="write_div" [(ngModel)]="casename">
+        </div>
+    </div>
+    <div class="assign pt-3">
+        <button class="assign_btn" (click)="caseassign()">Assign</button>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="interview-main">
+    <div class="container pt-3 h-100" *ngIf="dialogresult">
+        <div class="maincontent">
+            <span class="blur"></span>
+            <div class="row mt-4">
+                <div class="col-lg-4 mb-2">
+                    <div class="d-flex flex-column gap-4">
+                        <div class="card avatarcard">
+                           
+                            <app-siri-animation [isPlaying]="isPlaying"></app-siri-animation>
+                            <div class="thinking" *ngIf="audiosendloading || chatTranscribe.length==0">
+                                <div>
+                                    <span class="loading-dots"><i class="bi bi-dot"></i></span>
+                                    <span class="loading-dots"><i class="bi bi-dot"></i></span>
+                                    <span class="loading-dots"><i class="bi bi-dot"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card usercamcard">
+                            <ack-webcam #webcam *ngIf="enableWebcamFlag" [options]="options"
+                                (success)="onCamSuccess($event)" (catch)="onCamError($event)" class="maincam"
+                                [facingMode]="'user'" [useParentWidthHeight]="true" [reflect]="true"></ack-webcam>
+                            <div class="permission">
+                                <button mat-fab type="button" class="videoiconbtn"
+                                    [style.backgroundColor]="(camopen&&enableWebcamFlag) ?'red':'gray'"
+                                    (click)="toggleMedia()">
+                                    <mat-icon>{{(camopen&&enableWebcamFlag) ?'videocam':'videocam_off'}}</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <app-audio-player [audioBlob]="respAIBlob" (isPlayingChanged)="handleIsPlayingChanged($event)"></app-audio-player>
+                </div>
+                <div class="col-lg-8">
+                    <div class="chattranscribecard card" #scrollContainer>
+                        <div class="chatitem" *ngFor="let item of chatTranscribe;">
+                            <div *ngIf="item.role!=='system'" [class.user]="item.role==='user'" class="singlechatitem">
+                                <markdown [data]="item.content"></markdown>
+                            </div>
+                        </div>
+                        <div class="chatitem" *ngIf="isRecording || audiosendloading || chatTranscribe.length==0">
+                            <div class="singlechatitem" [class.user]="isRecording">
+                                <span class="loading-dots"><i class="bi bi-dot"></i></span>
+                                <span class="loading-dots"><i class="bi bi-dot"></i></span>
+                                <span class="loading-dots"><i class="bi bi-dot"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainactions container">
+                        <div class="mainactions-container">
+                            <div class="time">
+                                <i class="bi bi-clock-fill rotate "></i>
+                                {{ formatTime(counter) }}
+                            </div>
+                            <div class="record">
+                                <button mat-mini-fab (click)="deleteRecording()"
+                                    *ngIf="!isRecording&&audioBlob.size>0&&!audiosendloading">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                                <button mat-mini-fab [color]="isRecording?'warn':''" [disabled]="micdisabled"
+                                    (click)="!isRecording?startRecording():stopRecording()">
+                                    <mat-icon *ngIf="!audiosendloading">{{isRecording?'stop':'mic'}}</mat-icon>
+                                    <mat-progress-spinner *ngIf="audiosendloading" mode="indeterminate" diameter="22"
+                                        color="accent"></mat-progress-spinner>
+                                </button>
+                                <button mat-mini-fab class="sendbtn" (click)="sendAudioToApi()"
+                                    *ngIf="!isRecording&&audioBlob.size>0&&!audiosendloading">
+                                    <mat-icon>send</mat-icon>
+                                </button>
+                            </div>
+                            <div class="close">
+                                <button mat-button (click)="endSimulation()"  [disabled]="isInterviewOver">
+                                    <mat-icon>close</mat-icon> Skip Round
+                                </button>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

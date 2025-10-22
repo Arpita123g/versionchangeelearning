@@ -1,0 +1,128 @@
+<div class="elearingnewui bus_iness">
+  <div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+  </div>
+  <div class="container">
+    <div class="body-element">
+      <div class="decision-checklist">
+        <div class="row pb-3 d-flex align-items-center">
+          <div class="col-6 decision-checklist-col6">
+            <h1 class="decision-checklist-col6-h1">Decision Checklist</h1>
+          </div>
+          <div class="col-6 text-end">
+            <select class="select-round" name="" id="" [(ngModel)]="roundname" (change)="roundClick()">
+              <option class="select-round-option" value="">Select Round</option>
+              <option class="select-round-option" *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                {{attempt}}</option>
+
+            </select>
+
+          </div>
+        </div>
+        <div class="row">
+          <table class="table table-borderd checklisttable">
+            <tbody class="checklisttable-body">
+              <tr class="checklisttable-body-tr" style="border-bottom: 3px solid black;">
+                <td></td>
+                <td>{{playername}}</td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <th>Location</th>
+                <th></th>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <td>Location</td>
+                <td><span [class]="isClass[0] ? 'defaultcolor' : 'notdefaultcolor'">{{result[0]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr" *ngIf="optional[0]">
+                <td>Licensing & Regulation </td>
+                <td><span [class]="isClass[1] ? 'defaultcolor' : 'notdefaultcolor'">{{result[1]}}</span></td>
+
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <th>Demand</th>
+                <th></th>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <td> Demand Tea Cups per day</td>
+                <td><span [class]="isClass[2] ? 'defaultcolor' : 'notdefaultcolor'">{{result[2]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <th>Investment</th>
+                <th></th>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <td>Interior</td>
+                <td><span [class]="isClass[3] ? 'defaultcolor'  : 'notdefaultcolor'">{{result[3]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <td> Product Mix</td>
+                <td><span [class]="isClass[4] ? 'defaultcolor' : 'notdefaultcolor'">{{result[4]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <td> Procurement Vendor</td>
+                <td><span [class]="isClass[5] ? 'defaultcolor' : 'notdefaultcolor'">{{result[5]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr" *ngIf="optional[1]">
+                <td> Point of Sale </td>
+                <td><span [class]="isClass[6] ? 'defaultcolor' : 'notdefaultcolor'">{{result[6]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr" *ngIf="optional[1]">
+                <td> Security </td>
+                <td><span [class]="isClass[7] ? 'defaultcolor' : 'notdefaultcolor'">{{result[7]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr" *ngIf="optional[1]">
+                <td> Music & Wifi </td>
+                <td><span [class]="isClass[8] ? 'defaultcolor' : 'notdefaultcolor'">{{result[8]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <th>Marketing</th>
+                <th></th>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <td> Price per cup of tea, INR
+                </td>
+                <td><span [class]="isClass[9] ? 'defaultcolor' : 'notdefaultcolor'">{{result[9]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <td> Monthly Promotion Budget, INR
+                </td>
+                <td><span [class]="isClass[10] ? 'defaultcolor' : 'notdefaultcolor'">{{result[10]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr" *ngIf="optional[3]">
+                <td> Social Media Campaign
+                </td>
+                <td><span [class]="isClass[11] ? 'defaultcolor' : 'notdefaultcolor'">{{result[11]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr" *ngIf="optional[3]">
+                <td> Local Advertising Campaign
+                </td>
+                <td><span [class]="isClass[12] ? 'defaultcolor' : 'notdefaultcolor'">{{result[12]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr" *ngIf="optional[3]">
+                <td> Collaboration Campaign
+                </td>
+                <td><span [class]="isClass[13] ? 'defaultcolor' : 'notdefaultcolor'">{{result[13]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <td> Service
+                </td>
+                <td><span [class]="isClass[14] ? 'defaultcolor' : 'notdefaultcolor'">{{result[14]}}</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="decision-textarea py-4" *ngIf="analysisshow">
+            <textarea class="decision-textarea-element" rows="10"  [disabled]="disabled" [(ngModel)]="useranalysisinput"
+              placeholder="Describe your thought process behind the decision-making in 1500 characters…" (focusout)="useranalysissave()" 
+              maxlength="1500"></textarea>
+          </div>
+          <div class="p-0">
+            <button class="btn_stl btn_stl-decisionchecklist" type="button" [disabled]="disabled" (click)="decisionchecklistpopup()">Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

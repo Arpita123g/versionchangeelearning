@@ -1,0 +1,79 @@
+<div class="elearingnewui casemanagement">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="case-management-body case-management-body-hrm">
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Channel mix</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3 mt-3">
+            <table class="table case-management-table mt-2">
+                <thead class="title-tbody">
+                    <tr>
+                        <td *ngFor="let thead of channelmix.thead">
+                            {{thead}}
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tbody of channelmix.tbody; ">
+                        <td>{{tbody.type}}</td>
+                        <td><input type="text" [value]="res[tbody.salarycostcell][0]|| 0" #inputElement
+                                [disabled]="defaultcase === 'yes'"
+                                (focusout)="writeHRMValue(tbody.salarycostcell, 0, inputElement.value)" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-hrm-second">
+                <thead>
+                    <tr>
+                        <td colspan="4" *ngFor="let round  of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody class="second-tbody title-tbody">
+                    <tr>
+                        <ng-container *ngFor="let round of rounds; " class="second-tbody-container">
+                            <td *ngFor="let heading of generalheading" class="second-tbody-td">{{ heading }}
+                            </td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+                <ng-container *ngFor="let item of acquisationdata ; let j =index">
+                    <thead class="title-tbody" *ngIf="item.maintitle">
+                        <tr>
+                            <th colspan="40" class="second-head py-2">
+                                <h4 class="m-0 fw-bold">{{item.maintitle}}</h4>
+                            </th>
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr>
+                            <th colspan="40">
+                                {{item.title}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="second-tbody">
+                        <tr>
+                            <td *ngFor="let cell of item.cell; let i=index">
+                                <input type="text" [value]="res[cell][getJValue(i)]|| 0" #inputElement
+                                    [disabled]="defaultcase === 'yes'"
+                                    (focusout)="writeHRMValue(cell, getJValue(i), inputElement.value)" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </ng-container>
+            </table>
+        </div>
+    </div>
+</div>

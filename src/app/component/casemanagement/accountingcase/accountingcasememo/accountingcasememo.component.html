@@ -1,0 +1,44 @@
+<!-- new -->
+<div class="elearingnewui">
+    <div class="valuechain-element-body">
+        <div class="links">
+            <ul>
+                <button class="out-look-btn " [style.background-color]="round === selectedButton? 'lightgrey' : ''"
+                    *ngFor="let round of rounds; let i = index;" (click)="roundclick(i,round)">{{round}}</button>
+            </ul>
+        </div>
+        <div class="case-texts__content">
+            <div id="initial">
+                <div class="case-texts__content-main">
+                    <div class=" case-texts__container">
+                        <label class="case-texts__content-after-label pb-2">Original text</label>
+                        <div class=" case-texts__container-textarea">
+                            Mr. Raj recently started a paper manufacturing company, handling both finances and
+                            operations himself. Despite his diligent daily ledger recording, the bank statements show a
+                            different picture, indicating potential financial issues.
+                            <br><br>
+                            Upon investigation, a advisor identified several challenges affecting profitability.
+                            Firstly, incomplete ledger entries led to an inaccurate financial picture. Secondly, unclear
+                            cash flow management resulted in periods of negative cash flow, impacting financial
+                            stability. Lastly, personal and business expenses were not separated, further complicating
+                            financial assessment.
+                            <br><br>
+                            To address these challenges, the advisor suggested hiring a manager to provide clarity on
+                            financial utilization across operations, marketing, and business development. As a Senior
+                            Manager appointed to assist Mr. Raj, your role involves preparing financial statements
+                            (Balance Sheet, Income Statement, and Cash Flow Statement) to facilitate informed
+                            decision-making for the company's financial health and growth.
+                        </div>
+                    </div>
+                    <div class="case-texts__content-starea">
+                        <div class="case-texts__content-after">
+                            <label class="case-texts__content-after-label">Your custom default text</label>
+                            <st-editor name="" id="" [config]="config" [(ngModel)]="contentvalue"
+                                [disabled]="defaultcase=='yes'" (focusout)="contentvaluechange()"></st-editor>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

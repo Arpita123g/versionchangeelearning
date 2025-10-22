@@ -1,0 +1,116 @@
+<!-- new -->
+<div class="elearingnewui">
+    <div class="innovation-element-body">
+        <div class="case-management-body">
+            <div class="table-responsive mb-3 mt-3">
+                <div class="links">
+                    <ul>
+                        <button class="out-look-btn "
+                            [style.background-color]="round === selectedButton? 'lightgrey' : ''"
+                            *ngFor="let round of rounds; let i = index;"
+                            (click)="roundclick(i,round)">{{round}}</button>
+                    </ul>
+                </div>
+                <div class="case-texts__content">
+                    <div id="initial">
+                        <div class="case-texts__content-main">
+                            <div class=" case-texts__container">
+                                <label class="case-texts__content-after-label pb-2">Original text</label>
+                                <div class=" case-texts__container-textarea">
+                                    In the vibrant tech hub of Bangalore, Silicon Solutions Pvt. Ltd. has established
+                                    itself as a leading provider of technological solutions, serving a diverse clientele
+                                    of over 200 companies across India. With a keen eye on the evolving landscape,
+                                    Silicon Solutions has recently unveiled a tailored program aimed at nurturing the
+                                    burgeoning start-up ecosystem. This initiative offers discounted consulting services
+                                    to start-ups, recognising their potential as catalysts for innovation and growth.
+                                    <br><br>
+
+                                    Among the many start-ups seeking Silicon Solutions' expertise is PayGuard
+                                    Technologies Pvt. Ltd., an emerging financial payment gateway industry player. As
+                                    they embark on the journey to develop their management information system (MIS),
+                                    PayGuard turns to Silicon Solutions for guidance in crucial areas such as
+                                    architecture, database management, security, compliance, and innovation. As an
+                                    executive within Silicon Solutions, your pivotal role involves orchestrating this
+                                    collaboration, bridging the gap between Silicon Solutions' expertise and PayGuard's
+                                    aspirations for technological advancement. <br><br>
+
+                                    This partnership between Silicon Solutions and PayGuard holds immense promise, not
+                                    only for the two companies involved but also for the broader tech landscape in
+                                    Bangalore and beyond. As Silicon Solutions embarks on this journey to support
+                                    start-ups like PayGuard in realizing their potential, the stage is set for
+                                    innovation, growth, and transformation in the realm of IT systems within the vibrant
+                                    start-up ecosystem.
+                                </div>
+                            </div>
+                            <div class="case-texts__content-starea">
+                                <div class="case-texts__content-after">
+                                    <label class="case-texts__content-after-label">Your custom default text</label>
+                                    <st-editor name="" id="" [config]="config" [(ngModel)]="contentvalue"
+                                        [disabled]="defaultcase=='yes'" (focusout)="contentvaluechange()"></st-editor>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table page-name case-management-table">
+                <thead>
+                    <tr>
+                        <th style="background-color: #fff2e8;">
+                            <h2>Parameters</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="table-responsive">
+                <table class=" table case-management-table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="first-div">
+                                <div>Established in the year</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.c8; let i = index">
+                                <textarea [value]="res.c8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInnovationValue('c8',i,inputElement.value)"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">Expected number of daily transactions happening on PayGuard</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.c9; let i = index">
+                                <input [value]="res.c9[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInnovationValue('c9',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Increase in the number of daily transactions expected y-o-y %</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.c10; let i = index">
+                                <input [value]="res.c10[i]*100" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInnovationValue('c10',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Value earned over each transaction, INR</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.c11; let i = index">
+                                <input [value]="res.c11[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInnovationValue('c11',i,inputElement.value)">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

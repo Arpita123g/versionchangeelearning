@@ -1,0 +1,202 @@
+<div class="elearingnewui design_thinking">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="routesandtech">
+                <div class="row" class="element-first">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+
+                <h1>Execute
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'> In setting the marketing mix, how can you strike a balance between pricing, advertising, warranty, and channel investments to create a cohesive and effective strategy?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>How can you adapt your execution plan based on market dynamics, ensuring flexibility while staying true to your initial decisions in pricing, advertising, warranty, and channel investments?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <div class="card marketing-card">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/designthinking/designthinkingexcute.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Fixed Cost, INR Million</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Production line cost</td>
+                                    <td>{{result[0]/1000000}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Administration cost</td>
+                                    <td>{{result[1]/1000000}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Market research cost</td>
+                                    <td>{{result[2]/1000000}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <h1 class="mt-5">Marketing Mix</h1>
+                <p>Price, INR</p>
+                <input type="number" class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[7]"
+                (focusout)="getSelection('price',7)" [disabled]="checkdisable">
+                <div class="row row-cols-md-2 py-3 g-3">
+                    <div class="col-md">
+                        <div class="card p-3">
+                            <apx-chart [series]="margininrchart.series" [chart]="margininrchart.chart"
+                                [dataLabels]="margininrchart.dataLabels" [plotOptions]="margininrchart.plotOptions"
+                                [yaxis]="margininrchart.yaxis" [xaxis]="margininrchart.xaxis"
+                                [fill]="margininrchart.fill" [title]="margininrchart.title"
+                                [noData]="margininrchart.noData" [tooltip]="margininrchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-3">
+                            <apx-chart [series]="populationmillionchart.series" [chart]="populationmillionchart.chart"
+                                [dataLabels]="populationmillionchart.dataLabels"
+                                [plotOptions]="populationmillionchart.plotOptions"
+                                [yaxis]="populationmillionchart.yaxis" [xaxis]="populationmillionchart.xaxis"
+                                [fill]="populationmillionchart.fill" [title]="populationmillionchart.title"
+                                [noData]="populationmillionchart.noData" [tooltip]="populationmillionchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col">
+                        <p>Advertising, INR Million</p>
+                        <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[8]"
+                        (focusout)="getSelection('advertising',8)" [disabled]="checkdisable">
+                    </div>
+                    <div class="col">
+                        <p>Warranty Period</p>
+                        <select class="input-no_box-drop" [(ngModel)]="result[9]" (change)="getSelection('warranty',9)" [disabled]="checkdisable">
+                            <option value="" disabled> Select your month</option>
+                            <option *ngFor="let month of months" [value]="month">{{month}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 py-3 g-3">
+                    <div class="col-md">
+                        <div class="card p-3">
+                            <apx-chart [series]="promotionbudgetinrchart.series" [chart]="promotionbudgetinrchart.chart"
+                                [dataLabels]="promotionbudgetinrchart.dataLabels"
+                                [plotOptions]="promotionbudgetinrchart.plotOptions"
+                                [yaxis]="promotionbudgetinrchart.yaxis" [xaxis]="promotionbudgetinrchart.xaxis"
+                                [fill]="promotionbudgetinrchart.fill" [title]="promotionbudgetinrchart.title"
+                                [noData]="promotionbudgetinrchart.noData" [tooltip]="promotionbudgetinrchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-3">
+                            <apx-chart [series]="warrantyperiodvsattractivescorechart.series"
+                                [chart]="warrantyperiodvsattractivescorechart.chart"
+                                [dataLabels]="warrantyperiodvsattractivescorechart.dataLabels"
+                                [plotOptions]="warrantyperiodvsattractivescorechart.plotOptions"
+                                [yaxis]="warrantyperiodvsattractivescorechart.yaxis"
+                                [xaxis]="warrantyperiodvsattractivescorechart.xaxis"
+                                [fill]="warrantyperiodvsattractivescorechart.fill"
+                                [title]="warrantyperiodvsattractivescorechart.title"
+                                [noData]="warrantyperiodvsattractivescorechart.noData"
+                                [tooltip]="warrantyperiodvsattractivescorechart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-3 g-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Investment, INR Million</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[3]}}</td>
+                                    <td><input class="input-no_box" placeholder="Input value here..." type="number"
+                                        (focusout)="getSelection('investment',10)"
+                                            style="height: 2.6rem;width: 8rem;text-align: right;"
+                                            [(ngModel)]="result[10]" [disabled]="checkdisable"></td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[4]}}</td>
+                                    <td><input class="input-no_box" placeholder="Input value here..." type="number"
+                                        (focusout)="getSelection('investment',11)"
+                                            style="height: 2.6rem;width: 8rem;text-align: right;"
+                                            [(ngModel)]="result[11]" [disabled]="checkdisable"></td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[5]}}</td>
+                                    <td><input class="input-no_box" placeholder="Input value here..." type="number"
+                                        (focusout)="getSelection('investment',12)"
+                                            style="height: 2.6rem;width: 8rem;text-align: right;"
+                                            [(ngModel)]="result[12]" [disabled]="checkdisable"></td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[6]}}</td>
+                                    <td><input class="input-no_box" placeholder="Input value here..." type="number"
+                                        (focusout)="getSelection('investment',13)"
+                                            style="height: 2.6rem;width: 8rem;text-align: right;"
+                                            [(ngModel)]="result[13]" [disabled]="checkdisable"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-3">
+                            <apx-chart [series]="channelattractivnesschart.series"
+                                [chart]="channelattractivnesschart.chart"
+                                [dataLabels]="channelattractivnesschart.dataLabels"
+                                [plotOptions]="channelattractivnesschart.plotOptions"
+                                [yaxis]="channelattractivnesschart.yaxis" [xaxis]="channelattractivnesschart.xaxis"
+                                [fill]="channelattractivnesschart.fill" [title]="channelattractivnesschart.title"
+                                [noData]="channelattractivnesschart.noData"
+                                [tooltip]="channelattractivnesschart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

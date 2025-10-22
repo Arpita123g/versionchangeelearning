@@ -1,0 +1,254 @@
+<div class="elearingnewui hrp_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row pb-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                            <div class="">
+                                <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                    (change)="roundClick()">
+                                    <option class="select-round-option" value="">Select Round</option>
+                                    <option class="select-round-option"
+                                        *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                        {{attempt}}</option>
+
+                                </select>
+                            </div>
+
+                            <div class="download_btn" matTooltiClass="primary-tooltip"
+                                (click)="downloadreporthrpgame()">
+                                <div>
+                                    <a download matTooltip="Download"><span class="hovertext"
+                                            data-hover="Download pdf file accounting ">
+                                            <img class="download_btn-img"
+                                                src="assets/images/businessbasics/download.png" />
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <mat-icon class="mt-2">get_app</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 mb-3">
+                    <div class="col-md-5 reyapo">
+                        <h1 class="reyapo-h1">Report</h1>
+                        <p style="text-align: justify;">
+                            Excellent work. You have met your human resource requirements while making crucial strategic
+                            decisions. In this exercise every decision you have taken shows your skills in dimensions
+                            like rigor, synthesis, structuring and business judgement.
+                        </p>
+                    </div>
+
+                        <div class="col-md-7" *ngIf="optional[0]">
+                        <div class="card rigorcard">
+                            <div class="rigorcard-icon">
+                                <mat-icon class="rigorcard-icon-mat" appTippy="<table >
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Rigor</th>
+                      <td style='padding:7px;font-size:13px'>Consistency throughout the decision-making and recommendation.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>Structuring</th>
+                      <td style='padding:7px;font-size:13px'>A logical approach to gathering and analyzing information.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>
+                        Synthesis
+                      </th>
+                      <td style='padding:7px;font-size:13px'>
+                        Approach towards interpreting all the information and making informed decisions.
+                      </td>
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Business Jugement</th>
+                      <td style='padding:7px;font-size:13px'>Ability to evaluate facts and consider risks and possible implications when making decisions.</td>
+                    </tr>
+                    </tr>
+                  </table>
+                   ">
+                                    help_outline
+                                </mat-icon>
+                            </div>
+                            <apx-chart [series]="rigorcharts.series" [chart]="rigorcharts.chart"
+                                [xaxis]="rigorcharts.xaxis" [yaxis]="rigorcharts.yaxis" [stroke]="rigorcharts.stroke"
+                                [markers]="rigorcharts.markers" [fill]="rigorcharts.fill"
+                                [title]="rigorcharts.title"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md">
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="employeecountchart.series" [chart]="employeecountchart.chart"
+                                [dataLabels]="employeecountchart.dataLabels"
+                                [plotOptions]="employeecountchart.plotOptions" [yaxis]="employeecountchart.yaxis"
+                                [xaxis]="employeecountchart.xaxis" [fill]="employeecountchart.fill"
+                                [title]="employeecountchart.title" [noData]="employeecountchart.noData"
+                                [tooltip]="employeecountchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md py-5">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="7">Employees Count</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Technical</th>
+                                    <th>Sales & Marketing</th>
+                                    <th>Logistics & Supply Chain</th>
+                                    <th>Design & Production</th>
+                                    <th>Customer Support</th>
+                                    <th>Administration</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Existing employees</td>
+                                    <td class="middleclassright">{{result[0]|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[1]|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[2]|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[3]|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[4]|number:'1.0-0'}}</td>
+                                    <td>{{result[5]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>New joinees</td>
+                                    <td class="middleclassright">{{result[6]|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[7]|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[8]|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[9]|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[10]|number:'1.0-0'}}</td>
+                                    <td>{{result[11]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Contract employees</td>
+                                    <td class="middleclassright">{{result[12]|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[13]|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[14]|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[15]|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[16]|number:'1.0-0'}}</td>
+                                    <td>{{result[17]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" style="border-top:2px solid black;">
+                                    <td>Total employees</td>
+                                    <td class="middleclassright">{{result[18]|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[19]|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[20]|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[21]|number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[22]|number:'1.0-0'}}</td>
+                                    <td>{{result[23]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">KPI</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Employee Satisfaction Score</td>
+                                    <td>{{result[24] | number :'1.2-2'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Average time to fill position, days</td>
+                                    <td>{{result[25]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Average efficiency across organization</td>
+                                    <td>{{result[26]===0 ?"0" : result[26] *100 | number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Employees participation in training</td>
+                                    <td>{{result[27]===0 ?"0" : result[27]*100 | number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cost per employee, k INR</td>
+                                    <td>{{result[28]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Recruitment metrics, %</td>
+                                    <td>{{result[29]===0 ?"0" : result[29]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="hirecountchart.series" [chart]="hirecountchart.chart"
+                                [dataLabels]="hirecountchart.dataLabels" [plotOptions]="hirecountchart.plotOptions"
+                                [yaxis]="hirecountchart.yaxis" [xaxis]="hirecountchart.xaxis"
+                                [fill]="hirecountchart.fill" [title]="hirecountchart.title"
+                                [noData]="hirecountchart.noData" [tooltip]="hirecountchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-5">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">Cost, K INR</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Incremental salary, existing employees</td>
+                                    <td>{{result[30]/1000|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>New hires, salary</td>
+                                    <td>{{result[31]/1000|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Contract employees</td>
+                                    <td>{{result[32]/1000|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Branding</td>
+                                    <td>{{result[33]/1000|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Training</td>
+                                    <td>{{result[34]/1000|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Policies</td>
+                                    <td>{{result[35]/1000|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" style="border-top: 2px solid black;">
+                                    <td>Total</td>
+                                    <td>{{result[36]/1000|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

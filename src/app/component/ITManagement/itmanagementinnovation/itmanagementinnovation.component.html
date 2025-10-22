@@ -1,0 +1,262 @@
+<div class="elearingnewui It_management">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="routesandtech">
+                <div class="row" class="element-first">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+                <h1>Roadmap
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>How do R&D costs, feasibility, and development timeframes influence forward-looking technology initiatives to stay competitive?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>What are the potential risks and market opportunities to consider when formulating a future technology roadmap?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of cardData; let i=index">
+                        <div class="card marketing-card h-100" [ngClass]="{ bluebackground: selectedCardId1 === item.id }">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.itManagementCM.itmanagementperioddata[item.title]  }}</h2>
+                                <div class="card-text">
+                                    <div class="textswcinassessment-p"><span class="textswcinassessment">
+                                        </span> {{showAll[i] ? item.description.text :
+                                        item.description.truncatedText}}
+                                        <a type="button" (click)="toggleshow(i)"
+                                            [style.color]="showAll[i] ? 'red' : 'blue'">
+                                            {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                        </a>
+                                    </div><br><br>
+                                    <div class="card-footer form-check">
+                                        <div class="routesandtechcostcard">
+                                            <h3>{{result.itManagementCM.itmanagementperioddata[item.description.textname]  }}</h3>
+                                            <h3>{{result.itManagementCM.itmanagementperioddata[item.description.cellvalue]  }}</h3>
+                                        </div>
+                                        <div class="routesandtechcostcard">
+                                            <h3>{{result.itManagementCM.itmanagementperioddata[item.description.devtextmonth]  }}</h3>
+                                            <h3>{{result.itManagementCM.itmanagementperioddata[item.description.cellvalue1]  }}</h3>
+                                        </div>
+                                        <div class="routesandtechcostcard">
+                                            <h3>{{result.itManagementCM.itmanagementperioddata[item.description.feasibility]  }}</h3>
+                                            <h3>{{result.itManagementCM.itmanagementperioddata[item.description.cellvalue2]  }}</h3>
+                                        </div>
+                                       
+                                        <div style="height: 2rem;">
+                                            <input class="checkfrominput" type="radio" value="index"
+                                            id="{{item.id + i}}"  name="itmanagementOptions"
+                                            [checked]="result.itmanagementdata[item.databasecellname]===1"
+                                            (click)="writeGameData(item.databasecellname,'radio',$event,'af62','af63','af64','af65', 'af66',5)"
+                                            [disabled]="inputDisabled" />
+                                            <label class="form-check-label" [for]="item.id + i">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="mt-5">Pilot Projects
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>Which pilot project options balance cost, feasibility, and potential performance improvements to drive future business growth?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>How do pilot projects align with business goals and strategic objectives for maximum impact and return on investment?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of cardData1; let i=index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.itManagementCM.itmanagementperioddata[item.title]  }}</h2>
+                                <div class="card-text">
+                                    <div class="textswcinassessment-p"><span class="textswcinassessment">
+                                        </span> {{showAll[i] ? item.description.text :
+                                        item.description.truncatedText}}
+                                        <a type="button" (click)="toggleshow(i)"
+                                            [style.color]="showAll[i] ? 'red' : 'blue'">
+                                            {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                        </a>
+                                    </div><br><br>
+                                    <div class="card-footer form-check">
+                                        <div class="routesandtechcostcard">
+                                            <h3>{{result.itManagementCM.itmanagementperioddata[item.description.textname]  }}</h3>
+                                            <h3>{{result.itManagementCM.itmanagementperioddata[item.description.cellvalue]  }}</h3>
+                                        </div>
+                                        <div class="routesandtechcostcard">
+                                            <h3>{{result.itManagementCM.itmanagementperioddata[item.description.textmonth]  }}</h3>
+                                            <h3>{{result.itManagementCM.itmanagementperioddata[item.description.cellvalue1]  }}</h3>
+                                        </div>
+                                      
+                                        <div style="height: 2rem;">
+                                            <input class="checkfrominput_new" type="checkbox" value="index"
+                                                id="flexCheckDefault"
+                                                [checked]="result.itmanagementdata[item.databasecellname]===1"
+                                                (click)="writeGameData(item.databasecellname,'checkbox',$event,'','','','','',0)"
+                                                [disabled]="inputDisabled" />
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <h1 class="mt-5">Continous Improvements
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>How can you balance investments in continuous improvements against competitors' advancements while managing costs effectively?</p>
+                        </div>
+                      </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of cardData2; let i=index">
+                        <div class="card marketing-card h-100" [ngClass]="{ bluebackground: selectedCardId2 === item.id }">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.itManagementCM.itmanagementperioddata[item.title]  }}</h2>
+                                <div class="card-text">
+                                    <div class="textswcinassessment-p"><span class="textswcinassessment">
+                                        </span> {{showAll[i] ? item.description.text :
+                                        item.description.truncatedText}}
+                                        <a type="button" (click)="toggleshow(i)"
+                                            [style.color]="showAll[i] ? 'red' : 'blue'">
+                                            {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                        </a>
+                                    </div><br><br>
+                                    <div class="card-footer form-check">
+                                        <div class="routesandtechcostcard">
+                                            <h3>{{result.itManagementCM.itmanagementperioddata[item.description.textname]  }}</h3>
+                                            <h3>{{result.itManagementCM.itmanagementperioddata[item.description.cellvalue]  }}</h3>
+                                        </div>
+                                     
+                                        <div style="height: 2rem;">
+                                            <input class="checkfrominput" type="radio" value="index"
+                                            id="{{item.id + i}}"  name="itmanagementOptions1"
+                                            [checked]="result.itmanagementdata[item.databasecellname]===1"
+                                            (click)="writeGameData(item.databasecellname,'radio',$event,'af74','af75','af76','af77', '',4)"
+                                            [disabled]="inputDisabled" />
+                                            <label class="form-check-label" [for]="item.id + i">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="mt-5">Training and Development
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>What training needs should be identified based on skill gaps and business objectives to enhance employee effectiveness within budget constraints?</p>
+                        </div>
+                      </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of cardData3; let i=index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.itManagementCM.itmanagementperioddata[item.title]  }}</h2>
+                                <div class="card-text">
+                                    <div class="textswcinassessment-p"><span class="textswcinassessment">
+                                        </span> {{showAll[i] ? item.description.text :
+                                        item.description.truncatedText}}
+                                        <a type="button" (click)="toggleshow(i)"
+                                            [style.color]="showAll[i] ? 'red' : 'blue'">
+                                            {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                        </a>
+                                    </div><br><br>
+                                    <div class="card-footer form-check">
+                                        <div class="routesandtechcostcard">
+                                            <h3>{{result.itManagementCM.itmanagementperioddata[item.description.textname]  }}</h3>
+                                            <h3>{{result.itManagementCM.itmanagementperioddata[item.description.cellvalue]  }}</h3>
+                                        </div>
+                                     
+                                        <div style="height: 2rem;">
+                                            <input class="checkfrominput_new" type="checkbox" value="index"
+                                                id="flexCheckDefault"
+                                                [checked]="result.itmanagementdata[item.databasecellname]===1"
+                                                (click)="writeGameData(item.databasecellname,'checkbox',$event,'','','','','',0)"
+                                                [disabled]="inputDisabled" />
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>

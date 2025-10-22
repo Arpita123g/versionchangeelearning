@@ -1,0 +1,2128 @@
+<div class="elearingnewui">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="case-management-body">
+        <div class="table-responsive mb-3 mt-3">
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>Information Search</h2>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th style="padding: 0;">
+                            <h3
+                                style="background-color: #efefef;border-bottom: 1px solid black;margin: 0;padding-left: 8px;">
+                                Game Genre Preference</h3>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="table-responsive mb-3">
+                <table class=" table case-management-table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="res!=[]">
+                        <tr>
+                            <th class="second-head" colspan="12">Action/Adventure</th>
+                        </tr>
+
+                        <tr>
+                            <td class="first-div">
+                                <div>Male, %</div>
+                            </td>
+                            
+
+                            <td *ngFor="let informationdata of res.e99; let i = index">
+                                <input [value]="res.e99[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e99',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">Female, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f99; let i = index">
+                                <input [value]="res.f99[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f99',i,inputElement.value)">
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Racing/Sports</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Male, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e100; let i = index">
+                                <input [value]="res.e100[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e100',i,inputElement.value)">
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Female, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f100; let i = index">
+                                <input [value]="res.f100[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f100',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Puzzle/Quiz/Words</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Male, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e101; let i = index">
+                                <input [value]="res.e101[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e101',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Female, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f101; let i = index">
+                                <input [value]="res.f101[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f101',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Strategy/Role Playing</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Male, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e102; let i = index">
+                                <input [value]="res.e102[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e102',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Female, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f102; let i = index">
+                                <input [value]="res.f102[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f102',i,inputElement.value)">
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Casino/Card/Betting</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Male, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e103; let i = index">
+                                <input [value]="res.e103[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e103',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Female, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f103; let i = index">
+                                <input [value]="res.f103[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f103',i,inputElement.value)">
+                            </td>
+
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>Male Gamers Preference</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="table-responsive">
+                <table class=" table case-management-table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="res!=[]">
+                        <tr>
+                            <th class="second-head" colspan="12">Action/Adventure</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e107; let i = index">
+                                <input [value]="res.e107[i]*100 |number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e107',i,inputElement.value)">
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f107; let i = index">
+                                <input [value]="res.f107[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f107',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g107; let i = index">
+                                <input [value]="res.g107[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g107',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h107; let i = index">
+                                <input [value]="res.h107[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h107',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Racing/Sports</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e108; let i = index">
+                                <input [value]="res.e108[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e108',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f108; let i = index">
+                                <input [value]="res.f108[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f108',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g108; let i = index">
+                                <input [value]="res.g108[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g108',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h108; let i = index">
+                                <input [value]="res.h108[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h108',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Puzzle/Quiz/Words</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e109; let i = index">
+                                <input [value]="res.e109[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e109',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f109; let i = index">
+                                <input [value]="res.f109[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f109',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g109; let i = index">
+                                <input [value]="res.g109[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g109',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h109; let i = index">
+                                <input [value]="res.h109[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h109',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Strategy/Role Playing</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e110; let i = index">
+                                <input [value]="res.e110[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e110',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f110; let i = index">
+                                <input [value]="res.f110[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f110',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g110; let i = index">
+                                <input [value]="res.g110[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g110',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h110; let i = index">
+                                <input [value]="res.h110[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h110',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Casino/Card/Betting</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e111; let i = index">
+                                <input [value]="res.e111[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e111',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f111; let i = index">
+                                <input [value]="res.f111[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f111',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g111; let i = index">
+                                <input [value]="res.g111[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g111',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h111; let i = index">
+                                <input [value]="res.h111[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h111',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>Female Gamers Preference</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="table-responsive">
+                <table class=" table case-management-table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="res!=[]">
+                        <tr>
+                            <th class="second-head" colspan="12">Action/Adventure</th>
+                        </tr>
+
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e115; let i = index">
+                                <input [value]="res.e115[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e115',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f115; let i = index">
+                                <input [value]="res.f115[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f115',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g115; let i = index">
+                                <input [value]="res.g115[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g115',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h115; let i = index">
+                                <input [value]="res.h115[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h115',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Racing/Sports</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e116; let i = index">
+                                <input [value]="res.e116[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e116',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f116; let i = index">
+                                <input [value]="res.f116[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f116',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g116; let i = index">
+                                <input [value]="res.g116[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g116',i,inputElement.value)">
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h116; let i = index">
+                                <input [value]="res.h116[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h116',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Puzzle/Quiz/Words</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e117; let i = index">
+                                <input [value]="res.e117[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e117',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f117; let i = index">
+                                <input [value]="res.f117[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f117',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g108; let i = index">
+                                <input [value]="res.g117[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g117',i,inputElement.value)">
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h117; let i = index">
+                                <input [value]="res.h117[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h117',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Strategy/Role Playing</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e118; let i = index">
+                                <input [value]="res.e118[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e118',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f118; let i = index">
+                                <input [value]="res.f118[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f118',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g118; let i = index">
+                                <input [value]="res.g118[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g118',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h118; let i = index">
+                                <input [value]="res.h118[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h118',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Casino/Card/Betting</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e119; let i = index">
+                                <input [value]="res.e119[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e119',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f119; let i = index">
+                                <input [value]="res.f119[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f119',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g119; let i = index">
+                                <input [value]="res.g119[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g119',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h119; let i = index">
+                                <input [value]="res.h119[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h119',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>NCCS Household</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="table-responsive">
+                <table class=" table case-management-table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="res!=[]">
+                        <tr>
+                            <th class="second-head" colspan="12">Action/Adventure</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>NCCS A, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e123; let i = index">
+                                <input [value]="res.e123[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e123',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">NCCS B, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f123; let i = index">
+                                <input [value]="res.f123[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f123',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">NCCS C/D/E, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g123; let i = index">
+                                <input [value]="res.g123[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g123',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Racing/Sports</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>NCCS A, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e124; let i = index">
+                                <input [value]="res.e124[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e124',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">NCCS B, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f124; let i = index">
+                                <input [value]="res.f124[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f124',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">NCCS C/D/E, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g124; let i = index">
+                                <input [value]="res.g124[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g124',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Puzzle/Quiz/Words</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>NCCS A, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e125; let i = index">
+                                <input [value]="res.e125[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e125',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">NCCS B, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f125; let i = index">
+                                <input [value]="res.f125[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f125',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">NCCS C/D/E, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g125; let i = index">
+                                <input [value]="res.g125[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g125',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Strategy/Role Playing</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>NCCS A, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e126; let i = index">
+                                <input [value]="res.e126[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e126',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">NCCS B, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f126; let i = index">
+                                <input [value]="res.f126[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f126',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">NCCS C/D/E, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g126; let i = index">
+                                <input [value]="res.g126[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g126',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Casino/Card/Betting</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>NCCS A, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e127; let i = index">
+                                <input [value]="res.e127[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e127',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">NCCS B, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f127; let i = index">
+                                <input [value]="res.f127[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f127',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">NCCS C/D/E, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g127; let i = index">
+                                <input [value]="res.g127[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g127',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>Communication Channel Male Gamers Activities</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="table-responsive">
+                <table class=" table case-management-table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="res!=[]">
+                        <tr>
+                            <th class="second-head" colspan="12">Social Media</th>
+                        </tr>
+
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e131; let i = index">
+                                <input [value]="res.e131[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e131',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f131; let i = index">
+                                <input [value]="res.f131[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f131',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g131; let i = index">
+                                <input [value]="res.g131[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g131',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h131; let i = index">
+                                <input [value]="res.h131[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h131',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Shopping</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e132; let i = index">
+                                <input [value]="res.e132[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e132',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f132; let i = index">
+                                <input [value]="res.f132[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f132',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g132; let i = index">
+                                <input [value]="res.g132[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g132',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h132; let i = index">
+                                <input [value]="res.h132[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h132',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Music</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e133; let i = index">
+                                <input [value]="res.e133[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e133',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f133; let i = index">
+                                <input [value]="res.f133[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f133',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g133; let i = index">
+                                <input [value]="res.g133[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g133',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h133; let i = index">
+                                <input [value]="res.h133[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h133',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Browsing</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e134; let i = index">
+                                <input [value]="res.e134[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e134',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f134; let i = index">
+                                <input [value]="res.f134[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f134',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g134; let i = index">
+                                <input [value]="res.g134[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g134',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h134; let i = index">
+                                <input [value]="res.h134[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h134',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Movies/TV Shows</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e135; let i = index">
+                                <input [value]="res.e135[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e135',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f135; let i = index">
+                                <input [value]="res.f135[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f135',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g135; let i = index">
+                                <input [value]="res.g135[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g135',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h135; let i = index">
+                                <input [value]="res.h135[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h135',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Banking/Wallet</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e136; let i = index">
+                                <input [value]="res.e136[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e136',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f136; let i = index">
+                                <input [value]="res.f136[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f136',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g136; let i = index">
+                                <input [value]="res.g136[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g136',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h136; let i = index">
+                                <input [value]="res.h136[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h136',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Messaging Apps</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e137; let i = index">
+                                <input [value]="res.e137[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e137',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f137; let i = index">
+                                <input [value]="res.f137[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f137',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g137; let i = index">
+                                <input [value]="res.g137[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g137',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h137; let i = index">
+                                <input [value]="res.h137[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h137',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Food Ordering</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e138; let i = index">
+                                <input [value]="res.e138[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e138',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f138; let i = index">
+                                <input [value]="res.f138[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f138',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g138; let i = index">
+                                <input [value]="res.g138[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g138',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h138; let i = index">
+                                <input [value]="res.h138[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h138',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">News</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e139; let i = index">
+                                <input [value]="res.e139[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e139',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f139; let i = index">
+                                <input [value]="res.f139[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f139',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g139; let i = index">
+                                <input [value]="res.g139[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g139',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h139; let i = index">
+                                <input [value]="res.h139[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h139',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Sports</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e140; let i = index">
+                                <input [value]="res.e140[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e140',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f140; let i = index">
+                                <input [value]="res.f140[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f140',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g140; let i = index">
+                                <input [value]="res.g140[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g140',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h140; let i = index">
+                                <input [value]="res.h140[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h140',i,inputElement.value)">
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>Female Gamers Activities</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="table-responsive">
+                <table class=" table case-management-table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="res!=[]">
+                        <tr>
+                            <th class="second-head" colspan="12">Social Media</th>
+                        </tr>
+
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e147; let i = index">
+                                <input [value]="res.e147[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e147',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f147; let i = index">
+                                <input [value]="res.f147[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f147',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g147; let i = index">
+                                <input [value]="res.g147[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g147',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h147; let i = index">
+                                <input [value]="res.h147[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h147',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Shopping</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e148; let i = index">
+                                <input [value]="res.e148[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e148',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f148; let i = index">
+                                <input [value]="res.f148[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f148',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g148; let i = index">
+                                <input [value]="res.g148[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g148',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h148; let i = index">
+                                <input [value]="res.h148[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h148',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Music</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e149; let i = index">
+                                <input [value]="res.e149[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e149',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f149; let i = index">
+                                <input [value]="res.f149[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f149',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g149; let i = index">
+                                <input [value]="res.g149[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g149',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h149; let i = index">
+                                <input [value]="res.h149[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h149',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Browsing</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e150; let i = index">
+                                <input [value]="res.e150[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e150',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f150; let i = index">
+                                <input [value]="res.f150[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f150',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g150; let i = index">
+                                <input [value]="res.g150[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g150',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h150; let i = index">
+                                <input [value]="res.h150[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h150',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Movies/TV Shows</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e151; let i = index">
+                                <input [value]="res.e151[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e151',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f151; let i = index">
+                                <input [value]="res.f151[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f151',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g151; let i = index">
+                                <input [value]="res.g151[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g151',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h151; let i = index">
+                                <input [value]="res.h151[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h151',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Banking/Wallet</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e152; let i = index">
+                                <input [value]="res.e152[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e152',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f152; let i = index">
+                                <input [value]="res.f152[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f152',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g152; let i = index">
+                                <input [value]="res.g152[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g152',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h152; let i = index">
+                                <input [value]="res.h152[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h152',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Messaging Apps</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e153; let i = index">
+                                <input [value]="res.e153[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e153',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f153; let i = index">
+                                <input [value]="res.f153[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f153',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g153; let i = index">
+                                <input [value]="res.g153[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g153',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h153; let i = index">
+                                <input [value]="res.h153[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h153',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Food Ordering</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.e154; let i = index">
+                                <input [value]="res.e154[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e154',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.f154; let i = index">
+                                <input [value]="res.f154[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f154',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.g154; let i = index">
+                                <input [value]="res.g154[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g154',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                            <td *ngFor="let informationdata of res.h154; let i = index">
+                                <input [value]="res.h154[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h154',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">News</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                         
+                            <td *ngFor="let informationdata of res.e155; let i = index">
+                                <input [value]="res.e155[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e155',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+                          
+                            <td *ngFor="let informationdata of res.f155; let i = index">
+                                <input [value]="res.f155[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f155',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                           
+                            <td *ngFor="let informationdata of res.g155; let i = index">
+                                <input [value]="res.g155[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g155',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                          
+                            <td *ngFor="let informationdata of res.h155; let i = index">
+                                <input [value]="res.h155[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h155',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="second-head" colspan="12">Sports</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>15-19yrs, %</div>
+                            </td>
+                           
+                            <td *ngFor="let informationdata of res.e156; let i = index">
+                                <input [value]="res.e156[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('e156',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">20-24yrs, %</div>
+                            </td>
+
+                            <td *ngFor="let informationdata of res.f156; let i = index">
+                                <input [value]="res.f156[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('f156',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">25-34yrs, %</div>
+                            </td>
+                          
+                            <td *ngFor="let informationdata of res.g156; let i = index">
+                                <input [value]="res.g156[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('g156',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">35+yrs, %</div>
+                            </td>
+                           
+                            <td *ngFor="let informationdata of res.h156; let i = index">
+                                <input [value]="res.h156[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInformationValue('h156',i,inputElement.value)">
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>Mobile Gamers (Mn)</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class=" table-responsive mb-3 mt-3">
+                <table class="case-management-table case-management-table-marketing">
+                    <thead>
+                        <tr>
+                            <td colspan="2" *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody class="first-tbody" *ngIf="res!=[]">
+                        <tr>
+                            <ng-container *ngFor="let item of data; let i = index">
+                                <td *ngIf="i % 2 === 0">Year</td>
+                                <td *ngIf="i % 2 !== 0">Mobile Gamers (Mn)</td>
+
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                    <tbody >
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b310" #d166Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('d166', index, d166Input.value)"></td>
+                                <td><input [value]="res.e166[index]|number:'1.0-0'" #e166Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('e166', index, e166Input.value)"></td>
+                            </ng-container>
+                        </tr>
+
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b309" #d167Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('d167', index, d167Input.value)"></td>
+                                <td><input [value]="res.e167[index]|number:'1.0-0'" #e167Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('e167', index, e167Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b308" #d168Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('d168', index, d168Input.value)"></td>
+                                <td><input [value]="res.e168[index]|number:'1.0-0'" #e168Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('e168', index, e168Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b307" #d169Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('d169', index, d169Input.value)"></td>
+                                <td><input [value]="res.e169[index]|number:'1.0-0'" #e169Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('e169', index, e169Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b306" #d170Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('d170', index, d170Input.value)"></td>
+                                <td><input [value]="res.e170[index]|number:'1.0-0'" #e170Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('e170', index, e170Input.value)"></td>
+                            </ng-container>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>Mobile Ads Spend (INR Bn)</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class=" table-responsive mb-3 mt-3">
+                <table class="case-management-table case-management-table-marketing">
+                    <thead>
+                        <tr>
+                            <td colspan="2" *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody class="first-tbody" *ngIf="res!=[]">
+                        <tr>
+                            <ng-container *ngFor="let item of data; let i = index">
+                                <td *ngIf="i % 2 === 0">Year</td>
+                                <td *ngIf="i % 2 !== 0">Mobile Ads Spend (INR Bn)</td>
+
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="res!=[]">
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b312"disabled></td>
+                                <td><input [value]="res.e173[index]|number:'1.1-1'" #e173Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('e173', index, e173Input.value)"></td>
+                            </ng-container>
+                        </tr>
+
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b311" disabled></td>
+                                <td><input [value]="res.e174[index]|number:'1.1-1'" #e174Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('e174', index, e174Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b310" disabled></td>
+                                <td><input [value]="res.e175[index]|number:'1.1-1'" #e175Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('e175', index, e175Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b309"disabled></td>
+                                <td><input [value]="res.e176[index]|number:'1.1-1'" #e176Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('e176', index, e176Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b308"disabled></td>
+                                <td><input [value]="res.e177[index]|number:'1.1-1'" #e177Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('e177', index, e177Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b307"disabled></td>
+                                <td><input [value]="res.e178[index]|number:'1.1-1'" #e178Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('e178', index, e178Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b306" disabled></td>
+                                <td><input [value]="res.e179[index]|number:'1.1-1'" #e179Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('e179', index, e179Input.value)"></td>
+                            </ng-container>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>Mobile Gaming Revenue, USD Mn</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class=" table-responsive mb-3 mt-3">
+                <table class="case-management-table case-management-table-marketing">
+                    <thead>
+                        <tr>
+                            <td colspan="2" *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody class="first-tbody" *ngIf="res!=[]">
+                        <tr>
+                            <ng-container *ngFor="let item of data; let i = index">
+                                <td *ngIf="i % 2 === 0">Year</td>
+                                <td *ngIf="i % 2 === 0">Mobile Gaming Revenue, USD Mn</td>
+
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="res!=[]">
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b310"disabled></td>
+                                <td><input [value]="res.e182[index]|number:'1.0-0'" #e182Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('e182', index, e182Input.value)"></td>
+                            </ng-container>
+                        </tr>
+
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b309" disabled></td>
+                                <td><input [value]="res.e183[index]|number:'1.0-0'" #e183Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('e183', index, e183Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b308" disabled></td>
+                                <td><input [value]="res.e184[index]|number:'1.0-0'" #e184Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('e184', index, e184Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b307" disabled></td>
+                                <td><input [value]="res.e185[index]|number:'1.0-0'" #e185Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('e185', index, e185Input.value)"></td>
+                            </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="languageData.b306" disabled></td>
+                                <td><input [value]="res.e186[index]" #e186Input [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeInformationValue('e186', index, e186Input.value)"></td>
+                            </ng-container>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

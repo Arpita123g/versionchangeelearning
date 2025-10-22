@@ -1,0 +1,78 @@
+.instructor-chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--surface-color, #ffffff);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .instructor-chat-tabs {
+        ::ng-deep {
+            .mat-mdc-tab-header {
+                background-color: var(--tab-header-bg, #f1f3f4);
+                border-radius: 8px 8px 0 0;
+            }
+
+            .mat-mdc-tab {
+                color: var(--tab-text-color, #a5a5a5);
+                font-size: 15px;
+                font-weight: 500;
+                padding: 1rem;
+                min-width: 120px;
+                transition: all 0.3s ease;
+
+                &.mat-mdc-tab-active {
+                    color: var(--tab-active-text-color, #000000);
+                    border-bottom: 3px solid var(--tab-active-border-color, #000000);
+                }
+
+                &:hover:not(.mat-mdc-tab-active) {
+                    color: var(--tab-hover-text-color, #666666);
+                }
+            }
+
+            .mat-mdc-tab-body-wrapper {
+                padding: 1rem;
+            }
+        }
+    }
+
+    .chatbox-container {
+        height: calc(100vh - 200px);
+        min-height: 400px;
+        overflow: hidden;
+    }
+}
+
+// Dark theme support
+:host-context(.dark-theme) {
+    .instructor-chat-container {
+        --surface-color: #424242;
+        --tab-header-bg: #303030;
+        --tab-text-color: #bdbdbd;
+        --tab-active-text-color: #ffffff;
+        --tab-active-border-color: #ffffff;
+        --tab-hover-text-color: #e0e0e0;
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .instructor-chat-container {
+        .instructor-chat-tabs {
+            ::ng-deep {
+                .mat-mdc-tab {
+                    min-width: 100px;
+                    padding: 0.75rem;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .chatbox-container {
+            height: calc(100vh - 150px);
+            min-height: 300px;
+        }
+    }
+}
+

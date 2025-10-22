@@ -1,0 +1,358 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui promotion_sigment">
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row pb-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                            <div class="">
+                                <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                    (change)="roundClick()">
+                                    <option class="select-round-option" value="">Select Round</option>
+                                    <option class="select-round-option"
+                                        *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                        {{attempt}}</option>
+
+                                </select>
+                            </div>
+
+                            <div class="download_btn" matTooltiClass="primary-tooltip"
+                                (click)="downloadreportpromotionsigment()">
+                                <div>
+                                    <a download matTooltip="Download"><span class="hovertext"
+                                            data-hover="Download pdf file accounting ">
+                                            <img class="download_btn-img"
+                                                src="assets/images/businessbasics/download.png" />
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <mat-icon class="mt-2">get_app</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 mb-3">
+                    <div class="col-md-5 reyapo">
+                        <h1 class="reyapo-h1">Report</h1>
+                        <p style="text-align: justify;">
+                            Excellent work. You have completed designing the promotion strategy for the company to make
+                            its brand lucrative towards the target audience. In this exercise every decision you have
+                            taken shows your skills in dimensions like rigor, synthesis, structuring and business
+                            judgement.
+                        </p>
+                    </div>
+
+                    <div class="col-md-7" *ngIf="optional[0]">
+                        <div class="card rigorcard">
+                            <div class="rigorcard-icon">
+                                <mat-icon class="rigorcard-icon-mat" appTippy="<table >
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Rigor</th>
+                      <td style='padding:7px;font-size:13px'>Consistency throughout the decision-making and recommendation.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>Structuring</th>
+                      <td style='padding:7px;font-size:13px'>A logical approach to gathering and analyzing information.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>
+                        Synthesis
+                      </th>
+                      <td style='padding:7px;font-size:13px'>
+                        Approach towards interpreting all the information and making informed decisions.
+                      </td>
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Business Jugement</th>
+                      <td style='padding:7px;font-size:13px'>Ability to evaluate facts and consider risks and possible implications when making decisions.</td>
+                    </tr>
+                    </tr>
+                  </table>
+                   ">
+                                    help_outline
+                                </mat-icon>
+                            </div>
+                            <apx-chart [series]="rigorcharts.series" [chart]="rigorcharts.chart"
+                                [xaxis]="rigorcharts.xaxis" [yaxis]="rigorcharts.yaxis" [stroke]="rigorcharts.stroke"
+                                [markers]="rigorcharts.markers" [fill]="rigorcharts.fill"
+                                [title]="rigorcharts.title"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">Product Sales, units</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <td style="font-weight: 500;font-size: 12px;">Acne Face Cream</td>
+                                    <td style="font-weight: 500;">Apple Cider Face Wash</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td style="text-align: justify;">Website</td> -->
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">{{result[0]}}</td>
+                                    <!-- <td>39445</td> -->
+                                    <td>{{result[1]|number:'1.0-0'}}</td>
+                                    <td>{{result[2]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td style="text-align: justify;">Social Commerce</td> -->
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">{{result[3]}}</td>
+                                    <!-- <td>21111</td> -->
+                                    <td>{{result[4]|number:'1.0-0'}}</td>
+                                    <td>{{result[5]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td style="text-align: justify;">Modern Trade</td> -->
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">{{result[6]}}</td>
+                                    <!-- <td>18027</td> -->
+                                    <td>{{result[7]|number:'1.0-0'}}</td>
+                                    <td>{{result[8]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td style="text-align: justify;">Retailers</td> -->
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">{{result[9]}}</td>
+                                    <!-- <td>30787</td> -->
+                                    <td>{{result[10]|number:'1.0-0'}}</td>
+                                    <td>{{result[11]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-3 ">
+                            <apx-chart [series]="productsalesgraph.series" [chart]="productsalesgraph.chart"
+                                [dataLabels]="productsalesgraph.dataLabels"
+                                [plotOptions]="productsalesgraph.plotOptions" [yaxis]="productsalesgraph.yaxis"
+                                [xaxis]="productsalesgraph.xaxis" [fill]="productsalesgraph.fill"
+                                [title]="productsalesgraph.title" [noData]="productsalesgraph.noData"
+                                [tooltip]="productsalesgraph.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-5">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">Segment Sales, units</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <td style="font-weight: 500;">{{result[12]}}</td>
+                                    <td style="font-weight: 500;">{{result[13]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">{{result[14]}}</td>
+                                    <td>{{result[15]|number:'1.0-0'}}</td>
+                                    <td>{{result[16]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">{{result[17]}}</td>
+                                    <td>{{result[18]|number:'1.0-0'}}</td>
+                                    <td>{{result[19]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">{{result[20]}}</td>
+                                    <td>{{result[21]|number:'1.0-0'}}</td>
+                                    <td>{{result[22]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">{{result[23]}}</td>
+                                    <td>{{result[24]|number:'1.0-0'}}</td>
+                                    <td>{{result[25]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-3">
+                            <apx-chart [series]="segmentsalesgraph.series" [chart]="segmentsalesgraph.chart"
+                                [dataLabels]="segmentsalesgraph.dataLabels"
+                                [plotOptions]="segmentsalesgraph.plotOptions" [yaxis]="segmentsalesgraph.yaxis"
+                                [xaxis]="segmentsalesgraph.xaxis" [fill]="segmentsalesgraph.fill"
+                                [title]="segmentsalesgraph.title" [noData]="segmentsalesgraph.noData"
+                                [tooltip]="segmentsalesgraph.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">Platform Sales, units</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <td style="font-weight: 500;">Sales</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">{{result[0]}}</td>
+                                    <td>{{result[26]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">{{result[3]}}</td>
+                                    <td>{{result[27]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">{{result[6]}}</td>
+                                    <td>{{result[28]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                font-weight: 400;">{{result[9]}}</td>
+                                    <td>{{result[29]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card p-3">
+                            <apx-chart [series]="platformslaesgraph
+                          .series" [chart]="platformslaesgraph
+                         .chart" [labels]="platformslaesgraph
+                                .labels" [responsive]="platformslaesgraph
+                                .responsive" [title]="platformslaesgraph
+                                .title" [legend]="platformslaesgraph
+                                .legend" [tooltip]="platformslaesgraph
+                                .tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-5">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">Promotion Cost, INR</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">Communication Mix Cost</td>
+                                    <td>{{result[30]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">Campaign Creation Cost</td>
+                                    <td>{{result[31]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">A/B Testing Cost</td>
+                                    <td>{{result[32]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" *ngIf="optional[1]">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">Channel Cost</td>
+                                    <td>{{result[33]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">Total Cost</td>
+                                    <td>{{result[34]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">Operating Income, INR</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">Revenue</td>
+                                    <td>{{result[35]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">Variable Cost</td>
+                                    <td>{{result[36]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">Gross Profit</td>
+                                    <td>{{result[37]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">Promotion Cost</td>
+                                    <td>{{result[34]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">Operating Profit/Loss</td>
+                                    <td>{{result[38]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">KPI</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">Operating Margin</td>
+                                    <td>{{result[39]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="text-align: justify;    font-size: 14px;
+                                    font-weight: 400;">ROAS</td>
+                                    <td>{{result[40]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

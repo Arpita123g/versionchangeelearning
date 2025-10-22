@@ -1,0 +1,322 @@
+<div class="elearingnewui bus_iness">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="crafting">
+                <div>
+                    <div class="row" class="marketer">
+                        <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+                            style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                                <button class="food-thought-btn">{{language.b253}}</button></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <h1>{{language.b135}}
+                        <mat-icon [appTippy]="
+    '<div class=\'help-tip p-2\'>
+        <div style=\'display:flex;\'>
+            <div>
+                <h4 style=\'color: white; margin:0 auto; font-weight: 600;\'>Q.1</h4>
+            </div> &nbsp; &nbsp; &nbsp;
+            <div>
+                <p style=\'margin: 0 auto; color: white; font-size:13px;\'>' + language.b241 + '</p>
+            </div>
+        </div>
+        <div style=\'display:flex;\'>
+            <div>
+                <h4 style=\'color: white; margin:0 auto; font-weight: 600;\'>Q.2</h4>
+            </div> &nbsp; &nbsp; &nbsp;
+            <div>
+                <p style=\'margin: 0 auto; color: white; font-size:13px;\'>' + language.b242 + '</p>
+            </div>
+        </div>
+    </div>'
+">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+                <div class="row g-4 pt-3">
+                    <div class="col-md-8 col-sm-12 ">
+                        <div class="card p-2">
+                            <apx-chart [series]="Gamingtriggers.series" [chart]="Gamingtriggers.chart"
+                                [dataLabels]="Gamingtriggers.dataLabels" [plotOptions]="Gamingtriggers.plotOptions"
+                                [xaxis]="Gamingtriggers.xaxis" [yaxis]="Gamingtriggers.yaxis"
+                                [tooltip]="Gamingtriggers.tooltip" [stroke]="Gamingtriggers.stroke"
+                                [fill]="Gamingtriggers.fill" [title]="Gamingtriggers.title">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="row row-cols-md-3 pt-3 g-3 input-loc-card">
+                    <div class="col-md" *ngFor="let card of cardData1">
+                        <div class="card input-loc-card-next" [ngClass]="{ selected: result[0] === card.title }">
+                            <label class="input-card-label">
+                                <input class="input-card-label-input" type="radio" name="cardSelectionone"
+                                    (change)="getSelectedcommunication(card.title)" [checked]="result[0] === card.title"
+                                    [disabled]="checkdisable" />
+                                {{ card.title }} <!-- Changed from language[card.title] to card.title -->
+
+                                <p class="maincontent">
+                                    {{ textshow[card.id] ? card.description : card.turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer; font-size: small;"
+                                        (click)="toggleText(card.id)"
+                                        [ngStyle]="{ color: textshow[card.id] ? 'red' : 'blue' }">
+                                        {{ textshow[card.id] ? language.b331 : language.b330 }}
+                                    </span>
+                                </p>
+                            </label>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="mt-5">
+                    <h1>{{language.b149}}
+                        <mat-icon [appTippy]="
+    '<div class=\'help-tip p-2\'>
+        <div style=\'display:flex;\'>
+            <div>
+                <h4 style=\'color: white; margin:0 auto; font-weight: 600;\'>Q.1</h4>
+            </div> &nbsp; &nbsp; &nbsp;
+            <div>
+                <p style=\'margin: 0 auto; color: white; font-size:13px;\'>' + language.b243 + '</p>
+            </div>
+        </div>
+        <div style=\'display:flex;\'>
+            <div>
+                <h4 style=\'color: white; margin:0 auto; font-weight: 600;\'>Q.2</h4>
+            </div> &nbsp; &nbsp; &nbsp;
+            <div>
+                <p style=\'margin: 0 auto; color: white; font-size:13px;\'>' + language.b244 + '</p>
+            </div>
+        </div>
+    </div>'
+">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+                <div class="row row-cols-md-4 g-3 mt-2 input-img-card">
+                    <div class="col-md" *ngFor="let item of channelData; let i = index">
+                        <div class="card marketing-card">
+                            <div class="craftingimg">
+                                <img [src]="'../../../../assets/images/consumergame/' + item.img" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h3>{{ language[item.title] }}</h3>
+                            </div>
+                            <div class="card-footer form-check">
+                                <input class="checkfrominput" type="checkbox" [(ngModel)]="result[i + 1]"
+                                    (change)="getSelection('channelmix', i + 1)" [disabled]="disabled[i]" />
+                                <label class="form-check-label"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <h1>{{language.b150}}
+                        <mat-icon [appTippy]="
+    '<div class=\'help-tip p-2\'>
+        <div style=\'display:flex;\'>
+            <div>
+                <h4 style=\'color: white; margin:0 auto; font-weight: 600;\'>Q.1</h4>
+            </div> &nbsp; &nbsp; &nbsp;
+            <div>
+                <p style=\'margin: 0 auto; color: white; font-size:13px;\'>' + language.b245 + '</p>
+            </div>
+        </div>
+        <div style=\'display:flex;\'>
+            <div>
+                <h4 style=\'color: white; margin:0 auto; font-weight: 600;\'>Q.2</h4>
+            </div> &nbsp; &nbsp; &nbsp;
+            <div>
+                <p style=\'margin: 0 auto; color: white; font-size:13px;\'>' + language.b246 + '</p>
+            </div>
+        </div>
+    </div>'
+">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+                <div class="row g-4 pt-3">
+                    <div class="col-md-8 col-sm-12 ">
+                        <div class="card p-2">
+                            <apx-chart [series]="Discoveringchannel.series" [chart]="Discoveringchannel.chart"
+                                [dataLabels]="Discoveringchannel.dataLabels"
+                                [plotOptions]="Discoveringchannel.plotOptions" [xaxis]="Discoveringchannel.xaxis"
+                                [yaxis]="Discoveringchannel.yaxis" [tooltip]="Discoveringchannel.tooltip"
+                                [stroke]="Discoveringchannel.stroke" [fill]="Discoveringchannel.fill"
+                                [title]="Discoveringchannel.title">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-3 pt-3 g-3 input-loc-card">
+                    <div class="col-md" *ngFor="let card of cardData2; let i = index">
+                        <div class="card h-100 input-loc-card-next"
+                            [ngClass]="{ selected: result[9] === publishingOptions[i] }">
+                            <label class="input-card-label">
+                                <input class="input-card-label-input" type="radio" name="cardSelection"
+                                    [value]="publishingOptions[i]"
+                                    (change)="getSelectedpublishing(publishingOptions[i])"
+                                    [checked]="result[9] === publishingOptions[i]" [disabled]="checkdisable" />
+                                {{ language[card.titleKey] }}
+                                <p class="maincontent">
+                                    {{ textshow[card.id] ? language[card.descriptionKey] :
+                                    (language[card.descriptionKey]?.length > 90 ? (language[card.descriptionKey] |
+                                    slice:0:90) + '...' : language[card.descriptionKey]) }}
+                                    <span class="mt-3" style="cursor: pointer; font-size: small;"
+                                        (click)="toggleText(card.id)"
+                                        [ngStyle]="{ color: textshow[card.id] ? 'red' : 'blue' }">
+                                        {{ textshow[card.id] ? language.b331 : language.b330 }}
+                                    </span>
+                                </p>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <h1>{{language.b164}}
+                        <mat-icon [appTippy]="
+    '<div class=\'help-tip p-2\'>
+        <div style=\'display:flex;\'>
+            <div>
+                <h4 style=\'color: white; margin:0 auto; font-weight: 600;\'>Q.1</h4>
+            </div> &nbsp; &nbsp; &nbsp;
+            <div>
+                <p style=\'margin: 0 auto; color: white; font-size:13px;\'>' + language.b247 + '</p>
+            </div>
+        </div>
+        <div style=\'display:flex;\'>
+            <div>
+                <h4 style=\'color: white; margin:0 auto; font-weight: 600;\'>Q.2</h4>
+            </div> &nbsp; &nbsp; &nbsp;
+            <div>
+                <p style=\'margin: 0 auto; color: white; font-size:13px;\'>' + language.b248 + '</p>
+            </div>
+        </div>
+    </div>'
+">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+                <div class="row pt-3 ">
+                    <div class="col-md-8 col-sm-12 col-lg-6">
+                        <div class="card p-2">
+                            <apx-chart [series]="Userspreference.series" [chart]="Userspreference.chart"
+                                [labels]="Userspreference.labels" [responsive]="Userspreference.responsive"
+                                [legend]="Userspreference.legend" [tooltip]="Userspreference.tooltip"
+                                [title]="Userspreference.title">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-3 pt-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let card of cardData3; let i = index">
+                        <div class="card marketing-card">
+                            <div class="craftingimg">
+                                <img [src]="'../../../../assets/images/consumergame/' + card.image" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h3>{{ card.title }}</h3>
+                                <p class="card-text">
+                                    {{ textshow[card.id] ? card.description : card.turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer; font-size: small;"
+                                        (click)="toggleText(card.id)"
+                                        [ngStyle]="{ color: textshow[card.id] ? 'red' : 'blue' }">
+                                        {{ textshow[card.id] ? language.b331 : language.b330 }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <input class="checkfrominput" [disabled]="checkdisable" type="radio"
+                                    [id]="'flexCheckDefault' + i" [checked]="result[10 + i] === 'Yes'"
+                                    (change)="getSelection('monetization', 10 + i)" value="" />
+                                <label class="form-check-label" [for]="'flexCheckDefault' + i"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="mt-5" *ngIf="showIngameAdvertising">
+                    <h1>{{language.b175}}
+                        <mat-icon [appTippy]="
+    '<div class=\'help-tip p-2\'>
+        <div style=\'display:flex;\'>
+            <div>
+                <h4 style=\'color: white; margin:0 auto; font-weight: 600;\'>Q.1</h4>
+            </div> &nbsp; &nbsp; &nbsp;
+            <div>
+                <p style=\'margin: 0 auto; color: white; font-size:13px;\'>' + language.b249 + '</p>
+            </div>
+        </div>
+        <div style=\'display:flex;\'>
+            <div>
+                <h4 style=\'color: white; margin:0 auto; font-weight: 600;\'>Q.2</h4>
+            </div> &nbsp; &nbsp; &nbsp;
+            <div>
+                <p style=\'margin: 0 auto; color: white; font-size:13px;\'>' + language.b250 + '</p>
+            </div>
+        </div>
+    </div>'
+">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+
+                    <div class="row pt-3">
+                        <div class="col-md-8 col-sm-12 ">
+                            <div class="card p-2">
+                                <apx-chart [series]="playerreaction.series" [chart]="playerreaction.chart"
+                                    [dataLabels]="playerreaction.dataLabels" [plotOptions]="playerreaction.plotOptions"
+                                    [xaxis]="playerreaction.xaxis" [yaxis]="playerreaction.yaxis"
+                                    [tooltip]="playerreaction.tooltip" [stroke]="playerreaction.stroke"
+                                    [title]="playerreaction.title">
+                                </apx-chart>
+                            </div>
+                        </div>
+                        <div class="row row-cols-md-3 mt-2 g-3 input-img-card">
+                            <div class="col-md" *ngFor="let card of cardData4; let i = index">
+                                <div class="card marketing-card">
+                                    <div class="craftingimg">
+                                        <img [src]="getImagePath(i)" class="card-img-top" alt="Your Image" />
+                                    </div>
+                                    <div class="card-body">
+                                        <h3>{{ card.title }}</h3>
+                                        <p class="card-text">
+                                            {{ textshow[card.id] ? card.description : card.turncatedtext }}
+                                            <span class="mt-3" style="cursor: pointer; font-size: small;"
+                                                (click)="toggleText(card.id)"
+                                                [ngStyle]="{ color: textshow[card.id] ? 'red' : 'blue' }">
+                                                {{ textshow[card.id] ? language.b331 : language.b330 }}
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="card-footer form-check">
+                                        <input class="checkfrominput" type="checkbox" [(ngModel)]="result[13 + i]"
+                                            (change)="getSelection('ingame', 13 + i)" [disabled]="checkdisable" />
+                                        <label class="form-check-label" for="flexCheckDefault"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

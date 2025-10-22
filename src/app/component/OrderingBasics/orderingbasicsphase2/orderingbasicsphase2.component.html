@@ -1,0 +1,377 @@
+<div class="elearingnewui ordering_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="market-research">
+                <div class="element-first">
+                    <div class="row">
+                        <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+                            style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                                <button class="food-thought-btn">Food For Thought</button></span>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="nav market-research-nav" role="tablist">
+                    <li class="nav-link active market-research-link" id="Ordering-tab" data-bs-toggle="tab"
+                    data-bs-target="#Ordering" role="tab" aria-controls="Ordering" aria-selected="false">
+                    Ordering
+                </li>
+
+                    <li class="nav-link  market-research-link" id="CompanyMonitor-tab" data-bs-toggle="tab"
+                        data-bs-target="#CompanyMonitor" role="tab" aria-controls="CompanyMonitor"
+                        aria-selected="true">
+                        Company Monitor
+                    </li>
+                   
+                </ul>
+
+                <div class="tab-content rtsidetable card">
+                    <div class="tab-pane fade show active" id="Ordering" role="tabpanel" aria-labelledby="Ordering-tab">
+                        <div class="rounded-5  p-4">
+                            <h1 class="py-4">Phase 1 Monitoring
+                                <mat-icon appTippy="
+                                                    <div class='help-tip p-2'>
+                                                      <div style='display:flex;'>
+                                                        <div>
+                                                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                                        </div> &nbsp; &nbsp;
+                                                        <div>
+                                                          <p style='margin: 0 auto; color: white; font-size:13px;'> Based on the quantity demand, stockout, and back ordering situations from the previous phase, what insights can we gain about the effectiveness of decisions, and how can you use this information to improve the strategies for the current phase?</p>
+                                                        </div>
+                                                      </div>
+                                                        <div class='pt-2' style='display:flex;'>
+                                                          <div>
+                                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                                          </div> &nbsp; &nbsp; 
+                                                          <div>
+                                                            <p style='margin: 0 auto; color: white; font-size:13px;'>  How do the relevant costs associated with decisions in the previous phase reflect the impact on overall performance, and how can you leverage this understanding to make more informed decisions in the current phase?</p>
+                                                          </div>
+                                                        </div>
+                                                    </div> ">
+                                    help_outline
+                                </mat-icon>
+                            </h1>
+                            <div class="row row-col-md-2 ">
+                                <div class="col-md ">
+                                    <div>
+                                        <table class="table rsl_tbl">
+                                            <thead class="rsl_tbl-thead">
+                                                <tr class="rsl_tbl-thead-tr">
+                                                    <th class="rsl_tbl-thead-th" colspan="2">Quantity, units</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="rsl_tbl-tbody">
+
+                                                <tr class="rsl_tbl-tbody-tr">
+                                                    <td>Demand</td>
+                                                    <td>{{result[9]}}</td>
+                                                </tr>
+                                                <tr class="rsl_tbl-tbody-tr">
+                                                    <td>stockout</td>
+                                                    <td>{{result[11]}}</td>
+                                                </tr>
+                                                <tr class="rsl_tbl-tbody-tr">
+                                                     <td>Back order</td>
+                                                    <td>{{result[13]}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="py-4">
+                                        <table class="table rsl_tbl ">
+                                            <thead class="rsl_tbl-thead">
+                                                <tr class="rsl_tbl-thead-tr">
+                                                    <th class="rsl_tbl-thead-th" colspan="2">Cost, INR</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="rsl_tbl-tbody">
+                                                <tr class="rsl_tbl-tbody-tr">
+                                                    <td>Ordering</td>
+                                                    <td>{{result[15]}}</td>
+                                                </tr>
+                                                <tr class="rsl_tbl-tbody-tr">
+                                                   <td>Holding</td>
+                                                    <td>{{result[17]}}</td>
+                                                </tr>
+                                                <tr class="rsl_tbl-tbody-tr">
+                                                    <td>Stockout</td>
+                                                    <td>{{result[19]}}</td>
+                                                </tr>
+                                                <tr class="rsl_tbl-tbody-tr">
+                                                     <td>Back ordering</td>
+                                                    <td>{{result[21]}}</td>
+                                                </tr>
+                                                <tr class="rsl_tbl-tbody-tr">
+                                                   <td>Total</td>
+                                                    <td>{{result[23]}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card p-3">
+                                        <apx-chart [series]="cost.series" [chart]="cost.chart"
+                                            [dataLabels]="cost.dataLabels" [plotOptions]="cost.plotOptions"
+                                            [yaxis]="cost.yaxis" [xaxis]="cost.xaxis" [fill]="cost.fill"
+                                            [title]="cost.title" [noData]="cost.noData" [tooltip]="cost.tooltip">
+                                        </apx-chart>
+                                    </div>
+                                </div>
+                            </div>
+                            <h1 class="py-4">Outlook
+                                <mat-icon appTippy="
+                                                    <div class='help-tip p-2'>
+                                                      <div style='display:flex;'>
+                                                        <div>
+                                                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                                        </div> &nbsp; &nbsp;
+                                                        <div>
+                                                          <p style='margin: 0 auto; color: white; font-size:13px;'> How does the current economic scenario affect the company's cost, and how can this information guide your decision-making process?</p>
+                                                        </div>
+                                                      </div>
+                                                        <div class='pt-2' style='display:flex;'>
+                                                          <div>
+                                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                                          </div> &nbsp; &nbsp; 
+                                                          <div>
+                                                            <p style='margin: 0 auto; color: white; font-size:13px;'> What potential trade-off in cost should you consider when determining ordering and inventory management strategies, given the provided data?</p>
+                                                          </div>
+                                                        </div>
+                                                    </div> ">
+                                    help_outline
+                                </mat-icon>
+                            </h1>
+                            <div class="row row-col-md-2 ">
+                                <div class="col-md phaseon1">
+                                    <p>{{result[0]}}</p>
+                                    
+                                </div>
+                                <div class="col-md">
+                                    <div class="row row-cols-md-2">
+                                        <div class="col-md">
+                                            <p>{{result[1]}}</p>
+                                            <h4>{{result[2]}}</h4>
+                                        </div>
+                                        <div class="col-md">
+                                            <p>Holding Cost, INR</p>
+                                            <h4>{{result[25]}}</h4>
+                                        </div>
+                                        <div class="col-md">
+                                            <p>{{result[3]}}</p>
+                                            <h4>{{result[4]}}</h4>
+                                        </div>
+                                        <div class="col-md">
+                                            <p>{{result[5]}}</p>
+                                            <h4>{{result[6]}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h1 class="py-5">Ordering, units
+                                <mat-icon appTippy="
+                                                    <div class='help-tip p-2'>
+                                                      <div style='display:flex;'>
+                                                        <div>
+                                                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                                        </div> &nbsp; &nbsp;
+                                                        <div>
+                                                          <p style='margin: 0 auto; color: white; font-size:13px;'> How can you use the data from the market outlook and company monitoring system to decide the optimal ordering quantity, and what factors should you consider when determining our reorder level?</p>
+                                                        </div>
+                                                      </div>
+                                                        <div class='pt-2' style='display:flex;'>
+                                                          <div>
+                                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                                          </div> &nbsp; &nbsp; 
+                                                          <div>
+                                                            <p style='margin: 0 auto; color: white; font-size:13px;'> What are the implications of ordering quantity and reorder level decisions on inventory levels throughout the simulated phase, and how can you adjust these decisions to optimize costs and maximize service level?</p>
+                                                          </div>
+                                                        </div>
+                                                    </div> ">
+                                    help_outline
+                                </mat-icon>
+                            </h1>
+                            <div class="row row-cols-md-3 phaseon1_Ordering">
+                                <div class="col-md">
+                                    <div class="card-img-top img-top-new" style="text-align: center;">
+                                        <img src="../../../../assets/images/innovation/promotionimg.svg" alt="..."
+                                            class="img-fluid img-img" style="height: 16rem;
+                                                            width: 80%;">
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div style="text-align: center;">
+                                        <p>Order Quantity, units</p>
+                                        <input type="number" class="input-no_box" placeholder="Input value here..."
+                                        [(ngModel)]="result[26]"
+                                        (change)="inputtablevalue('ap15',26)" [disabled]="inputDisabled">
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div style="text-align: center;">
+                                        <p>Reorder Level, units</p>
+                                        <input type="number" class="input-no_box" placeholder="Input value here..."
+                                        [(ngModel)]="result[27]"
+                                        (change)="inputtablevalue('ap16',27)" [disabled]="inputDisabled">
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="retry mt-5" type="button" (click)="phaseTwoInventory()">Phase 2 Inventory
+                                Level</button>
+                        </div>
+                        
+                    </div>
+                    <div class="tab-pane fade " id="CompanyMonitor" role="tabpanel"
+                        aria-labelledby="CompanyMonitor-tab">
+                        <div class="rounded-5 p-4">
+                            <h1 class="py-4">Company Monitor
+                                <mat-icon appTippy="
+                                                    <div class='help-tip p-2'>
+                                                      <div style='display:flex;'>
+                                                        <div>
+                                                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                                        </div> &nbsp; &nbsp;
+                                                        <div>
+                                                          <p style='margin: 0 auto; color: white; font-size:13px;'>  How does the forecasted demand vs. probability graph help you understand demand variability, and how can this information be used to decide ordering quantity?</p>
+                                                        </div>
+                                                      </div>
+                                                        <div class='pt-2' style='display:flex;'>
+                                                          <div>
+                                                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                                          </div> &nbsp; &nbsp; 
+                                                          <div>
+                                                            <p style='margin: 0 auto; color: white; font-size:13px;'>  What insights can be gathered from the lead time vs. probability graph and accompanying statistics (such as mean, mode, median, etc.), and how can this data aid in setting the reorder level effectively?</p>
+                                                          </div>
+                                                        </div>
+                                                    </div> ">
+                                    help_outline
+                                </mat-icon>
+                            </h1>
+                            <div class="row row-col-md-2">
+                                <div class="col-md">
+                                    <table class="table rsl_tbl">
+                                        <thead class="rsl_tbl-thead">
+                                            <tr class="rsl_tbl-thead-tr">
+                                                <th class="rsl_tbl-thead-th" colspan="2">Forecasted demand, units</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="rsl_tbl-tbody">
+
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <td>Mean</td>
+                                                <td>{{result[28]|number:'1.0-0'}}</td>
+                                            </tr>
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <td>Standard Deviation</td>
+                                                 <td>{{result[29]|number:'1.0-0'}}</td>
+                                            </tr>
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <td>Variance</td>
+                                                <td>{{result[30]|number:'1.0-0'}}</td>
+                                            </tr>
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <td>Median</td>
+                                                <td>{{result[31]|number:'1.0-0'}}</td>
+                                            </tr>
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <td>Mode</td>
+                                                 <td>{{result[32]|number:'1.0-0'}}</td>
+                                            </tr>
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <td>25 Percentile </td>
+                                                 <td>{{result[33]|number:'1.0-0'}}</td>
+                                            </tr>
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <td>50 Percentile</td>
+                                                 <td>{{result[34]|number:'1.0-0'}}</td>
+                                            </tr>
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <td>75 Percentile</td>
+                                                 <td>{{result[35]|number:'1.0-0'}}</td>
+                                            </tr>
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <td>95 Percentile</td>
+                                                 <td>{{result[36]|number:'1.0-0'}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card p-3">
+                                        <apx-chart [series]="ForecastedDemand.series" [chart]="ForecastedDemand.chart"
+                                            [dataLabels]="ForecastedDemand.dataLabels"
+                                            [plotOptions]="ForecastedDemand.plotOptions"
+                                            [yaxis]="ForecastedDemand.yaxis" [xaxis]="ForecastedDemand.xaxis"
+                                            [fill]="ForecastedDemand.fill" [title]="ForecastedDemand.title"
+                                            [noData]="ForecastedDemand.noData" [tooltip]="ForecastedDemand.tooltip">
+                                        </apx-chart>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row row-col-md-2 py-4">
+                                <div class="col-md">
+                                    <table class="table rsl_tbl">
+                                        <thead class="rsl_tbl-thead">
+                                            <tr class="rsl_tbl-thead-tr">
+                                                <th class="rsl_tbl-thead-th" colspan="2">Lead Time, weeks</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="rsl_tbl-tbody">
+
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <td>Mean</td>
+                                                <td>{{result[37]|number:'1.0-0'}}</td>
+                                            </tr>
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <td>Standard Deviation</td>
+                                                 <td>{{result[38]|number:'1.0-0'}}</td>
+                                            </tr>
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <td>Variance</td>
+                                                 <td>{{result[39]|number:'1.0-0'}}</td>
+                                            </tr>
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <td>Median</td>
+                                                 <td>{{result[40]|number:'1.0-0'}}</td>
+                                            </tr>
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <td>Mode</td>
+                                                 <td>{{result[41]|number:'1.0-0'}}</td>
+                                            </tr>
+                                            <tr class="rsl_tbl-tbody-tr">
+                                                <td>Max lead time </td>
+                                                 <td>{{result[7]|number:'1.0-0'}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card p-3">
+                                        <apx-chart [series]="LeadTime.series" [chart]="LeadTime.chart"
+                                            [dataLabels]="LeadTime.dataLabels" [plotOptions]="LeadTime.plotOptions"
+                                            [yaxis]="LeadTime.yaxis" [xaxis]="LeadTime.xaxis" [fill]="LeadTime.fill"
+                                            [title]="LeadTime.title" [noData]="LeadTime.noData"
+                                            [tooltip]="LeadTime.tooltip">
+                                        </apx-chart>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                   
+                    
+                </div>
+               
+            </div>
+
+        </div>
+    </div>
+</div>

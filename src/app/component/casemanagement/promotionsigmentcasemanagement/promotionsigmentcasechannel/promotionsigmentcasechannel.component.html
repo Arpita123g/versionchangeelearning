@@ -1,0 +1,392 @@
+<div class="elearingnewui casemanagement">
+    <div class="case-management-body case-management-body-marketing ">
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>A/B Testing</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="table case-management-table ">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="13">Sales Effect</th>
+                    </tr>
+                    <tr>
+                        <td>Website</td>
+                        <td *ngFor="let capitaldata of res.x8; let i = index">
+                            <input [value]="res.x8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writePromotionchannelValue('x8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Social Commerce</td>
+                        <td *ngFor="let capitaldata of res.x9; let i = index">
+                            <input [value]="res.x9[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writePromotionchannelValue('x9',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Modern Trade & Retailers</td>
+                        <td *ngFor="let capitaldata of res.x10; let i = index">
+                            <input [value]="res.x10[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writePromotionchannelValue('x10',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="table case-management-table ">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="13">Cost, INR</th>
+                    </tr>
+                    <tr>
+                        <td>Website</td>
+                        <td *ngFor="let capitaldata of res.y8; let i = index">
+                            <input [value]="res.y8[i]| number:'1.0-0'" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writePromotionchannelValue('y8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Social Commerce</td>
+                        <td *ngFor="let capitaldata of res.y9; let i = index">
+                            <input [value]="res.y9[i]| number:'1.0-0'" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writePromotionchannelValue('y9',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Modern Trade & Retailers</td>
+                        <td *ngFor="let capitaldata of res.y10; let i = index">
+                            <input [value]="res.y10[i]| number:'1.0-0'" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writePromotionchannelValue('y10',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Online - Channel Sales Impact</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing-second">
+                <thead>
+                    <tr>
+                        <td colspan="3" *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody class="second-tbody">
+                    <tr>
+                        <ng-container *ngFor="let item of data1; let i = index">
+                            <td *ngIf="i % 3 === 0">Y , %</td>
+                            <td *ngIf="i % 3 === 1">X</td>
+                            <td *ngIf="i % 3 === 2">Make X</td>
+                        </ng-container>
+
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.v20[index]*100" #v20Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('v20', index, v20Input.value)"></td>
+                            <td><input [value]="res.w20[index]" #w20Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('w20', index, w20Input.value)"></td>
+                            <td><input [value]="res.x20[index]| number:'1.0-0'" #x20Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('x20', index, x20Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.v21[index]*100| number:'1.0-0'" #v21Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('v21', index, v21Input.value)"></td>
+                            <td><input [value]="res.w21[index]" #w21Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('w21', index, w21Input.value)"></td>
+                            <td><input [value]="res.x21[index]| number:'1.0-0'" #x21Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('x21', index, x21Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.v22[index]*100" #v22Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('v22', index, v22Input.value)"></td>
+                            <td><input [value]="res.w22[index]" #w22Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('w22', index, w22Input.value)"></td>
+                            <td><input [value]="res.x22[index]| number:'1.0-0'" #x22Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('x22', index, x22Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Modern Trade - Channel Sales Impact</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing-second">
+                <thead>
+                    <tr>
+                        <td colspan="3" *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody class="second-tbody">
+                    <tr>
+                        <ng-container *ngFor="let item of data1; let i = index">
+                            <td *ngIf="i % 3 === 0">Y , %</td>
+                            <td *ngIf="i % 3 === 1">X</td>
+                            <td *ngIf="i % 3 === 2">Make X</td>
+                        </ng-container>
+
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.v26[index]*100| number:'1.0-0'" #v26Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('v26', index, v26Input.value)"></td>
+                            <td><input [value]="res.w26[index]" #w26Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('w26', index, w26Input.value)"></td>
+                            <td><input [value]="res.x26[index]| number:'1.0-0'" #x26Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('x26', index, x26Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.v27[index]*100" #v27Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('v27', index, v27Input.value)"></td>
+                            <td><input [value]="res.w27[index]" #w27Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('w27', index, w27Input.value)"></td>
+                            <td><input [value]="res.x27[index]| number:'1.0-0'" #x27Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('x27', index, x27Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.v28[index]*100" #v28Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('v28', index,v28Input.value)"></td>
+                            <td><input [value]="res.w28[index]" #w28Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('w28', index, w28Input.value)"></td>
+                            <td><input [value]="res.x28[index]| number:'1.0-0'" #x28Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('x28', index, x28Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Reatilers - Channel Sales Impact</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing-second">
+                <thead>
+                    <tr>
+                        <td colspan="3" *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody class="second-tbody">
+                    <tr>
+                        <ng-container *ngFor="let item of data1; let i = index">
+                            <td *ngIf="i % 3 === 0">Y, %</td>
+                            <td *ngIf="i % 3 === 1">X</td>
+                            <td *ngIf="i % 3 === 2">Make X</td>
+                        </ng-container>
+
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.v32[index]*100| number:'1.0-0'" #v32Input
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('v32', index, v32Input.value)"></td>
+                            <td><input [value]="res.w32[index]" #w32Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('w32', index, w32Input.value)"></td>
+                            <td><input [value]="res.x32[index]| number:'1.0-0'" #x32Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('x32', index, x32Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.v33[index]*100" #v33Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('v33', index, v33Input.value)"></td>
+                            <td><input [value]="res.w33[index]" #w33Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('w33', index, w33Input.value)"></td>
+                            <td><input [value]="res.x33[index]| number:'1.0-0'" #x33Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('x33', index, x33Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                            <td><input [value]="res.v34[index]*100" #v34Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('v34', index, v34Input.value)"></td>
+                            <td><input [value]="res.w34[index]" #w34Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('w34', index, w34Input.value)"></td>
+                            <td><input [value]="res.x34[index]| number:'1.0-0'" #x34Input [disabled]="defaultcase=='yes'"
+                                    (focusout)="writePromotionchannelValue('x34', index, x34Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Product Margin</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="table case-management-table ">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="13">Gross Margin</th>
+                    </tr>
+                    <tr>
+                        <td>Acne Face Cream</td>
+                        <td *ngFor="let capitaldata of res.w37; let i = index">
+                            <input [value]="res.w37[i]*100| number:'1.0-0'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writePromotionchannelValue('w37',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Apple Cider Face Wash</td>
+                        <td *ngFor="let capitaldata of res.w38; let i = index">
+                            <input [value]="res.w38[i]*100" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writePromotionchannelValue('w38',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="table case-management-table ">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="13">Focus Impact</th>
+                    </tr>
+                    <tr>
+                        <td>Acne Face Cream</td>
+                        <td *ngFor="let capitaldata of res.x37; let i = index">
+                            <input [value]="res.x37[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writePromotionchannelValue('x37',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Apple Cider Face Wash</td>
+                        <td *ngFor="let capitaldata of res.x38; let i = index">
+                            <input [value]="res.x38[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writePromotionchannelValue('x38',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="table case-management-table ">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="13">Reverse Impact</th>
+                    </tr>
+                    <tr>
+                        <td>Acne Face Cream</td>
+                        <td *ngFor="let capitaldata of res.y37; let i = index">
+                            <input [value]="res.y37[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writePromotionchannelValue('y37',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Apple Cider Face Wash</td>
+                        <td *ngFor="let capitaldata of res.y38; let i = index">
+                            <input [value]="res.y38[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writePromotionchannelValue('y38',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="table case-management-table ">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="13">Equal Impact</th>
+                    </tr>
+                    <tr>
+                        <td>Acne Face Cream</td>
+                        <td *ngFor="let capitaldata of res.z37; let i = index">
+                            <input [value]="res.z37[i]| number:'1.0-0'" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writePromotionchannelValue('z37',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Apple Cider Face Wash</td>
+                        <td *ngFor="let capitaldata of res.z38; let i = index">
+                            <input [value]="res.z38[i]| number:'1.0-0'" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writePromotionchannelValue('z38',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

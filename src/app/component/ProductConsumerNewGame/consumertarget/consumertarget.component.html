@@ -1,0 +1,609 @@
+<div class="elearingnewui bus_iness">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">{{languageselect=== "French"
+            ? "Chargement... Préparer un peu de magie numérique!"
+            : "Loading... Brewing up some digital magic!"}} </p> -->
+    </div>
+    <div class="container">
+        <div class="body-element">
+
+            <div class="crafting">
+                <div class="row" class="marketer">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">{{language.b253}}</button></span>
+                    </div>
+                </div>
+                <h1>{{language.b59}}
+                    <mat-icon [appTippy]="
+    '<div class=\'help-tip p-2\'>
+        <div style=\'display:flex;\'>
+            <div>
+                <h4 style=\'color: white; margin:0 auto; font-weight: 600;\'>Q.1</h4>
+            </div> &nbsp; &nbsp; &nbsp;
+            <div>
+                <p style=\'margin: 0 auto; color: white; font-size:13px;\'>' + language.b227 + '</p>
+            </div>
+        </div>
+        <div style=\'display:flex;\'>
+            <div>
+                <h4 style=\'color: white; margin:0 auto; font-weight: 600;\'>Q.2</h4>
+            </div> &nbsp; &nbsp; &nbsp;
+            <div>
+                <p style=\'margin: 0 auto; color: white; font-size:13px;\'>' + language.b228 + '</p>
+            </div>
+        </div>
+    </div>'
+">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row  g-3 mt-2 input-img-card">
+                    <div class="col-md-7 col-sm-12">
+                        <div class="row row-cols-md-3 g-2 ">
+                            <div class="col-md ">
+                                <div class="card marketing-card">
+                                    <div class="forimgsetup">
+                                        <img src="../../../../assets/images/consumergame/15-24yrs.svg"
+                                            class="card-img-top" alt="Your Image" />
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- <h3>15-24 yrs</h3> -->
+                                        <h3>{{language.b298}}</h3>
+                                    </div>
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" [disabled]="checkdisable" type="radio" value=""
+                                            id="flexCheckDefault" [checked]="result[0]==='Yes'"
+                                            (change)="getSelection('age','target',0)" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="card marketing-card">
+                                    <div class="forimgsetup">
+                                        <img src="../../../../assets/images/consumergame/25-34.jpg" class="card-img-top"
+                                            alt="Your Image" />
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- <h3>25-34 yrs</h3> -->
+                                        <h3>{{language.b299}}</h3>
+                                    </div>
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" [disabled]="checkdisable" type="radio" value=""
+                                            id="flexCheckDefault" [checked]="result[1]==='Yes'"
+                                            (change)="getSelection('age','target',1)" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="card marketing-card">
+                                    <div class="forimgsetup">
+                                        <img src="../../../../assets/images/consumergame/imgfortar.png"
+                                            class="card-img-top" alt="Your Image" />
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- <h3>35+ yrs</h3> -->
+                                        <h3>{{language.b300}}</h3>
+                                    </div>
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" [disabled]="checkdisable" type="radio" value=""
+                                            id="flexCheckDefault" [checked]="result[2]==='Yes'"
+                                            (change)="getSelection('age','target',2)" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-12 ">
+                        <div class="card p-2 apex-card">
+                            <apx-chart [series]="totalpopulation.series" [chart]="totalpopulation.chart"
+                                [dataLabels]="totalpopulation.dataLabels" [plotOptions]="totalpopulation.plotOptions"
+                                [yaxis]="totalpopulation.yaxis" [xaxis]="totalpopulation.xaxis"
+                                [fill]="totalpopulation.fill" [title]="totalpopulation.title"
+                                [tooltip]="totalpopulation.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3 mt-2 input-img-card">
+                    <div class="col-md-7 col-sm-12">
+                        <div class="row row-cols-md-3 g-2">
+                            <div class="col-md ">
+                                <div class="card  marketing-card">
+                                    <div class="forimgsetup">
+                                        <img src="../../../../assets/images/consumergame/metrocity.svg"
+                                            class="card-img-top" alt="Your Image" />
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- <h3>Metro</h3> -->
+                                        <h3>{{language.b63}}</h3>
+                                    </div>
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" [disabled]="checkdisable" type="radio" value=""
+                                            id="flexCheckDefault" [checked]="metrovalue==='Metro'"
+                                            (change)="getSelection('metro','Metro',0)" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md ">
+                                <div class="card  marketing-card">
+                                    <div class="forimgsetup">
+                                        <img src="../../../../assets/images/consumergame/nonmetro.jpg"
+                                            class="card-img-top" alt="Your Image" />
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- <h3>Non Metro</h3> -->
+                                        <h3>{{language.b64}}</h3>
+                                    </div>
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" [disabled]="checkdisable" type="radio" value=""
+                                            id="flexCheckDefault" [checked]="metrovalue==='Non Metro'"
+                                            (change)="getSelection('metro','Non Metro',4)" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md ">
+                                <div class="card  marketing-card">
+                                    <div class="forimgsetup">
+                                        <img src="../../../../assets/images/consumergame/both2.jpg" class="card-img-top"
+                                            alt="Your Image" />
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- <h3>Both</h3> -->
+                                        <h3>{{language.b302}}</h3>
+                                    </div>
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" [disabled]="checkdisable" type="radio" value=""
+                                            id="flexCheckDefault" [checked]="metrovalue==='Both'"
+                                            (change)="getSelection('metro','Both',5)" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-12">
+                        <div class="card p-2 ">
+                            <apx-chart [series]="gamerpopulation.series" [chart]="gamerpopulation.chart"
+                                [dataLabels]="gamerpopulation.dataLabels" [plotOptions]="gamerpopulation.plotOptions"
+                                [yaxis]="gamerpopulation.yaxis" [xaxis]="gamerpopulation.xaxis"
+                                [fill]="gamerpopulation.fill" [title]="gamerpopulation.title"
+                                [tooltip]="gamerpopulation.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3 mt-2 input-img-card">
+                    <div class="col-md-7 col-sm-12">
+                        <div class="row row-cols-md-3 g-2 ">
+                            <div class="col-md ">
+                                <div class="card  marketing-card">
+                                    <div class="forimgsetup">
+                                        <img src="../../../../assets/images/consumergame/male.jpg" class="card-img-top"
+                                            alt="Your Image" />
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- <h3>Male</h3> -->
+                                        <h3>{{language.b30}}</h3>
+                                    </div>
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" [disabled]="checkdisable" type="radio" value=""
+                                            id="flexCheckDefault" [checked]="gendervalue==='Male'"
+                                            (change)="getSelection('gender','Male',6)" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md ">
+                                <div class="card marketing-card">
+                                    <div class="forimgsetup">
+                                        <img src="../../../../assets/images/consumergame/female.jpg"
+                                            class="card-img-top" alt="Your Image" />
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- <h3>Female</h3> -->
+                                        <h3>{{language.b31}}</h3>
+                                    </div>
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" [disabled]="checkdisable" type="radio" value=""
+                                            id="flexCheckDefault" [checked]="gendervalue==='Female'"
+                                            (change)="getSelection('gender','Female',7)" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md ">
+                                <div class="card  marketing-card">
+                                    <div class="forimgsetup">
+                                        <img src="../../../../assets/images/consumergame/both1.jpg" class="card-img-top"
+                                            alt="Your Image" />
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- <h3>Both</h3> -->
+                                        <h3>{{language.b302}}</h3>
+                                    </div>
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" [disabled]="checkdisable" type="radio" value=""
+                                            id="flexCheckDefault" [checked]="gendervalue==='Both'"
+                                            (change)="getSelection('gender','Both',8)" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-12">
+                        <div class="card p-2 apex-card">
+                            <apx-chart [series]="populationdivision.series" [chart]="populationdivision.chart"
+                                [dataLabels]="populationdivision.dataLabels"
+                                [plotOptions]="populationdivision.plotOptions" [yaxis]="populationdivision.yaxis"
+                                [xaxis]="populationdivision.xaxis" [fill]="populationdivision.fill"
+                                [title]="populationdivision.title" [tooltip]="populationdivision.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <h1>{{language.b65}}
+                        <mat-icon [appTippy]="
+    '<div class=\'help-tip p-2\'>
+        <div style=\'display:flex;\'>
+            <div>
+                <h4 style=\'color: white; margin:0 auto; font-weight: 600;\'>Q.1</h4>
+            </div> &nbsp; &nbsp; &nbsp;
+            <div>
+                <p style=\'margin: 0 auto; color: white; font-size:13px;\'>' + language.b231 + '</p>
+            </div>
+        </div>
+        <div style=\'display:flex;\'>
+            <div>
+                <h4 style=\'color: white; margin:0 auto; font-weight: 600;\'>Q.2</h4>
+            </div> &nbsp; &nbsp; &nbsp;
+            <div>
+                <p style=\'margin: 0 auto; color: white; font-size:13px;\'>' + language.b232 + '</p>
+            </div>
+        </div>
+    </div>'
+">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+                <div class="row  input-img-card g-3 mt-2">
+                    <div class="col-md-12 col-sm-12 col-lg-6 col-xl-7">
+                        <div class="row row-cols-md-4 row-cols-sm-3 row-cols-lg-4 g-2">
+                            <div class="col">
+                                <div class="card language-card">
+                                    <div class="language-card-word">
+                                        <!-- <h1 class="language-card-word-h1">हिंदी</h1> -->
+                                        <h1 class="language-card-word-h1">{{language.b67}}</h1>
+                                    </div>
+                                    <!-- <div class="card-body">
+                                        
+                                        <h3>{{language.b67}}</h3>
+                                    </div> -->
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                            [(ngModel)]="result[9]" (change)="getSelection('lan','language',9)"
+                                            [disabled]="disabled[0]" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card language-card">
+                                    <div class="language-card-word">
+                                        <!-- <h1 class="language-card-word-h1">ENGLISH</h1> -->
+                                        <h1 class="language-card-word-h1">{{language.b68}}</h1>
+                                    </div>
+                                    <!-- <div class="card-body">
+                                        <h3>ENGLISH</h3>
+                                        <h3>{{language.b68}}</h3>
+                                    </div> -->
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                            [(ngModel)]="result[10]" (change)="getSelection('lan','language',10)"
+                                            [disabled]="disabled[1]" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card language-card">
+                                    <div class="language-card-word">
+                                        <!-- <h1 class="language-card-word-h1">বাংলা</h1> -->
+                                        <h1 class="language-card-word-h1">{{language.b69}}</h1>
+                                    </div>
+                                    <!-- <div class="card-body">
+                                        <h3>BENGALI</h3>
+                                        <h3>{{language.b69}}</h3>
+                                    </div> -->
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                            [(ngModel)]="result[11]" (change)="getSelection('lan','language',11)"
+                                            [disabled]="disabled[2]" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card language-card">
+
+                                    <div class="language-card-word">
+                                        <!-- <h1 class="language-card-word-h1">తెలుగు</h1> -->
+                                        <h1 class="language-card-word-h1">{{language.b70}}</h1>
+                                    </div>
+                                    <!-- <div class="card-body">
+                                        <h3>TELUGU</h3>
+                                        <h3>{{language.b70}}</h3>
+                                    </div> -->
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                            [(ngModel)]="result[12]" (change)="getSelection('lan','language',12)"
+                                            [disabled]="disabled[3]" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card  language-card">
+
+                                    <div class="language-card-word">
+                                        <!-- <h1 class="language-card-word-h1">मराठी</h1> -->
+                                        <h1 class="language-card-word-h1">{{language.b71}}</h1>
+                                    </div>
+
+                                    <!-- <div class="card-body">
+                                        <h3>MARATHI</h3>
+                                        <h3>{{language.b71}}</h3>
+                                    </div> -->
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                            [(ngModel)]="result[13]" (change)="getSelection('lan','language',13)"
+                                            [disabled]="disabled[4]" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card  language-card">
+
+                                    <div class="language-card-word">
+                                        <!-- <h1 class="language-card-word-h1">தமிழ்</h1> -->
+                                        <h1 class="language-card-word-h1">{{language.b72}}</h1>
+                                    </div>
+                                    <!-- <div class="card-body">
+                                        <h3>TAMIL</h3>
+                                        <h3>{{language.b72}}</h3>
+                                    </div> -->
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                            [(ngModel)]="result[14]" (change)="getSelection('lan','language',14)"
+                                            [disabled]="disabled[5]" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card  language-card">
+
+                                    <div class="language-card-word">
+                                        <!-- <h1 class="language-card-word-h1">ગુજરાતી</h1> -->
+                                        <h1 class="language-card-word-h1">{{language.b73}}</h1>
+                                    </div>
+                                    <!-- <div class="card-body">
+                                        <h3>GUJARATI</h3>
+                                        <h3>{{language.b73}}</h3>
+                                    </div> -->
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                            [(ngModel)]="result[15]" (change)="getSelection('lan','language',15)"
+                                            [disabled]="disabled[6]" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card  language-card">
+
+                                    <div class="language-card-word">
+                                        <!-- <h1 class="language-card-word-h1">ಕನ್ನಡ</h1> -->
+                                        <h1 class="language-card-word-h1">{{language.b74}}</h1>
+                                    </div>
+                                    <!-- <div class="card-body">
+                                        <h3>KANNADA</h3>
+                                        <h3>{{language.b74}}</h3>
+                                    </div> -->
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                            [(ngModel)]="result[16]" (change)="getSelection('lan','language',16)"
+                                            [disabled]="disabled[7]" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card  language-card">
+
+                                    <div class="language-card-word">
+                                        <!-- <h1 class="language-card-word-h1">മലയാളം</h1> -->
+                                        <h1 class="language-card-word-h1">{{language.b75}}</h1>
+                                    </div>
+                                    <!-- <div class="card-body">
+                                        <h3>MALAYALAM</h3>
+                                        <h3>{{language.b75}}</h3>
+                                    </div> -->
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                            [(ngModel)]="result[17]" (change)="getSelection('lan','language',17)"
+                                            [disabled]="disabled[8]" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card  language-card">
+
+                                    <div class="language-card-word">
+                                        <!-- <h1 class="language-card-word-h1">ଓଡ଼ିଆ</h1> -->
+                                        <h1 class="language-card-word-h1">{{language.b76}}</h1>
+                                    </div>
+                                    <!-- <div class="card-body">
+                                        <h3>ODIA</h3>
+                                        <h3>{{language.b76}}</h3>
+                                    </div> -->
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                            [(ngModel)]="result[18]" (change)="getSelection('lan','language',18)"
+                                            [disabled]="disabled[9]" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card  language-card">
+
+                                    <div class="language-card-word">
+                                        <!-- <h1 class="language-card-word-h1">ਪੰਜਾਬੀ</h1> -->
+                                        <h1 class="language-card-word-h1">{{language.b77}}</h1>
+                                    </div>
+                                    <!-- <div class="card-body">
+                                        <h3>PUNJABI</h3>
+                                        <h3>{{language.b77}}</h3>
+                                    </div> -->
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                            [(ngModel)]="result[19]" (change)="getSelection('lan','language',19)"
+                                            [disabled]="disabled[10]" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card h-100 language-card">
+
+                                    <div class="language-card-word">
+                                        <!-- <h1 class="language-card-word-h1">OTHER</h1> -->
+                                        <h1 class="language-card-word-h1">{{language.b78}}</h1>
+                                    </div>
+                                    <div class="card-body">
+                                    </div>
+                                    <div class="card-footer form-check">
+                                        <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                            [(ngModel)]="result[20]" (change)="getSelection('lan','language',20)"
+                                            [disabled]="disabled[11]" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-lg-6 col-xl-5" *ngIf="languagedata=='entry'">
+                        <div class="card p-2 apex-card-pie">
+                            <apx-chart [series]="languagespeaking.series" [chart]="languagespeaking.chart"
+                                [labels]="languagespeaking.labels" [responsive]="languagespeaking.responsive"
+                                [legend]="languagespeaking.legend" [tooltip]="languagespeaking.tooltip"
+                                [title]="languagespeaking.title">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2" *ngIf="showTargetIncome">
+                    <div class="col-md-6 col-sm-12 ">
+                        <div class="mt-5">
+                            <h1>{{language.b79}}
+                                <mat-icon [appTippy]="
+    '<div class=\'help-tip p-2\'>
+        <div style=\'display:flex;\'>
+            <div>
+                <h4 style=\'color: white; margin:0 auto; font-weight: 600;\'>Q.1</h4>
+            </div> &nbsp; &nbsp; &nbsp;
+            <div>
+                <p style=\'margin: 0 auto; color: white; font-size:13px;\'>' + language.b229 + '</p>
+            </div>
+        </div>
+        <div style=\'display:flex;\'>
+            <div>
+                <h4 style=\'color: white; margin:0 auto; font-weight: 600;\'>Q.2</h4>
+            </div> &nbsp; &nbsp; &nbsp;
+            <div>
+                <p style=\'margin: 0 auto; color: white; font-size:13px;\'>' + language.b230 + '</p>
+            </div>
+        </div>
+    </div>'
+">
+                                    help_outline
+                                </mat-icon>
+                            </h1>
+                        </div>
+                        <div class="py-3">
+                            <div class="card p-2">
+                                <apx-chart [series]="percentagepopulation.series" [chart]="percentagepopulation.chart"
+                                    [dataLabels]="percentagepopulation.dataLabels"
+                                    [plotOptions]="percentagepopulation.plotOptions"
+                                    [yaxis]="percentagepopulation.yaxis" [xaxis]="percentagepopulation.xaxis"
+                                    [fill]="percentagepopulation.fill" [title]="percentagepopulation.title"
+                                    [tooltip]="percentagepopulation.tooltip">
+                                </apx-chart>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-3 mt-3 g-3 input-loc-card" *ngIf="showTargetIncome">
+                    <div class="col-md" *ngFor="let card of cardData1">
+                        <div class="card h-100 input-loc-card-next"
+                            [ngClass]="{ selected: result[card.index] === 'Yes' }"
+                            (click)="getSelection('nccs', 'nccs', card.index)">
+                            <label class="input-card-label" style="cursor: pointer;">
+                                <input class="input-card-label-input" type="radio" name="cardSelection"
+                                    [checked]="result[card.index] === 'Yes'" [disabled]="checkdisable"
+                                    (change)="getSelection('nccs', 'nccs', card.index)" />
+                                {{ language[card.title] }}
+                                <p class="maincontent">
+                                    {{ textshow[card.id] ? language[card.description] : (language[card.description] |
+                                    slice:0:90) + '...' }}
+                                    <span class="mt-3" style="cursor: pointer; font-size: small;"
+                                        (click)="toggleText(card.id)"
+                                        [ngStyle]="{ color: textshow[card.id] ? 'red' : 'blue' }">
+                                        {{ textshow[card.id] ? language.b331 : language.b330 }}
+                                    </span>
+                                </p>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

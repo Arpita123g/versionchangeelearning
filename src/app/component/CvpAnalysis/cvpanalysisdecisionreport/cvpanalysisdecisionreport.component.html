@@ -1,0 +1,378 @@
+<div class="elearingnewui cvp_analysis">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row pb-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                            <div class="">
+                                <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                    (change)="roundClick()">
+                                    <option class="select-round-option" value="">Select Round</option>
+                                    <option class="select-round-option"
+                                        *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                        {{attempt}}</option>
+
+                                </select>
+                            </div>
+
+                            <div class="download_btn" matTooltiClass="primary-tooltip"
+                                (click)="downloadreportcvpanalysis()">
+                                <div>
+                                    <a download matTooltip="Download"><span class="hovertext"
+                                            data-hover="Download pdf file accounting ">
+                                            <img class="download_btn-img"
+                                                src="assets/images/businessbasics/download.png" />
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <mat-icon class="mt-2">get_app</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 mb-3">
+                    <div class="col-md-5 reyapo">
+                        <h1 class="reyapo-h1">Report</h1>
+                        <p style="text-align: justify;">
+                            Excellent work. You have completed managing multiple product lines while creating a balance
+                            between essentials in a company. In this exercise every decision you have taken shows your
+                            skills in dimensions like rigor, synthesis, structuring and business judgement.
+                        </p>
+                    </div>
+
+                    <div class="col-md-7" *ngIf="optional[0]">
+                        <div class="card rigorcard">
+                            <div class="rigorcard-icon">
+                                <mat-icon class="rigorcard-icon-mat" appTippy="<table >
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Rigor</th>
+                      <td style='padding:7px;font-size:13px'>Consistency throughout the decision-making and recommendation.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>Structuring</th>
+                      <td style='padding:7px;font-size:13px'>A logical approach to gathering and analyzing information.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>
+                        Synthesis
+                      </th>
+                      <td style='padding:7px;font-size:13px'>
+                        Approach towards interpreting all the information and making informed decisions.
+                      </td>
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Business Jugement</th>
+                      <td style='padding:7px;font-size:13px'>Ability to evaluate facts and consider risks and possible implications when making decisions.</td>
+                    </tr>
+                    </tr>
+                  </table>
+                   ">
+                                    help_outline
+                                </mat-icon>
+                            </div>
+                            <apx-chart [series]="rigorcharts.series" [chart]="rigorcharts.chart"
+                                [xaxis]="rigorcharts.xaxis" [yaxis]="rigorcharts.yaxis" [stroke]="rigorcharts.stroke"
+                                [markers]="rigorcharts.markers" [fill]="rigorcharts.fill"
+                                [title]="rigorcharts.title"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- checking -->
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">Sales, units</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Jeans</th>
+                                    <th  *ngIf="optional[1]">Top</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Demand</td>
+                                    <td class="middleclassright">{{result[0]|number:'1.0-0'}}</td>
+                                    <td  *ngIf="optional[1]">{{result[1]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Sales</td>
+                                    <td class="middleclassright">{{result[2]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[3]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-3 ">
+                            <apx-chart [series]="salesunitschart.series" [chart]="salesunitschart.chart"
+                                [dataLabels]="salesunitschart.dataLabels" [plotOptions]="salesunitschart.plotOptions"
+                                [yaxis]="salesunitschart.yaxis" [xaxis]="salesunitschart.xaxis"
+                                [fill]="salesunitschart.fill" [title]="salesunitschart.title"
+                                [noData]="salesunitschart.noData" [tooltip]="salesunitschart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">Production, units</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Jeans</th>
+                                    <th *ngIf="optional[1]">Top</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Production</td>
+                                    <td class="middleclassright">{{result[4]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[5]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Closing Inventory</td>
+                                    <td class="middleclassright">{{result[6]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[7]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Stockout</td>
+                                    <td class="middleclassright">{{result[8]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[9]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-3 ">
+                            <apx-chart [series]="productionunitschart.series" [chart]="productionunitschart.chart"
+                                [dataLabels]="productionunitschart.dataLabels"
+                                [plotOptions]="productionunitschart.plotOptions" [yaxis]="productionunitschart.yaxis"
+                                [xaxis]="productionunitschart.xaxis" [fill]="productionunitschart.fill"
+                                [title]="productionunitschart.title" [noData]="productionunitschart.noData"
+                                [tooltip]="productionunitschart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">CVP Analysis, INR</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Jeans</th>
+                                    <th *ngIf="optional[1]">Top</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Price per unit</td>
+                                    <td class="middleclassright">{{result[10]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[11]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Variable cost per unit</td>
+                                    <td class="middleclassright">{{result[12]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[13]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Contribution per unit</td>
+                                    <td class="middleclassright">{{result[14]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[15]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-3">
+                            <apx-chart [series]="cvpanalysisinrchart.series" [chart]="cvpanalysisinrchart.chart"
+                                [dataLabels]="cvpanalysisinrchart.dataLabels"
+                                [plotOptions]="cvpanalysisinrchart.plotOptions" [yaxis]="cvpanalysisinrchart.yaxis"
+                                [xaxis]="cvpanalysisinrchart.xaxis" [fill]="cvpanalysisinrchart.fill"
+                                [title]="cvpanalysisinrchart.title" [noData]="cvpanalysisinrchart.noData"
+                                [tooltip]="cvpanalysisinrchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl ">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">Operating Income, mn INR</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Jeans</th>
+                                    <th *ngIf="optional[1]">Top</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Revenue</td>
+                                    <td class="middleclassright">{{result[16]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[17]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Production cost</td>
+                                    <td class="middleclassright">{{result[18]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[19]|number:'1.0-0'}}</td>
+                                </tr>
+
+                            </tbody>
+                            <tbody class="rsl_tbl-tbody" style="border-top: none;">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <th >Gross Profit/Loss</th>
+                                    <td class="middleclassright">{{result[20]|number:'1.0-0'}}</td>
+                                    <td  *ngIf="optional[1]">{{result[21]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Advertising</td>
+                                    <td class="middleclassright">{{result[22]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[23]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Quality</td>
+                                    <td class="middleclassright">{{result[24]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[25]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Inventory holding cost</td>
+                                    <td class="middleclassright">{{result[26]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[27]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Administration</td>
+                                    <td class="middleclassright">{{result[28]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[29]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>EBITDA</td>
+                                    <td class="middleclassright">{{result[30]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[31]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Depreciation</td>
+                                    <td class="middleclassright">{{result[32]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[33]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <th>Operating Profit/Loss</th>
+                                    <td class="middleclassright">{{result[34]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[35]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table rsl_tbl mt-5">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">KPI product level</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Jeans</th>
+                                    <th *ngIf="optional[1]">Top</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Contribution Ratio</td>
+                                    <td class="middleclassright">{{result[45]*100|number:'1.0-0'}}%</td>
+                                    <td *ngIf="optional[1]">{{result[46]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Operating Margin</td>
+                                    <td class="middleclassright">{{result[47]*100|number:'1.0-0'}}%</td>
+                                    <td *ngIf="optional[1]">{{result[48]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Market Share</td>
+                                    <td class="middleclassright">{{result[49]*100|number:'1.0-0'}}%</td>
+                                    <td *ngIf="optional[1]">{{result[50]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">Break even point</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Jeans</th>
+                                    <th *ngIf="optional[1]">Top</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Breakeven sales, mn INR</td>
+                                    <td class="middleclassright">{{result[36]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[37]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Breakeven sales, units</td>
+                                    <td class="middleclassright">{{result[38]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[39]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Margin of safety, units</td>
+                                    <td class="middleclassright">{{result[40]|number:'1.0-0'}}</td>
+                                    <td *ngIf="optional[1]">{{result[41]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table rsl_tbl mt-5">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">KPI company-wide</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Operating Margin</td>
+                                    <td>{{result[42]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Market Share</td>
+                                    <td>{{result[43]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Operating Profit/Loss, mn INR</td>
+                                    <td>{{result[44]|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

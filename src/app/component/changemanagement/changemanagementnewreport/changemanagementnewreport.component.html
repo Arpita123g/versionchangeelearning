@@ -1,0 +1,466 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui change_management">
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row pb-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                            <div class="">
+                                <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                    (change)="roundClick()">
+                                    <option class="select-round-option" value="">Select Round</option>
+                                    <option class="select-round-option"
+                                        *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                        {{attempt}}</option>
+                                </select>
+                            </div>
+                            <div class="download_btn" matTooltiClass="primary-tooltip"
+                                (click)="downloadreportchangemanagement()">
+                                <div>
+                                    <a download matTooltip="Download"><span class="hovertext"
+                                            data-hover="Download pdf file accounting ">
+                                            <img class="download_btn-img"
+                                                src="assets/images/businessbasics/download.png" />
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <mat-icon class="mt-2">get_app</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 mb-3">
+                    <div class="col-md-5 reyapo">
+                        <h1 class="reyapo-h1">Report</h1>
+                        <p>
+                            Excellent work. You have successfully applied the interventions to the group involved in the
+                            exercise to increase the effectiveness of their performance. In this exercise every decision
+                            you have taken shows your skills in dimensions like rigor, synthesis, structuring and
+                            business judgement.
+                        </p>
+                    </div>
+                    <div class="col-md-7" *ngIf="optional[0]">
+                        <div class="card rigorcard">
+                            <div class="rigorcard-icon">
+                                <mat-icon class="rigorcard-icon-mat" appTippy="<table >
+                  <tr>
+                    <th style='font-weight:500; padding:7px;font-size:14px'>Rigor</th>
+                    <td style='padding:7px;font-size:13px'>Consistency throughout the decision-making and recommendation.</td>
+                  </tr>
+                  <tr>
+                    <th style='font-weight:500 ;padding:7px;font-size:14px'>Structuring</th>
+                    <td style='padding:7px;font-size:13px'>A logical approach to gathering and analyzing information.</td>
+                  </tr>
+                  <tr>
+                    <th style='font-weight:500 ;padding:7px;font-size:14px'>
+                      Synthesis
+                    </th>
+                    <td style='padding:7px;font-size:13px'>
+                      Approach towards interpreting all the information and making informed decisions.
+                    </td>
+                  <tr>
+                    <th style='font-weight:500; padding:7px;font-size:14px'>Business Jugement</th>
+                    <td style='padding:7px;font-size:13px'>Ability to evaluate facts and consider risks and possible implications when making decisions.</td>
+                  </tr>
+                  </tr>
+                </table>
+                 ">
+                                    help_outline
+                                </mat-icon>
+                            </div>
+                            <apx-chart [series]="rigorcharts.series" [chart]="rigorcharts.chart"
+                                [xaxis]="rigorcharts.xaxis" [yaxis]="rigorcharts.yaxis" [stroke]="rigorcharts.stroke"
+                                [markers]="rigorcharts.markers" [fill]="rigorcharts.fill"
+                                [title]="rigorcharts.title"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 ">
+                    <div class="col-md">
+                        <table class="table h-100 rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="5">Employees Performance Level</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td class="lastchildtd">Members</td>
+                                    <td class="lastchildtd">Awareness Level %</td>
+                                    <td class="lastchildtd">Motivation Level %</td>
+                                    <td class="lastchildtd">Commitment Level %</td>
+                                    <td class="lastchildtd">Performance Level %</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td class="lastchildtd">{{result[74]}}</td>
+                                    <td class="lastchildtd">{{result[0]*100| number: '1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[1]*100| number: '1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[2]*100| number: '1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[3]*100| number: '1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td class="lastchildtd">{{result[75]}}</td>
+                                    <td class="lastchildtd">{{result[4]*100| number: '1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[5]*100| number: '1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[6]*100| number: '1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[7]*100| number: '1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td class="lastchildtd">Rajas</td>
+                                    <td class="lastchildtd">38%</td>
+                                    <td class="lastchildtd">36%</td>
+                                    <td class="lastchildtd">36%</td>
+                                    <td class="lastchildtd">36%</td> -->
+                                    <td class="lastchildtd">{{result[76]}}</td>
+                                    <td class="lastchildtd">{{result[8]*100| number: '1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[9]*100| number: '1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[10]*100| number: '1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[11]*100| number: '1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td class="lastchildtd">Priya</td>
+                                    <td class="lastchildtd">40%</td>
+                                    <td class="lastchildtd">43%</td>
+                                    <td class="lastchildtd">37%</td>
+                                    <td class="lastchildtd">40%</td> -->
+                                    <td class="lastchildtd">{{result[77]}}</td>
+                                    <td class="lastchildtd">{{result[12]*100| number: '1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[13]*100| number: '1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[14]*100| number: '1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[15]*100| number: '1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td class="lastchildtd">Neha</td>
+                                    <td class="lastchildtd">43%</td>
+                                    <td class="lastchildtd">44%</td>
+                                    <td class="lastchildtd">16%</td>
+                                    <td class="lastchildtd">31%</td> -->
+                                    <td class="lastchildtd">{{result[78]}}</td>
+                                    <td class="lastchildtd">{{result[16]*100| number: '1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[17]*100| number: '1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[18]*100| number: '1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[19]*100| number: '1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td class="lastchildtd">Rajat</td>
+                                    <td class="lastchildtd">38%</td>
+                                    <td class="lastchildtd">55%</td>
+                                    <td class="lastchildtd">30%</td>
+                                    <td class="lastchildtd">40%</td> -->
+                                    <td class="lastchildtd">{{result[79]}}</td>
+                                    <td class="lastchildtd">{{result[20]*100| number: '1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[21]*100| number: '1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[22]*100| number: '1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[23]*100| number: '1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card">
+                            <apx-chart [series]="Employeesperformancelevelgraph.series"
+                                [chart]="Employeesperformancelevelgraph.chart"
+                                [dataLabels]="Employeesperformancelevelgraph.dataLabels"
+                                [plotOptions]="Employeesperformancelevelgraph.plotOptions"
+                                [yaxis]="Employeesperformancelevelgraph.yaxis"
+                                [xaxis]="Employeesperformancelevelgraph.xaxis"
+                                [fill]="Employeesperformancelevelgraph.fill"
+                                [title]="Employeesperformancelevelgraph.title"
+                                [tooltip]="Employeesperformancelevelgraph.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 py-5">
+                    <div class="col-md">
+                        <table class="table h-100 rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Unutilized Time of Employees, minutes</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Kabir</td>
+                                    <td>0</td> -->
+                                    <td>{{result[74]}}</td>
+                                    <td>{{result[24]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Anne</td>
+                                    <td>0</td> -->
+                                    <td>{{result[75]}}</td>
+                                    <td>{{result[25]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Rajas</td>
+                                    <td>0</td> -->
+                                    <td>{{result[76]}}</td>
+                                    <td>{{result[26]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Priya</td>
+                                    <td>0</td> -->
+                                    <td>{{result[77]}}</td>
+                                    <td>{{result[27]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Neha</td>
+                                    <td>0</td> -->
+                                    <td>{{result[78]}}</td>
+                                    <td>{{result[28]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <!-- <td>Rajat</td>
+                                    <td>0</td> -->
+                                    <td>{{result[79]}}</td>
+                                    <td>{{result[29]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card h-100 p-2">
+                            <apx-chart [series]="Groupkpigraph.series" [chart]="Groupkpigraph.chart"
+                                [dataLabels]="Groupkpigraph.dataLabels" [plotOptions]="Groupkpigraph.plotOptions"
+                                [yaxis]="Groupkpigraph.yaxis" [xaxis]="Groupkpigraph.xaxis" [fill]="Groupkpigraph.fill"
+                                [title]="Groupkpigraph.title" [tooltip]="Groupkpigraph.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Budget, INR</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Budget Allocated</td>
+                                    <!-- <td>250000</td> -->
+                                    <td>{{result[30]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Remaining budget, Awareness stage</td>
+                                    <!-- <td>178000</td> -->
+                                    <td>{{result[31]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Remaining budget, Motivation stage</td>
+                                    <!-- <td>95200</td> -->
+                                    <td>{{result[32]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Remaining budget, Commitment stage</td>
+                                    <!-- <td>23200</td> -->
+                                    <td>{{result[33]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Group KPI</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Awareness Level %</td>
+                                    <!-- <td>45%</td> -->
+                                    <td>{{result[34]*100| number: '1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Motivation Level %</td>
+                                    <!-- <td>49%</td> -->
+                                    <td>{{result[35]*100| number: '1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Commitment Level %</td>
+                                    <!-- <td>38%</td> -->
+                                    <td>{{result[36]*100| number: '1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Performance Level %</td>
+                                    <!-- <td>43%</td> -->
+                                    <td>{{result[37]*100| number: '1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 py-4">
+                    <div class="col-md">
+                        <table class="table table-bg text-center mytablenetwork table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="7">Employees Working Relation</th>
+                                </tr>
+                            </thead>
+                            <thead style="font-size: 15px">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+
+                                    <td>{{result[74]}}</td>
+                                    <td>{{result[75]}}</td>
+                                    <td>{{result[76]}}</td>
+                                    <td>{{result[77]}}</td>
+                                    <td>{{result[78]}}</td>
+                                    <td style="border-right: 1px solid lightgray;">{{result[79]}}</td>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+
+                                    <td>{{result[74]}}</td>
+                                    <td [style.background]="blank"> {{result[38]}}</td>
+                                    <td class="pp"
+                                        [style.background]="result[39]=='P' ? '#C3F9C3' : (result[39]=='Nu' ? '#FFD77E' : (result[39]=='N' ? '#f7cac9' : blank))">
+                                        {{result[39]}}</td>
+                                    <td class="nuu"
+                                        [style.background]="result[40]=='P' ? '#C3F9C3' : (result[40]=='Nu' ? '#FFD77E' : (result[40]=='N' ? '#f7cac9' : blank))">
+                                        {{result[40]}}</td>
+                                    <td class="nn"
+                                        [style.background]="result[41]=='P' ? '#C3F9C3' : (result[41]=='Nu' ? '#FFD77E' : (result[41]=='N' ? '#f7cac9' : blank))">
+                                        {{result[41]}}</td>
+                                    <td class="pp"
+                                        [style.background]="result[42]=='P' ? '#C3F9C3' : (result[42]=='Nu' ? '#FFD77E' : (result[42]=='N' ? '#f7cac9' : blank))">
+                                        {{result[42]}}</td>
+                                    <td class="pp lastchildtd"
+                                        [style.background]="result[43]=='P' ? '#C3F9C3' : (result[43]=='Nu' ? '#FFD77E' : (result[43]=='N' ? '#f7cac9' : blank))">
+                                        {{result[43]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+
+
+                                    <td>{{result[75]}}</td>
+                                    <td class="nuu"
+                                        [style.background]="result[44]=='P' ? '#C3F9C3' : (result[44]=='Nu' ? '#FFD77E' : (result[44]=='N' ? '#f7cac9' : blank))">
+                                        {{result[44]}}</td>
+                                    <td
+                                        [style.background]="result[45]=='P' ? '#C3F9C3' : (result[45]=='Nu' ? '#FFD77E' : (result[45]=='N' ? '#f7cac9' : blank))">
+                                        {{result[45]}}</td>
+                                    <td class="nuu"
+                                        [style.background]="result[46]=='P' ? '#C3F9C3' : (result[46]=='Nu' ? '#FFD77E' : (result[46]=='N' ? '#f7cac9' : blank))">
+                                        {{result[46]}}</td>
+                                    <td class="pp"
+                                        [style.background]="result[47]=='P' ? '#C3F9C3' : (result[47]=='Nu' ? '#FFD77E' : (result[47]=='N' ? '#f7cac9' : blank))">
+                                        {{result[47]}}</td>
+                                    <td class="nuu" class="pp"
+                                        [style.background]="result[48]=='P' ? '#C3F9C3' : (result[48]=='Nu' ? '#FFD77E' : (result[48]=='N' ? '#f7cac9' : blank))">
+                                        {{result[48]}}</td>
+                                    <td class="nn lastchildtd"
+                                        [style.background]="result[49]=='P' ? '#C3F9C3' : (result[49]=='Nu' ? '#FFD77E' : (result[49]=='N' ? '#f7cac9' : blank))">
+                                        {{result[49]}}</td>
+
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+
+
+                                    <td>{{result[76]}}</td>
+                                    <td class="pp"
+                                        [style.background]="result[50]=='P' ? '#C3F9C3' : (result[50]=='Nu' ? '#FFD77E' : (result[50]=='N' ? '#f7cac9' : blank))">
+                                        {{result[50]}}</td>
+                                    <td class="pp"
+                                        [style.background]="result[51]=='P' ? '#C3F9C3' : (result[51]=='Nu' ? '#FFD77E' : (result[51]=='N' ? '#f7cac9' : blank))">
+                                        {{result[51]}}</td>
+                                    <td
+                                        [style.background]="result[52]=='P' ? '#C3F9C3' : (result[52]=='Nu' ? '#FFD77E' : (result[52]=='N' ? '#f7cac9' : blank))">
+                                        {{result[52]}}</td>
+                                    <td class="nuu"
+                                        [style.background]="result[53]=='P' ? '#C3F9C3' : (result[53]=='Nu' ? '#FFD77E' : (result[53]=='N' ? '#f7cac9' : blank))">
+                                        {{result[53]}}</td>
+                                    <td class="pp"
+                                        [style.background]="result[54]=='P' ? '#C3F9C3' : (result[54]=='Nu' ? '#FFD77E' : (result[54]=='N' ? '#f7cac9' : blank))">
+                                        {{result[54]}}</td>
+                                    <td class="pp lastchildtd"
+                                        [style.background]="result[55]=='P' ? '#C3F9C3' : (result[55]=='Nu' ? '#FFD77E' : (result[55]=='N' ? '#f7cac9' : blank))">
+                                        {{result[55]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+
+
+                                    <td>{{result[77]}}</td>
+                                    <td class="nn"
+                                        [style.background]="result[56]=='P' ? '#C3F9C3' : (result[56]=='Nu' ? '#FFD77E' : (result[56]=='N' ? '#f7cac9' : blank))">
+                                        {{result[56]}}</td>
+                                    <td class="nuu"
+                                        [style.background]="result[57]=='P' ? '#C3F9C3' : (result[57]=='Nu' ? '#FFD77E' : (result[57]=='N' ? '#f7cac9' : blank))">
+                                        {{result[57]}}</td>
+                                    <td class="nn"
+                                        [style.background]="result[58]=='P' ? '#C3F9C3' : (result[58]=='Nu' ? '#FFD77E' : (result[58]=='N' ? '#f7cac9' : blank))">
+                                        {{result[58]}}</td>
+                                    <td
+                                        [style.background]="result[59]=='P' ? '#C3F9C3' : (result[59]=='Nu' ? '#FFD77E' : (result[59]=='N' ? '#f7cac9' : blank))">
+                                        {{result[59]}}</td>
+                                    <td class="nuu"
+                                        [style.background]="result[60]=='P' ? '#C3F9C3' : (result[60]=='Nu' ? '#FFD77E' : (result[60]=='N' ? '#f7cac9' : blank))">
+                                        {{result[60]}}</td>
+                                    <td class="nn lastchildtd"
+                                        [style.background]="result[61]=='P' ? '#C3F9C3' : (result[61]=='Nu' ? '#FFD77E' : (result[61]=='N' ? '#f7cac9' : blank))">
+                                        {{result[61]}}</td>
+
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+
+                                    <td>{{result[78]}}</td>
+                                    <td class="nuu"
+                                        [style.background]="result[62]=='P' ? '#C3F9C3' : (result[62]=='Nu' ? '#FFD77E' : (result[62]=='N' ? '#f7cac9' : blank))">
+                                        {{result[62]}}</td>
+                                    <td class="pp"
+                                        [style.background]="result[63]=='P' ? '#C3F9C3' : (result[63]=='Nu' ? '#FFD77E' : (result[63]=='N' ? '#f7cac9' : blank))">
+                                        {{result[63]}}</td>
+                                    <td class="pp"
+                                        [style.background]="result[64]=='P' ? '#C3F9C3' : (result[64]=='Nu' ? '#FFD77E' : (result[64]=='N' ? '#f7cac9' : blank))">
+                                        {{result[64]}}</td>
+                                    <td class="nuu"
+                                        [style.background]="result[65]=='P' ? '#C3F9C3' : (result[65]=='Nu' ? '#FFD77E' : (result[65]=='N' ? '#f7cac9' : blank))">
+                                        {{result[65]}}</td>
+                                    <td
+                                        [style.background]="result[66]=='P' ? '#C3F9C3' : (result[66]=='Nu' ? '#FFD77E' : (result[66]=='N' ? '#f7cac9' : blank))">
+                                        {{result[66]}}</td>
+                                    <td [style.background]="result[67]=='P' ? '#C3F9C3' : (result[67]=='Nu' ? '#FFD77E' : (result[67]=='N' ? '#f7cac9' : blank))"
+                                        class="lastchildtd">{{result[67]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+
+
+                                    <td>{{result[79]}}</td>
+                                    <td class="pp"
+                                        [style.background]="result[68]=='P' ? '#C3F9C3' : (result[68]=='Nu' ? '#FFD77E' : (result[68]=='N' ? '#f7cac9' : blank))">
+                                        {{result[68]}}</td>
+                                    <td class="pp"
+                                        [style.background]="result[69]=='P' ? '#C3F9C3' : (result[69]=='Nu' ? '#FFD77E' : (result[69]=='N' ? '#f7cac9' : blank))">
+                                        {{result[69]}}</td>
+                                    <td class="pp"
+                                        [style.background]="result[70]=='P' ? '#C3F9C3' : (result[70]=='Nu' ? '#FFD77E' : (result[70]=='N' ? '#f7cac9' : blank))">
+                                        {{result[70]}}</td>
+                                    <td class="nuu"
+                                        [style.background]="result[71]=='P' ? '#C3F9C3' : (result[71]=='Nu' ? '#FFD77E' : (result[71]=='N' ? '#f7cac9' : blank))">
+                                        {{result[71]}}</td>
+                                    <td class="nuu"
+                                        [style.background]="result[72]=='P' ? '#C3F9C3' : (result[72]=='Nu' ? '#FFD77E' : (result[72]=='N' ? '#f7cac9' : blank))">
+                                        {{result[72]}}</td>
+                                    <td [style.background]="result[73]=='P' ? '#C3F9C3' : (result[73]=='Nu' ? '#FFD77E' : (result[73]=='N' ? '#f7cac9' : blank))"
+                                        class="lastchildtd">{{result[73]}}</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

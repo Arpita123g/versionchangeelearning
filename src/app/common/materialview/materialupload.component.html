@@ -1,0 +1,150 @@
+<!-- <div class="card material-tab logout-popup-not">
+  <div class="upload-container">
+    <div class="card-header logout-popup-not-cardhead">
+      <span>
+        <h3>Material Upload</h3>
+      </span>
+      <i class="bi bi-x-circle cursor-pointer" mat-dialog-close></i>
+    </div>
+
+    <div class="card-body hint">
+      <p>
+        You can upload a file from a link, from your computer, or embed it by
+        copying and pasting the embed code.
+      </p>
+
+      <form (ngSubmit)="uploadFile()" #uploadForm="ngForm">
+        <div class="form-group">
+          <label>Material Title</label>
+          <input
+            type="text"
+            [(ngModel)]="materialTitle"
+            name="title"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <textarea
+            rows="3"
+            [(ngModel)]="description"
+            name="description"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Content Type</label>
+          <select [(ngModel)]="contentType" name="contentType" required>
+            <option value="">Choose One</option>
+            <option value="file">File</option>
+            <option value="link">Link</option>
+          </select>
+        </div>
+
+        <div *ngIf="contentType === 'file'" class="form-group">
+          <label>Select File</label>
+          <input type="file" (change)="onChange($event)" />
+        </div>
+
+        <div *ngIf="contentType === 'link'" class="form-group">
+          <label>Paste Link</label>
+          <input
+            type="url"
+            [(ngModel)]="link"
+            name="link"
+            placeholder="https://example.com"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Round</label>
+          <select [(ngModel)]="round" name="round">
+            <option value="all">All</option>
+            <option *ngFor="let r of [1,2,3,4,5,6,7,8,9,10]" [value]="r">
+              Round {{ r }}
+            </option>
+          </select>
+        </div>
+
+        <button class="pt-2 pb-2 mt-2 mb-2" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+<div class="rounds-dialog">
+  <div class="dialog-header">
+    <span>Material Upload</span>
+    <button class="close-btn" mat-dialog-close>
+      <i class="bi bi-x-circle"></i>
+    </button>
+  </div>
+  <div class="dialog-body">
+    <p class="description">
+      You can upload a file from a link, from your computer, or embed it by
+      copying and pasting the embed code.
+    </p>
+    <form (ngSubmit)="uploadFile()" #uploadForm="ngForm">
+      <div class="form-group">
+        <label>Material Title</label>
+        <input
+          type="text"
+          [(ngModel)]="materialTitle"
+          name="title"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <textarea
+          rows="3"
+          [(ngModel)]="description"
+          name="description"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Content Type</label>
+        <select [(ngModel)]="contentType" name="contentType" required>
+          <option value="">Choose One</option>
+          <option value="file">File</option>
+          <option value="link">Link</option>
+        </select>
+      </div>
+
+      <div *ngIf="contentType === 'file'" class="form-group">
+        <label>Select File</label>
+        <input type="file" (change)="onChange($event)" />
+      </div>
+
+      <div *ngIf="contentType === 'link'" class="form-group">
+        <label>Paste Link</label>
+        <input
+          type="url"
+          [(ngModel)]="link"
+          name="link"
+          placeholder="https://example.com"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Round</label>
+        <select [(ngModel)]="round" name="round">
+          <option value="all">All</option>
+          <option *ngFor="let r of [1,2,3,4,5,6,7,8,9,10]" [value]="r">
+            Round {{ r }}
+          </option>
+        </select>
+      </div>
+
+      <button class="pt-2 pb-2 mt-2 mb-2" style="width:auto;"  type="submit">Submit</button>
+    </form>
+  </div>
+</div>

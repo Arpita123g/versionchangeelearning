@@ -1,0 +1,38 @@
+<div class="elearingnewui  accounting_new">
+    <div class="container">
+        <div class="body-element indroduction-tab">
+            <div class="element-first">
+                <div class="row">
+                    <div class="introductn" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <h1 class="pb-5">How It Works?</h1>
+                </div>
+            </div>
+            <!-- Arabic -->
+            <div class="row row-cols-md-3" >
+                <div class="col-md indroduction-tab-col" *ngFor="let elementarabic of cardsArabic; let i = index">
+                    <div class="card crd1Arabic">
+                        <div class="card-img-top img-top-new">
+                            <img [src]="elementarabic.image" alt="..." class="img_heightwidth">
+                        </div>
+                        <div class="card-body crd1Arabic-body">
+                            <h2 class="card-title">{{elementarabic.title}}</h2>
+                            <p class="card-text-arabic">
+                                {{showAll[i] ? elementarabic.text : elementarabic.truncatedTextArabic}}
+                                <a type="button" (click)="toggleshow(i)" [style.color]="showAll[i] ? 'red' : 'blue'">
+                                    {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

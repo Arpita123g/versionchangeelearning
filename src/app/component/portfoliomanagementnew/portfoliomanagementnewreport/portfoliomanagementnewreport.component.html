@@ -1,0 +1,349 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui portfolio">
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row pb-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                            <div class="">
+                                <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                    (change)="roundClick()">
+                                    <option class="select-round-option" value="">Select Round</option>
+                                    <option class="select-round-option"
+                                        *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                        {{attempt}}</option>
+
+                                </select>
+                            </div>
+                            <div class="download_btn" matTooltiClass="primary-tooltip"
+                                (click)="downloadreportportfolioigment()">
+                                <div>
+                                    <a download matTooltip="Download"><span class="hovertext"
+                                            data-hover="Download pdf file accounting ">
+                                            <img class="download_btn-img"
+                                                src="assets/images/businessbasics/download.png" />
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <mat-icon class="mt-2">get_app</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 mb-3">
+                    <div class="col-md-5 reyapo">
+                        <h1 class="reyapo-h1">Report</h1>
+                        <p style="text-align: justify;">
+                            Excellent work. You have completed deciding where the client's capital has to be invested
+                            y-o-y in different securities. In this exercise every decision you have taken shows your
+                            skills in dimensions like rigor, synthesis, structuring and business judgement.
+                        </p>
+                    </div>
+
+                    <div class="col-md-7" *ngIf="optional[0]">
+                        <div class="card rigorcard">
+                            <div class="rigorcard-icon">
+                                <mat-icon class="rigorcard-icon-mat" appTippy="<table >
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Rigor</th>
+                      <td style='padding:7px;font-size:13px'>Consistency throughout the decision-making and recommendation.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>Structuring</th>
+                      <td style='padding:7px;font-size:13px'>A logical approach to gathering and analyzing information.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>
+                        Synthesis
+                      </th>
+                      <td style='padding:7px;font-size:13px'>
+                        Approach towards interpreting all the information and making informed decisions.
+                      </td>
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Business Jugement</th>
+                      <td style='padding:7px;font-size:13px'>Ability to evaluate facts and consider risks and possible implications when making decisions.</td>
+                    </tr>
+                    </tr>
+                  </table>
+                   ">
+                                    help_outline
+                                </mat-icon>
+                            </div>
+                            <apx-chart [series]="rigorcharts.series" [chart]="rigorcharts.chart"
+                                [xaxis]="rigorcharts.xaxis" [yaxis]="rigorcharts.yaxis" [stroke]="rigorcharts.stroke"
+                                [markers]="rigorcharts.markers" [fill]="rigorcharts.fill"
+                                [title]="rigorcharts.title"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="card p-2">
+                            <apx-chart [series]="ReturnsTrendGraph.series" [chart]="ReturnsTrendGraph.chart"
+                                [markers]="ReturnsTrendGraph.markers" [stroke]="ReturnsTrendGraph.stroke"
+                                [title]="ReturnsTrendGraph.title" 
+                                [colors]="ReturnsTrendGraph.colors"
+                                [xaxis]="ReturnsTrendGraph.xaxis"
+                                [tooltip]="ReturnsTrendGraph.tooltip" [yaxis]="ReturnsTrendGraph.yaxis"></apx-chart>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="card p-3 ">
+                            <apx-chart [series]="avgannualizereturngraph.series" [chart]="avgannualizereturngraph.chart"
+                                [dataLabels]="avgannualizereturngraph.dataLabels"
+                                [plotOptions]="avgannualizereturngraph.plotOptions"
+                                [yaxis]="avgannualizereturngraph.yaxis" [xaxis]="avgannualizereturngraph.xaxis"
+                                [fill]="avgannualizereturngraph.fill" [title]="avgannualizereturngraph.title"
+                                [noData]="avgannualizereturngraph.noData" [tooltip]="avgannualizereturngraph.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Phase Measures</th>
+                                </tr>
+
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <th>Parameter</th>
+                                    <th>Phase 1</th>
+                                    <th>Phase 2</th>
+                                    <th>Phase 3</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Portfolio Return</td>
+                                    <td>{{result[0]*100|number:'1.0-2'}}%</td>
+                                    <td>{{result[1]*100|number:'1.0-2'}}%</td>
+                                    <td>{{result[2]*100|number:'1.0-2'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Portfolio Risk</td>
+                                    <td>{{result[3]*100|number:'1.0-2'}}%</td>
+                                    <td>{{result[4]*100|number:'1.0-2'}}%</td>
+                                    <td>{{result[5]*100|number:'1.0-2'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Portfolio Beta</td>
+                                    <td>{{result[6]|number:'1.0-2'}}</td>
+                                    <td>{{result[7]|number:'1.0-2'}}</td>
+                                    <td>{{result[8]|number:'1.0-2'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Treynor Measure</td>
+                                    <td>{{result[9]|number:'1.0-2'}}</td>
+                                    <td>{{result[10]|number:'1.0-2'}}</td>
+                                    <td>{{result[11]|number:'1.0-2'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Sharpe Ratio</td>
+                                    <td>{{result[12]|number:'1.0-2'}}</td>
+                                    <td>{{result[13]|number:'1.0-2'}}</td>
+                                    <td>{{result[14]|number:'1.0-2'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Jenson's Alpha</td>
+                                    <td>{{result[15]*100|number:'1.0-2'}}%</td>
+                                    <td>{{result[16]*100|number:'1.0-2'}}%</td>
+                                    <td>{{result[17]*100|number:'1.0-2'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>CAPM</td>
+                                    <td>{{result[18]*100|number:'1.0-2'}}%</td>
+                                    <td>{{result[19]*100|number:'1.0-2'}}%</td>
+                                    <td>{{result[20]*100|number:'1.0-2'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Fama Measure</td>
+                                    <td>{{result[21]*100|number:'1.0-2'}}%</td>
+                                    <td>{{result[22]*100|number:'1.0-2'}}%</td>
+                                    <td>{{result[23]*100|number:'1.0-2'}}%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                        <table class="table rsl_tbl mt-5">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Capital, k INR</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <th>Parameter</th>
+                                    <th>Phase 1</th>
+                                    <th>Phase 2</th>
+                                    <th>Phase 3</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Start</td>
+                                    <td>{{result[29]/1000|number:'1.0-0'}}</td>
+                                    <td>{{result[30]/1000|number:'1.0-0'}}</td>
+                                    <td>{{result[31]/1000|number:'1.0-0'}}</td>
+
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>End</td>
+                                    <td>{{result[30]/1000|number:'1.0-0'}}</td>
+                                    <td>{{result[31]/1000|number:'1.0-0'}}</td>
+                                    <td>{{result[32]/1000|number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table rsl_tbl mt-5">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">KPI</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <th>Parameter</th>
+                                    <th>Output</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Return over (+)/below (-) market </td>
+                                    <td>{{result[33]*100|number:'1.0-2'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Risk over (+)/below (-) market</td>
+                                    <td>{{result[34]*100|number:'1.0-2'}}%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+
+
+
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Capital Invested in Securities, k INR</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <th>Parameter</th>
+                                    <th>Phase 1</th>
+                                    <th>Phase 2</th>
+                                    <th>Phase 3</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Security 1 - Indian Stocks</td>
+                                    <td>{{result[35]/1000|number:'1.0-0'}}</td>
+                                    <td>{{result[42]/1000|number:'1.0-0'}}</td>
+                                    <td>{{result[49]/1000|number:'1.0-0'}}</td>
+
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Security 2 - Commodities</td>
+                                    <td>{{result[36]/1000|number:'1.0-0'}}</td>
+                                    <td>{{result[43]/1000|number:'1.0-0'}}</td>
+                                    <td>{{result[50]/1000|number:'1.0-0'}}</td>
+
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Security 3 - Hybrid Fund</td>
+                                    <td>{{result[37]/1000|number:'1.0-0'}}</td>
+                                    <td>{{result[44]/1000|number:'1.0-0'}}</td>
+                                    <td>{{result[51]/1000|number:'1.0-0'}}</td>
+
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Security 4 - Corporate Bond</td>
+                                    <td>{{result[38]/1000|number:'1.0-0'}}</td>
+                                    <td>{{result[45]/1000|number:'1.0-0'}}</td>
+                                    <td>{{result[52]/1000|number:'1.0-0'}}</td>
+
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Security 5 - PSU Bond</td>
+                                    <td>{{result[39]/1000|number:'1.0-0'}}</td>
+                                    <td>{{result[46]/1000|number:'1.0-0'}}</td>
+                                    <td>{{result[53]/1000|number:'1.0-0'}}</td>
+
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Security 6 - US Stocks</td>
+                                    <td>{{result[40]/1000|number:'1.0-0'}}</td>
+                                    <td>{{result[47]/1000|number:'1.0-0'}}</td>
+                                    <td>{{result[54]/1000|number:'1.0-0'}}</td>
+
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Security 7 - Cash Equivalents</td>
+                                    <td>{{result[41]/1000|number:'1.0-0'}}</td>
+                                    <td>{{result[48]/1000|number:'1.0-0'}}</td>
+                                    <td>{{result[55]/1000|number:'1.0-0'}}</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table rsl_tbl mt-5">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Combined Measures</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <th>Parameter</th>
+                                    <th>Output</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Portfolio Return</td>
+                                    <td>{{result[24]*100|number:'1.0-2'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Portfolio Risk</td>
+                                    <td>{{result[25]*100|number:'1.0-2'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Portfolio Beta</td>
+                                    <td>{{result[26]|number:'1.0-2'}}</td>
+                                </tr>
+                            </tbody>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <th style="border-bottom: 2px solid black;">Market</th>
+                                    <th style="border-bottom: 2px solid black;"></th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Market Return</td>
+                                    <td>{{result[27]*100|number:'1.0-2'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Market Risk</td>
+                                    <td>{{result[28]*100|number:'1.0-2'}}%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

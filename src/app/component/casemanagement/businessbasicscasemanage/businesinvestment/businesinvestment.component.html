@@ -1,0 +1,570 @@
+<!-- new design -->
+<div class="elearingnewui">
+    <div class="container-fluid case-management-body">
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Interior - Tea design</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th class="second-head" colspan="12">Simplistic</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Operational cost per month, INR</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.o5; let i = index">
+                            <input [value]="res.o5[i]" #inputElement (focusout)="writeInvestmentValue('o5',i,inputElement.value)"
+                            [disabled]="defaultcase=='yes'">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">One time investment, INR</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.p5; let i = index">
+                            <input [value]="res.p5[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('p5',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th class="second-head" colspan="12">Aesthetic</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Operational cost per month, INR</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.o6; let i = index">
+                            <input [value]="res.o6[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('o6',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">One time investment, INR</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.p6; let i = index">
+                            <input [value]="res.p6[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('p6',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Product Mix - Tea</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive">
+            <table class=" table table-sm case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr>
+                        <th class="second-head" colspan="12">Normal</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Operational Cost per month, INR</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.o9; let i = index">
+                            <input [value]="res.o9[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('o9',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Machine Cost, INR</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.p9; let i = index">
+                            <input [value]="res.p9[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('p9',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="second-head" colspan="12">Normal + Tandoori</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Operational Cost per month, INR</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.o10; let i = index">
+                            <input [value]="res.o10[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('o10',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Machine Cost, INR</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.p10; let i = index">
+                            <input [value]="res.p10[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('p10',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Tea & Cups - Vendor</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr>
+                        <th class="second-head" colspan="12">Vendor 1</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Cost per kg, INR</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.o13; let i = index">
+                            <input [value]="res.o13[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('o13',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Cost per Cup, INR</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.p13; let i = index">
+                            <input [value]="res.p13[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('p13',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Set</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.q13; let i = index">
+                            <input [value]="res.q13[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('q13',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <th class="second-head" colspan="12">Vendor 2</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Cost per kg, INR</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.o14; let i = index">
+                            <input [value]="res.o14[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('o14',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Cost per Cup, INR</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.p14; let i = index">
+                            <input [value]="res.p14[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('p14',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Set</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.q14; let i = index">
+                            <input [value]="res.q14[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('q14',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Technology</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive">
+            <table class=" table  case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+
+
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr>
+                        <th class="second-head" colspan="12">Point of Sale</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Investment, INR</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.o17; let i = index">
+                            <input [value]="res.o17[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('o17',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Maintenance Cost, %</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.p17; let i = index">
+                            <input [value]="res.p17[i]*100" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('p17',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Effects</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.r17; let i = index">
+                            <input [value]="res.r17[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('r17',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th class="second-head" colspan="12">Security Systems</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Investment, INR</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.o18; let i = index">
+                            <input [value]="res.o18[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('o18',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Maintenance Cost, %</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.p18; let i = index">
+                            <input [value]="res.p18[i]*100" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('p18',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Effects</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.r18; let i = index">
+                            <input [value]="res.r18[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('r18',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th class="second-head" colspan="12">Music & Wifi</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Investment, INR</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.o19; let i = index">
+                            <input [value]="res.o19[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('o19',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Maintenance Cost, %</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.p19; let i = index">
+                            <input [value]="res.p19[i]*100" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('p19',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Effects</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.r19; let i = index">
+                            <input [value]="res.r19[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('r19',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Multipliers</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr>
+                        <th class="second-head" colspan="12">Jayanagar - Bengaluru University</th>
+                    </tr>
+                    <tr>
+                        <th class="second-head" colspan="12">Design</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Simplistic</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.o23; let i = index">
+                            <input [value]="res.o23[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('o23',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Aesthetic</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.o24; let i = index">
+                            <input [value]="res.o24[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('o24',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th class="second-head" colspan="12">Product Mix - Tea</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Normal</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.o26; let i = index">
+                            <input [value]="res.o26[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('o26',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Normal + Tandoori</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.o27; let i = index">
+                            <input [value]="res.o27[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('o27',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <th class="second-head" colspan="12">Tea & Cups - Vendor</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Vendor 1</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.o29; let i = index">
+                            <input [value]="res.o29[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('o29',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Vendor 2</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.o30; let i = index">
+                            <input [value]="res.o30[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('o30',i,inputElement.value)">
+                        </td>
+                       
+                    </tr>
+                    <!-- <tr>
+                        <th class="second-head" colspan="12">Tea Leaves</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">1 Cup tea, gram</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.o33; let i = index">
+                            <input [value]="res.o33[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('o33',i,inputElement.value)">
+                        </td>
+                        
+                    </tr> -->
+
+                </tbody>
+            </table>
+        </div>
+        <div class="table-responsive mt-2">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <th class="second-head" colspan="12">Whitefield - ITPL Corporate Park</th>
+                    </tr>
+                    <tr>
+                        <th class="second-head" colspan="12">Design</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Simplistic</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.p23; let i = index">
+                            <input [value]="res.p23[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('p23',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Aesthetic</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.p24; let i = index">
+                            <input [value]="res.p24[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('p24',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th class="second-head" colspan="12">Product Mix - Tea</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Normal</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.p26; let i = index">
+                            <input [value]="res.p26[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('p26',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Normal + Tandoori</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.p27; let i = index">
+                            <input [value]="res.p27[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('p27',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <th class="second-head" colspan="12">Tea & Cups - Vendor</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Vendor 1</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.p29; let i = index">
+                            <input [value]="res.p29[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('p29',i,inputElement.value)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Vendor 2</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.p30; let i = index">
+                            <input [value]="res.p30[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('p30',i,inputElement.value)">
+                        </td>
+                        
+                    </tr>
+                    <!-- <tr>
+                        <th class="second-head" colspan="12">Tea Leaves</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">1 Cup tea, gram</div>
+                        </td>
+                        <td *ngFor="let investmentdata of res.o33; let i = index">
+                            <input [value]="res.o33[i]" #inputElement [disabled]="defaultcase=='yes'" (focusout)="writeInvestmentValue('o33',i,inputElement.value)">
+                        </td>
+                        
+                    </tr> -->
+
+                </tbody>
+            </table>
+            <div class="table-responsive mt-2">
+                <table class=" table case-management-table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="second-head" colspan="12">Tea Leaves</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">1 Cup tea, gram</div>
+                            </td>
+                            <td *ngFor="let investmentdata of res.o33; let i = index">
+                                <input [value]="res.o33[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInvestmentValue('o33',i,inputElement.value)">
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

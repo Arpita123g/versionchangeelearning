@@ -1,0 +1,280 @@
+<div class="elearingnewui design_thinking">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="decision-checklist">
+                <div class="row pb-3 d-flex align-items-center">
+                    <div class="col-6 decision-checklist-col6">
+                        <h1 class="decision-checklist-col6-h1">Decision Checklist</h1>
+                    </div>
+                    <div class="col-6 text-end">
+                        <select class="select-round" name="" id="" [(ngModel)]="roundname" (change)="roundClick()">
+                            <option class="select-round-option" value="">Select Round</option>
+                            <option class="select-round-option" *ngFor="let attempt of dropdownvalue; let i = index;"
+                                [value]=attempt>
+                                {{attempt}}</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-borderd checklisttable">
+                        <tbody class="checklisttable-body">
+                            <tr class="checklisttable-body-tr" style="border-bottom: 3px solid black;">
+                                <td></td>
+                                <td>{{playername}}</td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <th>Define</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Target: Battery Life, Days</td>
+                                <td><span [class]="isClass[0] ? 'defaultcolor' : 'notdefaultcolor'">{{result[0]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Target: Affordability, INR</td>
+                                <td><span [class]="isClass[1] ? 'defaultcolor' : 'notdefaultcolor'">{{result[1]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Target: Localization, %</td>
+                                <td><span [class]="isClass[2] ? 'defaultcolor' : 'notdefaultcolor'">{{result[2]*100}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <th>Ideate</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Idea 1</td>
+                                <td><span [class]="isClass[3] ? 'defaultcolor' : 'notdefaultcolor'">{{result[3]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Idea 2</td>
+                                <td><span [class]="isClass[4] ? 'defaultcolor' : 'notdefaultcolor'">{{result[4]}}</span>
+                                </td>
+                            <tr class="checklisttable-body-tr">
+                                <td>Idea 3</td>
+                                <td><span [class]="isClass[5] ? 'defaultcolor' : 'notdefaultcolor'">{{result[5]}}</span>
+                                </td>
+                            </tr>
+
+                            <tr class="checklisttable-body-tr">
+                                <th>Prototype & Test</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Product 1</td>
+                                <td><span [class]="isClass[6] ? 'defaultcolor' : 'notdefaultcolor'">{{result[6]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Battery Life, %</td>
+                                <td><span [class]="isClass[7] ? 'defaultcolor' : 'notdefaultcolor'">{{result[7]*100|number:'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Design & Aesthetics</td>
+                                <td><span [class]="isClass[8] ? 'defaultcolor' : 'notdefaultcolor'">{{result[8]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Localized Language Support</td>
+                                <td><span [class]="isClass[9] ? 'defaultcolor' : 'notdefaultcolor'">{{result[9]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Seamless Syncing</td>
+                                <td><span
+                                        [class]="isClass[10] ? 'defaultcolor' : 'notdefaultcolor'">{{result[10]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Water Resistance</td>
+                                <td><span [class]="isClass[11] ? 'defaultcolor' : 'notdefaultcolor'">{{result[11]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Customizable Watch Faces</td>
+                               <td><span [class]="isClass[12] ? 'defaultcolor' : 'notdefaultcolor'">{{result[12]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Unique Health Features</td>
+                                <td><span [class]="isClass[13] ? 'defaultcolor' : 'notdefaultcolor'">{{result[13]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Indian Payment System Integration</td>
+                                <td><span [class]="isClass[14] ? 'defaultcolor' : 'notdefaultcolor'">{{result[14]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Product 2</td>
+                                <td><span [class]="isClass[15] ? 'defaultcolor' : 'notdefaultcolor'">{{result[15]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Battery Life, %</td>
+                                <td><span [class]="isClass[16] ? 'defaultcolor' : 'notdefaultcolor'">{{result[16]*100|number:'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Design & Aesthetics</td>
+                                <td><span [class]="isClass[17] ? 'defaultcolor' : 'notdefaultcolor'">{{result[17]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Localized Language Support</td>
+                                <td><span [class]="isClass[18] ? 'defaultcolor' : 'notdefaultcolor'">{{result[18]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Seamless Syncing</td>
+                                <td><span
+                                        [class]="isClass[19] ? 'defaultcolor' : 'notdefaultcolor'">{{result[19]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Water Resistance</td>
+                                <td><span [class]="isClass[20] ? 'defaultcolor' : 'notdefaultcolor'">{{result[20]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Customizable Watch Faces</td>
+                                <td><span [class]="isClass[21] ? 'defaultcolor' : 'notdefaultcolor'">{{result[21]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Unique Health Features</td>
+                                <td><span [class]="isClass[22] ? 'defaultcolor' : 'notdefaultcolor'">{{result[22]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Indian Payment System Integration</td>
+                                <td><span [class]="isClass[23] ? 'defaultcolor' : 'notdefaultcolor'">{{result[23]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Product 3</td>
+                                <td><span [class]="isClass[24] ? 'defaultcolor' : 'notdefaultcolor'">{{result[24]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Battery Life, %</td>
+                                <td><span [class]="isClass[25] ? 'defaultcolor' : 'notdefaultcolor'">{{result[25]*100|number:'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Design & Aesthetics</td>
+                                <td><span [class]="isClass[26] ? 'defaultcolor' : 'notdefaultcolor'">{{result[26]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Localized Language Support</td>
+                                <td><span [class]="isClass[27] ? 'defaultcolor' : 'notdefaultcolor'">{{result[27]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Seamless Syncing</td>
+                                <td><span
+                                        [class]="isClass[28] ? 'defaultcolor' : 'notdefaultcolor'">{{result[28]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Water Resistance</td>
+                                <td><span [class]="isClass[29] ? 'defaultcolor' : 'notdefaultcolor'">{{result[29]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Customizable Watch Faces</td>
+                                <td><span [class]="isClass[30] ? 'defaultcolor' : 'notdefaultcolor'">{{result[30]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Unique Health Features</td>
+                                <td><span [class]="isClass[31] ? 'defaultcolor' : 'notdefaultcolor'">{{result[31]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Indian Payment System Integration</td>
+                                <td><span [class]="isClass[32] ? 'defaultcolor' : 'notdefaultcolor'">{{result[32]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Product Launch</td>
+                                <td><span [class]="isClass[33] ? 'defaultcolor' : 'notdefaultcolor'">{{result[33]}}</span>
+                                </td>
+                            </tr>
+
+                            <tr class="checklisttable-body-tr">
+                                <th>Execute</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Price, INR</td>
+                                <td><span
+                                        [class]="isClass[34] ? 'defaultcolor' : 'notdefaultcolor'">{{result[34]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Advertising, INR Million</td>
+                                <td><span
+                                        [class]="isClass[35] ? 'defaultcolor' : 'notdefaultcolor'">{{result[35]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Warranty Period</td>
+                                <td><span
+                                        [class]="isClass[36] ? 'defaultcolor' : 'notdefaultcolor'">{{result[36]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Distributor/Wholesaler, INR Million</td>
+                                <td><span
+                                        [class]="isClass[37] ? 'defaultcolor' : 'notdefaultcolor'">{{result[37]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>E-commerce, INR Million</td>
+                                <td><span
+                                        [class]="isClass[38] ? 'defaultcolor' : 'notdefaultcolor'">{{result[38]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Telecom Partnerships, INR Million</td>
+                                <td><span
+                                        [class]="isClass[39] ? 'defaultcolor' : 'notdefaultcolor'">{{result[39]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Direct-to-consumer, INR Million</td>
+                                <td><span
+                                        [class]="isClass[40] ? 'defaultcolor' : 'notdefaultcolor'">{{result[40]}}</span>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <div class="decision-textarea py-4" *ngIf="analysisshow">
+                        <textarea class="decision-textarea-element" rows="10" [disabled]="disabled"
+                            [(ngModel)]="useranalysisinput"
+                            placeholder="Describe your thought process behind the decision-making in 1500 characters…"
+                            (focusout)="useranalysissave()" maxlength="1500"></textarea>
+                    </div>
+                    <div class="p-0">
+                        <button class="btn_stl btn_stl-decisionchecklist" type="button" [disabled]="disabled"
+                            (click)="decisionchecklistpopup()">Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

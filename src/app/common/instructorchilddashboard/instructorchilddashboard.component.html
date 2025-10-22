@@ -1,0 +1,238 @@
+<div class="elearingnewui bus_iness">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="childbody">
+        <div>
+            <div *ngIf="instructoractivetabvalue !== 'voicebased'">
+                <div class="card shadow new-instructor-dash" *ngFor="let card of cardlist; let i=index "
+                    (click)="goTomicrosimdashboard(card)">
+                    <div class="row row-cols-md-2">
+                        <div class="col-md-1 col-sm-12 log-left">
+                            <div class="logo-back">
+                                <img src="../../../../assets/elearning_icon_png/cesimlogoforallgame.png"
+                                    style="height: 3.5rem;">
+                                <!-- <img [src]="imageiconarray[i]"> -->
+                            </div>
+                        </div>
+                        <div class="col-md-9 col-sm-12">
+                            <div class="row py-1 first-row">
+                                <div class="col-md-5 col-sm-12 ">
+                                    <p>Course Code : {{card.courseDetails.coursecode}}</p>
+                                </div>
+
+                            </div>
+                            <div class="row py-1">
+                                <div class="col-md-9 col-sm-12">
+                                    <span class="g-name"><a>
+                                            <h1>{{card.courseDetails.coursename}}</h1>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <div class="icon-back">
+
+                                        <mat-icon matTooltip="Co-Instructor"
+                                            (click)="acountclick($event,card)">account_circle</mat-icon>
+                                        <mat-icon matTooltip="Archive"
+                                            (click)="archiveclick($event,card)">archive</mat-icon>
+                                        <!-- <mat-icon matTooltip="Game Arena Disabled">lock</mat-icon> -->
+                                        <mat-icon *ngIf="card.courseDetails.lock === 'yes'" matTooltip="Game Arena Locked"
+                                        (click)="toggleCourseLock($event, card)">lock</mat-icon>
+                                        <mat-icon *ngIf="card.courseDetails.lock === 'no'" matTooltip="Game Arena Unlocked"
+                                        (click)="toggleCourseLock($event, card)">lock_open</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-cols-md-2 link-back py-1">
+                                <div class="col-md-10 col-sm-12 link-back-col">
+                                    <div class="link-back-col-element" >
+                                        <p class="course-link"> Course Link :
+                                            <a class="course-link-break"
+                                                [href]="getFullUrl(card.courseDetails.coursecode)" target="_blank">
+                                                {{ getFullUrl(card.courseDetails.coursecode) }}
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <mat-icon (click)="copyToClipboard($event,card.courseDetails.coursecode)" 
+                                        matTooltip="Copy">
+                                        {{ copiedCourseCodes[card.courseDetails.coursecode] ? 'check' : 'file_copy'
+                                        }}
+                                    </mat-icon>
+
+                                </div>
+
+                            </div>
+                            <div class="pt-1">
+                                <p>
+                                    Language : <span class="defaultlang">{{card.courseDetails.primarygamelanguage}}</span>
+                                </p>
+                            </div>
+                            <div class="row py-1 first-row">
+                                <div class="col-md-6 col-sm-12 ">
+                                    <p>No. of student : <span class="round-p">
+                                            {{card.noofstudentregistered}}/{{getSum(card)}}
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="col-md-6 col-sm-12 last-md">
+                                    <span class="last-md">
+                                        <p>Round : <span class="round-p">{{card.studentcourseattempts}}</span></p>
+                                        <mat-icon matTooltip="Edit round"
+                                            (click)="editround($event,card)">edit</mat-icon>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="time-ro">
+                                <div class="time-col">
+                                    <div class="card time-card-ele">
+                                        <div class="time-card-head-s">
+                                            Start Time
+                                        </div>
+                                        <div class="card-body time-card-bs">
+                                            <div class="time-d">
+                                                <div class="time-d-tx-s">{{startdatearray[i]}}</div>
+                                                <div>{{starttimearray[i]}}</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="time-col">
+                                    <div class="card time-card-ele">
+                                        <div class=" time-card-head-e">
+                                            End Time
+                                        </div>
+                                        <div class="card-body time-card-be">
+                                            <div class="time-d">
+                                                <div class="time-d-tx-e">{{enddatearray[i]}}</div>
+                                                <div>{{endtimearray[i]}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <mat-icon matTooltip="Edit time" (click)="updateTime($event,card)">edit</mat-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- for voicebased -->
+            <div *ngIf="instructoractivetabvalue === 'voicebased'">
+                <div class="card shadow new-instructor-dash" *ngFor="let card of cardlist; let i=index "
+                    (click)="goTomicrosimdashboard(card)">
+                    <div class="row row-cols-md-2">
+                        <div class="col-md-1 col-sm-12 log-left">
+                            <div class="logo-back">
+                                <img [src]="imageiconarray[i]">
+                            </div>
+                        </div>
+                        <div class="col-md-9 col-sm-12">
+                            <div class="row py-1 first-row">
+                                <div class="col-md-5 col-sm-12 ">
+                                    <p>Course Code : {{card.courseDetails.coursecode}}</p>
+                                </div>
+
+                            </div>
+                            <div class="row py-1">
+                                <div class="col-md-9 col-sm-12">
+                                    <span class="g-name"><a>
+                                            <h1>{{card.courseDetails.coursename}}</h1>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <div class="icon-back">
+
+                                        <mat-icon matTooltip="Co-Instructor"
+                                            (click)="acountclick($event,card)">account_circle</mat-icon>
+                                        <mat-icon matTooltip="Archive"
+                                            (click)="archiveclick($event,card)">archive</mat-icon>
+                                        <mat-icon *ngIf="!isLocked" matTooltip="Report Disabled"
+                                            (click)="lockclick($event,card.courseDetails.coursecode, true)">lock</mat-icon>
+                                        <mat-icon *ngIf="isLocked" matTooltip="Report Enable"
+                                            (click)="lockclick($event,card.courseDetails.coursecode, false)">lock_open</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-cols-md-2 link-back py-1">
+                                <div class="col-md-10 col-sm-12  link-back-col" >
+                                    <div class="link-back-col-element">
+                                        <p class="course-link"> Course Link :
+                                            <a class="course-link-break"
+                                                [href]="getFullUrl(card.courseDetails.coursecode)" target="_blank">
+                                                {{ getFullUrl(card.courseDetails.coursecode) }}
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <mat-icon (click)="copyToClipboard($event,card.courseDetails.coursecode)"
+                                        matTooltip="Copy">
+                                        {{ copiedCourseCodes[card.courseDetails.coursecode] ? 'check' : 'file_copy'
+                                        }}
+                                    </mat-icon>
+
+                                </div>
+
+                            </div>
+                            <div class="row py-1 first-row">
+                                <div class="col-md-6 col-sm-12 ">
+                                    <p>No. of student : <span class="round-p">
+                                            {{card.noofstudentregistered}}/{{getSum(card)}}
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="col-md-6 col-sm-12 last-md">
+                                    <span class="last-md">
+                                        <p>Round : <span class="round-p">{{card.studentcourseattempts}}</span></p>
+
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="time-ro">
+                                <div class="time-col">
+                                    <div class="card time-card-ele">
+                                        <div class="time-card-head-s">
+                                            Start Time
+                                        </div>
+                                        <div class="card-body time-card-bs">
+                                            <div class="time-d">
+                                                <div class="time-d-tx-s">{{startdatearray[i]}}</div>
+                                                <div>{{starttimearray[i]}}</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="time-col">
+                                    <div class="card time-card-ele">
+                                        <div class=" time-card-head-e">
+                                            End Time
+                                        </div>
+                                        <div class="card-body time-card-be">
+                                            <div class="time-d">
+                                                <div class="time-d-tx-e">{{enddatearray[i]}}</div>
+                                                <div>{{endtimearray[i]}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <mat-icon matTooltip="Edit time" (click)="updateTime($event,card)">edit</mat-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- for blanck response.... -->
+            <div style="width: 65%; margin: 0 auto; text-align: center; padding-top: 5rem;" *ngIf="showcardnull">
+                {{showcardnulltext}}
+            </div>
+        </div>
+    </div>
+</div>

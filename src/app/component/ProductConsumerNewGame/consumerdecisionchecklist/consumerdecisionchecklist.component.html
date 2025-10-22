@@ -1,0 +1,196 @@
+<div class="elearingnewui product_consumer">
+  <div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    
+  </div>
+  <div class="container">
+    <div class="body-element">
+      <div class="consumer-decision-checklist">
+        <div class="row pb-3 d-flex align-items-center">
+          <div class="col-6 decision-checklist-col6">
+            <h1 class="decision-checklist-col6-h1">{{language.b334}}</h1>
+
+          </div>
+          <div class="col-6 text-end">
+            <select class="select-round" name="" id="" [(ngModel)]="roundname" (change)="roundClick()">
+              <option class="select-round-option" value="">
+                {{ languageselect.toLowerCase() === 'French' ? 'sélectionner un tour' : 'Select Round' }}
+              </option>
+              <option class="select-round-option" *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                {{attempt}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <table class="table table-borderd checklisttable">
+            <tbody class="checklisttable-body">
+              <tr class="checklisttable-body-tr" style="border-bottom: 3px solid black;">
+                <td></td>
+                <td>{{playername}}</td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <!-- <th>Target</th> -->
+                <th>{{language.b10}}</th>
+                <th></th>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <!-- <td>Age</td> -->
+                <td>{{language.b190}}</td>
+                <td><span [class]="isClass[0] ? 'defaultcolor' : 'notdefaultcolor'">{{result[0]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <!-- <td>Location</td> -->
+                <td>{{language.b191}}</td>
+                <td><span [class]="isClass[1] ? 'defaultcolor' : 'notdefaultcolor'">{{result[1]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <!-- <td>Gender</td> -->
+                <td>{{language.b192}}</td>
+                <td><span [class]="isClass[2] ? 'defaultcolor' : 'notdefaultcolor'">{{result[2]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr" *ngIf="optional[0]">
+                <!-- <td>Income Class</td> -->
+                <td>{{language.b193}}</td>
+                <td><span [class]="isClass[3] ? 'defaultcolor' : 'notdefaultcolor'">{{result[3]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <!-- <td>Language 1</td> -->
+                <td>{{language.b194}}</td>
+                <td><span [class]="isClass[4] ? 'defaultcolor' : 'notdefaultcolor'">{{result[4]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <!-- <td>Language 2</td> -->
+                <td>{{language.b195}}</td>
+                <td><span [class]="isClass[5] ? 'defaultcolor' : 'notdefaultcolor'">{{result[5]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <!-- <td>Language 3</td> -->
+                <td>{{language.b196}}</td>
+                <td><span [class]="isClass[6] ? 'defaultcolor' : 'notdefaultcolor'">{{result[6]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <!-- <td>Language 4</td> -->
+                <td>{{language.b197}}</td>
+                <td><span [class]="isClass[7] ? 'defaultcolor' : 'notdefaultcolor'">{{result[7]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <!-- <th>Conceptualizing</th> -->
+                <th>{{language.b11}}</th>
+                <th></th>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <!-- <td>Genre</td> -->
+                <td>{{language.b87}}</td>
+                <td><span [class]="isClass[8] ? 'defaultcolor' : 'notdefaultcolor'">{{result[8]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr" *ngIf="optional[1]">
+                <!-- <td>Situational Element 1</td> -->
+                <td>{{language.b198}}</td>
+                <td><span [class]="isClass[9] ? 'defaultcolor' : 'notdefaultcolor'">{{result[9]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr" *ngIf="optional[1]">
+                <!-- <td>Situational Element 2</td> -->
+                <td>{{language.b199}}</td>
+                <td><span [class]="isClass[10] ? 'defaultcolor' : 'notdefaultcolor'">{{result[10]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr" *ngIf="optional[2]">
+                <!-- <td>Social Element 1</td> -->
+                <td>{{language.b200}}</td>
+                <td><span [class]="isClass[11] ? 'defaultcolor' : 'notdefaultcolor'">{{result[11]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr" *ngIf="optional[2]">
+                <!-- <td>Social Element 2</td> -->
+                <td>{{language.b201}}</td>
+                <td><span [class]="isClass[12] ? 'defaultcolor' : 'notdefaultcolor'">{{result[12]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr" *ngIf="optional[2]">
+                <!-- <td>Social Element 3</td> -->
+                <td>{{language.b202}}</td>
+                <td><span [class]="isClass[13] ? 'defaultcolor' : 'notdefaultcolor'">{{result[13]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <td>{{language.b118}}</td>
+                <td><span [class]="isClass[14] ? 'defaultcolor' : 'notdefaultcolor'">{{result[14]}}</span></td>
+              </tr>
+
+
+              <tr class="checklisttable-body-tr">
+                <!-- <th>Crafting</th> -->
+                <th>{{language.b12}}</th>
+                <th></th>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <!-- <td>Communication</td> -->
+                <td>{{language.b135}}</td>
+                <td><span [class]="isClass[15] ? 'defaultcolor' : 'notdefaultcolor'">{{result[15]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <!-- <td>Channel 1</td> -->
+                <td>{{language.b203}}</td>
+                <td><span [class]="isClass[16] ? 'defaultcolor' : 'notdefaultcolor'">{{result[16]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <!-- <td>Channel 2</td> -->
+                <td>{{language.b204}}</td>
+                <td><span [class]="isClass[17] ? 'defaultcolor' : 'notdefaultcolor'">{{result[17]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <!-- <td>Channel 3</td> -->
+                <td>{{language.b205}}</td>
+                <td><span [class]="isClass[18] ? 'defaultcolor' : 'notdefaultcolor'">{{result[18]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <!-- <td>Publishing</td> -->
+                <td>{{language.b150}}</td>
+                <td><span [class]="isClass[19] ? 'defaultcolor' : 'notdefaultcolor'">{{result[19]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr">
+                <!-- <td>Monetization</td> -->
+                <td>{{language.b164}}</td>
+                <td><span [class]="isClass[20] ? 'defaultcolor' : 'notdefaultcolor'">{{result[20]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr" *ngIf="optional[3]">
+                <!-- <td>Ads Network</td> -->
+                <td>{{language.b176}}</td>
+                <td><span [class]="isClass[21] ? 'defaultcolor' : 'notdefaultcolor'"> {{result[21]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr" *ngIf="optional[3]">
+                <!-- <td>Banner Ads</td> -->
+                <td>{{language.b177}}</td>
+                <td><span [class]="isClass[22] ? 'defaultcolor' : 'notdefaultcolor'">{{result[22]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr" *ngIf="optional[3]">
+                <!-- <td>Rewarded Ads</td> -->
+                <td>{{language.b178}}</td>
+                <td><span [class]="isClass[23] ? 'defaultcolor' : 'notdefaultcolor'">{{result[23]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr" *ngIf="optional[3]">
+                <!-- <td>Interstitial Ads</td> -->
+                <td>{{language.b179}}</td>
+                <td><span [class]="isClass[24] ? 'defaultcolor' : 'notdefaultcolor'">{{result[24]}}</span></td>
+              </tr>
+              <tr class="checklisttable-body-tr" *ngIf="optional[3]">
+                <!-- <td> Interactive Ads</td> -->
+                <td>{{language.b180}}</td>
+                <td><span [class]="isClass[25] ? 'defaultcolor' : 'notdefaultcolor'">{{result[25]}}</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="decision-textarea py-4" *ngIf="analysisshow">
+            <textarea class="decision-textarea-element" rows="10" [disabled]="disabled" [(ngModel)]="useranalysisinput"
+              placeholder="Describe your thought process behind the decision-making in 1500 characters…"
+              (focusout)="useranalysissave()" maxlength="1500"></textarea>
+          </div>
+          <div class="p-0">
+            <button class="btn_stl btn_stl-decisionchecklist" type="button" [disabled]="disabled"
+              (click)="consumerdecisionchecklistpopup()">{{language.b343}}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

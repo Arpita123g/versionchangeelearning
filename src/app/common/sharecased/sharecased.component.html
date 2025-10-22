@@ -1,0 +1,159 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui bus_iness">
+    <!-- design for cesim case start -->
+    <div *ngFor="let carddata of cardlistdata; let k = index">
+        <div *ngIf="selectedTab === 'cesimcase'">
+            <div class="card shadow new-instructor-dash" [class.background-card]="carddata.isAssigned">
+                <div class="assign-master" *ngIf="carddata.isAssigned">
+                    Case Assigned
+                </div>
+
+                <div class="row">
+                    <div class="col-10 lt-col">
+                        <div>
+                            <h1>{{carddata.cesimcasename}}</h1>
+                        </div>
+
+                    </div>
+                    <div class="col-2 rt-col cesimcase">
+                        <div class="copy-p" (click)="CopyGame1(carddata,'cesimcase')">
+                            <span class="iconstyle1"><img src="../../../assets/icons/copyicn.png">
+                                <p>Copy</p>
+                            </span>
+                        </div>
+                        <div class="copy-p" (click)="gotTocasemanagement(carddata)">
+                            <span class="iconstyle1"><img src="../../../assets/icons/viewicn.png">
+                                <p>View</p>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="selectedTab === 'yourcase'">
+            <div class="card shadow new-instructor-dash">
+                <div class="row">
+                    <div class=" lt-col">
+                        <div class="checkbox-element">
+
+                            <!-- <div class="assign-yourcase">
+                              <div class="checkboxdirection">
+                                  <div class="checkbox-wrapper-31">
+                                      <input type="checkbox" (change)="handleCheckboxClick($event, carddata)"
+                                          [checked]="carddata.isAssignedForYourCase">
+                                      <svg viewBox="0 0 35.6 35.6">
+                                          <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+                                          <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+                                          <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87">
+                                          </polyline>
+                                      </svg>
+                                  </div>
+
+                              </div>
+                          </div> -->
+                            <div class="assign-yourcase">
+                                <div class="checkboxdirection">
+                                    <div class="checkbox-wrapper-31">
+                                        <input type="checkbox" (change)="handleCheckboxClick($event, carddata)"
+                                            [checked]="carddata.isAssignedForYourCase"
+                                            [disabled]="carddata.isAssignedForYourCase">
+                                        <svg viewBox="0 0 35.6 35.6">
+                                            <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+                                            <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+                                            <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87">
+                                            </polyline>
+                                        </svg>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="py-2">
+                            <h1>{{carddata.coursename}}</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="youecase rt-col">
+                        <div class="copy-p" (click)="goTosharedPopup(carddata)">
+                            <span class="iconstyle"> <img src="../../../assets/icons/settingsicn.png">
+                                <p>Setting</p>
+                            </span>
+                        </div>
+                        <div class="copy-p" (click)="gotTocasemanagement(carddata)">
+                            <span class="iconstyle"> <img src="../../../assets/icons/editicn.png">
+                                <p>Edit Parameters</p>
+                            </span>
+                        </div>
+
+                        <div class="copy-p">
+                            <span class="iconstyle"> <img src="../../../assets/icons/deleteicn.png">
+                                <p>Delete</p>
+
+                            </span>
+                        </div>
+                        <!-- <div class="dropdown-p">
+                          
+                          <select class="case-dropdown" [(ngModel)]="carddata.primarygamelanguage"
+                              (change)="languageclick(carddata,$event)">
+                              <option value="" disabled>Select language</option>
+                              <option *ngFor="let lang of language" [value]="lang.toLowerCase()">{{ lang }}</option>
+                          </select>
+
+
+
+                      </div> -->
+                        <div class="dropdown-p">
+                            <select class="case-dropdown" [(ngModel)]="carddata.primarygamelanguage"
+                                (change)="languageclick(carddata,$event)">
+                                <option value="" disabled>Select language</option>
+                                <option *ngFor="let lang of language" [value]="lang.toLowerCase()">{{ lang }}</option>
+                            </select>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div *ngIf="selectedTab === 'sharedcase'">
+            <div class="card shadow new-instructor-dash">
+                <div class="row">
+                    <div class="col-10 lt-col">
+
+                        <div>
+                            <h1>{{carddata.coursename}}</h1>
+                        </div>
+
+                    </div>
+                    <div class="col-2 rt-col cesimcase">
+                        <div class="copy-p" (click)="CopyGame1(carddata,'sharedcase')">
+                            <span class="iconstyle1"><img src="../../../assets/icons/copyicn.png">
+                                <p>Copy</p>
+                            </span>
+                        </div>
+                        <div class="copy-p" (click)="gotTocasemanagement(carddata)">
+                            <span class="iconstyle1"><img src="../../../assets/icons/viewicn.png">
+                                <p>View</p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

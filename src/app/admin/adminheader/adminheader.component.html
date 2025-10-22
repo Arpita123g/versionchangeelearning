@@ -1,0 +1,127 @@
+<div class="elearingnewui bus_iness">
+    <div class=" newinstructor">
+        <div class="card newinstructor-card-first ">
+            <div class="card-header newinstructor-card-header-first">
+                <div class="tab-content">
+                    <div role="tabpanel" class=" tab_pane-first tab-pane fade show active">
+                        <ul class="nav nav_bar" role="tablist">
+                            <li role="presentation" class=" nav_bar-li active" data-bs-target="#microsimulation"
+                                aria-controls="microsimulation" role="tab" data-bs-toggle="tab" aria-selected="true"
+                                (click)="tabclick('microsimulation')">
+                                <span class="octicon octicon-diff-added"><mat-icon>sim_card</mat-icon>Micro
+                                    Simulation</span>
+                            </li>
+                            <li role="presentation " class="nav_bar-li" data-bs-target="#interviewforAi"
+                                aria-controls="interviewforAi" role="tab" data-bs-toggle="tab" aria-selected="false"
+                                (click)="tabclick('interviewforAi')">
+                                <span class="octicon octicon-diff-added"><mat-icon>record_voice_over</mat-icon>Interview
+                                    for AI</span>
+                            </li>
+
+
+                        </ul>
+                    </div>
+
+                    <div role="tabpanel" class="tab_pane-second tab-pane fade show " id="interviewforAi">
+                        <ul class="nav nav_bar" role="tablist">
+                            <li role="presentation " class="nav_bar-li active" data-bs-target="#createquestion"
+                                aria-controls="createquestion" role="tab" data-bs-toggle="tab" aria-selected="true"
+                                (click)="interviewforaiclick('question')">
+                                <span class="octicon octicon-diff-added">Create Game</span>
+                            </li>
+                            <li role="presentation" class="nav_bar-li" data-bs-target="#createchapter"
+                                aria-controls="createchapter" role="tab" data-bs-toggle="tab" aria-selected="false"
+                                (click)="interviewforaiclick('chapter')">
+                                <span class="octicon octicon-diff-added">Create Chapter</span>
+                            </li>
+
+                            <li role="presentation" class="nav_bar-li" data-bs-target="#creategame"
+                                aria-controls="creategame" role="tab" data-bs-toggle="tab" aria-selected="false"
+                                (click)="interviewforaiclick('game')">
+                                <span class="octicon octicon-diff-added">Create Course</span>
+                            </li>
+                            <!-- <li role="presentation" class="nav_bar-li" data-bs-target="#createquestion"
+                                aria-controls="createquestion" role="tab" data-bs-toggle="tab" aria-selected="false"
+                                (click)="interviewforaiclick('question')">
+                                <span class="octicon octicon-diff-added">Create question</span>
+                            </li>
+                            <li role="presentation" class="nav_bar-li" data-bs-target="#promptcreate"
+                                aria-controls="promptcreate" role="tab" data-bs-toggle="tab" aria-selected="false"
+                                (click)="interviewforaiclick('create')">
+                                <span class="octicon octicon-diff-added">Prompt Create</span>
+                            </li>
+                            <li role="presentation" class="nav_bar-li" data-bs-target="#interview"
+                                aria-controls="interview" role="tab" data-bs-toggle="tab" aria-selected="false"
+                                (click)="interviewforaiclick('interview')">
+                                <span class="octicon octicon-diff-added">Interview</span>
+                            </li> -->
+                        </ul>
+                    </div>
+                    <!-- <div role="tabpanel" class="tab_pane-second tab-pane fade show " id="nonaibasedsystem">
+                        <ul class="nav nav_bar" role="tablist">
+                            <li role="presentation " class="nav_bar-li active" data-bs-target="#createchapter"
+                                aria-controls="createchapter" role="tab" data-bs-toggle="tab" aria-selected="true"
+                                (click)="interviewforaiclick('chapter')">
+                                <span class="octicon octicon-diff-added">Create Chapter</span>
+                            </li>
+                            <li role="presentation" class="nav_bar-li" data-bs-target="#createquestion"
+                                aria-controls="createquestion" role="tab" data-bs-toggle="tab" aria-selected="false"
+                                (click)="interviewforaiclick('question')">
+                                <span class="octicon octicon-diff-added">Create Question</span>
+                            </li>
+
+                            <li role="presentation" class="nav_bar-li" data-bs-target="#createnonaibasedgame"
+                                aria-controls="createnonaibasedgame" role="tab" data-bs-toggle="tab" aria-selected="false"
+                                (click)="interviewforaiclick('nonaibasedgame')">
+                                <span class="octicon octicon-diff-added">Create Game</span>
+                            </li>
+                            
+                        </ul>
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+        <div class="card newinstructor-card vh-100" style="border: none;">
+            <div class="card-body newinstructor-card-body">
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade show active" id="microsimulation">
+                        <app-user *ngIf="activetab == 'microsimulation'"></app-user>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div role="tab-pane" class="tab-pane fade show active" id="createquestion">
+                        <app-interviewgamecreate
+                            *ngIf="activetab == 'interviewforAi'?prompttab == 'question':false"></app-interviewgamecreate>
+
+                    </div>
+                    <div role="tab-pane" class="tab-pane fade show " id="createchapter">
+                        <app-createchapter
+                            *ngIf="activetab == 'interviewforAi'?prompttab == 'chapter':false"></app-createchapter>
+                    </div>
+
+                    <div role="tab-pane" class="tab-pane fade show " id="creategame">
+                        <app-createcourse
+                            *ngIf="activetab == 'interviewforAi'?prompttab == 'game':false"></app-createcourse>
+
+                    </div>
+                    <!-- <div role="tab-pane" class="tab-pane fade show " id="createquestion">
+                        <app-createquestion
+                            *ngIf="activetab == 'interviewforAi'?prompttab == 'question':false"></app-createquestion>
+                    </div>
+                    <div role="tab-pane" class="tab-pane fade show " id="promptcreate">
+                        <app-promptcreate
+                            *ngIf="activetab == 'interviewforAi'?prompttab == 'create':false"></app-promptcreate>
+                    </div>
+                    <div role="tab-pane" class="tab-pane fade show " id="interview">
+                        <app-interview
+                            *ngIf="activetab == 'interviewforAi'?prompttab == 'interview':false"></app-interview>
+                    </div> -->
+                </div>
+            </div>
+
+        </div>
+
+        
+    </div>
+</div>

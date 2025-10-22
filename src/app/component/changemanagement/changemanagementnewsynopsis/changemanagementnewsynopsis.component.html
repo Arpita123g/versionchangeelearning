@@ -1,0 +1,697 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui change_management">
+    <div class="container">
+        <div class="body-element">
+            <div class="feed_ack">
+                <div>
+                    <div class="row pb-4">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                                <div class="">
+                                    <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                        (change)="roundClick()">
+                                        <option class="select-round-option" value="">Select Round</option>
+                                        <option class="select-round-option"
+                                            *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                            {{attempt}}</option>
+                                    </select>
+                                </div>
+                                <div class="download_btn" matTooltiClass="primary-tooltip"
+                                    (click)="downloadreportchangemanagement()">
+                                    <div>
+                                        <a download matTooltip="Download"><span class="hovertext"
+                                                data-hover="Download pdf file accounting">
+                                                <img src="assets/images/businessbasics/download.png" />
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <mat-icon class="mt-2">get_app</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1>Synopsis
+                    </h1>
+                    <div *ngIf="analysisshow" style="margin-top: 1.1rem;">
+                        <th
+                            style="display: flex; align-items: center; gap: 5px;font-size: 1.1rem; font-weight: 600;padding: 0.6rem 0.4rem;color: white;background-color: #266cc38a;">
+                            Feedback<div style=" width: 1rem">
+                                <mat-icon (click)="rotate();roundClick();" [@rotatedState]='state' class="sidenav-icon"
+                                    aria-hidden="false" aria-label="Example home icon">cached</mat-icon>
+                            </div>
+                        </th>
+                    </div>
+                    <div class="decision-textarea pb-5 h-100" *ngIf="analysisshow">
+                        <div class="row">
+                            <div class="col-md" style="padding: 10px;">
+                                <div class="card feedbsck-value p-3">
+                                    <markdown [data]="feedbackvalue"></markdown>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-cols-md-2 pt-3">
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Decisions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Organization Wide Intervention</td>
+                                        <!-- <td><span>Motivational Speaker Session</span></td> -->
+                                        <td><span>{{result[0]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Activity Intervention</td>
+                                        <!-- <td><span>Monthly Q&A</span></td> -->
+                                        <td><span>{{result[1]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Actvity, Kabir</td>
+                                        <!-- <td><span>No</span></td> -->
+                                        <td><span>{{result[2]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Actvity, Anne</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[3]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Actvity, Rajas</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[4]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Actvity, Priya</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[5]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Actvity, Neha</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[6]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Actvity, Rajat</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[7]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Activity Intervention</td>
+                                        <!-- <td><span>Ice breaker session</span></td> -->
+                                        <td><span>{{result[8]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Actvity, Kabir</td>
+                                        <!-- <td><span>No</span></td> -->
+                                        <td><span>{{result[9]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Actvity, Anne</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[10]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Actvity, Rajas</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[11]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Actvity, Priya</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[12]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Actvity, Neha</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[13]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Actvity, Rajat</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[14]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Organization Wide Intervention</td>
+                                        <!-- <td><span>Setting of Goals</span></td> -->
+                                        <td><span>{{result[15]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Activity Intervention</td>
+                                        <!-- <td><span>Mental & Physical Wellbeing</span></td> -->
+                                        <td><span>{{result[16]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Actvity, Kabir</td>
+                                        <!-- <td><span>No</span></td> -->
+                                        <td><span>{{result[17]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Actvity, Anne</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[18]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Actvity, Rajas</td>
+                                        <!-- <td><span>No</span></td> -->
+                                        <td><span>{{result[19]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Actvity, Priya</td>
+                                        <!-- <td><span>No</span></td> -->
+                                        <td><span>{{result[20]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Actvity, Neha</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[21]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Actvity, Rajat</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[22]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Activity Intervention</td>
+                                        <!-- <td><span>Problem-solving meetings</span></td> -->
+                                        <td><span>{{result[23]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Actvity, Kabir</td>
+                                        <!-- <td><span>No</span></td> -->
+                                        <td><span>{{result[24]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Actvity, Anne</td>
+                                        <!-- <td><span>No</span></td> -->
+                                        <td><span>{{result[25]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Actvity, Rajas</td>
+                                        <!-- <td><span>No</span></td> -->
+                                        <td><span>{{result[26]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Actvity, Priya</td>
+                                        <!-- <td><span>No</span></td> -->
+                                        <td><span>{{result[27]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Actvity, Neha</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[28]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Actvity, Rajat</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[29]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Organization Wide Intervention</td>
+                                        <!-- <td><span>MOB Activity</span></td> -->
+                                        <td><span>{{result[30]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Activity Intervention</td>
+                                        <!-- <td><span>Redesigning</span></td> -->
+                                        <td><span>{{result[31]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Actvity, Kabir</td>
+                                        <!-- <td><span>No</span></td> -->
+                                        <td><span>{{result[32]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Actvity, Anne</td>
+                                        <!-- <td><span>No</span></td> -->
+                                        <td><span>{{result[33]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Actvity, Rajas</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[34]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Actvity, Priya</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[35]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Actvity, Neha</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[36]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Individual Actvity, Rajat</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[37]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Activity Intervention</td>
+                                        <!-- <td><span>Fun Lunch</span></td> -->
+                                        <td><span>{{result[38]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Actvity, Kabir</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[39]}}</span></td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Actvity, Anne</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[40]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Actvity, Rajas</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[41]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Actvity, Priya</td>
+                                        <!-- <td><span>Yes</span></td> -->
+                                        <td><span>{{result[42]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Actvity, Neha</td>
+                                        <!-- <td><span>No</span></td> -->
+                                        <td><span>{{result[43]}}</span></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Group Actvity, Rajat</td>
+                                        <!-- <td><span>No</span></td> -->
+                                        <td><span>{{result[44]}}</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="5">Employees Performance Level</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td class="lastchildtd">Parameter</td>
+                                        <td class="lastchildtd">Awareness Level %</td>
+                                        <td class="lastchildtd">Motivation Level %</td>
+                                        <td class="lastchildtd">Commitment Level %</td>
+                                        <td class="lastchildtd">Performance Level %</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td class="lastchildtd">Kabir</td>
+                                        <td class="lastchildtd">64%</td>
+                                        <td class="lastchildtd">60%</td>
+                                        <td class="lastchildtd">61%</td>
+                                        <td class="lastchildtd">61%</td> -->
+                                        <td class="lastchildtd">{{result[120]}}</td>
+                                        <td class="lastchildtd">{{result[45]*100| number: '1.0-0'}}</td>
+                                        <td class="lastchildtd">{{result[46]*100| number: '1.0-0'}}</td>
+                                        <td class="lastchildtd">{{result[47]*100| number: '1.0-0'}}</td>
+                                        <td class="lastchildtd">{{result[48]*100| number: '1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td class="lastchildtd">Anne</td>
+                                        <td class="lastchildtd">49%</td>
+                                        <td class="lastchildtd">56%</td>
+                                        <td class="lastchildtd">51%</td>
+                                        <td class="lastchildtd">52%</td> -->
+                                        <td class="lastchildtd">{{result[121]}}</td>
+                                        <td class="lastchildtd">{{result[49]*100| number: '1.0-0'}}</td>
+                                        <td class="lastchildtd">{{result[50]*100| number: '1.0-0'}}</td>
+                                        <td class="lastchildtd">{{result[51]*100| number: '1.0-0'}}</td>
+                                        <td class="lastchildtd">{{result[52]*100| number: '1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td class="lastchildtd">Rajas</td>
+                                        <td class="lastchildtd">38%</td>
+                                        <td class="lastchildtd">36%</td>
+                                        <td class="lastchildtd">36%</td>
+                                        <td class="lastchildtd">36%</td> -->
+                                        <td class="lastchildtd">{{result[122]}}</td>
+                                        <td class="lastchildtd">{{result[53]*100| number: '1.0-0'}}</td>
+                                        <td class="lastchildtd">{{result[54]*100| number: '1.0-0'}}</td>
+                                        <td class="lastchildtd">{{result[55]*100| number: '1.0-0'}}</td>
+                                        <td class="lastchildtd">{{result[56]*100| number: '1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td class="lastchildtd">Priya</td>
+                                        <td class="lastchildtd">40%</td>
+                                        <td class="lastchildtd">43%</td>
+                                        <td class="lastchildtd">37%</td>
+                                        <td class="lastchildtd">40%</td> -->
+                                        <td class="lastchildtd">{{result[123]}}</td>
+                                        <td class="lastchildtd">{{result[57]*100| number: '1.0-0'}}</td>
+                                        <td class="lastchildtd">{{result[58]*100| number: '1.0-0'}}</td>
+                                        <td class="lastchildtd">{{result[59]*100| number: '1.0-0'}}</td>
+                                        <td class="lastchildtd">{{result[60]*100| number: '1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td class="lastchildtd">Neha</td>
+                                        <td class="lastchildtd">43%</td>
+                                        <td class="lastchildtd">44%</td>
+                                        <td class="lastchildtd">16%</td>
+                                        <td class="lastchildtd">31%</td> -->
+                                        <td class="lastchildtd">{{result[124]}}</td>
+                                        <td class="lastchildtd">{{result[61]*100| number: '1.0-0'}}</td>
+                                        <td class="lastchildtd">{{result[62]*100| number: '1.0-0'}}</td>
+                                        <td class="lastchildtd">{{result[63]*100| number: '1.0-0'}}</td>
+                                        <td class="lastchildtd">{{result[64]*100| number: '1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <!-- <td class="lastchildtd">Rajat</td>
+                                        <td class="lastchildtd">38%</td>
+                                        <td class="lastchildtd">55%</td>
+                                        <td class="lastchildtd">30%</td>
+                                        <td class="lastchildtd">40%</td> -->
+                                        <td class="lastchildtd">{{result[125]}}</td>
+                                        <td class="lastchildtd">{{result[65]*100| number: '1.0-0'}}</td>
+                                        <td class="lastchildtd">{{result[66]*100| number: '1.0-0'}}</td>
+                                        <td class="lastchildtd">{{result[67]*100| number: '1.0-0'}}</td>
+                                        <td class="lastchildtd">{{result[68]*100| number: '1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="col-md py-5">
+                                <table class="table table-bg text-center mytablenetwork table rsl_tbl">
+                                    <thead class="rsl_tbl-thead">
+                                        <tr class="rsl_tbl-thead-tr">
+                                            <th class="rsl_tbl-thead-th" colspan="7">Employees Working Relation</th>
+                                        </tr>
+                                    </thead>
+                                    <thead style="font-size: 15px">
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td></td>
+                                            <!-- <td>Kabir</td> -->
+                                            <!-- <td>Anne</td> -->
+                                            <!-- <td>Rajas</td> -->
+                                            <!-- <td>Priya</td> -->
+                                            <!-- <td>Neha</td> -->
+                                            <!-- <td style="border-right: 1px solid lightgray;">Rajat</td> -->
+                                            <td>{{result[120]}}</td>
+                                            <td>{{result[121]}}</td>
+                                            <td>{{result[122]}}</td>
+                                            <td>{{result[123]}}</td>
+                                            <td>{{result[124]}}</td>
+                                            <td style="border-right: 1px solid lightgray;">{{result[125]}}</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="rsl_tbl-tbody">
+                                        <tr class="rsl_tbl-tbody-tr">
+
+                                            <td>{{result[120]}}</td>
+                                            <td
+                                                [style.background]="result[83]=='P' ? '#C3F9C3' : (result[83]=='Nu' ? '#FFD77E' : (result[83]=='N' ? '#f7cac9' : blank))">
+                                                {{result[83]}} </td>
+                                            <td class="pp"
+                                                [style.background]="result[84]=='P' ? '#C3F9C3' : (result[84]=='Nu' ? '#FFD77E' : (result[84]=='N' ? '#f7cac9' : blank))">
+                                                {{result[84]}}</td>
+                                            <td class="nuu"
+                                                [style.background]="result[85]=='P' ? '#C3F9C3' : (result[85]=='Nu' ? '#FFD77E' : (result[85]=='N' ? '#f7cac9' : blank))">
+                                                {{result[85]}}</td>
+                                            <td class="nn"
+                                                [style.background]="result[86]=='P' ? '#C3F9C3' : (result[86]=='Nu' ? '#FFD77E' : (result[86]=='N' ? '#f7cac9' : blank))">
+                                                {{result[86]}}</td>
+                                            <td class="pp"
+                                                [style.background]="result[87]=='P' ? '#C3F9C3' : (result[87]=='Nu' ? '#FFD77E' : (result[87]=='N' ? '#f7cac9' : blank))">
+                                                {{result[87]}}</td>
+                                            <td class="pp lastchildtd"
+                                                [style.background]="result[88]=='P' ? '#C3F9C3' : (result[88]=='Nu' ? '#FFD77E' : (result[88]=='N' ? '#f7cac9' : blank))">
+                                                {{result[88]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+
+                                            <td>{{result[121]}}</td>
+                                            <td class="nuu"
+                                                [style.background]="result[89]=='P' ? '#C3F9C3' : (result[89]=='Nu' ? '#FFD77E' : (result[89]=='N' ? '#f7cac9' : blank))">
+                                                {{result[89]}}</td>
+                                            <td
+                                                [style.background]="result[90]=='P' ? '#C3F9C3' : (result[90]=='Nu' ? '#FFD77E' : (result[90]=='N' ? '#f7cac9' : blank))">
+                                                {{result[90]}}</td>
+                                            <td class="nuu"
+                                                [style.background]="result[91]=='P' ? '#C3F9C3' : (result[91]=='Nu' ? '#FFD77E' : (result[91]=='N' ? '#f7cac9' : blank))">
+                                                {{result[91]}}</td>
+                                            <td class="pp"
+                                                [style.background]="result[92]=='P' ? '#C3F9C3' : (result[92]=='Nu' ? '#FFD77E' : (result[92]=='N' ? '#f7cac9' : blank))">
+                                                {{result[92]}}</td>
+                                            <td class="nuu" class="pp"
+                                                [style.background]="result[93]=='P' ? '#C3F9C3' : (result[93]=='Nu' ? '#FFD77E' : (result[93]=='N' ? '#f7cac9' : blank))">
+                                                {{result[93]}}</td>
+                                            <td class="nn lastchildtd"
+                                                [style.background]="result[94]=='P' ? '#C3F9C3' : (result[94]=='Nu' ? '#FFD77E' : (result[94]=='N' ? '#f7cac9' : blank))">
+                                                {{result[94]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+
+                                            <td>{{result[122]}}</td>
+                                            <td class="pp"
+                                                [style.background]="result[95]=='P' ? '#C3F9C3' : (result[95]=='Nu' ? '#FFD77E' : (result[95]=='N' ? '#f7cac9' : blank))">
+                                                {{result[95]}}</td>
+                                            <td class="pp"
+                                                [style.background]="result[96]=='P' ? '#C3F9C3' : (result[96]=='Nu' ? '#FFD77E' : (result[96]=='N' ? '#f7cac9' : blank))">
+                                                {{result[96]}}</td>
+                                            <td
+                                                [style.background]="result[97]=='P' ? '#C3F9C3' : (result[97]=='Nu' ? '#FFD77E' : (result[97]=='N' ? '#f7cac9' : blank))">
+                                                {{result[97]}}</td>
+                                            <td class="nuu"
+                                                [style.background]="result[98]=='P' ? '#C3F9C3' : (result[98]=='Nu' ? '#FFD77E' : (result[98]=='N' ? '#f7cac9' : blank))">
+                                                {{result[98]}}</td>
+                                            <td class="pp"
+                                                [style.background]="result[99]=='P' ? '#C3F9C3' : (result[99]=='Nu' ? '#FFD77E' : (result[99]=='N' ? '#f7cac9' : blank))">
+                                                {{result[99]}}</td>
+                                            <td class="pp lastchildtd"
+                                                [style.background]="result[100]=='P' ? '#C3F9C3' : (result[100]=='Nu' ? '#FFD77E' : (result[100]=='N' ? '#f7cac9' : blank))">
+                                                {{result[100]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+
+                                            <td>{{result[123]}}</td>
+                                            <td class="nn"
+                                                [style.background]="result[101]=='P' ? '#C3F9C3' : (result[101]=='Nu' ? '#FFD77E' : (result[101]=='N' ? '#f7cac9' : blank))">
+                                                {{result[101]}}</td>
+                                            <td class="nuu"
+                                                [style.background]="result[102]=='P' ? '#C3F9C3' : (result[102]=='Nu' ? '#FFD77E' : (result[102]=='N' ? '#f7cac9' : blank))">
+                                                {{result[102]}}</td>
+                                            <td class="nn"
+                                                [style.background]="result[103]=='P' ? '#C3F9C3' : (result[103]=='Nu' ? '#FFD77E' : (result[103]=='N' ? '#f7cac9' : blank))">
+                                                {{result[103]}}</td>
+                                            <td
+                                                [style.background]="result[104]=='P' ? '#C3F9C3' : (result[104]=='Nu' ? '#FFD77E' : (result[104]=='N' ? '#f7cac9' : blank))">
+                                                {{result[104]}}</td>
+                                            <td class="nuu"
+                                                [style.background]="result[105]=='P' ? '#C3F9C3' : (result[105]=='Nu' ? '#FFD77E' : (result[105]=='N' ? '#f7cac9' : blank))">
+                                                {{result[105]}}</td>
+                                            <td class="nn lastchildtd"
+                                                [style.background]="result[106]=='P' ? '#C3F9C3' : (result[106]=='Nu' ? '#FFD77E' : (result[106]=='N' ? '#f7cac9' : blank))">
+                                                {{result[106]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+
+                                            <td>{{result[124]}}</td>
+                                            <td class="nuu"
+                                                [style.background]="result[107]=='P' ? '#C3F9C3' : (result[107]=='Nu' ? '#FFD77E' : (result[107]=='N' ? '#f7cac9' : blank))">
+                                                {{result[107]}}</td>
+                                            <td class="pp"
+                                                [style.background]="result[108]=='P' ? '#C3F9C3' : (result[108]=='Nu' ? '#FFD77E' : (result[108]=='N' ? '#f7cac9' : blank))">
+                                                {{result[108]}}</td>
+                                            <td class="pp"
+                                                [style.background]="result[109]=='P' ? '#C3F9C3' : (result[109]=='Nu' ? '#FFD77E' : (result[109]=='N' ? '#f7cac9' : blank))">
+                                                {{result[109]}}</td>
+                                            <td class="nuu"
+                                                [style.background]="result[110]=='P' ? '#C3F9C3' : (result[110]=='Nu' ? '#FFD77E' : (result[110]=='N' ? '#f7cac9' : blank))">
+                                                {{result[110]}}</td>
+                                            <td
+                                                [style.background]="result[111]=='P' ? '#C3F9C3' : (result[111]=='Nu' ? '#FFD77E' : (result[111]=='N' ? '#f7cac9' : blank))">
+                                                {{result[111]}}</td>
+                                            <td [style.background]="result[112]=='P' ? '#C3F9C3' : (result[112]=='Nu' ? '#FFD77E' : (result[112]=='N' ? '#f7cac9' : blank))"
+                                                class="lastchildtd">{{result[112]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+
+
+                                            <td>{{result[125]}}</td>
+                                            <td class="pp"
+                                                [style.background]="result[113]=='P' ? '#C3F9C3' : (result[113]=='Nu' ? '#FFD77E' : (result[113]=='N' ? '#f7cac9' : blank))">
+                                                {{result[113]}}</td>
+                                            <td class="pp"
+                                                [style.background]="result[114]=='P' ? '#C3F9C3' : (result[114]=='Nu' ? '#FFD77E' : (result[114]=='N' ? '#f7cac9' : blank))">
+                                                {{result[114]}}</td>
+                                            <td class="pp"
+                                                [style.background]="result[115]=='P' ? '#C3F9C3' : (result[115]=='Nu' ? '#FFD77E' : (result[115]=='N' ? '#f7cac9' : blank))">
+                                                {{result[115]}}</td>
+                                            <td class="nuu"
+                                                [style.background]="result[116]=='P' ? '#C3F9C3' : (result[116]=='Nu' ? '#FFD77E' : (result[116]=='N' ? '#f7cac9' : blank))">
+                                                {{result[116]}}</td>
+                                            <td class="nuu"
+                                                [style.background]="result[117]=='P' ? '#C3F9C3' : (result[117]=='Nu' ? '#FFD77E' : (result[117]=='N' ? '#f7cac9' : blank))">
+                                                {{result[117]}}</td>
+                                            <td [style.background]="result[118]=='P' ? '#C3F9C3' : (result[118]=='Nu' ? '#FFD77E' : (result[118]=='N' ? '#f7cac9' : blank))"
+                                                class="lastchildtd">{{result[118]}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="col-md">
+                                <table class="table rsl_tbl pt-3">
+                                    <thead class="rsl_tbl-thead">
+                                        <tr class="rsl_tbl-thead-tr">
+                                            <th class="rsl_tbl-thead-th" colspan="4">Unutilized Time of Employees,
+                                                minutes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="rsl_tbl-tbody">
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <!-- <td>Kabir</td> -->
+                                            <!-- <td>-</td> -->
+                                            <td>{{result[120]}}</td>
+                                            <td>{{result[69]}}</td>
+
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <!-- <td>Anne</td> -->
+                                            <!-- <td>-</td> -->
+                                            <td>{{result[121]}}</td>
+                                            <td>{{result[70]}}</td>
+
+                                        </tr>
+
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <!-- <td>Rajas</td> -->
+                                            <!-- <td>-</td> -->
+                                            <td>{{result[122]}}</td>
+                                            <td>{{result[71]}}</td>
+
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <!-- <td>Priya</td> -->
+                                            <!-- <td>-</td> -->
+                                            <td>{{result[123]}}</td>
+                                            <td>{{result[72]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <!-- <td>Neha</td> -->
+                                            <!-- <td>-</td> -->
+                                            <td>{{result[124]}}</td>
+                                            <td>{{result[73]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <!-- <td>Rajat</td> -->
+                                            <!-- <td>-</td> -->
+                                            <td>{{result[125]}}</td>
+                                            <td>{{result[74]}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md py-5">
+                                <table class="table rsl_tbl">
+                                    <thead class="rsl_tbl-thead">
+                                        <tr class="rsl_tbl-thead-tr">
+                                            <th class="rsl_tbl-thead-th" colspan="2">Group KPI</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="rsl_tbl-tbody">
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Awareness Level %</td>
+                                            <!-- <td>45%</td> -->
+                                            <td>{{result[79]*100| number: '1.0-0'}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Motivation Level %</td>
+                                            <!-- <td>49%</td> -->
+                                            <td>{{result[80]*100| number: '1.0-0'}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Commitment Level %</td>
+                                            <!-- <td>38%</td> -->
+                                            <td>{{result[81]*100| number: '1.0-0'}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Performance Level %</td>
+                                            <!-- <td>43%</td> -->
+                                            <td>{{result[82]*100| number: '1.0-0'}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="col-md ">
+                                <table class="table rsl_tbl">
+                                    <thead class="rsl_tbl-thead">
+                                        <tr class="rsl_tbl-thead-tr">
+                                            <th class="rsl_tbl-thead-th" colspan="2">Budget, INR</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="rsl_tbl-tbody">
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Budget Allocated</td>
+                                            <td>{{result[75]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Remaining budget, Awareness stage</td>
+                                            <td>{{result[76]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Remaining budget, Motivation stage</td>
+                                            <td>{{result[77]}}</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Remaining budget, Commitment stage</td>
+                                            <td>{{result[78]}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md py-5" *ngIf="optional[0]">
+                                <table class="table rsl_tbl">
+                                    <thead class="rsl_tbl-thead">
+                                        <tr class="rsl_tbl-thead-tr">
+                                            <th class="rsl_tbl-thead-th" colspan="2">Thinking Ability, %</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="rsl_tbl-tbody">
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Intervention</td>
+                                            <td>{{result[119]*100| number: '1.0-0'}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row lst_r">
+                        <div class="col-4 lst_r-col4" *ngIf="!timefinished">
+                            <button class="mt-4 retry" [disabled]="isButtonDisabled"  (click)="exit()">{{retry}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

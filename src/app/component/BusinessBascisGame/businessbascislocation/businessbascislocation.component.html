@@ -1,0 +1,235 @@
+<div class="elearingnewui bus_iness">
+  <div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+  </div>
+  <div class="container">
+    <div class="body-element">
+      <div class="loc-ation">
+        <div class="element-first">
+          <div class="row">
+            <div class="lookatan" (click)="openDialog()" *ngIf="foodforthought">
+              <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                <button   class="food-thought-btn">Food For Thought</button></span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h1>
+            Location
+            <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+              </div> &nbsp; &nbsp; &nbsp;
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px;'>Where do you want to open a shop? Whom do you want to sell?</p>
+              </div>
+            </div><br>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>Who will spend more money? Who will be buying more tea?</p>
+                </div>
+              </div>
+          </div> ">
+              help_outline
+            </mat-icon>
+          </h1>
+          <p class="py-3">Select one of the locations:</p>
+        </div>
+
+
+        <table class="table w-100 loc_tbl">
+          <tbody class="loc_tbl-body">
+            <div class="form-check">
+              <tr class="loc_tbl-body-tr">
+                <td></td>
+                <td class="text-center" [ngClass]="{ bluebackground: c18 === d7}">
+                  <img src="../../../../assets/images/businessbasics/bengaluruunivAsset 1.png"
+                    class="img-fluid loc-img" />
+                  <h2 class="mt-2">{{d7}}</h2>
+
+                </td>
+                <td></td>
+                <td class="text-center" [ngClass]="{ bluebackground: c18 === d8 }">
+                  <img src="../../../../assets/images/businessbasics/itplcorporateAsset 2.png"
+                    class="img-fluid loc-img" />
+                  <h2 class="mt-2">{{d8}}</h2>
+                </td>
+              </tr>
+
+              <tr class="loc_tbl-body-tr">
+                <td>Target Audience:</td>
+                <td [ngClass]="{ bluebackground: c18 === d7}">College Students &
+                  Faculties</td>
+                <td></td>
+                <td [ngClass]="{ bluebackground: c18 === d8 }">Corporate Employees</td>
+              </tr>
+              <tr class="loc_tbl-body-tr">
+                <td>Footfall Potential:</td>
+                <td [ngClass]="{ bluebackground: c18 === d7}">High</td>
+                <td></td>
+                <td [ngClass]="{ bluebackground: c18 === d8 }">Moderate to High</td>
+              </tr>
+              <tr class="loc_tbl-body-tr">
+                <td>Competition:</td>
+                <td [ngClass]="{ bluebackground: c18 === d7}">Premium and standard tea
+                  and cafes</td>
+                <td></td>
+                <td [ngClass]="{ bluebackground: c18 === d8 }">Premium tea and cafes
+                </td>
+              </tr>
+              <tr class="loc_tbl-body-tr">
+                <td>Consumer Spending:</td>
+                <td [ngClass]="{ bluebackground: c18 === d7}">Limited, price
+                  sensitivity is higher</td>
+                <td></td>
+                <td [ngClass]="{ bluebackground: c18 === d8 }">Higher, potential for
+                  premium offerings</td>
+              </tr>
+              <tr class="loc_tbl-body-tr">
+                <td>Operating hours:</td>
+                <td [ngClass]="{ bluebackground: c18 === d7}">Extended hours due to
+                  students schedule</td>
+                <td></td>
+                <td [ngClass]="{ bluebackground: c18 === d8 }">Standard office hours,
+                  potential rush on breaktime</td>
+              </tr>
+              <tr class="loc_tbl-body-tr">
+                <td>Menu offering:</td>
+                <td [ngClass]="{ bluebackground: c18 === d7}">Quick bites, affordable
+                  options, unique and trendy tea</td>
+                <td></td>
+                <td [ngClass]="{ bluebackground: c18 === d8 }">Grab and go, healthy
+                  alternatives and premium teas</td>
+              </tr>
+              <tr class="loc_tbl-body-tr">
+                <td>Marketing:</td>
+                <td [ngClass]="{ bluebackground: c18 === d7}">Student partnerships &
+                  events</td>
+                <td></td>
+                <td [ngClass]="{ bluebackground: c18 === d8 }">Corporate tie-ups and loyalty program</td>
+              </tr>
+              <tr class="loc_tbl-body-tr">
+                <td>Space Requirements:</td>
+                <td [ngClass]="{ bluebackground: c18 === d7}">Seating/standing for
+                  groups, student friendly ambience</td>
+                <td></td>
+                <td [ngClass]="{ bluebackground: c18 === d8 }">
+                  Space for meetings and comfortable seating for professionals
+                  ni </td>
+              </tr>
+              <tr class="loc_tbl-body-tr">
+                <td>Seasonal Variation:</td>
+                <td [ngClass]="{ bluebackground: c18 === d7}">Reduced footfall during
+                  college holidays</td>
+                <td></td>
+                <td [ngClass]="{ bluebackground: c18 === d8 }">Fluctuation based on
+                  corporate events & holidays</td>
+              </tr>
+              <tr class="loc_tbl-body-tr">
+                <td>Rental per month (includes licence fees), INR</td>
+                <td [ngClass]="{ bluebackground: c18 === d7}">{{jaynagarrent}}</td>
+                <td></td>
+                <td [ngClass]="{ bluebackground: c18 === d8 }">{{whitefieldrent}}</td>
+              </tr>
+              <tr class="loc_tbl-body-tr">
+                <td></td>
+                <td [ngClass]="{ bluebackground: c18 === d7}">
+                  <input class="custom-radio" type="radio" [disabled]="checkdisable"
+                    [checked]="c18 === d7"
+                    (change)="getSelectedlocation(d7)" /><span></span>
+                </td>
+                <td></td>
+                <td [ngClass]="{ bluebackground: c18 === d8 }">
+                  <input class="custom-radio" type="radio" [disabled]="checkdisable"
+                    [checked]="c18 === d8"
+                    (change)="getSelectedlocation(d8)" /><span></span>
+
+              </tr>
+            </div>
+          </tbody>
+        </table>
+        <div *ngIf="showLicensingAndRegulation">
+          <h1 class="second_h1">
+            Licensing & Regulation
+            <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+              </div> &nbsp; &nbsp; &nbsp;
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px;'>What option will you select for compliance? Cost-effective vs On-time?</p>
+              </div>
+            </div><br>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>What is the trade-off while selecting in-house compliance?</p>
+                </div>
+              </div>
+          </div> ">
+              help_outline
+            </mat-icon>
+          </h1>
+          <p class="p-tag">
+            Licensing and regulation are vital for operating a tea retail store in
+            any location to ensure adherence to health, safety, and quality
+            standards set by authorities. They provide legal authorization and
+            foster trust among consumers, ensuring they receive safe, authentic
+            products. Obtaining permits will involve food and beverage licenses,
+            and business operating licenses.
+          </p>
+          <div class="row pt-4 g-2 input-loc-card" *ngIf="inhouse&&outsourcing">
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4">
+              <div class="card input-loc-card-next" [ngClass]="{ selected: c26 === inhouse }">
+                <label class="input-card-label">
+                  <input class="input-card-label-input" type="radio" name="cardSelection" 
+                   [checked]="c26 === inhouse"
+                    (change)="getSelectedlicensing(inhouse)" [disabled]="checkdisable" />
+                  {{inhouse}}
+                  <p class="maincontent">
+                    {{showall?textLines:truncatedText}}
+                    <a (click)="toggleshow()" [style.color]="showall?'red':'blue'">{{!showall?'Show all':'Hide
+                      all'}}</a>
+                  </p>
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4 g-2" *ngIf="inhouse&&outsourcing">
+              <div class="card input-loc-card-next"
+                [ngClass]="{ selected: c26 === outsourcing }">
+                <label class="input-card-label">
+                  <input class="input-card-label-input" type="radio" name="cardSelection" [checked]="c26 === outsourcing"
+                    (change)="getSelectedlicensing(outsourcing)" [disabled]="checkdisable" />
+                  {{outsourcing}}
+                  <p class="maincontent">
+                    {{showallnew?textLines1:truncatedText1}}
+                    <a (click)="toggleshow1()" [style.color]="showallnew?'red':'blue'">{{!showallnew?'Show all':'Hide
+                      all'}}</a>
+                  </p>
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
+              <div class="card p-3 licandregulcost-card">
+                <apx-chart [series]="licandregulcost.series" [chart]="licandregulcost.chart"
+                  [dataLabels]="licandregulcost.dataLabels" [plotOptions]="licandregulcost.plotOptions"
+                  [yaxis]="licandregulcost.yaxis" [xaxis]="licandregulcost.xaxis" [fill]="licandregulcost.fill"
+                  [title]="licandregulcost.title" [tooltip]="licandregulcost.tooltip">
+                </apx-chart>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

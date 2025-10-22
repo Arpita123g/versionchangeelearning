@@ -1,0 +1,755 @@
+<div class="elearingnewui casemanagement">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="case-management-body case-management-body-marketing ">
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Crafting</h2>
+                    </th>
+                </tr>
+                <tr>
+                    <h3 >Communication</h3>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing">
+                <thead>
+                    <tr>
+                        <td colspan="3" *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody class="second-tbody">
+                    <tr >
+                        <ng-container *ngFor="let item of data; let i=index">
+                            <td *ngIf="i % 3 === 0">Activities</td>
+                            <td *ngIf="i % 3 === 1">Gaming Trigger</td>
+                            <td *ngIf="i % 3 === 2">Index</td>
+                           
+                        </ng-container>
+                    </tr>
+                </tbody>
+                <tbody class="second-tbody-new"  *ngIf="res!=[]">
+                    <tr>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="languageData.b136" disabled></td>
+                            <td ><input [value]="res.ab97[index]*100|number:'1.0-0'" #ab97Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ab97', index, ab97Input.value)"></td>
+                            <td ><input [value]="res.ac97[index]" #ac97Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ac97', index, ac97Input.value)"></td>
+
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="languageData.b137" disabled></td>
+                            <td ><input [value]="res.ab98[index]*100|number:'1.0-0'" #ab98Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ab98', index, ab98Input.value)"></td>
+                            <td ><input [value]="res.ac98[index]" #ac98Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ac98', index, ac98Input.value )"></td>
+                           
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="languageData.b138" disabled></td>
+                            <td ><input [value]="res.ab99[index]*100|number:'1.0-0'" #ab99Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ab99', index, ab99Input.value)"></td>
+                            <td ><input [value]="res.ac99[index]" #ac99Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ac99', index, ac99Input.value)"></td>
+                           
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="languageData.b139" disabled></td>
+                            <td ><input [value]="res.ab100[index]*100|number:'1.0-0'" #ab100Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ab100', index, ab100Input.value)"></td>
+                            <td ><input [value]="res.ac100[index]" #ac100Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ac100', index, ac100Input.value)"></td>
+                            
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="languageData.b140" disabled></td>
+                            <td ><input [value]="res.ab101[index]*100|number:'1.0-0'" #ab101Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ab101', index, ab101Input.value)"></td>
+                            <td ><input [value]="res.ac101[index]" #ac101Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ac101', index, ac101Input.value)"></td>
+                          
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container  *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="languageData.b141" disabled></td>
+                            <td ><input [value]="res.ab102[index]*100|number:'1.0-0'" #ab102Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ab102', index, ab102Input.value)"></td>
+                            <td ><input [value]="res.ac102[index]" #ac102Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ac102', index, ac102Input.value)"></td>
+                           
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Channel Mix</h2>
+                    </th>
+                </tr>
+                <tr>
+                    <h3 >Age 15-24yrs</h3>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing">
+                <thead>
+                    <tr>
+                        <td ></td>
+                        <td colspan="3" *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody class="first-tbody">
+                    <tr>
+                         <td></td>
+                        <ng-container *ngFor="let item of data; let i=index">
+                            <td *ngIf="i % 3 === 0">Male</td>
+                            <td *ngIf="i % 3 === 1">Female</td>
+                            <td *ngIf="i % 3 === 2">Both</td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+                <tbody class="first-tbody-new" *ngIf="res!=[]">
+                    <tr>
+                        <td >Social Media</td>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="res.ab107[index]" #ab107Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab107', index, ab107Input.value)"></td>
+                            <td ><input [value]="res.ac107[index]" #ac107Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ac107', index, ac107Input.value)"></td>
+                            <td ><input [value]="res.ad107[index]" #ad107Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ad107', index, ad107Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >Shopping</td>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]" >
+                            <td ><input [value]="res.ab108[index]" #ab108Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab108', index, ab108Input.value)"></td>
+                            <td ><input [value]="res.ac108[index]" #ac108Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ac108', index, ac108Input.value)"></td>
+                            <td ><input [value]="res.ad108[index]" #ad108Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ad108', index, ad108Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >Movies/Tv Shows</td>
+
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td><input [value]="res.ab109[index]" #ab109Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab109', index, ab109Input.value)"></td>
+                            <td><input [value]="res.ac109[index]" #ac109Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ac109', index, ac109Input.value)"></td>
+                            <td><input [value]="res.ad109[index]" #ad109Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ad109', index, ad109Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >Music</td>
+                        <ng-container  *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td><input [value]="res.ab110[index]" #ab110Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab110', index, ab110Input.value)"></td>
+                            <td><input [value]="res.ac110[index]" #ac110Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ac110', index, ac110Input.value)"></td>
+                            <td><input [value]="res.ad110[index]" #ad110Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ad110', index, ad110Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                         <td >Food Ordering</td>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td><input [value]="res.ab111[index]" #ab111Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab111', index, ab111Input.value)"></td>
+                            <td><input [value]="res.ac111[index]" #ac111Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ac111', index, ac111Input.value)"></td>
+                            <td><input [value]="res.ad111[index]" #ad111Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ad111', index, ad111Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >Messaging Apps</td>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td><input [value]="res.ab112[index]" #ab112Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab112', index, ab112Input.value)"></td>
+                            <td><input [value]="res.ac112[index]" #ac112Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ac112', index, ac112Input.value)"></td>
+                            <td><input [value]="res.ad112[index]" #ad112Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ad112', index, ad112Input.value)"></td>
+
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >News</td>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td><input [value]="res.ab113[index]" #ab113Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab113', index, ab113Input.value)"></td>
+                            <td><input [value]="res.ac113[index]" #ac113Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ac113', index, ac113Input.value)"></td>
+                            <td><input [value]="res.ad113[index]" #ad113Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ad113', index, ad113Input.value)"></td>
+
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >Sports</td>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td><input [value]="res.ab114[index]" #ab114Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab114', index, ab114Input.value)"></td>
+                            <td><input [value]="res.ac114[index]" #ac114Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ac114', index, ac114Input.value)"></td>
+                            <td><input [value]="res.ad114[index]" #ad114Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ad114', index, ad114Input.value)"></td>
+
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <h3>Age 25-34yrs</h3>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td colspan="3" *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody class="first-tbody">
+                    <tr>
+                        <td></td>
+                        <ng-container *ngFor="let item of data; let i=index">
+                            <td *ngIf="i % 3 === 0">Male</td>
+                            <td *ngIf="i % 3 === 1">Female</td>
+                            <td *ngIf="i % 3 === 2">Both</td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+                <tbody class="first-tbody-new" *ngIf="res!=[]">
+                    <tr>
+                        <td >Social Media </td>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="res.ae107[index]" #ae107Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ae107', index, ae107Input.value)"></td>
+                            <td ><input [value]="res.af107[index]" #af107Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('af107', index, af107Input.value)"></td>
+                            <td ><input [value]="res.ag107[index]" #ag107Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ag107', index, ag107Input.value)"></td>
+
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >Shopping</td>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="res.ae108[index]" #ae108Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ae108', index, ae108Input.value)"></td>
+                            <td ><input [value]="res.af108[index]" #af108Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('af108', index, af108Input.value)"></td>
+                            <td ><input [value]="res.ag108[index]" #ag108Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ag108', index, ag108Input.value)"></td>
+
+
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >Movies/Tv Shows</td>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="res.ae109[index]" #ae109Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ae109', index, ae109Input.value)"></td>
+                            <td ><input [value]="res.af109[index]" #af109Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('af109', index, af109Input.value)"></td>
+                            <td ><input [value]="res.ag109[index]" #ag109Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ag109', index, ag109Input.value)"></td>
+
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >Music</td>
+                        <ng-container  *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="res.ae110[index]" #ae110Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ae110', index, ae110Input.value)"></td>
+                            <td ><input [value]="res.af110[index]" #af110Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('af110', index, af110Input.value)"></td>
+                            <td ><input [value]="res.ag110[index]" #ag110Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ag110', index, ag110Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >Food Ordering</td>
+                        <ng-container  *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="res.ae111[index]" #ae111Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ae111', index, ae111Input.value)"></td>
+                            <td ><input [value]="res.af111[index]" #af111Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('af111', index, af111Input.value)"></td>
+                            <td ><input [value]="res.ag111[index]" #ag111Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ag111', index, ag111Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >Messaging Apps</td>
+                        <ng-container  *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="res.ae112[index]" #ae112Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ae112', index, ae112Input.value)"></td>
+                            <td ><input [value]="res.af112[index]" #af112Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('af112', index, af112Input.value)"></td>
+                            <td ><input [value]="res.ag112[index]" #ag112Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ag112', index, ag112Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >News</td>
+                        <ng-container  *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="res.ae113[index]" #ae113Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ae113', index, ae113Input.value)"></td>
+                            <td ><input [value]="res.af113[index]" #af113Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('af113', index, af113Input.value)"></td>
+                            <td ><input [value]="res.ag113[index]" #ag113Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ag113', index, ag113Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >Sports</td>
+                        <ng-container  *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="res.ae114[index]" #ae114Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ae114', index, ae114Input.value)"></td>
+                            <td ><input [value]="res.af114[index]" #af114Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('af114', index, af114Input.value)"></td>
+                            <td ><input [value]="res.ag114[index]" #ag114Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ag114', index, ag114Input.value)"></td>
+
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <h3>Age 35+yrs</h3>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td colspan="3" *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody class="first-tbody">
+                    <tr>
+                         <td></td>
+                         <ng-container *ngFor="let item of data; let i=index">
+                            <td *ngIf="i % 3 === 0">Male</td>
+                            <td *ngIf="i % 3 === 1">Female</td>
+                            <td *ngIf="i % 3 === 2">Both</td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+                <tbody class="first-tbody-new" *ngIf="res!=[]">
+                    <tr>
+                        <td >Social Media</td>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="res.ah107[index]" #ah107Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ah107', index, ah107Input.value)"></td>
+                            <td ><input [value]="res.ai107[index]" #ai107Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ai107', index, ai107Input.value)"></td>
+                            <td ><input [value]="res.aj107[index]" #aj107Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('aj107', index, aj107Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >Shopping</td>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="res.ah108[index]" #ah108Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ah108', index, ah108Input.value)"></td>
+                            <td ><input [value]="res.ai108[index]" #ai108Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ai108', index, ai108Input.value)"></td>
+                            <td ><input [value]="res.aj108[index]" #aj108Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('aj108', index, aj108Input.value)"></td>
+
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >Movies/Tv Shows </td>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="res.ah109[index]" #ah109Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ah109', index, ah109Input.value)"></td>
+                            <td ><input [value]="res.ai109[index]" #ai109Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ai109', index, ai109Input.value)"></td>
+                            <td ><input [value]="res.aj109[index]" #aj109Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('aj109', index, aj109Input.value)"></td>
+
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >Music</td>
+                        <ng-container  *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="res.ah110[index]" #ah110Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ah110', index, ah110Input.value)"></td>
+                            <td ><input [value]="res.ai110[index]" #ai110Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ai110', index, ai110Input.value)"></td>
+                            <td ><input [value]="res.aj110[index]" #aj110Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('aj110', index, aj110Input.value)"></td>
+
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >Food Ordering</td>
+                        <ng-container  *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="res.ah111[index]" #ah111Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ah111', index, ah111Input.value)"></td>
+                            <td ><input [value]="res.ai111[index]" #ai111Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ai111', index, ai111Input.value)"></td>
+                            <td ><input [value]="res.aj111[index]" #aj111Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('aj111', index, aj111Input.value)"></td>
+
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >Messaging Apps</td>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="res.ah112[index]" #ah112Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ah112', index, ah112Input.value)"></td>
+                            <td ><input [value]="res.ai112[index]" #ai112Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ai112', index, ai112Input.value)"></td>
+                            <td ><input [value]="res.aj112[index]" #aj112Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('aj112', index, aj112Input.value)"></td>
+
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >News</td>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="res.ah113[index]" #ah113Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ah113', index, ah113Input.value)"></td>
+                            <td ><input [value]="res.ai113[index]" #ai113Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ai113', index, ai113Input.value)"></td>
+                            <td ><input [value]="res.aj113[index]" #aj113Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('aj113', index, aj113Input.value)"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <td >Sports</td>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="res.ah114[index]" #ah114Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ah114', index, ah114Input.value)"></td>
+                            <td ><input [value]="res.ai114[index]" #ai114Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ai114', index, ai114Input.value)"></td>
+                            <td ><input [value]="res.aj114[index]" #aj114Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('aj114', index, aj114Input.value)"></td>
+
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Publishing Options</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+              <tbody *ngIf="res!=[]">
+                    <tr>
+                        <th class="second-head" colspan="12">Index Point</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Self Play Store/App Store</div>
+                        </td>
+                        <td *ngFor="let craftingdata of res.ac118; let i =index">
+                            <input [value]="res.ac118[i]" #inputElement [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ac118', i, inputElement.value)" >
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">ZiptoLab</div>
+                        </td>
+                        <td *ngFor="let craftingdata of res.ac119; let i =index">
+                            <input [value]="res.ac119[i]" #inputElement [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ac119', i, inputElement.value)" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Dueberry Labs</div>
+                        </td>
+                        <td *ngFor="let craftingdata of res.ac120; let i =index">
+                            <input [value]="res.ac120[i]" #inputElement [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ac120', i, inputElement.value)" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Playfun Games</div>
+                        </td>
+                        <td *ngFor="let craftingdata of res.ac121; let i =index">
+                            <input [value]="res.ac121[i]" #inputElement [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ac121', i, inputElement.value)" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Game House</div>
+                        </td>
+                        <td *ngFor="let craftingdata of res.ac122; let i =index">
+                            <input [value]="res.ac122[i]" #inputElement [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ac122', i, inputElement.value)" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Social Media</div>
+                        </td>
+                        <td *ngFor="let craftingdata of res.ac123; let i =index">
+                            <input [value]="res.ac123[i]" #inputElement [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ac123', i, inputElement.value)" >
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Publishing - Graphs</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing">
+                <thead>
+                    <tr>
+                        <td colspan="2" *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody class="first-tbody">
+                    <tr>
+                        <ng-container  *ngFor="let item of data1; let i=index">
+                            <td *ngIf="i % 2 == 0">Publishing</td>
+                            <td *ngIf="i % 2 !== 0">% Gaming</td>
+                            
+                        </ng-container>
+                    </tr>
+                </tbody>
+                <tbody class="first-tbody-new-new" *ngIf="res!=[]">
+                    <tr>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td><input [value]="languageData.b313" disabled></td>
+                            <td><input [value]="res.ab127[index]*100|number:'1.0-0'" #ab127Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab127', index, ab127Input.value)"></td>
+                            
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td><input [value]="languageData.b156" disabled></td>
+                            <td><input [value]="res.ab128[index]*100|number:'1.0-0'" #ab128Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab128', index, ab128Input.value)"></td>
+
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td><input [value]="languageData.b314" disabled></td>
+                            <td><input [value]="res.ab129[index]*100|number:'1.0-0'" #ab129Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab129', index, ab129Input.value)"></td>
+
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td><input [value]="languageData.b315" disabled></td>
+                            <td><input [value]="res.ab130[index]*100|number:'1.0-0'" #ab130Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab130', index, ab130Input.value)"></td>
+
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td><input [value]="languageData.b316" disabled></td>
+                            <td><input [value]="res.ab131[index]*100|number:'1.0-0'" #ab131Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab131', index, ab131Input.value)"></td>
+
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td><input [value]="languageData.b317" disabled></td>
+                            <td><input [value]="res.ab132[index]*100|number:'1.0-0'" #ab132Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab132', index, ab132Input.value)"></td>
+
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Monetization- Download Factor</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody *ngIf="res!=[]">
+                    <tr>
+                        <th class="second-head" colspan="12">Download Factor</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Free Games</div>
+                        </td>
+                        <td *ngFor="let craftingdata of res.ab136; let i =index">
+                            <input [value]="res.ab136[i]" #inputElement [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab136', i, inputElement.value)" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Freemium Games</div>
+                        </td>
+                        <td *ngFor="let craftingdata of res.ab137; let i =index">
+                            <input [value]="res.ab137[i]" #inputElement [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab137', i, inputElement.value)" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Pay To Play Games</div>
+                        </td>
+                        <td *ngFor="let craftingdata of res.ab138; let i =index">
+                            <input [value]="res.ab138[i]" #inputElement [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab138', i, inputElement.value)" >
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Monetization - Graph</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing">
+                <thead>
+                    <tr>
+                        <td colspan="2" *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody class="first-tbody">
+                    <tr>
+                        <ng-container  *ngFor="let item of data1; let i=index">
+                            <td *ngIf="i % 2 ==0">Monetization</td>
+                            <td *ngIf="i % 2 !==0">% Users</td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+                <tbody class="first-tbody-new-body" *ngIf="res!=[]">
+                    <tr>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td><input [value]="languageData.b172" disabled></td>
+                            <td><input [value]="res.ab142[index]*100|number:'1.0-0'" #ab142Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab142', index, ab142Input.value)"></td>
+                            
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td><input [value]="languageData.b173" disabled></td>
+                            <td><input [value]="res.ab143[index]*100|number:'1.0-0'" #ab143Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab143', index, ab143Input.value)"></td>
+                            
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td><input [value]="languageData.b174" disabled></td>
+                            <td><input [value]="res.ab144[index]*100|number:'1.0-0'" #ab144Input [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab144', index, ab144Input.value)"></td>
+                            
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>In-Game Advertising</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody *ngIf="res!=[]">
+                    <tr>
+                        <th class="second-head" colspan="12">Pay Factor</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Ads Network</div>
+                        </td>
+                        <td *ngFor="let craftingdata of res.ab148; let i =index">
+                            <input [value]="res.ab148[i]" #inputElement [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab148', i, inputElement.value)" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Banner Ads</div>
+                        </td>
+                        <td *ngFor="let craftingdata of res.ab149; let i =index">
+                            <input [value]="res.ab149[i]" #inputElement [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab149', i, inputElement.value)" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Rewarded Ads</div>
+                        </td>
+                        <td *ngFor="let craftingdata of res.ab150; let i =index">
+                            <input [value]="res.ab150[i]" #inputElement [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab150', i, inputElement.value)" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Interstitial Ads</div>
+                        </td>
+                        <td *ngFor="let craftingdata of res.ab151; let i =index">
+                            <input [value]="res.ab151[i]" #inputElement [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab151', i, inputElement.value)" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Interactive Ads</div>
+                        </td>
+                        <td *ngFor="let craftingdata of res.ab152; let i =index">
+                            <input [value]="res.ab152[i]" #inputElement [disabled]="defaultcase ==='yes'" (focusout)="writeCraftingValue('ab152', i, inputElement.value)" >
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>In-Game Advertising Graph</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-marketing-second">
+                <thead>
+                    <tr>
+                        <td colspan="4" *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody class="new-third-tbody" *ngIf="res!=[]">
+                    <tr>
+                        <ng-container *ngFor="let item of data2; let i=index">
+                            <td *ngIf="i % 4 === 0">In-Game Advertising</td>
+                            <td *ngIf="i % 4 === 1">Free</td>
+                            <td *ngIf="i % 4 === 2">Freemium</td>
+                            <td *ngIf="i % 4 === 3">Pay to Play</td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="languageData.b187" disabled></td>
+                            <td ><input [value]="res.ab156[index]*100|number:'1.0-0'" #ab156Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ab156', index, ab156Input.value)"></td>
+                            <td ><input [value]="res.ac156[index]*100|number:'1.0-0'" #ac156Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ac156', index, ac156Input.value )"></td>
+                            <td ><input [value]="res.ad156[index]*100|number:'1.0-0'" #ad156Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ad156', index, ad156Input.value )"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="languageData.b188" disabled></td>
+                            <td ><input [value]="res.ab157[index]*100|number:'1.0-0'" #ab157Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ab157', index, ab157Input.value)"></td>
+                            <td ><input [value]="res.ac157[index]*100|number:'1.0-0'" #ac157Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ac157', index, ac157Input.value )"></td>
+                            <td ><input [value]="res.ad157[index]*100|number:'1.0-0'" #ad157Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ad157', index, ad157Input.value )"></td>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <ng-container *ngFor="let index of[0,1,2,3,4,5,6,7,8,9]">
+                            <td ><input [value]="languageData.b189" disabled></td>
+                            <td ><input [value]="res.ab158[index]*100|number:'1.0-0'" #ab158Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ab158', index, ab158Input.value)"></td>
+                            <td ><input [value]="res.ac158[index]*100|number:'1.0-0'" #ac158Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ac158', index, ac158Input.value )"></td>
+                            <td ><input [value]="res.ad158[index]*100|number:'1.0-0'" #ad158Input [disabled]="defaultcase=='yes'" (focusout)="writeCraftingValue('ad158', index, ad158Input.value )"></td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

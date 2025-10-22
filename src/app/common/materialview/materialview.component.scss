@@ -1,0 +1,394 @@
+// new design for material..............
+.material-tab {
+  border: none;
+  .material-tab-body {
+      height: 60vh;
+      border: 1px solid lightgrey;
+      padding: 1rem;
+      overflow-y: scroll;
+      scrollbar-width: thin;
+
+      h2 {
+          background-color: #8dbefa8a;
+          padding: 0.4rem;
+      }
+
+      .material-tab-card {
+          padding: 0.6rem 1.4rem;
+          border-radius: 0.4rem;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          margin-bottom: 0.4rem;
+
+
+          .material-tab-card-d {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              h3 {
+                  margin: 0;
+                  font-weight: 500;
+              }
+          }
+
+          p {
+              margin: 0;
+              font-size: small;
+          }
+      }
+
+  }
+
+  // .upload-card{
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //     padding: 2rem 4rem;
+  //     width: 90%;
+  //     margin: 0 auto;
+  //     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  //     .upload-card-icon{
+  //         display: flex;
+  //         flex-direction: column;
+  //         align-items: center;
+  //         justify-content: center;
+  //         .mat-icon{
+  //             font-size: 30px;
+
+  //         } 
+  //         p{
+  //         margin: 0;
+  //         margin-top: 0.6rem;
+
+  //     }
+  //     }
+
+  // }
+  .upload-container {
+      // max-width: 520px;
+      background: #fff;
+      // padding: 30px;
+      // margin: 40px auto;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+
+      h3 {
+          margin-bottom: 10px;
+      }
+
+      .hint {
+          height: 70vh;
+          overflow-y: scroll;
+          scrollbar-width: thin;
+          // color: #666;
+          font-size: 14px;
+          // margin-bottom: 20px;
+      }
+
+      .form-group {
+          margin-bottom: 16px;
+      }
+  }
+
+  label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+  }
+
+  input,
+  textarea,
+  select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+  }
+
+  button {
+      background-color: #b75f11;
+      color: white;
+      padding: 4px 17px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+
+  }
+
+  button[type="submit"] {
+      outline: 2px solid black;
+      outline-offset: 2px;
+  }
+
+  button:hover {
+      background-color: #b75f11;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+      border: 2px solid #5156be !important;
+      outline: none;
+  }
+
+  mat-icon[title="Delete"] {
+      color: red;
+      cursor: pointer;
+  }
+
+  
+}
+
+.upload-btn {
+    display: flex;
+    align-items: center;  /* vertically center icon and text */
+    justify-content: center; /* optional: center horizontally */
+    gap: 5px; /* space between icon and text */
+  }
+
+
+// ......................
+.material-upload-dialog-panel {
+    .mat-mdc-dialog-container {
+      padding: 0 !important;
+      border-radius: 12px;
+    }
+  
+    .material-upload-dialog {
+      padding: 20px;
+      min-width: 450px;
+    }
+  
+    .material-upload-dialog .dialog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+  
+    .material-upload-dialog h2 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+  
+    .material-upload-dialog p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 16px;
+    }
+  
+    .material-upload-dialog .mat-form-field {
+      margin-bottom: 12px;
+    }
+  
+    .material-upload-dialog .text-end {
+      margin-top: 20px;
+    }
+  }
+
+
+
+  .rounds-dialog {
+    background: #fff;
+    // border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  
+    .dialog-header {
+      background: #333;
+      color: #fff;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 18px;
+      font-weight: 600;
+  
+      .close-btn {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        padding: 2px 4px;
+        &:hover { color: #ff9800; }
+      }
+    }
+  
+    .dialog-body {
+      padding: 20px 20px 10px 20px;
+      background: #fff;
+  
+      .description {
+        margin-bottom: 18px;
+        color: #444;
+        font-size: 15px;
+      }
+  
+      .input-label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 500;
+        color: #232323;
+        font-size: 15px;
+      }
+  
+      .input-box {
+        width: 100%;
+        padding: 10px;
+        height: 38px; /* Match first image height */
+        border: 1.5px solid #bdbdbd;
+        border-radius: 4px; /* Rounded corners */
+        font-size: 15px;
+        background: #fff;
+        color: #232323;
+        margin-bottom: 18px;
+        box-sizing: border-box;
+      }
+      
+      .input-box:focus {
+        border-color: #a0522d;
+        outline: none;
+        background: #fffbe6;
+      }
+      
+  
+      .dialog-footer {
+        display: flex;
+        justify-content: flex-start;
+        gap: 12px;
+        margin-top: 0;
+        padding-bottom: 10px;
+  
+        .update-btn {
+          background: #a0522d;
+          color: #fff;
+          border: none;
+          padding: 8px 28px;
+          border-radius: 6px;
+          font-weight: 600;
+          font-size: 15px;
+          cursor: pointer;
+          &:hover { background: #ff9800; }
+        }
+        .cancel-btn {
+          background: #fff;
+          color: #a0522d;
+          border: 1.5px solid #a0522d;
+          border-radius: 6px;
+          font-weight: 600;
+          font-size: 15px;
+          padding: 8px 28px;
+          cursor: pointer;
+          &:hover { background: #fffbe6; }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .rounds-dialog {
+      min-width: 90vw;
+      max-width: 95vw;
+      padding: 8px;
+    }
+  }
+
+  /* Container */
+.rounds-dialog {
+  // width: 600px;             /* wider box like 2nd screenshot */
+  // max-width: 90%;
+  // background: #fff;
+  // border-radius: 8px;
+  // box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  // overflow: hidden;
+  // font-family: Arial, sans-serif;
+  background: #fff;
+  // border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+/* Header */
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 16px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.dialog-header .close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #555;
+}
+
+/* Body */
+.dialog-body {
+  padding: 20px;
+}
+
+.dialog-body .description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Form fields */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #6c63ff; /* violet focus like material-ui */
+}
+
+/* Button */
+button[type="submit"] {
+  width: 100%;
+  background-color: #d2691e;  /* orange-brown like 2nd screenshot */
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button[type="submit"]:hover {
+  background-color: #b55b1b;
+}
+  

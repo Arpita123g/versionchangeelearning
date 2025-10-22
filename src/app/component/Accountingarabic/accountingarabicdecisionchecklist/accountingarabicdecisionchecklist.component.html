@@ -1,0 +1,447 @@
+<div class="elearingnewui accounting_new">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="decision-checklist">
+                <div class="row pb-3 d-flex align-items-center">
+                    <div class="col-6 decision-checklist-col6">
+                        <h1 class="decision-checklist-col6-h1">Decision Checklist</h1>
+                    </div>
+                    <div class="col-6 text-end">
+                        <select class="select-round" name="" id="" [(ngModel)]="roundname" (change)="roundClick()">
+                            <option class="select-round-option" value="">Select Round</option>
+                            <option class="select-round-option" *ngFor="let attempt of dropdownvalue; let i = index;"
+                                [value]=attempt>
+                                {{attempt}}</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-borderd checklisttable">
+                        <tbody class="checklisttable-body">
+                            <tr class="checklisttable-body-tr" style="border-bottom: 3px solid black;">
+                                <td></td>
+                                <td>{{playername}}</td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <th> الميزانية العمومية</th>
+                                <th></th>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td>نقدي</td>
+                                <td><span [class]="isClass[0] ? 'defaultcolor' : 'notdefaultcolor'">{{result[0]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td>الحسابات المستحقة</td>
+                                <td><span [class]="isClass[1] ? 'defaultcolor' : 'notdefaultcolor'">{{result[1]}}</span>
+                                </td>
+
+
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td>جرد</td>
+                                <td><span [class]="isClass[2] ? 'defaultcolor' : 'notdefaultcolor'">{{result[2]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td>المصاريف المدفوعة مقدما</td>
+                                <td><span [class]="isClass[3] ? 'defaultcolor' : 'notdefaultcolor'">{{result[3]}}</span>
+                                </td>
+
+
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td>الأصول المتداولة الأخرى</td>
+                                <td><span [class]="isClass[4] ? 'defaultcolor' : 'notdefaultcolor'">{{result[4]}}</span>
+                                </td>
+
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td>الآلات والمعدات</td>
+                                <td><span [class]="isClass[5] ? 'defaultcolor' : 'notdefaultcolor'">{{result[5]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td>الأثاث والتجهيزات</td>
+                                <td><span [class]="isClass[6] ? 'defaultcolor' : 'notdefaultcolor'">{{result[6]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td>تحسينات الإيجار</td>
+                                <td><span [class]="isClass[7] ? 'defaultcolor' : 'notdefaultcolor'">{{result[7]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td>الأراضي والمباني</td>
+                                <td><span [class]="isClass[8] ? 'defaultcolor' : 'notdefaultcolor'">{{result[8]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td>الأصول الثابتة الأخرى</td>
+                                <td><span [class]="isClass[9] ? 'defaultcolor' : 'notdefaultcolor'">{{result[9]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td>الأصول غير الملموسة</td>
+                                <td><span
+                                        [class]="isClass[10] ? 'defaultcolor' : 'notdefaultcolor'">{{result[10]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td>حسن النية</td>
+                                <td><span
+                                        [class]="isClass[11] ? 'defaultcolor' : 'notdefaultcolor'">{{result[11]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td>الودائع</td>
+                                <td><span
+                                        [class]="isClass[12] ? 'defaultcolor' : 'notdefaultcolor'">{{result[12]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> أصول أخرى</td>
+                                <td><span
+                                        [class]="isClass[13] ? 'defaultcolor' : 'notdefaultcolor'">{{result[13]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> الحسابات الدائنة </td>
+                                <td><span
+                                        [class]="isClass[14] ? 'defaultcolor' : 'notdefaultcolor'">{{result[14]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> المصروفات المستحقة </td>
+                                <td><span
+                                        [class]="isClass[15] ? 'defaultcolor' : 'notdefaultcolor'">{{result[15]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> الإيرادات غير المستحقة </td>
+                                <td><span
+                                        [class]="isClass[16] ? 'defaultcolor' : 'notdefaultcolor'">{{result[16]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> ملاحظات قصيرة المدى </td>
+                                <td><span
+                                        [class]="isClass[17] ? 'defaultcolor' : 'notdefaultcolor'">{{result[17]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> الجزء الحالي من الديون الطويلة الأجل </td>
+                                <td><span
+                                        [class]="isClass[18] ? 'defaultcolor' : 'notdefaultcolor'">{{result[18]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> قروض بنكية مستحقة الدفع </td>
+                                <td><span
+                                        [class]="isClass[19] ? 'defaultcolor' : 'notdefaultcolor'">{{result[19]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> الأوراق المالية المستحقة الدفع للمساهمين </td>
+                                <td><span
+                                        [class]="isClass[20] ? 'defaultcolor' : 'notdefaultcolor'">{{result[20]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> أقل: الجزء قصير الأجل </td>
+                                <td><span
+                                        [class]="isClass[21] ? 'defaultcolor' : 'notdefaultcolor'">{{result[21]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> ديون أخرى طويلة الأجل </td>
+                                <td><span
+                                        [class]="isClass[22] ? 'defaultcolor' : 'notdefaultcolor'">{{result[22]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td>رأس المال المستثمر</td>
+                                <td><span
+                                        [class]="isClass[23] ? 'defaultcolor' : 'notdefaultcolor'">{{result[23]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> الأرباح المحتجزة - البداية </td>
+                                <td><span
+                                        [class]="isClass[24] ? 'defaultcolor' : 'notdefaultcolor'">{{result[24]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[0] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> الأرباح المحتجزة - الحالية </td>
+                                <td><span
+                                        [class]="isClass[25] ? 'defaultcolor' : 'notdefaultcolor'">{{result[25]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[1] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <th>بيان الدخل</th>
+                                <th></th>
+                            </tr>
+                            <tr *ngIf="optional[1] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> ربح </td>
+                                <td><span
+                                        [class]="isClass[26] ? 'defaultcolor' : 'notdefaultcolor'">{{result[26]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[1] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> تكلفة البضاعة المباعة </td>
+                                <td><span
+                                        [class]="isClass[27] ? 'defaultcolor' : 'notdefaultcolor'">{{result[27]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[1] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> تكلفة المبيعات </td>
+                                <td><span
+                                        [class]="isClass[28] ? 'defaultcolor' : 'notdefaultcolor'">{{result[28]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[1] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> تكاليف الإدارة </td>
+                                <td><span
+                                        [class]="isClass[29] ? 'defaultcolor' : 'notdefaultcolor'">{{result[29]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[1] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> الديون المعدومة </td>
+                                <td><span
+                                        [class]="isClass[30] ? 'defaultcolor' : 'notdefaultcolor'">{{result[30]}}</span>
+                                </td>
+                            </tr>
+                            <tr *ngIf="optional[1] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> الاستهلاك والإطفاء </td>
+                                <td><span
+                                        [class]="isClass[31] ? 'defaultcolor' : 'notdefaultcolor'">{{result[31]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[1] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> مصاريف الفائدة </td>
+                                <td><span
+                                        [class]="isClass[32] ? 'defaultcolor' : 'notdefaultcolor'">{{result[32]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[1] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> ضريبة </td>
+                                <td><span
+                                        [class]="isClass[33] ? 'defaultcolor' : 'notdefaultcolor'">{{result[33]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <th> بيان التدفق النقدي </th>
+                                <th></th>
+                            </tr>
+                            <tr *ngIf="optional[2] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> الرصيد الافتتاحي </td>
+                                <td><span
+                                        [class]="isClass[34] ? 'defaultcolor' : 'notdefaultcolor'">{{result[34]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> العمليات، النقد الداخل </td>
+                                <td><span
+                                        [class]="isClass[35] ? 'defaultcolor' : 'notdefaultcolor'">{{result[35]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> العمليات، السحب النقدي </td>
+                                <td><span
+                                        [class]="isClass[36] ? 'defaultcolor' : 'notdefaultcolor'">{{result[36]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> الاستثمار، النقد الداخل </td>
+                                <td><span
+                                        [class]="isClass[37] ? 'defaultcolor' : 'notdefaultcolor'">{{result[37]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> الاستثمار، السحب النقدي </td>
+                                <td><span
+                                        [class]="isClass[38] ? 'defaultcolor' : 'notdefaultcolor'">{{result[38]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td> التمويل، النقد الداخل </td>
+                                <td><span
+                                        [class]="isClass[39] ? 'defaultcolor' : 'notdefaultcolor'">{{result[39]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <td>  السحب النقدي التمويل </td>
+                                <td><span
+                                        [class]="isClass[40] ? 'defaultcolor' : 'notdefaultcolor'">{{result[40]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && (attempt === 1 || attempt === 2 || attempt === 3)" class="checklisttable-body-tr">
+                                <th>فرص</th>
+                                <th></th>
+                            </tr>
+                            <tr *ngIf="optional[2] && (attempt === 1 || attempt === 2)" class="checklisttable-body-tr">
+                                <td> الاستثمار في البحث والتطوير </td>
+                                <td><span
+                                        [class]="isClass[41] ? 'defaultcolor' : 'notdefaultcolor'">{{result[41]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && (attempt === 1 || attempt === 2)" class="checklisttable-body-tr">
+                                <td> توسيع مرافق التصنيع </td>
+                                <td><span
+                                        [class]="isClass[42] ? 'defaultcolor' : 'notdefaultcolor'">{{result[42]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && (attempt === 1 || attempt === 2)" class="checklisttable-body-tr">
+                                <td> إعادة هيكلة الديون </td>
+                                <td><span
+                                        [class]="isClass[43] ? 'defaultcolor' : 'notdefaultcolor'">{{result[43]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && (attempt === 1 || attempt === 2)" class="checklisttable-body-tr">
+                                <td> مبادرات خفض التكاليف </td>
+                                <td><span
+                                        [class]="isClass[44] ? 'defaultcolor' : 'notdefaultcolor'">{{result[44]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && (attempt === 1 || attempt === 2)" class="checklisttable-body-tr">
+                                <td> مقدمة لسلسلة المنتجات المتميزة </td>
+                                <td><span
+                                        [class]="isClass[45] ? 'defaultcolor' : 'notdefaultcolor'">{{result[45]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && (attempt === 1 || attempt === 2)" class="checklisttable-body-tr">
+                                <td> تدريب وتطوير الموظفين </td>
+                                <td><span
+                                        [class]="isClass[46] ? 'defaultcolor' : 'notdefaultcolor'">{{result[46]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && (attempt === 1 || attempt === 2)" class="checklisttable-body-tr">
+                                <td> تحسين رأس المال العامل </td>
+                                <td><span
+                                        [class]="isClass[47] ? 'defaultcolor' : 'notdefaultcolor'">{{result[47]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && (attempt === 1 || attempt === 2)" class="checklisttable-body-tr">
+                                <td> تمويل تأجير المعدات </td>
+                                <td><span
+                                        [class]="isClass[48] ? 'defaultcolor' : 'notdefaultcolor'">{{result[48]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && (attempt === 1 || attempt === 2)" class="checklisttable-body-tr">
+                                <td> استكشاف فرص التصدير </td>
+                                <td><span
+                                        [class]="isClass[49] ? 'defaultcolor' : 'notdefaultcolor'">{{result[49]}}</span>
+                                </td>
+
+                            </tr>
+                            <!-- for round 3 -->
+                            <tr *ngIf="optional[2] && attempt === 3" class="checklisttable-body-tr">
+                                <td> الاستثمار في البحث والتطوير </td>
+                                <td><span
+                                        [class]="isClass[41] ? 'defaultcolor' : 'notdefaultcolor'">{{result[41]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && attempt === 3" class="checklisttable-body-tr">
+                                <td> توسيع البنية التحتية لتكنولوجيا المعلومات ومراكز البيانات </td>
+                                <td><span
+                                        [class]="isClass[42] ? 'defaultcolor' : 'notdefaultcolor'">{{result[42]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && attempt === 3" class="checklisttable-body-tr">
+                                <td> إعادة هيكلة الديون </td>
+                                <td><span
+                                        [class]="isClass[43] ? 'defaultcolor' : 'notdefaultcolor'">{{result[43]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && attempt === 3" class="checklisttable-body-tr">
+                                <td> مبادرات خفض التكاليف </td>
+                                <td><span
+                                        [class]="isClass[44] ? 'defaultcolor' : 'notdefaultcolor'">{{result[44]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && attempt === 3" class="checklisttable-body-tr">
+                                <td> إدخال حلول وخدمات تكنولوجيا المعلومات المتطورة </td>
+                                <td><span
+                                        [class]="isClass[45] ? 'defaultcolor' : 'notdefaultcolor'">{{result[45]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && attempt === 3" class="checklisttable-body-tr">
+                                <td> تدريب الموظفين وتطويرهم </td>
+                                <td><span
+                                        [class]="isClass[46] ? 'defaultcolor' : 'notdefaultcolor'">{{result[46]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && attempt === 3" class="checklisttable-body-tr">
+                                <td> تحسين رأس المال العامل </td>
+                                <td><span
+                                        [class]="isClass[47] ? 'defaultcolor' : 'notdefaultcolor'">{{result[47]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && attempt === 3" class="checklisttable-body-tr">
+                                <td> تمويل تأجير معدات تكنولوجيا المعلومات </td>
+                                <td><span
+                                        [class]="isClass[48] ? 'defaultcolor' : 'notdefaultcolor'">{{result[48]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="optional[2] && attempt === 3" class="checklisttable-body-tr">
+                                <td> توسيع قاعدة العملاء الدوليين </td>
+                                <td><span
+                                        [class]="isClass[49] ? 'defaultcolor' : 'notdefaultcolor'">{{result[49]}}</span>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="decision-textarea py-4" *ngIf="analysisshow">
+                        <textarea class="decision-textarea-element" rows="10" [disabled]="disabled"
+                            [(ngModel)]="useranalysisinput"
+                            placeholder="Describe your thought process behind the decision-making in 1500 characters…"
+                            (focusout)="useranalysissave()" maxlength="1500"></textarea>
+                    </div>
+                    <div class="p-0">
+                        <button class="btn_stl btn_stl-decisionchecklist" type="button" [disabled]="disabled"
+                            (click)="decisionchecklistpopup()">Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

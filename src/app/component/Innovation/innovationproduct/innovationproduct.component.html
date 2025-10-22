@@ -1,0 +1,172 @@
+<div class="elearingnewui innovation_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="loc-ation">
+                <div class="element-first">
+                    <div class="row">
+                        <div class="lookatan" (click)="openDialog()" *ngIf="foodforthought">
+                            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                                <button class="food-thought-btn">Food For Thought</button></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pb-3">
+                    <h1>
+                        Product
+                        <mat-icon appTippy="
+            <div class='help-tip p-2'>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>How does each option align with the needs and preferences of the target market?</p>
+                </div>
+              </div>
+                <div style='display:flex;'>
+                  <div>
+                    <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                  </div> &nbsp; &nbsp; &nbsp;
+                  <div>
+                    <p style='margin: 0 auto; color: white; font-size:13px;'>What unique value proposition does each option offer, and how does it differentiate itself from existing solutions in the market? </p>
+                  </div>
+                </div>
+            </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+
+
+                <table class="table w-100 loc_tbl">
+                    <tbody class="loc_tbl-body">
+                        <div class="form-check">
+                            <tr class="loc_tbl-body-tr">
+                                <td></td>
+                                <td class="text-center">
+                                    <img src="../../../../assets/images/innovation/artisianproduct1backrem.png"
+                                        class="img-fluid loc-img" />
+                                    <h2 class="mt-2">Product 1</h2>
+                                </td>
+                                <td></td>
+                                <td class="text-center">
+                                    <img src="../../../../assets/images/innovation/vrfitnessadventure.jpg"
+                                        class="img-fluid loc-img" />
+                                    <h2 class="mt-2">Product 2</h2>
+                                </td>
+                                <td></td>
+                                <td class="text-center">
+                                    <img src="../../../../assets/images/innovation/arcaneadventureproduct3.jpg"
+                                        class="img-fluid loc-img" />
+                                    <h2 class="mt-2">Product 3</h2>
+                                </td>
+                            </tr>
+                            
+                            <tr class="loc_tbl-body-tr" *ngFor="let row of resultChunks">
+                                <td>{{ row[0] }}</td>
+                                <td>{{ row[1] }}</td>
+                                <td></td>
+                                <td>{{ row[2] }}</td>
+                                <td></td>
+                                <td>{{ row[3] }}</td>
+                            </tr>
+                           
+                            <tr class="loc_tbl-body-tr">
+                                <td></td>
+                                <td>
+                                    <input class="custom-radio" type="radio" value=""
+                                     [checked]="result[56]===1" 
+                                    (change)="getSelection('radio',56,'')"  [disabled]="inputDisabled"/><span></span>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <input class="custom-radio" type="radio" value=""
+                                    [checked]="result[57]===1"  
+                                    (change)="getSelection('radio',57,'')" [disabled]="inputDisabled"/><span></span>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <input class="custom-radio" type="radio" value=""
+                                    [checked]="result[58]===1" 
+                                    (change)="getSelection('radio',58,'')" [disabled]="inputDisabled"/><span></span>
+                                </td>
+                            </tr>
+                        </div>
+                    </tbody>
+                </table>
+
+
+
+
+                <div>
+                    <h1 class="mt-5">
+                        Compliance
+                        <mat-icon appTippy="
+            <div class='help-tip p-2'>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>What are the potential consequences of non-compliance, and how do they outweigh the immediate cash expenditure required for compliance?</p>
+                </div>
+              </div><br>
+                <div style='display:flex;'>
+                  <div>
+                    <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                  </div> &nbsp; &nbsp; &nbsp;
+                  <div>
+                    <p style='margin: 0 auto; color: white; font-size:13px;'> How does investing in compliance early on mitigate risks and contribute to the company's reputation and credibility?</p>
+                  </div>
+                </div>
+            </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                    
+                
+                    <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                        <div class="col-md" *ngFor="let item of cardData; let i=index">
+                            <div class="card marketing-card ">
+                                <div class="card-header craftingimg">
+                                    <img [src]="item.img" class="card-img-top" alt="Your Image" />
+                                </div>
+                                <div class="card-body">
+                                    <h2>{{result[i+44]}}</h2>
+                                    <div class="card-text">
+                                        <div class="textswcinassessment-p"><span class="textswcinassessment">
+                                            </span>  {{showAll[i] ? item.description.text : item.description.truncatedText}}
+                                            <a type="button" (click)="toggleshow(i)" [style.color]="showAll[i] ? 'red' : 'blue'">
+                                                {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                            </a>
+                                        </div><br><br>
+                                        
+                                    </div>
+                                </div>
+                                <div class="card-footer form-check">
+                                    <div class="routesandtechcostcard">
+                                        <h3>{{ item.description.textname }}</h3>
+                                        <h3>{{ result[i+50] }}</h3>
+                                    </div>
+                                    <div style="height: 2rem;">
+                                        <input class="checkfrominput" type="checkbox" value="index"
+                                            id="flexCheckDefault" [checked]="item.ischecked"
+                                            (change)="getSelection('compliance',i+59,$event)"
+                                            [disabled]="inputDisabled" />
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

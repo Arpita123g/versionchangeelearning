@@ -1,0 +1,523 @@
+<div class="elearingnewui stp_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row pb-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                            <div class="">
+                                <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                    (change)="roundClick()">
+                                    <option class="select-round-option" value="">Select Round</option>
+                                    <option class="select-round-option"
+                                        *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                        {{attempt}}</option>
+
+                                </select>
+                            </div>
+
+                            <div class="download_btn" matTooltiClass="primary-tooltip"
+                                (click)="downloadreporthrpgame()">
+                                <div>
+                                    <a download matTooltip="Download"><span class="hovertext"
+                                            data-hover="Download pdf file accounting ">
+                                            <img class="download_btn-img"
+                                                src="assets/images/businessbasics/download.png" />
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <mat-icon class="mt-2">get_app</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 mb-3">
+                    <div class="col-md-5 reyapo">
+                        <h1 class="reyapo-h1">Report</h1>
+                        <p style="text-align: justify;">
+                            Excellent work. You have completed creating an effective segmentation, targeting and
+                            positioning strategy to create a brand. Every decision you have taken in this exercise shows
+                            your skills in rigor, synthesis, structuring and business judgement.
+                        </p>
+                    </div>
+
+                    <div class="col-md-7">
+                        <div class="card rigorcard">
+                            <div class="rigorcard-icon">
+                                <mat-icon class="rigorcard-icon-mat" appTippy="<table >
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Rigor</th>
+                      <td style='padding:7px;font-size:13px'>Consistency throughout the decision-making and recommendation.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>Structuring</th>
+                      <td style='padding:7px;font-size:13px'>A logical approach to gathering and analyzing information.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>
+                        Synthesis
+                      </th>
+                      <td style='padding:7px;font-size:13px'>
+                        Approach towards interpreting all the information and making informed decisions.
+                      </td>
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Business Jugement</th>
+                      <td style='padding:7px;font-size:13px'>Ability to evaluate facts and consider risks and possible implications when making decisions.</td>
+                    </tr>
+                    </tr>
+                  </table>
+                   ">
+                                    help_outline
+                                </mat-icon>
+                            </div>
+                            <apx-chart [series]="rigorcharts.series" [chart]="rigorcharts.chart"
+                                [xaxis]="rigorcharts.xaxis" [yaxis]="rigorcharts.yaxis" [stroke]="rigorcharts.stroke"
+                                [markers]="rigorcharts.markers" [fill]="rigorcharts.fill"
+                                [title]="rigorcharts.title"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="7">Financial Statement, Mn INR, Phase 3</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <th></th>
+                                    <th>{{result[0]}}</th>
+                                    <th>{{result[1]}}</th>
+                                    <th>{{result[2]}}</th>
+                                    <th>{{result[3]}}</th>
+                                    <th>{{result[4]}}</th>
+                                    <th>{{result[5]}}</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Revenue</td>
+                                    <td class="middleclassright">{{result[6] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[7] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[8] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[9] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[10] | number:'1.0-0'}}</td>
+                                    <td>{{result[11] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Variable Cost</td>
+                                    <td class="middleclassright">{{result[12] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[13] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[14] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[15] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[16] | number:'1.0-0'}}</td>
+                                    <td>{{result[17] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Gross Profit</td>
+                                    <td class="middleclassright">{{result[18] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[19] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[20] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[21] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[22] | number:'1.0-0'}}</td>
+                                    <td>{{result[23] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" style="border-top:2px solid black;">
+                                    <td>Production Line Cost + Update Cost</td>
+                                    <td class="middleclassright">{{result[24] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[25] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[26] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[27] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[28] | number:'1.0-0'}}</td>
+                                    <td>{{result[29] | number:'1.0-0'}}</td>
+                                </tr>
+
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Administration Cost</td>
+                                    <td class="middleclassright">{{result[30] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[31] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[32] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[33] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[34] | number:'1.0-0'}}</td>
+                                    <td>{{result[35] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Market Research Cost</td>
+                                    <td class="middleclassright">{{result[36] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[37] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[38] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[39] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[40] | number:'1.0-0'}}</td>
+                                    <td>{{result[41] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Promotion Cost</td>
+                                    <td class="middleclassright">{{result[42] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[43] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[44] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[45] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[46] | number:'1.0-0'}}</td>
+                                    <td>{{result[47] | number:'1.0-0'}}</td>
+                                </tr>
+
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Channel Cost</td>
+                                    <td class="middleclassright">{{result[48] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[49] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[50] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[51] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[52] | number:'1.0-0'}}</td>
+                                    <td>{{result[53] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Packaging Cost</td>
+                                    <td class="middleclassright">{{result[54] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[55] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[56] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[57] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[58] | number:'1.0-0'}}</td>
+                                    <td>{{result[59] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Recyclying Cost</td>
+                                    <td class="middleclassright">{{result[60] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[61] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[62] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[63] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[64] | number:'1.0-0'}}</td>
+                                    <td>{{result[65] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Repairability Cost</td>
+                                    <td class="middleclassright">{{result[66] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[67] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[68] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[69] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[70] | number:'1.0-0'}}</td>
+                                    <td>{{result[71] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-top:2px solid black;border-bottom: 2px solid black;">
+                                    <td>Operating Profit/Loss</td>
+                                    <td class="middleclassright">{{result[72] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[73] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[74] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[75] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[76] | number:'1.0-0'}}</td>
+                                    <td class="middleclassright">{{result[77] | number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-5">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">Company Sales & Market Share, Phase 3</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Sales, Mn units</th>
+                                    <th>Market Share</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[78]}}</td>
+                                    <td class="middleclassright">{{result[79] |number :'1.0-2'}}</td>
+                                    <td>{{result[80]*100 |number :'1.0-1'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[81]}}</td>
+                                    <td class="middleclassright">{{result[82] |number :'1.0-2'}}</td>
+                                    <td>{{result[83]*100 |number :'1.0-1'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[84]}}</td>
+                                    <td class="middleclassright">{{result[85] |number :'1.0-2'}}</td>
+                                    <td>{{result[86]*100 |number :'1.0-1'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[87]}}</td>
+                                    <td class="middleclassright">{{result[88] |number :'1.0-2'}}</td>
+                                    <td>{{result[89]*100 |number :'1.0-1'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[90]}}</td>
+                                    <td class="middleclassright">{{result[91] |number :'1.0-2'}}</td>
+                                    <td>{{result[92]*100 |number :'1.0-1'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[93]}}</td>
+                                    <td class="middleclassright">{{result[94] |number :'1.0-2'}}</td>
+                                    <td>{{result[95]*100 |number :'1.0-1'}}%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="salesmnunitchart.series" [chart]="salesmnunitchart.chart"
+                                [dataLabels]="salesmnunitchart.dataLabels" [plotOptions]="salesmnunitchart.plotOptions"
+                                [yaxis]="salesmnunitchart.yaxis" [xaxis]="salesmnunitchart.xaxis"
+                                [fill]="salesmnunitchart.fill" [title]="salesmnunitchart.title"
+                                [noData]="salesmnunitchart.noData" [tooltip]="salesmnunitchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Company Market Share, Phase 1 to 3</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Phase 1</th>
+                                    <th>Phase 2</th>
+                                    <th>Phase 3</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[96]}}</td>
+                                    <td class="middleclassright">{{result[97]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[98]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[99]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[100]}}</td>
+                                    <td class="middleclassright">{{result[101]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[102]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[103]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[104]}}</td>
+                                    <td class="middleclassright">{{result[105]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[106]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[107]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[108]}}</td>
+                                    <td class="middleclassright">{{result[109]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[110]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[111]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[112]}}</td>
+                                    <td class="middleclassright">{{result[113]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[114]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[115]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[116]}}</td>
+                                    <td class="middleclassright">{{result[117]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[118]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[119]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="marketsharetrendschart.series" [chart]="marketsharetrendschart.chart"
+                                [dataLabels]="marketsharetrendschart.dataLabels"
+                                [plotOptions]="marketsharetrendschart.plotOptions"
+                                [yaxis]="marketsharetrendschart.yaxis" [xaxis]="marketsharetrendschart.xaxis"
+                                [fill]="marketsharetrendschart.fill" [title]="marketsharetrendschart.title"
+                                [noData]="marketsharetrendschart.noData" [tooltip]="marketsharetrendschart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-5">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Product Market Share, Phase 1 to 3</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Phase 1</th>
+                                    <th>Phase 2</th>
+                                    <th>Phase 3</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[120]}}</td>
+                                    <td class="middleclassright">{{result[121]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[122]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[123]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[124]}}</td>
+                                    <td class="middleclassright">{{result[125]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[126]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[127]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[128]}}</td>
+                                    <td class="middleclassright">{{result[129]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[130]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[131]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[132]}}</td>
+                                    <td class="middleclassright">{{result[133]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[134]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[135]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[136]}}</td>
+                                    <td class="middleclassright">{{result[137]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[138]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[139]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[140]}}</td>
+                                    <td class="middleclassright">{{result[141]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[142]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[143]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[144]}}</td>
+                                    <td class="middleclassright">{{result[145]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[146]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[147]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[148]}}</td>
+                                    <td class="middleclassright">{{result[149]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[150]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[151]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[152]}}</td>
+                                    <td class="middleclassright">{{result[153]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[154]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[155]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[156]}}</td>
+                                    <td class="middleclassright">{{result[157]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[158]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[159]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[160]}}</td>
+                                    <td class="middleclassright">{{result[161]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[162]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[163]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Company Operating Margins, Phase 1 to 3
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Phase 1</th>
+                                    <th>Phase 2</th>
+                                    <th>Phase 3</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[164]}}</td>
+                                    <td class="middleclassright">{{result[165]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[166]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[167]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[168]}}</td>
+                                    <td class="middleclassright">{{result[169]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[170]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[171]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[172]}}</td>
+                                    <td class="middleclassright">{{result[173]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[174]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[175]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[176]}}</td>
+                                    <td class="middleclassright">{{result[177]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[178]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[179]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[180]}}</td>
+                                    <td class="middleclassright">{{result[181]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[182]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[183]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>{{result[184]}}</td>
+                                    <td class="middleclassright">{{result[185]*100 |number :'1.0-0'}}%</td>
+                                    <td class="middleclassright">{{result[186]*100 |number :'1.0-0'}}%</td>
+                                    <td>{{result[187]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table rsl_tbl mt-5">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">KPI, TC Cumulative</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>TC</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Market Share</td>
+                                    <td>{{result[188]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Revenue, Mn INR</td>
+                                    <td>{{result[189] |number :'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Operating Profit/Loss, Mn INR</td>
+                                    <td>{{result[190] |number :'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Operating Margin</td>
+                                    <td>{{result[191]*100 |number :'1.0-0'}}%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

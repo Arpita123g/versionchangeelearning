@@ -1,0 +1,68 @@
+<div class="elearingnewui value_chain">
+    <div class="loadingscreen" *ngIf="checkloading">
+      <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+      <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container h-100">
+        <div class="body-element">
+            <div class="dema_nd">
+                <div class="element-first">
+                    <div class="row">
+                        <div class="locandfoodspc" (click)="openDialog()" *ngIf="foodforthought">
+                            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                                <button class="food-thought-btn">Food For Thought</button></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="py-3">
+                    <h1>
+                        Long-term loan
+                        <mat-icon appTippy="
+            <div class='help-tip p-2'>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'> Based on financial projections and the need for continuous operations, what is the appropriate amount of long-term loan the company should consider, balancing the requirements for growth and financial stability over the planning horizon?</p>
+                </div>
+              </div>
+            </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+                <div class="row ">
+                    <div class="col-md-6">
+                        <p>Long-term loan, INR mn</p>
+                        <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[3]"
+                            (focusout)="inputtablevalue()" [disabled]="disabled" />
+
+
+                        <div class="py-3">
+                            <p>Long-term loan interest rate %</p>
+                            <h2>{{result[0]*100|number:'1.0-0'}}</h2>
+                        </div>
+                        <div>
+                            <p>Emergency loan interest rate %</p>
+                            <h2>{{result[1]*100|number:'1.0-0'}}</h2>
+                        </div>
+                        <div>
+                            <p>Tax Rate %</p>
+                            <h2>{{result[2]*100|number:'1.0-0'}}</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-3">
+                            <apx-chart [series]="Cashchart.series" [chart]="Cashchart.chart"
+                                [dataLabels]="Cashchart.dataLabels" [plotOptions]="Cashchart.plotOptions"
+                                [yaxis]="Cashchart.yaxis" [xaxis]="Cashchart.xaxis" [tooltip]="Cashchart.tooltip"
+                                [fill]="Cashchart.fill" [title]="Cashchart.title" style="margin-top: 5px;">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

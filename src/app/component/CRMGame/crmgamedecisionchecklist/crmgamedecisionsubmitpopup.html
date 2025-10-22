@@ -1,0 +1,34 @@
+<div class="card decisionchecklistpopup">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">{{languageselect === "Hindi"
+            ? "लोड हो रहा है... कुछ डिजिटल जादू तैयार किया जा रहा है!"
+            : "Loading... Brewing up some digital magic!"}} </p>
+      </div>
+    <div class="card-header decisionchecklistpopup-card-header">
+        <div>
+            <p class="decisionchecklistpopup-card-header-pclass">{{languageselect === "Hindi"
+                ? "मदद"
+                : "Help"}}</p>
+        </div>
+        <div>
+            <i class="bi bi-x-circle cross-circle" (click)="close()"></i>
+        </div>
+    </div>
+    <div class="card-body">
+        <p>
+            {{languageselect === "Hindi"
+            ? "आप अपने निर्णय को अंतिम निर्णय के रूप में प्रस्तुत कर रहे हैं। क्या आप रिपोर्ट को सहेजना और आगे बढ़ाना चाहते हैं?"
+            :  "You are submitting your decisions as the final decision. Do you want to save and proceed with
+            reports?"}}
+        </p>
+    </div>
+    <div class="card-footer decisionchecklistpopup-card-footer py-3">
+        <div><button type="button" class=" close_btn" mat-dialog-close>{{languageselect === "Hindi"
+            ? "बंद करना"
+            : "Close"}}</button></div>
+        <div><button type="button" class=" save_btn" (click)="save()" [disabled]="isButtonDisabled">{{languageselect === "Hindi"
+            ? "सहेजें और आगे बढ़ें"
+            : "Save & Proceed"}}</button></div>
+    </div>
+</div>

@@ -1,0 +1,219 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui cvp_analysis">
+    <div class="container">
+        <div class="body-element">
+            <div class="element-first">
+                <div class="row">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-cols-md-2 intro_nd">
+                <div class="col-md intro">
+                    <div class="intro-text">
+                        <p class="marketpage-p" [innerHTML]="contentvalue"></p>
+                    </div>
+                </div>
+
+                <div class="col-md table-data-inmarket table-responsive">
+                    <table>
+                        <thead>
+                            <tr *ngIf="topstatus">
+                                <th>Parameters</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr *ngIf="!topstatus">
+                                <th>Parameters</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr *ngIf="topstatus">
+                                <td></td>
+                                <td>Jeans</td>
+                                <td>Top</td>
+                            </tr>
+                            <tr *ngIf="!topstatus">
+                                <td></td>
+                                <td></td>
+                                <td>Jeans</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="!topstatus">
+                                <th>Previous Period Company Information</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr *ngIf="topstatus">
+                                <td>Sales, units</td>
+                                <td style="text-align: right;">{{result[13]}}</td>
+                                <td>{{result[14]}}</td>
+                            </tr>
+                            <tr *ngIf="!topstatus">
+                                <td>Sales, units</td>
+                                <td></td>
+                                <td>{{result[13]}}</td>
+                            </tr>
+                            <tr *ngIf="topstatus">
+                                <td>Price per unit</td>
+                                <td style="text-align: right;">{{result[0]}}</td>
+                                <td>{{result[1]}}</td>
+                            </tr>
+                            <tr *ngIf="!topstatus">
+                                <td>Price per unit</td>
+                                <td></td>
+                                <td>{{result[0]}}</td>
+                            </tr>
+                            <tr *ngIf="topstatus">
+                                <td>Variable cost per unit</td>
+                                <td style="text-align: right;">{{result[2]}}</td>
+                                <td>{{result[3]}}</td>
+                            </tr>
+                            <tr *ngIf="!topstatus">
+                                <td>Variable cost per unit</td>
+                                <td></td>
+                                <td>{{result[2]}}</td>
+                            </tr>
+                            <tr *ngIf="topstatus">
+                                <td>Contribution per unit</td>
+                                <td style="text-align: right;">{{result[15]}}</td>
+                                <td>{{result[16]}}</td>
+                            </tr>
+                            <tr *ngIf="!topstatus">
+                                <td>Contribution per unit</td>
+                                <td></td>
+                                <td>{{result[15]}}</td>
+                            </tr>
+                            <tr *ngIf="topstatus">
+                                <td style="background-color: #edf7f9;"></td>
+                                <td
+                                    style="text-align: right; font-size: 14px;font-weight: 600 ;background-color: #edf7f9;">
+                                    Jeans</td>
+                                <td
+                                    style="text-align: right; font-size: 14px;font-weight: 600 ;background-color: #edf7f9;">
+                                    Top</td>
+                            </tr>
+                            <tr *ngIf="!topstatus">
+                                <td style="background-color: #edf7f9;"></td>
+                                <td style="background-color: #edf7f9;"></td>
+                                <td
+                                    style="text-align: right; font-size: 14px;font-weight: 600 ;background-color: #edf7f9;">
+                                    Jeans</td>
+                            </tr>
+                            <tr>
+                                <th>Previous Period Financials, mn INR</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr *ngIf="topstatus">
+                                <td>Revenue</td>
+                                <td style="text-align: right;">{{result[17]}}</td>
+                                <td *ngIf="topstatus">{{result[18]}}</td>
+                            </tr>
+                            <tr *ngIf="!topstatus">
+                                <td>Revenue</td>
+                                <td></td>
+                                <td>{{result[17]}}</td>
+                            </tr>
+                            <tr *ngIf="topstatus">
+                                <td>Variable cost</td>
+                                <td style="text-align: right;">{{result[19]}}</td>
+                                <td>{{result[20]}}</td>
+                            </tr>
+                            <tr *ngIf="!topstatus">
+                                <td>Variable cost</td>
+                                <td></td>
+                                <td>{{result[19]}}</td>
+                            </tr>
+                            <tr *ngIf="topstatus">
+                                <td>Gross profit</td>
+                                <td style="text-align: right;">{{result[21]}}</td>
+                                <td>{{result[22]}}</td>
+                            </tr>
+                            <tr *ngIf="!topstatus">
+                                <td>Gross profit</td>
+                                <td></td>
+                                <td>{{result[21]}}</td>
+                            </tr>
+                            <tr *ngIf="topstatus">
+                                <td>Advertising</td>
+                                <td style="text-align: right;">{{result[4]}}</td>
+                                <td *ngIf="topstatus">{{result[5]}}</td>
+                            </tr>
+                            <tr *ngIf="!topstatus">
+                                <td>Advertising</td>
+                                <td></td>
+                                <td>{{result[4]}}</td>
+                            </tr>
+                            <tr *ngIf="topstatus">
+                                <td>Quality control</td>
+                                <td style="text-align: right;">{{result[6]}}</td>
+                                <td>{{result[7]}}</td>
+                            </tr>
+                            <tr *ngIf="!topstatus">
+                                <td>Quality control</td>
+                                <td></td>
+                                <td>{{result[6]}}</td>
+                            </tr>
+                            <tr *ngIf="topstatus">
+                                <td>Administration cost</td>
+                                <td style="text-align: right;">{{result[23]}}</td>
+                                <td>{{result[24]}}</td>
+                            </tr>
+                            <tr *ngIf="!topstatus">
+                                <td>Administration cost</td>
+                                <td></td>
+                                <td>{{result[23]}}</td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #edf7f9;"></td>
+                                <td style="background-color: #edf7f9;"></td>
+                                <td
+                                    style="text-align: right; font-size: 14px;font-weight: 600 ;background-color: #edf7f9;">
+                                    Company-wide</td>
+                            </tr>
+                            <tr>
+                                <th>Production</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>Production line cost, mn INR</td>
+                                <td></td>
+                                <td>{{result[8]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Depreciation, years</td>
+                                <td></td>
+                                <td>{{result[9]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Production Capacity, units</td>
+                                <td></td>
+                                <td>{{result[10]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Capacity reduction, %</td>
+                                <td></td>
+                                <td>{{result[11]*100|number:'1.0-0'}}%</td>
+                            </tr>
+                            <tr>
+                                <td>Inventory holding cost per unit, INR</td>
+                                <td></td>
+                                <td>{{result[12]}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

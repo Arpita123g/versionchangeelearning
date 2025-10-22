@@ -1,0 +1,399 @@
+<div class="elearingnewui It_management">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="routesandtech">
+                <div class="row" class="element-first">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+                <h1>Server Type
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>Should you prioritize scalability benefits by opting for cloud servers despite potential security risks?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>Is the cost-effectiveness of on-premise servers for long-term ownership worth sacrificing scalability?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of cardData; let i=index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.itManagementCM.itmanagementperioddata[item.title]}}</h2>
+                                <div class="card-text">
+                                    <div class="textswcinassessment-p">
+                                        <span class="textswcinassessment">
+                                        </span> {{showAll[i] ? item.description.text :
+                                        item.description.truncatedText}}
+                                        <a type="button" (click)="toggleshow(i)"
+                                            [style.color]="showAll[i] ? 'red' : 'blue'">
+                                            {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                        </a>
+                                    </div><br><br>
+                                    <div class="card-footer form-check">
+                                        <div style="height: 2rem;">
+                                           
+                                                <input class="checkfrominput" type="radio" value="index"
+                                                id="flexCheckDefault" name="first"
+                                                [checked]="(result.itmanagementdata)?(result.itmanagementdata[item.inputcellname]===1):false"
+                                                (change)="writeecommercevalue(item.inputcellname,'radio',$event,'af7','af8','','',2)"
+                                                [disabled]="inputDisabled" />
+                                            
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="mt-5">Server Selection
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>How do server options compare in terms of cost, maintenance requirements, and user handling capacity?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>Which server offers the best balance of performance, security features, and uptime guarantees?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <div class="craftingimg-first">
+                            <img src="../../../../assets/images/designthinking/designthinkingexcute.svg" alt="promotion"
+                                class="card-img-top" alt="Your Image" style="width: 100%;height: 19rem;" />
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-3">
+                            <apx-chart [series]="expectednoofdailytransactionchart.series"
+                                [chart]="expectednoofdailytransactionchart.chart"
+                                [dataLabels]="expectednoofdailytransactionchart.dataLabels"
+                                [plotOptions]="expectednoofdailytransactionchart.plotOptions"
+                                [yaxis]="expectednoofdailytransactionchart.yaxis"
+                                [xaxis]="expectednoofdailytransactionchart.xaxis"
+                                [fill]="expectednoofdailytransactionchart.fill"
+                                [title]="expectednoofdailytransactionchart.title"
+                                [noData]="expectednoofdailytransactionchart.noData"
+                                [tooltip]="expectednoofdailytransactionchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of cardData1; let i=index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.itmanagementdata[item.title]}}</h2>
+                                <div class="card-text">
+                                    <div class="textswcinassessment-p">
+                                        <span class="textswcinassessment">
+                                        </span> {{showAll[i] ? result.itmanagementdata[item.description.text] :
+                                        truncate(result.itmanagementdata[item.description.text])}}
+                                        <a type="button" (click)="toggleshow(i)"
+                                            [style.color]="showAll[i] ? 'red' : 'blue'">
+                                            {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                        </a>
+                                    </div><br><br>
+                                    <div class="card-footer form-check">
+                                        <div class="routesandtechcostcard">
+                                           <h3> {{ result.itmanagementdata[item.description.textname] }}</h3>
+                                            <h3>{{ result.itmanagementdata[item.description.textvalue]}}</h3>
+                                        </div>
+                                        <div class="routesandtechcostcard">
+                                            <h3> {{ result.itmanagementdata[item.description.textname1] }}</h3>
+                                            <h3>{{ result.itmanagementdata[item.description.textvalue1]*100|number:'1.0-2' }}%</h3>
+                                        </div>
+                                        <div class="routesandtechcostcard">
+                                            <h3> {{ result.itmanagementdata[item.description.textname2] }}</h3>
+                                            <h3>{{ result.itmanagementdata[item.description.textvalue2] }}</h3>
+                                        </div>
+                                        <div class="routesandtechcostcard">
+                                            <h3> {{ result.itmanagementdata[item.description.textname3] }}</h3>
+                                            <h3>{{ result.itmanagementdata[item.description.textvalue3] }}</h3>
+                                        </div>
+                                        <div class="routesandtechcostcard">
+                                            <h3> {{ result.itmanagementdata[item.description.textname4] }}</h3>
+                                            <h3>{{ result.itmanagementdata[item.description.textvalue4] }}</h3>
+                                        </div>
+                                        <div style="height: 2rem;">
+                                            <input class="checkfrominput" type="radio" value="index"
+                                                id="flexCheckDefault" name="second"
+                                                [checked]="(result.itmanagementdata)?(result.itmanagementdata[item.inputcellname]===1):false"
+                                                (change)="writeecommercevalue(item.inputcellname,'radio',$event,'af11','af12','af13','af14',4)"
+                                                [disabled]="inputDisabled" />
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="mt-5">Network Equipment
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>Which network equipment option balances cost, maintenance needs, and security features for seamless operations?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>Which equipment meets both performance and scalability requirements for future growth?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of cardData2; let i=index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.itmanagementdata[item.title]}}</h2>
+                                <div class="card-text">
+                                    <div class="textswcinassessment-p">
+                                        <span class="textswcinassessment">
+                                        </span> {{showAll[i] ? result.itmanagementdata[item.description.text] :
+                                        truncate(result.itmanagementdata[item.description.text])}}
+                                        <a type="button" (click)="toggleshow(i)"
+                                            [style.color]="showAll[i] ? 'red' : 'blue'">
+                                            {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                        </a>
+                                    </div><br><br>
+                                    <div class="card-footer form-check">
+                                        <div class="routesandtechcostcard">
+                                            <h3> {{ result.itmanagementdata[item.description.textname] }}</h3>
+                                             <h3>{{ result.itmanagementdata[item.description.textvalue] }}</h3>
+                                         </div>
+                                         <div class="routesandtechcostcard">
+                                             <h3> {{ result.itmanagementdata[item.description.textname1] }}</h3>
+                                             <h3>{{ result.itmanagementdata[item.description.textvalue1] }}</h3>
+                                         </div>
+                                         <div class="routesandtechcostcard">
+                                             <h3> {{ result.itmanagementdata[item.description.textname2] }}</h3>
+                                             <h3>{{ result.itmanagementdata[item.description.textvalue2] }}</h3>
+                                         </div>
+                                        <div style="height: 2rem;">
+                                            <input class="checkfrominput" type="radio" value="index"
+                                                id="flexCheckDefault" name="third"
+                                                [checked]="(result.itmanagementdata)?(result.itmanagementdata[item.inputcellname]===1):false"
+                                                (change)="writeecommercevalue(item.inputcellname,'radio',$event,'af17','af18','af19','',3)"
+                                                [disabled]="inputDisabled" />
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="mt-5">Data Storage & Management
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>How do database options compare in terms of cost, scalability, and deployment flexibility?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>Which option offers efficient data handling and retrieval while considering management features and scalability?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <div class="row row-cols-md">
+                            <div class="col-md">
+                                <p>Data Storage Capacity, GB</p>
+                                <input type="number" class="input-no_box" placeholder="Input value here..."
+                                    [ngModel]="result.itmanagementdata.af22" 
+                                    (focusout)="writeecommercevalue('af22','input',$event,'','','','',0)" [disabled]="inputDisabled">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="row row-cols-md">
+                            <div class="col-md">
+                                <p>Average transaction + processing size per user, Kb</p>
+                                <h4>{{result.itManagementCM.itmanagementperioddata.f37}}</h4>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of cardData3; let i=index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.itmanagementdata[item.title]}}</h2>
+                                <div class="card-text">
+                                    <div class="textswcinassessment-p">
+                                        <span class="textswcinassessment">
+                                        </span> {{showAll[i] ? result.itmanagementdata[item.description.text] :
+                                        truncate(result.itmanagementdata[item.description.text])}}
+                                        <a type="button" (click)="toggleshow(i)"
+                                            [style.color]="showAll[i] ? 'red' : 'blue'">
+                                            {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                        </a>
+                                    </div><br><br>
+                                    <div class="card-footer form-check">
+                                        <div class="routesandtechcostcard">
+                                            <h3> {{ result.itmanagementdata[item.description.textname] }}</h3>
+                                             <h3>{{ result.itmanagementdata[item.description.textvalue] }}</h3>
+                                         </div>
+                                         <div class="routesandtechcostcard">
+                                             <h3> {{ result.itmanagementdata[item.description.textname1] }}</h3>
+                                             <h3>{{ result.itmanagementdata[item.description.textvalue1] }}</h3>
+                                         </div>
+                                        <div style="height: 2rem;">
+                                            <input class="checkfrominput" type="radio" value="index"
+                                                id="flexCheckDefault" name="fourth"
+                                                [checked]="(result.itmanagementdata)?(result.itmanagementdata[item.inputcellname]===1):false"
+                                                (change)="writeecommercevalue(item.inputcellname,'radio',$event,'af23','af24','af25','',3)"
+                                                [disabled]="inputDisabled" />
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="mt-5">Scalability & Performance Optimization
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>Which optimization methods balance cost, effectiveness, and scalability requirements for enhanced performance?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>How can scalability needs and performance optimization techniques align to ensure high-quality service delivery?</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md" *ngFor="let item of cardData4; let i=index">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img [src]="item.img" class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result.itManagementCM.itmanagementperioddata[item.title]}}</h2>
+                                <div class="card-text">
+                                    <div class="textswcinassessment-p">
+                                        <span class="textswcinassessment">
+                                        </span> {{showAll[i] ? item.description.text :
+                                        item.description.truncatedText}}
+                                        <a type="button" (click)="toggleshow(i)"
+                                            [style.color]="showAll[i] ? 'red' : 'blue'">
+                                            {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                        </a>
+                                    </div><br><br>
+                                    <div class="card-footer form-check">
+                                        <div class="routesandtechcostcard">
+                                            <h3> {{ result.itmanagementdata[item.description.textname] }}</h3>
+                                            <h3>{{ result.itmanagementdata[item.description.textvalue] }}</h3>
+                                        </div>
+                                        <div style="height: 2rem;">
+                                            <input class="checkfrominput" type="checkbox" value="index"
+                                                id="flexCheckDefault" name="fifth"
+                                                [checked]="(result.itmanagementdata)?(result.itmanagementdata[item.inputcellname]===1):false"
+                                                (change)="writeecommercevalue(item.inputcellname,'checkbox',$event,'af28','af29','af30','af31',4)"
+                                                [disabled]="inputDisabled" />
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

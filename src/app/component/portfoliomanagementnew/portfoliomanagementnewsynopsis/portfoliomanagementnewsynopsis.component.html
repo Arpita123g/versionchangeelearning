@@ -1,0 +1,418 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui portfolio">
+    <div class="container">
+        <div class="body-element">
+            <div class="feed_ack">
+                <div>
+                    <div class="row pb-4">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                                <div class="">
+                                    <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                        (change)="roundClick()">
+                                        <option class="select-round-option" value="">Select Round</option>
+                                        <option class="select-round-option"
+                                            *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                            {{attempt}}</option>
+
+                                    </select>
+                                </div>
+                                <div class="download_btn" matTooltiClass="primary-tooltip"
+                                    (click)="downloadreportportfoliomanagementreport()">
+                                    <div>
+                                        <a download matTooltip="Download"><span class="hovertext"
+                                                data-hover="Download pdf file accounting ">
+                                                <img src="assets/images/businessbasics/download.png" />
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <mat-icon class="mt-2">get_app</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1>
+                        Synopsis
+                    </h1>
+                    <div style="margin-top: 1.1rem;" *ngIf="analysisshow">
+                        <h1
+                            style="display: flex; align-items: center; gap: 5px;font-size: 1.1rem; font-weight: 600;padding: 0.6rem 0.4rem;color: white;background-color: #266cc38a;">
+                            Feedback
+                            <div style=" width: 1rem;">
+                                <mat-icon (click)="rotate();roundClick();" [@rotatedState]='state' class="sidenav-icon"
+                                    aria-hidden="false" aria-label="Example home icon">cached</mat-icon>
+                            </div>
+                        </h1>
+                    </div>
+                    <div class="decision-textarea pb-5 h-100" *ngIf="analysisshow">
+                        <div class="row">
+                            <div class="col-md" style="padding: 10px;">
+                                <div class="card feedbsck-value p-3">
+                                    <markdown [data]="feedbackvalue"></markdown>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row row-cols-md-2 py-3">
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Decisions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Phase 1 Allocation</th>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Indian Stocks</td>
+                                        <td>{{result[0]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Indian Commodity</td>
+                                        <td>{{result[1]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Hybrid Fund</td>
+                                        <td>{{result[2]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Corporate Bond</td>
+                                        <td>{{result[3]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>PSU Bond</td>
+                                        <td>{{result[4]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>US Stocks</td>
+                                        <td>{{result[5]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Cash Equivalents</td>
+                                        <td>{{result[6]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Phase 2 Allocation</th>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Indian Stocks</td>
+                                        <td>{{result[7]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Indian Commodity</td>
+                                        <td>{{result[8]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Hybrid Fund</td>
+                                        <td>{{result[9]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Corporate Bond</td>
+                                        <td>{{result[10]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>PSU Bond</td>
+                                        <td>{{result[11]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>US Stocks</td>
+                                        <td>{{result[12]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Cash Equivalents</td>
+                                        <td>{{result[13]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Phase 3 Allocation</th>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Indian Stocks</td>
+                                        <td>{{result[14]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Indian Commodity</td>
+                                        <td>{{result[15]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Hybrid Fund</td>
+                                        <td>{{result[16]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Corporate Bond</td>
+                                        <td>{{result[17]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>PSU Bond</td>
+                                        <td>{{result[18]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>US Stocks</td>
+                                        <td>{{result[19]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Cash Equivalents</td>
+                                        <td>{{result[20]}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">KPI</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Parameter</th>
+                                        <th>Output</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Return over (+)/below (-) market </td>
+                                        <td>{{result[75]*100|number:'1.0-2'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Risk over (+)/below (-) market</td>
+                                        <td>{{result[76]*100|number:'1.0-2'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Thinking Ability</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Parameter</th>
+                                        <th>Output</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Portfolio Management </td>
+                                        <td>{{result[77]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="4">Phase Measures</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Parameter</th>
+                                        <th>Phase 1</th>
+                                        <th>Phase 2</th>
+                                        <th>Phase 3</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Portfolio Return</td>
+                                        <td>{{result[21]}}</td>
+                                        <td>{{result[22]}}</td>
+                                        <td>{{result[23]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Portfolio Risk</td>
+                                        <td>{{result[24]}}</td>
+                                        <td>{{result[25]}}</td>
+                                        <td>{{result[26]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Portfolio Beta</td>
+                                        <td>{{result[27]}}</td>
+                                        <td>{{result[28]}}</td>
+                                        <td>{{result[29]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Treynor Measure</td>
+                                        <td>{{result[30]}}</td>
+                                        <td>{{result[31]}}</td>
+                                        <td>{{result[32]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Sharpe Ratio</td>
+                                        <td>{{result[33]}}</td>
+                                        <td>{{result[34]}}</td>
+                                        <td>{{result[35]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Jenson's Alpha</td>
+                                        <td>{{result[36]}}</td>
+                                        <td>{{result[37]}}</td>
+                                        <td>{{result[38]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>CAPM</td>
+                                        <td>{{result[39]}}</td>
+                                        <td>{{result[40]}}</td>
+                                        <td>{{result[41]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Fama Measure</td>
+                                        <td>{{result[42]}}</td>
+                                        <td>{{result[43]}}</td>
+                                        <td>{{result[44]}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="4">Capital, k INR</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Parameter</th>
+                                        <th>Phase 1</th>
+                                        <th>Phase 2</th>
+                                        <th>Phase 3</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Start</td>
+                                        <td>{{result[45]/1000|number:'1.0-0'}}</td>
+                                        <td>{{result[46]/1000|number:'1.0-0'}}</td>
+                                        <td>{{result[47]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>End</td>
+                                        <td>{{result[46]/1000|number:'1.0-0'}}</td>
+                                        <td>{{result[47]/1000|number:'1.0-0'}}</td>
+                                        <td>{{result[48]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="4">Capital Invested in Securities, k INR
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Parameter</th>
+                                        <th>Phase 1</th>
+                                        <th>Phase 2</th>
+                                        <th>Phase 3</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Security 1 - Indian Stocks</td>
+                                        <td>{{result[49]/1000|number:'1.0-0'}}</td>
+                                        <td>{{result[56]/1000|number:'1.0-0'}}</td>
+                                        <td>{{result[63]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Security 2 - Commodities</td>
+                                        <td>{{result[50]/1000|number:'1.0-0'}}</td>
+                                        <td>{{result[57]/1000|number:'1.0-0'}}</td>
+                                        <td>{{result[64]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Security 3 - Hybrid Fund</td>
+                                        <td>{{result[51]/1000|number:'1.0-0'}}</td>
+                                        <td>{{result[58]/1000|number:'1.0-0'}}</td>
+                                        <td>{{result[65]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Security 4 - Corporate Bond</td>
+                                        <td>{{result[52]/1000|number:'1.0-0'}}</td>
+                                        <td>{{result[59]/1000|number:'1.0-0'}}</td>
+                                        <td>{{result[66]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Security 5 - PSU Bond</td>
+                                        <td>{{result[53]/1000|number:'1.0-0'}}</td>
+                                        <td>{{result[60]/1000|number:'1.0-0'}}</td>
+                                        <td>{{result[67]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Security 6 - US Stocks</td>
+                                        <td>{{result[54]/1000|number:'1.0-0'}}</td>
+                                        <td>{{result[61]/1000|number:'1.0-0'}}</td>
+                                        <td>{{result[68]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Security 7 - Cash Equivalents</td>
+                                        <td>{{result[55]/1000|number:'1.0-0'}}</td>
+                                        <td>{{result[62]/1000|number:'1.0-0'}}</td>
+                                        <td>{{result[69]/1000|number:'1.0-0'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Combined Measures</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th>Parameter</th>
+                                        <th>Output</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Portfolio Return</td>
+                                        <td>{{result[70]*100|number:'1.0-2'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Portfolio Risk</td>
+                                        <td>{{result[71]*100|number:'1.0-2'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Portfolio Beta</td>
+                                        <td>{{result[72]|number:'1.0-2'}}</td>
+                                    </tr>
+
+                                </tbody>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th style="border-bottom: 2px solid black;">Market</th>
+                                        <th style="border-bottom: 2px solid black;"></th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Market Return</td>
+                                        <td>{{result[73]*100|number:'1.0-2'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Market Risk</td>
+                                        <td>{{result[74]*100|number:'1.0-2'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                    <div class="row lst_r">
+                        <div class="col-4 lst_r-col4" *ngIf="!timefinished">
+                            <button class="mt-4 retry" [disabled]="isButtonDisabled"  (click)="exit()">{{retry}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

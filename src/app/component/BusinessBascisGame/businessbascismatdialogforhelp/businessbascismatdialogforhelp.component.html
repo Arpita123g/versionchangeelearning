@@ -1,0 +1,49 @@
+<div class="elearingnewui bus_iness p-3" *ngIf="usertype == 'student'">
+  <h2 mat-dialog-title>Contact {{data.name}}</h2>
+  <div mat-dialog-content class="dialogcard">
+    <p style="font-size: 16px;">Message</p>
+    <div>
+      <p>Describe the problem or bug in detail here. If possible, please give detailed instructions on
+        how to reproduce the problem. All this will help us to solve the problem faster, so the more
+        information you can provide the better. Thank you.</p>
+      <div class="mat_dio">
+        <p>Our reply will be sent to : <span style="color: blue;">{{usermail}}</span> . If this is not your email
+          address, please change it to the
+          correct one on the Profile page.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pre-textarea">
+    <textarea class="textareamsg" name="input"></textarea>
+    <div mat-dialog-actions class="py-4">
+      <button mat-button (click)="onNoClick()" class="btn_stl">Send</button>
+  
+    </div>
+  </div>
+ 
+</div>
+
+<div class="elearingnewui bus_iness_not" *ngIf="usertype !=='student'">
+  <h2 mat-dialog-title>Contact {{data.name}}</h2>
+  <div mat-dialog-content class="dialogcard">
+    <p style="font-size: 16px;">Message</p>
+    <div>
+      <p>Describe the problem or bug in detail here. If possible, please give detailed instructions on
+        how to reproduce the problem. All this will help us to solve the problem faster, so the more
+        information you can provide the better. Thank you.</p>
+      <div class="mat_dio">
+        <p>Our reply will be sent to : <span style="color: rgb(2, 2, 54);">{{usermail}}</span> . If this is not your
+          email address, please change it to the
+          correct one on the Profile page.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pre-textarea">
+    <textarea class="textareamsg" name="input"></textarea>
+    <div mat-dialog-actions class="py-4">
+      <button mat-button (click)="onNoClick()" class="btn_stl">Send</button>
+</div>
+  </div>
+
+
+</div>

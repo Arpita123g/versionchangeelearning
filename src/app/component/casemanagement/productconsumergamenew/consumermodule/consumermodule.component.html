@@ -1,0 +1,80 @@
+<div class="elearingnewui" *ngIf="getSelectTab !='cesimcase'">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="case-management-body case-management-module">
+        <div class="table-responsive">
+            <table class=" table  case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody *ngIf="res!=[]">
+                    <tr>
+                        <td>
+                            Income
+                        </td>
+                        <td *ngFor="let data of res.consumerBehaviourNewCMActiveStatus; let i = index">
+                            <input class="input-check-bx" type="checkbox"
+                                [checked]="res.consumerBehaviourNewCMActiveStatus[i].incomestatus === 'active'"
+                                [disabled]="defaultcase=='yes'"
+                                (change)="writeModuleValue(i,'normal','yes','incomestatus','',$event)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            Situational Element
+                        </td>
+                        <td *ngFor="let data of res.consumerBehaviourNewCMActiveStatus; let i = index">
+                            <input class="input-check-bx" type="checkbox"
+                                [checked]="res.consumerBehaviourNewCMActiveStatus[i].situationalstatus === 'active'"
+                                [disabled]="defaultcase=='yes'"
+                                (change)="writeModuleValue(i,'normal','yes','situationalstatus','',$event)">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            Social Elements
+                        </td>
+                        <td *ngFor="let data of res.consumerBehaviourNewCMActiveStatus; let i = index">
+                            <input class="input-check-bx" type="checkbox"
+                                [checked]="res.consumerBehaviourNewCMActiveStatus[i].socialstatus === 'active'"
+                                [disabled]="defaultcase=='yes'"
+                                (change)="writeModuleValue(i,'normal','yes','socialstatus','',$event)">
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+                            In-Game Advertising
+                        </td>
+                        <td *ngFor="let data of res.consumerBehaviourNewCMActiveStatus; let i = index">
+                            <input class="input-check-bx" type="checkbox"
+                                [checked]="res.consumerBehaviourNewCMActiveStatus[i].gamestatus === 'active'"
+                                [disabled]="defaultcase=='yes'"
+                                (change)="writeModuleValue(i,'normal','yes','gamestatus','',$event)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Food for Thought
+                        </td>
+                        <td *ngFor="let data of res.consumerBehaviourNewCMActiveStatus; let i = index">
+                            <input class="input-check-bx" type="checkbox"
+                                [checked]="res.consumerBehaviourNewCMActiveStatus[i].foodforthoughtstatus === 'active'"
+                                [disabled]="defaultcase=='yes'"
+                                (change)="writeModuleValue(i,'normal','yes','foodforthoughtstatus','',$event)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,189 @@
+<div class="elearingnewui bus_iness">
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row pb-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                            <div class="">
+                                <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                    (change)="roundClick()">
+                                    <option class="select-round-option" value="">Select Round</option>
+                                    <option class="select-round-option"
+                                        *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                        {{attempt}}</option>
+                                </select>
+                            </div>
+                            <div class="download_btn" matTooltiClass="primary-tooltip" (click)="downloadreportfsa()">
+                                <div>
+                                    <a download matTooltip="Download"><span class="hovertext"
+                                            data-hover="Download pdf file accounting ">
+                                            <img class="download_btn-img"
+                                                src="assets/images/businessbasics/download.png" />
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <mat-icon class="mt-2">get_app</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 mb-3" >
+                    <div class="col-md-5 reyapo">
+                        <h1 class="reyapo-h1">Report</h1>
+                        <p>
+                            Excellent work. You have completed selecting the investment for your company based on the
+                            financial analysis. In this exercise every decision you have taken shows your skills in
+                            dimensions like rigor, synthesis, structuring and business judgement.
+                        </p>
+                    </div>
+                    <div class="col-md-7" *ngIf="optional[0]">
+                        <div class="card rigorcard">
+                            <div class="rigorcard-icon">
+                                <mat-icon class="rigorcard-icon-mat" appTippy="<table >
+                  <tr>
+                    <th style='font-weight:500; padding:7px;font-size:14px'>Rigor</th>
+                    <td style='padding:7px;font-size:13px'>Consistency throughout the decision-making and recommendation.</td>
+                  </tr>
+                  <tr>
+                    <th style='font-weight:500 ;padding:7px;font-size:14px'>Structuring</th>
+                    <td style='padding:7px;font-size:13px'>A logical approach to gathering and analyzing information.</td>
+                  </tr>
+                  <tr>
+                    <th style='font-weight:500 ;padding:7px;font-size:14px'>
+                      Synthesis
+                    </th>
+                    <td style='padding:7px;font-size:13px'>
+                      Approach towards interpreting all the information and making informed decisions.
+                    </td>
+                  <tr>
+                    <th style='font-weight:500; padding:7px;font-size:14px'>Business Jugement</th>
+                    <td style='padding:7px;font-size:13px'>Ability to evaluate facts and consider risks and possible implications when making decisions.</td>
+                  </tr>
+                  </tr>
+                </table>
+                 ">
+                                    help_outline
+                                </mat-icon>
+                            </div>
+                            <apx-chart [series]="rigorcharts.series" [chart]="rigorcharts.chart"
+                                [xaxis]="rigorcharts.xaxis" [yaxis]="rigorcharts.yaxis" [stroke]="rigorcharts.stroke"
+                                [markers]="rigorcharts.markers" [fill]="rigorcharts.fill"
+                                [title]="rigorcharts.title"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <table class="table h-100 rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">{{result[18]}}</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody p-2">
+                                <p>{{result[19]}}</p>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card p-2">
+                            <apx-chart [series]="capitalallocationgraph
+                          .series" [chart]="capitalallocationgraph
+                         .chart" [labels]="capitalallocationgraph
+                                .labels" [responsive]="capitalallocationgraph
+                                .responsive" [title]="capitalallocationgraph
+                                .title" [legend]="capitalallocationgraph
+                                .legend" [tooltip]="capitalallocationgraph
+                                .tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="7">Scores</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td class="lastchildtd"></td>
+                                    <td class="lastchildtd" style="font-weight: 500;">{{result[0]}}</td>
+                                    <td class="lastchildtd" style="font-weight: 500;">{{result[2]}}</td>
+                                    <td class="lastchildtd" style="font-weight: 500;">{{result[4]}}</td>
+                                    <td class="lastchildtd" style="font-weight: 500;">{{result[6]}}</td>
+                                    <td class="lastchildtd" style="font-weight: 500;">{{result[8]}}</td>
+                                    <td class="lastchildtd" style="font-weight: 500;">Total Score</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td class="lastchildtd">Scores, %</td>
+                                    <td class="lastchildtd">{{result[1]*100| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[3]*100| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[5]*100| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[7]*100| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[9]*100| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[11]*100| number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-4">
+                            <apx-chart [series]="employeesperformancelevelgraph.series"
+                                [chart]="employeesperformancelevelgraph.chart"
+                                [dataLabels]="employeesperformancelevelgraph.dataLabels"
+                                [plotOptions]="employeesperformancelevelgraph.plotOptions"
+                                [yaxis]="employeesperformancelevelgraph.yaxis"
+                                [xaxis]="employeesperformancelevelgraph.xaxis"
+                                [fill]="employeesperformancelevelgraph.fill"
+                                [title]="employeesperformancelevelgraph.title"
+                                [tooltip]="employeesperformancelevelgraph.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Investment</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr w-100">
+                                    <td style="width: 40%;"> </td>
+                                    <td class="lastchildtd" style="font-weight: 500;">EM</td>
+                                    <td class="lastchildtd" style="font-weight: 500;">TM</td>
+                                    <td class="lastchildtd" style="font-weight: 500;">GT</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="width: 40%;">Capital Allocated INR</td>
+                                    <td class="lastchildtd">{{result[12]}}</td>
+                                    <td class="lastchildtd">{{result[13]}}</td>
+                                    <td class="lastchildtd">{{result[14]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="width: 40%;">Company Owned, %</td>
+                                    <td class="lastchildtd">{{result[15]*100| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[16]*100| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{result[17]*100| number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

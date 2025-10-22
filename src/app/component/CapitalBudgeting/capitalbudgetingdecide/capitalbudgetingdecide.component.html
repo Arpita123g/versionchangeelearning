@@ -1,0 +1,100 @@
+<div class="elearingnewui capital_budgeting">
+  <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+  <div class="container">
+    <div class="body-element">
+      <div class="row" class="element-first">
+        <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+          style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+          <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+            <button class="food-thought-btn">Food For Thought</button></span>
+        </div>
+      </div>
+      <h1>Decide
+        <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>What trade-offs should participants consider when choosing projects within the given budget constraints?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>How will these metrics guide the decision-making process? What insights can be gained from each metric, and how might they help in prioritizing projects for implementation?</p>
+                          </div>
+                        </div>
+                    </div> ">
+          help_outline
+        </mat-icon>
+      </h1>
+      <div class="row row-cols-md-2 py-3 g-3 input-img-card">
+        <div class="col-md-6">
+          <div class="row row-cols-md">
+            <div class="col-md">
+              <div>
+                <div style="text-align: center;">
+                  <p>Budget, INR Million</p>
+                  <h1 class="">{{result.cbgamedata.c43}}</h1>
+                </div>
+                <div class="card-img-top img-top-new" style="text-align: center;">
+                  <img src="../../../../assets/images/capitalbudgeting/budgetindecide.svg" alt="..."
+                    class="img-fluid img-img" style="height: 12rem; width: 80%;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card p-2">
+            <apx-chart [series]="refrencespriceperuserchart.series" [chart]="refrencespriceperuserchart.chart"
+              [dataLabels]="refrencespriceperuserchart.dataLabels"
+              [plotOptions]="refrencespriceperuserchart.plotOptions" [yaxis]="refrencespriceperuserchart.yaxis"
+              [xaxis]="refrencespriceperuserchart.xaxis" [fill]="refrencespriceperuserchart.fill"
+              [noData]="refrencespriceperuserchart.noData" [tooltip]="refrencespriceperuserchart.tooltip">
+            </apx-chart>
+          </div>
+        </div>
+      </div>
+      <h1 class="py-4">Project Selection
+      </h1>
+      <div>
+        <div class="row table-div pb-3 table-responsive">
+          <table class="table rsl_tbl ">
+            <thead class="rsl_tbl-thead">
+              <tr class="rsl_tbl-thead-tr">
+                <th class="rsl_tbl-thead-th" *ngFor="let col of tableData[0]">
+                  <div class="head-icon">
+                    <span>{{ col }}</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="rsl_tbl-tbody">
+              <tr class="rsl_tbl-tbody-tr" *ngFor="let row of tableData.slice(1)">
+                <td style="text-align: center; height: 2rem; vertical-align: middle;">
+                  <input style="float: none;" class="checkfrominput_new" type="checkbox" 
+                    [checked]="result.cbgamedata ? result.cbgamedata[row[0]] === 1 : false"
+                    (click)="writegameData(row[0],$event)"   [disabled]="inputDisabled"/>
+                </td>
+
+                <td *ngFor="let cell of row.slice(1); let j = index">
+                  {{ formatCellValue(result?.cbgamedata[cell], j + 1) }}
+
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

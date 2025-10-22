@@ -1,0 +1,332 @@
+<div class="elearingnewui hrp_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="routesandtech">
+                <div class="row" class="element-first">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+                <h1>Training Priorities
+                    <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>How can prioritizing training based on departmental requirements contribute to overall company growth while managing costs?</p>
+                            </div>
+                          </div>
+                        </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/hrpgame/digitalmarketingmastery.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2 style="height: 4rem;">{{result[9]}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[0].id] ?
+                                    cardData1[0].description:cardData1[0].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[0].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                               
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost per employee, INR</h3>
+                                    <h3>{{result[0]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[18]" (change)="getSelection('technology',18)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/hrpgame/advanceecommerceanalytic.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2 style="height: 4rem;">{{result[10]}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[1].id] ?
+                                    cardData1[1].description:cardData1[1].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[1].id)"
+                                        [ngStyle]="{color: textshow[cardData1[1].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[1].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                                
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost per employee, INR</h3>
+                                    <h3>{{result[1]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[19]" (change)="getSelection('technology',19)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/hrpgame/augmentedrealityinfasioninecommerce.jpg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[11]}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[2].id] ?
+                                    cardData1[2].description:cardData1[2].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[2].id)"
+                                        [ngStyle]="{color: textshow[cardData1[2].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[2].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                               
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost per employee, INR</h3>
+                                    <h3>{{result[2]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[20]" (change)="getSelection('technology',20)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/hrpgame/customerserviceexcillence.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2 style="height: 4rem;">{{result[12]}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[3].id] ?
+                                    cardData1[3].description:cardData1[3].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[3].id)"
+                                        [ngStyle]="{color: textshow[cardData1[3].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[3].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                                
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost per employee, INR</h3>
+                                    <h3>{{result[3]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[21]" (change)="getSelection('technology',21)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/hrpgame/sustanableandethicalproduction.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[13]}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[4].id] ?
+                                    cardData1[4].description:cardData1[4].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[4].id)"
+                                        [ngStyle]="{color: textshow[cardData1[4].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[4].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                               
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost per employee, INR</h3>
+                                    <h3>{{result[4]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[22]" (change)="getSelection('technology',22)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="pt-5">Policies
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>How can you select policies that strike a balance between employee satisfaction and the company's financial capacity?</p>
+                        </div>
+                      </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card">
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/hrpgame/remoteworkflexible.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2 style="height: 4rem;">{{result[14]}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[5].id] ?
+                                    cardData1[5].description:cardData1[5].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[5].id)"
+                                        [ngStyle]="{color: textshow[cardData1[5].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[5].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                               
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost, INR</h3>
+                                    <h3>{{result[5]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[23]" (change)="getSelection('technology',23)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/hrpgame/continuelearninganddevlopment.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[15]}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[6].id] ?
+                                    cardData1[6].description:cardData1[6].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[6].id)"
+                                        [ngStyle]="{color: textshow[cardData1[6].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[6].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                                
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost, INR</h3>
+                                    <h3>{{result[6]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[24]" (change)="getSelection('technology',24)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/hrpgame/healthandwalnesspolicy.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[16]}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[7].id] ?
+                                    cardData1[7].description:cardData1[7].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[7].id)"
+                                        [ngStyle]="{color: textshow[cardData1[7].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[7].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                                
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost, INR</h3>
+                                    <h3>{{result[7]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[25]" (change)="getSelection('technology',25)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  marketing-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/hrpgame/diversehiringpolicy.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <h2>{{result[17]}}</h2>
+                                <p class="card-text">{{ textshow[cardData1[8].id] ?
+                                    cardData1[8].description:cardData1[8].turncatedtext }}
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[8].id)"
+                                        [ngStyle]="{color: textshow[cardData1[8].id]?'red':'blue'}">
+                                        {{ textshow[cardData1[8].id] ? 'Show Less' : 'Show More' }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check">
+                                <div class="routesandtechcostcard">
+                                    <h3>Cost, INR</h3>
+                                    <h3>{{result[8]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="checkbox" value="" id="flexCheckDefault"
+                                    [(ngModel)]="result[26]" (change)="getSelection('technology',26)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

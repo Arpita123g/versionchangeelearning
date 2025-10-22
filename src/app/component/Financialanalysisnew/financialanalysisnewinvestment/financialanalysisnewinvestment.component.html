@@ -1,0 +1,292 @@
+<div class="elearingnewui bus_iness">
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row" class="element-first ">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+                <h1>Investments</h1>
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4" style="padding: 1.25rem 0.4rem;">Financial
+                                        Highlights </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr w-100">
+                                    <td style="width: 40%;"></td>
+                                    <td class="lastchildtd" style="width: 20%; font-weight: 500;">EM</td>
+                                    <td class="lastchildtd" style="font-weight: 500;">TM</td>
+                                    <td class="lastchildtd" style=" font-weight: 500;width: 20%;">GT</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Revenue, M INR</td>
+                                    <td class="lastchildtd">{{periodresult[0]| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{periodresult[1]| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{periodresult[2]| number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Net Income, M INR</td>
+                                    <td class="lastchildtd">{{periodresult[3]| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{periodresult[4]| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{periodresult[5]| number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Total Assets, M INR</td>
+                                    <td class="lastchildtd">{{periodresult[6]| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{periodresult[7]| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{periodresult[8]| number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Total Liabilities, M INR</td>
+                                    <td class="lastchildtd">{{periodresult[9]| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{periodresult[10]| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{periodresult[11]| number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Current Ratio</td>
+                                    <td class="lastchildtd">{{databaseresult[0]}}</td>
+                                    <td class="lastchildtd">{{databaseresult[1]}}</td>
+                                    <td class="lastchildtd">{{databaseresult[2]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Debt-to-Equity Ratio, %</td>
+                                    <td class="lastchildtd">{{databaseresult[3]*100| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{databaseresult[4]*100| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{databaseresult[5]*100| number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Price-to-Earning Ratio</td>
+                                    <td class="lastchildtd">{{databaseresult[6]}}</td>
+                                    <td class="lastchildtd">{{databaseresult[7]}}</td>
+                                    <td class="lastchildtd">{{databaseresult[8]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Share Price, INR</td>
+                                    <td class="lastchildtd">{{periodresult[12]| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{periodresult[13]| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{periodresult[14]| number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="font-weight: 500;">Total Capital, INR</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="lastchildtd" style="font-weight: 500;">{{periodresult[15]| number:'1.0-0'}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md">
+                        <div class="card p-4">
+                            <apx-chart [series]="sharepriceinrgraph.series" [chart]="sharepriceinrgraph.chart"
+                                [dataLabels]="sharepriceinrgraph.dataLabels"
+                                [plotOptions]="sharepriceinrgraph.plotOptions" [yaxis]="sharepriceinrgraph.yaxis"
+                                [xaxis]="sharepriceinrgraph.xaxis" [fill]="sharepriceinrgraph.fill"
+                                [title]="sharepriceinrgraph.title" [tooltip]="sharepriceinrgraph.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2  py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl ">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="5">Portfolio Selection
+                                        <mat-icon appTippy="
+                                                <div class='help-tip p-2'>
+                                                <div style='display:flex;'>
+                                                <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                                </div> &nbsp; &nbsp; &nbsp;
+                                                <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'>When selecting a portfolio composition, how do you ensure a balance of risk and return across the three companies, and what considerations should be taken into account for optimal diversification?</p>
+                                                </div>
+                                                </div><br>
+                                                <div style='display:flex;'>
+                                                <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                                </div> &nbsp; &nbsp; &nbsp;
+                                                <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'>How might current market trends influence the selection of specific companies in the portfolio, and what weight should be given to each company's performance in aligning with these trends?</p>
+                                                </div>
+                                                </div>
+                                                </div> ">
+                                            help_outline
+                                        </mat-icon>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody" >
+                                <tr class="rsl_tbl-tbody-tr w-100">
+                                    <td style="width: 10%;"></td>
+                                    <td style="width: 30%;"></td>
+                                    <td class="lastchildtd" style="width: 20%; font-weight: 500;">EM</td>
+                                    <td class="lastchildtd" style=" font-weight: 500;width: 20%;">TM</td>
+                                    <td class="lastchildtd" style="font-weight: 500;width: 20%;">GT</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="background-color: #edf7f9;"><input type="radio" name="portfolio" style="margin: 3px auto;display: flex;width: 20px;
+                                        height: 20px;
+                                        align-items: center;
+                                        justify-content: center;
+                                    " [checked]="databaseresult[18]==1" (click)="writefsaValue(18)" [disabled]="disabled"></td>
+                                    <td style="border-left: 1px solid;">Portfolio 1</td>
+                                    <td class="lastchildtd">{{periodresult[16]}}</td>
+                                    <td class="lastchildtd">{{periodresult[17]}}</td>
+                                    <td class="lastchildtd">{{periodresult[18]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="background-color: #edf7f9;"><input type="radio" name="portfolio" style="margin: 3px auto;display: flex;width: 20px;
+                                        height: 20px;
+                                        align-items: center;
+                                        justify-content: center;" [checked]="databaseresult[19]==1" (click)="writefsaValue(19)" 
+                                        [disabled]="disabled"></td>
+                                    <td style="border-left: 1px solid;">Portfolio 2</td>
+                                    <td class="lastchildtd">{{periodresult[19]}}</td>
+                                    <td class="lastchildtd">{{periodresult[20]}}</td>
+                                    <td class="lastchildtd">{{periodresult[21]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="background-color: #edf7f9;"><input type="radio" name="portfolio" style="margin: 3px auto;display: flex;width: 20px;
+                                        height: 20px;
+                                        align-items: center;
+                                        justify-content: center;" [checked]="databaseresult[20]==1" (click)="writefsaValue(20)" 
+                                        [disabled]="disabled"></td>
+                                    <td style="border-left: 1px solid;">Portfolio 3</td>
+                                    <td class="lastchildtd">{{periodresult[22]}}</td>
+                                    <td class="lastchildtd">{{periodresult[23]}}</td>
+                                    <td class="lastchildtd">{{periodresult[24]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="background-color: #edf7f9;"><input type="radio" name="portfolio" style="margin: 3px auto;display: flex;width: 20px;
+                                        height: 20px;
+                                        align-items: center;
+                                        justify-content: center;" [checked]="databaseresult[21]==1" (click)="writefsaValue(21)" 
+                                        [disabled]="disabled"></td>
+                                    <td style="border-left: 1px solid;">Portfolio 4</td>
+                                    <td class="lastchildtd">{{periodresult[25]}}</td>
+                                    <td class="lastchildtd">{{periodresult[26]}}</td>
+                                    <td class="lastchildtd">{{periodresult[27]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="background-color: #edf7f9;"><input type="radio" name="portfolio" style="margin: 3px auto;display: flex;width: 20px;
+                                        height: 20px;
+                                        align-items: center;
+                                        justify-content: center;" [checked]="databaseresult[22]==1" (click)="writefsaValue(22)" 
+                                        [disabled]="disabled"></td>
+                                    <td style="border-left: 1px solid;">Portfolio 5</td>
+                                    <td class="lastchildtd">{{periodresult[28]}}</td>
+                                    <td class="lastchildtd">{{periodresult[29]}}</td>
+                                    <td class="lastchildtd">{{periodresult[30]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="background-color: #edf7f9;"><input type="radio" name="portfolio" style="margin: 3px auto;display: flex;width: 20px;
+                                        height: 20px;
+                                        align-items: center;
+                                        justify-content: center;" [checked]="databaseresult[23]==1" (click)="writefsaValue(23)" 
+                                        [disabled]="disabled"></td>
+                                    <td style="border-left: 1px solid;">Portfolio 6</td>
+                                    <td class="lastchildtd">{{periodresult[31]}}</td>
+                                    <td class="lastchildtd">{{periodresult[32]}}</td>
+                                    <td class="lastchildtd">{{periodresult[33]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="background-color: #edf7f9;"><input type="radio" name="portfolio" style="margin: 3px auto;display: flex;width: 20px;
+                                        height: 20px;
+                                        align-items: center;
+                                        justify-content: center;" [checked]="databaseresult[24]==1" (click)="writefsaValue(24)" 
+                                        [disabled]="disabled"></td>
+                                    <td style="border-left: 1px solid;">Portfolio 7</td>
+                                    <td class="lastchildtd">{{periodresult[34]}}</td>
+                                    <td class="lastchildtd">{{periodresult[35]}}</td>
+                                    <td class="lastchildtd">{{periodresult[36]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="background-color: #edf7f9;"><input type="radio" name="portfolio" style="margin: 3px auto;display: flex;width: 20px;
+                                        height: 20px;
+                                        align-items: center;
+                                        justify-content: center;" [checked]="databaseresult[25]==1" (click)="writefsaValue(25)" 
+                                        [disabled]="disabled"></td>
+                                    <td style="border-left: 1px solid;">Portfolio 8</td>
+                                    <td class="lastchildtd">{{periodresult[37]}}</td>
+                                    <td class="lastchildtd">{{periodresult[38]}}</td>
+                                    <td class="lastchildtd">{{periodresult[39]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="background-color: #edf7f9;"><input type="radio" name="portfolio" style="margin: 3px auto;display: flex;width: 20px;
+                                        height: 20px;
+                                        align-items: center;
+                                        justify-content: center;" [checked]="databaseresult[26]==1" (click)="writefsaValue(26)" 
+                                        [disabled]="disabled"></td>
+                                    <td style="border-left: 1px solid;">Portfolio 9</td>
+                                    <td class="lastchildtd">{{periodresult[40]}}</td>
+                                    <td class="lastchildtd">{{periodresult[41]}}</td>
+                                    <td class="lastchildtd">{{periodresult[42]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="background-color: #edf7f9;"><input type="radio" name="portfolio" style="margin: 3px auto;display: flex;width: 20px;
+                                        height: 20px;
+                                        align-items: center;
+                                        justify-content: center;" [checked]="databaseresult[27]==1" (click)="writefsaValue(27)" 
+                                        [disabled]="disabled"></td>
+                                    <td style="border-left: 1px solid;">Portfolio 10</td>
+                                    <td class="lastchildtd">{{periodresult[43]}}</td>
+                                    <td class="lastchildtd">{{periodresult[44]}}</td>
+                                    <td class="lastchildtd">{{periodresult[45]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md">
+                        <table class="table rsl_tbl ">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4" style="padding: 1.25rem 0.4rem;">Ownership
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr w-100">
+                                    <td style="width: 40%;"></td>
+                                    <td class="lastchildtd" style="width: 20%; font-weight: 500;">EM</td>
+                                    <td class="lastchildtd" style=" font-weight: 500;">TM</td>
+                                    <td class="lastchildtd" style=" font-weight: 500; width: 20%;">GT</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Capital Allocated INR</td>
+                                    <td class="lastchildtd">{{databaseresult[9]}}</td>
+                                    <td class="lastchildtd">{{databaseresult[10]}}</td>
+                                    <td class="lastchildtd">{{databaseresult[11]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Shares bought</td>
+                                    <td class="lastchildtd">{{databaseresult[12]| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{databaseresult[13]| number:'1.0-0'}}</td>
+                                    <td class="lastchildtd">{{databaseresult[14]| number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Company Owned, %</td>
+                                    <td class="lastchildtd">{{databaseresult[15]*100| number:'1.0-2'}}</td>
+                                    <td class="lastchildtd">{{databaseresult[16]*100| number:'1.0-2'}}</td>
+                                    <td class="lastchildtd">{{databaseresult[17]*100| number:'1.0-2'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

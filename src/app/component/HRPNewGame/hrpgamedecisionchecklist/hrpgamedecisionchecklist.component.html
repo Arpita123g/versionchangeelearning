@@ -1,0 +1,243 @@
+<div class="elearingnewui hrp_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="decision-checklist">
+                <div class="row pb-3 d-flex align-items-center">
+                    <div class="col-6 decision-checklist-col6">
+                        <h1 class="decision-checklist-col6-h1">{{language.b259}}</h1>
+                    </div>
+                    <div class="col-6 text-end">
+                        <select class="select-round" name="" id="" [(ngModel)]="roundname" (change)="roundClick()">
+                            <option class="select-round-option" value="">{{ languageselect.toLowerCase() === 'EU' ?
+                                'Select Round' : 'Select Round'
+                                }}</option>
+                            <option class="select-round-option" *ngFor="let attempt of dropdownvalue; let i = index;"
+                                [value]=attempt>
+                                {{attempt}}</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-borderd checklisttable">
+                        <tbody class="checklisttable-body">
+                            <tr class="checklisttable-body-tr" style="border-bottom: 3px solid black;">
+                                <td></td>
+                                <td>{{playername}}</td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <th>{{language.b6}}</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b33}}</td>
+                                <td><span [class]="isClass[0] ? 'defaultcolor' : 'notdefaultcolor'">{{result[0]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b34}}</td>
+                                <td><span [class]="isClass[1] ? 'defaultcolor' : 'notdefaultcolor'">{{result[1]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b35}}</td>
+                                <td><span [class]="isClass[2] ? 'defaultcolor' : 'notdefaultcolor'">{{result[2]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b32}}</td>
+                                <td><span [class]="isClass[3] ? 'defaultcolor' : 'notdefaultcolor'">{{result[3]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b268}}</td>
+                                <td><span [class]="isClass[4] ? 'defaultcolor' : 'notdefaultcolor'">{{result[4]}}</span>
+                                </td>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b37}}</td>
+                                <td><span [class]="isClass[5] ? 'defaultcolor' : 'notdefaultcolor'">{{result[5]}}</span>
+                                </td>
+                            </tr>
+
+                            <tr class="checklisttable-body-tr">
+                                <th>{{language.b270}}</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b57}}</td>
+                                <td><span [class]="isClass[6] ? 'defaultcolor' : 'notdefaultcolor'">{{result[6]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b58}}</td>
+                                <td><span [class]="isClass[7] ? 'defaultcolor' : 'notdefaultcolor'">{{result[7]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b59}}</td>
+                                <td><span [class]="isClass[8] ? 'defaultcolor' : 'notdefaultcolor'">{{result[8]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b60}}</td>
+                                <td><span [class]="isClass[9] ? 'defaultcolor' : 'notdefaultcolor'">{{result[9]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b61}}</td>
+                                <td><span
+                                        [class]="isClass[10] ? 'defaultcolor' : 'notdefaultcolor'">{{result[10]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b101}}</td>
+                                <td><span [class]="isClass[11] ? 'defaultcolor' : 'notdefaultcolor'">{{result[12]*100 |
+                                        number:'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b102}}</td>
+                                <td><span [class]="isClass[12] ? 'defaultcolor' : 'notdefaultcolor'">{{result[13]*100 |
+                                        number:'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b103}}</td>
+                                <td><span [class]="isClass[13] ? 'defaultcolor' : 'notdefaultcolor'">{{result[14]*100 |
+                                        number:'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b104}}</td>
+                                <td><span [class]="isClass[14] ? 'defaultcolor' : 'notdefaultcolor'">{{result[11]*100 |
+                                        number:'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b105}}</td>
+                                <td><span [class]="isClass[15] ? 'defaultcolor' : 'notdefaultcolor'">{{result[15]*100 |
+                                        number:'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b106}}</td>
+                                <td><span [class]="isClass[16] ? 'defaultcolor' : 'notdefaultcolor'">{{result[16]*100 |
+                                        number:'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b107}}</td>
+                                <td><span [class]="isClass[17] ? 'defaultcolor' : 'notdefaultcolor'">{{result[17]*100 |
+                                        number:'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b108}}</td>
+                                <td><span [class]="isClass[18] ? 'defaultcolor' : 'notdefaultcolor'">{{result[18]*100 |
+                                        number:'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b109}}</td>
+                                <td><span [class]="isClass[19] ? 'defaultcolor' : 'notdefaultcolor'">{{result[19]*100 |
+                                        number:'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b110}}</td>
+                                <td><span [class]="isClass[20] ? 'defaultcolor' : 'notdefaultcolor'">{{result[20]*100 |
+                                        number:'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b111}}</td>
+                                <td><span [class]="isClass[21] ? 'defaultcolor' : 'notdefaultcolor'">{{result[21]*100 |
+                                        number:'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b112}}</td>
+                                <td><span [class]="isClass[22] ? 'defaultcolor' : 'notdefaultcolor'">{{result[22]*100 |
+                                        number:'1.0-0'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <th>{{language.b8}}</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b78}}</td>
+                                <td><span
+                                        [class]="isClass[23] ? 'defaultcolor' : 'notdefaultcolor'">{{result[23]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b79}}</td>
+                                <td><span
+                                        [class]="isClass[24] ? 'defaultcolor' : 'notdefaultcolor'">{{result[24]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b80}}</td>
+                                <td><span
+                                        [class]="isClass[25] ? 'defaultcolor' : 'notdefaultcolor'">{{result[25]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b81}}</td>
+                                <td><span
+                                        [class]="isClass[26] ? 'defaultcolor' : 'notdefaultcolor'">{{result[26]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b82}}</td>
+                                <td><span
+                                        [class]="isClass[27] ? 'defaultcolor' : 'notdefaultcolor'">{{result[27]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b90}}</td>
+                                <td><span
+                                        [class]="isClass[28] ? 'defaultcolor' : 'notdefaultcolor'">{{result[28]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b91}}</td>
+                                <td><span
+                                        [class]="isClass[29] ? 'defaultcolor' : 'notdefaultcolor'">{{result[29]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b92}}</td>
+                                <td><span
+                                        [class]="isClass[30] ? 'defaultcolor' : 'notdefaultcolor'">{{result[30]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>{{language.b93}}</td>
+                                <td><span
+                                        [class]="isClass[31] ? 'defaultcolor' : 'notdefaultcolor'">{{result[31]}}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="decision-textarea py-4" *ngIf="analysisshow">
+                        <textarea class="decision-textarea-element" rows="10" [disabled]="disabled"
+                            [(ngModel)]="useranalysisinput"
+                            placeholder="Describe your thought process behind the decision-making in 1500 characters…"
+                            (focusout)="useranalysissave()" maxlength="1500"></textarea>
+                    </div>
+                    <div class="p-0">
+                        <button class="btn_stl btn_stl-decisionchecklist" type="button" [disabled]="disabled"
+                            (click)="decisionchecklistpopup()">{{language.b100}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

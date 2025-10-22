@@ -1,0 +1,77 @@
+<div class="elearingnewui">
+    <div class="case-management-body-forheader">
+        <div class="returnbtn-element">
+            <div class="returnbtn" (click)="GoBack()"> Return to Case Management </div>
+        </div>
+        <div class="card case-management-body-card">
+            <div class="card-body">
+                <div class=" tab-content-body">
+                    <ul class="nav second-nav" role="tablist">
+                        <li class="nav-item active" role="presentation" data-bs-target="#market" data-bs-toggle="tab"
+                            aria-controls="market" role="tab" aria-selected="false" (click)="search('market')">
+                            <span class="nav-link" aria-current="page">Market</span>
+                        </li>
+                        <li class="nav-item " role="presentation" data-bs-target="#industry" data-bs-toggle="tab"
+                            aria-controls="industry" role="tab" aria-selected="false" (click)="search('industry')">
+                            <span class="nav-link" aria-current="page">Industry</span>
+                        </li>
+                        <li class="nav-item " role="presentation" data-bs-target="#marketing" data-bs-toggle="tab"
+                            aria-controls="marketing" role="tab" aria-selected="false" (click)="search('marketing')">
+                            <span class="nav-link" aria-current="page">Marketing</span>
+                        </li>
+                        <li class="nav-item " role="presentation" data-bs-target="#production" data-bs-toggle="tab"
+                        aria-controls="production" role="tab" aria-selected="false" (click)="search('production')">
+                        <span class="nav-link" aria-current="page">Production</span>
+                    </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#foodrforthought" data-bs-toggle="tab"
+                            aria-controls="foodrforthought" role="tab" aria-selected="false"
+                            (click)="search('foodforthought')">
+                            <span class="nav-link" aria-current="page">Food For Thought</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#module" data-bs-toggle="tab"
+                            aria-controls="module" role="tab" aria-selected="false" (click)="search('general')">
+                            <span class="nav-link" aria-current="page">Module</span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="tab-content tab-content-body">
+
+                    <div role="tabpanel" class="tab-pane fade show active" id="market"
+                        [ngClass]="{ 'active':activeTab==='market'}">
+                        <app-cvpcasemarket *ngIf="activeTab==='market'"></app-cvpcasemarket>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="industry"
+                        [ngClass]="{ 'active':activeTab==='industry'}">
+                        <app-cvpcaseindustry *ngIf="activeTab==='industry'"></app-cvpcaseindustry>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="marketing"
+                        [ngClass]="{ 'active':activeTab==='marketing'}">
+                        <app-cvpcasemarketing *ngIf="activeTab==='marketing'"></app-cvpcasemarketing>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="production"
+                        [ngClass]="{ 'active':activeTab==='production'}">
+                        <app-cvpproduction *ngIf="activeTab==='production'"></app-cvpproduction>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade show " id="foodrforthought"
+                        [ngClass]="{ 'active':activeTab==='foodforthought'}">
+                        <app-cvpfoodforthought
+                            *ngIf="activeTab==='foodforthought'"></app-cvpfoodforthought>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="module"
+                        [ngClass]="{ 'active':activeTab==='general'}">
+                        <app-cvpmodule *ngIf="activeTab==='general'"></app-cvpmodule>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div>
+            <button class="mt-4 back" (click)="back()" style=" border: 3px solid #30b4cc;
+            border-radius: 6px;
+            background: transparent;
+            color: #30b4cc;
+            font-size: 20px; padding: 0.5rem 1rem;">Back</button>
+        </div> -->
+    </div>
+</div>

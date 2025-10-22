@@ -1,0 +1,205 @@
+<div class="elearingnewui accounting_new">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row pb-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                            <div class="">
+                                <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                    (change)="roundClick()">
+                                    <option class="select-round-option" value="">Select Round</option>
+                                    <option class="select-round-option"
+                                        *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                        {{attempt}}</option>
+
+                                </select>
+                            </div>
+
+                            <div class="download_btn" matTooltiClass="primary-tooltip"
+                                (click)="downloadreportaccounting()">
+                                <div>
+                                    <a download matTooltip="Download"><span class="hovertext"
+                                            data-hover="Download pdf file accounting ">
+                                            <img class="download_btn-img"
+                                                src="assets/images/businessbasics/download.png" />
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <mat-icon class="mt-2">get_app</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 mb-3">
+                    <div class="col-md-5 reyapo">
+                        <h1 class="reyapo-h1">Report</h1>
+                        <p style="text-align: justify;">
+                            Excellent work. You have completed managing accounts of the company while suggesting to
+                            invest in future opportunities. In this exercise every decision you have taken shows your
+                            skills in dimensions like rigor, synthesis, structuring and business judgement.
+                        </p>
+                    </div>
+
+                    <div class="col-md-7" *ngIf="optional[3]" >
+                        <div class="card rigorcard">
+                            <div class="rigorcard-icon">
+                                <mat-icon class="rigorcard-icon-mat" appTippy="<table >
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Rigor</th>
+                      <td style='padding:7px;font-size:13px'>Consistency throughout the decision-making and recommendation.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>Structuring</th>
+                      <td style='padding:7px;font-size:13px'>A logical approach to gathering and analyzing information.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>
+                        Synthesis
+                      </th>
+                      <td style='padding:7px;font-size:13px'>
+                        Approach towards interpreting all the information and making informed decisions.
+                      </td>
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Business Jugement</th>
+                      <td style='padding:7px;font-size:13px'>Ability to evaluate facts and consider risks and possible implications when making decisions.</td>
+                    </tr>
+                    </tr>
+                  </table>
+                   ">
+                                    help_outline
+                                </mat-icon>
+                            </div>
+                            <apx-chart [series]="rigorcharts.series" [chart]="rigorcharts.chart"
+                                [xaxis]="rigorcharts.xaxis" [yaxis]="rigorcharts.yaxis" [stroke]="rigorcharts.stroke"
+                                [markers]="rigorcharts.markers" [fill]="rigorcharts.fill"
+                                [title]="rigorcharts.title"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- checking -->
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">Scores</th>
+                                </tr>
+                            </thead>
+                            <tbody  *ngIf="totalOptionalcase" class="rsl_tbl-tbody">
+                                <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                    <td>Balance Sheet</td>
+                                    <td>{{result[0]*100|number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                    <td>Income Statement</td>
+                                    <td>{{result[1]*100| number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                    <td>Cash Flow Statement</td>
+                                    <td>{{result[2]*100| number:'1.0-0'}}%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md"  *ngIf="totalOptionalcase">
+                        <div class="card p-3 ">
+                            <apx-chart [series]="scoreschart.series" [chart]="scoreschart.chart"
+                                [dataLabels]="scoreschart.dataLabels" [plotOptions]="scoreschart.plotOptions"
+                                [yaxis]="scoreschart.yaxis" [xaxis]="scoreschart.xaxis" [fill]="scoreschart.fill"
+                                [title]="scoreschart.title" [noData]="scoreschart.noData"
+                                [tooltip]="scoreschart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Opportunities</th>
+                                </tr>
+                            </thead>
+                            <tbody  *ngIf="totalOptionalcase" class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Approval Likelihood</th>
+                                    <th>1-Year Value Creation</th>
+                                    <th>3-Year Value Creation</th>
+                                </tr>
+                                <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                    <td>Investment in Research and Development</td>
+                                    <td class="middleclassright">{{result[6]}}</td>
+                                    <td class="middleclassright">{{result[7]}}</td>
+                                    <td>{{result[8]}}</td>
+                                </tr>
+                                <tr *ngIf="optional[1]"  class="rsl_tbl-tbody-tr">
+                                    <td>Introduction of Premium Product Line</td>
+                                    <td class="middleclassright">{{result[9]}}</td>
+                                    <td class="middleclassright">{{result[10]}}</td>
+                                    <td>{{result[11]}}</td>
+                                </tr>
+                                <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                    <td>Working Capital Optimization</td>
+                                    <td class="middleclassright">{{result[12]}}</td>
+                                    <td class="middleclassright">{{result[13]}}</td>
+                                    <td>{{result[14]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md"  *ngIf="totalOptionalcase">
+                        <div class="card p-3 ">
+                            <apx-chart [series]="opportunitieschart.series" [chart]="opportunitieschart.chart"
+                                [dataLabels]="opportunitieschart.dataLabels"
+                                [plotOptions]="opportunitieschart.plotOptions" [yaxis]="opportunitieschart.yaxis"
+                                [xaxis]="opportunitieschart.xaxis" [fill]="opportunitieschart.fill"
+                                [title]="opportunitieschart.title" [noData]="opportunitieschart.noData"
+                                [tooltip]="opportunitieschart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">KPI</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Total Score</td>
+                                    <td>{{result[3]*100 | number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>1-Year Value Creation</td>
+                                    <td>{{result[4]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>3-Year Value Creation</td>
+                                    <td>{{result[5]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

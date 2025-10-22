@@ -1,0 +1,85 @@
+<div class="elearingnewui">
+    <div class="case-management-body-forheader">
+        <div class="returnbtn-element">
+            <div class="returnbtn" (click)="GoBack()"> Return to Case Management </div>
+        </div>
+        <div class="card case-management-body-card">
+            <div class="card-body">
+                <div class=" tab-content-body">
+                    <ul class="nav second-nav" role="tablist">
+                        <li class="nav-item active" role="presentation" data-bs-target="#memo" data-bs-toggle="tab"
+                            aria-controls="memo" role="tab" aria-selected="false" (click)="search('memo')">
+                            <span class="nav-link" aria-current="page">Memo</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#humandynamics" data-bs-toggle="tab"
+                            aria-controls="humandynamics" role="tab" aria-selected="false" (click)="search('humandynamics')">
+                            <span class="nav-link" aria-current="page">Human Dynamics</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#awareness" data-bs-toggle="tab"
+                            aria-controls="awareness" role="tab" aria-selected="false" (click)="search('awareness')">
+                            <span class="nav-link" aria-current="page">Awareness</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#motivation" data-bs-toggle="tab"
+                            aria-controls="motivation" role="tab" aria-selected="false" (click)="search('motivation')">
+                            <span class="nav-link" aria-current="page">Motivation</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#commitment" data-bs-toggle="tab"
+                            aria-controls="commitment" role="tab" aria-selected="false" (click)="search('commitment')">
+                            <span class="nav-link" aria-current="page">Commitment</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#foodforthought" data-bs-toggle="tab"
+                            aria-controls="foodforthought" role="tab" aria-selected="false"
+                            (click)="search('foodforthought')">
+                            <span class="nav-link" aria-current="page">Food For Thought</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#module" data-bs-toggle="tab"
+                            aria-controls="module" role="tab" aria-selected="false" (click)="search('module')">
+                            <span class="nav-link" aria-current="page">Module</span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="tab-content tab-content-body">
+
+                    <div role="tabpanel" class="tab-pane fade show active" id="memo"
+                        [ngClass]="{ 'active':activeTab==='memo'}">
+                        <app-changemanagementcasememo *ngIf="activeTab==='memo'"></app-changemanagementcasememo>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="humandynamics"
+                        [ngClass]="{ 'active':activeTab==='humandynamics'}">
+                        <app-changemanagementcasehumandynamics *ngIf="activeTab==='humandynamics'"></app-changemanagementcasehumandynamics>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="awareness"
+                        [ngClass]="{ 'active':activeTab==='awareness'}">
+                        <app-changemanagementcaseawareness *ngIf="activeTab==='awareness'"></app-changemanagementcaseawareness>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="motivation"
+                        [ngClass]="{ 'active':activeTab==='motivation'}">
+                        <app-changemanagementcasemotivation *ngIf="activeTab==='motivation'"></app-changemanagementcasemotivation>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="commitment"
+                        [ngClass]="{ 'active':activeTab==='commitment'}">
+                        <app-changemanagementcasecommitment *ngIf="activeTab==='commitment'"></app-changemanagementcasecommitment>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="foodforthought"
+                        [ngClass]="{ 'active':activeTab==='foodforthought'}">
+                        <app-changemanagementcasefoodforthought *ngIf="activeTab==='foodforthought'"></app-changemanagementcasefoodforthought>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="module"
+                        [ngClass]="{ 'active':activeTab==='module'}">
+                        <app-changemanagementcasemodule *ngIf="activeTab==='module'"></app-changemanagementcasemodule>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+        <!-- <div>
+            <button class="mt-4 back" (click)="back()" style=" border: 3px solid #30b4cc;
+            border-radius: 6px;
+            background: transparent;
+            color: #30b4cc;
+            font-size: 20px; padding: 0.5rem 1rem;">Back</button>
+        </div> -->
+    </div>
+</div>

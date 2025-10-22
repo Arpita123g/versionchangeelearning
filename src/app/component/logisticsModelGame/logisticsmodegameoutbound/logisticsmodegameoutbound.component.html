@@ -1,0 +1,655 @@
+<div class="elearingnewui logistics_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container">
+        <div class="body-element  ">
+            <div class="outbound">
+                <div class="row" class="element-first">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+                <h1>Trucking
+                    <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>How urgent is the delivery? Will you be able to fulfil TAT considering inbound and outbound time?</p>
+                            </div>
+                          </div>
+                            <div style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp; &nbsp;
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>What is the order from each client? How to optimize cost and TAT while using multiple modes?</p>
+                              </div>
+                            </div>
+                        </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-2 g-3 py-3">
+                    <div class="col-md">
+                        <table class="table h-100 rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Trucks</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <td>{{result[0]}}</td>
+                                    <td>{{result[1]}}</td>
+                                    <td>{{result[2]}}</td>
+
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Mileage, kmpl</td>
+                                    <td>{{result[3]}}</td>
+                                    <td>{{result[4]| number:'1.0-0'}}</td>
+                                    <td>{{result[5]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Average Speed, kmph</td>
+                                    <td>{{result[6]}}</td>
+                                    <td>{{result[7]}}</td>
+                                    <td>{{result[8]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Damage Chances</td>
+                                    <td>{{result[9]}}</td>
+                                    <td>{{result[10]}}</td>
+                                    <td>{{result[11]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Trucks</td>
+                                    <td><input [(ngModel)]="result[24]" (focusout)="writeOutbound(24)" [disabled]="checkdisable"></td>
+                                    <td><input [(ngModel)]="result[25]" (focusout)="writeOutbound(25)" [disabled]="checkdisable"></td>
+                                    <td><input [(ngModel)]="result[26]" (focusout)="writeOutbound(26)" [disabled]="checkdisable"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-2 h-100">
+                            <apx-chart [series]="allocatedcapacity.series" [chart]="allocatedcapacity.chart"
+                                [dataLabels]="allocatedcapacity.dataLabels"
+                                [plotOptions]="allocatedcapacity.plotOptions" [yaxis]="allocatedcapacity.yaxis"
+                                [xaxis]="allocatedcapacity.xaxis" [fill]="allocatedcapacity.fill"
+                                [title]="allocatedcapacity.title" [tooltip]="allocatedcapacity.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="pt-5">Rail & Air
+                    <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>How to optimize the cost while using multiple modes of transportation?</p>
+                            </div>
+                          </div>
+                            <div class='pt-2' style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp; &nbsp;
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>How will the lead time of the trips will affect the contractual TAT?</p>
+                              </div>
+                            </div>
+                        </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-2 py-3 g-3 input-img-card">
+                    <div class="col-md-6">
+                        <table class="table h-100 rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">Rail & Air Trips</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <td>{{result[12]}}</td>
+                                    <td>{{result[13]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Lead Time</td>
+                                    <td>{{result[22]}}</td>
+                                    <td>{{result[23]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Average Speed, kmph</td>
+                                    <td>{{result[14]}}</td>
+                                    <td>{{result[15]}}</td>
+
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Damage Chances</td>
+                                    <td>{{result[16]}}</td>
+                                    <td>{{result[17]}}</td>
+
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Number of Trips</td>
+                                    <td><input [(ngModel)]="result[27]" (focusout)="writeOutbound(27)" [disabled]="checkdisable"></td>
+                                    <td><input [(ngModel)]="result[28]" (focusout)="writeOutbound(28)" [disabled]="checkdisable"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-2 h-100">
+                            <apx-chart [series]="airrail2.series" [chart]="airrail2.chart"
+                                [dataLabels]="airrail2.dataLabels" [plotOptions]="airrail2.plotOptions"
+                                [yaxis]="airrail2.yaxis" [xaxis]="airrail2.xaxis" [fill]="airrail2.fill"
+                                [title]="airrail2.title" [tooltip]="airrail2.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="pt-5">Optimization
+                    <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>What's the goods fragility contract? What risk are you willing to take?</p>
+                            </div>
+                          </div>
+                            <div class='pt-2' style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp; &nbsp;
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>How are you utilizing the minimum capacity of all modes? </p>
+                              </div>
+                            </div>
+                        </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md g-3 py-3 input-img-card">
+                    <div class="col-md">
+                        <div class="card truck-card">
+                            <h2>Small Trucks</h2>
+                            <div class="row row-cols-md-5 g-2 p-2">
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Optimization</h3>
+                                            <!-- <h3>{{result[27]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="checkbox" value=""
+                                                id="flexCheckDefault" [(ngModel)]="result[29]"
+                                                (change)="getSelection('smalltrucks',29,'checked')" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Unison Limited</h3>
+                                            <!-- <h3>{{result[28]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="smalltrucks"
+                                                id="flexCheckDefault" [checked]="result[30]=='Yes'"
+                                                (change)="getSelection('smalltrucks',30,'radio')"
+                                                [disabled]="result[29]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Promton Incorporation</h3>
+                                            <!-- <h3>{{result[29]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="smalltrucks"
+                                                id="flexCheckDefault" [checked]="result[31]=='Yes'"
+                                                (change)="getSelection('smalltrucks',31,'radio')"
+                                                [disabled]="result[29]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Fix Corporate</h3>
+                                            <!-- <h3>{{result[30]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="smalltrucks"
+                                                id="flexCheckDefault" [checked]="result[32]=='Yes'"
+                                                (change)="getSelection('smalltrucks',32,'radio')"
+                                                [disabled]="result[29]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>eCom Limited</h3>
+                                            <!-- <h3>{{result[31]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="smalltrucks"
+                                                id="flexCheckDefault" [checked]="result[33]=='Yes'"
+                                                (change)="getSelection('smalltrucks',33,'radio')"
+                                                [disabled]="result[29]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md g-3 py-3 input-img-card">
+                    <div class="col-md">
+                        <div class="card truck-card">
+                            <h2>Open Body Trucks</h2>
+                            <div class="row row-cols-md-5 g-2 p-2">
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Optimization</h3>
+                                            <!-- <h3>{{result[32]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="checkbox" value=""
+                                                name="openbodytrucks" id="flexCheckDefault" [(ngModel)]="result[34]"
+                                                (change)="getSelection('openbodytrucks',34,'checked')" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Unison Limited</h3>
+                                            <!-- <h3>{{result[33]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="openbodytrucks"
+                                                id="flexCheckDefault" [checked]="result[35]=='Yes'"
+                                                (change)="getSelection('openbodytrucks',35,'radio')"
+                                                [disabled]="result[34]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Promton Incorporation</h3>
+                                            <!-- <h3>{{result[34]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="openbodytrucks"
+                                                id="flexCheckDefault" [checked]="result[36]=='Yes'"
+                                                (change)="getSelection('openbodytrucks',36,'radio')"
+                                                [disabled]="result[34]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Fix Corporate</h3>
+                                            <!-- <h3>{{result[35]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="openbodytrucks"
+                                                id="flexCheckDefault" [checked]="result[37]=='Yes'"
+                                                (change)="getSelection('openbodytrucks',37,'radio')"
+                                                [disabled]="result[34]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>eCom Limited</h3>
+                                            <!-- <h3>{{result[36]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="openbodytrucks"
+                                                id="flexCheckDefault" [checked]="result[38]=='Yes'"
+                                                (change)="getSelection('openbodytrucks',38,'radio')"
+                                                [disabled]="result[34]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md g-3 py-3 input-img-card">
+                    <div class="col-md">
+                        <div class="card truck-card">
+                            <h2>Covered Container</h2>
+                            <div class="row row-cols-md-5 g-2 p-2">
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Optimization</h3>
+                                            <!-- <h3>{{result[37]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="checkbox" value=""
+                                                name="coveredcontainer" id="flexCheckDefault" [(ngModel)]="result[39]"
+                                                (change)="getSelection('coveredcontainer',39,'checked')" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Unison Limited</h3>
+                                            <!-- <h3>{{result[38]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="coveredcontainer"
+                                                id="flexCheckDefault" [checked]="result[40]==='Yes'"
+                                                (change)="getSelection('coveredcontainer',40,'radio')"
+                                                [disabled]="result[39]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Promton Incorporation</h3>
+                                            <!-- <h3>{{result[39]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="coveredcontainer"
+                                                id="flexCheckDefault" [checked]="result[41]==='Yes'"
+                                                (change)="getSelection('coveredcontainer',41,'radio')"
+                                                [disabled]="result[39]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Fix Corporate</h3>
+                                            <!-- <h3>{{result[40]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="coveredcontainer"
+                                                id="flexCheckDefault" [checked]="result[42]==='Yes'"
+                                                (change)="getSelection('coveredcontainer',42,'radio')"
+                                                [disabled]="result[39]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>eCom Limited</h3>
+                                            <!-- <h3>{{result[41]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="coveredcontainer"
+                                                id="flexCheckDefault" [checked]="result[43]==='Yes'"
+                                                (change)="getSelection('coveredcontainer',43,'radio')"
+                                                [disabled]="result[39]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md g-3 py-3 input-img-card">
+                    <div class="col-md">
+                        <div class="card truck-card">
+                            <h2>Rail</h2>
+                            <div class="row row-cols-md-5 g-2 p-2">
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Optimization</h3>
+                                            <!-- <h3>{{result[42]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="checkbox" value="" name="rail"
+                                                id="flexCheckDefault" [(ngModel)]="result[44]"
+                                                (change)="getSelection('rail',44,'checked')" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Unison Limited</h3>
+                                            <!-- <h3>{{result[43]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="rail"
+                                                id="flexCheckDefault" [checked]="result[45]=='Yes'"
+                                                (change)="getSelection('rail',45,'radio')" [disabled]="result[44]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Promton Incorporation</h3>
+                                            <!-- <h3>{{result[44]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="rail"
+                                                id="flexCheckDefault" [checked]="result[46]=='Yes'"
+                                                (change)="getSelection('rail',46,'radio')" [disabled]="result[44]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Fix Corporate</h3>
+                                            <!-- <h3>{{result[45]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="rail"
+                                                id="flexCheckDefault" [checked]="result[47]=='Yes'"
+                                                (change)="getSelection('rail',47,'radio')" [disabled]="result[44]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>eCom Limited</h3>
+                                            <!-- <h3>{{result[46]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="rail"
+                                                id="flexCheckDefault" [checked]="result[48]=='Yes'"
+                                                (change)="getSelection('rail',48,'radio')" [disabled]="result[44]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md g-3 py-3 input-img-card">
+                    <div class="col-md">
+                        <div class="card truck-card">
+                            <h2>Air</h2>
+                            <div class="row row-cols-md-5 g-2 p-2">
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Optimization</h3>
+                                            <!-- <h3>{{result[47]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="checkbox" value="" name="air"
+                                                id="flexCheckDefault" [(ngModel)]="result[49]"
+                                                (change)="getSelection('air',49,'checked')" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Unison Limited</h3>
+                                            <!-- <h3>{{result[48]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="air"
+                                                id="flexCheckDefault" [checked]="result[50]=='Yes'"
+                                                (change)="getSelection('air',50,'radio')" [disabled]="result[49]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Promton Incorporation</h3>
+                                            <!-- <h3>{{result[49]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="air"
+                                                id="flexCheckDefault" [checked]="result[51]=='Yes'"
+                                                (change)="getSelection('air',51,'radio')" [disabled]="result[49]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>Fix Corporate</h3>
+                                            <!-- <h3>{{result[50]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="air"
+                                                id="flexCheckDefault" [checked]="result[52]=='Yes'"
+                                                (change)="getSelection('air',52,'radio')" [disabled]="result[49]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="card language-card">
+                                        <div class="card-body">
+                                            <h3>eCom Limited</h3>
+                                            <!-- <h3>{{result[51]}}</h3> -->
+                                        </div>
+                                        <div class="card-footer form-check">
+                                            <input class=" checkfrominput" type="radio" value="" name="air"
+                                                id="flexCheckDefault" [checked]="result[53]=='Yes'"
+                                                (change)="getSelection('air',53,'radio')" [disabled]="result[49]" [disabled]="checkdisable"/>
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="showEmmisionStatus">
+                    <h1 class="pt-5">Emissions</h1>
+                    <div class="row row-cols-md g-3 py-3">
+                        <div class="col-md">
+                            <div class="card p-2 h-100">
+                                <apx-chart [series]="co2emission.series" [chart]="co2emission.chart"
+                                    [dataLabels]="co2emission.dataLabels" [plotOptions]="co2emission.plotOptions"
+                                    [yaxis]="co2emission.yaxis" [xaxis]="co2emission.xaxis" [fill]="co2emission.fill"
+                                    [title]="co2emission.title" [tooltip]="co2emission.tooltip">
+                                </apx-chart>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="card p-2 h-100">
+                                <apx-chart [series]="n2oemission.series" [chart]="n2oemission.chart"
+                                    [dataLabels]="n2oemission.dataLabels" [plotOptions]="n2oemission.plotOptions"
+                                    [yaxis]="n2oemission.yaxis" [xaxis]="n2oemission.xaxis" [fill]="n2oemission.fill"
+                                    [title]="n2oemission.title" [tooltip]="n2oemission.tooltip">
+                                </apx-chart>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="card p-2 h-100">
+                                <apx-chart [series]="ch4emission.series" [chart]="ch4emission.chart"
+                                    [dataLabels]="ch4emission.dataLabels" [plotOptions]="ch4emission.plotOptions"
+                                    [yaxis]="ch4emission.yaxis" [xaxis]="ch4emission.xaxis" [fill]="ch4emission.fill"
+                                    [title]="ch4emission.title" [tooltip]="ch4emission.tooltip">
+                                </apx-chart>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

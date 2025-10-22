@@ -1,0 +1,274 @@
+<div class="elearingnewui">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+
+    <mat-card class="inputcard shadow p-3">
+        <div class="row ">
+            <div class="col-10">
+                <div class="inputtitle"> Create Course</div>
+                <div class="subtitle">You can create your course </div>
+            </div>
+            <div class="col-2">
+                <button class="primary-btn" (click)="toggleadd()"> Add </button>
+            </div>
+        </div>
+        <form [formGroup]="createcoursegroup" class="form">
+            <div class="row g-3" *ngIf="isadd" [@inOutAnimation]>
+                <div class="borderbottom"></div>
+
+                <div class="col-6 mar-b">
+                    <div class="lebel"> instructor Email Id </div>
+                    <input formControlName="instructormailid" class="form-control" type="email" #input
+                        [value]="input.value.toLowerCase()" name="email"
+                        pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,20}" (focusout)="emailvalidation()">
+                </div>
+                <div class="col-6 mar-b">
+                    <div class="lebel"> instructor Name </div>
+                    <input formControlName="instructorname" class="form-control" type="text">
+                </div>
+                <div class="col-6 mar-b">
+                    <div class="lebel"> Password </div>
+                    <input formControlName="password" class="form-control" type="password">
+                </div>
+                <div class="col-6 mar-b">
+                    <div class="lebel"> Product Type </div>
+                    <select formControlName="producttype" class="form-control" id="myDatalistInput"
+                        (change)="getGameList($event)" [(ngModel)]="selectedProductType">
+
+                        <option value="">Select Product Type</option>
+                        <option value="Non-Ai">Non-Ai</option>
+                        <option value="Non-AI-Coach">Non-Ai-Coach</option>
+                        <option value="Language Lab">Language Lab</option>
+                        <option value="Others">Others</option>
+
+
+                    </select>
+                </div>
+                <div class="col-6 mar-b">
+                    <div class="lebel"> Game List </div>
+                    <select formControlName="gameid" class="form-control" id="myDatalistInput"
+                        (change)="getQuestionList($event)">
+                        <option value="">Select Game List</option>
+                        <option *ngFor="let game of gameListArray; let i=index" [value]="game.aigameid">
+                            {{game.aigamename}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-6 mar-b"
+                    *ngIf="(selectedProductType==='Non-Ai')||(selectedProductType==='Non-AI-Coach')||(selectedProductType==='Others')">
+                    <div class="lebel"> Question Set List </div>
+                    <select formControlName="questionsetid" class="form-control" id="myDatalistInput">
+                        <option value="">Select Question Set</option>
+                        <option *ngFor="let question of QustionListArray; let i=index"
+                            [value]="question.aiquestionsetid">
+                            {{question.aiquestionsetname}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-6 mar-b">
+                    <div class="lebel"> Course Name </div>
+                    <input formControlName="coursename" class="form-control" type="text">
+                </div>
+                <div class="col-6 mar-b">
+                    <div class="lebel"> No. Of Licenses </div>
+                    <input formControlName="nooflicense" class="form-control" type="number">
+                </div>
+                <div class=" savebtnalign">
+                    <button class="primary-btn" (click)="save()" [disabled]="isButtonDisabled"> Create </button>
+                </div>
+            </div>
+        </form>
+    </mat-card>
+
+    <mat-card class="inputcard-table shadow" style="margin-top:20px;margin-bottom:10px">
+        <div class="row " style="margin:10px 0px 20px 0px">
+            <div class="col-4 " style="display: flex;align-items:center;justify-content:left">
+                <mat-radio-group aria-label="Select an option" [(ngModel)]="searchFlag">
+                    <mat-radio-button value="instructor">Instructor Email Id</mat-radio-button>&nbsp;&nbsp;
+                    <mat-radio-button value="student">Student Email Id</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div class="col-5" style="display: flex;align-items:center;justify-content:left"
+                *ngIf="searchFlag=='instructor'">
+                <input [(ngModel)]="instructormailidforsearch" placeholder="Enter Instructor Email" class="form-control"
+                    type="email">
+            </div>
+            <div class="col-5 " style="display: flex;align-items:center;justify-content:left"
+                *ngIf="searchFlag=='student'">
+                <input [(ngModel)]="studentemailsearch" placeholder="Enter Student Email" class="form-control"
+                    type="email">
+            </div>
+            <div class="col-2">
+                <button class="primary-btn" (click)="search()">Search</button>
+            </div>
+            <div class="col-1 mar-b centeral">
+                <!-- <mat-icon class="sidenav-icon navicon" aria-hidden="false" getTableData() (click)="getTableData()"
+                    aria-label="Example home icon">autorenew</mat-icon> -->
+
+                <mat-icon (click)="rotate(); refreshClick()" [@rotatedState]='state' class="sidenav-icon navicon"
+                    aria-hidden="false" aria-label="Example home icon">autorenew</mat-icon>
+
+            </div>
+        </div>
+        <div style="display:flex;justify-content: center;align-items:center;height:100%">
+        </div>
+
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
+
+            <ng-container matColumnDef="instructorname">
+                <th mat-header-cell *matHeaderCellDef> Instructor Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="emailid">
+                <th mat-header-cell *matHeaderCellDef> Email Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="password">
+                <th mat-header-cell *matHeaderCellDef> Password </th>
+                <td mat-cell *matCellDef="let element" class="hidetext"> {{element.password}} </td>
+            </ng-container>
+
+            <!-- <ng-container matColumnDef="attempt">
+                <th mat-header-cell *matHeaderCellDef> Attempt </th>
+                <td mat-cell *matCellDef="let element" class="hidetext"> {{element.attempt}} </td>
+            </ng-container> -->
+
+
+            <ng-container matColumnDef="update">
+                <th mat-header-cell *matHeaderCellDef> Update </th>
+                <td mat-cell *matCellDef="let element" class="edit">
+                    <mat-icon class="sidenav-icon" (click)="updatepassword(element)" aria-hidden="false"
+                        aria-label="Example home icon">
+                        edit</mat-icon>
+            </ng-container>
+
+            <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef> Delete</th>
+                <td mat-cell *matCellDef="let element" class="edit">
+                    <mat-icon class="sidenav-icon" (click)="delete(element)" aria-hidden="false"
+                        aria-label="Example home icon">
+                        delete</mat-icon>
+            </ng-container>
+
+            <ng-container matColumnDef="courses">
+                <th mat-header-cell *matHeaderCellDef> Courses </th>
+                <td mat-cell *matCellDef="let element" class="courses" (click)="course(element);">
+                    <mat-icon class="sidenav-icon" aria-hidden="false"
+                        aria-label="Example home icon">arrow_drop_down</mat-icon>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="add">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let element" class="add">
+                    <mat-icon class="sidenav-icon" (click)="addcourse(element)" aria-hidden="false"
+                        aria-label="Example home icon">
+                        add</mat-icon>
+            </ng-container>
+            <!-- //expand -->
+            <ng-container matColumnDef="expandedDetail">
+                <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+
+                    <div class="row student-element-detail"
+                        [@detailExpand]="element.isExpanded ? 'expanded' : 'collapsed'">
+                        <table style="background-color: rgba(233, 233, 233, 0.979);" mat-table
+                            [dataSource]="dataSourceelement">
+
+                            <!-- <ng-container matColumnDef="coursecode">
+                                <th mat-header-cell *matHeaderCellDef> <b>Course Code</b> </th>
+                                <td mat-cell *matCellDef="let element" style="text-align: center !important;">
+                                    <mat-chip color="accent" style="cursor: pointer;" [class]="StatusClass"
+                                        (click)="goTo(element.coursecode)" selected>{{modifyStr(element.coursecode)}}
+                                    </mat-chip>
+                                </td>
+
+                            </ng-container> -->
+                            <ng-container matColumnDef="coursecode">
+                                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> <b>Course Code</b> </th>
+                                <td mat-cell *matCellDef="let element" style="text-align: center;">
+                                  <mat-chip color="accent" style="cursor: pointer; display: inline-block;" 
+                                            [class]="StatusClass"
+                                            (click)="goTo(element.coursecode)" selected>
+                                    {{ modifyStr(element.coursecode) }}
+                                  </mat-chip>
+                                </td>
+                              </ng-container>
+                              
+                            <ng-container matColumnDef="coursename">
+                                <th mat-header-cell style="text-align: center;" *matHeaderCellDef><b>Course Name</b>
+                                </th>
+                                <td mat-cell style="text-align: center;" *matCellDef="let element">
+                                    {{element.coursename}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="producttype">
+                                <th mat-header-cell style="text-align: center;" *matHeaderCellDef> <b>producttype</b>
+                                </th>
+                                <td mat-cell style="text-align: center;" *matCellDef="let element">
+                                    {{element.producttype}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="datecreated">
+                                <th mat-header-cell style="text-align: center;" *matHeaderCellDef><b>Date Created</b>
+                                </th>
+                                <td mat-cell style="text-align: center;" *matCellDef="let element">
+                                    {{element.createdat}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="licenseno">
+                                <th mat-header-cell style="text-align: center;" *matHeaderCellDef> <b>License No</b>
+                                </th>
+                                <td mat-cell style="text-align: center;" *matCellDef="let element">
+                                    {{element.nooflicense}} </td>
+                            </ng-container>
+                            <!-- <ng-container matColumnDef="update">
+                                <th mat-header-cell style="text-align: center;" *matHeaderCellDef><b>Update</b> </th>
+                                <td mat-cell style="text-align: center;" *matCellDef="let element" class="edit">
+                                    <mat-icon class="sidenav-icon" (click)="edit(element)" aria-hidden="false"
+                                        aria-label="Example home icon">
+                                        edit</mat-icon>
+                            </ng-container> -->
+                            <ng-container matColumnDef="update">
+                                <th mat-header-cell *matHeaderCellDef style="text-align: center;">
+                                  <b>Update</b>
+                                </th>
+                                <td mat-cell *matCellDef="let element" style="text-align: center;">
+                                  <mat-icon 
+                                    style="cursor: pointer; vertical-align: middle;"
+                                    (click)="edit(element)"
+                                    aria-hidden="false"
+                                    aria-label="Edit icon">
+                                    edit
+                                  </mat-icon>
+                                </td>
+                              </ng-container>
+
+
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumnsexpand"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumnsexpand;"></tr>
+                        </table>
+
+                    </div>
+                </td>
+            </ng-container>
+
+
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let element; columns:displayedColumns;" class="table-element-row"
+                [class.table-expanded-row]="element.isExpanded"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="table-detail-row"></tr>
+        </table>
+
+        
+        <mat-paginator class="paginator" [length]="totalItems" [pageSize]="pageSize" 
+            (page)="onPageChange($event)" showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator>
+    </mat-card>
+</div>

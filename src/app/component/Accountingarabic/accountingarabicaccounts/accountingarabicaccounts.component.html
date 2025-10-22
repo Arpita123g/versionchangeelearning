@@ -1,0 +1,741 @@
+<div class="elearingnewui accounting">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="inbound">
+                <div class="row" class="element-first " *ngIf="optional[3]">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+                <!-- <h1>balance sheet.inr</h1> -->
+                <h1 *ngIf="optional[0]">الميزانية العمومية, SAR
+                    <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px; direction:rtl'> كيف تؤثر الزيادة في الحسابات الدائنة/المدينة على الميزانية العمومية وما هي آثارها على الوضع المالي  </p>
+              </div>&nbsp; &nbsp; &nbsp;
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600; direction:rtl'> س1 </h4>
+              </div> 
+            </div><br>
+              <div style='display:flex;'>
+                
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;direction:rtl'>
+                      صف تأثير شراء الآلات والمعدات الجديدة على الميزانية العمومية، مع الأخذ في الاعتبار التأثيرات قصيرة المدى وطويلة المدى. 
+                  </p>
+                </div>&nbsp; &nbsp; &nbsp;
+                <div>
+                    <h4 style='color: white; margin:0 auto; font-weight: 600;'>س2</h4>
+                  </div> 
+              </div>
+          </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+
+                <div class="row row-cols-md g-3 py-3 input-img-card" *ngIf="optional[0]">
+                    <div class="col-md-6">
+                        <div class="card mark-img">
+                            <img src="assets/images/accounting/balancesheet.svg" alt="Your Image" class="img-fluid"
+                                style="width: 51%; height: 16rem;" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-2">
+                            <apx-chart [series]="balancesheetchart.series" [chart]="balancesheetchart.chart"
+                                [dataLabels]="balancesheetchart.dataLabels"
+                                [plotOptions]="balancesheetchart.plotOptions" [yaxis]="balancesheetchart.yaxis"
+                                [xaxis]="balancesheetchart.xaxis" [fill]="balancesheetchart.fill"
+                                [title]="balancesheetchart.title" [tooltip]="balancesheetchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 g-3 py-4" *ngIf="optional[0]">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" style="width: 50%;">أصول 
+                                    </th>
+                                    <!-- <th>Assets</th> -->
+                                    <th class="rsl_tbl-thead-th" style="width: 50%;"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <h3 style="margin: 0;font-weight: bold;"> الأصول المتداولة </h3>
+                                    <!-- current assests -->
+                                    <td></td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>نقدي</td>
+                                    <!-- case -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[0]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac9',0)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td> الحسابات المدينة </td>
+                                    <!-- account recievable -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[1]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac10',1)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td> المخزون  </td>
+                                    <!-- inventory -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[2]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac11',2)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>المصاريف المدفوعة مقدما</td>
+                                    <!-- prepaid expenses -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[3]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac12',3)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الأصول المتداولة الأخرى</td>
+                                    <!-- other current asset -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[4]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac13',4)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-bottom: 2px solid black;border-top: 2px solid;">
+                                    <td style="padding: 14px;">إجمالي الأصول المتداولة</td>
+                                    <!-- total current assets -->
+                                    <td style="padding-right: 24px;">{{result[5]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table rsl_tbl mt-5">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" style="width: 50%;">  الأصول الثابتة
+                                    </th>
+                                    <!-- fixed assets -->
+                                    <th class="rsl_tbl-thead-th" style="width: 50%;"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الآلات والمعدات</td>
+                                    <!-- machinery equipment -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[12]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac17',12)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الأثاث والتجهيزات</td>
+                                    <!-- furniture and fixture -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[13]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac18',13)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>تحسينات الإيجار</td>
+                                    <!-- leasehold improvement -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[14]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac19',14)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الأراضي والمباني</td>
+                                    <!-- land and buildings -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[15]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac20',15)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الأصول الثابتة الأخرى</td>
+                                    <!-- other fixed assets -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[16]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac21',16)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-bottom: 2px solid black;border-top: 2px solid;">
+                                    <td style="padding: 14px;">إجمالي الأصول الثابتة</td>
+                                    <!-- total fixed asets -->
+                                    <td style="padding-right: 24px;">{{result[17]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table rsl_tbl mt-5">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" style="width: 50%;"> أصول أخرى
+                                    </th>
+                                    <!-- other assets -->
+                                    <th class="rsl_tbl-thead-th" style="width: 50%;"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الأصول غير الملموسة</td>
+                                    <!-- intangible assets -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[23]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac25',23)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td> شهرة المحل  </td>
+                                    <!-- good will -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[24]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac26',24)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الودائع</td>
+                                    <!-- deposits -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[25]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac27',25)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>أصول أخرى</td>
+                                    <!-- other assets -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[26]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac28',26)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" style="border-top: 2px solid black;">
+                                    <td style="padding: 14px;">مجموع الأصول الأخرى</td>
+                                    <!-- total other assets -->
+                                    <td style="padding-right: 24px;">{{result[27]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-bottom: 2px solid black;border-top: 2px solid;">
+                                    <td style="padding: 14px;">إجمالي الأصول</td>
+                                    <!-- total assets -->
+                                    <td style="padding-right: 24px;">{{result[28]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" style="width: 50%;">  الإلتزامات
+                                    </th>
+                                    <!-- liabilities -->
+                                    <th class="rsl_tbl-thead-th" style="width: 50%;"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <h3 style="margin: 0;font-weight: bold;">  الالتزامات المتداولة </h3>
+                                    <!-- current liabilities -->
+                                    <td></td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الحسابات الدائنة</td>
+                                    <!-- account paybale -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[6]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac35',6)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>المصروفات المستحقة</td>
+                                    <!-- accured expenses -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[7]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac36',7)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الإيرادات غير المستحقة</td>
+                                    <!-- unearned revenew -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[8]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac37',8)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td> أوراق دفع </td>
+                                    <!-- notes short term -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[9]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac38',9)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الجزء الحالي من الديون الطويلة الأجل</td>
+                                    <!-- current part of lonf term debt -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[10]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac39',10)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-bottom: 2px solid black;border-top: 2px solid;">
+                                    <td style="padding: 14px;">إجمالي المطلوبات الحالية</td>
+                                    <!-- total current liabilities -->
+                                    <td style="padding-right: 24px;">{{result[11]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table rsl_tbl mt-5">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" style="width: 50%;">الديون طويلة الأجل
+                                    </th>
+                                    <!-- long term debt -->
+                                    <th class="rsl_tbl-thead-th" style="width: 50%;"></th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>قروض بنكية مستحقة الدفع</td>
+                                    <!-- bank loan payble -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[18]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac43',18)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الأوراق المالية المستحقة الدفع للمساهمين</td>
+                                    <!-- notes payble stock holders -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[19]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac44',19)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>: الجزء قصير الأجل</td>
+                                    <!-- less short term portion -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[20]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac45',20)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>ديون أخرى طويلة الأجل</td>
+                                    <!-- pther long term debt -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[21]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac46',21)" />
+                                    </td>
+                                </tr>
+                                <!-- its is a blank td dont use-->
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td style="padding: 25px;"></td>
+                                    <td></td>
+                                </tr>
+                                <!-- its is a blank td -->
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-bottom: 2px solid black;border-top: 2px solid;">
+                                    <td style="padding: 14px;">مجموع المطلوبات</td>
+                                    <!-- total liabilities -->
+                                    <td style="padding-right: 24px;">{{result[22]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table rsl_tbl mt-5">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" style="width: 50%;">حقوق المساهمين
+                                    </th>
+                                    <!-- share holders equity -->
+                                    <th class="rsl_tbl-thead-th" style="width: 50%;"></th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <h3 style="margin: 0;font-weight: bold;padding: 12px;">أصول أخرى</h3>
+                                    <!-- others assets -->
+                                    <td></td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>رأس المال المستثمر</td>
+                                    <!-- invested capital -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[29]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac52',29)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td> الأرباح المحتجزة - أول المدة  </td>
+                                    <!-- retain earning-beginning -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[30]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac53',30)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الأرباح المحتجزة - الحالية</td>
+                                    <!-- retain earning -curerent -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[31]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac54',31)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" style="border-top: 2px solid black;">
+                                    <td style="padding: 14px;">إجمالي حقوق الملكية</td>
+                                    <!-- total equity -->
+                                    <td style="padding-right: 24px;">{{result[32]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-bottom: 2px solid black;border-top: 2px solid;">
+                                    <td style="padding: 14px;">إجمالي المطلوبات وحقوق الملكية</td>
+                                    <!-- total liabilities and equities -->
+                                    <td style="padding-right: 24px;">{{result[33]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 g-3 py-3" *ngIf="optional[1]">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">بيان الدخل, SAR
+                                        <mat-icon appTippy="
+                                            <div class='help-tip p-2'>
+                                                <div style='display:flex;'>
+                                                    <div>
+                                                        <p style='margin: 0 auto; color: white; font-size:13px; direction:rtl'> اشرح كيف يؤثر انخفاض المصاريف التشغيلية على صافي دخل الشركة وربحيتها. </p>
+                                                    </div>&nbsp; &nbsp; &nbsp;
+                                                    <div>
+                                                        <h4 style='color: white; margin:0 auto; font-weight: 600; direction:rtl'> س1 </h4>
+                                                    </div> 
+                                                </div><br>
+                                                <div style='display:flex;'>
+                                                    <div>
+                                                        <p style='margin: 0 auto; color: white; font-size:13px;direction:rtl'>
+                                                            ناقش العلاقة بين الاعتراف بالإيرادات وأثرها على بيان الدخل. 
+                                                        </p>
+                                                    </div>&nbsp; &nbsp; &nbsp;
+                                                    <div>
+                                                        <h4 style='color: white; margin:0 auto; font-weight: 600;direction:rtl'> س2 </h4>
+                                                    </div> 
+                                                </div>
+                                            </div> ">
+                                            help_outline
+                                        </mat-icon>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الإيرادات</td>
+                                    <!-- revenue -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[34]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac61',34)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>تكلفة البضاعة المباعة</td>
+                                    <!-- cost of good sold -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[35]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac62',35)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-bottom: 2px solid black;border-top: 2px solid;">
+                                    <td style="padding: 14px;"> إجمالي الربح </td>
+                                    <!-- gross  profit -->
+                                    <td style="padding-top: 24px;">{{result[36]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" style="border-bottom: 2px solid black;">
+                                    <td style="padding: 14px;">مصاريف التشغيل والنفقات العامة</td>
+                                    <!-- operating expense and over head -->
+                                    <td style="padding-right: 14px;"></td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>  مصاريف بيعية  </td>
+                                    <!-- sales cost -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[37]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac66',37)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td> مصاريف إدارية  </td>
+                                    <!-- administration cost -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[38]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac67',38)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الديون المعدومة</td>
+                                    <!-- bad debt -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[39]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac68',39)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الأرباح قبل الفوائد والضرائب والإهلاك والاستهلاك</td>
+                                    <!-- ebitda -->
+                                    <td>{{result[40]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الاستهلاك والإطفاء</td>
+                                    <!-- depreciations and amortization -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[41]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac70',41)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الأرباح قبل الفوائد والضرائب</td>
+                                    <!-- ebit -->
+                                    <td>{{result[42]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>مصاريف الفائدة</td>
+                                    <!-- interest expense -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[43]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac73',43)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الربح قبل الضرائب</td>
+                                    <!-- pbt -->
+                                    <td>{{result[44]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>ضريبة</td>
+                                    <!-- tax -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[45]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac76',45)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الربح بعد الضرائب</td>
+                                    <!-- pat -->
+                                    <td>{{result[46]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="incomestatementchart.series" [chart]="incomestatementchart.chart"
+                                [dataLabels]="incomestatementchart.dataLabels"
+                                [plotOptions]="incomestatementchart.plotOptions" [yaxis]="incomestatementchart.yaxis"
+                                [xaxis]="incomestatementchart.xaxis" [fill]="incomestatementchart.fill"
+                                [title]="incomestatementchart.title" [tooltip]="incomestatementchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 g-3 py-3" *ngIf="optional[2]">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4"> بيان التدفق النقدي, SAR
+
+                                        <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px; direction:rtl'>  قم بتحليل تأثير استلام دفعة مقدمة كبيرة من العميل على بيان التدفق النقدي على مدى فترات متعددة. </p>
+              </div>&nbsp; &nbsp; &nbsp;
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600; direction:rtl'> س1 </h4>
+              </div> 
+            </div><br>
+              <div style='display:flex;'>
+                
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;direction:rtl'>
+                    صف كيف يمكن للاستثمار في أنشطة البحث والتطوير أن يؤثر على التدفق النقدي، مع الأخذ في الاعتبار الآثار المباشرة والمستقبلية.
+                  </p>
+                </div>&nbsp; &nbsp; &nbsp;
+                <div>
+                    <h4 style='color: white; margin:0 auto; font-weight: 600;direction:rtl'>س2</h4>
+                  </div> 
+              </div>
+          </div> ">
+                                            help_outline
+                                        </mat-icon>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>الرصيد الافتتاحي</td>
+                                    <!-- operating balance -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[47]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac81',47)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td> التدفق النقدي من الأنشطة التشغيلية </td>
+                                    <!-- cash flow from operation -->
+                                    <td>{{result[48]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td> النقد الداخل  </td>
+                                    <!-- cash in -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[49]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac84',49)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td> النقد الخارج  </td>
+                                    <!-- cash out -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[50]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac85',50)" />
+                                    </td>
+                                </tr>
+
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td> التدفق النقدي من الأنشطة الاستثمارية </td>
+                                    <!-- cash flow from investment -->
+                                    <td>{{result[51]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>  النقد الداخل  </td>
+                                    <!-- cash in -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[52]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac88',52)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td> النقد الخارج  </td>
+                                    <!-- cash out -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[53]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac89',53)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td> التدفق النقدي من الأنشطة التمويلية </td>
+                                    <!-- cash flow from financing -->
+                                    <td>{{result[54]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td> النقد الداخل  </td>
+                                    <!-- cash in  -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[55]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac92',55)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td> النقد الخارج  </td>
+                                    <!-- cash out -->
+                                    <td>
+                                        <input class="input-no_box" placeholder="Input value here" type="number"
+                                            [(ngModel)]="result[56]" [disabled]="checkdisable"
+                                            (focusout)="inputtablevalue('ac93',56)" />
+                                    </td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>رصيد النقد الختامي</td>
+                                    <!-- closing cash balance -->
+                                    <td>{{result[57]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="cashflowstatementchart.series" [chart]="cashflowstatementchart.chart"
+                                [dataLabels]="cashflowstatementchart.dataLabels"
+                                [plotOptions]="cashflowstatementchart.plotOptions"
+                                [yaxis]="cashflowstatementchart.yaxis" [xaxis]="cashflowstatementchart.xaxis"
+                                [fill]="cashflowstatementchart.fill" [title]="cashflowstatementchart.title"
+                                [tooltip]="cashflowstatementchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

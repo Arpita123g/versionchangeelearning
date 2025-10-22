@@ -1,0 +1,73 @@
+<div class="elearingnewui bus_iness">
+    <div class="container">
+        <div class="body-element">
+            <!-- <h1>Reading</h1> -->
+            <!-- <ng-container *ngIf="readingarray">
+                <h1> {{readingarray[4]}}</h1>
+            </ng-container>
+            <ng-container *ngIf="commonarray">
+                <h1> {{commonarray[4]}}</h1>
+            </ng-container> -->
+            <h1>{{ readingarray[4] | titlecase}}</h1>
+            <div class="row ">
+                <div class="col-6">
+                    <div class="card reading-card">
+                        <div class="card-header">
+                            <!-- Materials from Instructor -->
+                            {{readingarray[0]}}
+                            <!-- <button (click)="openPdf()">Open PDF</button> -->
+                        </div>
+                        <div class="card-body" *ngFor="let data of instructormaterialList">
+                            <h2 class="card-title">{{data.headingname}} </h2>
+                            <p class="card-text">{{data.description}}</p>
+                            <button class="btn btn-primary" (click)="fileview(data.fileurl || data.link)">{{readingarray[8]}}</button>
+                        </div>
+                        <div class="card-body" *ngFor="let data of allMaterialList">
+                            <h2 class="card-title">{{data.headingname}} </h2>
+                            <p class="card-text">{{data.description}}</p>
+                            <button class="btn btn-primary" (click)="fileview(data.fileurl || data.link)">{{readingarray[8]}}</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card reading-card">
+                        <div class="card-header">
+                            <!-- Game Instructions -->
+                              {{readingarray[5]}}
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">
+                                <!-- Decision-making instruction -->
+                                {{readingarray[1]}}
+                            </h2>
+                            <p class="card-text">
+                                <!-- The decision-making process is
+                                introduced in this document step-by-step -->
+                                {{readingarray[2]}}
+                            </p>
+                            <button class="btn btn-primary" (click)="openpdf()">{{readingarray[7]}}</button>
+                        </div>
+                        <div class="card-body" *ngIf="gamename==='HRM_Fintech'">
+                            <h2 class="card-title">Case description
+                            </h2>
+                            <p class="card-text">The simulation business case is described in this document</p>
+                            <button class="btn btn-primary" (click)="openpdffordescription()">Read</button>
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">
+                                <!-- Walkthrough video -->
+                                  {{readingarray[6]}}
+                            </h2>
+                            <p class="card-text">
+                                <!-- A tutorial on making step-by-step decisions  -->
+                                {{readingarray[3]}}
+                            </p>
+                            <button class="btn btn-primary" (click)="workthroughvideo()">{{readingarray[8]}}</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,110 @@
+<!-- new -->
+<div class="elearingnewui">
+    <div class="innovation-element-body">
+        <div class="case-management-body">
+            <div class="table-responsive mb-3 mt-3">
+                <div class="links">
+                    <ul>
+                        <button class="out-look-btn "
+                            [style.background-color]="round === selectedButton? 'lightgrey' : ''"
+                            *ngFor="let round of rounds; let i = index;"
+                            (click)="roundclick(i,round)">{{round}}</button>
+                    </ul>
+                </div>
+                <div class="case-texts__content">
+                    <div id="initial">
+                        <div class="case-texts__content-main">
+                            <div class=" case-texts__container">
+                                <label class="case-texts__content-after-label pb-2">Original text</label>
+                                <div class=" case-texts__container-textarea">
+                                    At FinTech Innovators, a pioneering payment gateway solutions company established in
+                                    2015 and headquartered in Mumbai, we embark on a meaningful journey of philanthropy
+                                    through fundraising activities. Our mission is to leverage our financial technology
+                                    expertise to make a positive impact on society. Through this initiative, we aim to
+                                    support causes that align with our values and contribute to building a better world.
+                                    <br><br>
+
+                                    Our primary objective is to organize a successful charity fundraising event,
+                                    utilizing our financial technology prowess for the greater good. By mobilizing
+                                    resources, managing budgets judiciously, and executing tasks efficiently, we aim to
+                                    raise funds that will make a substantial difference in the lives of those in need.
+                                    In this project, envision yourselves as key contributors to our mission. As Project
+                                    Managers, your role is pivotal. You are entrusted with understanding the intricacies
+                                    of the fundraising project, strategically managing resources, allocating budgets
+                                    wisely, and ensuring the timely completion of tasks. Your decisions will shape the
+                                    success of this initiative, aligning with our vision of making a lasting, positive
+                                    impact on the community. <br><br>
+
+                                    As Project Managers of FinTech Innovators, your task is to lead this charity
+                                    fundraising project. Dive into the Project Map & Analysis tab to comprehend the
+                                    project's nuances, explore interconnections between tasks, and craft a
+                                    well-thought-out plan. Navigate to Task Allocation & Measures to strategically
+                                    assign resources based on their skills, and consider measures like overtime or
+                                    training to enhance efficiency. Finally, explore Reports to gauge how effectively
+                                    you utilized budget, time, and resources, and reflect on your project management
+                                    skills.
+                                </div>
+                            </div>
+                            <div class="case-texts__content-starea">
+                                <div class="case-texts__content-after">
+                                    <label class="case-texts__content-after-label">Your custom default text</label>
+                                    <st-editor name="" id="" [config]="config" [(ngModel)]="contentvalue"
+                                        [disabled]="defaultcase=='yes'" (focusout)="contentvaluechange()"></st-editor>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table page-name case-management-table">
+                <thead>
+                    <tr>
+                        <th style="background-color: #fff2e8;">
+                            <h2>Parameters</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="table-responsive">
+                <table class=" table case-management-table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="first-div">
+                                <div>Budget, INR</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.e5; let i = index">
+                                <textarea [value]="res.e5[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInnovationValue('e5',i,inputElement.value)"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">Duration, days</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.e6; let i = index">
+                                <input [value]="res.e6[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInnovationValue('e6',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Resources</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.e7; let i = index">
+                                <input [value]="res.e7[i]*100" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeInnovationValue('e7',i,inputElement.value)">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

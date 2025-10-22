@@ -1,0 +1,79 @@
+<div class="elearingnewui">
+    <div class="case-management-body-forheader">
+        <div class="card case-management-body-card">
+            <div class="card-body">
+                <div class=" tab-content-body">
+                    <ul class="nav second-nav" role="tablist">
+                        <li class="nav-item active" role="presentation" data-bs-target="#market" data-bs-toggle="tab"
+                            aria-controls="market" role="tab" aria-selected="false" (click)="search('market')">
+                            <span class="nav-link" aria-current="page">Market</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#projectmap" data-bs-toggle="tab"
+                            aria-controls="projectmap" role="tab" aria-selected="false" (click)="search('projectmap')">
+                            <span class="nav-link" aria-current="page">Project Map</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#planning" data-bs-toggle="tab"
+                            aria-controls="planning" role="tab" aria-selected="false" (click)="search('planning')">
+                            <span class="nav-link" aria-current="page">Planning</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#criteria" data-bs-toggle="tab"
+                            aria-controls="criteria" role="tab" aria-selected="false" (click)="search('criteria')">
+                            <span class="nav-link" aria-current="page">Criteria</span>
+                        </li>
+                        <!-- <li class="nav-item" role="presentation" data-bs-target="#innovation" data-bs-toggle="tab"
+                            aria-controls="innovation" role="tab" aria-selected="false" (click)="search('innovation')">
+                            <span class="nav-link" aria-current="page">Innovation</span>
+                        </li> -->
+                        <li class="nav-item" role="presentation" data-bs-target="#foodrforthought" data-bs-toggle="tab"
+                            aria-controls="foodrforthought" role="tab" aria-selected="false"
+                            (click)="search('foodforthought')">
+                            <span class="nav-link" aria-current="page">Food For Thought</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#module" data-bs-toggle="tab"
+                            aria-controls="module" role="tab" aria-selected="false" (click)="search('general')">
+                            <span class="nav-link" aria-current="page">Module</span>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="tab-content tab-content-body">
+                    <div role="tabpanel" class="tab-pane fade show active" id="market"
+                        [ngClass]="{ 'active':activeTab==='market'}">
+                        <app-projectmanagementcasemarket *ngIf="activeTab==='market'"></app-projectmanagementcasemarket>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="projectmap"
+                        [ngClass]="{ 'active':activeTab==='projectmap'}">
+                        <app-projectmanagementcaseprojectmap
+                            *ngIf="activeTab==='projectmap'"></app-projectmanagementcaseprojectmap>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="planning"
+                        [ngClass]="{ 'active':activeTab==='planning'}">
+                        <app-projectmanagementcaseplanning
+                            *ngIf="activeTab==='planning'"></app-projectmanagementcaseplanning>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="criteria"
+                        [ngClass]="{ 'active':activeTab==='criteria'}">
+                        <app-projectmanagementcasecriteria
+                            *ngIf="activeTab==='criteria'"></app-projectmanagementcasecriteria>
+                    </div>
+                    <!-- <div role="tabpanel" class="tab-pane fade show " id="innovation"
+                        [ngClass]="{ 'active':activeTab==='innovation'}">
+                        <app-itcasemanagementinnovation
+                            *ngIf="activeTab==='innovation'"></app-itcasemanagementinnovation>
+                    </div> -->
+                    <div role="tabpanel" class="tab-pane fade show " id="foodrforthought"
+                        [ngClass]="{ 'active':activeTab==='foodforthought'}">
+                        <app-projectmanagementcasefoodforthought
+                            *ngIf="activeTab==='foodforthought'"></app-projectmanagementcasefoodforthought>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="module"
+                        [ngClass]="{ 'active':activeTab==='general'}">
+                        <app-projectmanagementcasemodule
+                            *ngIf="activeTab==='general'"></app-projectmanagementcasemodule>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

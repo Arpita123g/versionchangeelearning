@@ -1,0 +1,437 @@
+<div class="elearingnewui bus_iness">
+    <div class="elearingnewui-container">
+        <div class="body-element  ">
+
+
+            <div class="chat-page ">
+                <div class="card individual-card">
+                    <div class="card-header individual-card_head">
+                        <img src="../../../../assets/images/businessbasics/forumcardimg.jpg"
+                            class="img-fluid individual-card_img">
+                    </div>
+                    <!-- <div class="plus_btn">
+                        <span class="plus_btn-span">FORUM - </span><span class="plus_btn-span">{{forumname}}</span>
+                    </div> -->
+                    <div class="plus_btn">
+                        <span class="plus_btn-span">{{forumTextBig}} - </span><span
+                            class="plus_btn-span">{{forumname}}</span>
+                    </div>
+                    <div class="plus_sign" (click)="showforum()">
+                        +
+                    </div>
+                    <div class="plus_sign-text">
+                        New Topic
+                    </div>
+                    <div class="card-body card-body-first" *ngIf="isforumshow">
+                        <div class="card mt-1 card-body-first_card">
+                            <div class="card-header card-body-first_card_header">
+                                New Topic
+                            </div>
+                            <div class="card-body mt-3 card-body-first_card_body">
+                                <!--  -->
+                                <div class="search_dropdown pt-2 pb-4" *ngIf="usermode === 'instructor'">
+                                    <div>
+                                        <div style="display: flex; flex-direction: column;">
+                                            <label>Select Round</label>
+                                            <select class="round-select" (change)="onRoundSelected($event)"
+                                                [(ngModel)]="selectround">
+                                                <option selected disabled>Select Round</option>
+                                                <option *ngFor="let round of rounds">{{round}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="listnameshow">
+
+                                        <div style="display: flex; flex-direction: column;">
+                                            <label>Select Student Name</label>
+                                            <form [formGroup]="searchForm">
+                                                <input class="name-select" type="text" formControlName="searchInput"
+                                                    [(ngModel)]="selectname" placeholder="Search..."
+                                                    [disabled]="isDisabled" (focus)="onSearchFocus()"
+                                                    (input)="onSearchChange()" [ngModelOptions]="{standalone: true}">
+                                            </form>
+                                        </div>
+
+                                        <div class="list-name" *ngIf="isListVisible">
+                                            <div *ngFor="let option of filteredOptions;let i=index"
+                                                (click)="onOptionSelected(option,i)">
+                                                {{ option}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>Topic</div>
+                                <input class="card-body-first_card_body-input" [(ngModel)]="topic">
+                                <div class="msg-label">Message</div>
+                                <div class="editor-wrapper">
+                                    <ngx-editor-menu [editor]="editor" [menus]="customMenus"></ngx-editor-menu>
+                                    <ngx-editor [(ngModel)]="html" [editor]="editor"
+                                        placeholder="Type here..."></ngx-editor>
+                                </div>
+                            </div>
+                            <div class="card-footer card-body-first_card-footer">
+                                <div>
+                                    <button class="mt-2 mb-2 btnfooter" (click)="replysubjectbuttonclick()">
+                                        Send
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" chatbox">
+                    <div class="row h-100 m-0 mt-3 chat-row">
+                        <div class="col-md-4 h-100 lft-col-md  ">
+
+                            <div class="left-col card">
+                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                    <div class="accordion-item">
+
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                                aria-expanded="false" aria-controls="flush-collapseOne"
+                                                (click)="fetchTopic(1)">
+                                                <!-- <mat-icon aria-hidden="false" style="color:#4CAF50">circle</mat-icon> -->
+                                                Round 1
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <div class="expand-body-game"
+                                                    [ngClass]="{ 'selected':selectedDiv === i }"
+                                                    *ngFor="let datavalue of data[0]?.topics;let i=index"
+                                                    (click)="fetchChatConversation(i,data[0]?.subjectid[i],'')">
+                                                    <span class="expand-body-game-icon">{{datavalue.substring(0,
+                                                        1).toUpperCase()}}</span>{{datavalue}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <!-- <mat-icon aria-hidden="false" style="color:#4CAF50">circle</mat-icon> -->
+
+                                        <h2 class="accordion-header" id="flush-headingTwo">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+                                                aria-expanded="false" aria-controls="flush-collapseTwo"
+                                                (click)="fetchTopic(2)">
+                                                Round 2
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <div class="expand-body-game "
+                                                    [ngClass]="{ 'selected':selectedDiv === i }"
+                                                    *ngFor="let datavalue of data[1]?.topics;let i=index"
+                                                    (click)="fetchChatConversation(i,data[1]?.subjectid[i],'')">
+                                                    <span class="expand-body-game-icon ">{{datavalue.substring(0,
+                                                        1).toUpperCase()}}</span>{{datavalue}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <!-- <mat-icon aria-hidden="false" style="color:#4CAF50">circle</mat-icon> -->
+
+                                        <h2 class="accordion-header" id="flush-headingThree">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+                                                aria-expanded="false" aria-controls="flush-collapseThree"
+                                                (click)="fetchTopic(3)">
+                                                Round 3
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingThree"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <div class="expand-body-game"
+                                                    [ngClass]="{ 'selected':selectedDiv === i }"
+                                                    *ngFor="let datavalue of data[2]?.topics;let i=index"
+                                                    (click)="fetchChatConversation(i,data[2]?.subjectid[i],'')"><span
+                                                        class="expand-body-game-icon">{{datavalue.substring(0,
+                                                        1).toUpperCase()}}</span>{{datavalue}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <!-- <mat-icon aria-hidden="false" style="color:#4CAF50">circle</mat-icon> -->
+
+                                        <h2 class="accordion-header" id="flush-headingFour">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseFour"
+                                                aria-expanded="false" aria-controls="flush-collapseThree"
+                                                (click)="fetchTopic(4)">
+                                                Round 4
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseFour" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <div class="expand-body-game"
+                                                    [ngClass]="{ 'selected':selectedDiv === i }"
+                                                    *ngFor="let datavalue of data[3]?.topics;let i=index"
+                                                    (click)="fetchChatConversation(i,data[3]?.subjectid[i],'')"><span
+                                                        class="expand-body-game-icon">{{datavalue.substring(0,
+                                                        1).toUpperCase()}}</span>{{datavalue}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <!-- <mat-icon aria-hidden="false" style="color:#4CAF50">circle</mat-icon> -->
+
+                                        <h2 class="accordion-header" id="flush-headingFive">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseFive"
+                                                aria-expanded="false" aria-controls="flush-collapseThree"
+                                                (click)="fetchTopic(5)">
+                                                Round 5
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseFive" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <div class="expand-body-game"
+                                                    [ngClass]="{ 'selected':selectedDiv === i }"
+                                                    *ngFor="let datavalue of data[4]?.topics;let i=index"
+                                                    (click)="fetchChatConversation(i,data[4]?.subjectid[i],'')"><span
+                                                        class="expand-body-game-icon">{{datavalue.substring(0,
+                                                        1).toUpperCase()}}</span>{{datavalue}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <!-- <mat-icon aria-hidden="false" style="color:#4CAF50">circle</mat-icon> -->
+
+                                        <h2 class="accordion-header" id="flush-headingSix">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseSix"
+                                                aria-expanded="false" aria-controls="flush-collapseThree"
+                                                (click)="fetchTopic(6)">
+                                                Round 6
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseSix" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <div class="expand-body-game"
+                                                    [ngClass]="{ 'selected':selectedDiv === i }"
+                                                    *ngFor="let datavalue of data[5]?.topics;let i=index"
+                                                    (click)="fetchChatConversation(i,data[5]?.subjectid[i],'')"><span
+                                                        class="expand-body-game-icon">{{datavalue.substring(0,
+                                                        1).toUpperCase()}}</span>{{datavalue}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <!-- <mat-icon aria-hidden="false" style="color:#4CAF50">circle</mat-icon> -->
+
+                                        <h2 class="accordion-header" id="flush-headingSeven">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven"
+                                                aria-expanded="false" aria-controls="flush-collapseThree"
+                                                (click)="fetchTopic(7)">
+                                                Round 7
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseSeven" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingSeven"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <div class="expand-body-game"
+                                                    [ngClass]="{ 'selected':selectedDiv === i }"
+                                                    *ngFor="let datavalue of data[6]?.topics;let i=index"
+                                                    (click)="fetchChatConversation(i,data[6]?.subjectid[i],'')"><span
+                                                        class="expand-body-game-icon">{{datavalue.substring(0,
+                                                        1).toUpperCase()}}</span>{{datavalue}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <!-- <mat-icon aria-hidden="false" style="color:#4CAF50">circle</mat-icon> -->
+
+                                        <h2 class="accordion-header" id="flush-headingEignt">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseEight"
+                                                aria-expanded="false" aria-controls="flush-collapseThree"
+                                                (click)="fetchTopic(8)">
+                                                Round 8
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseEight" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingEight"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <div class="expand-body-game"
+                                                    [ngClass]="{ 'selected':selectedDiv === i }"
+                                                    *ngFor="let datavalue of data[7]?.topics;let i=index"
+                                                    (click)="fetchChatConversation(i,data[7]?.subjectid[i],'')"><span
+                                                        class="expand-body-game-icon">{{datavalue.substring(0,
+                                                        1).toUpperCase()}}</span>{{datavalue}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <!-- <mat-icon aria-hidden="false" style="color:#4CAF50">circle</mat-icon> -->
+
+                                        <h2 class="accordion-header" id="flush-headingNine">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseNine"
+                                                aria-expanded="false" aria-controls="flush-collapseThree"
+                                                (click)="fetchTopic(9)">
+                                                Round 9
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseNine" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <div class="expand-body-game"
+                                                    [ngClass]="{ 'selected':selectedDiv === i }"
+                                                    *ngFor="let datavalue of data[8]?.topics;let i=index"
+                                                    (click)="fetchChatConversation(i,data[8]?.subjectid[i],'')"><span
+                                                        class="expand-body-game-icon">{{datavalue.substring(0,
+                                                        1).toUpperCase()}}</span>{{datavalue}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <!-- <mat-icon aria-hidden="false" style="color:#4CAF50">circle</mat-icon> -->
+
+                                        <h2 class="accordion-header" id="flush-headingTen">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseTen"
+                                                aria-expanded="false" aria-controls="flush-collapseThree"
+                                                (click)="fetchTopic(10)">
+                                                Round 10
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseTen" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <div class="expand-body-game"
+                                                    [ngClass]="{ 'selected':selectedDiv === i }"
+                                                    *ngFor="let datavalue of data[9]?.topics;let i=index"
+                                                    (click)="fetchChatConversation(i,data[9]?.subjectid[i],'')"><span
+                                                        class="expand-body-game-icon">{{datavalue.substring(0,
+                                                        1).toUpperCase()}}</span>{{datavalue}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8  rt-col-md">
+
+                            <div class="card chat-app-card chat-app">
+                                <div class="invite-card" *ngIf="showInviteCard">
+                                    <div class="invite-card-head">
+                                        <p>Welcome, {{username}}</p>
+                                        <p>Ready? Set. Chat! Let's jump right into things.</p>
+                                    </div>
+                                    <div>
+                                        <img class="img-src-cls" src="../../../assets/images/chatmessage.svg">
+                                    </div>
+                                </div>
+                                <div class="chat" *ngIf="!showInviteCard">
+                                    <div class="chat-body1">
+                                        <div class="chat-header clearfix">
+                                            <div class="row">
+                                                <div class=" d-flex" style="align-items: center;">
+                                                    <div class="circle-div-istructor">
+                                                        {{chatname?
+                                                        chatname.substring(0,
+                                                        1).toUpperCase() : ''}}
+                                                    </div>
+                                                    <div class="chat-about">
+                                                        <h3 class="m-b-0">
+                                                            {{chatname.toUpperCase()}}
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div #scrollContainer class="chat-history">
+                                            <div class="refresh-btn mb-2">
+                                                <div class="refresh-btn-div">
+                                                    <mat-icon [@rotateIcon]="iconRotationState" (click)="rotateIcon()"
+                                                        style="opacity: 0.8;">refresh</mat-icon>
+                                                    ...Load More
+                                                </div>
+                                            </div>
+                                            <ul class="m-b-0" *ngFor="let conversation of conversationarray">
+                                                <li class="clearfix leftside" *ngIf="conversation.mailid===useremail">
+
+                                                    <div class="message other-message float-right">
+                                                        <div class=" other-message-body">{{conversation.message}}</div>
+                                                    </div>
+
+                                                </li>
+                                                <li class="clearfix" *ngIf="conversation.mailid!==useremail">
+                                                    <div class="message-data message my-message">
+                                                        <div class="message-data ">
+
+                                                            <div>
+                                                                <div class="leftside-rply">
+                                                                    <div class="leftside-rply-upper">
+                                                                        <div class="circle-div-student">
+                                                                            {{conversation.username.substring(0,
+                                                                            1).toUpperCase()}}
+                                                                        </div>
+                                                                        <div>
+                                                                            <span
+                                                                                class="message-name">{{conversation.username}}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="message-date">
+                                                                        {{conversation.date}}</div>
+                                                                </div>
+
+                                                                <div class="leftside-rply-body">{{conversation.message}}
+                                                                </div>
+                                                                <div class="message-time">{{conversation.time}}</div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                    <div class="chat-message clearfix">
+                                        <div class="d-flex flex-row mb-0 gap-2 w-100 align-items-center message-area">
+                                            <div class="w-100 d-flex align-items-center">
+                                                <textarea class="chat-text-area " rows="1"
+                                                    [placeholder]="notopic ? 'To start a chat for this round, create a new topic first…': 'Message...' "
+                                                    [(ngModel)]="conversation">
+                                                </textarea> &nbsp;
+                                            </div>
+                                            <div class="d-flex justify-content-end align-items-center">
+                                                <button mat-mini-fab color="primary">
+                                                    <mat-icon (click)="sendMessage()">send</mat-icon>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

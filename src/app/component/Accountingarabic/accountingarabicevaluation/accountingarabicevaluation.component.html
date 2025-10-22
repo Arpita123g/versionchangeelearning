@@ -1,0 +1,759 @@
+<!-- for arabic -->
+<div class="elearingnewui accounting_new" >
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="routesandtech">
+                <div class="row" class="element-first">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="optional[3]" 
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+                <h1 *ngIf="optional[0]" > الفرص والميزانية العمومية
+                    <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex;'>
+              
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px; direction:rtl'> تقييم فوائد ومخاطر إعادة هيكلة الديون لتحسين الاستقرار المالي للشركة على المدى الطويل وتأثيرها على الميزانية العمومية. </p>
+              </div>&nbsp; &nbsp; &nbsp;
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600; direction:rtl'> س1 </h4>
+              </div> 
+            </div><br>
+              <div style='display:flex;'>
+                
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;direction:rtl'>
+                    ناقش المزايا المحتملة للاستثمار في الأصول الثابتة الإضافية مقابل تحسين الأصول الحالية لتعزيز الميزانية العمومية.
+                  </p>
+                </div>&nbsp; &nbsp; &nbsp;
+                <div>
+                    <h4 style='color: white; margin:0 auto; font-weight: 600;'>س2</h4>
+                  </div> 
+              </div>
+          </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card " *ngIf="optional[0]" >
+                    <div class="col-md">
+                        <div class="card arabic-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/accounting/investmentresearchdev.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <!-- <h2 >الاستثمار في البحث والتطوير</h2> -->
+                                <h2 *ngIf="attempt === 1">{{result[0]}}</h2>
+                                <h2 *ngIf="attempt === 2">{{result[0]}}</h2>
+                                <h2 *ngIf="attempt === 3">{{result[0]}}</h2>
+                                <p class="card-text-arabic" *ngIf="attempt === 1">ومن خلال الاستثمار في البحث والتطوير، تستطيع الشركة تطوير منتجات وتقنيات جديدة، وفتح مصادر دخل جديدة وضمان الاستدامة على المدى الطويل.
+                                    <br><br>
+
+                                    <span class="fontsizeandweight"> الفائدة: </span> - زيادة الأصول غير الملموسة بمبلغ 100 ألف ريال سعودي سنوياً. <br><br>
+
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span> زيادة الأصول غير الملموسة، مثل براءات الاختراع والملكية الفكرية، وتحسين تقييم الشركة. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                                <p class="card-text-arabic" *ngIf="attempt === 2"> من خلال الاستثمار في البحث والتطوير، تستطيع الشركة تطوير منتجات وتقنيات جديدة، وفتح مصادر دخل جديدة وضمان الاستدامة على المدى الطويل.
+
+                                    <br><br>
+
+                                    <span class="fontsizeandweight"> الفائدة: </span> -  نمو الإيرادات المتوقع بنسبة 10-15% سنويًا بعد إطلاق المنتج بنجاح، مما يعني 150 ألف ريال سعودي إضافية في الإيرادات السنوية. <br><br>
+
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span>  تعزيز سمعة العلامة التجارية كمبتكرة في مجال العناية بالبشرة الصديقة للبيئة. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                                <p class="card-text-arabic" *ngIf="attempt === 3"> تخصيص الأموال لتطوير تقنيات جديدة وحلول برمجية وخدمات تقنية معلومات مبتكرة.
+
+                                    <br><br>
+
+                                    <span class="fontsizeandweight"> الفائدة: </span> -  إمكانية توليد 800 ألف ريال سعودي إضافية من الإيرادات سنويًا من خلال خطوط المنتجات والحلول الجديدة. <br><br>
+
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span>   وضع الشركة كشركة رائدة في مجال الابتكار؛ والنمو المستدام على المدى الطويل. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check" *ngIf="attempt === 1 || attempt === 2">
+                                <div class="routesandtechcostcard">
+                                    <h3> الاستثمار سنويا, SAR </h3>
+                                    <h3>{{result[1]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="balancesheet"
+                                    [checked]="result[18]==1" (change)="getSelection('balancesheet',18)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                            <!-- for round 3 -->
+                            <div class="card-footer form-check" *ngIf="attempt === 3">
+                                <div class="routesandtechcostcard">
+                                    <h3> الاستثمار سنويا, SAR </h3>
+                                    <h3>{{result[1]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="balancesheet"
+                                    [checked]="result[18]==1" (change)="getSelection('balancesheet',18)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  arabic-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/accounting/expensionmanufactoring.jpg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <!-- <h2 >توسيع مرافق التصنيع</h2> -->
+                                <h2 *ngIf="attempt === 1">{{result[2]}}</h2>
+                                <h2 *ngIf="attempt === 2">{{result[2]}}</h2>
+                                <h2 *ngIf="attempt === 3">{{result[2]}}</h2>
+                                <p class="card-text-arabic" *ngIf="attempt === 1">
+                                    من خلال توسيع مرافق التصنيع، تستطيع الشركة تلبية الطلب المتزايد، وتقليل الاختناقات الإنتاجية، والاستفادة من اقتصاديات الحجم. <br><br><br>
+
+                                    <span class="fontsizeandweight"> الفائدة: </span> زيادة الطاقة الإنتاجية والكفاءة وزيادة الأصول الثابتة بمبلغ 500 ألف ريال سعودي. <br><br>
+
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span> تعزيز الأصول الثابتة، مثل الآلات والمعدات، ودعم النمو المستقبلي. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[1].id)"
+                                        [ngStyle]="{color: textshow[cardData1[1].id]?'red':'blue'}">
+
+                                    </span>
+                                </p>
+                                <p class="card-text-arabic" *ngIf="attempt === 2"> من خلال توسيع مرافق التصنيع، تستطيع الشركة تلبية الطلب المتزايد، والحد من الاختناقات الإنتاجية، والاستفادة من اقتصاديات الحجم.
+                                    <br><br><br>
+                                    <span class="fontsizeandweight"> الفائدة: </span> -   زيادة محتملة في الإيرادات بمقدار 200 ألف ريال سعودي سنويًا. <br><br>
+
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span>   زيادة في الطاقة الإنتاجية بنسبة 50%، مما يسمح للشركة بتلبية الطلب المتزايد. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                                <p class="card-text-arabic" *ngIf="attempt === 3"> تعزيز البنية التحتية لتكنولوجيا المعلومات في الشركة من خلال بناء أو استئجار مراكز بيانات إضافية وترقية الأنظمة الحالية.
+
+                                    <br><br>
+
+                                    <span class="fontsizeandweight"> الفائدة: </span> -   يمكن أن تؤدي زيادة القدرة إلى زيادة الإيرادات بمقدار 400 ألف ريال سعودي سنويًا من خلال ضم عملاء جدد. <br><br>
+
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span>   تعزيز الموثوقية وقابلية التوسع وتقديم خدمة أفضل والاحتفاظ بالعملاء على المدى الطويل. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check" *ngIf="attempt === 1 || attempt === 2">
+                                <div class="routesandtechcostcard">
+                                    <h3> الاستثمار سنويا, SAR </h3>
+                                    <h3>{{result[3]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="balancesheet"
+                                    [checked]="result[19]==1" (change)="getSelection('balancesheet',19)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                            <!-- for round 3 -->
+                            <div class="card-footer form-check" *ngIf="attempt === 3">
+                                <div class="routesandtechcostcard">
+                                    <h3> الاستثمار سنويا, SAR </h3>
+                                    <h3>{{result[3]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="balancesheet"
+                                    [checked]="result[19]==1" (change)="getSelection('balancesheet',19)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card arabic-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/accounting/deptrestructuring.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <!-- <h2 >إعادة هيكلة الديون</h2> -->
+                                <h2 *ngIf="attempt === 1">{{result[4]}}</h2>
+                                <h2 *ngIf="attempt === 2">{{result[4]}}</h2>
+                                <h2 *ngIf="attempt === 3">{{result[4]}}</h2>
+                                <p class="card-text-arabic" *ngIf="attempt === 1">ومن خلال إعادة التفاوض على شروط الديون أو توحيد القروض ذات الفائدة المرتفعة، تستطيع الشركة خفض إجمالي تكلفة ديونها وتعزيز ميزانيتها العمومية.
+                                    <br><br>
+                                    <span class="fontsizeandweight"> الفائدة: </span> - تخفيض مصاريف الفائدة بمبلغ 40 ألف ريال سعودي سنويا.<br><br><br>
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span>  خفض عبء خدمة الدين، وتحرير التدفق النقدي للاستثمار أو توزيع الأرباح. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[2].id)"
+                                        [ngStyle]="{color: textshow[cardData1[2].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                                <p class="card-text-arabic" *ngIf="attempt === 2"> من خلال إعادة التفاوض على شروط الدين أو توحيد القروض ذات الفائدة المرتفعة، يمكن للشركة خفض إجمالي تكلفة ديونها وتعزيز ميزانيتها العمومية.
+
+                                    <br><br>
+
+                                    <span class="fontsizeandweight"> الفائدة: </span> -  تحسين التدفق النقدي، وتحرير 50 ​​ألف ريال سعودي سنويًا للاستثمارات الأخرى.
+                                    <br><br>
+
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span>  خفض مدفوعات الفائدة بنسبة 2% سنويًا، وتوفير 6 آلاف روبية سنويًا. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                                <p class="card-text-arabic" *ngIf="attempt === 3"> إعادة تمويل الديون القائمة لخفض أسعار الفائدة أو تمديد فترات السداد لتحسين التدفق النقدي.
+                                    <br><br>
+                                    <span class="fontsizeandweight"> الفائدة: </span> -   توفير 300 ألف ريال سعودي من أقساط الفائدة سنويًا. <br><br><br>
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span>  تحسين الاستقرار المالي وزيادة السيولة. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check" *ngIf="attempt === 1 || attempt === 2">
+                                <div class="routesandtechcostcard">
+                                    <h3> الاستثمار سنويا, SAR </h3>
+                                    <h3>{{result[5]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="balancesheet"
+                                    [checked]="result[20]==1" (change)="getSelection('balancesheet',20)"
+                                    [disabled]="checkdisable"  />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                            <!-- for round 3 -->
+                            <div class="card-footer form-check" *ngIf="attempt === 3">
+                                <div class="routesandtechcostcard">
+                                    <h3> الاستثمار سنويا, SAR </h3>
+                                    <h3>{{result[5]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="balancesheet"
+                                    [checked]="result[20]==1" (change)="getSelection('balancesheet',20)"
+                                    [disabled]="checkdisable"  />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="pt-5" *ngIf="optional[1]" > الفرص، بيان الدخل
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px; direction:rtl'> قم بتقييم التأثير المحتمل لإدخال خط إنتاج جديد على هامش الربح الإجمالي للشركة وصافي الدخل. </p>
+                        </div>&nbsp; &nbsp; &nbsp;
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600; direction:rtl'> س1 </h4>
+                        </div> 
+                      </div><br>
+                        <div style='display:flex;'>
+                          
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;direction:rtl'>
+                                اشرح كيف يمكن لتطبيق مبادرات خفض التكاليف أن يؤثر على مختلف مكونات بيان الدخل، مثل تكلفة البضائع المباعة ونفقات التشغيل.
+                            </p>
+                          </div>&nbsp; &nbsp; &nbsp;
+                          <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>س2</h4>
+                            </div> 
+                        </div>
+                    </div> ">
+                                  help_outline
+                              </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card" *ngIf="optional[1]" >
+                    <div class="col-md">
+                        <div class="card arabic-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/accounting/costreductionin.svg" class="card-img-top"
+                                    alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <!-- <h2>مبادرات خفض التكاليف</h2> -->
+                                <h2 *ngIf="attempt === 1">{{result[6]}}</h2>
+                                <h2 *ngIf="attempt === 2">{{result[6]}}</h2>
+                                <h2 *ngIf="attempt === 3">{{result[6]}}</h2>
+                                <p class="card-text card-text-arabic" *ngIf="attempt === 1">
+                                    من خلال تنفيذ تدابير خفض التكاليف مثل التصنيع المرن أو الاستعانة بمصادر خارجية للأنشطة غير الأساسية، يمكن للشركة تعزيز صافي أرباحها.
+                                    
+                                    <br><br>
+
+                                    <span class="fontsizeandweight"> الفائدة: </span> انخفاض في نفقات التشغيل بمقدار 50 ألف ريال سعودي سنويًا. <br><br>
+
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span>  خفض تكلفة البضائع المباعة ونفقات التشغيل، مما يعزز هوامش الربح الإجمالي والصافي. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                                <p class="card-text-arabic" *ngIf="attempt === 2"> من خلال تنفيذ تدابير خفض التكاليف مثل التصنيع المرن أو الاستعانة بمصادر خارجية للأنشطة غير الأساسية، يمكن للشركة تعزيز صافي أرباحها.
+
+                                    <br><br>
+
+                                    <span class="fontsizeandweight"> الفائدة: </span> -  انخفاض تكاليف التشغيل بنسبة 10%، وتوفير 20 ألف ريال سعودي سنويًا.
+                                    <br><br>
+
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span> تحسين هوامش الربح <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                                <p class="card-text-arabic" *ngIf="attempt === 3"> تنفيذ استراتيجيات لخفض تكاليف التشغيل، بما في ذلك تحسين سلاسل التوريد وإعادة التفاوض على العقود وأتمتة العمليات.
+
+
+                                    <br><br>
+
+                                    <span class="fontsizeandweight"> الفائدة: </span> -  توفير مباشر بقيمة 800 ألف ريال سعودي سنويًا.
+                                    <br><br><br>
+
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span> زيادة الربحية وعمليات أكثر رشاقة. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check" *ngIf="attempt === 1 || attempt === 2">
+                                <div class="routesandtechcostcard">
+                                    <h3> الاستثمار سنويا, SAR </h3>
+                                    <h3>{{result[7]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="incomestatement"
+                                    [checked]="result[21]==1" (change)="getSelection('incomestatement',21)"
+                                    [disabled]="checkdisable"  />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                            <!-- for round 3 -->
+                            <div class="card-footer form-check" *ngIf="attempt === 3">
+                                <div class="routesandtechcostcard">
+                                    <h3> الاستثمار سنويا, SAR </h3>
+                                    <h3>{{result[7]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="incomestatement"
+                                    [checked]="result[21]==1" (change)="getSelection('incomestatement',21)"
+                                    [disabled]="checkdisable"  />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  arabic-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/accounting/premiumproductline.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <!-- <h2> مقدمة لسلسلة المنتجات المتميزة </h2> -->
+                                <h2 *ngIf="attempt === 1">{{result[8]}}</h2>
+                                <h2 *ngIf="attempt === 2">{{result[8]}}</h2>
+                                <h2 *ngIf="attempt === 3">{{result[8]}}</h2>
+                                
+                                <p class="card-text card-text-arabic" *ngIf="attempt === 1">
+                                    من خلال طرح خط إنتاج متميز يستهدف العملاء الأثرياء، تستطيع الشركة الاستفادة من قطاعات سوقية جديدة وزيادة الربحية الإجمالية. <br><br><br>
+
+                                    <span class="fontsizeandweight"> الفائدة: </span> زيادة الإيرادات بمقدار 200 ألف ريال سعودي سنويًا. <br><br>
+
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span>  تنويع مصادر الإيرادات وتعزيز وضع العلامة التجارية.
+                                    <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[1].id)"
+                                        [ngStyle]="{color: textshow[cardData1[1].id]?'red':'blue'}">
+
+                                    </span>
+                                </p>
+                                <p class="card-text-arabic" *ngIf="attempt === 2"> من خلال طرح خط إنتاج متميز يستهدف العملاء الأثرياء، تستطيع الشركة الاستفادة من قطاعات سوقية جديدة وزيادة الربحية الإجمالية.
+
+                                    <br><br><br>
+
+                                    <span class="fontsizeandweight"> الفائدة: </span> - الوصول إلى منتجات ذات هامش ربح أعلى مع إمكانية زيادة الإيرادات السنوية بمقدار 100 ألف ريال سعودي.
+
+                                    <br><br>
+
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span> تعزيز وضع العلامة التجارية في سوق السلع الفاخرة. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                                <p class="card-text-arabic" *ngIf="attempt === 3"> إطلاق خدمات تقنية معلومات متميزة تلبي احتياجات العملاء رفيعي المستوى، وتوفر ميزات متقدمة ودعمًا شخصيًا.
+
+                                    <br><br>
+
+                                    <span class="fontsizeandweight"> الفائدة: </span> -   إيرادات إضافية بقيمة 250 ألف ريال سعودي سنويًا.
+                                    <br><br><br>
+
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span>  موقف أقوى في السوق وإمكانية تحقيق هوامش ربح أعلى. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check" *ngIf="attempt === 1 || attempt === 2">
+                                <div class="routesandtechcostcard">
+                                    <h3>الاستثمار سنويا, SAR</h3>
+                                    <h3>{{result[9]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="incomestatement"
+                                    [checked]="result[22]==1" (change)="getSelection('incomestatement',22)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                            <!-- for round 3 -->
+                            <div class="card-footer form-check" *ngIf="attempt === 3">
+                                <div class="routesandtechcostcard">
+                                    <h3>الاستثمار سنويا, SAR</h3>
+                                    <h3>{{result[9]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="incomestatement"
+                                    [checked]="result[22]==1" (change)="getSelection('incomestatement',22)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card arabic-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/accounting/devlopmentandtraing.png"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <!-- <h2> تدريب وتطوير الموظفين </h2> -->
+                                <h2 *ngIf="attempt === 1">{{result[10]}}</h2>
+                                <h2 *ngIf="attempt === 2">{{result[10]}}</h2>
+                                <h2 *ngIf="attempt === 3">{{result[10]}}</h2>
+                                <p class="card-text card-text-arabic" *ngIf="attempt === 1">
+                                    من خلال الاستثمار في تدريب وتطوير الموظفين، تستطيع الشركة تنمية قوة عاملة ماهرة، وتعزيز الابتكار والنمو على المدى الطويل.
+                                     <br><br><br>
+
+                                    <span class="fontsizeandweight"> الفائدة: </span> زيادة الإنتاجية بمقدار 60 ألف ريال سعودي سنويًا. <br><br>
+
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span> تحسين مهارات الموظفين ومعنوياتهم، مما يؤدي إلى منتجات وخدمات عملاء ذات جودة أعلى. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[2].id)"
+                                        [ngStyle]="{color: textshow[cardData1[2].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                                <p class="card-text-arabic" *ngIf="attempt === 2"> من خلال الاستثمار في تدريب وتطوير الموظفين، تستطيع الشركة تنمية قوة عاملة ماهرة، وتعزيز الابتكار والنمو على المدى الطويل.
+
+                                    <br><br><br>
+
+                                    <span class="fontsizeandweight"> الفائدة: </span> -  تحسين إنتاجية الموظفين بنسبة 15%، مما يؤدي إلى زيادة إضافية في الكفاءة بمقدار 30 ألف ريال سعودي سنويًا.
+
+                                    <br><br>
+
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span> انخفاض معدل دوران الموظفين وتحسين الروح المعنوية. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                                <p class="card-text-arabic" *ngIf="attempt === 3"> الاستثمار في رفع مهارات الموظفين، والتركيز على أحدث التقنيات وأفضل الممارسات في خدمات تكنولوجيا المعلومات.
+
+                                    <br><br>
+
+                                    <span class="fontsizeandweight"> الفائدة: </span> -    تحسين الإنتاجية، مما يؤدي إلى زيادة محتملة في الإيرادات بمقدار 50 ألف ريال سعودي سنويًا.<br><br>
+
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span>   تحسين الاحتفاظ بالموظفين، وتحسين جودة الخدمة، وقوة عاملة أكثر ابتكارًا. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check" *ngIf="attempt === 1 || attempt === 2">
+                                <div class="routesandtechcostcard">
+                                    <h3>الاستثمار سنويا, SAR</h3>
+                                    <h3>{{result[11]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="incomestatement"
+                                    [checked]="result[23]==1" (change)="getSelection('incomestatement',23)"
+                                    [disabled]="checkdisable"/>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                            <!-- for round 3 -->
+                            <div class="card-footer form-check" *ngIf="attempt === 3">
+                                <div class="routesandtechcostcard">
+                                    <h3>الاستثمار سنويا, SAR</h3>
+                                    <h3>{{result[11]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="incomestatement"
+                                    [checked]="result[23]==1" (change)="getSelection('incomestatement',23)"
+                                    [disabled]="checkdisable"/>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="pt-5" *ngIf="optional[2]" > الفرص، بيان التدفق النقدي
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px; direction:rtl'>  قم بتحليل الآثار المحتملة على التدفق النقدي لتأجير المعدات مقارنة بشرائها مباشرة. </p>
+                        </div>&nbsp; &nbsp; &nbsp;
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600; direction:rtl'> س1 </h4>
+                        </div> 
+                      </div><br>
+                        <div style='display:flex;'>
+                          
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;direction:rtl'>
+                                ناقش المخاطر والمكافآت المرتبطة باستكشاف فرص التصدير لتنويع مصادر الدخل وتأثيرها على التدفق النقدي بمرور الوقت.
+                            </p>
+                          </div>&nbsp; &nbsp; &nbsp;
+                          <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>س2</h4>
+                            </div> 
+                        </div>
+                    </div> ">
+                                  help_outline
+                              </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 g-3 input-img-card" *ngIf="optional[2]" >
+                    <div class="col-md">
+                        <div class="card arabic-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/accounting/workingcapitalopt.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <!-- <h2> تحسين رأس المال العامل </h2> -->
+                                <h2 *ngIf="attempt === 1">{{result[12]}}</h2>
+                                <h2 *ngIf="attempt === 2">{{result[12]}}</h2>
+                                <h2 *ngIf="attempt === 3">{{result[12]}}</h2>
+                                <p class="card-text card-text-arabic" *ngIf="attempt === 1">
+                                    من خلال تبسيط إدارة المخزون، وتحسين الحسابات المدينة والمدفوعة، والتفاوض على شروط دفع مواتية مع الموردين، يمكن للشركة تحرير النقد للاستثمار والنمو. <br><br>
+
+                                    <span class="fontsizeandweight">الفائدة: </span>  زيادة التدفق النقدي بمقدار 50 ألف ريال سعودي سنويًا. <br><br>
+
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span>  تحسين السيولة وإدارة التدفق النقدي. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                                <p class="card-text-arabic" *ngIf="attempt === 2"> من خلال تبسيط إدارة المخزون، وتحسين الحسابات المدينة والمدفوعة، والتفاوض على شروط دفع مواتية مع الموردين، يمكن للشركة توفير النقد للاستثمار والنمو.
+
+                                    <br><br>
+
+                                    <span class="fontsizeandweight"> الفائدة: </span> -  تحسين التدفق النقدي بمقدار 50 ألف ريال سعودي سنويًا من خلال إدارة المخزون والحسابات المدينة بشكل أفضل.
+
+                                    <br><br>
+
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span>  تقليل الحاجة إلى الاقتراض قصير الأجل. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                                <p class="card-text-arabic" *ngIf="attempt === 3"> تبسيط إدارة التدفقات النقدية من خلال تحسين الحسابات المدينة وإدارة المخزون والحسابات الدائنة.
+                                    <br><br>
+                                    <span class="fontsizeandweight"> الفائدة: </span> -   تحسين السيولة، وتوفير 60 ألف ريال سعودي سنويًا للاستثمارات الأخرى.<br><br>
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span>  مرونة مالية أفضل وكفاءة تشغيلية. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check" *ngIf="attempt === 1 || attempt === 2">
+                                <div class="routesandtechcostcard">
+                                    <h3>الاستثمار سنويا, SAR</h3>
+                                    <h3>{{result[13]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="cashflow"
+                                    [checked]="result[24]==1" (change)="getSelection('cashflow',24)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                            <!-- for round 3 -->
+                            <div class="card-footer form-check" *ngIf="attempt === 3">
+                                <div class="routesandtechcostcard">
+                                    <h3>الاستثمار سنويا, SAR</h3>
+                                    <h3>{{result[13]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="cashflow"
+                                    [checked]="result[24]==1" (change)="getSelection('cashflow',24)"
+                                    [disabled]="checkdisable" />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card  arabic-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/accounting/equipmentfinancing.jpg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <!-- <h2> تمويل تأجير المعدات </h2> -->
+                                <h2 *ngIf="attempt === 1">{{result[14]}}</h2>
+                                <h2 *ngIf="attempt === 2">{{result[14]}}</h2>
+                                <h2 *ngIf="attempt === 3">{{result[14]}}</h2>
+                                <p class="card-text card-text-arabic" *ngIf="attempt === 1">
+                                    من خلال استئجار المعدات بدلاً من شرائها مباشرة، تستطيع الشركة الحصول على الأصول الضرورية دون الحاجة إلى استثمار أولي كبير، مما يسمح بتسهيل الميزانية وإدارة المخاطر. <br><br>
+
+                                    <span class="fontsizeandweight">الفائدة: </span>  الحفاظ على التدفق النقدي بمقدار 40 ألف ريال سعودي سنويًا. <br><br>
+
+                                    <span class="fontsizeandweight">الأثر على المدى الطويل: </span> الحفاظ على رأس المال لأغراض أخرى والمرونة في اقتناء المعدات.
+                                    <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[1].id)"
+                                        [ngStyle]="{color: textshow[cardData1[1].id]?'red':'blue'}">
+
+                                    </span>
+                                </p>
+                                <p class="card-text-arabic" *ngIf="attempt === 2"> من خلال استئجار المعدات بدلاً من شرائها مباشرة، تستطيع الشركة الحصول على الأصول الضرورية دون الحاجة إلى استثمار أولي كبير، مما يسمح بتسهيل الميزانية وإدارة المخاطر.
+                                    <br><br>
+                                    <span class="fontsizeandweight"> الفائدة: </span> -  تجنب الإنفاق الرأسمالي الأولي الكبير، وتوفير 100 ألف ريال سعودي نقدًا للسنة الأولى.
+                                    <br><br>
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span> توزيع تكلفة المعدات على مدى عمرها الإنتاجي. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                                <p class="card-text-arabic" *ngIf="attempt === 3"> تمويل تأجير معدات تكنولوجيا المعلومات الأساسية وتوزيع التكلفة على مدى فترة زمنية للحفاظ على التدفق النقدي.
+                                    <br><br>
+                                    <span class="fontsizeandweight"> الفائدة: </span> -   الوصول الفوري إلى أحدث التقنيات بتكلفة أولية بسيطة، مما قد يؤدي إلى زيادة الإيرادات بمقدار 500 ألف ريال سعودي.<br><br>
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span>  الوصول المستمر إلى أحدث التقنيات، والحفاظ على الميزة التنافسية. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check" *ngIf="attempt === 1 || attempt === 2">
+                                <div class="routesandtechcostcard">
+                                    <h3>الاستثمار سنويا, SAR</h3>
+                                    <h3>{{result[15]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="cashflow"
+                                    [checked]="result[25]==1" (change)="getSelection('cashflow',25)"
+                                    [disabled]="checkdisable"  />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                            <!-- for round 3 -->
+                            <div class="card-footer form-check" *ngIf="attempt === 3">
+                                <div class="routesandtechcostcard">
+                                    <h3>الاستثمار سنويا, SAR</h3>
+                                    <h3>{{result[15]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="cashflow"
+                                    [checked]="result[25]==1" (change)="getSelection('cashflow',25)"
+                                    [disabled]="checkdisable"  />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="card arabic-card h-100">
+                            <div class="craftingimg">
+                                <img src="../../../../assets/images/accounting/exportopporcunities.svg"
+                                    class="card-img-top" alt="Your Image" />
+                            </div>
+                            <div class="card-body">
+                                <!-- <h2> استكشاف فرص التصدير </h2> -->
+                                <h2  *ngIf="attempt === 1">{{result[16]}}</h2>
+                                <h2  *ngIf="attempt === 2">{{result[16]}}</h2>
+                                <h2  *ngIf="attempt === 3">{{result[16]}}</h2>
+
+                                <p class="card-text card-text-arabic"  *ngIf="attempt === 1">
+                                    من خلال الاستفادة من الأسواق العالمية، تستطيع الشركة الوصول إلى عملاء جدد وفرص للنمو، مما قد يعزز الربحية والمرونة في مواجهة التقلبات الاقتصادية المحلية. <br><br>
+
+                                    <span class="fontsizeandweight">الفائدة: </span> زيادة الإيرادات بمقدار 100 ألف ريال سعودي سنويًا. <br><br>
+
+                                    <span class="fontsizeandweight">الأثر على المدى الطويل: </span>: تنويع مصادر الإيرادات وتقليل الاعتماد على السوق المحلية. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[2].id)"
+                                        [ngStyle]="{color: textshow[cardData1[2].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                                <p class="card-text-arabic" *ngIf="attempt === 2"> من خلال الاستفادة من الأسواق العالمية، تستطيع الشركة الوصول إلى عملاء جدد وفرص للنمو، مما قد يعزز الربحية والمرونة في مواجهة التقلبات الاقتصادية المحلية.
+                                    <br><br>
+                                    <span class="fontsizeandweight"> الفائدة: </span> - الوصول إلى أسواق جديدة، مع زيادة محتملة في الإيرادات بمقدار 200 ألف ريال سعودي سنويًا.
+                                    <br><br>
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span>  تنويع مصادر الدخل <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                                <p class="card-text-arabic" *ngIf="attempt === 3"> استهداف وتأمين العقود مع العملاء الدوليين، وتوسيع حضور الشركة على المستوى العالمي.
+                                    <br><br>
+                                    <span class="fontsizeandweight"> الفائدة: </span> -   زيادة محتملة في الإيرادات بمقدار 300 ألف ريال سعودي سنويًا من العقود الدولية الجديدة.<br><br>
+                                    <span class="fontsizeandweight"> الأثر على المدى الطويل: </span>  تنويع مصادر الإيرادات وتقليل الاعتماد على الأسواق المحلية. <br><br>
+                                    <span class="mt-3" style="cursor: pointer;font-size: small;"
+                                        (click)="toggleText(cardData1[0].id)"
+                                        [ngStyle]="{color: textshow[cardData1[0].id]?'red':'blue'}">
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="card-footer form-check" *ngIf="attempt === 1 || attempt === 2">
+                                <div class="routesandtechcostcard">
+                                    <h3>الاستثمار سنويا, SAR</h3>
+                                    <h3>{{result[17]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="cashflow"
+                                    [checked]="result[26]==1" (change)="getSelection('cashflow',26)"
+                                    [disabled]="checkdisable"  />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                            <!-- for round 3 -->
+                            <div class="card-footer form-check" *ngIf="attempt === 3">
+                                <div class="routesandtechcostcard">
+                                    <h3>الاستثمار سنويا, SAR</h3>
+                                    <h3>{{result[17]}}</h3>
+                                </div>
+                                <input class=" checkfrominput" type="radio" name="cashflow"
+                                    [checked]="result[26]==1" (change)="getSelection('cashflow',26)"
+                                    [disabled]="checkdisable"  />
+                                <label class="form-check-label" for="flexCheckDefault">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

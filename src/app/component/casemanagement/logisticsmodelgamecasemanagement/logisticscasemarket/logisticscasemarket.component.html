@@ -1,0 +1,324 @@
+<!-- new -->
+<div class="elearingnewui">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="businessoutlook-element-body">
+        <div class="case-management-body">
+            <div class="table-responsive mb-3 mt-3">
+                <div class="links">
+                    <ul>
+                        <button class="out-look-btn "
+                            [style.background-color]="round === selectedButton? 'lightgrey' : ''"
+                            *ngFor="let round of rounds; let i = index;"
+                            (click)="roundclick(i,round)">{{round}}</button>
+                    </ul>
+                </div>
+                <div class="case-texts__content">
+
+                    <div id="initial">
+                        <div class="case-texts__content-main">
+                            <div class=" case-texts__container">
+                                <label class="case-texts__content-after-label pb-2">Original text</label>
+                                <div class=" case-texts__container-textarea">
+                                    Letsgo's logistics evolution is intricately shaped by four pivotal clients, each
+                                    with unique needs. Unison Limited, a seasoned FMCG manufacturer and a longstanding
+                                    partner, entrusts Letsgo with a diverse range of products, highlighting the
+                                    company's commitment to reliability and excellence. Promton Incorporation, a leading
+                                    player in FMCD manufacturing, relies on Letsgo for swift and efficient goods
+                                    movement, particularly in the dynamic South Indian market, showcasing Letsgo's
+                                    ability to meet specialized logistics requirements.<br><br>
+
+                                    Fix Corporate, a medium-sized textile manufacturer has found a dependable logistics
+                                    partner in Letsgo. The textile industry's demands for precision and flexibility
+                                    align with Letsgo's expertise in optimizing routes and managing warehouse
+                                    operations, ensuring seamless deliveries for Fix Corporate's goods. Lastly, for eCom
+                                    Ltd., the largest e-retailer specializing in perishable items, Letsgo's services are
+                                    of utmost importance. The time-sensitive nature of their products necessitates a
+                                    logistics solution that guarantees timely deliveries while preserving product
+                                    quality, showcasing Letsgo's commitment to efficient and reliable transport.<br><br>
+
+                                    As the newly appointed Logistics Consultant, your critical responsibility is
+                                    orchestrating the transportation of goods from these four key clients on their
+                                    journey from Delhi to Bangalore. With these valued clients at the core of Letsgo's
+                                    logistics landscape, your role becomes instrumental in the company's ongoing
+                                    success.
+
+                                </div>
+                            </div>
+                            <div class="case-texts__content-starea">
+                                <div class="case-texts__content-after">
+                                    <label class="case-texts__content-after-label">Your custom default text</label>
+                                    <st-editor name="" id="" [config]="config" [(ngModel)]="contentvalue"
+                                        [disabled]="defaultcase=='yes'" (focusout)="contentvaluechange()"></st-editor>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table page-name case-management-table">
+                <thead>
+                    <tr>
+                        <th style="background-color: #fff2e8;">
+                            <h2>Parameters</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="table-responsive">
+                <table class=" table case-management-table">
+
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="second-head" colspan="12">Order, metric tonnes</th>
+                        </tr>
+
+                        <tr>
+                            <td class="first-div">
+                                <div>Unison Limited</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d10; let i = index">
+                                <input [value]="res.d10[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d10',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">Promton Incorporation</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d11; let i = index">
+                                <input [value]="res.d11[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d11',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Fix Corporate</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d12; let i = index">
+                                <input [value]="res.d12[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d12',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>eCom Limited</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d13; let i = index">
+                                <input [value]="res.d13[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d13',i,inputElement.value)">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-responsive">
+                <table class=" table case-management-table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="second-head" colspan="12">Contractual TAT, days</th>
+                        </tr>
+
+                        <tr>
+                            <td class="first-div">
+                                <div>Unison Limited</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d16; let i = index">
+                                <input [value]="res.d16[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d16',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">Promton Incorporation</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d17; let i = index">
+                                <input [value]="res.d17[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d17',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Fix Corporate</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d18; let i = index">
+                                <input [value]="res.d18[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d18',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>eCom Limited</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d19; let i = index">
+                                <input [value]="res.d19[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d19',i,inputElement.value)">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-responsive">
+                <table class=" table case-management-table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="second-head" colspan="12">Workforce</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Maximum distance covered by a truck in a day, km</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d22; let i = index">
+                                <input [value]="res.d22[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d22',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">Helpers accompanying drivers in a trip</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d23; let i = index">
+                                <input [value]="res.d23[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d23',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Number of helpers required to handle a load of 20 MT</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d24; let i = index">
+                                <input [value]="res.d24[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d24',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Number of drivers available in a fleet</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d25; let i = index">
+                                <input [value]="res.d25[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d25',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Number of helpers available in a fleet</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d26; let i = index">
+                                <input [value]="res.d26[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d26',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Wage of a driver per day, Rs</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d27; let i = index">
+                                <input [value]="res.d27[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d27',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Wage of a helper per day, Rs</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d28; let i = index">
+                                <input [value]="res.d28[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d28',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Incremental wage of contractual employees over normal wage</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d29; let i = index">
+                                <input [value]="res.d29[i]*100|number:'1.0-0'" #inputElement
+                                    [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d29',i,inputElement.value)">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-responsive">
+                <table class=" table case-management-table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="second-head" colspan="12">Fragility Contract</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Unison Limited</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d32; let i = index">
+                                <input [value]="res.d32[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d32',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="first-div">Promton Incorporation</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d33; let i = index">
+                                <input [value]="res.d33[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d33',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Fix Corporate</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d34; let i = index">
+                                <input [value]="res.d34[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d34',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>eCom Limited</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.d35; let i = index">
+                                <input [value]="res.d35[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('d35',i,inputElement.value)">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

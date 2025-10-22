@@ -1,0 +1,553 @@
+<div class="elearingnewui bus_iness">
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row" class="element-first ">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+                <div class="row pb-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                            <div class="">
+                                <select class="select-round" name="" id="" [(ngModel)]="periodselectvalue"
+                                   (change)="writefsaValue('am33')" >
+                                    <option class="select-previous-option" value="Previous Period">Previous Period
+                                    </option>
+                                    <option class="select-current-option" value="Current Period">Current Period</option>
+                                </select>
+                            </div>
+                            <div class="download_btn" matTooltiClass="primary-tooltip"
+                                (click)="downloadexcel()">
+                                <div>
+                                    <a download matTooltip="Download" href="../../../assets/images/Worksheet in Financial Analysis.xlsx"><span class="hovertext"
+                                            data-hover="Download pdf file accounting ">
+                                            <img class="download_btn-img"
+                                                src="assets/images/businessbasics/download.png" />
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <mat-icon class="mt-2">get_app</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h1>Statements</h1>
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Income Statement, M INR
+                                        <mat-icon appTippy="
+                                                <div class='help-tip p-2'>
+                                                <div style='display:flex;'>
+                                                <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                                </div> &nbsp; &nbsp; &nbsp;
+                                                <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'>When analyzing the income statements, what trends do you observe in the gross and operating margins, and how might these trends impact the overall profitability of the company?</p>
+                                                </div>
+                                                </div><br>
+                                                <div style='display:flex;'>
+                                                <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                                </div> &nbsp; &nbsp; &nbsp;
+                                                <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'>What insights can you derive from the sales revenue and various costs mentioned in the income statement, and how do these factors contribute to the company's financial performance?</p>
+                                                </div>
+                                                </div>
+                                                </div> ">
+                                            help_outline
+                                        </mat-icon>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <td class="lastchildtd" style="font-weight: 500; font-size: 14px;">EM</td>
+                                    <td class="lastchildtd " style="font-weight: 500; font-size: 14px;">TM</td>
+                                    <td class="lastchildtd" style="font-weight: 500; font-size: 14px;">GT</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Sales revenue</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[0]| number:'1.0-0'):(result[1]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[2]| number:'1.0-0'):(result[3]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[4]| number:'1.0-0'):(result[5]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" style="border-bottom: 2px solid ;">
+                                    <h3 style="font-weight: bold; margin: 0;">Costs and expenses</h3>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Variable production costs</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[6]| number:'1.0-0'):(result[7]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[8]| number:'1.0-0'):(result[9]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[10]| number:'1.0-0'):(result[11]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Feature costs</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[12]| number:'1.0-0'):(result[13]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[14]| number:'1.0-0'):(result[15]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[16]| number:'1.0-0'):(result[17]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>JV Manufacturing Cost</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[18]| number:'1.0-0'):(result[19]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[20]| number:'1.0-0'):(result[21]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[22]| number:'1.0-0'):(result[23]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Transportation and tariffs</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[24]| number:'1.0-0'):(result[25]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[26]| number:'1.0-0'):(result[27]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[28]| number:'1.0-0'):(result[29]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>R&D</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[30]| number:'1.0-0'):(result[31]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[32]| number:'1.0-0'):(result[33]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[34]| number:'1.0-0'):(result[35]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Advertising</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[36]| number:'1.0-0'):(result[37]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[38]| number:'1.0-0'):(result[39]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[40]| number:'1.0-0'):(result[41]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Administration</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[42]| number:'1.0-0'):(result[43]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[44]| number:'1.0-0'):(result[45]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[46]| number:'1.0-0'):(result[47]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Costs and expenses total</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[48]| number:'1.0-0'):(result[49]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[50]| number:'1.0-0'):(result[51]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[52]| number:'1.0-0'):(result[53]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>OPERATING PROFIT BEFORE DEPR. (EBITDA)</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[54]| number:'1.0-0'):(result[55]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[56]| number:'1.0-0'):(result[57]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[58]| number:'1.0-0'):(result[59]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Depreciation from fixed assets</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[60]| number:'1.0-0'):(result[61]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[62]| number:'1.0-0'):(result[63]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[64]| number:'1.0-0'):(result[65]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>OPERATING PROFIT (EBIT)</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[66]| number:'1.0-0'):(result[67]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[68]| number:'1.0-0'):(result[69]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[70]| number:'1.0-0'):(result[71]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Net financing expenses</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[72]| number:'1.0-0'):(result[73]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[74]| number:'1.0-0'):(result[75]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[76]| number:'1.0-0'):(result[77]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>PROFIT BEFORE TAXES</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[78]| number:'1.0-0'):(result[79]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[80]| number:'1.0-0'):(result[81]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[82]| number:'1.0-0'):(result[83]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Income taxes</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[84]| number:'1.0-0'):(result[85]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[86]| number:'1.0-0'):(result[87]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[88]| number:'1.0-0'):(result[89]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>PROFIT FOR THE Year</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[90]| number:'1.0-0'):(result[91]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[92]| number:'1.0-0'):(result[93]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[94]| number:'1.0-0'):(result[95]| number:'1.0-0')}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-4">
+                            <apx-chart [series]="incomestatementgraph.series" [chart]="incomestatementgraph.chart"
+                                [dataLabels]="incomestatementgraph.dataLabels"
+                                [plotOptions]="incomestatementgraph.plotOptions" [yaxis]="incomestatementgraph.yaxis"
+                                [xaxis]="incomestatementgraph.xaxis" [fill]="incomestatementgraph.fill"
+                                [title]="incomestatementgraph.title" [tooltip]="incomestatementgraph.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-3">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Balance Sheet, M INR
+                                        <mat-icon appTippy="
+                                                <div class='help-tip p-2'>
+                                                <div style='display:flex;'>
+                                                <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                                </div> &nbsp; &nbsp; &nbsp;
+                                                <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'>Analyzing the balance sheet, how efficiently is the company managing its assets, and what implications might this have on the overall financial health?</p>
+                                                </div>
+                                                </div><br>
+                                                <div style='display:flex;'>
+                                                <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                                </div> &nbsp; &nbsp; &nbsp;
+                                                <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'>Considering the equity and liabilities, how does the capital structure of the company influence its financial stability, and what potential risks or advantages can you identify?</p>
+                                                </div>
+                                                </div>
+                                                </div> ">
+                                            help_outline
+                                        </mat-icon>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <td class="lastchildtd" style="font-weight: 500; font-size: 14px;">EM</td>
+                                    <td class="lastchildtd" style="font-weight: 500; font-size: 14px;">TM</td>
+                                    <td class="lastchildtd" style="font-weight: 500; font-size: 14px;">GT</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" style="border-bottom: 2px solid; ">
+                                    <h3 style="font-weight: bold; margin: 0;">ASSETS</h3>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Fixed assets</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[96]| number:'1.0-0'):(result[97]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[98]| number:'1.0-0'):(result[99]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[100]| number:'1.0-0'):(result[101]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Inventory</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[102]| number:'1.0-0'):(result[103]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[104]| number:'1.0-0'):(result[105]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[106]| number:'1.0-0'):(result[107]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Receivables</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[108]| number:'1.0-0'):(result[109]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[110]| number:'1.0-0'):(result[111]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[112]| number:'1.0-0'):(result[113]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cash and cash equivalents</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[114]| number:'1.0-0'):(result[115]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[116]| number:'1.0-0'):(result[117]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[118]| number:'1.0-0'):(result[119]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Total assets</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[120]| number:'1.0-0'):(result[121]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[122]| number:'1.0-0'):(result[123]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[124]| number:'1.0-0'):(result[125]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td colspan="4"
+                                        style="text-align: left; padding-left: 9px; border-bottom: 2px solid;">
+                                        <h3 style="font-weight: bold; margin: 0;">SHAREHOLDERS' EQUITY AND LIABILITIES
+                                        </h3>
+
+                                    </td>
+
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" style="border-bottom: 2px solid;">
+                                    <h3 style="font-weight: bold;margin: 0;">Equity</h3>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Share capital</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[126]| number:'1.0-0'):(result[127]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[128]| number:'1.0-0'):(result[129]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[130]| number:'1.0-0'):(result[131]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Additional paid-in capital</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[132]| number:'1.0-0'):(result[133]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[134]| number:'1.0-0'):(result[135]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[136]| number:'1.0-0'):(result[137]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Profit for the Year</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[138]| number:'1.0-0'):(result[139]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[140]| number:'1.0-0'):(result[141]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[142]| number:'1.0-0'):(result[143]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Retained earnings</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[144]| number:'1.0-0'):(result[145]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[146]| number:'1.0-0'):(result[147]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[148]| number:'1.0-0'):(result[149]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Total equity</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[150]| number:'1.0-0'):(result[151]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[152]| number:'1.0-0'):(result[153]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[154]| number:'1.0-0'):(result[155]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr" style="border-bottom: 2px solid;">
+                                    <h3 style="font-weight: bold;margin: 0;">Liabilities</h3>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Long-term debts</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[156]| number:'1.0-0'):(result[157]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[158]| number:'1.0-0'):(result[159]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[160]| number:'1.0-0'):(result[161]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Revolver debt</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[162]| number:'1.0-0'):(result[163]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[164]| number:'1.0-0'):(result[165]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[166]| number:'1.0-0'):(result[167]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Payables</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[168]| number:'1.0-0'):(result[169]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[170]| number:'1.0-0'):(result[171]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[172]| number:'1.0-0'):(result[173]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Total liabilities</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[174]| number:'1.0-0'):(result[175]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[176]| number:'1.0-0'):(result[177]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[178]| number:'1.0-0'):(result[179]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Total shareholders' equity and liabilities</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[180]| number:'1.0-0'):(result[181]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[182]| number:'1.0-0'):(result[183]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[184]| number:'1.0-0'):(result[185]| number:'1.0-0')}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-4">
+                            <apx-chart [series]="balancesheetgraph.series" [chart]="balancesheetgraph.chart"
+                                [dataLabels]="balancesheetgraph.dataLabels"
+                                [plotOptions]="balancesheetgraph.plotOptions" [yaxis]="balancesheetgraph.yaxis"
+                                [xaxis]="balancesheetgraph.xaxis" [fill]="balancesheetgraph.fill"
+                                [title]="balancesheetgraph.title" [tooltip]="balancesheetgraph.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">Key Information
+                                        <mat-icon appTippy="
+                                                <div class='help-tip p-2'>
+                                                <div style='display:flex;'>
+                                                <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                                </div> &nbsp; &nbsp; &nbsp;
+                                                <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'> How does the technological landscape described in the key information impact the competitiveness of the companies, and what role does technology play in their market positioning?</p>
+                                                </div>
+                                                </div><br>
+                                                <div style='display:flex;'>
+                                                <div>
+                                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                                </div> &nbsp; &nbsp; &nbsp;
+                                                <div>
+                                                <p style='margin: 0 auto; color: white; font-size:13px;'>Based on the provided information, what strategies are evident, and how do these strategies align with the company's position in the market?</p>
+                                                </div>
+                                                </div>
+                                                </div> ">
+                                            help_outline
+                                        </mat-icon>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr w-100">
+                                    <td style="width: 40%;"></td>
+                                    <td class="lastchildtd" style="font-weight: 500; font-size: 14px;width:20%">EM</td>
+                                    <td class="lastchildtd" style="font-weight: 500; font-size: 14px;width:20%">TM</td>
+                                    <td class="lastchildtd" style="width: 40%;">GT</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Operating Region</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?result[186]:result[187]}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?result[188]:result[189]}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?result[190]:result[191]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Automobile Tech</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?result[192]:result[193]}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?result[194]:result[195]}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?result[196]:result[197]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Sales, units</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[198]| number:'1.0-0'):(result[199]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[200]| number:'1.0-0'):(result[201]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[202]| number:'1.0-0'):(result[203]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Manufacturing Plants Capacity, units</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[204]| number:'1.0-0'):(result[205]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[206]| number:'1.0-0'):(result[207]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[208]| number:'1.0-0'):(result[209]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Number of Shareoutstanding</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[210]| number:'1.0-0'):(result[211]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[212]| number:'1.0-0'):(result[213]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[214]| number:'1.0-0'):(result[215]| number:'1.0-0')}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Share Price, INR</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[216]| number:'1.0-0'):(result[217]| number:'1.0-0')}}</td>
+                                    <td class="lastchildtd">{{periodselectvalue==='Previous
+                                        Period'?(result[218]| number:'1.0-0'):(result[219]| number:'1.0-0')}}</td>
+                                    <td style="font-weight: 400;font-size: 14px;">{{periodselectvalue==='Previous
+                                        Period'?(result[220]| number:'1.0-0'):(result[221]| number:'1.0-0')}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-4">
+                            <apx-chart [series]="kpigraph.series" [chart]="kpigraph.chart"
+                                [dataLabels]="kpigraph.dataLabels" [plotOptions]="kpigraph.plotOptions"
+                                [yaxis]="kpigraph.yaxis" [xaxis]="kpigraph.xaxis" [fill]="kpigraph.fill"
+                                [title]="kpigraph.title" [tooltip]="kpigraph.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

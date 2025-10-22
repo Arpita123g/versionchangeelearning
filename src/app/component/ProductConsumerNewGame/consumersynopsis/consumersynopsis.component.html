@@ -1,0 +1,292 @@
+<div class="elearingnewui product_consumer">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">
+            {{languageselect === "French"
+            ? "Chargement... Préparer un peu de magie numérique !"
+            : "Loading... Brewing up some digital magic!"}}
+        </p> -->
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="feed_ack">
+                <div>
+                    <div class="row pb-4">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                                <div class="">
+                                    <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                        (change)="roundClick()">
+                                        <option class="select-round-option" value="">
+                                            {{ languageselect.toLowerCase() === 'french' ? 'sélectionner un tour' :
+                                            'Select
+                                            Round'
+                                            }}
+                                        </option>
+                                        <option class="select-round-option"
+                                            *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                            {{attempt}}</option>
+                                    </select>
+                                </div>
+                                <div class="download_btn" matTooltiClass="primary-tooltip"
+                                    (click)="downloadreportforconsumer()">
+                                    <div>
+                                        <a download matTooltip="Download"><span class="hovertext"
+                                                data-hover="Download pdf file accounting">
+                                                <img src="assets/images/businessbasics/download.png" />
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <mat-icon class="mt-2">get_app</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1> {{Language.b220}}
+                        <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'> {{Language.b251}}</p>
+                            </div>
+                          </div>
+                            <div style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp; &nbsp;
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'> {{Language.b252}}</p>
+                              </div>
+                            </div>
+                        </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+
+                    <div style="margin-top: 1.1rem;" *ngIf="analysisshow">
+                        <h1
+                            style="display: flex; align-items: center; gap: 5px;font-size: 1.1rem; font-weight: 600;padding: 0.6rem 0.4rem;color: white;background-color: #266cc38a;">
+                            Feedback
+                            <div style=" width: 1rem;">
+                                <mat-icon (click)="rotate();roundClick();" [@rotatedState]='state' class="sidenav-icon"
+                                    aria-hidden="false" aria-label="Example home icon">cached</mat-icon>
+                            </div>
+                        </h1>
+                    </div>
+                    <div class="decision-textarea pb-5 h-100" *ngIf="analysisshow">
+                        <div class="row">
+                            <div class="col-md" style="padding: 10px;">
+                                <div class="card feedbsck-value p-3">
+                                    <markdown [data]="feedbackvalue"></markdown>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row row-cols-md-2 pt-3">
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">{{Language.b347}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th" style="text-align: left;">{{Language.b221}}</th>
+                                        <th class="rsl_tbl-tbody-th">{{Language.b222}}</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b190}}</td>
+                                        <td>{{result[0]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b191}}</td>
+                                        <td>{{result[1]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b192}}</td>
+                                        <td>{{result[2]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[0]">
+                                        <td>{{Language.b193}}</td>
+                                        <td>{{result[3]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b194}}</td>
+                                        <td>{{result[4]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b195}}</td>
+                                        <td>{{result[5]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b196}}</td>
+                                        <td>{{result[6]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b197}}</td>
+                                        <td>{{result[7]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b87}}</td>
+                                        <td>{{result[8]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[1]">
+                                        <td>{{Language.b198}}</td>
+                                        <td>{{result[9]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[1]">
+                                        <td>{{Language.b199}}</td>
+                                        <td>{{result[10]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[2]">
+                                        <td>{{Language.b200}}</td>
+                                        <td>{{result[11]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[2]">
+                                        <td>{{Language.b201}}</td>
+                                        <td>{{result[12]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[2]">
+                                        <td>{{Language.b202}}</td>
+                                        <td>{{result[13]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b118}}</td>
+                                        <td>{{result[14]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b135}}</td>
+                                        <td>{{result[15]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b203}}</td>
+                                        <td>{{result[16]}}</td>
+
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b204}}</td>
+                                        <td>{{result[17]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b205}}</td>
+                                        <td>{{result[18]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b150}}</td>
+                                        <td>{{result[19]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b51}}</td>
+                                        <td>{{result[20]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[3]">
+                                        <td>{{Language.b176}}</td>
+                                        <td>{{result[21]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[3]">
+                                        <td>{{Language.b177}}</td>
+                                        <td>{{result[22]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[3]">
+                                        <td>{{Language.b178}}</td>
+                                        <td>{{result[23]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[3]">
+                                        <td>{{Language.b179}}</td>
+                                        <td>{{result[24]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[3]">
+                                        <td>{{Language.b180}}</td>
+                                        <td>{{result[25]}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md">
+                            <table class="table rsl_tbl pt-3">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">{{Language.b8}} %</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th" style="text-align: left;">{{Language.b221}}</th>
+                                        <th class="rsl_tbl-tbody-th">{{Language.b223}}</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b209}}</td>
+                                        <td>{{result[26]*100|number:'1.1-1'}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[0] || optional[3]">
+                                        <td>{{Language.b210}}</td>
+                                        <td>{{result[28]*100|number:'1.1-1'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">{{Language.b225}}, mn</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th" style="text-align: left;">{{Language.b221}}</th>
+                                        <th class="rsl_tbl-tbody-th">{{Language.b223}}</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b337}}</td>
+                                        <td>{{result[27]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr" *ngIf="optional[0] || optional[3]">
+                                        <td>{{Language.b338}}</td>
+                                        <td>{{result[29]}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table rsl_tbl mt-5" *ngIf="optional[4]">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">{{Language.b226}}, %</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th" style="text-align: left;">{{Language.b221}}</th>
+                                        <th class="rsl_tbl-tbody-th">{{Language.b381}}</th>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b10}}</td>
+                                        <td>{{result[30]*100}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b11}}</td>
+                                        <td>{{result[31]*100}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>{{Language.b12}}</td>
+                                        <td>{{result[32]*100}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row lst_r">
+                        <div class="col-4 lst_r-col4" *ngIf="!timefinished">
+                            <button class="mt-4 retry" [disabled]="isButtonDisabled" (click)="exit()">{{retry}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

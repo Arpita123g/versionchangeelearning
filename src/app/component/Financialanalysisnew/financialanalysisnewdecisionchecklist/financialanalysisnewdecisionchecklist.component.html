@@ -1,0 +1,433 @@
+<div class="elearingnewui bus_iness">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="consumer-decision-checklist">
+                <div class="row pb-3 d-flex align-items-center">
+                    <div class="col-6 decision-checklist-col6">
+                        <h1 class="decision-checklist-col6-h1">Decision Checklist</h1>
+                    </div>
+                    <div class="col-6 text-end">
+                        <select class="select-round" name="" id="" [(ngModel)]="roundname" (click)="roundClick()">
+                            <option class="select-round-option" value="">Select Round</option>
+                            <option class="select-round-option" *ngFor="let attempt of dropdownvalue; let i = index;"
+                                [value]=attempt>
+                                {{attempt}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-borderd checklisttable">
+                        <tbody class="checklisttable-body">
+                            <tr class="checklisttable-body-tr" style="border-bottom: 3px solid black;">
+                                <td></td>
+                                <td>{{playername}}</td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <th>Thesis</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Current Ratio, Electra Motors</td>
+                                <td><span [class]="isClass[0] ? 'defaultcolor' : 'notdefaultcolor'">{{result[0]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Current Ratio, Titan Motors</td>
+                                <td><span [class]="isClass[1] ? 'defaultcolor' : 'notdefaultcolor'">{{result[1]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Current Ratio, GreenSpeed Technologies</td>
+                                <td><span [class]="isClass[2] ? 'defaultcolor' : 'notdefaultcolor'">{{result[2]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Acid-test Ratio, Electra Motors</td>
+                                <td><span [class]="isClass[3] ? 'defaultcolor' : 'notdefaultcolor'">{{result[3]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Acid-test Ratio, Titan Motors</td>
+                                <td><span [class]="isClass[4] ? 'defaultcolor' : 'notdefaultcolor'">{{result[4]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Acid-test Ratio, GreenSpeed Technologies</td>
+                                <td><span [class]="isClass[5] ? 'defaultcolor' : 'notdefaultcolor'">{{result[5]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Cash Ratio, Electra Motors</td>
+                                <td><span [class]="isClass[6] ? 'defaultcolor' : 'notdefaultcolor'">{{result[6]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Cash Ratio, Titan Motors</td>
+                                <td><span [class]="isClass[7] ? 'defaultcolor' : 'notdefaultcolor'">{{result[7]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Cash Ratio, GreenSpeed Technologies</td>
+                                <td><span [class]="isClass[8] ? 'defaultcolor' : 'notdefaultcolor'">{{result[8]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Debt-to-Equity Ratio, Electra Motors</td>
+                                <td><span [class]="isClass[9] ? 'defaultcolor' : 'notdefaultcolor'">{{result[9]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Debt-to-Equity Ratio, Titan Motors</td>
+                                <td><span
+                                        [class]="isClass[10] ? 'defaultcolor' : 'notdefaultcolor'">{{result[10]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Debt-to-Equity Ratio, GreenSpeed Technologies</td>
+                                <td><span
+                                        [class]="isClass[11] ? 'defaultcolor' : 'notdefaultcolor'">{{result[11]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Debt Ratio, Electra Motors</td>
+                                <td><span
+                                        [class]="isClass[12] ? 'defaultcolor' : 'notdefaultcolor'">{{result[12]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Debt Ratio, Titan Motors</td>
+                                <td><span
+                                        [class]="isClass[13] ? 'defaultcolor' : 'notdefaultcolor'">{{result[13]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Debt Ratio, GreenSpeed Technologies</td>
+                                <td><span
+                                        [class]="isClass[14] ? 'defaultcolor' : 'notdefaultcolor'">{{result[14]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Interest Coverage Ratio, Electra Motors</td>
+                                <td><span
+                                        [class]="isClass[15] ? 'defaultcolor' : 'notdefaultcolor'">{{result[15]==='0'?'NA':result[15]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Interest Coverage Ratio, Titan Motors</td>
+                                <td><span
+                                        [class]="isClass[16] ? 'defaultcolor' : 'notdefaultcolor'">{{result[16]==='0'?'NA':result[16]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Interest Coverage Ratio, GreenSpeed Technologies</td>
+                                <td><span
+                                        [class]="isClass[17] ? 'defaultcolor' : 'notdefaultcolor'">{{result[17]==='0'?'NA':result[17]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Asset Turnover Ratio, Electra Motors</td>
+                                <td><span
+                                        [class]="isClass[18] ? 'defaultcolor' : 'notdefaultcolor'">{{result[18]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Asset Turnover Ratio, Titan Motors</td>
+                                <td><span
+                                        [class]="isClass[19] ? 'defaultcolor' : 'notdefaultcolor'">{{result[19]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Asset Turnover Ratio, GreenSpeed Technologies</td>
+                                <td><span
+                                        [class]="isClass[20] ? 'defaultcolor' : 'notdefaultcolor'">{{result[20]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Inventory Turnover Ratio, Electra Motors</td>
+                                <td><span
+                                        [class]="isClass[21] ? 'defaultcolor' : 'notdefaultcolor'">{{result[21]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Inventory Turnover Ratio, Titan Motors</td>
+                                <td><span
+                                        [class]="isClass[22] ? 'defaultcolor' : 'notdefaultcolor'">{{result[22]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Inventory Turnover Ratio, GreenSpeed Technologies</td>
+                                <td><span
+                                        [class]="isClass[23] ? 'defaultcolor' : 'notdefaultcolor'">{{result[23]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Days Sales in Inventory Ratio, Electra Motors</td>
+                                <td><span
+                                        [class]="isClass[24] ? 'defaultcolor' : 'notdefaultcolor'">{{result[24]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Days Sales in Inventory Ratio, Titan Motors</td>
+                                <td><span
+                                        [class]="isClass[25] ? 'defaultcolor' : 'notdefaultcolor'">{{result[25]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Days Sales in Inventory Ratio, GreenSpeed Technologies</td>
+                                <td><span
+                                        [class]="isClass[26] ? 'defaultcolor' : 'notdefaultcolor'">{{result[26]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Gross Margin, Electra Motors</td>
+                                <td><span
+                                        [class]="isClass[27] ? 'defaultcolor' : 'notdefaultcolor'">{{result[27]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Gross Margin, Titan Motors</td>
+                                <td><span
+                                        [class]="isClass[28] ? 'defaultcolor' : 'notdefaultcolor'">{{result[28]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Gross Margin, GreenSpeed Technologies</td>
+                                <td><span
+                                        [class]="isClass[29] ? 'defaultcolor' : 'notdefaultcolor'">{{result[29]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Operating Margin, Electra Motors</td>
+                                <td><span
+                                        [class]="isClass[30] ? 'defaultcolor' : 'notdefaultcolor'">{{result[30]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Operating Margin, Titan Motors</td>
+                                <td><span
+                                        [class]="isClass[31] ? 'defaultcolor' : 'notdefaultcolor'">{{result[31]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Operating Margin, GreenSpeed Technologies</td>
+                                <td><span
+                                        [class]="isClass[32] ? 'defaultcolor' : 'notdefaultcolor'">{{result[32]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Return on Asset, Electra Motors</td>
+                                <td><span
+                                        [class]="isClass[33] ? 'defaultcolor' : 'notdefaultcolor'">{{result[33]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Return on Asset, Titan Motors</td>
+                                <td><span
+                                        [class]="isClass[34] ? 'defaultcolor' : 'notdefaultcolor'">{{result[34]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Return on Asset, GreenSpeed Technologies</td>
+                                <td><span
+                                        [class]="isClass[35] ? 'defaultcolor' : 'notdefaultcolor'">{{result[35]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Return on Equity, Electra Motors</td>
+                                <td><span
+                                        [class]="isClass[36] ? 'defaultcolor' : 'notdefaultcolor'">{{result[36]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Return on Equity, Titan Motors</td>
+                                <td><span
+                                        [class]="isClass[37] ? 'defaultcolor' : 'notdefaultcolor'">{{result[37]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Return on Equity, GreenSpeed Technologies</td>
+                                <td><span
+                                        [class]="isClass[38] ? 'defaultcolor' : 'notdefaultcolor'">{{result[38]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Book value per share, Electra Motors</td>
+                                <td><span
+                                        [class]="isClass[39] ? 'defaultcolor' : 'notdefaultcolor'">{{result[39]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Book value per share, Titan Motors</td>
+                                <td><span
+                                        [class]="isClass[40] ? 'defaultcolor' : 'notdefaultcolor'">{{result[40]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Book value per share, GreenSpeed Technologies</td>
+                                <td><span
+                                        [class]="isClass[41] ? 'defaultcolor' : 'notdefaultcolor'">{{result[41]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Earnings per share, Electra Motors</td>
+                                <td><span
+                                        [class]="isClass[42] ? 'defaultcolor' : 'notdefaultcolor'">{{result[42]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Earnings per share, Titan Motors</td>
+                                <td><span
+                                        [class]="isClass[43] ? 'defaultcolor' : 'notdefaultcolor'">{{result[43]}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Earnings per share, GreenSpeed Technologies</td>
+                                <td><span
+                                        [class]="isClass[44] ? 'defaultcolor' : 'notdefaultcolor'">{{result[44]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Price-earning Ratio, Electra Motors</td>
+                                <td><span
+                                        [class]="isClass[45] ? 'defaultcolor' : 'notdefaultcolor'">{{result[45]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Price-earning Ratio, Titan Motors</td>
+                                <td><span
+                                        [class]="isClass[46] ? 'defaultcolor' : 'notdefaultcolor'">{{result[46]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Price-earning Ratio, GreenSpeed Technologies</td>
+                                <td><span
+                                        [class]="isClass[47] ? 'defaultcolor' : 'notdefaultcolor'">{{result[47]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <th>Investment</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Portfolio 1</td>
+                                <td><span
+                                        [class]="isClass[48] ? 'defaultcolor' : 'notdefaultcolor'">{{result[48]===1?'Yes':'No'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Portfolio 2</td>
+                                <td><span
+                                        [class]="isClass[49] ? 'defaultcolor' : 'notdefaultcolor'">{{result[49]===1?'Yes':'No'}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Portfolio 3</td>
+                                <td><span
+                                        [class]="isClass[50] ? 'defaultcolor' : 'notdefaultcolor'">{{result[50]===1?'Yes':'No'}}</span>
+                                </td>
+
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Portfolio 4</td>
+                                <td><span
+                                        [class]="isClass[51] ? 'defaultcolor' : 'notdefaultcolor'">{{result[51]===1?'Yes':'No'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Portfolio 5</td>
+                                <td><span
+                                        [class]="isClass[52] ? 'defaultcolor' : 'notdefaultcolor'">{{result[52]===1?'Yes':'No'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Portfolio 6</td>
+                                <td><span
+                                        [class]="isClass[53] ? 'defaultcolor' : 'notdefaultcolor'">{{result[53]===1?'Yes':'No'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Portfolio 7</td>
+                                <td><span
+                                        [class]="isClass[54] ? 'defaultcolor' : 'notdefaultcolor'">{{result[54]===1?'Yes':'No'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Portfolio 8</td>
+                                <td><span
+                                        [class]="isClass[55] ? 'defaultcolor' : 'notdefaultcolor'">{{result[55]===1?'Yes':'No'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Portfolio 9</td>
+                                <td><span
+                                        [class]="isClass[56] ? 'defaultcolor' : 'notdefaultcolor'">{{result[56]===1?'Yes':'No'}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Portfolio 10</td>
+                                <td><span
+                                        [class]="isClass[57] ? 'defaultcolor' : 'notdefaultcolor'">{{result[57]===1?'Yes':'No'}}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="decision-textarea py-4" *ngIf="analysisshow">
+                        <textarea class="decision-textarea-element" rows="10" [disabled]="disabled"
+                            [(ngModel)]="useranalysisinput"
+                            placeholder="Describe your thought process behind the decision-making in 1500 characters…"
+                            (focusout)="useranalysissave()" maxlength="1500"></textarea>
+                    </div>
+                    <div class="p-0">
+                        <button class="btn_stl btn_stl-decisionchecklist" type="button" [disabled]="disabled"
+                            (click)="decisionchecklistpopup()">Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

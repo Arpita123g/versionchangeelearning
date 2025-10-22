@@ -1,0 +1,38 @@
+<div class="elearingnewui ">
+    <div class="login-body">
+        <div class=" card login-card" *ngIf="showform">
+            <form [formGroup]="confirmforgotpassgroup" class="form">
+                <div class="form-div">
+                    <div class="w-100 text-center ">
+                        <h1 class="fw-600">Reset your password</h1>
+                        <mat-form-field appearance="outline" class="w-100 mb-3">
+                            <mat-label>New Password</mat-label>
+                            <input matInput placeholder="New Password" type="text" (keyup)="cmatching()"
+                                formControlName="passwordFormControl">
+                            <mat-error class=" mt-2"
+                                *ngIf="confirmforgotpassgroup.controls['passwordFormControl'].invalid && (confirmforgotpassgroup.controls['passwordFormControl'].dirty || confirmforgotpassgroup.controls['passwordFormControl'].touched)">
+                                Password is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Confirm Password</mat-label>
+                            <input matInput placeholder="Confirm Password" type="password" (keyup)="cmatching()"
+                                formControlName="passwordFormControl2">
+                            <mat-error  class=" mt-2"
+                                *ngIf="confirmforgotpassgroup.controls['passwordFormControl2'].invalid && (confirmforgotpassgroup.controls['passwordFormControl2'].dirty || confirmforgotpassgroup.controls['passwordFormControl2'].touched)">
+                                Confirm password is <strong>required</strong>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-error *ngIf="!checkmatching"  class=" mt-2 mb-1">
+                            Password are not matching !
+                        </mat-error>
+                    </div>
+                        <button class="login-sub mt-3" type="submit"
+                            [disabled]="(!checkmatching)||confirmforgotpassgroup.controls['passwordFormControl'].invalid && (confirmforgotpassgroup.controls['passwordFormControl'].dirty || confirmforgotpassgroup.controls['passwordFormControl'].touched)"
+                            (click)="confirmsubmit()">Submit
+                        </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

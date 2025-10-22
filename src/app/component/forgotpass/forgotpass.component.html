@@ -1,0 +1,97 @@
+<!-- old design -->
+<!-- <div class="forgotpassword">
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-md-7 midlleportioncol">
+                <div class="manegtext mb-1 text-center">Discover Role Playing<br/>Managerial Games
+                </div>
+                <div class="card bg-transparent border-0 hompageimgcard">
+                    <img src="assets/images/Home_Page-removebg-preview.png" class="img-fluid" />
+                </div>
+                <div class="manegtextbelow"> GAMES ARE BEST VIEWED IN DESKTOP
+                </div>
+            </div>
+            
+
+            <div class="col-md-5 ">
+                <div class="forgotpass">
+                    <div class="forgotpasscontainer">                        
+                    <div class="d-flex justify-content-center" *ngIf="showalert">
+                        <div class="alert alert-danger" style="position: absolute; bottom: 7rem; right: 1rem;">
+                            <span>{{alertvalue}}</span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center" *ngIf="showsuccessalert">
+                        <div class="alert alert-success "style="position: absolute; bottom: 7rem; right: 1rem;">
+                            <span>{{alertvalue}}</span>
+                        </div>
+                    </div>
+                        <div class="card forgotpasscard">
+                            <p class="forgotpasstitle">Forgot Password</p>
+                            <form [formGroup]="forgotpassgroup" class="form">
+                                <div class="forgotpassinner">
+                                    <div class="w-100 text-center ">
+                                        <p class="">Enter your email address</p>
+                                        <mat-form-field appearance="outline" class="w-100">
+                                            <mat-label>Email ID</mat-label>
+                                            <input matInput placeholder="yourmail@mail.com" formControlName="emailFormControl">
+                                            <mat-error
+                                                *ngIf="forgotpassgroup.controls['emailFormControl'].invalid && (forgotpassgroup.controls['emailFormControl'].dirty || forgotpassgroup.controls['emailFormControl'].touched)">
+                                                Please enter a valid email address
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="row-2 mt-3 text-center">
+                                        <button class="btn btn-primary w-100"
+                                            [disabled]="checkdisable||(forgotpassgroup.controls['emailFormControl'].invalid && (forgotpassgroup.controls['emailFormControl'].dirty || forgotpassgroup.controls['emailFormControl'].touched))"
+                                            (click)="submit()">
+                                            <span *ngIf="checkdisable" class="spinner-border spinner-border-sm" role="status"
+                                                aria-hidden="true"></span>
+                                            Submit</button>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-sm mt-4 small text-white" (click)="login()">Back to Sign In</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+<!-- new design -->
+<div class="elearingnewui">
+    <div class="login-body">
+        <div class="loadingscreen" *ngIf="checkloading">
+            <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+            <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+        </div>
+        <div class="card login-card">
+            <div class="form-div" [formGroup]="forgotpassgroup">
+                <h1>Forgot password</h1>
+                <p class="form-p">Please enter an email you used for registering:</p>
+                <mat-form-field appearance="outline" class="mt-2 mb-2">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Email" formControlName="emailFormControl" #input
+                        [value]="input.value.toLowerCase()" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}">
+                    
+                </mat-form-field>
+                <button type="submit" class="login-sub"
+                    
+                    (click)="submit()">Send</button>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center" *ngIf="showsuccessalert">
+            <div class="alert alert-success "style="position: absolute; bottom: 4rem; left: 50%; font-weight:600;
+            transform: translateX(-50%);
+            text-align: center;">
+                <span>{{alertvalue}}</span>
+            </div>
+        </div>
+    </div>
+   
+</div>

@@ -1,0 +1,45 @@
+<!-- new -->
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <!-- <p class="loadingspinnertxt">{{languageselect=== "French"
+        ? "Chargement... Préparer un peu de magie numérique!"
+        : "Loading... Brewing up some digital magic!"}} </p> -->
+</div>
+<div class="elearingnewui product_consumer">
+    <div class="container">
+        <div class="body-element indroduction-tab">
+            <div class="element-first">
+                <div class="row">
+                    <div class="introductn" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">{{language.b253}}</button></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <h1 class="pb-5">{{language.b7}}</h1>
+                </div>
+            </div>
+            <div class="row row-cols-md-3">
+
+                <div class="col-md indroduction-tab-col" *ngFor="let card of cards; let i = index">
+                    <div class="card crd1">
+                        <div class="card-img-top img-top-new">
+                            <img [src]="card.image" alt="..." class="img_heightwidth">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">{{language[card.title]}}</h2>
+                            <p class="card-text">
+                                {{showAll[i] ? language[card.text] :truncate(language [card.truncatedText])}}
+                                <a type="button" (click)="toggleshow(i)" [style.color]="showAll[i] ? 'red' : 'blue'">
+                                    {{showAll[i] ? language.b331 : language.b330}}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

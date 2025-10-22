@@ -1,0 +1,139 @@
+<div class="elearingnewui casemanagement">
+    <div class="case-management-body case-management-body-marketing">
+        <div class=" table-responsive mb-3 mt-3">
+            <table class="table case-management-table ">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Average attrition rate %</td>
+                        <td *ngFor="let capitaldata of res.i6; let i = index">
+                            <input [value]="res.i6[i]*100 | number : '1.0-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('i6',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Average promotion rate %</td>
+                        <td *ngFor="let capitaldata of res.i7; let i = index">
+                            <input [value]="res.i7[i]*100 | number : '1.0-2'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('i7',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Average Internal Transfer %</td>
+                        <td *ngFor="let capitaldata of res.i8; let i = index">
+                            <input [value]="res.i8[i]*100 | number : '1.0-0'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('i8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Average Retirement %</td>
+                        <td *ngFor="let capitaldata of res.i9; let i = index">
+                            <input [value]="res.i9[i]*100 | number : '1.0-0'" #inputElement
+                                [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('i9',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Employee Satisfaction Score</td>
+                        <td *ngFor="let capitaldata of res.i10; let i = index">
+                            <input [value]="res.i10[i] | number : '1.0-2'" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('i10',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Average duration to fill vacant position, days</td>
+                        <td *ngFor="let capitaldata of res.i11; let i = index">
+                            <input [value]="res.i11[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('i11',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Max Satisfaction Score</td>
+                        <td *ngFor="let capitaldata of res.i12; let i = index">
+                            <input [value]="res.i12[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('i12',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Employee Satisfaction Start factor</td>
+                        <td *ngFor="let capitaldata of res.i13; let i = index">
+                            <input [value]="res.i13[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('i13',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Duration days start factor</td>
+                        <td *ngFor="let capitaldata of res.i14; let i = index">
+                            <input [value]="res.i14[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('i14',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Contract Cost as compared to average salary</td>
+                        <td *ngFor="let capitaldata of res.i15; let i = index">
+                            <input [value]="res.i15[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeMarketingValue('i15',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2> No of Employees</h2>
+                        </th>
+
+                    </tr>
+                    <!-- <tr style="border-bottom: 2px solid; background-color: lightgray;">
+                        <th style="font-size: 14px; font-weight: 600;">
+                            No of Employees
+                        </th>
+
+                    </tr> -->
+
+                </thead>
+            </table>
+            <div class=" table-responsive mb-3 mt-3">
+                <table class="case-management-table case-management-table-marketing">
+                    <thead>
+                        <tr>
+                            <td colspan="2" *ngFor="let round of rounds">{{round}}</td>
+                        </tr>
+
+                    </thead>
+                    <tbody class="first-tbody">
+                        <tr>
+                            <ng-container *ngFor="let item of data; let i = index">
+
+                                <td *ngIf="i % 2 === 0">Min</td>
+                                <td *ngIf="i % 2 !== 0">Max</td>
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <ng-container *ngFor="let index of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
+                                <td><input [value]="res.i19[index]| number:'1.0-0'" #i19Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeMarketingValue('i19', index, i19Input.value)"></td>
+                                <td><input [value]="res.i20[index]| number:'1.0-0'" #i20Input
+                                        [disabled]="defaultcase=='yes'"
+                                        (focusout)="writeMarketingValue('i20', index, i20Input.value)"></td>
+                            </ng-container>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

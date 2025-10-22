@@ -1,0 +1,191 @@
+<!-- new design -->
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui change_management">
+    <div class="container">
+        <div class="body-element">
+            <div class="market-research">
+                <div class="row" class="element-first ">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+                <ul class="nav market-research-nav" id="nav-tab" role="tablist">
+                    <li class="nav-link active market-research-link" id="nav-Market-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Market" type="button" role="tab" aria-controls="nav-Market"
+                        aria-selected="true">
+                        Organizational Hierarchy
+                    </li>
+                    <li class="nav-link market-research-link " id="nav-genre-preference-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-genre-preference" type="button" role="tab"
+                        aria-controls="nav-genre-preference" aria-selected="true">Employees Profile
+                    </li>
+                    <li class="nav-link market-research-link" id="nav-Monetization-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Monetization" type="button" role="tab" aria-controls="nav-Monetization"
+                        aria-selected="false">Working Relationship
+                    </li>
+                </ul>
+
+                <!--  main container  -->
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-Market" role="tabpanel">
+                        <div class="rounded-5   card ">
+                            <ul class="list-group list-group-flush marketoutlooklist pb-3">
+                                <li class="list-group-item pt-5">
+                                    <h1 class="h1-cls"> Organizational Hierarchy
+                                    </h1>
+                                </li>
+                                <div class="humanoforg">
+                                    <img src="assets/images/changemanagementnew/orgofhumancrop.jpg" alt="..."
+                                        class="orgofhumanimg">
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-genre-preference" role="tabpanel">
+                        <div class="rounded-5  1 ">
+                            <ul class="list-group  list-group-flush marketoutlooklist1">
+                                <li class="list-group-item pt-5">
+                                    <h1 class="h1-cls">Employees Profile</h1>
+                                </li>
+                                <li class="list-group-item1">
+                                    <p>The profile of each employee with their interview on work preferences, passions,
+                                        strengths and weaknesses questions is mentioned to understand them better.</p>
+                                </li>
+                                <div class="row pt-5">
+                                    <div class="col-md-6 dottedcenterborder" style="border: none;" *ngFor="let card of cards1; let i = index">
+                                        <li class="list-group-item">
+                                            <h2 class="h2-cls">{{card.name}}</h2>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <p class="card-text">
+                                                {{showAll1[i] ? card.text : card.truncatedText}}
+                                                <a type="button" (click)="toggleshow1(i)" [style.color]="showAll1[i] ? 'red' : 'blue'">
+                                                    {{showAll1[i] ? 'Show Less' : 'Show More'}}
+                                                </a>
+                                            </p>
+                                        </li>
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-6 dottedcenterborder" style="border: none;" *ngFor="let card2 of cards2; let i = index">
+                                        <li class="list-group-item">
+                                            <h2 class="h2-cls">{{card2.name}}</h2>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <p class="card-text">
+                                                {{showAll2[i] ? card2.text : card2.truncatedText}}
+                                                <a type="button" (click)="toggleshow2(i)" [style.color]="showAll2[i] ? 'red' : 'blue'">
+                                                    {{showAll2[i] ? 'Show Less' : 'Show More'}}
+                                                </a>
+                                            </p>
+                                        </li>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-Monetization" role="tabpanel">
+                        <div class="rounded-5   card ">
+                            <ul class="list-group  list-group-flush marketoutlooklist py-4" style="border: 0;">
+                                <li class="list-group-item pt-5">
+                                    <h1 class="h1-cls">Working Relationship</h1>
+                                </li>
+                                <li class="list-group-item1">
+                                    <div class="py-2">
+                                        <!-- <p [innerHTML]="monetizationtext"></p> -->
+                                        <p>
+                                            The diagram below shows the working relationship of each member with another
+                                            member. The positive (P) relationship indicates warmth, the negative (N)
+                                            relationship indicates hindrance and if not both it is neutral (Nu).
+                                        </p>
+                                    </div>
+                                </li>
+
+                            </ul>
+                            <div class="mytablenetwork">
+                                <table class="table table-bordered text-center">
+                                    <thead style="font-size: 15px">
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td></td>
+                                            <td>Kabir</td>
+                                            <td>Anne</td>
+                                            <td>Rajas</td>
+                                            <td>Priya</td>
+                                            <td>Neha</td>
+                                            <td style="border-right: 1px solid lightgray;">Rajat</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="rsl_tbl-tbody">
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Kabir</td>
+                                            <td [style.background]="blank"> - </td>
+                                            <td class="pp" [style.background]="p">P</td>
+                                            <td class="nuu" [style.background]="nu">Nu</td>
+                                            <td class="nn" [style.background]="n">N</td>
+                                            <td class="pp" [style.background]="p">P</td>
+                                            <td class="pp lastchildtd" [style.background]="p">P</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Anne</td>
+                                            <td class="nuu" [style.background]="nu">Nu</td>
+                                            <td [style.background]="blank">-</td>
+                                            <td class="nuu" [style.background]="nu">Nu</td>
+                                            <td class="pp" [style.background]="p">p</td>
+                                            <td class="nuu" class="pp" [style.background]="nu">Nu</td>
+                                            <td class="nn lastchildtd" [style.background]="n">N</td>
+    
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Rajas</td>
+                                            <td class="pp" [style.background]="p">P</td>
+                                            <td class="pp" [style.background]="p">P</td>
+                                            <td [style.background]="blank">-</td>
+                                            <td class="nuu" [style.background]="nu">Nu</td>
+                                            <td class="pp" [style.background]="p">P</td>
+                                            <td class="pp lastchildtd" [style.background]="p">P</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Priya</td>
+                                            <td class="nn" [style.background]="n">N</td>
+                                            <td class="nuu" [style.background]="nu">Nu</td>
+                                            <td class="nn" [style.background]="n">N</td>
+                                            <td [style.background]="blank">-</td>
+                                            <td class="nuu" [style.background]="nu">Nu</td>
+                                            <td class="nn lastchildtd" [style.background]="n">N</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Neha</td>
+                                            <td class="nuu" [style.background]="nu">Nu</td>
+                                            <td class="pp" [style.background]="p">P</td>
+                                            <td class="pp" [style.background]="p">P</td>
+                                            <td class="nuu" [style.background]="nu">Nu</td>
+                                            <td [style.background]="blank">-</td>
+                                            <td [style.background]="p" class="lastchildtd">P</td>
+                                        </tr>
+                                        <tr class="rsl_tbl-tbody-tr">
+                                            <td>Rajat</td>
+                                            <td class="pp" [style.background]="p">P</td>
+                                            <td class="pp" [style.background]="p">P</td>
+                                            <td class="pp" [style.background]="p">P</td>
+                                            <td class="nuu" [style.background]="nu">Nu</td>
+                                            <td class="nuu" [style.background]="nu">Nu</td>
+                                            <td [style.background]="blank" class="lastchildtd">-</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p class="table-element-pt pb-3"><span>Note:</span> Read the table from top to bottom, then left to right. For example, Kabir has a positive relationship with Anne, but Anne has a neutral relationship with Kabir. This shows that relationships can vary between two people, reflecting the complexity of human connections.</p>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

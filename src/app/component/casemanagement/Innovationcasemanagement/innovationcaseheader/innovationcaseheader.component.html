@@ -1,0 +1,81 @@
+<div class="elearingnewui">
+    <div class="case-management-body-forheader">
+        <div class="returnbtn-element">
+            <div class="returnbtn" (click)="GoBack()"> Return to Case Management </div>
+        </div>
+        <div class="card case-management-body-card">
+            <div class="card-body">
+                <div class=" tab-content-body">
+                    <ul class="nav second-nav" role="tablist">
+                        <li class="nav-item active" role="presentation" data-bs-target="#market" data-bs-toggle="tab"
+                            aria-controls="market" role="tab" aria-selected="false" (click)="search('market')">
+                            <span class="nav-link" aria-current="page">Market Outlook</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#product" data-bs-toggle="tab"
+                            aria-controls="product" role="tab" aria-selected="false" (click)="search('product')">
+                            <span class="nav-link" aria-current="page">Product</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#development" data-bs-toggle="tab"
+                            aria-controls="development" role="tab" aria-selected="false"
+                            (click)="search('development')">
+                            <span class="nav-link" aria-current="page">Development</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#marketing" data-bs-toggle="tab"
+                            aria-controls="marketing" role="tab" aria-selected="false" (click)="search('marketing')">
+                            <span class="nav-link" aria-current="page">Marketing</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#collaboration" data-bs-toggle="tab"
+                            aria-controls="collaboration" role="tab" aria-selected="false"
+                            (click)="search('collaboration')">
+                            <span class="nav-link" aria-current="page">Collaboration</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#foodrforthought" data-bs-toggle="tab"
+                            aria-controls="foodrforthought" role="tab" aria-selected="false"
+                            (click)="search('foodforthought')">
+                            <span class="nav-link" aria-current="page">Food For Thought</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#module" data-bs-toggle="tab"
+                            aria-controls="module" role="tab" aria-selected="false" (click)="search('general')">
+                            <span class="nav-link" aria-current="page">Module</span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="tab-content tab-content-body">
+
+                    <div role="tabpanel" class="tab-pane fade show active" id="market"
+                        [ngClass]="{ 'active':activeTab==='market'}">
+                        <app-innovationcasemarketoutlook *ngIf="activeTab==='market'"></app-innovationcasemarketoutlook>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="product"
+                        [ngClass]="{ 'active':activeTab==='product'}">
+                        <app-innovationcaseproduct *ngIf="activeTab==='product'"></app-innovationcaseproduct>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="development"
+                        [ngClass]="{ 'active':activeTab==='development'}">
+                        <app-innovationcasedevelopment
+                            *ngIf="activeTab==='development'"></app-innovationcasedevelopment>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="marketing"
+                        [ngClass]="{ 'active':activeTab==='marketing'}">
+                        <app-innovationcasemarketing *ngIf="activeTab==='marketing'"></app-innovationcasemarketing>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="collaboration"
+                        [ngClass]="{ 'active':activeTab==='collaboration'}">
+                        <app-innovationcasecollaboration
+                            *ngIf="activeTab==='collaboration'"></app-innovationcasecollaboration>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="foodrforthought"
+                        [ngClass]="{ 'active':activeTab==='foodforthought'}">
+                        <app-innovationcasefoodforthought
+                            *ngIf="activeTab==='foodforthought'"></app-innovationcasefoodforthought>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="module"
+                        [ngClass]="{ 'active':activeTab==='general'}">
+                        <app-innovationcasemodule *ngIf="activeTab==='general'"></app-innovationcasemodule>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

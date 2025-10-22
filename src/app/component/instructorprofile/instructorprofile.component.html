@@ -1,0 +1,96 @@
+<div class="login">
+    <mat-card class="logincontainer">
+        <p class="logintitle">Instructor Profile</p>
+        <form [formGroup]="instructorprofilegroup" class="form">
+            <div class="col" style="margin-top:20px">
+                <!-- Instructor Name -->
+                <div class="row-1 mt">
+                    <p class="inputtitle">Instructor Name</p>
+                    <div class="row">
+                        <div class="col-1">
+                            <mat-icon style="color:#c7bdbd" class="sidenav-icon" aria-hidden="false" aria-label="Account icon">account_circle</mat-icon>
+                        </div>
+                        <div class="col-11">
+                            <input formControlName="name" class="log-input" type="text" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="row-1 mt">
+                    <p class="inputtitle">Email Id</p>
+                    <div class="row">
+                        <div class="col-1">
+                            <mat-icon style="color:#c7bdbd" class="sidenav-icon" aria-hidden="false" aria-label="Email icon">email</mat-icon>
+                        </div>
+                        <div class="col-11">
+                            <input formControlName="email" class="log-input" type="email" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current Password -->
+                <div class="row-1 mt">
+                    <p class="inputtitle">Password</p>
+                    <div class="row">
+                        <div class="col-1">
+                            <mat-icon style="color:#c7bdbd" class="sidenav-icon" aria-hidden="false" aria-label="Lock icon">lock</mat-icon>
+                        </div>
+                        <div class="col-11">
+                            <input formControlName="password" class="log-input" type="password" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Change Password Section -->
+                <div class="row-1 mt">
+                    <p class="inputtitle">Change Password</p>
+                    <div class="row">
+                        <div class="col-1">
+                            <mat-icon style="color:#c7bdbd" class="sidenav-icon" aria-hidden="false" aria-label="Change password icon">lock_reset</mat-icon>
+                        </div>
+                        <div class="col-11">
+                            <input formControlName="currentPassword" class="log-input" type="password"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Password -->
+                <div class="row-1 mt">
+                    <p class="inputtitle">New Password</p>
+                    <div class="row">
+                        <div class="col-1">
+                            <mat-icon style="color:#c7bdbd" class="sidenav-icon" aria-hidden="false" aria-label="New password icon">vpn_key</mat-icon>
+                        </div>
+                        <div class="col-11">
+                            <input formControlName="newPassword" class="log-input" type="password"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="row-1 mt">
+                    <p class="inputtitle">Confirm Password</p>
+                    <div class="row">
+                        <div class="col-1">
+                            <mat-icon style="color:#c7bdbd" class="sidenav-icon" aria-hidden="false" aria-label="Confirm password icon">vpn_key</mat-icon>
+                        </div>
+                        <div class="col-11">
+                            <input formControlName="confirmPassword" class="log-input" type="password"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Save Button -->
+                <div class="row-1 mt center" style="margin-top:30px">
+                    <button 
+                        class="submit-button log" 
+                        (click)="saveinstructorprofile()"
+                        [disabled]="!instructorprofilegroup.valid">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </form>
+    </mat-card>
+</div>

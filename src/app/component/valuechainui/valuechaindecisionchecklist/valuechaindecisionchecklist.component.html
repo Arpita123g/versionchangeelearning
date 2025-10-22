@@ -1,0 +1,221 @@
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+</div>
+<div class="elearingnewui value_chain">
+    <div class="container">
+        <div class="body-element">
+            <div class="decision-checklist">
+                <div class="row pb-3 d-flex align-items-center">
+                    <div class="col-6 decision-checklist-col6">
+                        <h1 class="decision-checklist-col6-h1">Decision Checklist</h1>
+                    </div>
+                    <div class="col-6 text-end">
+                        <select class="select-round" name="" id="" [(ngModel)]="roundname" (change)="roundClick()">
+                            <option class="select-round-option" value="">Select Round</option>
+                            <option class="select-round-option" *ngFor="let attempt of dropdownvalue; let i = index;"
+                                [value]=attempt>
+                                {{attempt}}</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-borderd checklisttable">
+                        <tbody class="checklisttable-body">
+                            <tr class="checklisttable-body-tr" style="border-bottom: 3px solid black;">
+                                <td></td>
+                                <td>{{playername}}</td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <th>Demand</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Estimated Market Growth %</td>
+
+                                <td><span [class]="isClass[0] ? 'defaultcolor' : 'notdefaultcolor'">{{result[0]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Estimated Market Share %</td>
+
+                                <td><span [class]="isClass[1] ? 'defaultcolor' : 'notdefaultcolor'">{{result[1]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <th>Production</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>In-house Capacity Utilization %</td>
+
+                                <td><span [class]="isClass[2] ? 'defaultcolor' : 'notdefaultcolor'">{{result[2]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Outsourcing Capacity Utilization %</td>
+
+                                <td><span [class]="isClass[2] ? 'defaultcolor' : 'notdefaultcolor'">{{result[3]}}</span>
+
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Additional Machinery units</td>
+
+                                <td><span [class]="isClass[2] ? 'defaultcolor' : 'notdefaultcolor'">{{result[4]}}</span>
+
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[0]">
+                                <td>Component Supplier 1</td>
+
+                                <td><span [class]="isClass[2] ? 'defaultcolor' : 'notdefaultcolor'">{{result[5]}}</span>
+
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[0]">
+                                <td>Component Supplier 2</td>
+
+                                <td><span [class]="isClass[2] ? 'defaultcolor' : 'notdefaultcolor'">{{result[6]}}</span>
+
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[1]">
+                                <td>Transporter 1</td>
+
+                                <td><span [class]="isClass[2] ? 'defaultcolor' : 'notdefaultcolor'">{{result[7]}}</span>
+
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[1]">
+                                <td>Transporter 2</td>
+
+                                <td><span [class]="isClass[2] ? 'defaultcolor' : 'notdefaultcolor'">{{result[8]}}</span>
+
+                                </td>
+                            </tr>
+
+                            <tr class="checklisttable-body-tr">
+                                <th>Marketing</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Feature Index</td>
+
+
+                                <td>
+                                    <span
+                                        [class]="isClass[3] ? 'defaultcolor'  : 'notdefaultcolor'">{{result[9]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Promotion, mn INR</td>
+
+                                <td>
+                                    <span
+                                        [class]="isClass[3] ? 'defaultcolor'  : 'notdefaultcolor'">{{result[10]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Pricing, INR</td>
+
+                                <td>
+                                    <span
+                                        [class]="isClass[3] ? 'defaultcolor'  : 'notdefaultcolor'">{{result[11]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[2]">
+                                <td>Online Channel Margin %</td>
+
+                                <td>
+                                    <span
+                                        [class]="isClass[3] ? 'defaultcolor'  : 'notdefaultcolor'">{{result[12]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[2]">
+                                <td>Speciality Stores Channel Margin %</td>
+
+                                <td>
+                                    <span
+                                        [class]="isClass[3] ? 'defaultcolor'  : 'notdefaultcolor'">{{result[13]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[2]">
+                                <td>Retail Channel Margin %</td>
+
+                                <td>
+                                    <span
+                                        [class]="isClass[3] ? 'defaultcolor'  : 'notdefaultcolor'">{{result[14]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[3]">
+                                <td>Predictive Analytics</td>
+
+                                <td>
+                                    <span
+                                        [class]="isClass[3] ? 'defaultcolor'  : 'notdefaultcolor'">{{result[15]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[3]">
+                                <td>Subsciption Based Services</td>
+
+                                <td>
+                                    <span
+                                        [class]="isClass[3] ? 'defaultcolor'  : 'notdefaultcolor'">{{result[16]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[3]">
+                                <td>Blockchain Integration</td>
+
+                                <td>
+                                    <span
+                                        [class]="isClass[3] ? 'defaultcolor'  : 'notdefaultcolor'">{{result[17]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[3]">
+                                <td>Remote Diagnosis</td>
+
+                                <td>
+                                    <span
+                                        [class]="isClass[3] ? 'defaultcolor'  : 'notdefaultcolor'">{{result[18]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr" *ngIf="optional[3]">
+                                <td>AI-Powered Personalization</td>
+
+                                <td>
+                                    <span
+                                        [class]="isClass[3] ? 'defaultcolor'  : 'notdefaultcolor'">{{result[19]}}</span>
+                                </td>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <th>Finance</th>
+                                <th></th>
+                            </tr>
+                            <tr class="checklisttable-body-tr">
+                                <td>Long-term Borrowings, mn INR</td>
+
+                                <td>
+                                    <span
+                                        [class]="isClass[3] ? 'defaultcolor'  : 'notdefaultcolor'">{{result[20]}}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="decision-textarea py-4" *ngIf="analysisshow">
+                        <textarea class="decision-textarea-element" rows="10" [disabled]="disabled"
+                            [(ngModel)]="useranalysisinput"
+                            placeholder="Describe your thought process behind the decision-making in 1500 characters…"
+                            (focusout)="useranalysissave()" maxlength="1500"></textarea>
+                    </div>
+                    <div class="p-0">
+                        <button class="btn_stl btn_stl-decisionchecklist" type="button" [disabled]="disabled"
+                            (click)="decisionchecklistpopup()">Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

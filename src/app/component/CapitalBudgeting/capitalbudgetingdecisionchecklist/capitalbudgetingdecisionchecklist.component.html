@@ -1,0 +1,66 @@
+<div class="elearingnewui capital_budgeting">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="decision-checklist">
+                <div class="row pb-3 d-flex align-items-center">
+                    <div class="col-6 decision-checklist-col6">
+                        <h1 class="decision-checklist-col6-h1">Decision Checklist</h1>
+                    </div>
+                    <div class="col-6 text-end">
+                        <select class="select-round" name="" id="" [(ngModel)]="roundname" (change)="roundClick()">
+                            <option class="select-round-option" value="">Select Round</option>
+                            <option class="select-round-option" *ngFor="let attempt of dropdownvalue; let i = index;"
+                                [value]=attempt>
+                                {{attempt}}</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-borderd checklisttable">
+                        <tbody class="checklisttable-body">
+                            <tr class="checklisttable-body-tr" style="border-bottom: 3px solid black;">
+                                <td></td>
+                                <td>{{playername}}</td>
+                            </tr>
+                        </tbody>
+                        <tbody class="checklisttable-body" [class.border-top-0]="i!=0"
+                            [style.border-top]="i==0?'3px solid black':''"
+                            *ngFor="let tableitem of tableData; let i=index">
+
+                            <tr class="checklisttable-body-tr" style="text-align: left">
+                                <th>{{tableitem.title}}</th>
+                                <th></th>
+                            </tr>
+                            <ng-container >
+                                <tr class="checklisttable-body-tr" *ngFor="let bodyitem of tableitem.body">
+                                    <td style="text-align: left">{{result.cbGameCM.cbgameperioddata[bodyitem.title]}}</td>
+                                    <td *ngIf="result.cbgamedata">
+                                        <span [class]="bodyitem.isClass ? 'defaultcolor' : 'notdefaultcolor'">
+                                            {{(i===0)?((result.cbgamedata[bodyitem.value]*100|number:'1.0-2') + '%'):((result.cbgamedata[bodyitem.value])==1?"Selected":"Not Selected")}}
+                                            </span>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                    <div class="decision-textarea py-4" *ngIf="analysisshow">
+                        <textarea class="decision-textarea-element" rows="10" [disabled]="disabled"
+                            [(ngModel)]="useranalysisinput"
+                            placeholder="Describe your thought process behind the decision-making in 1500 characters…"
+                            (focusout)="useranalysissave()" maxlength="1500"></textarea>
+                    </div>
+                    <div class="p-0">
+                        <button class="btn_stl btn_stl-decisionchecklist" type="button" [disabled]="disabled"
+                            (click)="decisionchecklistpopup()">Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

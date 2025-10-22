@@ -1,0 +1,103 @@
+<div class="elearingnewui value_chain">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="dema_nd">
+                <div class="element-first">
+                    <div class="row">
+                        <div class="locandfoodspc" (click)="openDialog()" *ngIf="foodforthought">
+                            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                                <button class="food-thought-btn">Food For Thought</button></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="py-3">
+                    <h1>
+                        Market Size
+                        <mat-icon appTippy="
+            <div class='help-tip p-2'>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'> Given the market trends, previous market size, competitors' data, and industry averages, what is the targeted market growth rate that aligns with our strategic goals? How does this growth rate correlate with our desired market share increase?</p>
+                </div>
+              </div><br>
+                <div style='display:flex;'>
+                  <div>
+                    <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                  </div> &nbsp; &nbsp; &nbsp;
+                  <div>
+                    <p style='margin: 0 auto; color: white; font-size:13px;'> Considering the market dynamics, what market share do we aspire to achieve, and how can we leverage our strengths and industry data to attain and sustain this share over the planning period?</p>
+                  </div>
+                </div>
+            </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                </div>
+                <div class="row ">
+                    <div class="col-md-6">
+                        <p>Estimated Market Growth, %</p>
+                        <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[3]"
+                            (focusout)="inputtablevalue('marketgrowth')" [disabled]="disabled">
+                        <div class="py-3">
+                            <p>Previous Period Market Volume, mn</p>
+                            <h2 class="">{{result[1]}}</h2>
+                        </div>
+                        <div>
+                            <p>Previous Period Market Size, mn INR</p>
+                            <h2 class="">{{result[1]*result[2]}}</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-3">
+                            <apx-chart [series]="TotalMarketSize.series" [chart]="TotalMarketSize.chart"
+                                [dataLabels]="TotalMarketSize.dataLabels" [plotOptions]="TotalMarketSize.plotOptions"
+                                [yaxis]="TotalMarketSize.yaxis" [xaxis]="TotalMarketSize.xaxis"
+                                [tooltip]="TotalMarketSize.tooltip" [fill]="TotalMarketSize.fill"
+                                [title]="TotalMarketSize.title" style="margin-top: 5px;">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row py-3 ">
+                    <div class="py-3">
+                        <h1 class="mt-5">
+                            Market Share
+                        </h1>
+                    </div>
+                    <div class="col-md-6">
+                        <p>Estimated Market Share, %</p>
+                        <input class="input-no_box" placeholder="Input value here..." [(ngModel)]="result[4]"
+                            (focusout)="inputtablevalue('marketshare')"  [disabled]="disabled" >
+
+                        <div class="py-3">
+                            <p>Competitors</p>
+                            <h2 class="">{{result[0]}}</h2>
+                        </div>
+                        <div>
+                            <p>Previous Period Market Share, %</p>
+                            <h2 class="">{{result[5]*100|number:'1.0-2'}}</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-3">
+                            <apx-chart [series]="Demandgraph.series" [chart]="Demandgraph.chart"
+                                [dataLabels]="Demandgraph.dataLabels" [plotOptions]="Demandgraph.plotOptions"
+                                [yaxis]="Demandgraph.yaxis" [xaxis]="Demandgraph.xaxis" [tooltip]="Demandgraph.tooltip"
+                                [fill]="Demandgraph.fill" [title]="Demandgraph.title" style="margin-top: 5px;">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,314 @@
+<div class="elearingnewui bus_iness">
+  <div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+  </div>
+  <div class="container">
+    <div class="body-element">
+      <div class="feed_ack">
+        <div>
+          <div class="row pb-4">
+            <div class="col-8"></div>
+            <div class="col-4">
+              <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                <div class="">
+                  <select class="select-round" name="" id="" [(ngModel)]="roundname" (change)="roundClick()">
+                    <option class="select-round-option" value="">Select Round</option>
+                    <option class="select-round-option" *ngFor="let attempt of dropdownvalue; let i = index;"
+                      [value]=attempt>{{attempt}}</option>
+
+                  </select>
+                </div>
+                <div class="download_btn" matTooltiClass="primary-tooltip" (click)="downloadreportbusinessbasic()">
+                  <div>
+                    <a download matTooltip="Download"><span class="hovertext"
+                        data-hover="Download pdf file accounting ">
+                        <img src="assets/images/businessbasics/download.png" />
+                      </span>
+                    </a>
+                  </div>
+                  <div>
+                    <mat-icon class="mt-2">get_app</mat-icon>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h1 class="pb-3">
+            Synopsis
+            <mat-icon appTippy="
+          <div class='help-tip p-2'>
+            <div style='display:flex; max-width: unset !important;'>
+              <div>
+                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+              </div> &nbsp; &nbsp; &nbsp;
+              <div>
+                <p style='margin: 0 auto; color: white; font-size:13px;'> How will you connect cash management, income statements and cost?</p>
+              </div>
+            </div><br>
+              <div style='display:flex;'>
+                <div>
+                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                </div> &nbsp; &nbsp; &nbsp;
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'> What does your analysis of reports inform? How will you improve your strategy going ahead?</p>
+                </div>
+              </div>
+          </div> ">
+              help_outline
+            </mat-icon>
+          </h1>
+          <div *ngIf="analysisshow">
+            <h1 style="display: flex; align-items: center; gap: 5px;font-size: 1.1rem;
+            font-weight: 600;padding: 0.6rem 0.4rem;color: white;background-color: #266cc38a;">Feedback<div
+                style=" width: 1rem">
+                <mat-icon (click)="rotate();roundClick();" [@rotatedState]='state' class="sidenav-icon"
+                  aria-hidden="false" aria-label="Example home icon">cached</mat-icon>
+              </div>
+            </h1>
+          </div>
+          <div class="decision-textarea pb-5 h-100" *ngIf="analysisshow">
+            <div class="row">
+              <div class="col-md">
+                <div class="card feedbsck-value p-3">
+                  <markdown [data]="feedbackvalue"></markdown>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-cols-md-2">
+            <div class="col-md">
+              <table class="table rsl_tbl">
+                <thead class="rsl_tbl-thead">
+                  <tr class="rsl_tbl-thead-tr">
+                    <th class="rsl_tbl-thead-th" colspan="2">Operational Cost, INR</th>
+                  </tr>
+                </thead>
+                <tbody class="rsl_tbl-tbody">
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Rent</td>
+                    <td>{{result[21]|number:'1.0-0'}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr" *ngIf="optional[0]">
+                    <td>Compliance </td>
+                    <td>{{result[22]|number:'1.0-0'}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr" *ngIf="optional[0]">
+                    <td>Maintenance</td>
+                    <td>{{result[23]|number:'1.0-0'}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Material</td>
+                    <td>{{result[25]|number:'1.0-0'}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Service</td>
+                    <td>{{result[27]|number:'1.0-0'}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Interest</td>
+                    <td>{{result[28]|number:'1.0-0'}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Promotion</td>
+                    <td>{{result[29]|number:'1.0-0'}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Total</td>
+                    <td>{{result[30]|number:'1.0-0'}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md">
+              <table class="table rsl_tbl">
+                <thead class="rsl_tbl-thead">
+                  <tr class="rsl_tbl-thead-tr">
+                    <th class="rsl_tbl-thead-th" colspan="2">Cash Balance, INR</th>
+                  </tr>
+                </thead>
+                <tbody class="rsl_tbl-tbody">
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Initial Cash</td>
+                    <td>{{result[15]|number:'1.0-0'}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Interior</td>
+                    <td>{{result[16]|number:'1.0-0'}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Equipment</td>
+                    <td>{{result[17]|number:'1.0-0'}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr" *ngIf="optional[1]">
+                    <td>Technology </td>
+                    <td>{{result[18]|number:'1.0-0'}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Cash Outflow</td>
+                    <td>{{result[19]|number:'1.0-0'}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Borrowings</td>
+                    <td>{{result[20]|number:'1.0-0'}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="row row-cols-md-2">
+            <div class="col-md">
+              <table class="table rsl_tbl mt-5">
+                <thead class="rsl_tbl-thead">
+                  <tr class="rsl_tbl-thead-tr">
+                    <th class="rsl_tbl-thead-th" colspan="2">Decisions</th>
+                  </tr>
+                </thead>
+                <tbody class="rsl_tbl-tbody">
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Location</td>
+                    <td>{{result[0]}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr" *ngIf="optional[0]">
+                    <td>Licensing & Regulation </td>
+                    <td>{{result[1]}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Demand Tea Cups per day</td>
+                    <td>{{result[2]}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Interior</td>
+                    <td>{{result[3]}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Product Mix</td>
+                    <td>{{result[4]}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Procurement Vendor</td>
+                    <td>{{result[5]}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr" *ngIf="optional[1]">
+                    <td>Point of Sale </td>
+                    <td>{{result[6]}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr" *ngIf="optional[1]">
+                    <td>Security </td>
+                    <td>{{result[7]}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr" *ngIf="optional[1]">
+                    <td>Music & Wifi </td>
+                    <td>{{result[8]}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Price per cup of tea, INR</td>
+                    <td>{{result[9]}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Monthly Promotion Budget, INR</td>
+                    <td>{{result[10]}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr" *ngIf="optional[3]">
+                    <td>Social Media Campaign </td>
+                    <td>{{result[11]}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr" *ngIf="optional[3]">
+                    <td>Local Advertising Campaign </td>
+                    <td>{{result[12]}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr" *ngIf="optional[3]">
+                    <td>Collaboration Campaign </td>
+                    <td>{{result[13]}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Service</td>
+                    <td>{{result[14]}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md">
+              <table class="table rsl_tbl mt-5">
+                <thead class="rsl_tbl-thead">
+                  <tr class="rsl_tbl-thead-tr">
+                    <th class="rsl_tbl-thead-th" colspan="2">Income Statement, INR</th>
+                  </tr>
+                </thead>
+                <tbody class="rsl_tbl-tbody">
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Revenue</td>
+                    <td>{{result[31]|number:'1.0-0'}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Operational Cost</td>
+                    <td>{{result[32]|number:'1.0-0'}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Depreciation</td>
+                    <td>{{result[33]|number:'1.0-0'}}</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Operating Profit</td>
+                    <td>{{result[34]|number:'1.0-0'}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="table rsl_tbl mt-5" *ngIf="optional[2]">
+                <thead class="rsl_tbl-thead">
+                  <tr class="rsl_tbl-thead-tr">
+                    <th class="rsl_tbl-thead-th" colspan="2">Thinking Ability</th>
+                  </tr>
+                </thead>
+                <tbody class="rsl_tbl-tbody">
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Location</td>
+                    <td>{{result[37]*100|number:'1.0-0'}}%</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Demand</td>
+                    <td>{{result[38]*100|number:'1.0-0'}}%</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Investment</td>
+                    <td>{{result[39]*100|number:'1.0-0'}}%</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Marketing</td>
+                    <td>{{result[40]*100|number:'1.0-0'}}%</td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="table rsl_tbl mt-5">
+                <thead class="rsl_tbl-thead">
+                  <tr class="rsl_tbl-thead-tr">
+                    <th class="rsl_tbl-thead-th" colspan="2">KPI</th>
+                  </tr>
+                </thead>
+                <tbody class="rsl_tbl-tbody">
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Margin</td>
+                    <td>{{result[35]*100|number:'1.0-0'}} %</td>
+                  </tr>
+                  <tr class="rsl_tbl-tbody-tr">
+                    <td>Sales Forecasting Error</td>
+                    <td>{{result[36]*100|number:'1.0-0'}}%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="row lst_r">
+            <div class="col-4 lst_r-col4" *ngIf="!timefinished">
+              <button class="mt-4 retry" [disabled]="isButtonDisabled" (click)="exit()">{{retry}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

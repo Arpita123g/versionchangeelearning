@@ -1,0 +1,52 @@
+<!-- voicebasedainterview.component.html -->
+<div class="interview-container" *ngIf="!isFinished">
+  <h2 class="question-title">
+    <!-- {{ currentQuestion?.text }} -->
+      {{currentQuestiontext}}
+  </h2>
+
+  <div class="answer-box">
+    <textarea 
+      [(ngModel)]="transcript" 
+      class="transcript" 
+      placeholder="Your answer will appear here..."
+      [disabled]="isListening">
+    </textarea>
+    
+    <div class="controls">
+      <button (click)="startListening()" [disabled]="isListening">
+        <mat-icon>mic</mat-icon>
+        Start Recording
+      </button>
+      <button (click)="stopListening()" [disabled]="!isListening">
+        <mat-icon>stop</mat-icon>
+        Stop Recording
+      </button>
+    </div>
+  </div>
+
+  <div class="feedback" *ngIf="feedback">
+    <p>
+      <mat-icon>feedback</mat-icon>
+      <strong>Feedback:</strong> 
+      feedback
+      <!-- {{ feedback }} -->
+    </p>
+  </div>
+
+  <div class="navigation">
+    <!-- <button (click)="nextQuestion()" [disabled]="!transcript"> -->
+      <button (click)="nextQuestion()" >
+      <mat-icon>arrow_forward</mat-icon>
+      Next Question
+    </button>
+  </div>
+</div>
+
+<div class="final-message" *ngIf="isFinished">
+  <h2>
+    <mat-icon>check_circle</mat-icon>
+    Interview Complete
+  </h2>
+  <p>{{ finalResponse }}</p>
+</div>

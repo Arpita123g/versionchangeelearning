@@ -1,0 +1,71 @@
+<div class="elearingnewui">
+    <div class="case-management-body-forheader">
+        <div class="returnbtn-element">
+            <div class="returnbtn" (click)="GoBack()"> Return to Case Management </div>
+        </div>
+        <div class="card case-management-body-card">
+            <div class="card-body">
+                <div class=" tab-content-body">
+                    <ul class="nav second-nav" role="tablist">
+                        <li class="nav-item active" role="presentation" data-bs-target="#outlook" data-bs-toggle="tab"
+                            aria-controls="outlook" role="tab" aria-selected="false" (click)="search('outlook')">
+                            <span class="nav-link" aria-current="page">Market Outlook</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#phase1" data-bs-toggle="tab"
+                            aria-controls="phase1" role="tab" aria-selected="false" (click)="search('phase1')">
+                            <span class="nav-link" aria-current="page">Phase 1</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#phase2" data-bs-toggle="tab"
+                            aria-controls="phase2" role="tab" aria-selected="false" (click)="search('phase2')">
+                            <span class="nav-link" aria-current="page">Phase 2</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#numbersassigned" data-bs-toggle="tab"
+                            aria-controls="numbersassigned" role="tab" aria-selected="false"
+                            (click)="search('numbersassigned')">
+                            <span class="nav-link" aria-current="page">Numbers Assigned</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#foodrforthought" data-bs-toggle="tab"
+                            aria-controls="foodrforthought" role="tab" aria-selected="false"
+                            (click)="search('foodforthought')">
+                            <span class="nav-link" aria-current="page">Food For Thought</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#module" data-bs-toggle="tab"
+                            aria-controls="module" role="tab" aria-selected="false" (click)="search('general')">
+                            <span class="nav-link" aria-current="page">Module</span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="tab-content tab-content-body">
+
+                    <div role="tabpanel" class="tab-pane fade show active" id="outlook"
+                        [ngClass]="{ 'active':activeTab==='outlook'}">
+                        <app-orderingbasicscasemarket *ngIf="activeTab==='outlook'"></app-orderingbasicscasemarket>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="phase1"
+                        [ngClass]="{ 'active':activeTab==='phase1'}">
+                        <app-orderingbasicscasephase1 *ngIf="activeTab==='phase1'"></app-orderingbasicscasephase1>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="phase2"
+                        [ngClass]="{ 'active':activeTab==='phase2'}">
+                        <app-orderingbasicscasephase2 *ngIf="activeTab==='phase2'"></app-orderingbasicscasephase2>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="numbersassigned"
+                        [ngClass]="{ 'active':activeTab==='numbersassigned'}">
+                        <app-orderingbasicscasenumberofassingend
+                            *ngIf="activeTab==='numbersassigned'"></app-orderingbasicscasenumberofassingend>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="foodrforthought"
+                        [ngClass]="{ 'active':activeTab==='foodforthought'}">
+                        <app-orderingbasicscasefoodforthought
+                            *ngIf="activeTab==='foodforthought'"></app-orderingbasicscasefoodforthought>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade show " id="module"
+                        [ngClass]="{ 'active':activeTab==='general'}">
+                        <app-orderingbasicscasemodule *ngIf="activeTab==='general'"></app-orderingbasicscasemodule>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

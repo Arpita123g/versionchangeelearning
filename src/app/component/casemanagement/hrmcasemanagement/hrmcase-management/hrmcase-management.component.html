@@ -1,0 +1,354 @@
+<div class="elearingnewui casemanagement">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="case-management-body case-management-body-hrm">
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Division Policy</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3 mt-3">
+            <table class="table case-management-table mt-2">
+                <thead class="title-tbody">
+                    <tr>
+                        <td *ngFor="let thead of divisionpolicytable.thead">
+                            {{thead}}
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tbody of divisionpolicytable.tbody">
+                        <td>{{tbody.ptype}}</td>
+                        <td *ngFor="let cell of tbody.cell">
+                            <input type="text" [value]="res[cell] [0] || ''" #inputElement
+                                [disabled]="defaultcase === 'yes'"
+                                (focusout)="writeHRMValue(cell, 0, inputElement.value)" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Diversity Inclusion Policy</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3 mt-3">
+            <table class="table case-management-table mt-2">
+                <thead class="title-tbody">
+                    <tr>
+                        <td *ngFor="let thead of diversitypolicytable.thead">
+                            {{thead}}
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tbody of diversitypolicytable.tbody">
+                        <td>{{tbody.ptype}}</td>
+                        <td *ngFor="let cell of tbody.cell">
+                            <input type="text" [value]="res[cell] [0] || ''" #inputElement
+                                [disabled]="defaultcase === 'yes'"
+                                (focusout)="writeHRMValue(cell, 0, inputElement.value)" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Future Leadership Program</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3 mt-3">
+            <table class="table case-management-table mt-2">
+                <thead class="title-tbody">
+                    <tr>
+                        <td *ngFor="let thead of futureleadershiptable.thead">
+                            {{thead}}
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tbody of futureleadershiptable.tbody">
+                        <td>{{tbody.programtype}}</td>
+                        <td *ngFor="let cell of tbody.cell">
+                            <input type="text" [value]="res[cell] [0] || ''" #inputElement
+                                [disabled]="defaultcase === 'yes'"
+                                (focusout)="writeHRMValue(cell, 0, inputElement.value)" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Bonus Policy</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3 mt-3">
+            <table class="table case-management-table mt-2">
+                <thead class="title-tbody">
+                    <tr>
+                        <td *ngFor="let thead of bonuspolicy.thead">
+                            {{thead}}
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tbody of bonuspolicy.tbody">
+                        <td>{{tbody.ptype}}</td>
+                        <td *ngFor="let cell of tbody.cell">
+                            <input type="text" [value]="res[cell] [0] || ''" #inputElement
+                                [disabled]="defaultcase === 'yes'"
+                                (focusout)="writeHRMValue(cell, 0, inputElement.value)" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngFor="let item of management">
+            <table class="table page-name">
+                <thead>
+                    <tr>
+                        <th>
+                            <h2>{{item.title}}</h2>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="table-responsive mb-3 mt-3">
+                <table class="table case-management-table mt-2">
+                    <thead class="title-tbody">
+                        <tr>
+                            <td *ngFor="let thead of item.thead">
+                                {{thead}}
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let tbody of item.tbody">
+                            <td>{{tbody.type}}</td>
+                            <td *ngFor="let cell of tbody.cell">
+                                <input type="text" [value]="res[cell] [0] || ''" #inputElement
+                                    [disabled]="defaultcase === 'yes'"
+                                    (focusout)="writeHRMValue(cell, 0, inputElement.value)" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Paycut</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3 mt-3">
+            <table class="table case-management-table mt-2">
+                <thead class="title-tbody">
+                    <tr>
+                        <td *ngFor="let thead of paycut.thead">
+                            {{thead}}
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tbody of paycut.tbody">
+                        <td>{{tbody.type}}</td>
+                        <td *ngFor="let cell of tbody.cell">
+                            <input type="text" [value]="formatToFixed(res[cell]?.[0]) || ''"   #inputElement
+                                [disabled]="defaultcase === 'yes'"
+                                (focusout)="writeHRMValue(cell, 0, inputElement.value)" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <table class="table case-management-table mt-2">
+            <thead class="title-tbody">
+                <tr>
+                    <td>Type</td>
+                    <td>Decision</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let decision of paycut.decision;let i =index">
+                    <td>{{decision.type}}</td>
+                    <!-- <td>{{decision.cell}}</td> -->
+                    <!-- <p>{{res[decision[0].cell][0]}}</p>
+                    <p>{{res[decision[0].cell]}}</p> -->
+                    <td >
+                        <input type="text" [value]="res[decision.cell][i] || ''" #inputElement [disabled]="defaultcase === 'yes'"
+                            (focusout)="writeHRMValue(decision.cell, 0, inputElement.value)" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-hrm-second">
+                <thead>
+                    <tr>
+                        <td colspan="4" *ngFor="let round  of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody class="second-tbody title-tbody">
+                    <tr>
+                        <ng-container *ngFor="let round of rounds; " class="second-tbody-container">
+                            <td *ngFor="let heading of generalheading" class="second-tbody-td">{{ heading }}
+                            </td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+                <ng-container *ngFor="let item of roundwisedata ; let j =index">
+                    <thead class="title-tbody" *ngIf="item.maintitle">
+                        <tr>
+                            <th colspan="40" class="second-head py-2">
+                                <h4 class="m-0 fw-bold">{{item.maintitle}}</h4>
+                            </th>
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr>
+                            <th colspan="40">
+                                {{item.title}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="second-tbody">
+                        <tr>
+                            <td *ngFor="let cell of item.cell; let i=index">
+                                <input type="text" [value]="formatToFixed(res[cell]?.[getJValue(i)]) || ''"  #inputElement
+                                    [disabled]="defaultcase === 'yes'"
+                                    (focusout)="writeHRMValue(cell,  getJValue(i), inputElement.value)" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </ng-container>
+            </table>
+        </div>
+        <div class="table-responsive mb-3 mt-3">
+            <table class="case-management-table case-management-table-hrm-second">
+                <thead>
+                    <tr>
+                        <td colspan="4" *ngFor="let round  of rounds">{{round}}</td>
+                    </tr>
+                </thead>
+                <tbody class="second-tbody title-tbody">
+                    <tr>
+                        <ng-container *ngFor="let round of rounds; " class="second-tbody-container">
+                            <td *ngFor="let heading of managementheading" class="second-tbody-td">{{ heading }}
+                            </td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+                <ng-container *ngFor="let item of vendormanagementcost ; let j =index">
+                    <thead class="title-tbody" *ngIf="item.maintitle">
+                        <tr>
+                            <th colspan="40" class="second-head py-2">
+                                <h4 class="m-0 fw-bold">{{item.maintitle}}</h4>
+                            </th>
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr>
+                            <th colspan="40">
+                                {{item.title}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="second-tbody">
+                        <tr>
+                            <td *ngFor="let cell of item.cell; let i=index">
+                                <input type="text" [value]="res[cell] [getJValue(i)]|| ''" #inputElement
+                                    [disabled]="defaultcase === 'yes'"
+                                    (focusout)="writeHRMValue(cell,  getJValue(i), inputElement.value)" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </ng-container>
+            </table>
+        </div>
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Training of the employee</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3 mt-3">
+            <table class="table case-management-table mt-2">
+                <thead class="title-tbody">
+                    <tr>
+                        <td *ngFor="let thead of trainingoftheEmployee.thead">
+                            {{thead}}
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tbody of trainingoftheEmployee.tbody">
+                        <td>{{tbody.trainingtype}}</td>
+                        <td *ngFor="let cell of tbody.cell">
+                            <input type="text" [value]="res[cell] [0] || ''" #inputElement
+                                [disabled]="defaultcase === 'yes'"
+                                (focusout)="writeHRMValue(cell, 0, inputElement.value)" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Townhall Program</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3 mt-3">
+            <table class="table case-management-table mt-2">
+                <thead class="title-tbody">
+                    <tr>
+                        <td *ngFor="let thead of townhallProgram.thead">
+                            {{thead}}
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let tbody of townhallProgram.tbody">
+                        <td>{{tbody.ptype}}</td>
+                        <td *ngFor="let cell of tbody.cell">
+                            <input type="text" [value]="res[cell] [0] || ''" #inputElement
+                                [disabled]="defaultcase === 'yes'"
+                                (focusout)="writeHRMValue(cell, 0, inputElement.value)" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

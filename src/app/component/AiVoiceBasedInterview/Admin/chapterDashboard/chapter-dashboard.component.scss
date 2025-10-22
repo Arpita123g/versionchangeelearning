@@ -1,0 +1,371 @@
+.chapter-dashboard {
+  min-height: 100vh;
+  background: #f8fafc;
+  padding: 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  .dashboard-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 40px 20px;
+    margin-bottom: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.15);
+    
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      
+      .dashboard-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: white;
+        margin: 0 0 10px 0;
+        
+        .title-icon {
+          font-size: 2.5rem;
+          color: #667eea;
+        }
+      }
+      
+      .dashboard-subtitle {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin: 0 0 25px 0;
+      }
+      
+      .progress-overview {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        
+        .progress-item {
+          text-align: center;
+          
+          .progress-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 5px;
+          }
+          
+          .progress-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          }
+        }
+      }
+    }
+  }
+
+  .chapters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    align-items: stretch; 
+  }
+
+  .chapter-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 6px 24px rgba(102, 126, 234, 0.13);
+    border: 2px solid transparent;
+    transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    
+    display: flex;
+  flex-direction: column;
+  height: 100%;
+
+    &:hover {
+      box-shadow: 0 12px 32px rgba(102, 126, 234, 0.22);
+      border-color: #667eea;
+      transform: translateY(-4px) scale(1.01);
+    }
+
+    &.locked {
+      opacity: 0.7;
+      border-color: #ffcdd2;
+      background: #fafafa;
+      position: relative;
+      
+      &:hover {
+        border-color: #e57373;
+        opacity: 0.8;
+      }
+      
+      // Add a lock overlay
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+        pointer-events: none;
+        z-index: 1;
+      }
+      
+      // Disable hover effects for locked cards
+      &:hover {
+        transform: none;
+        box-shadow: 0 6px 24px rgba(102, 126, 234, 0.13);
+      }
+      
+      .chapter-badge-attractive {
+        background: linear-gradient(135deg, #e57373 0%, #ffcdd2 100%);
+        border-color: #ffcdd2;
+      }
+      
+      .chapter-title-attractive {
+        color: #999;
+      }
+      
+      .chapter-status-attractive {
+        opacity: 0.6;
+      }
+    }
+
+    &.completed {
+      border-color: #43e97b;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fff8 100%);
+      &:hover {
+        border-color: #43e97b;
+      }
+    }
+
+    // Style for chapters ready to be unlocked
+    &.ready-to-unlock {
+      border-color: #ffd600;
+      background: linear-gradient(135deg, #ffffff 0%, #fffbe6 100%);
+      position: relative;
+      
+      &:hover {
+        border-color: #ffd600;
+        transform: translateY(-2px) scale(1.005);
+      }
+      
+      
+      
+      .chapter-badge-attractive {
+        background: linear-gradient(135deg, #ffd600 0%, #ffed4e 100%);
+        border-color: #ffd600;
+      }
+    }
+
+    .card-header-attractive {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px 16px 24px;
+      background: transparent;
+      margin: 0;
+
+      .chapter-badge-attractive {
+        background: linear-gradient(135deg, #667eea 0%, #43e97b 100%);
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 700;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px #667eea22;
+        flex-shrink: 0;
+        border: 2px solid #fff;
+        margin: 0;
+      }
+
+      .chapter-header-main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin: 0;
+
+        .chapter-title-row {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          min-width: 0;
+          margin: 0;
+
+          .chapter-title-attractive {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #22223b;
+            // white-space: nowrap;
+            // overflow: hidden;
+            // text-overflow: ellipsis;
+            // max-width: 200px;
+            margin: 0;
+            word-break: break-word;
+          }
+
+          .chapter-type-attractive {
+            background: #f3f6fd;
+            color: #667eea;
+            border-radius: 6px;
+            padding: 4px 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 0;
+
+            // max-width: 120px;         // Set a max width (adjust as needed)
+            min-width: 80px;          // Optional: set a min width for uniformity
+            text-align: center;       // Center the text
+            // white-space: nowrap;      // Prevent wrapping
+            // overflow: hidden;         // Hide overflow
+            // text-overflow: ellipsis;  // Show ... for overflow
+            display: inline-block;
+            word-break: break-word;
+          }
+        }
+
+        .chapter-status-row {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin: 0;
+
+          .chapter-status-attractive {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 6px;
+            padding: 3px 10px;
+            margin: 0;
+            
+            &.status-completed {
+              background: #eafaf1;
+              color: #43e97b;
+            }
+            &.status-in-progress {
+              background: #fffbe6;
+              color: #ffd600;
+            }
+            &.status-not-started {
+              background: #fff0f0;
+              color: #e57373;
+            }
+            
+            .status-icon-attractive {
+              font-size: 1rem;
+            }
+          }
+
+          .lock-attractive {
+            color: #e57373;
+            font-size: 1.2rem;
+            margin-left: 8px;
+          }
+          .unlock-attractive {
+            color: #43e97b;
+            font-size: 1.2rem;
+            margin-left: 8px;
+          }
+        }
+      }
+    }
+
+    .card-body {
+      padding: 0 24px 16px 24px;
+      margin: 0;
+
+      .chapter-info {
+        margin-bottom: 12px;
+        
+        .info-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 0.95rem;
+          color: #555;
+          margin-bottom: 6px;
+          
+          .info-icon {
+            color: #667eea;
+            font-size: 1.1rem;
+          }
+          
+          .info-text {
+            margin: 0;
+          }
+        }
+      }
+      
+      .progress-container {
+        margin-top: 12px;
+        
+        .progress-bar {
+          width: 100%;
+          height: 8px;
+          background: #f3f6fd;
+          border-radius: 6px;
+          overflow: hidden;
+          margin-bottom: 6px;
+          
+          .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+            border-radius: 6px;
+            transition: width 0.4s;
+          }
+        }
+        
+        .progress-text {
+          font-size: 0.85rem;
+          color: #43e97b;
+          font-weight: 500;
+          margin: 0;
+        }
+      }
+    }
+
+    .card-footer {
+      padding: 16px 24px 20px 24px;
+      display: flex;
+      justify-content: flex-end;
+      background: #f3f6fd;
+      border-top: 1px solid #e0e0e0;
+      margin: 0;
+
+      .start-button {
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 10px 20px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+        
+        .button-icon {
+          font-size: 1.2rem;
+        }
+        
+        .button-text {
+          font-size: 0.95rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,170 @@
+<div class="elearingnewui project_management">
+  <div class="container">
+    <div class="body-element">
+      <div class="inbound">
+        <div class="row" class="element-first">
+          <div
+            class="marelegapfood"
+            (click)="openDialog()"
+            *ngIf="foodforthought"
+            style="text-align: right; margin: 0rem 0rem 3rem 0rem"
+          >
+            <span class="food-thought-span"
+              ><i class="bi bi-bar-chart-fill"></i>
+              <button class="food-thought-btn">Food For Thought</button></span
+            >
+          </div>
+        </div>
+
+        <h1>
+          Tracking
+          <mat-icon
+            appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                        </div> &nbsp; &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>How will you make adjustments to optimize budget utilization while maintaining the overall project's financial health?</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>How will you measure and enhance the value derived from the project, ensuring that the team's efforts align with the project's objectives and deliver positive outcomes?</p>
+                          </div>
+                        </div>
+                    </div> "
+          >
+            help_outline
+          </mat-icon>
+        </h1>
+        <div class="row row-cols-md-2 g-3 py-3">
+          <div class="col-md-6">
+            <div class="card h-100" style="border: none">
+              <div class="card-img-top img-top-new" style="text-align: center">
+                <img
+                  src="../../../../assets/images/projectmanagement/budgettrack.jpg"
+                  alt="..."
+                  class="img-fluid img-img"
+                  style="height: 18rem; width: 65%"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card p-2 h-100">
+              <apx-chart
+                [series]="budgettrackchart.series"
+                [chart]="budgettrackchart.chart"
+                [dataLabels]="budgettrackchart.dataLabels"
+                [plotOptions]="budgettrackchart.plotOptions"
+                [yaxis]="budgettrackchart.yaxis"
+                [xaxis]="budgettrackchart.xaxis"
+                [fill]="budgettrackchart.fill"
+                [title]="budgettrackchart.title"
+                [tooltip]="budgettrackchart.tooltip"
+              >
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+        <h1 class="pt-5">Time Track, days</h1>
+        <div class="row row-cols-md-2 g-3 py-3">
+          <div class="col-md">
+            <div class="card p-2 h-100">
+              <apx-chart
+                [series]="projectworkdayschart.series"
+                [chart]="projectworkdayschart.chart"
+                [dataLabels]="projectworkdayschart.dataLabels"
+                [plotOptions]="projectworkdayschart.plotOptions"
+                [yaxis]="projectworkdayschart.yaxis"
+                [xaxis]="projectworkdayschart.xaxis"
+                [fill]="projectworkdayschart.fill"
+                [title]="projectworkdayschart.title"
+                [tooltip]="projectworkdayschart.tooltip"
+              >
+              </apx-chart>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card p-2 h-100">
+              <apx-chart
+                [series]="resourceworkdayschart.series"
+                [chart]="resourceworkdayschart.chart"
+                [dataLabels]="resourceworkdayschart.dataLabels"
+                [plotOptions]="resourceworkdayschart.plotOptions"
+                [yaxis]="resourceworkdayschart.yaxis"
+                [xaxis]="resourceworkdayschart.xaxis"
+                [fill]="resourceworkdayschart.fill"
+                [title]="resourceworkdayschart.title"
+                [tooltip]="resourceworkdayschart.tooltip"
+              >
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+
+        <div class="row row-cols-md-2 g-3 py-5">
+          <div class="col-md">
+            <table class="table rsl_tbl">
+              <thead class="rsl_tbl-thead">
+                <tr class="rsl_tbl-thead-tr">
+                  <th class="rsl_tbl-thead-th" colspan="5">
+                    Cost per team member, INR
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="rsl_tbl-tbody">
+                <tr class="rsl_tbl-tbody-tr-head">
+                  <td></td>
+                  <td>Priya Sharma</td>
+                  <td>Rohan Kapoor</td>
+                  <td>Aisha Khan</td>
+                  <td>Total</td>
+                </tr>
+                <tr class="rsl_tbl-tbody-tr" *ngFor="let row of costData">
+                  <td>{{ row.category }}</td>
+                  <td>{{ row.values[0] | number: "1.0-0" }}</td>
+                  <td>{{ row.values[1] | number: "1.0-0" }}</td>
+                  <td>{{ row.values[2] | number: "1.0-0" }}</td>
+                  <td>{{ row.values[3] | number: "1.0-0" }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md">
+            <table class="table rsl_tbl">
+              <thead class="rsl_tbl-thead">
+                <tr class="rsl_tbl-thead-tr">
+                  <th class="rsl_tbl-thead-th" colspan="5">
+                    Workdays Remaining
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="rsl_tbl-tbody">
+                <tr class="rsl_tbl-tbody-tr-head">
+                  <td></td>
+                  <td>Priya Sharma</td>
+                  <td>Rohan Kapoor</td>
+                  <td>Aisha Khan</td>
+                  <td>Total</td>
+                </tr>
+                <tr class="rsl_tbl-tbody-tr" *ngFor="let row of workdaysData">
+                  <td>{{ row.category }}</td>
+                  <td>{{ row.values[0] | number: "1.0-0" }}</td>
+                  <td>{{ row.values[1] | number: "1.0-0" }}</td>
+                  <td>{{ row.values[2] | number: "1.0-0" }}</td>
+                  <td>{{ row.values[3] | number: "1.0-0" }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

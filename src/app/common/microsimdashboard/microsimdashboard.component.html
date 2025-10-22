@@ -1,0 +1,191 @@
+<div class="elearingnewui bus_iness">
+  <div class="newinstructor">
+      <div class="card newinstructor-card-first ">
+          <div class="card-header newinstructor-card-header-first">
+              <div class="tab-content">
+                  <div role="tabpanel" class=" tab_pane-first tab-pane fade show active">
+                      <ul class="nav nav_bar" role="tablist">
+                          <li role="presentation" class=" nav_bar-li active" data-bs-target="#microsimstructure"
+                              aria-controls="microsimstructure" role="tab" data-bs-toggle="tab" 
+                              [ngClass]="{'active': activetab === 'microsimstructure'}"
+                              (click)="tabclick('microsimstructure')">
+                              <span class="octicon octicon-diff-added"><mat-icon>
+                                      table_chart</mat-icon>STRUCTURE</span>
+                          </li>
+                          <li role="presentation " class="nav_bar-li" data-bs-target="#microsimleaderboard"
+                              aria-controls="microsimleaderboard" role="tab" data-bs-toggle="tab"
+                              aria-selected="false" (click)="tabclick('microsimleaderboard')">
+                              <span class="octicon octicon-diff-added"><mat-icon> score</mat-icon>LEADERBOARD</span>
+                          </li>
+                          <li role="presentation " class="nav_bar-li" data-bs-target="#microsimaiassistant"
+                              aria-controls="microsimaiassistant" role="tab" data-bs-toggle="tab"
+                              aria-selected="false" (click)="tabclick('microsimaiassistant')">
+                              <span class="octicon octicon-diff-added"><mat-icon>vignette</mat-icon>AI ASSISTANT<sup
+                                      class="px-1">Beta</sup></span>
+                          </li>
+                          <li role="presentation " class="nav_bar-li" data-bs-target="#microsimforum"
+                              aria-controls="microsimforum" role="tab" data-bs-toggle="tab" aria-selected="false"
+                              (click)="tabclick('microsimforum')">
+                              <span class="octicon octicon-diff-added"><mat-icon>wc</mat-icon>FORUM</span>
+                          </li>
+                          <li role="presentation " class="nav_bar-li" data-bs-target="#microsimaterial"
+                              aria-controls="microsimaterial" role="tab" data-bs-toggle="tab" aria-selected="false"
+                              (click)="tabclick('microsimaterial')">
+                              <span class="octicon octicon-diff-added"><mat-icon>compare</mat-icon>MATERIAL</span>
+                          </li>
+                          <li role="presentation " class="nav_bar-li" data-bs-target="#microsimquiz"
+                              aria-controls="microsimquiz" role="tab" data-bs-toggle="tab" aria-selected="false"
+                              (click)="tabclick('microsimquiz')">
+                              <span class="octicon octicon-diff-added"><mat-icon>question_answer</mat-icon>QUIZ</span>
+                          </li>
+                          <li role="presentation " class="nav_bar-li" data-bs-target="#microsimcasemanagement"
+                              aria-controls="microsimcasemanagement" role="tab" data-bs-toggle="tab"
+                              [ngClass]="{'active': activetab === 'microsimcasemanagement'}"
+                               (click)="tabclick('microsimcasemanagement')">
+                              <span class="octicon octicon-diff-added"><mat-icon>device_hub</mat-icon>CASE
+                                  MANAGEMENT</span>
+                          </li>
+                      </ul>
+                  </div>
+
+                  <div role="tabpanel" class="tab_pane-second tab-pane fade show " id="microsimleaderboard">
+                      <ul class="nav nav_bar" role="tablist">
+                          <li role="presentation " class="nav_bar-li active"
+                              data-bs-target="#microsimleaderboardgeneral" aria-controls="microsimleaderboardgeneral"
+                              role="tab" data-bs-toggle="tab" aria-selected="true">
+                              <span class="octicon octicon-diff-added">LEADERBOARD GENERAL</span>
+                          </li>
+                          <li role="presentation" class="nav_bar-li" data-bs-target="#microsimleaderboardreport"
+                              aria-controls="microsimleaderboardreport" role="tab" data-bs-toggle="tab"
+                              aria-selected="false">
+                              <span class="octicon octicon-diff-added">LEADERBOARD REPORT</span>
+                          </li>
+
+                      </ul>
+                  </div>
+                  <div role="tabpanel" class="tab_pane-second tab-pane fade show " id="microsimaiassistant">
+                      <ul class="nav nav_bar" role="tablist">
+                          <li role="presentation " class="nav_bar-li active"
+                              data-bs-target="#microsimaiassistantassesment"
+                              aria-controls="microsimaiassistantassesment" role="tab" data-bs-toggle="tab"
+                              aria-selected="true" (click)="aiassesmentclick('assesment')">
+                              <span class="octicon octicon-diff-added">Assesment</span>
+                          </li>
+                          <li role="presentation" class="nav_bar-li" data-bs-target="#microsimaiassistantfeedback"
+                              aria-controls="microsimaiassistantfeedback" role="tab" data-bs-toggle="tab"
+                              aria-selected="false" (click)="aiassesmentclick('feedback')">
+                              <span class="octicon octicon-diff-added">Feedback</span>
+                          </li>
+
+                      </ul>
+                  </div>
+                  <div role="tabpanel" class="tab_pane-second tab-pane fade show" id="microsimforum" 
+                  >
+                      <ul class="nav nav_bar" role="tablist">
+                          <li role="presentation " class="nav_bar-li active "
+                              data-bs-target="#microsimforumindividual" aria-controls="microsimforumindividual"
+                              role="tab" data-bs-toggle="tab" aria-selected="true">
+                              <span class="octicon octicon-diff-added">INDIVIDUAL</span>
+                          </li>
+                          <li role="presentation" class="nav_bar-li" data-bs-target="#microsimforumcourse"
+                              aria-controls="microsimforumcourse" role="tab" data-bs-toggle="tab"
+                              aria-selected="false">
+                              <span class="octicon octicon-diff-added">COURSE</span>
+                          </li>
+                      </ul>
+                  </div>
+                  <!-- sharecase casemanagement start -->
+                  <div role="tabpanel" class="tab_pane-second tab-pane fade show" id="microsimcasemanagement"
+                  [ngClass]="{'active': activetab === 'microsimcasemanagement'}">
+                      <ul class="nav nav_bar" role="tablist">
+                          <li role="presentation " class="nav_bar-li active " data-bs-target="#cesimcasedefault"
+                              aria-controls="cesimcasedefault" role="tab" data-bs-toggle="tab" aria-selected="true"
+                              [class.active]="selectedTab === 'cesimcase'"
+                              (click)="setTab('cesimcase')">
+                              <span class="octicon octicon-diff-added">Cesim Cases</span>
+                          </li>
+                          <li role="presentation" class="nav_bar-li" data-bs-target="#yoursharecase"
+                              aria-controls="yoursharecase" role="tab" data-bs-toggle="tab" aria-selected="false"
+                              [class.active]="selectedTab === 'yourcase'"
+                              (click)="setTab('yourcase')">
+                              <span class="octicon octicon-diff-added">Your Cases</span>
+                          </li>
+                          <li role="presentation" class="nav_bar-li" data-bs-target="#sharedcase"
+                              aria-controls="sharedcase" role="tab" data-bs-toggle="tab" aria-selected="false"
+                              [class.active]="selectedTab === 'sharedcase'"
+                              (click)="setTab('sharedcase')">
+                              <span class="octicon octicon-diff-added">Shared Cases</span>
+                          </li>
+                      </ul>
+                  </div>
+                  <!-- sharecase case management end -->
+              </div>
+          </div>
+      </div>
+      <div class="card newinstructor-card">
+          <div class="card-body newinstructor-card-body">
+              <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade show active" id="microsimstructure">
+                      <app-microsimdashboardstructure
+                          *ngIf="activetab == 'microsimstructure'"></app-microsimdashboardstructure>
+                  </div>
+                  
+                  <div role="tabpanel" class="tab-pane fade show active " id="microsimcasemanagement">
+                      <app-sharecased *ngIf="activetab == 'microsimcasemanagement'?selectedTab == 'cesimcase':false"
+                          [selectedTab]="selectedTab"></app-sharecased>
+                      <app-sharecased *ngIf="activetab == 'microsimcasemanagement'?selectedTab == 'yourcase':false"
+                          [selectedTab]="selectedTab"></app-sharecased>
+                      <app-sharecased *ngIf="activetab == 'microsimcasemanagement'?selectedTab == 'sharedcase':false"
+                          [selectedTab]="selectedTab"></app-sharecased>
+                  </div>
+
+
+
+
+                  <!-- end -->
+                  <div role="tabpanel" class="tab-pane fade show microsimcasemanagement-tab " id="microsimaterial">
+                      <app-materialview *ngIf="activetab == 'microsimaterial'"></app-materialview>
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade show " id="microsimquiz">
+                      <app-quiz *ngIf="activetab == 'microsimquiz'"></app-quiz>
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade show " id="microsimarchive">
+                      <app-microsimarchive *ngIf="activetab == 'microsimarchive'"></app-microsimarchive>
+                  </div>
+              </div>
+              <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade show active" id="microsimleaderboardgeneral">
+                      <app-microsimleaderboardgeneral
+                          *ngIf="activetab == 'microsimleaderboard'"></app-microsimleaderboardgeneral>
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade show " id="microsimleaderboardreport">
+                      <app-microsimleaderboardreport
+                          *ngIf="activetab == 'microsimleaderboard'"></app-microsimleaderboardreport>
+                  </div>
+
+              </div>
+              <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade show active" id="microsimaiassistantassesment">
+                      <app-aiassesment
+                          *ngIf="activetab == 'microsimaiassistant'?aiassesmenttab == 'assesment':false"></app-aiassesment>
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade show " id="microsimaiassistantfeedback">
+                      <app-aifeedback
+                          *ngIf="activetab == 'microsimaiassistant'?aiassesmenttab == 'feedback':false"></app-aifeedback>
+                  </div>
+
+              </div>
+              <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade show microsimforumindividual-tab active"
+                      id="microsimforumindividual">
+                      <app-chatbox [chattype]="chattypeinstructor" *ngIf="activetab == 'microsimforum'"></app-chatbox>
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade show microsimforumindividual-tab"
+                      id="microsimforumcourse">
+                      <app-chatbox [chattype]="chattypecourse" *ngIf="activetab == 'microsimforum'"></app-chatbox>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

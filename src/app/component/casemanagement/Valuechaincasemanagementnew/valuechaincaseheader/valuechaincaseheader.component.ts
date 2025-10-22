@@ -1,0 +1,132 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/service/backendgameapi/api.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { NgApexchartsModule } from 'ng-apexcharts';
+
+@Component({
+  selector: 'app-valuechaincaseheader',
+  standalone: true,
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  templateUrl: './valuechaincaseheader.component.html',
+  styleUrls: ['./valuechaincaseheader.component.scss']
+})
+export class ValuechaincaseheaderComponent implements OnInit {
+
+  constructor(private _router: Router, private _api: ApiService) { }
+  getSelectTab: any;
+
+  ngOnInit(): void {
+    this.getSelectTab = localStorage.getItem('selectedTab');
+
+  }
+
+  activeTab = 'demand';
+  search(activeTab: any) {
+    this.activeTab = activeTab;
+  }
+  back() {
+    this._router.navigate(["auth/component/instructordashboard"])
+  }
+
+  GoBack() {
+    this._api.GoBack();
+  }
+
+  selectedLanguage = 'english';
+  languagebody: any = [
+    {
+      heading: "b237",
+      body: ['b7', 'b8', 'b9', 'b10', 'b11', 'b12', 'b13', 'b14', 'b15', 'b16', 'b17', 'b18', 'b19']
+    },
+    {
+      heading: "b8",
+      body: ['b20', 'b21', 'b22', 'b23', 'b24', 'b25', 'b26']
+    },
+    {
+      heading: "b6",
+      body: ['b27', 'b28', 'b29', 'b30', 'b34', 'b35', 'b36', 'b37']
+    },
+    {
+      heading: "b260",
+      body: ['b31', 'b32', 'b33', 'b38']
+    },
+    {
+      heading: "b10",
+      body: ['b39', 'b40', 'b41', 'b42', 'b43', 'b44', 'b45', 'b46', 'b54', 'b55', 'b56', 'b57', 'b58', 'b59', 'b60', 'b61', 'b62',
+        'b63', 'b64', 'b65', 'b66', 'b67', 'b68', 'b69', 'b243'
+      ]
+    },
+    {
+      heading: "b261",
+      body: ['b47', 'b48', 'b49', 'b50', 'b52', 'b53', 'b70'
+      ]
+    },
+    {
+      heading: "b11",
+      body: ['b71', 'b74', 'b75', 'b79', 'b80', 'b84', 'b86', 'b87', 'b88', 'b89', 'b90', 'b91', 'b92', 'b93', 'b94', 'b95',
+        'b96', 'b97', 'b98', 'b99', 'b100', 'b101', 'b102', 'b103', 'b244'
+      ]
+    },
+    {
+      heading: "b262",
+      body: ['b72', 'b73', 'b76', 'b77', 'b78', 'b81', 'b82', 'b83', 'b85', 'b255'
+      ]
+    },
+    {
+      heading: "b12",
+      body: ['b104', 'b105', 'b106', 'b107', 'b108', 'b245'
+      ]
+    },
+    {
+      heading: "b263",
+      body: ['b109', 'b110', 'b111', 'b112', 'b113', 'b114'
+      ]
+    },
+    {
+      heading: "b238",
+      body: ['b115', 'b116', 'b117', 'b118', 'b119', 'b120', 'b121', 'b122', 'b123'
+      ]
+    },
+    {
+      heading: "b13",
+      body: ['b124', 'b125', 'b126', 'b127', 'b128', 'b129', 'b130', 'b131', 'b132', 'b133', 'b134', 'b135',
+        'b136', 'b137', 'b138', 'b139', 'b140', 'b141', 'b142', 'b143', 'b144', 'b145', 'b146', 'b147', 'b148', 'b149',
+        'b150', 'b151', 'b152', 'b153', 'b154', 'b155', 'b156', 'b157', 'b158', 'b246', 'b247', 'b248', 'b249', 'b250', 'b251',
+        'b252', 'b253'
+      ]
+    },
+    {
+      heading: "b264",
+      body: ['b159', 'b160', 'b161', 'b162'
+      ]
+    },
+    {
+      heading: "b239",
+      body: ['b163', 'b164', 'b165', 'b166', 'b167', 'b168', 'b254'
+      ]
+    },
+    {
+      heading: "b265",
+      body: ['b169', 'b170', 'b171', 'b172', 'b173', 'b174', 'b175', 'b176', 'b177', 'b178', 'b179', 'b180'
+      ]
+    },
+    {
+      heading: "b240",
+      body: ['b181', 'b182', 'b183', 'b184', 'b185', 'b186', 'b187', 'b188', 'b189', 'b190', 'b191', 'b192', 'b193', 'b194', 'b195',
+        'b196', 'b197', 'b198', 'b199', 'b200', 'b201', 'b202', 'b203', 'b204', 'b205', 'b206', 'b207', 'b208', 'b209', 'b210', 'b211',
+        'b212', 'b213', 'b214', 'b215', 'b216', 'b217', 'b218', 'b219', 'b220', 'b221', 'b222', 'b223', 'b224', 'b225', 'b226', 'b227',
+        'b228', 'b229', 'b230', 'b231', 'b232', 'b233', 'b234', 'b235', 'b236'
+      ]
+    },
+    {
+      heading: "b266",
+      body: ['b3', 'b4', 'b5', 'b6', 'b241', 'b242', 'b256', 'b257', 'b258', 'b259', 'b265', 'b267', 'b268', 'b269'
+      ]
+    },
+
+
+  ]
+}

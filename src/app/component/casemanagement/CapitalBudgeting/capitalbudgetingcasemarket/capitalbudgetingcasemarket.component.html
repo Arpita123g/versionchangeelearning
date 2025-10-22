@@ -1,0 +1,175 @@
+<!-- new -->
+<div class="elearingnewui">
+    <div class="businessoutlook-element-body">
+        <div class="case-management-body">
+            <div class="table-responsive mb-3 mt-3">
+                <div class="links">
+                    <ul>
+                        <button class="out-look-btn "
+                            [style.background-color]="round === selectedButton? 'lightgrey' : ''"
+                            *ngFor="let round of rounds; let i = index;"
+                            (click)="roundclick(i,round)">{{round}}</button>
+                    </ul>
+                </div>
+                <div class="case-texts__content">
+                    <div id="initial">
+                        <div class="case-texts__content-main">
+                            <div class=" case-texts__container">
+                                <label class="case-texts__content-after-label pb-2">Original text</label>
+                                <div class=" case-texts__container-textarea">
+                                    Established in the bustling city of New Delhi, our cutting-edge insurance software
+                                    company has been at the forefront of revolutionizing the insurance industry across
+                                    India, the Middle East, and Europe. With a strong presence in these diverse markets,
+                                    we have become synonymous with innovative solutions that cater to the dynamic needs
+                                    of insurance providers. Over the years, our company has consistently strived for
+                                    excellence, earning a reputation for delivering robust software solutions that
+                                    streamline operations, enhance customer experiences, and drive efficiency in the
+                                    insurance sector. <br><br>
+
+                                    Since our inception, we've witnessed remarkable growth, currently boasting a team of
+                                    1000 dedicated professionals spread across various departments. Our diverse and
+                                    talented workforce is the backbone of our success, working collaboratively to ensure
+                                    that our software solutions meet the highest industry standards. As we continue to
+                                    evolve, we remain committed to fostering a culture of innovation and excellence
+                                    within our organization. <br><br>
+
+                                    At present, our focus is on a portfolio of 15 strategic projects that aim to propel
+                                    our company to new heights. These projects span areas such as market expansion,
+                                    operational efficiency, and process improvement. As we embark on this journey, our
+                                    goal is to empower our participants with the responsibility of choosing the projects
+                                    that align with our company's vision and maximize returns within the specified
+                                    budget constraints. This decision-making process reflects our commitment to staying
+                                    ahead of industry trends and ensuring sustainable growth in the highly competitive
+                                    landscape of insurance software solutions.
+
+                                </div>
+                            </div>
+                            <div class="case-texts__content-starea">
+                                <div class="case-texts__content-after">
+                                    <label class="case-texts__content-after-label">Your custom default text</label>
+                                    <st-editor name="" id="" [config]="config" [(ngModel)]="contentvalue"
+                                        [disabled]="defaultcase=='yes'" (focusout)="contentvaluechange()"></st-editor>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="table-responsive">
+                <table class=" table case-management-table">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="second-head" colspan="12">Industry</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Expected Repo Rate by RBI, %</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.e5; let i = index">
+                                <input [value]="res.e5[i]*100" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('e5',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Inflation Rate, %</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.e6; let i = index">
+                                <input [value]="res.e6[i]*100" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('e6',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>GDP Growth Rate, %</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.e7; let i = index">
+                                <input [value]="res.e7[i]*100" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('e7',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Unemployment Rate, %</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.e8; let i = index">
+                                <input [value]="res.e8[i]*100" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('e8',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Exchange Rate (USD to INR)</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.e9; let i = index">
+                                <input [value]="res.e9[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('e9',i,inputElement.value)">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-responsive">
+                <table class=" table case-management-table">
+
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="second-head" colspan="12">Company</th>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Cost of equity, %</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.e12; let i = index">
+                                <input [value]="res.e12[i]*100" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('e12',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Cost of Debt, %</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.e13; let i = index">
+                                <input [value]="res.e13[i]*100" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('e13',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Debt to equity ratio, %</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.e14; let i = index">
+                                <input [value]="res.e14[i]*100" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('e14',i,inputElement.value)">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="first-div">
+                                <div>Tax Rate, %</div>
+                            </td>
+                            <td *ngFor="let marketdata of res.e15; let i = index">
+                                <input [value]="res.e15[i]*100" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeLogisticsValue('e15',i,inputElement.value)">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

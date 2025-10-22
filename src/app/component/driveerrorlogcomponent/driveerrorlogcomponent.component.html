@@ -1,0 +1,128 @@
+<div class="container-fluid  driveerrorlog">
+    <mat-card class="inputcard">
+        <div class="row">
+            <div class="col-8">
+                <div class="inputtitle"> Student Management Section</div>
+                <div class="subtitle">You can check student management section</div>
+            </div>
+
+        </div>
+    </mat-card>
+    <div class="card shadow py-3 px-4 mt-4">
+        <div class="row ">
+
+            <div class="col ">
+                <input [(ngModel)]="coursecodesearch" placeholder="Enter Coursecode" class="form-control" type="text">
+            </div>
+            <div class="col  ">
+                <button class="submit-button" (click)="search(coursecodesearch)">Search</button>
+            </div>
+            <div class="col">
+                <div class="card shadow p-3 succes_msg">{{successno}}</div>
+            </div>
+            <div class="col">
+                <div class="card shadow p-3 error_msg">{{failureno}}</div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <mat-card class="inputcard-table" style="margin-top:20px;margin-bottom:10px">
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="drivemail">
+                <th mat-header-cell *matHeaderCellDef> DriveMail </th>
+                <td mat-cell *matCellDef="let element"> {{element.driveemail}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="errorcode">
+                <th mat-header-cell *matHeaderCellDef> Error Code </th>
+                <td mat-cell *matCellDef="let element"> {{element.errorcode}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="errormessage">
+                <th mat-header-cell *matHeaderCellDef> Error Message </th>
+                <td mat-cell *matCellDef="let element"> {{element.errormsg}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="usermail">
+                <th mat-header-cell *matHeaderCellDef> user email </th>
+                <td mat-cell *matCellDef="let element"> {{element.userRegister.email}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="apicallpurpose">
+                <th mat-header-cell *matHeaderCellDef> ApicallPurpose </th>
+                <td mat-cell *matCellDef="let element"> {{element.apicallpurpose}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="coursecode">
+                <th mat-header-cell *matHeaderCellDef> Coursecode </th>
+                <td mat-cell *matCellDef="let element"> {{element.courseDetails.coursecode}} </td>
+            </ng-container>
+           
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator style="font-size:12px;margin:10px;display:flex;justify-content:center"
+            [pageSizeOptions]="[5, 10, 20, 50, 100,500,dataSource.data.length]" showFirstLastButtons aria-label="Select page of periodic elements">
+        </mat-paginator>
+    </mat-card>
+    <mat-card class="inputcard-table" style="margin-top:20px;margin-bottom:10px">
+
+        <table mat-table [dataSource]="seconddataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="drivemail">
+                <th mat-header-cell *matHeaderCellDef> DriveMail </th>
+                <td mat-cell *matCellDef="let element"> {{element.driveemail}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="count">
+                <th mat-header-cell *matHeaderCellDef> Count </th>
+                <!-- <td mat-cell *matCellDef="let element"> {{element.count}} </td> -->
+                <td  mat-cell *matCellDef="let element" style="text-align: center !important;">
+                    <mat-chip color="accent" style="cursor: pointer;"  (click)="goTo(element)" selected>{{element.count}} </mat-chip>
+                    </td>
+            </ng-container>
+
+            
+            <tr mat-header-row *matHeaderRowDef="seconddisplayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: seconddisplayedColumns;"></tr>
+        </table>
+        <mat-paginator style="font-size:12px;margin:10px;display:flex;justify-content:center"
+            [pageSizeOptions]="[5, 10, 20, 50, 100,500,dataSource.data.length]" showFirstLastButtons aria-label="Select page of periodic elements">
+        </mat-paginator>
+    </mat-card>
+    <mat-card class="inputcard-table" style="margin-top:20px;margin-bottom:10px">
+
+        <table mat-table [dataSource]="thirddataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="username">
+                <th mat-header-cell *matHeaderCellDef> Username </th>
+                <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="drivemail">
+                <th mat-header-cell *matHeaderCellDef> DriveMail </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                
+            </ng-container>
+            <ng-container matColumnDef="count">
+                <th mat-header-cell *matHeaderCellDef> Count </th>
+                <td mat-cell *matCellDef="let element"> {{element.count}} </td>
+                
+            </ng-container>
+
+            
+            <tr mat-header-row *matHeaderRowDef="thirddisplayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: thirddisplayedColumns;"></tr>
+        </table>
+        <mat-paginator style="font-size:12px;margin:10px;display:flex;justify-content:center"
+            [pageSizeOptions]="[5, 10, 20, 50, 100,500,dataSource.data.length]" showFirstLastButtons aria-label="Select page of periodic elements">
+        </mat-paginator>
+    </mat-card>
+</div>

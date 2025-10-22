@@ -1,0 +1,73 @@
+<div class="elearingnewui">
+    <div class="case-management-body-forheader">
+        <div class="returnbtn-element">
+            <div class="returnbtn" (click)="GoBack()"> Return to Case Management </div>
+        </div>
+        <div class="card case-management-body-card">
+            <div class="card-body">
+                <div class=" tab-content-body">
+                    <ul class="nav second-nav" role="tablist">
+                        <li class="nav-item active" role="presentation" data-bs-target="#company" data-bs-toggle="tab"
+                            aria-controls="company" role="tab" aria-selected="true" (click)="search('company')">
+                            <span class="nav-link" aria-current="page">Company</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#acquisition" data-bs-toggle="tab"
+                            aria-controls="acquisition" role="tab" aria-selected="false"
+                            (click)="search('acquisition')">
+                            <span class="nav-link" aria-current="page">Acquisition</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#management" data-bs-toggle="tab"
+                            aria-controls="management" role="tab" aria-selected="false" (click)="search('management')">
+                            <span class="nav-link" aria-current="page">Management</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#tools" data-bs-toggle="tab"
+                            aria-controls="tools" role="tab" aria-selected="false" (click)="search('tools')">
+                            <span class="nav-link" aria-current="page">Tools</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#scenario" data-bs-toggle="tab"
+                            aria-controls="scenario" role="tab" aria-selected="false" (click)="search('scenario')">
+                            <span class="nav-link" aria-current="page">Scenario & FoT</span>
+                        </li>
+                        <li class="nav-item" role="presentation" data-bs-target="#module" data-bs-toggle="tab"
+                            aria-controls="module" role="tab" aria-selected="false" (click)="search('general')">
+                            <span class="nav-link" aria-current="page">Module</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content tab-content-body">
+                    <div role="tabpanel" class="tab-pane fade show active" id="company"
+                        [ngClass]="{ 'active':activeTab==='company'}">
+                        <app-hrmcase-company *ngIf="activeTab==='company'"></app-hrmcase-company>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade " id="acquisition"
+                        [ngClass]="{ 'active':activeTab==='acquisition'}">
+                        <app-hrmcase-acquisition *ngIf="activeTab==='acquisition'"></app-hrmcase-acquisition>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade " id="management"
+                        [ngClass]="{ 'active':activeTab==='management'}">
+                        <app-hrmcase-management *ngIf="activeTab==='management'"></app-hrmcase-management>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade " id="tools"
+                        [ngClass]="{ 'active':activeTab==='tools'}">
+                        <app-hrmcase-tools *ngIf="activeTab==='tools'"></app-hrmcase-tools>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade " id="scenario"
+                        [ngClass]="{ 'active':activeTab==='scenario'}">
+                        <app-hrmcase-scenario-fot *ngIf="activeTab==='scenario'"></app-hrmcase-scenario-fot>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade " id="module"
+                        [ngClass]="{ 'active':activeTab==='general'}">
+                        <app-hrmcase-module *ngIf="activeTab==='general'"></app-hrmcase-module>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div>
+            <button class="mt-4 back" (click)="back()" style=" border: 3px solid #30b4cc;
+            border-radius: 6px;
+            background: transparent;
+            color: #30b4cc;
+            font-size: 20px; padding: 0.5rem 1rem;">Back</button>
+        </div> -->
+    </div>
+</div>

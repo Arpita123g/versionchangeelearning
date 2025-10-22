@@ -1,0 +1,114 @@
+<div class="elearingnewui casemanagement">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+    </div>
+    <div class="case-management-body case-management-body-hrm">
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Scenario</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3 mt-3">
+            <table class="table table-bordered case-management-table foodrforthought">
+                <thead>
+                    <tr>
+                        <td *ngFor="let thead of scenarios.thead">{{thead}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of scenarios.tbody ;let i=index">
+                        <td>{{item.scenario}}</td>
+                        <td>{{item.round}}</td>
+                        <td>
+                            <textarea cols="40" rows="4" 
+                            [value]="res[item.casecell] [i]||''" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeHRMValue(item.casecell, i, inputElement.value)">{{res[item.casecell] [i]||''}}</textarea>
+                        </td>
+                        <td>
+                            <textarea cols="40" rows="4" *ngFor="let option of item.optionscell; let j=index"
+                                [value]="res[option] [j]||''" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeHRMValue(option, i, inputElement.value)"></textarea>
+                        </td>
+                        <td>
+                            <input type="text" *ngFor="let rescell of item.resultcell;let k=index"
+                                [value]="res[rescell][k]||''" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeHRMValue(rescell, i, inputElement.value)" />
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Food For Thought</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive mb-3 mt-3">
+            <table class="table table-bordered case-management-table foodrforthought">
+                <thead>
+                    <tr>
+                        <td *ngFor="let thead of fot.thead">{{thead}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of fot.tbody; let j=index" >
+                        <td *ngIf="item.rowspan" [attr.rowspan]="item.rowspan">{{item.rowspan?item.section:null}}</td>
+                        <td>{{item.slno}}</td>
+                        <td>
+                            <textarea cols="40" rows="4" [value]="item.questionscell" #inputElement
+                                disabled
+                                (focusout)="writeHRMValue(item.questionscell, 0, inputElement.value)"></textarea>
+                        </td>
+                        <td>
+                            <textarea cols="40" rows="4" *ngFor="let cell of item.optionscell; let i=index"
+                                [value]="cell" #inputElement disabled
+                                (focusout)="writeHRMValue(cell, i, inputElement.value)"></textarea>
+                        </td>
+                        <td>
+                            <textarea cols="40" rows="4" *ngFor="let cell of item.feedbackcell; let i=index"
+                                [value]="cell" #inputElement disabled
+                                (focusout)="writeHRMValue(cell, i, inputElement.value)"></textarea>
+                        </td>
+                        <td>
+                            <input type="text" *ngFor="let cell of item.scorecell; let i=index"
+                                [value]="res[cell] [i]||''" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeHRMValue(cell, j, inputElement.value)" />
+                        </td>
+                        <td>
+                            <input type="text" *ngFor="let cell of item.rigorcell; let i=index"
+                                [value]="res[cell] [i]||''" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeHRMValue(cell, j, inputElement.value)" />
+                        </td>
+                        <td>
+                            <input type="text" *ngFor="let cell of item.structuringcell; let i=index"
+                                [value]="res[cell] [i]||''" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeHRMValue(cell, j, inputElement.value)" />
+                        </td>
+                        <td>
+                            <input type="text" *ngFor="let cell of item.synthesiscell; let i=index"
+                                [value]="res[cell] [i]||''" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeHRMValue(cell, j, inputElement.value)" />
+                        </td>
+                        <td>
+                            <input type="text" *ngFor="let cell of item.businessJudgementcell; let i=index"
+                                [value]="res[cell] [i]||''" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeHRMValue(cell, j, inputElement.value)" />
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

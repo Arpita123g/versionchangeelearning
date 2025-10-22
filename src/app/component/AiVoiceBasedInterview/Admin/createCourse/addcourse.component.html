@@ -1,0 +1,66 @@
+<div class="p-4">
+    <div class="row">
+        <div class="col-10">
+            <div class="inputtitle">Course Assign </div>
+            <div class="subtitle">You can assign your course</div>
+        </div>
+    </div>
+    <form [formGroup]="addaicoursegmaegroup" class="form">
+        <div class="row">
+            <div class="borderbottom"></div>
+            <div class="col-6 mar-b">
+                <div class="lebel"> Product Type </div>
+                <select formControlName="producttype" class="form-control" (change)="getGameList($event)"
+                [(ngModel)]="selectedProductType">
+                    <option value="">Select Product Type</option>
+                    <option value="Non-Ai">Non-Ai</option>
+                    <option value="Non-AI-Coach">Non-Ai-Coach</option>
+                    <option value="Language Lab">Language Lab</option>
+                    <option value="Others">Others</option>
+                </select>
+
+            </div>
+            <div class="col-6 mar-b">
+                <div class="lebel"> Game List </div>
+                <select formControlName="gameid" class="form-control" id="myDatalistInput"
+                    (change)="getQuestionList($event)">
+                    <option value="">Select Game List</option>
+                    <option *ngFor="let game of gameListArray; let i=index" [value]="game.aigameid">
+                        {{game.aigamename}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="col-6 mar-b" *ngIf="(selectedProductType==='Non-Ai')||(selectedProductType==='Non-AI-Coach')
+            ||(selectedProductType==='Others')">
+                <div class="lebel"> Question Set List </div>
+                <select formControlName="questionsetid" class="form-control" id="myDatalistInput">
+                    <option value="">Select Question Set</option>
+                    <option *ngFor="let question of QustionListArray; let i=index" [value]="question.aiquestionsetid">
+                        {{question.aiquestionsetname}}
+                    </option>
+                </select>
+            </div>
+           
+            <div class="col-6 mar-b">
+                <div class="lebel">Course Name </div>
+                <input formControlName="coursename" class="form-control" type="text">
+            </div>
+            <div class="col-6 mar-b">
+                <div class="lebel">No of license. </div>
+                <input formControlName="licenseno" class="form-control" type="text">
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="borderbottom"></div>
+
+
+            <div class="col-10"></div>
+            <div class="col-2 mar-b save" style="display:flex;align-items:center">
+                <button [disabled]="checkloading || isButtonDisabled" class="submit-button"
+                    (click)="courseassign()">Assign</button>
+            </div>
+        </div>
+    </form>
+</div>

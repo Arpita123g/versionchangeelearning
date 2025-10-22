@@ -1,0 +1,303 @@
+<div class="elearingnewui innovation_game">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="re_ort">
+                <div class="row pb-4">
+                    <div class="col-8"></div>
+                    <div class="col-4">
+                        <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                            <div class="">
+                                <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                    (change)="roundClick()">
+                                    <option class="select-round-option" value="">Select Round</option>
+                                    <option class="select-round-option"
+                                        *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                        {{attempt}}</option>
+
+                                </select>
+                            </div>
+
+                            <div class="download_btn" matTooltiClass="primary-tooltip"
+                                (click)="downloadreporthrpgame()">
+                                <div>
+                                    <a download matTooltip="Download"><span class="hovertext"
+                                            data-hover="Download pdf file accounting ">
+                                            <img class="download_btn-img"
+                                                src="assets/images/businessbasics/download.png" />
+                                        </span>
+                                    </a>
+                                </div>
+                                <div>
+                                    <mat-icon class="mt-2">get_app</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-md-2 mb-3">
+                    <div class="col-md-5 reyapo">
+                        <h1 class="reyapo-h1">Report</h1>
+                        <p style="text-align: justify;">
+                            Excellent work. You have completed launching an innovative product that may disrupt the
+                            market. In this exercise every decision you have taken shows your skills in dimensions like
+                            rigor, synthesis, structuring and business judgement.
+                        </p>
+                    </div>
+
+                    <div class="col-md-7" *ngIf="optional[0]">
+                        <div class="card rigorcard">
+                            <div class="rigorcard-icon">
+                                <mat-icon class="rigorcard-icon-mat" appTippy="<table >
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Rigor</th>
+                      <td style='padding:7px;font-size:13px'>Consistency throughout the decision-making and recommendation.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>Structuring</th>
+                      <td style='padding:7px;font-size:13px'>A logical approach to gathering and analyzing information.</td>
+                    </tr>
+                    <tr>
+                      <th style='font-weight:500 ;padding:7px;font-size:14px'>
+                        Synthesis
+                      </th>
+                      <td style='padding:7px;font-size:13px'>
+                        Approach towards interpreting all the information and making informed decisions.
+                      </td>
+                    <tr>
+                      <th style='font-weight:500; padding:7px;font-size:14px'>Business Jugement</th>
+                      <td style='padding:7px;font-size:13px'>Ability to evaluate facts and consider risks and possible implications when making decisions.</td>
+                    </tr>
+                    </tr>
+                  </table>
+                   ">
+                                    help_outline
+                                </mat-icon>
+                            </div>
+                            <apx-chart [series]="rigorcharts.series" [chart]="rigorcharts.chart"
+                                [xaxis]="rigorcharts.xaxis" [yaxis]="rigorcharts.yaxis" [stroke]="rigorcharts.stroke"
+                                [markers]="rigorcharts.markers" [fill]="rigorcharts.fill"
+                                [title]="rigorcharts.title"></apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">Sales units</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Year 1</th>
+                                    <th>Year 3 (Projected)</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Basic Package</td>
+                                    <!-- <td class="middleclassright">118</td>
+                                    <td>3337</td> -->
+                                    <td class="middleclassright">{{result[0]| number:'1.0-0'}}</td>
+                                    <td>{{result[1]| number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Standard Package</td>
+                                    <!-- <td class="middleclassright">19</td>
+                                    <td>526</td> -->
+                                    <td class="middleclassright">{{result[2]| number:'1.0-0'}}</td>
+                                    <td>{{result[3]| number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Premium Package</td>
+                                    <!-- <td class="middleclassright">14</td>
+                                    <td>392</td> -->
+                                    <td class="middleclassright">{{result[4]| number:'1.0-0'}}</td>
+                                    <td>{{result[5]| number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Total Sales</td>
+                                    <!-- <td class="middleclassright">150</td>
+                                    <td>4255</td> -->
+                                    <td class="middleclassright">{{result[6]| number:'1.0-0'}}</td>
+                                    <td>{{result[7]| number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-2" style="justify-content:center;display:flex;align-items:center">
+                            <apx-chart [series]="projectsalesunitchart.series" [chart]="projectsalesunitchart.chart"
+                                [labels]="projectsalesunitchart.labels" [responsive]="projectsalesunitchart.responsive"
+                                [title]="projectsalesunitchart.title" [legend]="projectsalesunitchart.legend"
+                                [tooltip]="projectsalesunitchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 py-5">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">Cash balance, k INR</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Year 1</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Beginning cash</td>
+                                    <td>{{result[8]| number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Expenses</td>
+                                    <td>{{result[9]| number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Cash infusion</td>
+                                    <td>{{result[10]| number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Ending cash</td>
+                                    <td>{{result[11]| number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-2">
+                            <apx-chart [series]="cashbalanceinrchart.series" [chart]="cashbalanceinrchart.chart"
+                                [dataLabels]="cashbalanceinrchart.dataLabels"
+                                [plotOptions]="cashbalanceinrchart.plotOptions" [yaxis]="cashbalanceinrchart.yaxis"
+                                [xaxis]="cashbalanceinrchart.xaxis" [fill]="cashbalanceinrchart.fill"
+                                [title]="cashbalanceinrchart.title" [noData]="cashbalanceinrchart.noData"
+                                [tooltip]="cashbalanceinrchart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2">
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="3">Income Statement, k INR</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Year 1</th>
+                                    <th>Year 3 (Projected)</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Revenue</td>
+                                    <td class="middleclassright">{{result[12]| number:'1.0-0'}}</td>
+                                    <td>{{result[13]| number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-top: 2px solid black;border-bottom: 2px solid black;">
+                                    <td>Cost</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Compliance</td>
+                                    <td class="middleclassright">{{result[14]| number:'1.0-0'}}</td>
+                                    <td>{{result[15]|number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Resource</td>
+
+                                    <td class="middleclassright">{{result[16]|number:'1.0-0'}}</td>
+                                    <td>{{result[17] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Promotion</td>
+                                    <td class="middleclassright">{{result[18] | number:'1.0-0'}}</td>
+                                    <td>{{result[19] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Distribution</td>
+                                    <td class="middleclassright">{{result[20] | number:'1.0-0'}}</td>
+                                    <td>{{result[21] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Collaboration</td>
+                                    <td class="middleclassright">{{result[22] | number:'1.0-0'}}</td>
+                                    <td>{{result[23] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Technology</td>
+                                    <td class="middleclassright">{{result[24] | number:'1.0-0'}}</td>
+                                    <td>{{result[25] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr"
+                                    style="border-top: 2px solid black;border-bottom: 2px solid black;">
+                                    <td>Total Cost</td>
+                                    <td class="middleclassright">{{result[26] | number:'1.0-0'}}</td>
+                                    <td>{{result[27] | number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Profit/Loss, k INR</td>
+                                    <td class="middleclassright">{{result[28] | number:'1.0-0'}}</td>
+                                    <td>{{result[29] | number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="2">KPI</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <th>Year 1</th>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Product</td>
+                                    <td>{{result[30]}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Development time, months</td>
+                                    <td>{{result[31]| number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Quality score %</td>
+                                    <td>{{result[32]*100 |number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Average price, k INR</td>
+                                    <td>{{result[33]| number:'1.0-1'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Monthly burn, k INR</td>
+                                    <td>{{result[34]| number:'1.0-0'}}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Runaway, months</td>
+                                    <td>{{result[35]| number:'1.0-0'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

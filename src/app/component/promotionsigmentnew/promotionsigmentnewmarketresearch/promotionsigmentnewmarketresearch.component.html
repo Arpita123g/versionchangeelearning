@@ -1,0 +1,263 @@
+<!-- new design -->
+<div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+</div>
+<div class="elearingnewui promotion_sigment">
+    <div class="container">
+        <div class="body-element">
+            <div class="market-research">
+                <div class="element-first">
+                    <div class="row">
+                        <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought"
+                            style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                                <button class="food-thought-btn">{{language.b260}}</button></span>
+                        </div>
+                    </div>
+                </div>
+                <h1>{{language.b8}}
+                    <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'></h4>
+                            </div> &nbsp; &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>{{language.b176}}</p>
+                            </div>
+                          </div>
+                            <div class='pt-2' style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'></h4>
+                              </div> &nbsp; &nbsp; &nbsp;
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>{{language.b177}}</p>
+                              </div>
+                            </div>
+                        </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <ul class="nav market-research-nav" id="nav-tab" role="tablist">
+                    <li class="nav-link active market-research-link" id="nav-Market-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-Market" type="button" role="tab" aria-controls="nav-Market"
+                        aria-selected="true">
+                        {{language.b20}}
+                    </li>
+                    <li class="nav-link market-research-link " id="nav-genre-preference-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-genre-preference" type="button" role="tab"
+                        aria-controls="nav-genre-preference" aria-selected="true">{{language.b22}}
+                    </li>
+                    <li class="nav-link market-research-link" id="nav-profile-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-communication-channels" type="button" role="tab"
+                        aria-controls="nav-communication-channels" aria-selected="false">{{language.b39}}
+                    </li>
+                </ul>
+
+
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-Market" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group list-group-flush marketoutlooklist">
+                                <li class="list-group-item" style="padding: 2rem; width: 90%; margin: 0 auto;">
+                                    <p class="marketpage-p" [innerHTML]="outlooktextcontent"></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-genre-preference" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group  list-group-flush marketoutlooklist">
+                                <li class="list-group-item" style="padding: 2rem; width: 90%; margin: 0 auto;">
+                                    <div class="py-2">
+                                        <p style="text-align: justify;">
+                                            {{language.b23}}
+                                            <!-- The company and third-party website act as an important medium of sales and
+                                            the below data represents how we got prospects last period. -->
+                                        </p>
+                                    </div>
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="googleadspendgraph.series"
+                                                [chart]="googleadspendgraph.chart"
+                                                [dataLabels]="googleadspendgraph.dataLabels"
+                                                [plotOptions]="googleadspendgraph.plotOptions"
+                                                [yaxis]="googleadspendgraph.yaxis" [xaxis]="googleadspendgraph.xaxis"
+                                                [fill]="googleadspendgraph.fill" [title]="googleadspendgraph.title"
+                                                [noData]="googleadspendgraph.noData"
+                                                [tooltip]="googleadspendgraph.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                    </div>
+                                    <div class="py-2">
+                                        <p>
+                                            {{language.b26}}
+                                            <!-- The x-axis represents the companies while the y-axis represents the amount
+                                            spent on advertising through Google for each company in the last period. -->
+                                        </p>
+                                    </div>
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="emailinformationgraph.series"
+                                                [chart]="emailinformationgraph.chart"
+                                                [dataLabels]="emailinformationgraph.dataLabels"
+                                                [plotOptions]="emailinformationgraph.plotOptions"
+                                                [yaxis]="emailinformationgraph.yaxis"
+                                                [xaxis]="emailinformationgraph.xaxis"
+                                                [fill]="emailinformationgraph.fill"
+                                                [title]="emailinformationgraph.title"
+                                                [noData]="emailinformationgraph.noData"
+                                                [tooltip]="emailinformationgraph.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                    </div>
+                                    <div class="py-2">
+                                        <p>
+                                            {{language.b32}}
+                                            <!-- The x-axis represents the companies while the y-axis represents the email
+                                            contacts and subscribers in k units and the bounce rate and email open rates
+                                            are in percentages from the last period. -->
+                                        </p>
+                                    </div>
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="socialmediasubsgraph.series"
+                                                [chart]="socialmediasubsgraph.chart"
+                                                [dataLabels]="socialmediasubsgraph.dataLabels"
+                                                [plotOptions]="socialmediasubsgraph.plotOptions"
+                                                [yaxis]="socialmediasubsgraph.yaxis"
+                                                [xaxis]="socialmediasubsgraph.xaxis" [fill]="socialmediasubsgraph.fill"
+                                                [title]="socialmediasubsgraph.title"
+                                                [noData]="socialmediasubsgraph.noData"
+                                                [tooltip]="socialmediasubsgraph.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                        <div class="mt-2 mb-2">
+                                            <p>
+                                                {{language.b38}}
+                                                <!-- The x-axis represents the companies while the y-axis represents the
+                                                number of subscribers for different platforms from the last period. -->
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-communication-channels" role="tabpanel">
+                        <div class="rounded-5  rtsidetable card ">
+                            <ul class="list-group  list-group-flush marketoutlooklist">
+                                <li class="list-group-item" style="padding: 2rem; width: 90%; margin: 0 auto;">
+                                    <div class="py-2">
+                                        <p style="text-align: justify;">
+                                            {{language.b40}}
+                                            <!-- The sales are divided between four channels i.e., the Website (company &
+                                            partners), social media, Modern Trade, and Retailers. -->
+                                        </p>
+                                    </div>
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="platformsalesgraph.series"
+                                                [chart]="platformsalesgraph.chart"
+                                                [dataLabels]="platformsalesgraph.dataLabels"
+                                                [plotOptions]="platformsalesgraph.plotOptions"
+                                                [yaxis]="platformsalesgraph.yaxis" [xaxis]="platformsalesgraph.xaxis"
+                                                [fill]="platformsalesgraph.fill" [title]="platformsalesgraph.title"
+                                                [noData]="platformsalesgraph.noData"
+                                                [tooltip]="platformsalesgraph.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                        <div class="py-2">
+                                            {{language.b44}}
+                                            <!-- <p>The x-axis represents the platform while the y-axis represents the units
+                                                sold by each platform in the last period.</p> -->
+                                        </div>
+                                    </div>
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="segmentsalesgraph.series"
+                                                [chart]="segmentsalesgraph.chart"
+                                                [dataLabels]="segmentsalesgraph.dataLabels"
+                                                [plotOptions]="segmentsalesgraph.plotOptions"
+                                                [yaxis]="segmentsalesgraph.yaxis" [xaxis]="segmentsalesgraph.xaxis"
+                                                [fill]="segmentsalesgraph.fill" [title]="segmentsalesgraph.title"
+                                                [noData]="segmentsalesgraph.noData"
+                                                [tooltip]="segmentsalesgraph.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                        <div class="py-2">
+                                            <p>
+                                                {{language.b48}}
+                                                <!-- The x-axis represents the platform while the y-axis represents the units
+                                                sold to each consumer segment through the platform last period. -->
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="appleciderfacegraph.series"
+                                                [chart]="appleciderfacegraph.chart"
+                                                [dataLabels]="appleciderfacegraph.dataLabels"
+                                                [plotOptions]="appleciderfacegraph.plotOptions"
+                                                [yaxis]="appleciderfacegraph.yaxis" [xaxis]="appleciderfacegraph.xaxis"
+                                                [fill]="appleciderfacegraph.fill" [title]="appleciderfacegraph.title"
+                                                [noData]="appleciderfacegraph.noData"
+                                                [tooltip]="appleciderfacegraph.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                        <div class="py-2">
+                                            <p>
+                                                {{language.b55}}
+                                                <!-- The x-axis represents the companies while the y-axis represents the
+                                                sales in units by each company in the last period. -->
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="acnefacegraph.series" [chart]="acnefacegraph.chart"
+                                                [dataLabels]="acnefacegraph.dataLabels"
+                                                [plotOptions]="acnefacegraph.plotOptions" [yaxis]="acnefacegraph.yaxis"
+                                                [xaxis]="acnefacegraph.xaxis" [fill]="acnefacegraph.fill"
+                                                [title]="acnefacegraph.title" [noData]="acnefacegraph.noData"
+                                                [tooltip]="acnefacegraph.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                        <div class="py-2">
+                                            <p>
+                                                {{language.b57}}
+                                                <!-- The x-axis represents the companies while the y-axis represents the
+                                                sales in units by each company in the last period. -->
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="py-2">
+                                        <div class="card p-3">
+                                            <apx-chart [series]="pricegraph.series" [chart]="pricegraph.chart"
+                                                [dataLabels]="pricegraph.dataLabels"
+                                                [plotOptions]="pricegraph.plotOptions" [yaxis]="pricegraph.yaxis"
+                                                [xaxis]="pricegraph.xaxis" [fill]="pricegraph.fill"
+                                                [title]="pricegraph.title" [noData]="pricegraph.noData"
+                                                [tooltip]="pricegraph.tooltip">
+                                            </apx-chart>
+                                        </div>
+                                        <div class="py-2">
+                                            <p>
+                                                {{language.b59}}
+                                                <!-- The x-axis represents the platform while the y-axis represents the price
+                                                in INR of products by the company in the last period. -->
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

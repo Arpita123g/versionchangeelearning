@@ -1,0 +1,146 @@
+<div class="elearingnewui hrmfintech">
+    <!-- <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div> -->
+    <div class="container">
+        <div class="body-element">
+            <div class="element-first">
+                <div class="row">
+                    <div class="marpoint1st" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+            </div>
+            <div class="tools">
+                <h1 class="mb-5"> Tools
+                    <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>Are you assessing the total cost of ownership for each tool, including not just initial purchase costs but also long-term maintenance, training, and scalability, to ensure you make a financially sound decision that meets organizational needs?</p>
+                            </div>
+                          </div>
+                          <div style='display:flex; margin-top:5px'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                            </div> &nbsp; &nbsp;
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'>How can you evaluate the balance between the complexity of the tools and the existing expertise of your employees?</p>
+                            </div>
+                          </div>
+                        </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="my-4 card sideheadercard">
+                            <div class="card-body">
+                                <apx-chart [series]="toolCostGraph.series" [chart]="toolCostGraph.chart"
+                                    [dataLabels]="toolCostGraph.dataLabels" [plotOptions]="toolCostGraph.plotOptions"
+                                    [yaxis]="toolCostGraph.yaxis" [xaxis]="toolCostGraph.xaxis"
+                                    [fill]="toolCostGraph.fill" [title]="toolCostGraph.title"
+                                    [tooltip]="toolCostGraph.tooltip">
+                                </apx-chart>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="my-4 card sideheadercard">
+                            <div class="card-body">
+                                <apx-chart [series]=" estimatedCummulativeEffectGraph.series"
+                                    [chart]=" estimatedCummulativeEffectGraph.chart"
+                                    [dataLabels]=" estimatedCummulativeEffectGraph.dataLabels"
+                                    [plotOptions]=" estimatedCummulativeEffectGraph.plotOptions"
+                                    [yaxis]=" estimatedCummulativeEffectGraph.yaxis"
+                                    [xaxis]=" estimatedCummulativeEffectGraph.xaxis"
+                                    [fill]=" estimatedCummulativeEffectGraph.fill"
+                                    [title]=" estimatedCummulativeEffectGraph.title"
+                                    [tooltip]=" estimatedCummulativeEffectGraph.tooltip">
+                                </apx-chart>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-row gap-2 flex-wrap justify-content-center ">
+                    <div class="card flex-fill" *ngFor="let tool of tools; let toolsi=index">
+                        <img [src]="'../../../../assets/images/hrmfintech/'+tool.icon" class="card-img-top toolimg"
+                            style="object-fit: cover; object-position: center; height:250px">
+                        <div class="card-body">
+                            <h3 class="card-title fw-bold">{{tool.title}}</h3>
+                            <h5 class="card-text mb-1">Current Year</h5>
+                            <div *ngFor="let level of levels;let leveli=index;">
+                                <input type="radio" class="btn-check" [name]="'tool'+toolsi"
+                                    [id]="'option'+toolsi+leveli" autocomplete="off"
+                                    [checked]="result.decisions[tool.cellName[noofattempt]]==level.title"
+                                    (change)="writehrmvalue(tool.cellName[noofattempt],$event,level.title)" 
+                                    [disabled]="inputDisabled" />
+                                <label class="btn btn-outline-primary text-start my-1 w-100"
+                                    [for]="'option'+toolsi+leveli">
+                                    <img [src]="'../../../../assets/images/hrmfintech/users/'+level.icon"
+                                        class="levelicon" /> {{level.title}}
+                                </label>
+                            </div>
+                            <hr />
+                            <h5 class="card-text mt-3 mb-1">Previous Year</h5>
+                            <h4 class="fw-bold m-0 btn btn-light disabled text-start my-1 w-100">
+                                {{result.decisions[tool.cellName[getPrevRound()]]==0?'':result.decisions[tool.cellName[getPrevRound()]]}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h1 class="my-5">Projected Budget
+                        <mat-icon appTippy="
+                            <div class='help-tip p-2'>
+                              <div style='display:flex;'>
+                                <div>
+                                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                                </div> &nbsp; &nbsp;
+                                <div>
+                                  <p style='margin: 0 auto; color: white; font-size:13px;'>Are you analyzing spending patterns to identify areas where resources might have been over- or under-utilized, allowing you to adjust and optimize future budget allocations more effectively?</p>
+                                </div>
+                              </div>
+                              <div style='display:flex; margin-top:5px'>
+                                <div>
+                                  <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                                </div> &nbsp; &nbsp;
+                                <div>
+                                  <p style='margin: 0 auto; color: white; font-size:13px;'>How can you prioritize spending based on the budget to ensure critical initiatives are funded, while maintaining flexibility for unexpected needs or opportunities?</p>
+                                </div>
+                              </div>
+                            </div> ">
+                            help_outline
+                        </mat-icon>
+                    </h1>
+                    <div class="my-4 ">
+                        <table class="table rsl_tbl table-bordered">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th"></th>
+                                    <th class="rsl_tbl-thead-th" style="width:200px">Sales</th>
+                                    <th class="rsl_tbl-thead-th" style="width:200px" *ngIf="result.hrmGameCM.hrmGameCMActiveStatus.productengstatus=='active'">Product & Engineering</th>
+                                    <th class="rsl_tbl-thead-th" style="width:200px" *ngIf="result.hrmGameCM.hrmGameCMActiveStatus.customersuccessstatus=='active'">Customer Success</th>
+                                    <th class="rsl_tbl-thead-th" style="width:200px" *ngIf="result.hrmGameCM.hrmGameCMActiveStatus.designcommunicationstatus=='active'">Design & Communication</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr" *ngFor="let td of projectedBudget">
+                                    <td>{{td.title}}</td>
+                                    <td>{{ (result.graph[td.salesCellName[noofattempt]]|number:'1.0-0') ||0 }}</td>
+                                    <td *ngIf="result.hrmGameCM.hrmGameCMActiveStatus.productengstatus=='active'">{{ (result.graph[td.productCellName[noofattempt]]|number:'1.0-0')||0 }}</td>
+                                    <td *ngIf="result.hrmGameCM.hrmGameCMActiveStatus.customersuccessstatus=='active'">{{ (result.graph[td.customerCellName[noofattempt]]|number:'1.0-0')||0 }}</td>
+                                    <td *ngIf="result.hrmGameCM.hrmGameCMActiveStatus.designcommunicationstatus=='active'">{{ (result.graph[td.designCellName[noofattempt]]|number:'1.0-0') ||0 }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

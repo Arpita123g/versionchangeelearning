@@ -1,0 +1,103 @@
+<div class="elearingnewui  accounting_new">
+    <div class="container">
+        <div class="body-element indroduction-tab">
+            <div class="element-first">
+                <div class="row">
+                    <div class="introductn" (click)="openDialog()" *ngIf="foodforthought">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <h1 class="pb-5">How It Works?</h1>
+                </div>
+            </div>
+            <div class="row row-cols-md-3">
+                <div class="col-md indroduction-tab-col" *ngFor="let card of cards; let i = index">
+                    <div class="card crd1">
+                        <div class="card-img-top img-top-new">
+                            <img [src]="card.image" alt="..." class="img_heightwidth">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">{{card.title}}</h2>
+                            <p class="card-text">
+                                {{showAll[i] ? card.text : card.truncatedText}}
+                                <a type="button" (click)="toggleshow(i)" [style.color]="showAll[i] ? 'red' : 'blue'">
+                                    {{showAll[i] ? 'Show Less' : 'Show More'}}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-md">
+                    <div class="card crd1">
+                        <div class="card-img-top img-top-new">
+                            <img src="assets/images/accounting/memoinaccount.jpg" alt="..." class="img_heightwidth">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">Memo</h2>
+                            <p class="card-text">It sets the context for the microsimulation by describing the business
+                                situation and the tasks you are expected to perform.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card crd1">
+                        <div class="card-img-top img-top-new">
+                            <img src="assets/images/accounting/accountinginformtion.svg" alt="..." class="img_heightwidth">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">Information</h2>
+                            <p class="card-text">You'll find transcripts of the transactions conducted within the
+                                company for various purposes. These transcripts detail the financial activities such as
+                                sales, purchases, expenses, investments, etc., that have occurred during the period.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card crd1">
+                        <div class="card-img-top img-top-new">
+                            <img src="../../../../assets/images/accounting/accounting.svg" alt="..." class="img_heightwidth">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">Accounts</h2>
+                            <p class="card-text">You are tasked with preparing accounting statements, including the
+                                income statement, balance sheet, and financial statements, based on the transactional
+                                data provided in the information section.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card crd1">
+                        <div class="card-img-top img-top-new">
+                            <img src="assets/images/accounting/accountevaluation.svg" alt="..." class="img_heightwidth">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">Evaluation</h2>
+                            <p class="card-text">Evaluate the financial health of the company based on the accounting
+                                statements. Describe the opportunities to the stakeholder that can improve their
+                                financial statements and as a result business performance & long-term sustainability.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card crd1">
+                        <div class="card-img-top img-top-new">
+                            <img src="assets/images/accounting/accountreports.svg" alt="..." class="img_heightwidth">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title">Reports</h2>
+                            <p class="card-text">Receive feedback on your performance in creating accounting statements
+                                and making decisions based on key performance indicators (KPIs). See how well your
+                                decisions align with the financial health of the company and receive suggestions for
+                                improvement.</p>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>

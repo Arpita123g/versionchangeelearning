@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+            <div class="inputtitle">Update </div>
+            <div class="subtitle">You can update with respective details</div>
+        </div>
+    </div>
+    <form [formGroup]="selectupdateinstroctorgroup" class="form">
+        <div class="row" >
+            <div class="borderbottom"></div>
+            <div class="col-6 mar-b">
+                <div class="lebel"> Archive </div>
+                <select formControlName="archiveflag" class="form-control" >
+                    <option value="no">No </option>
+                    <option value="yes"> Yes </option>
+                </select>
+               
+            </div>
+            <div class="col-6 mar-b">
+                <div class="lebel">Student Course Attempts </div>
+                <input 
+                    formControlName="studentcourseattempts" 
+                    class="form-control" 
+                    type="number"
+                    min="0"
+                    [attr.disabled]="disable() ? '' : null"
+                >
+            </div>
+            <div class="col-4"></div>
+            <div class="col-2 mar-b save" style="display:flex;align-items:center">
+                <button 
+                    class="submit-button" 
+                    [disabled]="disable()"
+                    (click)="update()"
+                >
+                    Update
+                </button>
+            </div>
+        </div>
+    </form>       
+</div>

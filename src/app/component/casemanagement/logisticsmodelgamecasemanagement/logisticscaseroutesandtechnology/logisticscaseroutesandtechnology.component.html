@@ -1,0 +1,904 @@
+<div class="elearingnewui casemanagement">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+      </div>
+    <div class="case-management-body case-management-body-marketing ">
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Route</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Delhi - Indore - Bangalore</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Distance, KM</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.r8; let i = index">
+                            <input [value]="res.r8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('r8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Road Quality</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.s8; let i = index">
+                            <input [value]="res.s8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('s8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Stoppages Disadvantage</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.t8; let i = index">
+                            <input [value]="res.t8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('t8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Stoppages Demand</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.u8; let i = index">
+                            <input [value]="res.u8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('u8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Theft Cost</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.v8; let i = index">
+                            <input [value]="res.v8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('v8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Fuel Truck</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.w8; let i = index">
+                            <input [value]="res.w8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('w8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Fuel Rail</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.x8; let i = index">
+                            <input [value]="res.x8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('x8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Truck Stops</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.y8; let i = index">
+                            <input [value]="res.y8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('y8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Railway Stops</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.z8; let i = index">
+                            <input [value]="res.z8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('z8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Road Quality</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.aa8; let i = index">
+                            <input [value]="res.aa8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('aa8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Theft Chances</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.ab8; let i = index">
+                            <input [value]="res.ab8[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ab8',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Delhi - Ahmedabad - Bangalore</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Distance, KM</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.r9; let i = index">
+                            <input [value]="res.r9[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('r9',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Road Quality</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.s9; let i = index">
+                            <input [value]="res.s9[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('s9',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Stoppages Disadvantage</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.t9; let i = index">
+                            <input [value]="res.t9[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('t9',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Stoppages Demand</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.u9; let i = index">
+                            <input [value]="res.u9[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('u9',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Theft Cost</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.v9; let i = index">
+                            <input [value]="res.v9[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('v9',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Fuel Truck</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.w9; let i = index">
+                            <input [value]="res.w9[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('w9',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Fuel Rail</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.x9; let i = index">
+                            <input [value]="res.x9[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('x9',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Truck Stops</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.y9; let i = index">
+                            <input [value]="res.y9[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('y9',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Railway Stops</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.z9; let i = index">
+                            <input [value]="res.z9[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('z9',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Road Quality</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.aa9; let i = index">
+                            <input [value]="res.aa9[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('aa9',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Theft Chances</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.ab9; let i = index">
+                            <input [value]="res.ab9[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ab9',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Delhi - Mumbai - Bangalore</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Distance, KM</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.r10; let i = index">
+                            <input [value]="res.r10[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('r10',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Road Quality</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.s10; let i = index">
+                            <input [value]="res.s10[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('s10',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Stoppages Disadvantage</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.t10; let i = index">
+                            <input [value]="res.t10[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('t10',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Stoppages Demand</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.u10; let i = index">
+                            <input [value]="res.u10[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('u10',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Theft Cost</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.v10; let i = index">
+                            <input [value]="res.v10[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('v10',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Fuel Truck</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.w10; let i = index">
+                            <input [value]="res.w10[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('w10',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Fuel Rail</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.x10; let i = index">
+                            <input [value]="res.x10[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('x10',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Truck Stops</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.y10; let i = index">
+                            <input [value]="res.y10[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('y10',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Railway Stops</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.z10; let i = index">
+                            <input [value]="res.z10[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('z10',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Road Quality</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.aa10; let i = index">
+                            <input [value]="res.aa10[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('aa10',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Theft Chances</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.ab10; let i = index">
+                            <input [value]="res.ab10[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('ab10',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12"></th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Air fuel cost per litre</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.r12; let i = index">
+                            <input [value]="res.r12[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('r12',i,inputElement.value)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <table class="table page-name">
+            <thead>
+                <tr>
+                    <th>
+                        <h2>Trucking Technology</h2>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Driver Behavioural System</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Cost/Month</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.s16; let i = index">
+                            <input [value]="res.s16[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('s16',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Optimization of Cost</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.t16; let i = index">
+                            <input [value]="res.t16[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('t16',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Fragility Cost Reduction</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.u16; let i = index">
+                            <input [value]="res.u16[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('u16',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Theft Reduction</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.v16; let i = index">
+                            <input [value]="res.v16[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('v16',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Efficiency</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.w16; let i = index">
+                            <input [value]="res.w16[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('w16',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Fuel Efficiency</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.x16; let i = index">
+                            <input [value]="res.x16[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('x16',i,inputElement.value)">
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">GPS Positioning on Trucks</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Cost/Month</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.s17; let i = index">
+                            <input [value]="res.s17[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('s17',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Optimization of Cost</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.t17; let i = index">
+                            <input [value]="res.t17[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('t17',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Fragility Cost Reduction</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.u17; let i = index">
+                            <input [value]="res.u17[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('u17',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Theft Reduction</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.v17; let i = index">
+                            <input [value]="res.v17[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('v17',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Efficiency</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.w17; let i = index">
+                            <input [value]="res.w17[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('w17',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Fuel Efficiency</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.x17; let i = index">
+                            <input [value]="res.x17[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('x17',i,inputElement.value)">
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">RFID Chips</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Cost/Month</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.s18; let i = index">
+                            <input [value]="res.s18[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('s18',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Optimization of Cost</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.t18; let i = index">
+                            <input [value]="res.t18[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('t18',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Fragility Cost Reduction</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.u18; let i = index">
+                            <input [value]="res.u18[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('u18',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Theft Reduction</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.v18; let i = index">
+                            <input [value]="res.v18[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('v18',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Efficiency</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.w18; let i = index">
+                            <input [value]="res.w18[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('w18',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Fuel Efficiency</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.x18; let i = index">
+                            <input [value]="res.x18[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('x18',i,inputElement.value)">
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Fuel Trackometer</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Cost/Month</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.s19; let i = index">
+                            <input [value]="res.s19[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('s19',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Optimization of Cost</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.t19; let i = index">
+                            <input [value]="res.t19[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('t19',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Fragility Cost Reduction</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.u19; let i = index">
+                            <input [value]="res.u19[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('u19',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Theft Reduction</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.v19; let i = index">
+                            <input [value]="res.v19[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('v19',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Efficiency</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.w19; let i = index">
+                            <input [value]="res.w19[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('w19',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Fuel Efficiency</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.x19; let i = index">
+                            <input [value]="res.x19[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('x19',i,inputElement.value)">
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">TAT Visibility</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Cost/Month</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.s20; let i = index">
+                            <input [value]="res.s20[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('s20',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Optimization of Cost</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.t20; let i = index">
+                            <input [value]="res.t20[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('t20',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Fragility Cost Reduction</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.u20; let i = index">
+                            <input [value]="res.u20[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('u20',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Theft Reduction</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.v20; let i = index">
+                            <input [value]="res.v20[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('v20',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Efficiency</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.w20; let i = index">
+                            <input [value]="res.w20[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('w20',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Fuel Efficiency</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.x20; let i = index">
+                            <input [value]="res.x20[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('x20',i,inputElement.value)">
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">Transportation Management System</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Cost/Month</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.s21; let i = index">
+                            <input [value]="res.s21[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('s21',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Optimization of Cost</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.t21; let i = index">
+                            <input [value]="res.t21[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('t21',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Fragility Cost Reduction</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.u21; let i = index">
+                            <input [value]="res.u21[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('u21',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Theft Reduction</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.v21; let i = index">
+                            <input [value]="res.v21[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('v21',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Efficiency</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.w21; let i = index">
+                            <input [value]="res.w21[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('w21',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Fuel Efficiency</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.x21; let i = index">
+                            <input [value]="res.x21[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('x21',i,inputElement.value)">
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class=" table case-management-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td *ngFor="let round of rounds">{{round}}</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="second-head" colspan="12">No Upgrade</th>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Cost/Month</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.s22; let i = index">
+                            <input [value]="res.s22[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('s22',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Optimization of Cost</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.t22; let i = index">
+                            <input [value]="res.t22[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('t22',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Fragility Cost Reduction</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.u22; let i = index">
+                            <input [value]="res.u22[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('u22',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Theft Reduction</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.v22; let i = index">
+                            <input [value]="res.v22[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('v22',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="first-div">
+                            <div>Efficiency</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.w22; let i = index">
+                            <input [value]="res.w22[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('w22',i,inputElement.value)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="first-div">Fuel Efficiency</div>
+                        </td>
+                        <td *ngFor="let routesdata of res.x22; let i = index">
+                            <input [value]="res.x22[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                (focusout)="writeLogisticsValue('x22',i,inputElement.value)">
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,431 @@
+<div class="elearingnewui accounting_new">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <!-- <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p> -->
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="feed_ack">
+                <div>
+                    <div class="row pb-4">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <div style="display: flex; align-items: center; justify-content:end; gap: 20px;">
+                                <div class="">
+                                    <select class="select-round" name="" id="" [(ngModel)]="roundname"
+                                        (change)="roundClick()">
+                                        <option class="select-round-option" value="">Select Round</option>
+                                        <option class="select-round-option"
+                                            *ngFor="let attempt of dropdownvalue; let i = index;" [value]=attempt>
+                                            {{attempt}}</option>
+
+                                    </select>
+                                </div>
+                                <div class="download_btn" matTooltiClass="primary-tooltip"
+                                    (click)="downloadreportcvpanalysisigment()">
+                                    <div>
+                                        <a download matTooltip="Download"><span class="hovertext"
+                                                data-hover="Download pdf file accounting ">
+                                                <img src="assets/images/businessbasics/download.png" />
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <mat-icon class="mt-2">get_app</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1>
+                        Synopsis
+                    </h1>
+                    <div style="margin-top: 1.1rem;" *ngIf="analysisshow">
+                        <h1
+                            style="display: flex; align-items: center; gap: 5px;font-size: 1.1rem; font-weight: 600;padding: 0.6rem 0.4rem;color: white;background-color: #266cc38a;">
+                            Feedback
+                            <div style=" width: 1rem;">
+                                <mat-icon (click)="rotate();roundClick();" [@rotatedState]='state' class="sidenav-icon"
+                                    aria-hidden="false" aria-label="Example home icon">cached</mat-icon>
+                            </div>
+                        </h1>
+                    </div>
+                    <div class="decision-textarea pb-5 h-100" *ngIf="analysisshow">
+                        <div class="row">
+                            <div class="col-md" style="padding: 10px;">
+                                <div class="card feedbsck-value p-3">
+                                    <markdown [data]="feedbackvalue"></markdown>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-cols-md-2 py-3">
+                        <div class="col-md">
+                            <table class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Decisions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody" *ngIf="totalOptionalcase">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Input</th>
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <th>Balance Sheet</th>
+                                        <th></th>
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Cash</td>
+                                        <td>{{result[0]}}</td>
+                                    </tr>
+                                     <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Accounts receivable</td>
+                                        <td>{{result[1]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Inventory</td>
+                                        <td>{{result[2]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Prepaid expenses</td>
+                                        <td>{{result[3]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Other current assets</td>
+                                        <td>{{result[4]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Machinery & equipment</td>
+                                        <td>{{result[5]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Furniture & fixtures</td>
+                                        <td>{{result[6]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Leasehold improvements</td>
+                                        <td>{{result[7]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Land & buildings</td>
+                                        <td>{{result[8]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Other fixed assets</td>
+                                        <td>{{result[9]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Intangible assetss</td>
+                                        <td>{{result[10]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Goodwill</td>
+                                        <td>{{result[11]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Deposits</td>
+                                        <td>{{result[12]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Other assets</td>
+                                        <td>{{result[13]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Accounts payable</td>
+                                        <td>{{result[14]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Accrued expenses</td>
+                                        <td>{{result[15]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Unearned revenue</td>
+                                        <td>{{result[16]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Notes, short-term</td>
+                                        <td>{{result[17]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Current part of long-term debt</td>
+                                        <td>{{result[18]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Bank loans payable</td>
+                                        <td>{{result[19]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Notes payable to stockholders</td>
+                                        <td>{{result[20]}}</td>
+
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>LESS: Short-term portion</td>
+                                        <td>{{result[21]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Other long term debt</td>
+                                        <td>{{result[22]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Invested capital</td>
+                                        <td>{{result[23]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Retained earnings - beginning</td>
+                                        <td>{{result[24]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Retained earnings - current</td>
+                                        <td>{{result[25]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <th>Income Statement</th>
+                                        <th></th>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td>Revenue</td>
+                                        <td>{{result[26]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td>Cost of good sold</td>
+                                        <td>{{result[27]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td>Sales cost</td>
+                                        <td>{{result[28]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td>Administration cost</td>
+                                        <td>{{result[29]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td>Bad debts</td>
+                                        <td>{{result[30]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td>Depreciation & Amortization</td>
+                                        <td>{{result[31]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td>Interest Expense</td>
+                                        <td>{{result[32]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td>Tax</td>
+                                        <td>{{result[33]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <th>Cash Flow Statement</th>
+                                        <th></th>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td>Opening balance</td>
+                                        <td>{{result[34]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td>Operations, Cash In</td>
+                                        <td>{{result[35]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td>Operations, Cash Out</td>
+                                        <td>{{result[36]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td>Investment, Cash In</td>
+                                        <td>{{result[37]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td>Investment, Cash Out</td>
+                                        <td>{{result[38]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td>Financing, Cash In</td>
+                                        <td>{{result[39]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td>Financing, Cash Out</td>
+                                        <td>{{result[40]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[3]" class="rsl_tbl-tbody-tr">
+                                        <th>Opportunities</th>
+                                        <th></th>
+                                    </tr>
+                                   <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Investment in Research and Development</td>
+                                        <td>{{result[41]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Expansion of Manufacturing Facilities</td>
+                                        <td>{{result[42]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Debt Restructuring</td>
+                                        <td>{{result[43]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td>Cost Reduction Initiatives</td>
+                                        <td>{{result[44]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td>Introduction of Premium Product Line</td>
+                                        <td>{{result[45]}}</td>
+                                    </tr>
+                                     <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td>Employee Training and Development</td>
+                                        <td>{{result[46]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td>Working Capital Optimization</td>
+                                        <td>{{result[47]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td>Equipment Lease Financing</td>
+                                        <td>{{result[48]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td>Exploring Export Opportunities</td>
+                                        <td>{{result[49]}}</td>
+                                    </tr> 
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md">
+                            <table   class="table rsl_tbl">
+                                <thead class="rsl_tbl-thead">
+                                    <tr  class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3">Scores</th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngIf="totalOptionalcase" class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Output</th>
+                                    </tr>
+                                   <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>Balance Sheet</td>
+                                        <td>{{result[50]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                        <td>Income Statement</td>
+                                        <td>{{result[51]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                        <td>Cash Flow Statement</td>
+                                        <td>{{result[52]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="3">KPI</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                     <tr class="rsl_tbl-tbody-tr">
+                                        <td>Total Score</td>
+                                        <td>{{result[65]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>1-Year Value Creation</td>
+                                        <td>{{result[66]}}</td>
+                                    </tr>
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>3-Year Value Creation</td>
+                                        <td>{{result[67]}}</td> 
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5">
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="4">Investment</th>
+                                    </tr>
+                                </thead>
+                                <tbody  *ngIf="totalOptionalcase" class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th" style="text-align: right;">Approval Likelihood</th>
+                                        <th class="rsl_tbl-tbody-th" style="text-align: right;">1-Year Value Creation
+                                        </th>
+                                        <th class="rsl_tbl-tbody-th">3-Year Value Creation</th>
+                                    </tr>
+
+                                    <tr *ngIf="optional[0]" class="rsl_tbl-tbody-tr">
+                                        <td>{{result[53]}}</td>
+                                        <td class="middleclassright">{{result[54]}}</td>
+                                        <td class="middleclassright">{{result[55]}}</td>
+                                        <td>{{result[56]}}</td>
+                                    </tr>
+                                    <tr *ngIf="optional[1]" class="rsl_tbl-tbody-tr">
+                                         <td>{{result[57]}}</td>
+                                        <td class="middleclassright">{{result[58]}}</td>
+                                        <td class="middleclassright">{{result[59]}}</td>
+                                        <td>{{result[60]}}</td> 
+                                    </tr>
+                                    <tr *ngIf="optional[2]" class="rsl_tbl-tbody-tr">
+                                     <td>{{result[61]}}</td>
+                                        <td class="middleclassright">{{result[62]}}</td>
+                                         <td class="middleclassright">{{result[63]}}</td> 
+                                        <td>{{result[64]}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table rsl_tbl mt-5" *ngIf="optional[3]" >
+                                <thead class="rsl_tbl-thead">
+                                    <tr class="rsl_tbl-thead-tr">
+                                        <th class="rsl_tbl-thead-th" colspan="2">Thinking Ability</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="rsl_tbl-tbody">
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <th class="rsl_tbl-tbody-th">Parameters</th>
+                                        <th class="rsl_tbl-tbody-th">Score</th>
+                                    </tr>
+
+                                    <tr class="rsl_tbl-tbody-tr">
+                                        <td>Accounts</td>
+                                        <td>{{result[68]*100|number:'1.0-0'}}%</td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row lst_r">
+                        <div class="col-4 lst_r-col4" *ngIf="!timefinished">
+                            <button class="mt-4 retry"  [disabled]="isButtonDisabled" 
+                             (click)="exit()">{{retry}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

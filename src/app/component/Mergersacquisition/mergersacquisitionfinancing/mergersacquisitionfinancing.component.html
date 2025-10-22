@@ -1,0 +1,165 @@
+<div class="elearingnewui mergers_aquisition">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">Loading... Brewing up some digital magic! </p>
+    </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="inbound">
+                <div class="row" class="element-first ">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">Food For Thought</button></span>
+                    </div>
+                </div>
+
+                <h1>Financing
+                    <mat-icon appTippy="
+                        <div class='help-tip p-2'>
+                          <div style='display:flex;'>
+                            <div>
+                              <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4>
+                            </div> &nbsp; &nbsp; 
+                            <div>
+                              <p style='margin: 0 auto; color: white; font-size:13px;'> In deciding how to arrange funds for the offered price, what are the implications and considerations of shedding cash, taking loans, or providing a stake in your company?</p>
+                            </div>
+                          </div>
+                            <div class='pt-2' style='display:flex;'>
+                              <div>
+                                <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4>
+                              </div> &nbsp; &nbsp;
+                              <div>
+                                <p style='margin: 0 auto; color: white; font-size:13px;'>How might the reaction of shareholders be influenced by the chosen financing option, and what steps can be taken to manage liability effectively in the financing strategy?</p>
+                              </div>
+                            </div>
+                        </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-2 g-5 py-3 fin-card">
+                    <div class="col-md">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card p-0" style="border: none;">
+                                    <div class="card-body">
+                                        <p>Offered Price, INR million</p>
+                                    </div>
+                                    <div class="card-text">
+                                        <h4 style="text-align: justify;">
+                                            {{result[5]}}
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="card p-0" style="border: none;">
+                                    <div class="card-body">
+                                        <p>MAI Cash, INR million</p>
+                                    </div>
+                                    <div class="card-text">
+                                        <h4 style="text-align: justify;">
+                                            {{result[8]}}
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card p-0" style="border: none;">
+                                    <div class="card-body">
+                                        <p>Estimated Interest Rate, %</p>
+                                    </div>
+                                    <div class="card-text">
+                                        <h4 style="text-align: justify;">
+                                            {{result[6] |number:'1.0-2'}}
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="card p-0" style="border: none;">
+                                    <div class="card-body">
+                                        <p>MAI Market Capitalization, INR million</p>
+                                    </div>
+                                    <div class="card-text">
+                                        <h4 style="text-align: justify;">
+                                            {{result[9]}}
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md ">
+                        <div class="card p-2 h-100">
+                            <apx-chart [series]="loanintrestratechart.series" [chart]="loanintrestratechart.chart"
+                                [dataLabels]="loanintrestratechart.dataLabels"
+                                [plotOptions]="loanintrestratechart.plotOptions" [yaxis]="loanintrestratechart.yaxis"
+                                [xaxis]="loanintrestratechart.xaxis" [fill]="loanintrestratechart.fill"
+                                [title]="loanintrestratechart.title" [tooltip]="loanintrestratechart.tooltip">
+                            </apx-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-cols-md-2 g-5 py-3">
+                    <div class="col-md">
+                        <h1>Deal</h1>
+                        <div class="row row-cols-md-3 g-3 pt-3 input-img-card">
+                            <div class="col-md">
+                                <h3>Cash</h3>
+                                <div class="form-check input-group">
+                                    <input class="input-no_box dockinput" [(ngModel)]="result[0]" type="number" 
+                                     [disabled]="inputDisabled" (focusout)="inputDataCheck(0)" /><span class="input-group-text">%</span>
+                                </div>
+
+                            </div>
+                            <div class=" col-md">
+                                <h3>Loan</h3>
+                                <div class="form-check input-group">
+                                    <input class="input-no_box dockinput" [(ngModel)]="result[1]" type="number"
+                                        [disabled]="inputDisabled" (focusout)="inputDataCheck(1)" /><span class="input-group-text">%</span>
+                                </div>
+                            </div>
+                            <div class=" col-md">
+                                <h3>Stock</h3>
+                                <div class="form-check input-group">
+                                    <input class=" dockinput" [(ngModel)]="result[2]" type="number" disabled
+                                        style="border: 2px solid black;" /><span class="input-group-text-lst">%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table rsl_tbl mt-4">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <th class="rsl_tbl-thead-th" colspan="4">New organization structure proposed</th>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>Target Stake</td>
+                                    <td>{{result[3]*100 | number:'1.0-0'}}%</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td>MAI Stake</td>
+                                    <td>{{result[4]*100| number:'1.0-0'}}%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md">
+                        <div class="card p-2 h-100">
+                            <apx-chart [series]="dealstructurechart.series" [chart]="dealstructurechart.chart"
+                                [dataLabels]="dealstructurechart.dataLabels"
+                                [plotOptions]="dealstructurechart.plotOptions" [yaxis]="dealstructurechart.yaxis"
+                                [xaxis]="dealstructurechart.xaxis" [fill]="dealstructurechart.fill"
+                                [title]="dealstructurechart.title" [tooltip]="dealstructurechart.tooltip">
+                            </apx-chart>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

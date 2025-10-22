@@ -1,0 +1,119 @@
+<div class="elearingnewui crm_game">
+  <div class="loadingscreen" *ngIf="checkloading">
+    <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+    <p class="loadingspinnertxt">{{languageselect === "Hindi"
+      ? "लोड हो रहा है... कुछ डिजिटल जादू तैयार किया जा रहा है!"
+      : "Loading... Brewing up some digital magic!"}} </p>
+  </div>
+  <div class="container">
+    <div class="body-element">
+      <div class="routesandtech">
+        <div class="row" class="element-first">
+          <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+            style="text-align: right; margin: 0rem 0rem 3rem 0rem">
+            <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+              <!-- <button class="food-thought-btn">Food For Thought</button></span> -->
+              <button class="food-thought-btn">{{language.b22}}</button></span>
+          </div>
+        </div>
+        <h1>
+          {{language.b256}}
+
+          <ng-template #helpContent>
+            <div class='help-tip p-2'>
+              <div style='display:flex;'>
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>{{language.b267}}</p>
+                </div>
+              </div>
+              <div class='pt-2' style='display:flex;'>
+                <div>
+                  <p style='margin: 0 auto; color: white; font-size:13px;'>{{language.b268}}</p>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <mat-icon [appTippy]="helpContent">help_outline</mat-icon>
+        </h1>
+        <div class="row row-cols-md-3 g-5 py-3 fin-card">
+          <div class="col-md">
+            <div class="card p-0" style="border: none">
+              <div class="card-body">
+                <h2>{{language.b80}}</h2>
+              </div>
+              <div class="card-text">
+                <p style="text-align: justify">
+                  {{language.b83}}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card p-0" style="border: none">
+              <div class="card-body">
+                <h2>{{language.b81}}</h2>
+              </div>
+              <div class="card-text">
+                <p style="text-align: justify">
+                  {{language.b85}}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="card p-0" style="border: none">
+              <div class="card-body">
+                <h2>{{language.b82}}</h2>
+              </div>
+              <div class="card-text">
+                <p style="text-align: justify">
+                  {{language.b84}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row py-4">
+          <div class="table-responsive">
+            <!-- it will be uncommented for functionality -->
+            <table class="table rsl_tbl">
+              <thead class="rsl_tbl-thead">
+                <tr class="rsl_tbl-thead-tr">
+                  <th class="rsl_tbl-thead-th" *ngFor="let header of headers">
+                    {{ header }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="rsl_tbl-tbody">
+                <tr class="rsl_tbl-tbody-tr" *ngFor="let lead of leads; let i = index">
+                  <td>{{ lead.id }}</td>
+                  <td>{{ lead.name }}</td>
+                  <td>{{ lead.source }}</td>
+                  <td>{{ lead.industry }}</td>
+                  <td>{{ lead.budget }}</td>
+                  <td>{{ lead.urgency }}</td>
+                  <td>{{ lead.score }}</td>
+                  <td>{{ lead.status }}</td>
+                  <td>{{ lead.stage }}</td>
+                  <td>{{ lead.nextSteps }}</td>
+                  <td>{{ lead.followUp }}</td>
+                  <td>
+
+                    <select class="input-no_box-drop" [(ngModel)]="lead.priority" (change)="writePriorityData(i)"
+                      [disabled]="inputDisabled">
+                      <option [value]="language.b80">{{language.b80}}</option>
+                      <option [value]="language.b81">{{language.b81}}</option>
+                      <option [value]="language.b82">{{language.b82}}</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,172 @@
+<div class="elearingnewui crm-communication">
+    <div class="loadingscreen" *ngIf="checkloading">
+        <span class="spinner-border spinner-border-sm loadingspinner" role="status" aria-hidden="true"></span>
+        <p class="loadingspinnertxt">{{languageselect=== "Hindi"
+            ? "लोड हो रहा है... कुछ डिजिटल जादू तैयार किया जा रहा है!"
+            : "Loading... Brewing up some digital magic!"}} </p>
+      </div>
+    <div class="container">
+        <div class="body-element">
+            <div class="routesandtech">
+                <div class="row" class="element-first">
+                    <div class="marelegapfood" (click)="openDialog()" *ngIf="foodforthought"
+                        style="text-align: right;margin: 0rem 0rem 3rem 0rem;">
+                        <span class="food-thought-span"><i class="bi bi-bar-chart-fill"></i>
+                            <button class="food-thought-btn">{{dataoflang.b22}}</button></span>
+                    </div>
+                </div>
+                <!-- <h1>Communication Strategy -->
+                <h1>{{dataoflang.b143}}
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <!-- <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4> -->
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>{{dataoflang.b269}}</p>
+                        </div>
+                      </div>
+                        <div class='pt-2' style='display:flex;'>
+                          <div>
+                            <!-- <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.2</h4> -->
+                          </div> &nbsp; &nbsp; 
+                          <div>
+                            <p style='margin: 0 auto; color: white; font-size:13px;'>{{dataoflang.b270}}</p>
+                          </div>
+                        </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-3 py-3 prototype-table">
+                    <div class="col-md" *ngFor="let card of cards; let i = index">
+                        <div class="card shadow">
+                            <div class="card-header">
+                                <!-- <h2>{{ card.title }}</h2> -->
+                                <h2>{{dataoflang[card.title]  }}</h2>
+                            </div>
+                            <div class="card-body">
+                                <div class="chips__filter">
+                                    <div *ngFor="let chip of card.chips; let j = index" class="chip"
+                                        (click)="toggleChip(i, chip.name, 43 + (i * 9) + j)"
+                                        [ngClass]="{ 'disabled': inputDisabled, 'chip--active': isChipActive(i, chip.name) }">
+                                        <span class="icon icon--leadind chip--check">
+                                            <i [ngClass]="['fas', chip.icon]"></i>
+                                        </span>
+                                        <!-- <span>{{ chip.name }}</span> -->
+                                        <span>{{dataoflang[chip.name]  }}</span>
+
+                                    </div>
+                                </div>
+                                <table class="mt-5 mb-3">
+                                    <tr class="ist">
+                                        <!-- <td>Follow-up Frequency, day</td> -->
+                                        <td>{{dataoflang.b156}}</td>
+                                        <td>
+                                            <input type="number" class="input-box" placeholder="Input value here..."
+                                                [min]="2" [max]="20" [(ngModel)]="result[70 + (i * 2)]" [disabled]="inputDisabled"
+                                                 (focusout)="getSelection(i,'day')">
+                                        </td>
+                                    </tr>
+                                    <tr class="ist">
+                                        <!-- <td>Follow-up Timeline, week</td> -->
+                                        <td>{{dataoflang.b157}}</td>
+                                        <td>
+                                            <input type="number" class="input-box" placeholder="Input value here..."
+                                                [min]="1" [max]="15" [(ngModel)]="result[71 + (i * 2)]" [disabled]="inputDisabled"
+                                                (focusout)="getSelection(i,'week')">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <h1 class="py-4"> Cross Selling & Up-selling -->
+                    <h1 class="py-4"> {{dataoflang.b158}}
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <!-- <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4> -->
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>{{dataoflang.b271}}</p>
+                        </div>
+                      </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+                <div class="row row-cols-md-5 cross-ele pb-4">
+                    <div class="col-md" *ngFor="let selling of crosscards; let i = index">
+                        <div class="card">
+                            
+                            <h3><i [class]="selling.icon" style="padding-right: 10px;"></i>{{ dataoflang[selling.title]  }}</h3>
+                            <!-- <h3><i [class]="selling.icon" style="padding-right: 10px;"></i>{{ selling.title }}</h3> -->
+                            <div class="card-footer">
+                                <input type="radio" class="checkfrominput" name="lead-status" [value]="i"
+                                [(ngModel)]="selectedCardIndex" [disabled]="inputDisabled"
+                                (change)="getSelectionradio('radio',i+76)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <h1 class="py-4"> Lead Nurturing -->
+                    <h1 class="py-4"> {{dataoflang.b159}}
+                    <mat-icon appTippy="
+                    <div class='help-tip p-2'>
+                      <div style='display:flex;'>
+                        <div>
+                          <!-- <h4 style='color: white; margin:0 auto; font-weight: 600;'>Q.1</h4> -->
+                        </div> &nbsp; &nbsp;
+                        <div>
+                          <p style='margin: 0 auto; color: white; font-size:13px;'>{{dataoflang.b272}}</p>
+                        </div>
+                      </div>
+                    </div> ">
+                        help_outline
+                    </mat-icon>
+                </h1>
+
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table rsl_tbl">
+                            <thead class="rsl_tbl-thead">
+                                <tr class="rsl_tbl-thead-tr">
+                                    <td class="rsl_tbl-thead-td"></td>
+                                    <td class="rsl_tbl-thead-td" *ngFor="let header of headers">
+                                        {{ header }}
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody class="rsl_tbl-tbody">
+                                <tr class="rsl_tbl-tbody-tr" *ngFor="let row of rows">
+                                    <td>{{ row.label[0] }}</td>
+                                    <td *ngFor="let value of row.description">{{ value }}</td>
+                                </tr>
+                                <tr class="rsl_tbl-tbody-tr">
+                                    <td></td>
+                                    <td *ngFor="let header of headers; let i=index">
+                                        <select class="input-no_box-drop" [(ngModel)]="selectleadtable[i]" [value]="selectleadtable[i]"
+                                            (change)="selectleadtabledata(i)" [disabled]="inputDisabled" aria-placeholder="select">
+                                            <option value="" disabled selected>
+                                                {{ languageselect.toLowerCase()  === 'hindi' ? 'विकल्प चुनें' : 'Select Option' }}
+                                            </option>
+                                            <option [value]="dataoflang.b80">{{dataoflang.b80}}</option>
+                                            <option [value]="dataoflang.b81">{{dataoflang.b81}}</option>
+                                            <option [value]="dataoflang.b82">{{dataoflang.b82}}</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

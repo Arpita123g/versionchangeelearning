@@ -13,6 +13,9 @@
 
                 <div class="row">
                     <div class="col-10 lt-col">
+                        <!-- <div>
+                            <p>Course Code : {{carddata.courseDetails.coursecode}}</p>
+                        </div> -->
                         <div>
                             <h1>{{carddata.cesimcasename}}</h1>
                         </div>
@@ -34,28 +37,61 @@
                 </div>
             </div>
         </div>
+        <!-- design for cesim case end -->
 
+        <!-- design for your case start -->
         <div *ngIf="selectedTab === 'yourcase'">
             <div class="card shadow new-instructor-dash">
                 <div class="row">
                     <div class=" lt-col">
                         <div class="checkbox-element">
-
                             <!-- <div class="assign-yourcase">
-                              <div class="checkboxdirection">
-                                  <div class="checkbox-wrapper-31">
-                                      <input type="checkbox" (change)="handleCheckboxClick($event, carddata)"
-                                          [checked]="carddata.isAssignedForYourCase">
-                                      <svg viewBox="0 0 35.6 35.6">
-                                          <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
-                                          <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
-                                          <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87">
-                                          </polyline>
-                                      </svg>
-                                  </div>
+                                <div class="checkboxdirection">
+                                    <div class="checkbox-wrapper-31">
+                                        <input type="checkbox" (change)="handleCheckboxClick($event, carddata)"
+                                            [checked]="(instructorcarddetails?.courseDetails.primarycoursename === carddata.coursename)"
+>
+                                        <svg viewBox="0 0 35.6 35.6">
+                                            <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+                                            <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+                                            <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87">
+                                            </polyline>
+                                        </svg>
+                                    </div>
 
-                              </div>
-                          </div> -->
+                                </div>
+                            </div> -->
+                            <!-- <div class="assign-yourcase">
+                                <div class="checkboxdirection">
+                                    <div class="checkbox-wrapper-31">
+                                        <input type="checkbox" (change)="handleCheckboxClick($event, carddata)"
+                                            [checked]="(instructorcarddetails?.courseDetails.primarycoursename === carddata.coursename)"
+>
+                                        <svg viewBox="0 0 35.6 35.6">
+                                            <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+                                            <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+                                            <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87">
+                                            </polyline>
+                                        </svg>
+                                    </div>
+
+                                </div>
+                            </div> -->
+                            <div class="assign-yourcase">
+                                <div class="checkboxdirection">
+                                    <div class="checkbox-wrapper-31">
+                                        <input type="checkbox" (change)="handleCheckboxClick($event, carddata)"
+                                            [checked]="carddata.isAssignedForYourCase">
+                                        <svg viewBox="0 0 35.6 35.6">
+                                            <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+                                            <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+                                            <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87">
+                                            </polyline>
+                                        </svg>
+                                    </div>
+
+                                </div>
+                            </div>
                             <div class="assign-yourcase">
                                 <div class="checkboxdirection">
                                     <div class="checkbox-wrapper-31">
@@ -78,6 +114,41 @@
                         </div>
                     </div>
                 </div>
+                <!-- <div class="row">
+                    <div class="youecase rt-col">
+                        <div class="copy-p" (click)="goTosharedPopup(carddata)">
+                            <span class="iconstyle"> <img src="../../../assets/icons/settingsicn.png">
+                                <p >Setting</p>
+                            </span>
+                        </div>
+                        <div class="copy-p" (click)="gotTocasemanagement(carddata)">
+                            <span class="iconstyle"> <img src="../../../assets/icons/editicn.png">
+                                <p>Edit Parameters</p>
+                            </span>
+                        </div>
+                       
+                        <div class="copy-p">
+                            <span class="iconstyle"> <img src="../../../assets/icons/deleteicn.png">
+                                <p>Delete</p>
+                            </span>
+                        </div>
+                        <div class="copy-p">
+                            <select class="case-dropdown" [(ngModel)]="selectedLanguage" (change)="languageclick(selectedLanguage)">
+                                <option value="" selected disabled>Select language</option>
+                                <option   *ngFor="let lang of language; let i = index;" >{{lang}}</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div style="text-align: end;">
+                        <select class="case-dropdown" [(ngModel)]="selectedLanguage" (change)="languageclick(selectedLanguage)">
+                            <option value="" selected disabled>Select language</option>
+                            <option   *ngFor="let lang of language; let i = index;" >{{lang}}</option>
+                        </select>
+                    </div>
+                </div> -->
 
                 <div class="row">
                     <div class="youecase rt-col">
@@ -92,24 +163,17 @@
                             </span>
                         </div>
 
-                        <div class="copy-p">
+                        <div class="copy-p" (click)="delete(carddata)">
                             <span class="iconstyle"> <img src="../../../assets/icons/deleteicn.png">
                                 <p>Delete</p>
 
                             </span>
                         </div>
-                        <!-- <div class="dropdown-p">
-                          
-                          <select class="case-dropdown" [(ngModel)]="carddata.primarygamelanguage"
-                              (change)="languageclick(carddata,$event)">
-                              <option value="" disabled>Select language</option>
-                              <option *ngFor="let lang of language" [value]="lang.toLowerCase()">{{ lang }}</option>
-                          </select>
-
-
-
-                      </div> -->
                         <div class="dropdown-p">
+                            <!-- <select class="case-dropdown"  [(ngModel)]="selectedLanguage[k]" (change)="languageclick(k,selectedLanguage[k])">
+                                <option value="" selected disabled>Select language</option>
+                                <option   *ngFor="let lang of language; let i = index;" >{{lang}}</option>
+                            </select> -->
                             <select class="case-dropdown" [(ngModel)]="carddata.primarygamelanguage"
                                 (change)="languageclick(carddata,$event)">
                                 <option value="" disabled>Select language</option>
@@ -120,17 +184,22 @@
 
                         </div>
 
+
                     </div>
                 </div>
 
             </div>
         </div>
+        <!-- design for your case end -->
 
+        <!-- shared case start -->
         <div *ngIf="selectedTab === 'sharedcase'">
             <div class="card shadow new-instructor-dash">
                 <div class="row">
                     <div class="col-10 lt-col">
-
+                        <!-- <div>
+                            <p>Course Code : {{carddata.courseDetails.coursecode}}</p>
+                        </div> -->
                         <div>
                             <h1>{{carddata.coursename}}</h1>
                         </div>
@@ -152,7 +221,7 @@
 
             </div>
         </div>
-
+        <!-- share case end -->
     </div>
 
 

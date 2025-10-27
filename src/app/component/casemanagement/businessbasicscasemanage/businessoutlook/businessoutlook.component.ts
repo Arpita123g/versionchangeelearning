@@ -26,13 +26,13 @@ import { MatIconModule } from '@angular/material/icon';
     defaultcase: string = "";
     outlooktextheading: any = []
     outlooktextcontent: any = []
-
+  
     headingvalue: string = '';
     contentvalue: string = '';
-
+  
     config: EditorConfig = {
       buttons: [],
-
+  
     };
     Instructorelementdetailssub: Subscription;
     instructorcarddetails: any = [];
@@ -44,7 +44,7 @@ import { MatIconModule } from '@angular/material/icon';
         this.instructorcarddetails = data;
       });
     }
-
+  
     override ngOnInit(): void {
       // this.defaultcase = this.casemanagementcoursedata.defaultcase;
       this.getOutlookData();
@@ -53,16 +53,16 @@ import { MatIconModule } from '@angular/material/icon';
         this.defaultcase = 'yes'
       } else {
         this.defaultcase = 'no'
-
+  
       }
-
+  
     }
-
+  
     selectedround: number = 1;
     checked: boolean = false;
-
+  
     selectedButton: string | null = 'Round 1';
-
+  
     getOutlookData() {
       let getSelectTab = localStorage.getItem('selectedTab');
       if (getSelectTab == 'cesimcase') {
@@ -74,11 +74,11 @@ import { MatIconModule } from '@angular/material/icon';
                 for (let i = 0; i < data.resultList.length; i++) {
                   let outlookdata = data.resultList[i].b3;
                   this.outlooktextcontent[i] = outlookdata;
-
+  
                 }
                 this.contentvalue = this.outlooktextcontent[0];
               }
-
+  
             }
             this.checkloading = false;
           }, error: (error: any) => {
@@ -96,11 +96,11 @@ import { MatIconModule } from '@angular/material/icon';
                   for (let i = 0; i < data.resultList.length; i++) {
                     let outlookdata = data.resultList[i].b3;
                     this.outlooktextcontent[i] = outlookdata;
-
+  
                   }
                   this.contentvalue = this.outlooktextcontent[0];
                 }
-
+  
               }
             }, error: (error: any) => {
               this.checkloading = false;
@@ -108,21 +108,21 @@ import { MatIconModule } from '@angular/material/icon';
             }
           })
       }
-
-
-
-
+  
+  
+  
+  
     }
-
+  
     contentvaluechange() {
       let round = this.selectedround;
       let content = this.contentvalue
       this.outlooktextheading[round - 1] = this.headingvalue;
       this.outlooktextcontent[round - 1] = this.contentvalue;
-
-
+  
+  
       let apiname = '/businessbasiccasemanagement/updatebusinessbasiccasemanagement'
-
+  
       let body = {
         'b3': content,
       }
@@ -131,7 +131,7 @@ import { MatIconModule } from '@angular/material/icon';
           next: (data: any) => {
             if (data.status == "Success") {
               if (data.resultList != null) {
-
+  
               }
             }
           }, error: (error: any) => {
@@ -139,18 +139,18 @@ import { MatIconModule } from '@angular/material/icon';
             this.driveerrorLog(error, apiname);
           }
         })
-
+  
     }
-
+  
     roundclick(index: number, round: string) {
       this.selectedButton = round;
       this.checked = !this.checked;
       this.selectedround = index + 1;
       // this.headingvalue = this.outlooktextheading[index];
       this.contentvalue = this.outlooktextcontent[index];
-
+  
     }
-
+  
     override ngOnDestroy(): void {
       this.Instructorelementdetailssub.unsubscribe();
     }

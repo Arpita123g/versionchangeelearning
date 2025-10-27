@@ -17,9 +17,9 @@ import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
 import { LogisticsmodegamefoodforthoughtComponent } from '../logisticsmodegamefoodforthought/logisticsmodegamefoodforthought.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 interface barchart {
   series: ApexAxisChartSeries;

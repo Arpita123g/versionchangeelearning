@@ -922,6 +922,11 @@ body {
   padding: 12px 14px;
 }
 
+/* Ensure Angular Material dialogs/overlays are above all app content */
+.cdk-overlay-container {
+  z-index: 10000 !important;
+}
+
 :root {
   --text: hsl(0, 0%, 99%);
   --textDim: hsl(0, 0%, 60%);
@@ -1685,6 +1690,20 @@ body {
   }
 }
 
+/* Ensure MDC variant also has no padding for copy dialog */
+.copygame-dialog .mat-mdc-dialog-container {
+  border-radius: 4px !important;
+  padding: 0 !important;
+}
+
+/* Avoid absolute-positioned content collapsing the MDC dialog surface */
+.copygame-dialog .logout-popup-not {
+  position: static;
+  width: auto;
+  left: auto;
+  transform: none;
+}
+
 .termsand_condition {
   .mat-dialog-container {
     padding: 0 !important;
@@ -1753,6 +1772,36 @@ body {
   .mat-dialog-container {
     padding: 0;
   }
+}
+
+/* Ensure MDC dialog container also gets zero padding in Angular 15+ */
+.achivemodal .mat-mdc-dialog-container {
+  padding: 0;
+}
+
+/* In dialogs, avoid absolutely positioning the content so the MDC surface can size itself */
+.achivemodal .logout-popup-not {
+  position: static;
+  width: auto;
+  left: auto;
+  transform: none;
+}
+
+/* Ensure native checkboxes remain visible in case-management pages (Angular 17 + browser resets) */
+.elearingnewui .case-management-module input[type="checkbox"] {
+  appearance: auto !important;
+  -webkit-appearance: checkbox !important;
+  -moz-appearance: checkbox !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: inline-block !important;
+  position: relative !important;
+  z-index: 1;
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: #232323;
+  background: transparent;
+  border: 1px solid #747474;
 }
 
 .interview-main {

@@ -11,10 +11,41 @@ import { SharedserviceService } from 'src/app/service/sharedservice.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { LogisticsmodegameinboundComponent } from '../logisticsmodegameinbound/logisticsmodegameinbound.component';
+import { LogisticsmodegameoutboundComponent } from '../logisticsmodegameoutbound/logisticsmodegameoutbound.component';
+import { LogisticsmodegamereportComponent } from '../logisticsmodegamereport/logisticsmodegamereport.component';
+import { LogisticsmodegamesynopsisComponent } from '../logisticsmodegamesynopsis/logisticsmodegamesynopsis.component';
+import { MicrosimleaderboardgeneralComponent } from 'src/app/common/microsimleaderboardgeneral/microsimleaderboardgeneral.component';
+import { ForumcourseComponent} from 'src/app/common/forumcourse/forumcourse.component';
+import { ForumindividualComponent } from 'src/app/common/forumindividual/forumindividual.component';
+import { ReadingComponent } from 'src/app/common/reading/reading.component';
+import { LogisticsmodegameintroductionComponent } from '../logisticsmodegameintroduction/logisticsmodegameintroduction.component';
+import { LogisticsmodegamemarketComponent } from '../logisticsmodegamemarket/logisticsmodegamemarket.component';
+import { LogisticsmodegameroutesandtechnologyComponent } from '../logisticsmodegameroutesandtechnology/logisticsmodegameroutesandtechnology.component';
+import { LogisticsmodegamewarehouseComponent } from '../logisticsmodegamewarehouse/logisticsmodegamewarehouse.component';
+import { LogisticsmodegamefoodforthoughtComponent } from '../logisticsmodegamefoodforthought/logisticsmodegamefoodforthought.component';
+import { LogisticsmodegamedecisionchecklistComponent, LogisticsmodegamepopupComponent } from '../logisticsmodegamedecisionchecklist/logisticsmodegamedecisionchecklist.component';
 @Component({
   selector: 'app-logisticsmodegame-header',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,
+    LogisticsmodegameintroductionComponent,
+    LogisticsmodegamemarketComponent,
+    LogisticsmodegameroutesandtechnologyComponent,
+    LogisticsmodegamewarehouseComponent,
+    LogisticsmodegameinboundComponent,
+    LogisticsmodegameoutboundComponent,
+    LogisticsmodegamefoodforthoughtComponent,
+    LogisticsmodegamedecisionchecklistComponent,
+    LogisticsmodegamepopupComponent,
+    LogisticsmodegamereportComponent,
+    LogisticsmodegamesynopsisComponent,
+    MicrosimleaderboardgeneralComponent,
+    ForumcourseComponent,
+    ForumindividualComponent,
+    ReadingComponent
+    
+  ],
   templateUrl: './logisticsmodegame-header.component.html',
   styleUrls: ['./logisticsmodegame-header.component.scss']
 })

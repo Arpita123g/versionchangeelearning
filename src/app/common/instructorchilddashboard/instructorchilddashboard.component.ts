@@ -33,6 +33,7 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonModule,
     MatInputModule,
     RoundsornumberofattemptsComponent,
+    NewtimeupdateComponent,
   ]
 })
 export class InstructorchilddashboardComponent extends AbstractComponent {
@@ -103,6 +104,10 @@ export class InstructorchilddashboardComponent extends AbstractComponent {
     const dialogRef = this.dialog.open(ArchiveupdateComponent, {
       width: '50%',
       data: e,
+      position: {
+        top: "20px",
+      },
+      // panelClass: 'copygame-dialog',
       panelClass: "achivemodal"
     });
 
@@ -143,6 +148,9 @@ export class InstructorchilddashboardComponent extends AbstractComponent {
     const dialogRef = this.dialog.open(NewtimeupdateComponent, {
       width: '50%',
       data: e,
+      position: {
+        top: "20px",
+      },
       panelClass: "achivemodal"
     });
 
@@ -155,8 +163,10 @@ export class InstructorchilddashboardComponent extends AbstractComponent {
     const dialogRef = this.dialog.open(RoundsornumberofattemptsComponent, {
       width: '50%',
       data: e,
-      panelClass: "achivemodal",
-      position: { top: '20px' }
+      position: {
+        top: "20px",
+      },
+      panelClass: "achivemodal"
     });
     dialogRef.afterClosed().subscribe((result) => {
       this.getTableData();

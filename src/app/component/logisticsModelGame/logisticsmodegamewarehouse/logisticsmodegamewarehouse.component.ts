@@ -19,6 +19,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 interface barchart {
   series: ApexAxisChartSeries;
@@ -35,7 +36,7 @@ interface barchart {
 @Component({
   selector: 'app-logisticsmodegamewarehouse',
   standalone: true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,TippyDirective],
   templateUrl: './logisticsmodegamewarehouse.component.html',
   styleUrls: ['./logisticsmodegamewarehouse.component.scss']
 })

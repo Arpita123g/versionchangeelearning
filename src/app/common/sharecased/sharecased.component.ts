@@ -88,7 +88,14 @@ export class SharecasedComponent implements OnInit {
 
 
   }
- 
+  // isCaseAssigned(carddata: any): boolean {
+  //   return (
+  //     carddata?.asprimary === 'yes' &&
+  //     this.instructorcarddetails?.courseDetails?.createdcasename?.trim().toLowerCase() ===
+  //     carddata?.cesimcasename?.trim().toLowerCase()
+  //   );
+  // }
+
   selectedPrimaryCase: string = "";
 
   computeIsAssigned(carddata: any): boolean {
@@ -108,7 +115,27 @@ export class SharecasedComponent implements OnInit {
     return false;
   }
 
-  
+  // isCaseAssigned(carddata: any): boolean {
+  //   // First, guard for null/undefined instructorcarddetails
+  //   if (!this.instructorcarddetails?.courseDetails) {
+  //     return false;
+  //   }
+
+  //   // Check if coursename and primarycoursename are equal
+  //   if (
+  //     this.instructorcarddetails.courseDetails.coursename?.trim().toLowerCase() ===
+  //     this.instructorcarddetails.courseDetails.primarycoursename?.trim().toLowerCase()
+  //   ) {
+  //     // THEN do your match
+  //     return (
+  //       this.instructorcarddetails.courseDetails.createdcasename?.trim().toLowerCase() ===
+  //       carddata?.cesimcasename?.trim().toLowerCase()
+  //     );
+  //   }
+
+  //   // If coursename and primarycoursename are not equal
+  //   return false;
+  // }
 
   getTableData() {
     this._api.fetchassigncaselistforshared(this.instructorcarddetails.courseDetails.simulation, this.instructorcarddetails.coursedetailsid, this.selectedTab).subscribe((data: any) => {
@@ -154,6 +181,17 @@ export class SharecasedComponent implements OnInit {
   }
 
 
+
+
+
+
+
+
+
+
+
+
+
   //Copy the coursename
   CopyGame1(card: any, casename: string) {
     const dialogRef = this.dialog.open(GamecopyComponent, {
@@ -180,50 +218,184 @@ export class SharecasedComponent implements OnInit {
 
   gotTocasemanagement(card: any) {
     localStorage.setItem('selectedTab', this.selectedTab);
-  this.checkloading = true;
+    this.checkloading = true;
+    if (this.selectedTab == 'sharedcase') {
+      card.defaultcase = 'yes'
+    }
+    // this._global.casemanagementcoursedetails.next(card)
+    // if (card.courseDetails.simulation == 'Business Basics') {
+    //   this._router.navigate(['auth/component/businesscasemanagement'])
+    // } else if (card.courseDetails.simulation == 'Product & Consumer') {
+    //   this._router.navigate(['auth/component/consumercasemanagement'])
+    // }
+    // if (card.courseDetails.simulation == 'Product & Consumer New') {
+    //   this._router.navigate(['auth/component/consumercasemanagementnew'])
+    // } else if (card.courseDetails.simulation == 'Logistics') {
+    //   this._router.navigate(['auth/component/logisticscasemanagement'])
+    // } else if (card.courseDetails.simulation == 'Change Management Module') {
+    //   this._router.navigate(['auth/component/changemanagementcasemanagement'])
+    // } else if (card.courseDetails.simulation == 'Financial Analysis') {
+    //   this._router.navigate(['auth/component/financialanalysiscasemanagement'])
+    // }
+    // else if ((card.courseDetails.simulation == 'Promotions & Segments') || (card.courseDetails.simulation == 'Promotion & Segments')) {
+    //   this._router.navigate(['auth/component/promotionscasemanagement'])
+    // } else if (card.courseDetails.simulation == 'Sales & Target') {
+    //   this._router.navigate(['auth/component/salestargetcasemanagement'])
+    // }
+    // else if (card.courseDetails.simulation == 'Portfolio Management') {
+    //   this._router.navigate(['auth/component/portfoliocaseheader'])
+    // }
+    // else if (card.courseDetails.simulation == 'Value Chain') {
+    //   this._router.navigate(['auth/component/valuechaincaseheader'])
+    // }
+    // else if (card.courseDetails.simulation == 'CVP Analysis') {
+    //   this._router.navigate(['auth/component/cvpcaseheader'])
+    // }
+    // else if (card.courseDetails.simulation == 'Accounting') {
+    //   this._router.navigate(['auth/component/accountingcaseheader'])
+    // }
+    // else if (card.courseDetails.simulation == 'Accounting Arabic') {
+    //   this._router.navigate(['auth/component/accountingarabiccaseheader'])
+    // }
+    // else if (card.courseDetails.simulation == 'Pricing') {
+    //   this._router.navigate(['auth/component/pricingcaseheader'])
+    // }
+    // else if (card.courseDetails.simulation == 'Mergers & Acquisition') {
+    //   this._router.navigate(['auth/component/mergersacquisitioncaseheader'])
+    // }
 
-  if (this.selectedTab === 'sharedcase') {
-    card.defaultcase = 'yes';
-  }
+    // else if (card.courseDetails.simulation == 'HRP') {
+    //   this._router.navigate(['auth/component/hrpcaseheader'])
+    // }
 
-  this._global.casemanagementcoursedetails.next(card);
+    // else if (card.courseDetails.simulation == 'Design Thinking') {
+    //   this._router.navigate(['auth/component/designthinkingcaseheader'])
+    // }
 
-  const routes: Record<string, string> = {
-    'Business Basics': 'auth/businesscasemanagement/component',
-    'Product & Consumer': 'auth/consumercasemanagement/component',
-    'Product & Consumer New': 'auth/consumercasemanagementnew/component',
-    'Logistics': 'auth/logisticscasemanagement/component',
-    'Change Management Module': 'auth/changemanagementcasemanagement/component',
-    'Financial Analysis': 'auth/financialanalysiscasemanagement/component',
-    'Promotions & Segments': 'auth/promotionscasemanagement/component',
-    'Promotion & Segments': 'auth/promotionscasemanagement/component',
-    'Promotions & Segments New': 'auth/promotionscasemanagementnew/component',
-    'Sales & Target': 'auth/salestargetcasemanagement/component',
-    'Portfolio Management': 'auth/portfoliocaseheader/component',
-    'Value Chain': 'auth/valuechaincaseheader/component',
-    'Value Chain New': 'auth/valuechaincase/component',
-    'CVP Analysis': 'auth/cvpcaseheader/component',
-    'Accounting': 'auth/accountingcaseheader/component',
-    'Accounting Arabic': 'auth/accountingarabiccaseheader/component',
-    'Pricing': 'auth/pricingcaseheader/component',
-    'Mergers & Acquisition': 'auth/mergersacquisitioncaseheader/component',
-    'HRP': 'auth/hrpcaseheader/component',
-    'Design Thinking': 'auth/designthinkingcaseheader/component',
-    'CRM': 'auth/crmcaseheader/component',
-    'Innovation': 'auth/innovationcaseheader/component',
-    'Ordering Basics': 'auth/orderingbasicscaseheader/component',
-    'HRM_Fintech': 'auth/hrmcasemanagement/component',
-    'STP': 'auth/stpcaseheader/component',
-    'IT Management': 'auth/itcasemanagementheader/component',
-    'Ecommerce': 'auth/ecommerccaseeheader/component',
-    'Capital Budgeting': 'auth/capitalbudgetingcaseheader/component',
-    'Project Management': 'auth/projectmanagementcaseheader/component'
-  };
+    // else if (card.courseDetails.simulation == 'CRM') {
+    //   this._router.navigate(['auth/component/crmcaseheader'])
+    // }
 
-  const route = routes[card.simulationname];
-  if (route) {
-    this._router.navigate([route]);
-  }
+    // else if (card.courseDetails.simulation == 'Innovation') {
+    //   this._router.navigate(['auth/component/innovationcaseheader'])
+    // }
+    // else if (card.courseDetails.simulation == 'Ordering Basics') {
+    //   this._router.navigate(['auth/component/orderingbasicscaseheader'])
+    // }
+    // else if (card.courseDetails.simulation == 'HRM_Fintech') {
+    //   this._router.navigate(['auth/component/hrmcasemanagement'])
+    // }
+    // else if (card.courseDetails.simulation == 'STP') {
+    //   this._router.navigate(['auth/component/stpcaseheader'])
+    // }
+    // else if (card.courseDetails.simulation == 'IT Management') {
+    //   this._router.navigate(['auth/component/itcasemanagementheader'])
+    // }
+    // else if (card.courseDetails.simulation == 'Ecommerce') {
+    //   this._router.navigate(['auth/component/ecommerccaseeheader'])
+    // }
+    // else if (card.courseDetails.simulation == 'Capital Budgeting') {
+    //   this._router.navigate(['auth/component/capitalbudgetingcaseheader'])
+    // }
+    // else if (card.courseDetails.simulation == 'Project Management') {
+    //   this._router.navigate(['auth/component/projectmanagementcaseheader'])
+    // }
+
+
+    /////////////////////////////////new
+    this._global.casemanagementcoursedetails.next(card)
+    if (card.simulationname == 'Business Basics') {
+      this._router.navigate(['auth/businesscasemanagement/component'])
+    } else if (card.simulationname == 'Product & Consumer') {
+      this._router.navigate(['auth/consumercasemanagement/component'])
+    }
+    if (card.simulationname == 'Product & Consumer New') {
+      this._router.navigate(['auth/consumercasemanagementnew/component'])
+    } else if (card.simulationname == 'Logistics') {
+      this._router.navigate(['auth/logisticscasemanagement/component'])
+    } else if (card.simulationname == 'Change Management Module') {
+      this._router.navigate(['auth/changemanagementcasemanagement/component'])
+    }
+    else if (card.simulationname == 'Change Management Module New') {
+      this._router.navigate(['auth/changemanagementnewcasemanagement/component'])
+    }
+    else if (card.simulationname == 'Financial Analysis') {
+      this._router.navigate(['auth/financialanalysiscasemanagement/component'])
+    }
+    else if ((card.simulationname == 'Promotions & Segments') || (card.simulationname == 'Promotion & Segments')) {
+      this._router.navigate(['auth/promotionscasemanagement/component'])
+    } else if (card.simulationname == 'Promotions & Segments New') {
+      this._router.navigate(['auth/promotionscasemanagementnew/component'])
+    } else if (card.simulationname == 'Sales & Target') {
+      this._router.navigate(['auth/salestargetcasemanagement/component'])
+    }
+    else if (card.simulationname == 'Portfolio Management') {
+      this._router.navigate(['auth/portfoliocaseheader/component'])
+    }
+    else if (card.simulationname == 'Value Chain') {
+      this._router.navigate(['auth/valuechaincaseheader/component'])
+    }
+    else if (card.simulationname == 'Value Chain New') {
+      this._router.navigate(['auth/valuechaincase/component'])
+    }
+    else if (card.simulationname == 'CVP Analysis') {
+      this._router.navigate(['auth/cvpcaseheader/component'])
+    }
+    else if (card.simulationname == 'Accounting') {
+      this._router.navigate(['auth/accountingcaseheader/component'])
+    }
+     else if (card.simulationname == 'Accounting New') {
+      this._router.navigate(['auth/accountingnewcaseheader/component'])
+    }
+    else if (card.simulationname == 'Accounting Arabic') {
+      this._router.navigate(['auth/accountingarabiccaseheader/component'])
+    }
+    else if (card.simulationname == 'Pricing') {
+      this._router.navigate(['auth/pricingcaseheader/component'])
+    }
+    else if (card.simulationname == 'Mergers & Acquisition') {
+      this._router.navigate(['auth/mergersacquisitioncaseheader/component'])
+    }
+
+    else if (card.simulationname == 'HRP') {
+      this._router.navigate(['auth/hrpcaseheader/component'])
+    }
+    else if (card.simulationname == 'HRP New') {
+      this._router.navigate(['auth/hrpcase/component'])
+    }
+
+    else if (card.simulationname == 'Design Thinking') {
+      this._router.navigate(['auth/designthinkingcaseheader/component'])
+    }
+
+    else if (card.simulationname == 'CRM') {
+      this._router.navigate(['auth/crmcaseheader/component'])
+    }
+
+    else if (card.simulationname == 'Innovation') {
+      this._router.navigate(['auth/innovationcaseheader/component'])
+    }
+    else if (card.simulationname == 'Ordering Basics') {
+      this._router.navigate(['auth/orderingbasicscaseheader/component'])
+    }
+    else if (card.simulationname == 'HRM_Fintech') {
+      this._router.navigate(['auth/hrmcasemanagement/component'])
+    }
+    else if (card.simulationname == 'STP') {
+      this._router.navigate(['auth/stpcaseheader/component'])
+    }
+    else if (card.simulationname == 'IT Management') {
+      this._router.navigate(['auth/itcasemanagementheader/component'])
+    }
+    else if (card.simulationname == 'Ecommerce') {
+      this._router.navigate(['auth/ecommerccaseeheader/component'])
+    }
+    else if (card.simulationname == 'Capital Budgeting') {
+      this._router.navigate(['auth/capitalbudgetingcaseheader/component'])
+    }
+    else if (card.simulationname == 'Project Management') {
+      this._router.navigate(['auth/projectmanagementcaseheader/component'])
+    }
   }
 
 
@@ -280,7 +452,61 @@ export class SharecasedComponent implements OnInit {
     });
   }
 
+  // primarygameselect(card: any) {
+  //   const dialogRef = this.dialog.open(PrimarycourseselectpopupComponent, {
+  //     data: {
+  //       text:"Are you sure about assigning this case study to your course?",
+  //       instructormailid: card.courseDetails.instructormailid,
+  //       coursename: card.coursename,
+  //       coursecode: this.instructorcarddetails.coursecode,
+  //       coursedetailsid: this.instructorcarddetails.coursedetailsid,
+  //       primarycoursedetailsid: card.primarycoursedetailsid
+  //     },
+  //   });
+
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     this.getTableData();
+  //   });
+  // }
+  // primarygameselect(card: any) {
+  //   const dialogRef = this.dialog.open(DeleteComponent, {
+  //     // data: "Are you sure about assigning this case study to your course?",
+  //     data: {
+  //       heading: "Case Assign",
+  //       body: "Are you sure about assigning this case study to your course?"
+  //     },
+  //     position: {
+  //       top: "20px",
+  //     },
+  //     panelClass: 'copygame-dialog',
+  //   });
+
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     if (result == true) {
+  //       this._api.courseSetPrimary(card.courseDetails.instructormailid, card.coursename, this.instructorcarddetails.coursecode,
+  //         this.instructorcarddetails.coursedetailsid, card.primarycoursedetailsid).subscribe((data: any) => {
+  //           if (data.status == "Success") {
+  //             if (this.selectedTab === 'cesimcase') {
+  //               this.getTableDataForMaster()
+
+  //             } else {
+  //               this.getTableData();
+
+  //             }
+  //             // this.getTableData();
+
+  //           } else {
+  //             dialogRef.close();
+  //           }
+  //         })
+  //     } else {
+  //       dialogRef.close();
+  //     }
+  //   });
+  // }
+  // Add this new method to handle the checkbox click
   handleCheckboxClick(event: Event, card: any) {
+    // Prevent the checkbox from being checked immediately
     (event.target as HTMLInputElement).checked = card.isAssignedForYourCase;
 
     if (this.selectedPrimaryCase !== card.coursename.trim().toLowerCase()) {
@@ -307,6 +533,7 @@ export class SharecasedComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
+        // User clicked Yes - proceed with the API call
         this._api.courseSetPrimary(
           card.courseDetails.instructormailid,
           card.coursename,
@@ -315,7 +542,9 @@ export class SharecasedComponent implements OnInit {
           card.primarycoursedetailsid
         ).subscribe((data: any) => {
           if (data.status == "Success") {
+            // Uncheck all cards first
             this.cardlistdata.forEach((c: any) => c.isAssignedForYourCase = false);
+            // Check only the selected card
             card.isAssignedForYourCase = true;
             this.instructorcarddetails.courseDetails.primarycoursename = card.coursename;
             this._global.instructorcarddetails.next(this.instructorcarddetails);
@@ -328,6 +557,7 @@ export class SharecasedComponent implements OnInit {
           }
         });
       } else {
+        // If cancelled, revert the checkbox
         if (event) {
           (event.target as HTMLInputElement).checked = false;
         }
@@ -349,6 +579,7 @@ export class SharecasedComponent implements OnInit {
 
 
     }
+    console.log("bodylnclick", body)
     let apiname = '/primarycourse/updategamelaguage'
     this._api.updategamelanguage(body, apiname)
       .subscribe({
@@ -412,7 +643,7 @@ export class SharecasedComponent implements OnInit {
     MatDialogModule,
   ]
 })
-export class SharedpopupComponent {
+export class SharedpopupComponent implements OnInit {
   Instructorcarddetailssub: Subscription;
   instructorcarddetails: any = [];
   description: String = "";

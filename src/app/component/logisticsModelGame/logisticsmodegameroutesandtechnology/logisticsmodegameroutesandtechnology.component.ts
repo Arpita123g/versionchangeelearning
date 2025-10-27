@@ -12,13 +12,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 
 
 @Component({
   selector: 'app-logisticsmodegameroutesandtechnology',
   standalone: true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,TippyDirective],
   templateUrl: './logisticsmodegameroutesandtechnology.component.html',
   styleUrls: ['./logisticsmodegameroutesandtechnology.component.scss']
 })

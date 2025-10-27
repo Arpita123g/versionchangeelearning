@@ -270,7 +270,7 @@ export class InstructordashboardComponent extends AbstractComponent implements O
   ]
 })
 export class AttemptsupdateComponent implements OnInit {
-  userEmail: string = '';
+  useremail: string = '';
   Emailsub: Subscription;
   disable: boolean = false;
   // Rolesub: Subscription;
@@ -286,7 +286,7 @@ export class AttemptsupdateComponent implements OnInit {
 
     this.Emailsub = this._global.useremail.subscribe((data) => {
 
-      this.userEmail = data;
+      this.useremail = data;
 
       // this.Rolesub = this._global.role.subscribe((data:any) => {
       //   console.log(data);
@@ -326,7 +326,7 @@ export class AttemptsupdateComponent implements OnInit {
         status: 'active',
         caller: 'webadmin',
         usermode: 'instructor',
-        email: this.userEmail,
+        email: this.useremail,
       };
 
       this._restapiservice.updateInstructor(body).subscribe((data: any) => {

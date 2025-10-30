@@ -46,6 +46,7 @@ export class TippyDirective implements OnInit, OnDestroy, OnChanges {
       this.tippyInstance = tippy(this.el.nativeElement, {
         content: this.appTippy,
         allowHTML: true,
+        zIndex: 11000,
         ...this.tippyOptions,
         theme: 'light-border',
         animation: 'shift-away',

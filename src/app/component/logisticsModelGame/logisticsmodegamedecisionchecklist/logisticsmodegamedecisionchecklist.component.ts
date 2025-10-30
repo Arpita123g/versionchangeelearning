@@ -337,7 +337,9 @@ export class LogisticsmodegamedecisionchecklistComponent extends AbstractCompone
           resultarray: this.result,
 
         },
-        panelClass: 'custom-dialog-container'
+        // panelClass: 'custom-dialog-container'
+        panelClass: 'centertop-dialog',
+        position: { top: '20px' },
       });
   
       dialogRef.afterClosed().subscribe(result => {

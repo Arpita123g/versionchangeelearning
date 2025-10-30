@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AbstractComponent } from 'src/app/AbstractComponent';
 import { BlankinputlistComponent } from 'src/app/common/blankinputlist/blankinputlist.component';
@@ -16,8 +16,10 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 
 @Component({
   selector: 'app-cvpanalysisdecisionchecklist',
-  standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule, MatIconModule, NgApexchartsModule,
+
+  ],
   templateUrl: './cvpanalysisdecisionchecklist.component.html',
   styleUrls: ['./cvpanalysisdecisionchecklist.component.scss']
 })
@@ -45,7 +47,7 @@ export class CvpanalysisdecisionchecklistComponent extends AbstractComponent {
   disabled: boolean = false;
   resultarray: any = [];
   topstatus: boolean = true;
-  foodforthought:boolean = true;
+  foodforthought: boolean = true;
   databasecellnamearray: any = ['ae8', 'ae9', 'ae10', 'ae11', 'af8', 'af9', 'af10', 'af11', 'ae15', 'ae17', 'af17',
     'k41', 'm23', 'k40',];
 
@@ -111,7 +113,7 @@ export class CvpanalysisdecisionchecklistComponent extends AbstractComponent {
             if (data.resultList != null) {
               if (data.resultList[0].cvpAnalysisCM.cvpAnalysisCMActiveStatus.foodforthoughtstatus == 'inactive') {
                 this.foodforthought = false;
-              }else{
+              } else {
                 this.foodforthought = true;
               }
               let attempt = data.resultList[0].attempt;
@@ -127,10 +129,10 @@ export class CvpanalysisdecisionchecklistComponent extends AbstractComponent {
               }
               if ((this.submitprove == 'yes') || (this.timefinished)) {
                 this.disabled = true;
-              }else{
+              } else {
                 this.disabled = false;
               }
-              
+
               if (data.resultList[0].aiAssessmentMaster != null) {
                 let analysisshowdata = data.resultList[0].aiAssessmentMaster[roundvalue];
                 if (analysisshowdata == 'yes') {
@@ -143,7 +145,7 @@ export class CvpanalysisdecisionchecklistComponent extends AbstractComponent {
               for (let i = 0; i < this.databasecellnamearray.length; i++) {
                 this.result[i] = data.resultList[0][this.databasecellnamearray[i]];
               }
-              
+
               for (let i = 0; i < this.databasecellnamearray.length; i++) {
                 if (attempt > 1) {
 
@@ -156,7 +158,7 @@ export class CvpanalysisdecisionchecklistComponent extends AbstractComponent {
                   this.isClass[i] = true;
                 }
               }
-              
+
               this.roundname = "Round " + attempt;
               if (attempt > 0) {
                 for (let i = 1; i < attempt + 1; i++) {
@@ -179,13 +181,13 @@ export class CvpanalysisdecisionchecklistComponent extends AbstractComponent {
 
               if ((this.analysisshow == true) && (this.submitprove == 'yes')) {
                 this.useranalysisSubmit();
-              }else{
+              } else {
                 this.checkloading = false;
               }
-              
-              
+
+
             }
-            
+
           }
         }, error: (error: any) => {
           this.checkloading = false;
@@ -341,7 +343,7 @@ export class CvpanalysisdecisionchecklistComponent extends AbstractComponent {
       "\n" + "Operating Profit/Loss, mn INR" + " " + this.responseresultdatabase.k40;
 
     this.feedback = this.assesment;
-   
+
     if ((this.analysisshow == true) && (this.submitprove == 'yes')) {
       this.getuseranalysisValue();
     }
@@ -350,7 +352,7 @@ export class CvpanalysisdecisionchecklistComponent extends AbstractComponent {
 
   getuseranalysisValue() {
 
-    this._api.fetchassessment(this.coursecode, this.studentsectionid, 'student', Number(this.noofattempt),"coursecode").subscribe(
+    this._api.fetchassessment(this.coursecode, this.studentsectionid, 'student', Number(this.noofattempt), "coursecode").subscribe(
       (data: any) => {
         if (data.status == 'Success') {
           if (data.resultList != null) {
@@ -412,12 +414,12 @@ export class CvpanalysisdecisionchecklistComponent extends AbstractComponent {
       this._alert.error("To move ahead, kindly Write your analysis");
       return;
     }
-  
+
     if (this.noofattempt == "1" && this.foodforthought && this.foodforthoughtQNo != 8) {
       this._alert.error("To move ahead finish Food For Thought section");
       return;
     }
-  
+
     const openDialog = () => {
       const dialogRef = this.dialog.open(CvpanalysisdecisionsubmitPopup, {
         data: {
@@ -431,16 +433,18 @@ export class CvpanalysisdecisionchecklistComponent extends AbstractComponent {
           kpivaluearray: this.kpivaluearray,
 
         },
-        panelClass: 'custom-dialog-container'
+        // panelClass: 'custom-dialog-container'
+        panelClass: 'centertop-dialog',
+        position: { top: '20px' },
       });
-  
+
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
           this.newItemEvent.emit('report');
         }
       });
     };
-  
+
     openDialog();
   }
   // saveDecisionChecklist() {
@@ -510,6 +514,8 @@ export class CvpanalysisdecisionchecklistComponent extends AbstractComponent {
 
 @Component({
   selector: 'app-cvpanalysisdecisionsubmitpopup',
+  standalone: true,
+  imports: [CommonModule, FormsModule, MatIconModule, NgApexchartsModule,MatDialogModule],
   templateUrl: './cvpanalysisdecisionsubmitpopup.html',
   styleUrls: ['./cvpanalysisdecisionchecklist.component.scss']
 

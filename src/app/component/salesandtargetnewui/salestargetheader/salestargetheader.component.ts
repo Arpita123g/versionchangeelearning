@@ -12,11 +12,39 @@ import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
 import { SalestargetfoodforthoughtComponent } from '../salestargetfoodforthought/salestargetfoodforthought.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SalestargetdecisionchecklistComponent } from '../salestargetdecisionchecklist/salestargetdecisionchecklist.component';
+import { SalestargetreportComponent } from '../salestargetreport/salestargetreport.component';
+import { SalestargetsynopsisComponent } from '../salestargetsynopsis/salestargetsynopsis.component';
+import { SalestargetsalesplanningComponent } from '../salestargetsalesplanning/salestargetsalesplanning.component';
+import { SalestargetsalescompositionComponent } from '../salestargetsalescomposition/salestargetsalescomposition.component';
+import { SalestargetsalesdevelopmentComponent } from '../salestargetsalesdevelopment/salestargetsalesdevelopment.component';
+import { SalestargetmarketComponent } from '../salestargetmarket/salestargetmarket.component';
+import { SalestargetinformationsearchComponent } from '../salestargetinformationsearch/salestargetinformationsearch.component';
+import { SalestargetintroductionComponent } from '../salestargetintroduction/salestargetintroduction.component';
+import { MicrosimleaderboardgeneralComponent } from 'src/app/common/microsimleaderboardgeneral/microsimleaderboardgeneral.component';
+import { ForumcourseComponent } from 'src/app/common/forumcourse/forumcourse.component';
+import { ForumindividualComponent } from 'src/app/common/forumindividual/forumindividual.component';
+import { ReadingComponent } from 'src/app/common/reading/reading.component';
 
 @Component({
   selector: 'app-salestargetheader',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,
+    SalestargetinformationsearchComponent,
+    SalestargetintroductionComponent,
+    SalestargetmarketComponent,
+    SalestargetsalesplanningComponent,
+    SalestargetsalescompositionComponent,
+    SalestargetsalesdevelopmentComponent,
+    SalestargetdecisionchecklistComponent,
+    SalestargetreportComponent,
+    SalestargetsynopsisComponent,
+    SalestargetfoodforthoughtComponent,
+    MicrosimleaderboardgeneralComponent,
+    ForumcourseComponent,
+    ForumindividualComponent,
+    ReadingComponent
+  ],
   templateUrl: './salestargetheader.component.html',
   styleUrls: ['./salestargetheader.component.scss']
 })

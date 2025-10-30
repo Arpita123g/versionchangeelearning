@@ -116,7 +116,7 @@ export class AiassesmentComponent implements OnInit {
     const dialogRef = this.dialog.open(AiPopupAssesmentComponent, {
       panelClass: 'termsand_condition',
       disableClose: true,
-      width: '100%',
+      width: '60%',
       hasBackdrop: true,
     });
     dialogRef.afterClosed().subscribe(result => {

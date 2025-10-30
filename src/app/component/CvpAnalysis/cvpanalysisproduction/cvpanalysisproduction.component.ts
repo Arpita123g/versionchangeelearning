@@ -22,6 +22,7 @@ import { CvpanalysisfoodforthoughtComponent } from '../cvpanalysisfoodforthought
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 interface lineChart {
   series: ApexAxisChartSeries;
@@ -37,7 +38,7 @@ interface lineChart {
 @Component({
   selector: 'app-cvpanalysisproduction',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule, TippyDirective],
   templateUrl: './cvpanalysisproduction.component.html',
   styleUrls: ['./cvpanalysisproduction.component.scss']
 })

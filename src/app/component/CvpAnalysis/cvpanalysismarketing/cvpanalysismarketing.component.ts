@@ -23,6 +23,7 @@ import { CvpanalysisfoodforthoughtComponent } from '../cvpanalysisfoodforthought
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 interface barchart {
   series: ApexAxisChartSeries;
@@ -39,7 +40,7 @@ interface barchart {
 @Component({
   selector: 'app-cvpanalysismarketing',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule, TippyDirective],
   templateUrl: './cvpanalysismarketing.component.html',
   styleUrls: ['./cvpanalysismarketing.component.scss']
 })

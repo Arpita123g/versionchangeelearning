@@ -24,12 +24,15 @@ export class ChangemanagementcasememoComponent extends AbstractComponent {
   outlooktextheading: any = []
   outlooktextcontent: any = []
   contentvalue: string = '';
-  config: EditorConfig = { buttons: [] };
   defaultcase: string = "";
   selectedround: number = 1;
   checked: boolean = false;
   headingvalue: string = '';
   res: any = [];
+  config: EditorConfig = {
+    buttons: [],
+
+  };
   Instructorelementdetailssub: Subscription;
   instructorcarddetails: any = [];
   constructor(_router: Router, _login: LoginService,

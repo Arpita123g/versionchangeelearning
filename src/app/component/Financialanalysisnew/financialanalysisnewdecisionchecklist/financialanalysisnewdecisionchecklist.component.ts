@@ -660,7 +660,9 @@ export class FinancialanalysisnewdecisionchecklistComponent extends AbstractComp
 
 
             },
-            panelClass: 'custom-dialog-container'
+            panelClass: 'centertop-dialog',
+            position: { top: '20px' },
+            // panelClass: 'custom-dialog-container'
           });
           dialogRef.afterClosed().subscribe(result => {
             if (result) {

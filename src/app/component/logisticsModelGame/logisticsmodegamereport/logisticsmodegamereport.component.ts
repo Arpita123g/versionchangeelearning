@@ -28,6 +28,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { MatIconModule } from '@angular/material/icon';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 interface RadarChart {
   series: ApexAxisChartSeries;
@@ -66,7 +67,7 @@ interface barchart {
 @Component({
   selector: 'app-logisticsmodegamereport',
   standalone: true,
-  imports: [CommonModule, FormsModule,NgApexchartsModule,MatIconModule],
+  imports: [CommonModule, FormsModule,NgApexchartsModule,MatIconModule,TippyDirective],
   templateUrl: './logisticsmodegamereport.component.html',
   styleUrls: ['./logisticsmodegamereport.component.scss']
 })

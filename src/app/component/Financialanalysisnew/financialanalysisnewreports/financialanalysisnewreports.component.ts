@@ -29,6 +29,7 @@ import { SheetdataService } from 'src/app/service/sheet/sheetdata.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 
 interface RadarChart {
@@ -67,7 +68,8 @@ interface pieChart {
 @Component({
   selector: 'app-financialanalysisnewreports',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, RouterModule, NgApexchartsModule,MatIconModule, FormsModule],
+  imports: [CommonModule, MatDialogModule, RouterModule, NgApexchartsModule,
+    MatIconModule, FormsModule, TippyDirective],
   templateUrl: './financialanalysisnewreports.component.html',
   styleUrls: ['./financialanalysisnewreports.component.scss']
 })

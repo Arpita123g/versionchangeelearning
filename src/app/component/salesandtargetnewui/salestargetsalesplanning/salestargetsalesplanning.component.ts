@@ -24,6 +24,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 interface barChart {
   series: ApexAxisChartSeries;
@@ -41,7 +42,7 @@ interface barChart {
 @Component({
   selector: 'app-salestargetsalesplanning',
   standalone: true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,TippyDirective],
   templateUrl: './salestargetsalesplanning.component.html',
   styleUrls: ['./salestargetsalesplanning.component.scss']
 })

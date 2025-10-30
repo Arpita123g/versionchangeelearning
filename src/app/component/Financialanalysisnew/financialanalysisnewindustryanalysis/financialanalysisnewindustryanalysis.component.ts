@@ -15,6 +15,7 @@ import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
 // import { piechart } from '../../ProductConsumerGame/consumercrafting/consumercrafting.component';
 import { FinancialanalysisnewfoodforthoughtComponent } from '../financialanalysisnewfoodforthought/financialanalysisnewfoodforthought.component';
 import { MatIconModule } from '@angular/material/icon';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 interface barchart {
   series: ApexAxisChartSeries;
@@ -40,7 +41,8 @@ interface pieChart {
 @Component({
   selector: 'app-financialanalysisnewindustryanalysis',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, RouterModule, MatButtonModule, NgApexchartsModule,MatIconModule],
+  imports: [CommonModule, MatDialogModule, RouterModule, MatButtonModule,
+     NgApexchartsModule,MatIconModule, TippyDirective],
   templateUrl: './financialanalysisnewindustryanalysis.component.html',
   styleUrls: ['./financialanalysisnewindustryanalysis.component.scss']
 })

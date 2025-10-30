@@ -24,6 +24,7 @@ import { RestapiService } from 'src/app/service/restapi.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
 import { FinancialanalysisnewfoodforthoughtComponent } from '../financialanalysisnewfoodforthought/financialanalysisnewfoodforthought.component';
 import { MatIconModule } from '@angular/material/icon';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 interface barchart {
   series: ApexAxisChartSeries;
@@ -39,8 +40,8 @@ interface barchart {
 @Component({
   selector: 'app-financialanalysisnewinvestment',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, RouterModule, MatButtonModule, NgApexchartsModule,MatIconModule],
-  templateUrl: './financialanalysisnewinvestment.component.html',
+  imports: [CommonModule, MatDialogModule, RouterModule, MatButtonModule, NgApexchartsModule,MatIconModule, TippyDirective],
+  templateUrl: './financialanalysisnewinvestment.component.html', 
   styleUrls: ['./financialanalysisnewinvestment.component.scss']
 })
 export class FinancialanalysisnewinvestmentComponent extends AbstractComponent {

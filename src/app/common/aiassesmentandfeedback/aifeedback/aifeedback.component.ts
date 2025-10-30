@@ -324,7 +324,7 @@ export class AifeedbackComponent implements OnInit {
     const dialogRef = this.dialog.open(AiPopupFeedbackComponent, {
       panelClass: 'termsand_condition',
       disableClose: true,
-      width: '100%',
+      width: '60%',
       hasBackdrop: true,
     });
     dialogRef.afterClosed().subscribe(result => {

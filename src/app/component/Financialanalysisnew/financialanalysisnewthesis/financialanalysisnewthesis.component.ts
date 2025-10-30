@@ -15,12 +15,14 @@ import { RouterModule } from '@angular/router';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonComponentsModule } from 'src/app/common/common.module';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 
 @Component({
   selector: 'app-financialanalysisnewthesis',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatDialogModule, RouterModule, NgApexchartsModule, MatIconModule, CommonComponentsModule],
+  imports: [CommonModule, FormsModule, MatDialogModule, RouterModule, 
+    NgApexchartsModule, MatIconModule, CommonComponentsModule, TippyDirective],
 
   templateUrl: './financialanalysisnewthesis.component.html',
   styleUrls: ['./financialanalysisnewthesis.component.scss']
@@ -106,7 +108,7 @@ export class FinancialanalysisnewthesisComponent extends AbstractComponent {
               this.dropdownvalue = [];
               this.i = [];
               this._global.casemanagementid.next(data.resultList[0].financialanalysiscmid);
-              if (data.resultList[0].financialAnalysisCM.financialAnalysisCMActiveStatus.foodforthougthtstatus == 'inactive') {
+              if (data.resultList[0].financialAnalysisCM.financialAnalysisCMActiveStatus.foodforthoughtstatus == 'inactive') {
                 this.foodforthought = false;
               }
               for (let i = 0; i < this.databasecellvalue.length; i++) {
@@ -143,7 +145,7 @@ export class FinancialanalysisnewthesisComponent extends AbstractComponent {
       [cellname]: cellvalue,
 
     }
-    console.log('writedata', financialanalysisData)
+   
     this._api.financialanalysisdatawrite("financialanalysis", 1,
       financialanalysisData, apiname, 'financialanalysiscmid').subscribe((data: any) => {
         if (data.status == "Success") {

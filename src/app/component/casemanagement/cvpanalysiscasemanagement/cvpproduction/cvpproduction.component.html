@@ -209,6 +209,29 @@
                     </tbody>
                 </table>
             </div>
+
+            <div class=" table-responsive mb-3 mt-3">
+                <table class="table case-management-table ">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td *ngFor="let round of rounds">{{round}}</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="second-head" colspan="13">Goal to be optimized</th>
+                        </tr>
+                        <tr>
+                            <td>Operating Margin</td>
+                            <td *ngFor="let value of res.l33; let i = index">
+                                <input [value]="res.l33[i]" #inputElement [disabled]="defaultcase=='yes'"
+                                    (focusout)="writeMarketingValue('l33',i,inputElement.value)">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

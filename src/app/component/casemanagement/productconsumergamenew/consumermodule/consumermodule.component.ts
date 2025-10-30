@@ -12,10 +12,25 @@ import { ApiService } from 'src/app/service/backendgameapi/api.service';
 import { GlobalService } from 'src/app/service/global.service';
 import { RestapiService } from 'src/app/service/restapi.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
+import { ConsumercasecraftingComponent } from '../consumercasecrafting/consumercasecrafting.component';
+import { ConsumercaseheaderComponent } from '../consumercaseheader/consumercaseheader.component';
+import { ConsumercasetargetComponent } from '../consumercasetarget/consumercasetarget.component';
+import { ConsumerconceptualizingComponent } from '../consumerconceptualizing/consumerconceptualizing.component';
+import { ConsumerfoodforthougthComponent } from '../consumerfoodforthougth/consumerfoodforthougth.component';
+import { ConsumerinformationsearchComponent } from '../consumerinformationsearch/consumerinformationsearch.component';
+import { ConsumeroutlookComponent } from '../consumeroutlook/consumeroutlook.component';
 @Component({
   selector: 'app-consumermodule',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,
+    ConsumercasecraftingComponent,
+    ConsumercaseheaderComponent,
+    ConsumercasetargetComponent,
+    ConsumerconceptualizingComponent,
+    ConsumerfoodforthougthComponent,
+    ConsumerinformationsearchComponent,
+    ConsumeroutlookComponent,
+  ],
   templateUrl: './consumermodule.component.html',
   styleUrls: ['./consumermodule.component.scss']
 })

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AbstractComponent } from 'src/app/AbstractComponent';
 import { BlankinputlistComponent } from 'src/app/common/blankinputlist/blankinputlist.component';
@@ -328,7 +328,8 @@ export class SalestargetdecisionchecklistComponent extends AbstractComponent {
           resultarray: this.result,
 
         },
-        panelClass: 'custom-dialog-container'
+        panelClass: 'custom-dialog-container',
+        position: { top: '20px' }
       });
   
       dialogRef.afterClosed().subscribe(result => {
@@ -413,7 +414,7 @@ export class SalestargetdecisionchecklistComponent extends AbstractComponent {
 @Component({
   selector: 'app-salestargetpopup',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,MatDialogModule],
   templateUrl: './salestargetpopup.html',
   styleUrls: ['./salestargetdecisionchecklist.component.scss']
 })

@@ -12,11 +12,41 @@ import { RestapiService } from 'src/app/service/restapi.service';
 import { SharedserviceService } from 'src/app/service/sharedservice.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
 import { FinancialanalysisnewfoodforthoughtComponent } from '../financialanalysisnewfoodforthought/financialanalysisnewfoodforthought.component';
+import { FinancialanalysisnewindtroductionComponent } from '../financialanalysisnewindtroduction/financialanalysisnewindtroduction.component';
+import { FinancialanalysisnewstatementsComponent } from '../financialanalysisnewstatements/financialanalysisnewstatements.component';
+import { FinancialanalysisnewthesisComponent } from '../financialanalysisnewthesis/financialanalysisnewthesis.component';
+import { FinancialanalysisnewinvestmentComponent } from '../financialanalysisnewinvestment/financialanalysisnewinvestment.component';
+import { FinancialanalysisnewdecisionchecklistComponent, Financialanalysisnewdecisionchecklistpopup } from '../financialanalysisnewdecisionchecklist/financialanalysisnewdecisionchecklist.component';
+import { FinancialanalysisnewreportsComponent } from '../financialanalysisnewreports/financialanalysisnewreports.component';
+import { FinancialanalysisnewsynopsisComponent } from '../financialanalysisnewsynopsis/financialanalysisnewsynopsis.component';
+import { FinancialanalysisnewmemoComponent } from '../financialanalysisnewmemo/financialanalysisnewmemo.component';
+import { FinancialanalysisnewindustryanalysisComponent } from '../financialanalysisnewindustryanalysis/financialanalysisnewindustryanalysis.component';
+import { ReadingComponent } from 'src/app/common/reading/reading.component';
+import { MicrosimleaderboardgeneralComponent } from 'src/app/common/microsimleaderboardgeneral/microsimleaderboardgeneral.component';
+import { ForumcourseComponent} from 'src/app/common/forumcourse/forumcourse.component';
+import { ForumindividualComponent } from 'src/app/common/forumindividual/forumindividual.component';
 
 @Component({
   selector: 'app-financialanalysisnewheader',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, RouterModule],
+  imports: [CommonModule, MatDialogModule, RouterModule,
+    FinancialanalysisnewindtroductionComponent,
+    FinancialanalysisnewstatementsComponent,
+    FinancialanalysisnewfoodforthoughtComponent,
+    FinancialanalysisnewthesisComponent,
+    FinancialanalysisnewinvestmentComponent,
+    FinancialanalysisnewdecisionchecklistComponent,
+    FinancialanalysisnewreportsComponent,
+    FinancialanalysisnewsynopsisComponent,
+    Financialanalysisnewdecisionchecklistpopup,
+    FinancialanalysisnewmemoComponent,
+    FinancialanalysisnewindustryanalysisComponent,
+    ReadingComponent,
+    MicrosimleaderboardgeneralComponent,
+    MatDialogModule,
+    ForumcourseComponent,
+    ForumindividualComponent,
+    ],
   templateUrl: './financialanalysisnewheader.component.html',
   styleUrls: ['./financialanalysisnewheader.component.scss']
 })

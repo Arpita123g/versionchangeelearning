@@ -239,3 +239,4 @@ export class ConsumercasecraftingComponent extends AbstractComponent implements 
     this.destroy$.complete();
   }
 }
+

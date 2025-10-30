@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import {
   ApexAxisChartSeries,
@@ -26,6 +26,7 @@ import { GlobalService } from 'src/app/service/global.service';
 import { RestapiService } from 'src/app/service/restapi.service';
 import { SheetdataService } from 'src/app/service/sheet/sheetdata.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 interface barChart {
   series: ApexAxisChartSeries;
@@ -54,7 +55,10 @@ interface RadarChart {
 @Component({
   selector: 'app-cvpanalysisdecisionreport',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,
+    TippyDirective,
+    MatDialogModule,
+  ],
   templateUrl: './cvpanalysisdecisionreport.component.html',
   styleUrls: ['./cvpanalysisdecisionreport.component.scss']
 })

@@ -68,6 +68,8 @@ export class MicrosimdashboardstructureComponent implements OnInit, OnDestroy {
       width: '40%',
       data: { userRegister: element.userRegister }, // ✅ pass the correct shape
       panelClass: 'achivemodal',
+      // panelClass: 'centertop-dialog',
+      position: { top: '20px' },
     });
   
     dialogRef.afterClosed().subscribe(() => {

@@ -5,11 +5,21 @@ import { MatIconModule } from '@angular/material/icon';
   import { Router } from '@angular/router'; 
 import { ApiService } from 'src/app/service/backendgameapi/api.service';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { CapitalbudgetingcasefoodforthoughtComponent } from '../capitalbudgetingcasefoodforthought/capitalbudgetingcasefoodforthought.component';
+import { CapitalbudgetingcasemoduleComponent } from '../capitalbudgetingcasemodule/capitalbudgetingcasemodule.component';
+import { CapitalbudgetingcasemarketComponent } from '../capitalbudgetingcasemarket/capitalbudgetingcasemarket.component';
+import { CapitalbudgetingcaseprojectportfolioComponent } from '../capitalbudgetingcaseprojectportfolio/capitalbudgetingcaseprojectportfolio.component';
 
 @Component({
   selector: 'app-capitalbudgetingcaseheader',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatIconModule, NgApexchartsModule],
+  imports: [CommonModule, FormsModule, MatIconModule, NgApexchartsModule,
+    CapitalbudgetingcasefoodforthoughtComponent,
+    CapitalbudgetingcasemoduleComponent,
+    CapitalbudgetingcasemarketComponent,
+    CapitalbudgetingcaseprojectportfolioComponent,
+   
+  ],
   templateUrl: './capitalbudgetingcaseheader.component.html',
   styleUrls: ['./capitalbudgetingcaseheader.component.scss']
 })

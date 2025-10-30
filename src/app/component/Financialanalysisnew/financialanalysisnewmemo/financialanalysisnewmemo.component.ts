@@ -12,11 +12,14 @@ import { RestapiService } from 'src/app/service/restapi.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
 import { FinancialanalysisnewfoodforthoughtComponent } from '../financialanalysisnewfoodforthought/financialanalysisnewfoodforthought.component';
 import { MatIconModule } from '@angular/material/icon';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 @Component({
   selector: 'app-financialanalysisnewmemo',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, RouterModule, MatButtonModule,MatIconModule],
+  imports: [CommonModule, MatDialogModule, RouterModule, MatButtonModule,MatIconModule,
+    TippyDirective
+  ],
   templateUrl: './financialanalysisnewmemo.component.html',
   styleUrls: ['./financialanalysisnewmemo.component.scss']
 })

@@ -25,6 +25,7 @@ import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
 import { FinancialanalysisnewfoodforthoughtComponent } from '../financialanalysisnewfoodforthought/financialanalysisnewfoodforthought.component';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 interface barchart {
   series: ApexAxisChartSeries;
@@ -43,7 +44,7 @@ interface barchart {
   selector: 'app-financialanalysisnewstatements',
   standalone: true,
   imports: [CommonModule, MatDialogModule, RouterModule, MatButtonModule,
-     NgApexchartsModule, MatIconModule, FormsModule],
+     NgApexchartsModule, MatIconModule, FormsModule, TippyDirective],
   templateUrl: './financialanalysisnewstatements.component.html',
   styleUrls: ['./financialanalysisnewstatements.component.scss']
 })

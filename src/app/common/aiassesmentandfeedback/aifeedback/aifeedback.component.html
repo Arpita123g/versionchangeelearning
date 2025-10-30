@@ -1,4 +1,4 @@
-<div class="pb-4 ins-ai-side" mat-dialog-content>
+<div class="pb-4 ins-ai-side">
   <div>
       <input type="checkbox" [(ngModel)]="isChecked" (click)="feedbackcheckboxclick()"
           [disabled]="!disablecheckbox" class="custom-checkbox">
@@ -123,8 +123,9 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-
+  <div class="paginator-container">
   <mat-paginator [pageSizeOptions]="dataSource.data!==null?[20, 50, 100, 500,dataSource.data.length]:[0]"
       showFirstLastButtons aria-label="Select page of periodic elements">
   </mat-paginator>
+  </div>
 </div>

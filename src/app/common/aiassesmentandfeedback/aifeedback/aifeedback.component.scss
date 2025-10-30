@@ -51,20 +51,40 @@
 
 }
 
-// check for width in table td
-::ng-deep .microsimdashboardtable th.mat-header-cell {
-    width: 20rem;
+// Angular Material v15+ (MDC) – table layout and header styling
+::ng-deep .microsimdashboardtable.mat-mdc-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+::ng-deep .microsimdashboardtable th.mat-mdc-header-cell {
     font-size: 0.9rem !important;
-    color: white !important;
+    color: #fff !important;
+    background-color: #8aafdf !important; // match top table header
 }
 
 ::ng-deep .mat-elevation-z8 {
     overflow-x: auto;
 }
 
-::ng-deep .microsimdashboardtable .mat-header-row {
-    background-color: #266cc38a !important;
+// MDC header row background
+::ng-deep .microsimdashboardtable .mat-mdc-header-row {
+    background-color: #8aafdf !important; // match top table header
     border-bottom: 2px solid black;
+}
+
+// Column widths (match matColumnDef names used in the template)
+::ng-deep .microsimdashboardtable .mat-column-Name { width: 15rem !important; }
+::ng-deep .microsimdashboardtable .mat-column-email { width: 17rem !important; }
+::ng-deep .microsimdashboardtable .mat-column-sentiment { width: 20rem !important; }
+::ng-deep .microsimdashboardtable .mat-column-response { width: auto; }
+
+// Prevent content from forcing columns wider
+::ng-deep .microsimdashboardtable .mat-mdc-header-cell,
+::ng-deep .microsimdashboardtable .mat-mdc-cell {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .feedbacktext {
@@ -112,37 +132,35 @@ input {
     }
 }
 
-.loadingscreen {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    z-index: 50;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: saturate(200%) blur(10px);
+// .loadingscreen {
+//     position: absolute;
+//     height: 100%;
+//     width: 100%;
+//     z-index: 50;
+//     background: rgba(255, 255, 255, 0.4);
+//     backdrop-filter: saturate(200%) blur(10px);
 
-    .loadingspinner {
-        position: absolute;
-        top: 35%;
-        left: 45%;
-        font-size: 30px;
-        height: 100px;
-        width: 100px;
-        color: crimson;
+//     .loadingspinner {
+//         position: absolute;
+//         top: 35%;
+//         left: 45%;
+//         font-size: 30px;
+//         height: 100px;
+//         width: 100px;
+//         color: crimson;
 
-    }
+//     }
 
-    .loadingspinnertxt {
-        position: absolute;
-        // top: 55%;
-        // left: 40%;
-        font-size: 20px;
-        font-weight: 500;
-        left: 50%;
-        transform: translateX(-50%);
-        top: 50%;
-        // transform: translateY(-50%);
-    }
-}
+//     .loadingspinnertxt {
+//         position: absolute;
+//         font-size: 20px;
+//         font-weight: 500;
+//         left: 50%;
+//         transform: translateX(-50%);
+//         top: 50%;
+        
+//     }
+// }
 
 
 .mat-elevation-z8_p {
@@ -150,27 +168,18 @@ input {
     font-style: italic;
     color: gray;
 }
-// .logout-popup-not-cardhead {
-//     font-weight: 500;
-//     font-size: 18px;
-//     border-top-right-radius: 4px;
-//     border-top-left-radius: 4px;
-//     padding: 12px;
-//     background-color: #3c3c3c;
-//     color: white;
-// }
 
-.terms-popup {
+
+.terms-popup{
     .logout-popup-not-a {
-      position: fixed;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
+      /* Let the dialog container handle sizing/position; avoid absolute layout */
+      position: static;
       border: none;
-      width: 40%;
-      z-index: 1000;
-      margin: 10px;
-  
+      width: auto;
+      left: auto;
+      transform: none;
+      max-height: 90vh;
+    
       .logout-popup-not-cardhead {
         display: flex;
         justify-content: space-between;
@@ -184,17 +193,23 @@ input {
         border-top-right-radius: 4px;
         border-top-left-radius: 4px;
       }
-  
-      .popup-content {
-        overflow: scroll;
-  
-        h1 {
+      .popup-content{
+        overflow: auto;
+        max-height: calc(90vh - 64px);
+        h1{
           color: darkblue;
           margin-top: 35px;
         }
-  
+        
       }
-  
+      
     }
-  
+   
   }
+
+  .paginator-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  

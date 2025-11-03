@@ -397,7 +397,8 @@ export class ItmanagementdecisionchecklistComponent extends AbstractComponent {
           kpivaluearray: this.kpivaluearray,
 
         },
-        panelClass: 'custom-dialog-container'
+        panelClass: 'custom-dialog-container',
+        position: { top: '20px' },
       });
 
       dialogRef.afterClosed().subscribe(result => {

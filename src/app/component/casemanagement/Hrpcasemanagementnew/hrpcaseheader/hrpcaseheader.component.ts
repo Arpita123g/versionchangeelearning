@@ -4,11 +4,26 @@ import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/backendgameapi/api.service';
+import { HrpcaseanalysisandplanningComponent } from '../hrpcaseanalysisandplanning/hrpcaseanalysisandplanning.component';
+import { HrpcasedemandforecastComponent } from '../hrpcasedemandforecast/hrpcasedemandforecast.component';
+import { HrpcasesupplyforecastComponent } from '../hrpcasesupplyforecast/hrpcasesupplyforecast.component';
+import { HrpcaseimplementationComponent } from '../hrpcaseimplementation/hrpcaseimplementation.component';
+import { HrpcasefoodforthoughtComponent } from '../hrpcasefoodforthought/hrpcasefoodforthought.component';
+import { HrpcasemarketComponent } from '../hrpcasemarket/hrpcasemarket.component';
+import { HrpcasemoduleComponent } from '../hrpcasemodule/hrpcasemodule.component';
 
 @Component({
   selector: 'app-hrpcaseheader',
   standalone: true,
-  imports: [CommonModule, FormsModule,MatIconModule],
+  imports: [CommonModule, FormsModule,MatIconModule,
+    HrpcaseanalysisandplanningComponent,
+    HrpcasedemandforecastComponent,
+    HrpcasesupplyforecastComponent,
+    HrpcaseimplementationComponent,
+    HrpcasefoodforthoughtComponent,
+    HrpcasemarketComponent,
+    HrpcasemoduleComponent,
+  ],
   templateUrl: './hrpcaseheader.component.html',
   styleUrls: ['./hrpcaseheader.component.scss']
 })

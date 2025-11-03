@@ -288,7 +288,8 @@ export class ChangemanagementnewdecisionchecklistComponent extends AbstractCompo
           analysisshow: this.analysisshow,
           resultarray: this.result,
         },
-        panelClass: 'custom-dialog-container'
+        panelClass: 'custom-dialog-container',
+        position: { top: '20px' },
       });
   
       dialogRef.afterClosed().subscribe(result => {

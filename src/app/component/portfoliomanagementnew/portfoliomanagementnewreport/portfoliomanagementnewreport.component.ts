@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import {
   ApexAxisChartSeries,
@@ -26,6 +26,7 @@ import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 
 interface RadarChart {
@@ -69,7 +70,7 @@ interface barChart {
 @Component({
   selector: 'app-portfoliomanagementnewreport',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,MatDialogModule,TippyDirective],
   templateUrl: './portfoliomanagementnewreport.component.html',
   styleUrls: ['./portfoliomanagementnewreport.component.scss']
 })

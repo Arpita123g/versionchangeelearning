@@ -13,11 +13,39 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { ReadingComponent } from 'src/app/common/reading/reading.component';
+import { ItmanagementinnovationComponent } from '../itmanagementinnovation/itmanagementinnovation.component';
+import { ItmanagementreportComponent } from '../itmanagementreport/itmanagementreport.component';
+import { ItmanagementfoodforthoughtComponent } from '../itmanagementfoodforthought/itmanagementfoodforthought.component';
+import { ItmanagementdecisionchecklistComponent } from '../itmanagementdecisionchecklist/itmanagementdecisionchecklist.component';
+import { ItmanagementintroductionComponent } from '../itmanagementintroduction/itmanagementintroduction.component';
+import { ItmanagementmarketComponent } from '../itmanagementmarket/itmanagementmarket.component';
+import { ItmanagementsystemarchitectureComponent } from '../itmanagementsystemarchitecture/itmanagementsystemarchitecture.component';
+import { ItmanagementsoftwaredevelopmentComponent } from '../itmanagementsoftwaredevelopment/itmanagementsoftwaredevelopment.component';
+import { ItmanagementsecurityComponent } from '../itmanagementsecurity/itmanagementsecurity.component';
+import { MicrosimleaderboardgeneralComponent } from 'src/app/common/microsimleaderboardgeneral/microsimleaderboardgeneral.component';
+import { ForumindividualComponent } from 'src/app/common/forumindividual/forumindividual.component';
+import { ForumcourseComponent } from 'src/app/common/forumcourse/forumcourse.component';
 
 @Component({
   selector: 'app-itmanagementheader',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,
+    ItmanagementinnovationComponent,
+    ItmanagementfoodforthoughtComponent,
+    ItmanagementreportComponent,
+    ItmanagementdecisionchecklistComponent,
+    ItmanagementintroductionComponent,
+    ItmanagementmarketComponent,
+    ItmanagementsystemarchitectureComponent,
+    ItmanagementsoftwaredevelopmentComponent,
+    ItmanagementsecurityComponent,
+    ReadingComponent,
+    MicrosimleaderboardgeneralComponent,
+    ForumindividualComponent,
+    ForumcourseComponent,
+    
+  ],
   templateUrl: './itmanagementheader.component.html',
   styleUrls: ['./itmanagementheader.component.scss']
 })

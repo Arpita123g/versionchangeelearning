@@ -18,7 +18,7 @@ import { CapitalbudgetingcaseprojectportfolioComponent } from '../capitalbudgeti
     CapitalbudgetingcasemoduleComponent,
     CapitalbudgetingcasemarketComponent,
     CapitalbudgetingcaseprojectportfolioComponent,
-   
+    
   ],
   templateUrl: './capitalbudgetingcaseheader.component.html',
   styleUrls: ['./capitalbudgetingcaseheader.component.scss']

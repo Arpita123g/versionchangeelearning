@@ -5,11 +5,26 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { ValuechaincasedemandComponent } from '../../Valuechaincasemanagement/valuechaincasedemand/valuechaincasedemand.component';
+import { ValuechaincasefinanceComponent } from '../valuechaincasefinance/valuechaincasefinance.component';
+import { ValuechaincasemarketComponent } from '../../Valuechaincasemanagement/valuechaincasemarket/valuechaincasemarket.component';
+import { ValuechaincasemoduleComponent } from '../../Valuechaincasemanagement/valuechaincasemodule/valuechaincasemodule.component';
+import { ValuechaincasefoodforthoughtComponent } from '../../Valuechaincasemanagement/valuechaincasefoodforthought/valuechaincasefoodforthought.component';
+import { ValuechaincasemarketingComponent } from '../../Valuechaincasemanagement/valuechaincasemarketing/valuechaincasemarketing.component';
+import { ValuechaincaseproductionComponent } from '../../Valuechaincasemanagement/valuechaincaseproduction/valuechaincaseproduction.component';
 
 @Component({
   selector: 'app-valuechaincaseheader',
   standalone: true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,
+    ValuechaincasedemandComponent,
+    ValuechaincasemarketComponent,
+    ValuechaincasemoduleComponent,
+    ValuechaincasefoodforthoughtComponent,
+    ValuechaincasemarketingComponent,
+    ValuechaincaseproductionComponent,
+    ValuechaincasefinanceComponent,
+  ],
   templateUrl: './valuechaincaseheader.component.html',
   styleUrls: ['./valuechaincaseheader.component.scss']
 })

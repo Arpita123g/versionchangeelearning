@@ -28,6 +28,7 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { MarkdownModule } from 'ngx-markdown';
 import { FormsModule } from '@angular/forms';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 interface barChart {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -57,6 +58,7 @@ interface RadarChart {
   standalone: true,
   imports: [CommonModule, MatDialogModule, RouterModule, NgApexchartsModule, MatIconModule,MarkdownModule
     , FormsModule
+    , TippyDirective
   ],
   templateUrl: './designthinkingreport.component.html',
   styleUrls: ['./designthinkingreport.component.scss']

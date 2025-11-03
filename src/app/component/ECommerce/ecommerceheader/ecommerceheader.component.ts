@@ -11,11 +11,46 @@ import { GlobalService } from 'src/app/service/global.service';
 import { RestapiService } from 'src/app/service/restapi.service';
 import { SharedserviceService } from 'src/app/service/sharedservice.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
+import { EcommercecatalogComponent } from '../ecommercecatalog/ecommercecatalog.component';
+import { EcommercemarketingComponent } from '../ecommercemarketing/ecommercemarketing.component';
+import { EcommerceexperienceComponent } from '../ecommerceexperience/ecommerceexperience.component';
+import { EcommercefoodforthoughtComponent } from '../ecommercefoodforthought/ecommercefoodforthought.component';
+import { ReadingComponent } from 'src/app/common/reading/reading.component';
+import { MicrosimleaderboardgeneralComponent } from 'src/app/common/microsimleaderboardgeneral/microsimleaderboardgeneral.component';
+import { ForumindividualComponent } from 'src/app/common/forumindividual/forumindividual.component';
+import { ForumcourseComponent } from 'src/app/common/forumcourse/forumcourse.component';
+import { EcommercedecisionchecklistComponent } from '../ecommercedecisionchecklist/ecommercedecisionchecklist.component';
+import { EcommercereportComponent } from '../ecommercereport/ecommercereport.component';
+import { EcommercesynopsisComponent } from '../ecommercesynopsis/ecommercesynopsis.component';
+import { EcommerceoperationsComponent } from '../ecommerceoperations/ecommerceoperations.component';
+import { EcommercemarketComponent } from '../ecommercemarket/ecommercemarket.component';
+import { EcommerceintroductionComponent } from '../ecommerceintroduction/ecommerceintroduction.component';
 
 @Component({
   selector: 'app-ecommerceheader',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, RouterModule],
+  imports: [CommonModule, MatDialogModule, RouterModule,
+    EcommercecatalogComponent,
+    EcommerceexperienceComponent,
+    EcommercemarketingComponent,
+    EcommercefoodforthoughtComponent,
+    ReadingComponent,
+    MicrosimleaderboardgeneralComponent,
+    ForumindividualComponent,
+    ForumcourseComponent,
+    EcommercedecisionchecklistComponent,
+    EcommercereportComponent,
+    EcommercesynopsisComponent,
+    EcommerceoperationsComponent,
+    EcommerceintroductionComponent,
+    EcommercemarketComponent,
+    ReadingComponent,
+    MicrosimleaderboardgeneralComponent,
+    ForumcourseComponent,
+    ForumindividualComponent
+
+    
+  ],
   templateUrl: './ecommerceheader.component.html',
   styleUrls: ['./ecommerceheader.component.scss']
 })

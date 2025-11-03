@@ -5,11 +5,26 @@ import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/backendgameapi/api.service';
+import { PromotionsigmentcasechannelComponent } from '../promotionsigmentcasechannel/promotionsigmentcasechannel.component';
+import { PromotionsigmentcasecommunicationmixComponent } from '../promotionsigmentcasecommunicationmix/promotionsigmentcasecommunicationmix.component';
+import { PromotionsigmentcasefoodforthoughtComponent } from '../promotionsigmentcasefoodforthought/promotionsigmentcasefoodforthought.component';
+import { PromotionsigmentcasemarketComponent } from '../promotionsigmentcasemarket/promotionsigmentcasemarket.component';
+import { PromotionsigmentcasemarketresearchComponent } from '../promotionsigmentcasemarketresearch/promotionsigmentcasemarketresearch.component';
+import { PromotionsigmentcasemoduleComponent } from '../promotionsigmentcasemodule/promotionsigmentcasemodule.component';
+import { PromotionsigmentcasecampaignComponent } from '../promotionsigmentcasecampaign/promotionsigmentcasecampaign.component';
 
 @Component({
   selector: 'app-promotionsigmentcaseheader',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,
+    PromotionsigmentcasecampaignComponent,
+    PromotionsigmentcasechannelComponent,
+    PromotionsigmentcasecommunicationmixComponent,
+    PromotionsigmentcasefoodforthoughtComponent,
+    PromotionsigmentcasemarketComponent,
+    PromotionsigmentcasemarketresearchComponent,
+    PromotionsigmentcasemoduleComponent,
+  ],
   templateUrl: './promotionsigmentcaseheader.component.html',
   styleUrls: ['./promotionsigmentcaseheader.component.scss']
 })

@@ -13,11 +13,37 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
-
+import { PortfoliointroductionComponent } from '../portfoliointroduction/portfoliointroduction.component';
+import { FoodforthoughtportfoliomanagementComponent } from '../foodforthoughtportfoliomanagement/foodforthoughtportfoliomanagement.component';
+import { PortfolionewmarketComponent } from '../portfolionewmarket/portfolionewmarket.component';
+import { PortfolionewmanagementphaseoneComponent } from '../portfolionewmanagementphaseone/portfolionewmanagementphaseone.component';
+import { PortfolionewmanagementphasetwoComponent } from '../portfolionewmanagementphasetwo/portfolionewmanagementphasetwo.component';
+import { PortfolionewmanagementphasethreeComponent } from '../portfolionewmanagementphasethree/portfolionewmanagementphasethree.component';
+import { PortfolionewdecisionchecklistComponent } from '../portfolionewdecisionchecklist/portfolionewdecisionchecklist.component';
+import { PortfoliomanagementnewsynopsisComponent } from '../portfoliomanagementnewsynopsis/portfoliomanagementnewsynopsis.component';
+import { PortfoliomanagementnewreportComponent } from '../portfoliomanagementnewreport/portfoliomanagementnewreport.component';
+import { ForumindividualComponent } from 'src/app/common/forumindividual/forumindividual.component';
+import { MicrosimleaderboardgeneralComponent } from 'src/app/common/microsimleaderboardgeneral/microsimleaderboardgeneral.component';
+import { ForumcourseComponent } from 'src/app/common/forumcourse/forumcourse.component';
+import { ReadingComponent } from 'src/app/common/reading/reading.component';
 @Component({
   selector: 'app-portfoliomanagementnewheader',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,
+    PortfoliointroductionComponent,
+    FoodforthoughtportfoliomanagementComponent,
+    PortfolionewmarketComponent,
+    PortfolionewmanagementphaseoneComponent,
+    PortfolionewmanagementphasetwoComponent,
+    PortfolionewmanagementphasethreeComponent,
+    PortfolionewdecisionchecklistComponent,
+    PortfoliomanagementnewsynopsisComponent,
+    PortfoliomanagementnewreportComponent,
+    MicrosimleaderboardgeneralComponent,
+    ForumcourseComponent,
+    ForumindividualComponent,
+    ReadingComponent
+  ],
   templateUrl: './portfoliomanagementnewheader.component.html',
   styleUrls: ['./portfoliomanagementnewheader.component.scss']
 })

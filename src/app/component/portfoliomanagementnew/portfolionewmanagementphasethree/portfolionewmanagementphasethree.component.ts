@@ -26,6 +26,7 @@ import { FoodforthoughtportfoliomanagementComponent } from '../foodforthoughtpor
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 interface lineChart {
   series: ApexAxisChartSeries;
@@ -54,7 +55,7 @@ interface barChart {
 @Component({
   selector: 'app-portfolionewmanagementphasethree',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],  
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,TippyDirective],  
   templateUrl: './portfolionewmanagementphasethree.component.html',
   styleUrls: ['./portfolionewmanagementphasethree.component.scss']
 })

@@ -17,6 +17,9 @@ import { AccountingArabicreportComponent } from '../accountingarabicreport/accou
 import { AccountingArabicsynopsisComponent } from '../accountingarabicsynopsis/accountingarabicsynopsis.component';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
 import { MatIconModule } from '@angular/material/icon';
+import { AccountingingArabicdecisionchecklistComponent } from '../accountingarabicdecisionchecklist/accountingarabicdecisionchecklist.component';
+import { AccountingArabicmemoComponent } from '../accountingarabicmemo/accountingarabicmemo.component';
+import { AccountingingfoodforthoughtComponent } from '../../Accountingnew/accountingingfoodforthought/accountingingfoodforthought.component';
 
 @Component({
   selector: 'app-accountingarabicheader',
@@ -25,11 +28,14 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     AccountingArabicintroductionComponent,
     AccountingArabicinformationComponent,
-    AccountingArabicaccountsComponent,
     AccountingarabicevaluationComponent,
     AccountingArabicreportComponent,
     AccountingArabicsynopsisComponent,
-    MatIconModule
+    MatIconModule,
+    AccountingArabicaccountsComponent,
+    AccountingingArabicdecisionchecklistComponent,
+    AccountingArabicmemoComponent,
+    AccountingingfoodforthoughtComponent
   ],
   templateUrl: './accountingarabicheader.component.html',
   styleUrls: ['./accountingarabicheader.component.scss']

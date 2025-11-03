@@ -712,7 +712,8 @@ export class DesignthinkingdecisionchecklistComponent extends AbstractComponent 
           analysisshow: this.analysisshow,
           kpivaluearray: this.kpivaluearray,
         },
-        panelClass: 'custom-dialog-container'
+        panelClass: 'custom-dialog-container',
+        position: { top: '20px' },
       });
 
       dialogRef.afterClosed().subscribe(result => {

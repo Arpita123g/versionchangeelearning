@@ -13,11 +13,38 @@ import { GlobalService } from 'src/app/service/global.service';
 import { RestapiService } from 'src/app/service/restapi.service';
 import { SharedserviceService } from 'src/app/service/sharedservice.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
+import { DesignthinkingdecisionchecklistComponent } from '../designthinkingdecisionchecklist/designthinkingdecisionchecklist.component';
+import { DesignthinkingobserveComponent } from '../designthinkingobserve/designthinkingobserve.component';
+import { DesignthinkingempathizeComponent } from '../designthinkingempathize/designthinkingempathize.component';
+import { DesignthinkingdefineComponent } from '../designthinkingdefine/designthinkingdefine.component';
+import { DesignthinkingprototypeComponent } from '../designthinkingprototype/designthinkingprototype.component';
+import { DesignthinkingideateComponent } from '../designthinkingideate/designthinkingideate.component';
+import { DesignthinkingexecuteComponent } from '../designthinkingexecute/designthinkingexecute.component';
+import { DesignthinkingsynopsisComponent } from '../designthinkingsynopsis/designthinkingsynopsis.component';
+import { DesignthinkingfoodforthoughtComponent } from '../designthinkingfoodforthought/designthinkingfoodforthought.component';
+import { ReadingComponent } from 'src/app/common/reading/reading.component';
+import { MicrosimleaderboardgeneralComponent } from 'src/app/common/microsimleaderboardgeneral/microsimleaderboardgeneral.component';
+import { ForumindividualComponent } from 'src/app/common/forumindividual/forumindividual.component';
+import { ForumcourseComponent } from 'src/app/common/forumcourse/forumcourse.component';
 
 @Component({
   selector: 'app-designthinkingheader',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, RouterModule, MatIconModule, MatTooltipModule],
+  imports: [CommonModule, MatDialogModule, RouterModule, MatIconModule, MatTooltipModule,
+    DesignthinkingdecisionchecklistComponent,
+    DesignthinkingobserveComponent,
+    DesignthinkingempathizeComponent,
+    DesignthinkingdefineComponent,
+    DesignthinkingprototypeComponent,
+    DesignthinkingideateComponent,
+    DesignthinkingexecuteComponent,
+    DesignthinkingsynopsisComponent,
+    DesignthinkingfoodforthoughtComponent,
+    ReadingComponent,
+    MicrosimleaderboardgeneralComponent,
+    ForumindividualComponent,
+    ForumcourseComponent,
+  ],
   templateUrl: './designthinkingheader.component.html',
   styleUrls: ['./designthinkingheader.component.scss']
 })

@@ -10,11 +10,40 @@ import { GlobalService } from 'src/app/service/global.service';
 import { RestapiService } from 'src/app/service/restapi.service';
 import { SharedserviceService } from 'src/app/service/sharedservice.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
+import { ChangemanagementnewawarenessComponent } from '../changemanagementnewawareness/changemanagementnewawareness.component';
+import { ForumcourseComponent } from 'src/app/common/forumcourse/forumcourse.component';
+import { ChangemanagementnewcommitmentComponent } from '../changemanagementnewcommitment/changemanagementnewcommitment.component';
+import { ChangemanagementnewdecisionchecklistComponent } from '../changemanagementnewdecisionchecklist/changemanagementnewdecisionchecklist.component';
+import { ChangemanagementnewreportComponent } from '../changemanagementnewreport/changemanagementnewreport.component';
+import { ChangemanagementnewsynopsisComponent } from '../changemanagementnewsynopsis/changemanagementnewsynopsis.component';
+import { ChangemanagementnewmemoComponent } from '../changemanagementnewmemo/changemanagementnewmemo.component';
+import { ChangemanagementnewhumandynamicsComponent } from '../changemanagementnewhumandynamics/changemanagementnewhumandynamics.component';
+import { ChangemanagementnewmotivationComponent } from '../changemanagementnewmotivation/changemanagementnewmotivation.component';
+import { ChangemanagementnewfoodforthougthComponent } from '../changemanagementnewfoodforthougth/changemanagementnewfoodforthougth.component';
+import { ChangemanagementnewintroductionComponent } from '../changemanagementnewintroduction/changemanagementnewintroduction.component';
+import { MicrosimleaderboardgeneralComponent } from 'src/app/common/microsimleaderboardgeneral/microsimleaderboardgeneral.component';
+import { ForumindividualComponent } from 'src/app/common/forumindividual/forumindividual.component';
+import { ReadingComponent } from 'src/app/common/reading/reading.component';
 
 @Component({
   selector: 'app-changemanagementnewheader',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,
+    ChangemanagementnewawarenessComponent,
+    ChangemanagementnewcommitmentComponent,
+    ChangemanagementnewdecisionchecklistComponent,
+    ChangemanagementnewreportComponent,
+    ChangemanagementnewsynopsisComponent,
+    ChangemanagementnewmemoComponent,
+    ChangemanagementnewhumandynamicsComponent,
+    ChangemanagementnewmotivationComponent, 
+    ChangemanagementnewfoodforthougthComponent,
+    ChangemanagementnewintroductionComponent,
+    MicrosimleaderboardgeneralComponent,
+    ForumindividualComponent,
+    ForumcourseComponent,
+    ReadingComponent    
+  ],
   templateUrl: './changemanagementnewheader.component.html',
   styleUrls: ['./changemanagementnewheader.component.scss']
 })

@@ -18,7 +18,9 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 @Component({
   selector: 'app-hrpgamedecisionchecklist',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,
+
+  ],
   templateUrl: './hrpgamedecisionchecklist.component.html',
   styleUrls: ['./hrpgamedecisionchecklist.component.scss']
 })
@@ -339,7 +341,8 @@ export class HrpgamedecisionchecklistComponent extends AbstractComponent {
               kpivaluearray: this.kpivaluearray,
 
             },
-            panelClass: 'custom-dialog-container'
+            panelClass: 'custom-dialog-container',
+            position: { top: '20px' },
           });
           dialogRef.afterClosed().subscribe(result => {
             if (result) {
@@ -368,7 +371,8 @@ export class HrpgamedecisionchecklistComponent extends AbstractComponent {
             kpivaluearray: this.kpivaluearray,
 
           },
-          panelClass: 'custom-dialog-container'
+          panelClass: 'custom-dialog-container',
+          position: { top: '20px' },
         });
         dialogRef.afterClosed().subscribe(result => {
           if (result) {

@@ -5,12 +5,23 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/backendgameapi/api.service';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { AccountingcasemoduleComponent } from '../accountingcasemodule/accountingcasemodule.component';
+import { AccountingcasecorrectaccountsComponent } from '../accountingcasecorrectaccounts/accountingcasecorrectaccounts.component';
+import { AccountingcaseevaluationComponent } from '../accountingcaseevaluation/accountingcaseevaluation.component';
+import { AccountingcasefoodforthoughtComponent } from '../accountingcasefoodforthought/accountingcasefoodforthought.component';
+import { AccountingcasememoComponent } from '../accountingcasememo/accountingcasememo.component';
 
 
 @Component({
   selector: 'app-accountingcaseheader',
   standalone: true,
-  imports: [CommonModule,FormsModule,MatIconModule,NgApexchartsModule], 
+  imports: [CommonModule,FormsModule,MatIconModule,NgApexchartsModule,
+    AccountingcasecorrectaccountsComponent,
+    AccountingcaseevaluationComponent,
+    AccountingcasefoodforthoughtComponent,
+    AccountingcasememoComponent,
+    AccountingcasemoduleComponent
+  ], 
   templateUrl: './accountingcaseheader.component.html',
   styleUrls: ['./accountingcaseheader.component.scss']
 })

@@ -376,7 +376,8 @@ export class HrpgamedecisionchecklistComponent extends AbstractComponent {
               languageid: this.languageid,
 
             },
-            panelClass: 'custom-dialog-container'
+            panelClass: 'custom-dialog-container',
+            position: { top: '20px' },
           });
           dialogRef.afterClosed().subscribe(result => {
             if (result) {
@@ -413,7 +414,8 @@ export class HrpgamedecisionchecklistComponent extends AbstractComponent {
             languageid: this.languageid,
 
           },
-          panelClass: 'custom-dialog-container'
+          panelClass: 'custom-dialog-container',
+          position: { top: '20px' },
         });
         dialogRef.afterClosed().subscribe(result => {
           if (result) {

@@ -10,11 +10,37 @@ import { GlobalService } from 'src/app/service/global.service';
 import { RestapiService } from 'src/app/service/restapi.service';
 import { SharedserviceService } from 'src/app/service/sharedservice.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
+import { CrmgamecommunicationComponent } from '../crmgamecommunication/crmgamecommunication.component';
+import { CrmgameleadComponent } from '../crmgamelead/crmgamelead.component';
+import { CrmgameprocessComponent } from '../crmgameprocess/crmgameprocess.component';
+import { CrmgamedecisionchecklistComponent } from '../crmgamedecisionchecklist/crmgamedecisionchecklist.component';
+import { CrmgamereportComponent } from '../crmgamereport/crmgamereport.component';
+import { CrmgamesynopsisComponent } from '../crmgamesynopsis/crmgamesynopsis.component';
+import { CrmgameintroductionComponent } from '../crmgameintroduction/crmgameintroduction.component';
+import { MicrosimleaderboardgeneralComponent } from 'src/app/common/microsimleaderboardgeneral/microsimleaderboardgeneral.component';
+import { ForumindividualComponent } from 'src/app/common/forumindividual/forumindividual.component';
+import { ForumcourseComponent } from 'src/app/common/forumcourse/forumcourse.component';
+import { ReadingComponent } from 'src/app/common/reading/reading.component';
+import { CrmgamefoodforthoughtComponent } from '../crmgamefoodforthought/crmgamefoodforthought.component';
 
 @Component({
   selector: 'app-crmgameheader',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,
+    CrmgamecommunicationComponent,
+    CrmgameleadComponent,
+    CrmgameprocessComponent,
+    CrmgamedecisionchecklistComponent,
+    CrmgamereportComponent,
+    CrmgamesynopsisComponent,
+    CrmgameintroductionComponent,
+    CrmgamefoodforthoughtComponent,
+    MicrosimleaderboardgeneralComponent,
+    ForumindividualComponent,
+    ForumcourseComponent,
+    ReadingComponent,
+    
+  ],
   templateUrl: './crmgameheader.component.html',
   styleUrls: ['./crmgameheader.component.scss']
 })

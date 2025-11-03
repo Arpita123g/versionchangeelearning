@@ -13,11 +13,38 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { ProjectmanagementdecisionchecklistComponent } from '../projectmanagementdecisionchecklist/projectmanagementdecisionchecklist.component';
+import { ProjectmanagementfoodforthoughtComponent } from '../projectmanagementfoodforthought/projectmanagementfoodforthought.component';
+import { ProjectmanagementreportComponent } from '../projectmanagementreport/projectmanagementreport.component';
+import { ProjectmanagementsynopsisComponent } from '../projectmanagementsynopsis/projectmanagementsynopsis.component';
+import { ProjectmanagementplanningComponent } from '../projectmanagementplanning/projectmanagementplanning.component';
+
+import { ReadingComponent } from 'src/app/common/reading/reading.component';
+
+import { ForumindividualComponent } from 'src/app/common/forumindividual/forumindividual.component';
+import { ProjectmanagementmemoComponent } from '../projectmanagementmemo/projectmanagementmemo.component';
+import { ProjectmanagementprojectmapComponent } from '../projectmanagementprojectmap/projectmanagementprojectmap.component';
+import { ProjectmanagementtrackingComponent } from '../projectmanagementtracking/projectmanagementtracking.component';
+import { ForumcourseComponent } from 'src/app/common/forumcourse/forumcourse.component';
+import { MicrosimleaderboardgeneralComponent } from 'src/app/common/microsimleaderboardgeneral/microsimleaderboardgeneral.component';
 
 @Component({
   selector: 'app-projectmanagementheader',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,
+    ProjectmanagementdecisionchecklistComponent,
+    ProjectmanagementfoodforthoughtComponent,
+    ProjectmanagementreportComponent,
+    ProjectmanagementsynopsisComponent,
+    ProjectmanagementplanningComponent,
+    ProjectmanagementprojectmapComponent,
+    ProjectmanagementmemoComponent,
+    ProjectmanagementtrackingComponent,
+    ReadingComponent,
+    ForumindividualComponent,
+    ForumcourseComponent,
+    MicrosimleaderboardgeneralComponent
+  ],
   templateUrl: './projectmanagementheader.component.html',
   styleUrls: ['./projectmanagementheader.component.scss'],
 })

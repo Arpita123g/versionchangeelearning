@@ -13,11 +13,37 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
-
+import { PricingadaptComponent } from '../pricingadapt/pricingadapt.component';
+import { PricingdecisionchecklistComponent } from '../pricingdecisionchecklist/pricingdecisionchecklist.component';
+import { PricingfoodforthoughtComponent } from '../pricingfoodforthought/pricingfoodforthought.component';
+import { PricingreportComponent } from '../pricingreport/pricingreport.component';
+import { PricingsynopsisComponent } from '../pricingsynopsis/pricingsynopsis.component';
+import { PricingintroductionComponent } from '../pricingintroduction/pricingintroduction.component';
+import { PricingmarketComponent } from '../pricingmarket/pricingmarket.component';
+import { PricinginitiateComponent } from '../pricinginitiate/pricinginitiate.component';
+import { PricinginnovateComponent } from '../pricinginnovate/pricinginnovate.component';
+import { ReadingComponent } from 'src/app/common/reading/reading.component';
+import { MicrosimleaderboardgeneralComponent } from 'src/app/common/microsimleaderboardgeneral/microsimleaderboardgeneral.component';
+import { ForumcourseComponent } from 'src/app/common/forumcourse/forumcourse.component';
+import { ForumindividualComponent } from 'src/app/common/forumindividual/forumindividual.component';
 @Component({
   selector: 'app-pricingheader',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,
+    PricingadaptComponent,
+    PricingdecisionchecklistComponent,
+    PricingfoodforthoughtComponent,
+    PricingreportComponent,
+    PricingsynopsisComponent,
+    PricingintroductionComponent,
+    PricingmarketComponent,
+    PricinginitiateComponent,
+    PricinginnovateComponent,
+    ReadingComponent,
+    MicrosimleaderboardgeneralComponent,
+    ForumcourseComponent,
+    ForumindividualComponent
+  ],
   templateUrl: './pricingheader.component.html',
   styleUrls: ['./pricingheader.component.scss']
 })

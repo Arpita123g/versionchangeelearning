@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-innovationdecisionchecklist',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, RouterModule,FormsModule],
+  imports: [CommonModule, MatDialogModule, RouterModule,FormsModule, ],
   templateUrl: './innovationdecisionchecklist.component.html',
   styleUrls: ['./innovationdecisionchecklist.component.scss']
 })
@@ -391,7 +391,8 @@ export class InnovationdecisionchecklistComponent extends AbstractComponent {
           kpivaluearray: this.kpivaluearray,
 
         },
-        panelClass: 'custom-dialog-container'
+        panelClass: 'custom-dialog-container',
+        position: { top: '20px' },
       });
   
       dialogRef.afterClosed().subscribe(result => {

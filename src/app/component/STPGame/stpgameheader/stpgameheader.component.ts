@@ -13,11 +13,36 @@ import { GlobalService } from 'src/app/service/global.service';
 import { RestapiService } from 'src/app/service/restapi.service';
 import { SharedserviceService } from 'src/app/service/sharedservice.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
+import { StpgamedecisionchecklistComponent } from '../stpgamedecisionchecklist/stpgamedecisionchecklist.component';
+import { StpgamereportComponent } from '../stpgamereport/stpgamereport.component';
+import { StpgamesynopsisComponent } from '../stpgamesynopsis/stpgamesynopsis.component';
+import { StpgamefoodforthoughtComponent } from '../stpgamefoodforthought/stpgamefoodforthought.component';
+import { StpgameintroductionComponent } from '../stpgameintroduction/stpgameintroduction.component';
+import { Stpgamephase1Component } from '../stpgamephase1/stpgamephase1.component';
+import { Stpgamephase2Component } from '../stpgamephase2/stpgamephase2.component';
+import { Stpgamephase3Component } from '../stpgamephase3/stpgamephase3.component';
+import { ReadingComponent } from 'src/app/common/reading/reading.component';
+import { MicrosimleaderboardgeneralComponent } from 'src/app/common/microsimleaderboardgeneral/microsimleaderboardgeneral.component';
+import { ForumindividualComponent } from 'src/app/common/forumindividual/forumindividual.component';
+import { ForumcourseComponent } from 'src/app/common/forumcourse/forumcourse.component';
 
 @Component({
   selector: 'app-stpgameheader',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,
+    StpgamedecisionchecklistComponent,
+    StpgamereportComponent,
+      StpgamesynopsisComponent,
+    StpgamefoodforthoughtComponent,
+    StpgameintroductionComponent,
+    Stpgamephase1Component,
+    Stpgamephase2Component,
+    Stpgamephase3Component,
+    ReadingComponent,
+    MicrosimleaderboardgeneralComponent,
+    ForumindividualComponent,
+    ForumcourseComponent,
+  ],
   templateUrl: './stpgameheader.component.html',
   styleUrls: ['./stpgameheader.component.scss']
 })

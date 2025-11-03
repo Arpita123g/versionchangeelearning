@@ -13,11 +13,39 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
-
+import { HrpgameanalysisandplanningComponent } from '../hrpgameanalysisandplanning/hrpgameanalysisandplanning.component';
+import { HrpgamefoodforthoughtComponent } from '../hrpgamefoodforthought/hrpgamefoodforthought.component';
+import { HrpgamesynopsisComponent } from '../hrpgamesynopsis/hrpgamesynopsis.component';
+import { HrpgamereportComponent } from '../hrpgamereport/hrpgamereport.component';
+import { HrpgamedecisionchecklistComponent } from '../hrpgamedecisionchecklist/hrpgamedecisionchecklist.component';
+import { HrpgameintroductionComponent } from '../hrpgameintroduction/hrpgameintroduction.component';
+import { HrpgamemarketComponent } from '../hrpgamemarket/hrpgamemarket.component';
+import { HrpgamedemandforecastingComponent } from '../hrpgamedemandforecasting/hrpgamedemandforecasting.component';
+import { HrpgameimplementationComponent } from '../hrpgameimplementation/hrpgameimplementation.component';
+import { HrpgamesupplyforecastingComponent } from '../hrpgamesupplyforecasting/hrpgamesupplyforecasting.component';
+import { ReadingComponent } from 'src/app/common/reading/reading.component';
+import { MicrosimleaderboardgeneralComponent } from 'src/app/common/microsimleaderboardgeneral/microsimleaderboardgeneral.component';
+import { ForumindividualComponent } from 'src/app/common/forumindividual/forumindividual.component';
+import { ForumcourseComponent } from 'src/app/common/forumcourse/forumcourse.component';
 @Component({
   selector: 'app-hrpgameheader',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,
+    HrpgameanalysisandplanningComponent,
+    HrpgamefoodforthoughtComponent,
+    HrpgamesynopsisComponent,
+    HrpgamereportComponent,
+    HrpgamedecisionchecklistComponent,
+    HrpgameintroductionComponent,
+    HrpgamemarketComponent,
+    HrpgamedemandforecastingComponent,
+    HrpgameimplementationComponent,
+    HrpgamesupplyforecastingComponent,
+    ReadingComponent,
+    MicrosimleaderboardgeneralComponent,
+    ForumindividualComponent,
+    ForumcourseComponent,
+  ],
   templateUrl: './hrpgameheader.component.html',
   styleUrls: ['./hrpgameheader.component.scss']
 })

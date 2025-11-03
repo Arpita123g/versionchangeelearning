@@ -5,11 +5,26 @@ import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/backendgameapi/api.service';
+import { EcommerccasecatalogComponent } from '../ecommerccasecatalog/ecommerccasecatalog.component';
+import { EcommerccaseexperienceComponent } from '../ecommerccaseexperience/ecommerccaseexperience.component';
+import { EcommerccasefoodforthoughtComponent } from '../ecommerccasefoodforthought/ecommerccasefoodforthought.component';
+import { EcommerccasemarketComponent } from '../ecommerccasemarket/ecommerccasemarket.component';
+import { EcommerccasemarketingComponent } from '../ecommerccasemarketing/ecommerccasemarketing.component';
+import { EcommerccasemoduleComponent } from '../ecommerccasemodule/ecommerccasemodule.component';
+import { EcommerccaseoperationComponent } from '../ecommerccaseoperation/ecommerccaseoperation.component';
 
 @Component({
   selector: 'app-ecommerccaseeheader',
   standalone: true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,
+    EcommerccasecatalogComponent,
+    EcommerccaseexperienceComponent,
+    EcommerccasefoodforthoughtComponent,
+    EcommerccasemarketComponent,
+    EcommerccasemarketingComponent,
+    EcommerccasemoduleComponent,
+    EcommerccaseoperationComponent,
+  ],
   templateUrl: './ecommerccaseeheader.component.html',
   styleUrls: ['./ecommerccaseeheader.component.scss']
 })

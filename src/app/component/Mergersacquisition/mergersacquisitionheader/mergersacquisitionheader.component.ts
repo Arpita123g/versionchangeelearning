@@ -13,11 +13,38 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
-
+import { MergersacquisitionfinancingComponent } from '../mergersacquisitionfinancing/mergersacquisitionfinancing.component';
+import { ForumcourseComponent } from 'src/app/common/forumcourse/forumcourse.component';
+import { ForumindividualComponent } from 'src/app/common/forumindividual/forumindividual.component';
+import { MicrosimleaderboardgeneralComponent } from 'src/app/common/microsimleaderboardgeneral/microsimleaderboardgeneral.component';
+import { ReadingComponent } from 'src/app/common/reading/reading.component';
+import { MergersacquisitionfoodforthoughtComponent } from '../mergersacquisitionfoodforthought/mergersacquisitionfoodforthought.component';
+import { MergersacquisitionreportComponent } from '../mergersacquisitionreport/mergersacquisitionreport.component';
+import { MergersacquisitionintroductionComponent } from '../mergersacquisitionintroduction/mergersacquisitionintroduction.component';
+import { MergersacquisitionmarketComponent} from '../mergersacquisitionmarket/mergersacquisitionmarket.component';
+import { MergersacquisitiondecisionchecklistComponent } from '../mergersacquisitiondecisionchecklist/mergersacquisitiondecisionchecklist.component';
+import { MergersacquisitionplanningComponent } from '../mergersacquisitionplanning/mergersacquisitionplanning.component';
+import { MergersacquisitionpreliminaryassessmentsComponent } from '../mergersacquisitionpreliminaryassessments/mergersacquisitionpreliminaryassessments.component';
+import { MergersacquisitionnegotiationComponent } from '../mergersacquisitionnegotiation/mergersacquisitionnegotiation.component';
+import { MergersacquisitionsynopsisComponent } from '../mergersacquisitionsynopsis/mergersacquisitionsynopsis.component';
+  
 @Component({
   selector: 'app-mergersacquisitionheader',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,
+    MergersacquisitionfinancingComponent,
+    MergersacquisitionfoodforthoughtComponent,
+    MergersacquisitionreportComponent,
+    MergersacquisitiondecisionchecklistComponent,
+    MergersacquisitionintroductionComponent,
+    MergersacquisitionmarketComponent,
+    MergersacquisitionplanningComponent,
+    MergersacquisitionpreliminaryassessmentsComponent,
+    MergersacquisitionnegotiationComponent,
+    MergersacquisitionsynopsisComponent,
+   ReadingComponent, 
+    ForumcourseComponent,ForumindividualComponent,MicrosimleaderboardgeneralComponent
+  ],
   templateUrl: './mergersacquisitionheader.component.html',
   styleUrls: ['./mergersacquisitionheader.component.scss']
 })

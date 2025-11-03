@@ -2,11 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/backendgameapi/api.service';
+import { ValuechaincasedemandComponent } from '../valuechaincasedemand/valuechaincasedemand.component';
+import { ValuechaincasefoodforthoughtComponent } from '../valuechaincasefoodforthought/valuechaincasefoodforthought.component';
+import { ValuechaincasemarketComponent } from '../valuechaincasemarket/valuechaincasemarket.component';
+import { ValuechaincasemoduleComponent } from '../valuechaincasemodule/valuechaincasemodule.component';
+import { ValuechaincasefinanceComponent } from '../../Valuechaincasemanagementnew/valuechaincasefinance/valuechaincasefinance.component';
+import { ValuechaincasemarketingComponent } from '../valuechaincasemarketing/valuechaincasemarketing.component';
+import { ValuechaincaseproductionComponent } from '../valuechaincaseproduction/valuechaincaseproduction.component';
 
 @Component({
   selector: 'app-valuechaincaseheader',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,
+    ValuechaincasedemandComponent,
+    ValuechaincasemarketComponent,
+    ValuechaincasemoduleComponent,
+    ValuechaincasefoodforthoughtComponent,
+    ValuechaincasemarketingComponent,
+    ValuechaincaseproductionComponent,
+    ValuechaincasefinanceComponent,
+  ],
   templateUrl: './valuechaincaseheader.component.html',
   styleUrls: ['./valuechaincaseheader.component.scss']
 })

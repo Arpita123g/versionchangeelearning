@@ -14,12 +14,41 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { ValuechaindemandComponent } from '../valuechaindemand/valuechaindemand.component';
+import { ValuechainreportComponent } from '../valuechainreport/valuechainreport.component';
+import { ValuechainsynopsisComponent} from '../valuechainsynopsis/valuechainsynopsis.component';
+import { ValuechainintroductionComponent } from '../valuechainintroduction/valuechainintroduction.component';
+import { ValuechaindecisionchecklistComponent } from '../valuechaindecisionchecklist/valuechaindecisionchecklist.component';
+import { ValuechainfoodforthoughtComponent } from '../valuechainfoodforthought/valuechainfoodforthought.component';
+import { ValuechainmarketComponent } from '../valuechainmarket/valuechainmarket.component';
+import { ValuechainproductionComponent } from '../valuechainproduction/valuechainproduction.component';
+import { ValuechainmarkeetingComponent } from '../valuechainmarkeeting/valuechainmarkeeting.component';
+import { ValuechainfinanceComponent } from '../valuechainfinance/valuechainfinance.component';
+import { ReadingComponent } from 'src/app/common/reading/reading.component';
+import { MicrosimleaderboardgeneralComponent } from 'src/app/common/microsimleaderboardgeneral/microsimleaderboardgeneral.component';
+import { ForumindividualComponent } from 'src/app/common/forumindividual/forumindividual.component';
+import { ForumcourseComponent } from 'src/app/common/forumcourse/forumcourse.component';
 
 
 @Component({
   selector: 'app-valuechainheader',
   standalone: true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,
+    ValuechaindecisionchecklistComponent,
+    ValuechainreportComponent,
+    ValuechainsynopsisComponent,
+    ValuechainfoodforthoughtComponent,
+    ValuechainintroductionComponent,
+    ValuechainmarketComponent,
+    ValuechaindemandComponent,
+    ValuechainproductionComponent,
+    ValuechainmarkeetingComponent,
+    ValuechainfinanceComponent,
+    ReadingComponent,
+    MicrosimleaderboardgeneralComponent,
+    ForumindividualComponent,
+    ForumcourseComponent,
+  ],
   templateUrl: './valuechainheader.component.html',
   styleUrls: ['./valuechainheader.component.scss']
 })

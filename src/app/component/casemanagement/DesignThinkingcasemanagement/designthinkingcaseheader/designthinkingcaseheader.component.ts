@@ -5,11 +5,23 @@ import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/backendgameapi/api.service';
-
+import { DesignthinkingcaseobserveComponent } from '../designthinkingcaseobserve/designthinkingcaseobserve.component';
+import { DesignthinkingcasefoodforthoughtComponent } from '../designthinkingcasefoodforthought/designthinkingcasefoodforthought.component';
+import { DesignthinkingcasemoduleComponent } from '../designthinkingcasemodule/designthinkingcasemodule.component';
+import { DesignthinkingcasedefineComponent } from '../designthinkingcasedefine/designthinkingcasedefine.component';
+import { DesignthinkingcaseideateComponent } from '../designthinkingcaseideate/designthinkingcaseideate.component';
+import { DesignthinkingcaseprototypeComponent } from '../designthinkingcaseprototype/designthinkingcaseprototype.component';
 @Component({
   selector: 'app-designthinkingcaseheader',
   standalone: true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,
+    DesignthinkingcaseobserveComponent,
+    DesignthinkingcasefoodforthoughtComponent,
+    DesignthinkingcasemoduleComponent,
+    DesignthinkingcaseideateComponent,
+    DesignthinkingcaseprototypeComponent,
+    DesignthinkingcasedefineComponent,
+  ],
   templateUrl: './designthinkingcaseheader.component.html',
   styleUrls: ['./designthinkingcaseheader.component.scss']
 })

@@ -11,11 +11,33 @@ import { GlobalService } from 'src/app/service/global.service';
 import { RestapiService } from 'src/app/service/restapi.service';
 import { SharedserviceService } from 'src/app/service/sharedservice.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
-
+import { ReadingComponent } from 'src/app/common/reading/reading.component';
+import { InnovationreportComponent } from '../innovationreport/innovationreport.component';
+import { ForumcourseComponent } from 'src/app/common/forumcourse/forumcourse.component';
+import { ForumindividualComponent } from 'src/app/common/forumindividual/forumindividual.component';
+import { MicrosimleaderboardgeneralComponent } from 'src/app/common/microsimleaderboardgeneral/microsimleaderboardgeneral.component';
+import { InnovationdecisionchecklistComponent } from '../innovationdecisionchecklist/innovationdecisionchecklist.component';
+import { InnovationintroductionComponent } from '../innovationintroduction/innovationintroduction.component';
+import { InnovationmarketComponent } from '../innovationmarket/innovationmarket.component';
+import { InnovationcollaborationComponent } from '../innovationcollaboration/innovationcollaboration.component';
+import { InnovationfoodforthoughtComponent } from '../innovationfoodforthought/innovationfoodforthought.component';
+import { InnovationsynopsisComponent } from '../innovationsynopsis/innovationsynopsis.component';
 @Component({
   selector: 'app-innovationheader',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, RouterModule],
+  imports: [CommonModule, MatDialogModule, RouterModule,
+    InnovationcollaborationComponent,
+    InnovationfoodforthoughtComponent,
+    InnovationreportComponent,
+    InnovationdecisionchecklistComponent,
+    InnovationintroductionComponent,
+    InnovationmarketComponent,
+    InnovationsynopsisComponent,
+    ReadingComponent,
+    MicrosimleaderboardgeneralComponent,
+    ForumindividualComponent,
+    ForumcourseComponent,
+  ],
   templateUrl: './innovationheader.component.html',
   styleUrls: ['./innovationheader.component.scss']
 })

@@ -571,7 +571,8 @@ export class ValuechaindecisionchecklistComponent extends AbstractComponent {
 
 
         },
-        panelClass: 'custom-dialog-container'
+        panelClass: 'custom-dialog-container',
+        position: { top: '20px' },
       });
 
       dialogRef.afterClosed().subscribe(result => {

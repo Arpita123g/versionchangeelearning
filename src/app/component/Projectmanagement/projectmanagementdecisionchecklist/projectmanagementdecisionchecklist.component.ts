@@ -760,6 +760,7 @@ export class ProjectmanagementdecisionchecklistComponent extends AbstractCompone
           kpivaluearray: this.kpivaluearray,
         },
         panelClass: 'custom-dialog-container',
+        position: { top: '20px' },
       },
     );
 

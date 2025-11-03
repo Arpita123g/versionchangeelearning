@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import {
   ApexAxisChartSeries,
@@ -25,6 +25,7 @@ import { GlobalService } from 'src/app/service/global.service';
 import { RestapiService } from 'src/app/service/restapi.service';
 import { SheetdataService } from 'src/app/service/sheet/sheetdata.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 interface RadarChart {
   series: ApexAxisChartSeries;
@@ -52,7 +53,7 @@ interface barchart {
 @Component({
   selector: 'app-changemanagementnewreport',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,MatDialogModule,TippyDirective],
   templateUrl: './changemanagementnewreport.component.html',
   styleUrls: ['./changemanagementnewreport.component.scss']
 })

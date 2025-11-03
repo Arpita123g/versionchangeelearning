@@ -12,11 +12,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 @Component({
   selector: 'app-portfolionewdecisionchecklist',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,TippyDirective],
   templateUrl: './portfolionewdecisionchecklist.component.html',
   styleUrls: ['./portfolionewdecisionchecklist.component.scss']
 })
@@ -445,7 +446,8 @@ export class PortfolionewdecisionchecklistComponent extends AbstractComponent {
           kpivaluearray: this.kpivaluearray
 
         },
-        panelClass: 'custom-dialog-container'
+        panelClass: 'custom-dialog-container',
+        position: { top: '20px' },
       });
   
       dialogRef.afterClosed().subscribe(result => {

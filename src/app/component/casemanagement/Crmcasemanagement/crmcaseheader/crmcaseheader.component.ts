@@ -6,11 +6,22 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { CrmcasecommunicationComponent } from '../crmcasecommunication/crmcasecommunication.component';
+import { CrmcaseleadComponent } from '../crmcaselead/crmcaselead.component';
+import { CrmcasemarketComponent } from '../crmcasemarket/crmcasemarket.component';
+import { CrmcaseinformationComponent } from '../crmcaseinformation/crmcaseinformation.component';
+import { CrmcasemoduleComponent } from '../crmcasemodule/crmcasemodule.component';
 
 @Component({
   selector: 'app-crmcaseheader',
   standalone: true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,
+    CrmcasecommunicationComponent,
+    CrmcasemarketComponent,
+    CrmcaseinformationComponent,
+    CrmcaseleadComponent,
+    CrmcasemoduleComponent, 
+  ],
   templateUrl: './crmcaseheader.component.html',
   styleUrls: ['./crmcaseheader.component.scss']
 })

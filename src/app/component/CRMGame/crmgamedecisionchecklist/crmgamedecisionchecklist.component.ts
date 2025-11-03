@@ -394,7 +394,8 @@ export class CrmgamedecisionchecklistComponent extends AbstractComponent {
           kpivaluearray: this.kpivaluearray,
           languageid: this.languageid,
         },
-        panelClass: 'custom-dialog-container'
+        panelClass: 'custom-dialog-container',
+        position: { top: '20px' },
       });
 
       dialogRef.afterClosed().subscribe(result => {

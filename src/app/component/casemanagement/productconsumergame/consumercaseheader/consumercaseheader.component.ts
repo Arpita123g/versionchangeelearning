@@ -11,6 +11,7 @@ import { ConsumerfoodforthougthComponent } from '../consumerfoodforthougth/consu
 import { ConsumerinformationsearchComponent } from '../consumerinformationsearch/consumerinformationsearch.component';
 import { ConsumermoduleComponent } from '../consumermodule/consumermodule.component';
 import { ConsumeroutlookComponent } from '../consumeroutlook/consumeroutlook.component';
+import { ConsumercasecraftingComponent } from '../consumercasecrafting/consumercasecrafting.component';
 
 @Component({
   selector: 'app-consumercaseheader',
@@ -22,6 +23,7 @@ import { ConsumeroutlookComponent } from '../consumeroutlook/consumeroutlook.com
     ConsumerinformationsearchComponent,
     ConsumermoduleComponent,
     ConsumeroutlookComponent,
+    ConsumercasecraftingComponent,
   ],
   templateUrl: './consumercaseheader.component.html',
   styleUrls: ['./consumercaseheader.component.scss']

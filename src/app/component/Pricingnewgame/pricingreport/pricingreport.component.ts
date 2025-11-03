@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import {
@@ -26,6 +26,7 @@ import { GlobalService } from 'src/app/service/global.service';
 import { RestapiService } from 'src/app/service/restapi.service';
 import { SheetdataService } from 'src/app/service/sheet/sheetdata.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 interface barChart {
   series: ApexAxisChartSeries;
@@ -54,7 +55,7 @@ interface RadarChart {
 @Component({
   selector: 'app-pricingreport',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule, MatDialogModule, TippyDirective],
   templateUrl: './pricingreport.component.html',
   styleUrls: ['./pricingreport.component.scss']
 })

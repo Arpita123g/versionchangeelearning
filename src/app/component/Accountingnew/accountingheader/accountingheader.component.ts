@@ -17,6 +17,9 @@ import { RestapiService } from 'src/app/service/restapi.service';
 import { SharedserviceService } from 'src/app/service/sharedservice.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
 import { MatIconModule } from '@angular/material/icon';
+import { AccountingingdecisionchecklistComponent } from '../accountingingdecisionchecklist/accountingingdecisionchecklist.component';
+import { AccountingingmemoComponent } from '../accountingingmemo/accountingingmemo.component';
+import { AccountingingfoodforthoughtComponent } from '../accountingingfoodforthought/accountingingfoodforthought.component';
 
 @Component({
   selector: 'app-accountingheader',
@@ -29,7 +32,10 @@ import { MatIconModule } from '@angular/material/icon';
     AccountingingevaluationComponent,
     AccountingingreportComponent,
     AccountingingsynopsisComponent,
-    MatIconModule
+    MatIconModule,
+    AccountingingdecisionchecklistComponent,
+    AccountingingmemoComponent,
+    AccountingingfoodforthoughtComponent, 
   ],
   templateUrl: './accountingheader.component.html',
   styleUrls: ['./accountingheader.component.scss']

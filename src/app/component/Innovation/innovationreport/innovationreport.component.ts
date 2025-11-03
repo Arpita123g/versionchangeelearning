@@ -29,7 +29,7 @@ import {
   ApexYAxis,
 } from 'ng-apexcharts';
 import { NgApexchartsModule } from 'ng-apexcharts';
-
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 interface barChart {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -67,7 +67,7 @@ interface pieChart {
 @Component({
   selector: 'app-innovationreport',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatIconModule, NgApexchartsModule],
+  imports: [CommonModule, FormsModule, MatIconModule, NgApexchartsModule, TippyDirective],
   templateUrl: './innovationreport.component.html',
   styleUrls: ['./innovationreport.component.scss']
 })

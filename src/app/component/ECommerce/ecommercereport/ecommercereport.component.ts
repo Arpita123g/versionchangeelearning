@@ -28,6 +28,7 @@ import {
 import { EcommercesheetService } from 'src/app/service/sheet/ecommerce/ecommercesheet.service';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 interface barChart {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -55,7 +56,8 @@ interface RadarChart {
 @Component({
   selector: 'app-ecommercereport',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, RouterModule, NgApexchartsModule, FormsModule, MatIconModule],
+  imports: [CommonModule, MatDialogModule, RouterModule, NgApexchartsModule,
+     FormsModule, MatIconModule, TippyDirective],
   templateUrl: './ecommercereport.component.html',
   styleUrls: ['./ecommercereport.component.scss']
 })

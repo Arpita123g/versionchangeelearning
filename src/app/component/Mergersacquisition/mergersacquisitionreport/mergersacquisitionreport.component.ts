@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import {
   ApexAxisChartSeries,
@@ -24,6 +24,7 @@ import { RestapiService } from 'src/app/service/restapi.service';
 import { SheetdataService } from 'src/app/service/sheet/sheetdata.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
 import { MarkdownModule } from 'ngx-markdown';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 interface RadarChart {
   series: ApexAxisChartSeries;
@@ -39,7 +40,8 @@ interface RadarChart {
 @Component({
   selector: 'app-mergersacquisitionreport',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule, MarkdownModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,
+     MarkdownModule, TippyDirective, MatDialogModule],
   templateUrl: './mergersacquisitionreport.component.html',
   styleUrls: ['./mergersacquisitionreport.component.scss']
 })

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import {
@@ -23,6 +23,7 @@ import {
   NgApexchartsModule,
 } from 'ng-apexcharts';
 import { AbstractComponent } from 'src/app/AbstractComponent';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 import { LoginService } from 'src/app/service/auth/login.service';
 import { ApiService } from 'src/app/service/backendgameapi/api.service';
 import { GlobalService } from 'src/app/service/global.service';
@@ -66,7 +67,7 @@ interface RadarChart {
 @Component({
   selector: 'app-promotionsigmentnewreport',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],    
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,MatDialogModule,TippyDirective],    
   templateUrl: './promotionsigmentnewreport.component.html',
   styleUrls: ['./promotionsigmentnewreport.component.scss']
 })

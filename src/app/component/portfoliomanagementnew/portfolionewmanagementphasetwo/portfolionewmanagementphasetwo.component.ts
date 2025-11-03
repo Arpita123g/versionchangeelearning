@@ -27,6 +27,7 @@ import { PopupDialogueComponent } from 'src/app/common/popup-dialogue/popup-dial
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 
 interface lineChart {
@@ -56,7 +57,7 @@ interface barChart {
 @Component({
   selector: 'app-portfolionewmanagementphasetwo',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,TippyDirective],
   templateUrl: './portfolionewmanagementphasetwo.component.html',
   styleUrls: ['./portfolionewmanagementphasetwo.component.scss']
 })
@@ -479,6 +480,7 @@ export class PortfolionewmanagementphasetwoComponent extends AbstractComponent {
     const dialogRef = this.dialog.open(PopupDialogueComponent, {
       width: '40%',
       panelClass: 'centertop-dialog',
+      position: { top: '20px' },
       data:
       {
         title:"You are saving your current phase decisions, all the decisions made will be considered for assessments. Once you move to the next phase, the decisions of the current phase can't be edited. Do you want to save?"

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AbstractComponent } from 'src/app/AbstractComponent';
 import { LoginService } from 'src/app/service/auth/login.service';
@@ -29,6 +29,7 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 interface barChart {
   series: ApexAxisChartSeries;
@@ -60,7 +61,7 @@ interface RadarChart {
 @Component({
   selector: 'app-orderingbasicsreport',
   standalone:true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule, MatDialogModule, TippyDirective],
   templateUrl: './orderingbasicsreport.component.html',
   styleUrls: ['./orderingbasicsreport.component.scss']
 })

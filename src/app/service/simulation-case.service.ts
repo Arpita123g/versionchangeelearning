@@ -20,6 +20,7 @@ export class SimulationCaseService {
     "Value Chain New": ["Mobile INR Case", "Mobile Europe Case"],
     "CVP Analysis": ["Garment manufacturing case"],
     "Accounting": ["Local paper firm case"],
+    "Accounting New": ["Local Paper Firm INR Case","Local Paper Firm EU Case"],
     "Accounting Arabic": ["Local paper firm case"],
     "Pricing": ["Airlines case"],
     "Mergers & Acquisition": ["Automotive case"],

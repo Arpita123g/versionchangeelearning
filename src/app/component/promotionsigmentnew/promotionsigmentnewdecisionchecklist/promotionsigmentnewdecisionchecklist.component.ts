@@ -375,7 +375,8 @@ export class PromotionsigmentnewdecisionchecklistComponent extends AbstractCompo
           languageid: this.languageid,
 
         },
-        panelClass: 'custom-dialog-container'
+        panelClass: 'custom-dialog-container',
+        position: { top: '20px' }
       });
 
       dialogRef.afterClosed().subscribe(result => {
@@ -388,70 +389,7 @@ export class PromotionsigmentnewdecisionchecklistComponent extends AbstractCompo
     openDialog();
   }
 
-  // saveDecisionChecklist() {
-  //   if (this.noofattempt == "1") {
-  //     if (this.foodforthoughtQNo == 10) {
-  //       if (((this.analysisshow == true) && (this.useranalysisinput.length < 10))) {
-  //         this._alert.error("To move ahead, kindly Write your analysis");
-
-  //       } else {
-  //         const dialogRef = this.dialog.open(PromotionsigmentnewpopupComponent, {
-  //           data: {
-  //             class: 'p-0',
-  //             foodforthoughtqno: this.foodforthoughtQNo,
-  //             participantsentiment: this.useranalysisinput,
-  //             assesment: "Participant analysis for microsimulation\n" + this.useranalysisinput + this.assesment,
-  //             feedback: this.feedback,
-  //             submitprove: this.submitprove,
-  //             analysisshow: this.analysisshow,
-  //             resultarray: this.result,
-
-  //           },
-  //           panelClass: 'custom-dialog-container'
-  //         });
-  //         dialogRef.afterClosed().subscribe(result => {
-  //           if (result) {
-  //             this.newItemEvent.emit('report');
-  //           }
-  //         });
-  //       }
-  //     }
-  //     else {
-  //       this._alert.error("To move ahead finish Food For Thought section");
-  //     }
-  //   } else if (this.noofattempt != '1') {
-  //     if (((this.analysisshow == true) && (this.useranalysisinput.length < 10))) {
-  //       this._alert.error("To move ahead, kindly Write your analysis");
-
-  //     } else {
-  //       const dialogRef = this.dialog.open(PromotionsigmentnewpopupComponent, {
-  //         data: {
-  //           class: 'p-0',
-  //           foodforthoughtqno: this.foodforthoughtQNo,
-  //           participantsentiment: this.useranalysisinput,
-  //           assesment: "Participant analysis for microsimulation\n" + this.useranalysisinput + this.assesment,
-  //           feedback: this.feedback,
-  //           submitprove: this.submitprove,
-  //           analysisshow: this.analysisshow,
-  //           resultarray: this.result,
-
-  //         },
-  //         panelClass: 'custom-dialog-container'
-  //       });
-  //       dialogRef.afterClosed().subscribe(result => {
-  //         if (result) {
-  //           this.newItemEvent.emit('report');
-  //         }
-  //       });
-  //     }
-  //   }
-
-
-  // }
-
 }
-
-//popup
 
 
 @Component({

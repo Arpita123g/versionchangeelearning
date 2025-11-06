@@ -29,6 +29,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { MatIconModule } from '@angular/material/icon';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 interface barChart {
   series: ApexAxisChartSeries;
@@ -66,7 +67,7 @@ interface RadarChart {
 @Component({
   selector: 'app-promotionsigmentnewreport',
   standalone: true,
-  imports: [CommonModule, FormsModule, NgApexchartsModule,MatIconModule],
+  imports: [CommonModule, FormsModule, NgApexchartsModule,MatIconModule,TippyDirective],
   templateUrl: './promotionsigmentnewreport.component.html',
   styleUrls: ['./promotionsigmentnewreport.component.scss']
 })

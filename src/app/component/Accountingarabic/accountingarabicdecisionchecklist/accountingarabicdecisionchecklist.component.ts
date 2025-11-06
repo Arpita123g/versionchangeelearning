@@ -27,9 +27,6 @@ export class AccountingingArabicdecisionchecklistComponent extends AbstractCompo
   result: any = [];
   results = ['ss', 'dd'];
   isClass: boolean[] = [false, true, false];
-  //it will be uncommited(Arpita)
-  // optional: any[] = [];
-  //getting success api call this line will be removed(Arpita)
   optional: any[] = [true,true,true,true];
   playername: string = '';
   dropdownvalue: any = [];
@@ -83,8 +80,8 @@ export class AccountingingArabicdecisionchecklistComponent extends AbstractCompo
     super(_login, _api, _alert, _global, _router, _restapiservice);
   }
 
+
   override ngOnInit(): void {
-    // this.useranalysisSubmit();
     this.useranalysisinput = String(localStorage.getItem('useranalysis'));
     if ((this.useranalysisinput == null) || (this.useranalysisinput == "null")) {
       this.useranalysisinput = '';
@@ -95,6 +92,7 @@ export class AccountingingArabicdecisionchecklistComponent extends AbstractCompo
       this.getFetchData(this.noofattempt);
     }
   }
+
 
   getPreviousData(attempt: string) {
     let apiname = '/accountingarabic/fetchaccountingarabic';
@@ -246,8 +244,7 @@ export class AccountingingArabicdecisionchecklistComponent extends AbstractCompo
           }
         }, error: (error: any) => {
           this.checkloading = false;
-          // this.driveerrorLog(error, apiname);
-        }
+           }
       })
   }
 
@@ -509,66 +506,7 @@ export class AccountingingArabicdecisionchecklistComponent extends AbstractCompo
     }
   }
 
-  // saveDecisionChecklist() {
-  //   if (this.noofattempt == "1") {
-  //     if (this.foodforthoughtQNo == 6) {
-  //       if (((this.analysisshow == true) && (this.useranalysisinput.length < 10))) {
-  //         this._alert.error("To move ahead, kindly Write your analysis");
-
-  //       } else {
-  //         const dialogRef = this.dialog.open(AccountingArabicPopup, {
-  //           data: {
-  //             class: 'p-0',
-  //             foodforthoughtqno: this.foodforthoughtQNo,
-  //             participantsentiment: this.useranalysisinput,
-  //             assesment: "Participant analysis for microsimulation\n" + this.useranalysisinput + this.assesment,
-  //             feedback: this.feedback,
-  //             submitprove: this.submitprove,
-  //             analysisshow: this.analysisshow,
-  //             kpivaluearray: this.kpivaluearray,
-
-  //           },
-  //           panelClass: 'custom-dialog-container'
-  //         });
-  //         dialogRef.afterClosed().subscribe(result => {
-  //           if (result) {
-  //             this.newItemEvent.emit('report');
-  //           }
-  //         });
-  //       }
-  //     }
-  //     else {
-  //       this._alert.error("To move ahead finish Food For Thought section");
-  //     }
-  //   } else if (this.noofattempt != '1') {
-  //     if (((this.analysisshow == true) && (this.useranalysisinput.length < 10))) {
-  //       this._alert.error("To move ahead, kindly Write your analysis");
-
-  //     } else {
-  //       const dialogRef = this.dialog.open(AccountingArabicPopup, {
-  //         data: {
-  //           class: 'p-0',
-  //           foodforthoughtqno: this.foodforthoughtQNo,
-  //           participantsentiment: this.useranalysisinput,
-  //           assesment: "Participant analysis for microsimulation\n" + this.useranalysisinput + this.assesment,
-  //           feedback: this.feedback,
-  //           submitprove: this.submitprove,
-  //           analysisshow: this.analysisshow,
-  //           kpivaluearray: this.kpivaluearray,
-
-  //         },
-  //         panelClass: 'custom-dialog-container'
-  //       });
-  //       dialogRef.afterClosed().subscribe(result => {
-  //         if (result) {
-  //           this.newItemEvent.emit('report');
-  //         }
-  //       });
-  //     }
-  //   }
-
-
-  // }
+ 
 
   saveDecisionChecklist() {
     if ((this.analysisshow && this.useranalysisinput.length < 10)) {
@@ -594,7 +532,8 @@ export class AccountingingArabicdecisionchecklistComponent extends AbstractCompo
           kpivaluearray: this.kpivaluearray,
 
         },
-        panelClass: 'custom-dialog-container'
+        panelClass: 'custom-dialog-container',
+        position: { top: '20px' },
       });
   
       dialogRef.afterClosed().subscribe(result => {

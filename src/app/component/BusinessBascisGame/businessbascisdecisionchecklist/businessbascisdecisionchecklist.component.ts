@@ -281,6 +281,8 @@ export class BusinessbascisdecisionchecklistComponent extends AbstractComponent 
 
         },
         panelClass: 'centertop-dialog',
+        width: '520px',
+        maxWidth: '95vw',
         position: { top: '20px' },
         
       });
@@ -659,9 +661,9 @@ export class BusinessbascisdecisionchecklistComponent extends AbstractComponent 
 @Component({
   selector: 'app-decisionchecklistpopup',
   standalone: true,
-  imports: [CommonModule, MatDialogModule],
-  templateUrl: './decisionchecklistpopup.html',
-  styleUrls: ['./businessbascisdecisionchecklist.component.scss'],
+  imports: [CommonModule, MatDialogModule,FormsModule],
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
 
 })
 export class DecisionchecklistpopupComponent extends AbstractComponent {

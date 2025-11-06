@@ -22,6 +22,34 @@
               .rsl_tbl-thead-tr {
                 border: 1px solid lightgray;
 
+                // .rsl_tbl-thead-th {
+                //   font-size: 1.1rem;
+                //   font-weight: 600;
+                //   padding: 1rem 0.4rem;
+                //   color: white;
+                //   background-color: #266cc38a;
+                //   text-align: right;
+                //   vertical-align: middle;
+                //   // min-width: 10rem;
+
+                //   .head-icon {
+                //     display: flex;
+                //     align-items: center;
+                //     justify-content: end;
+                //     width: 10rem;
+
+                //     .hint-icon {
+                //       padding-left: 4px;
+                //     }
+                //   }
+                // }
+                // .rsl_tbl-thead-th:first-child {
+                //   text-align: left;
+                //   .head-icon:first-child {
+                //     justify-content: left;
+                //     width: fit-content;
+                //   }
+                // }
                 .rsl_tbl-thead-th {
                   font-size: 1.1rem;
                   font-weight: 600;
@@ -30,29 +58,53 @@
                   background-color: #266cc38a;
                   text-align: right;
                   vertical-align: middle;
-                  // min-width: 10rem;
-
+                
                   .head-icon {
                     display: flex;
                     align-items: center;
-                    justify-content: end;
+                    justify-content: flex-end;
                     width: 10rem;
-
+                    overflow: visible;        // keep icon visible
+                    gap: 6px;                 // ✅ consistent spacing between text & icon
+                    line-height: 1.3;
+                
+                    span {
+                      white-space: normal;    // ✅ allows wrapping
+                      word-break: normal;     // ✅ prevents breaking mid-word
+                      flex: 1;
+                      text-align: right;
+                    }
+                
                     .hint-icon {
-                      padding-left: 4px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      line-height: normal;
+                      overflow: visible;
+                      flex-shrink: 0;         // ✅ keeps icon fully visible
+                    }
+                
+                    mat-icon {
+                      font-size: 20px;        // restore old size
+                      height: auto;
+                      width: auto;
                     }
                   }
                 }
+                
+                /* First column left-aligned */
                 .rsl_tbl-thead-th:first-child {
                   text-align: left;
+                
                   .head-icon:first-child {
-                    justify-content: left;
+                    justify-content: flex-start;
                     width: fit-content;
+                    padding-left: 6px;        // ✅ small left breathing space
+                    gap: 6px;
                   }
                 }
-                // .rsl_tbl-thead-th:first-child{
-                //   text-align: left;
-                // }
+                
+                
               }
             }
 

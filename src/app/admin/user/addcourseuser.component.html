@@ -1,4 +1,4 @@
-<div class="p-4">
+<div class="p-3">
 
     <div class="row mb-3">
         <div class="col-10">
@@ -11,35 +11,32 @@
             <div class="borderbottom"></div>
             <div class="col-6 mar-b">
                 <div class="lebel"> Simulation Name </div>
-                <select formControlName="simulation" class="form-control" (change)="onSelectSimulation($event)">
+                <select formControlName="simulation" class="form-control form-select"
+                    (change)="onSelectSimulation($event)">
                     <option value="">Select E-Learning name </option>
                     <option value="Business Basics">Business Basics</option>
-                    <!-- <option value="Product & Consumer">Product & Consumer</option> -->
                     <option value="Product & Consumer New">Product & Consumer New</option>
-                    <option value="Change Management Module">
-                        Change Management Module
+                    <option value="Change Management Module New">
+                        Change Management Module New
                     </option>
                     <option value="Logistics">Logistics</option>
-                    <option value="Financial Analysis" > Financial Analysis</option>
-                    <!-- <option value="Promotions & Segments" > Promotions & Segments</option> -->
+                    <option value="Financial Analysis"> Financial Analysis</option>
                     <option value="Promotions & Segments New"> Promotions & Segments New</option>
-                    <option value="Sales & Target" > Sales & Target</option>
-                    <option value="Portfolio Management" >Portfolio Management</option>
-                    <!-- <option value="Value Chain" >Value Chain</option> -->
+                    <option value="Sales & Target"> Sales & Target</option>
+                    <option value="Portfolio Management">Portfolio Management</option>
                     <option value="Value Chain New">Value Chain New</option>
                     <option value="CVP Analysis">CVP Analysis</option>
-                    <option value="Accounting">Accounting</option>
+                    <option value="Accounting New">Accounting New</option>
                     <option value="Accounting Arabic">Accounting Arabic</option>
                     <option value="Pricing">Pricing</option>
                     <option value="Mergers & Acquisition">Mergers & Acquisition</option>
-                    <!-- <option value="HRP">HRP</option> -->
                     <option value="HRP New">HRP New</option>
                     <option value="Design Thinking">Design Thinking</option>
                     <option value="CRM">CRM</option>
                     <option value="Innovation">Innovation</option>
                     <option value="Ordering Basics">Ordering Basics</option>
-                    <option value="STP">STP</option>
                     <option value="HRM_Fintech">HRM_Fintech</option>
+                    <option value="STP">STP</option>
                     <option value="Ecommerce">Ecommerce</option>
                     <option value="Capital Budgeting">Capital Budgeting</option>
                     <option value="IT Management">IT Management</option>
@@ -50,38 +47,30 @@
                 <div class="lebel">Course Name </div>
                 <input formControlName="coursename" class="form-control" type="text">
             </div>
-            <!-- <div class="col-4"></div>
-            <div class="col-2 mar-b save" style="display:flex;align-items:center">
-                <button class="submit-button" (click)="courseassign()">Assign</button>
-            </div> -->
+
         </div>
-        
         <div class="row">
             <div class="borderbottom"></div>
             <div class="col-6 mar-b">
                 <div class="lebel">Language</div>
-                <select class="case-dropdown form-control"  formControlName="languagename">
+                <select class="case-dropdown form-control form-select" formControlName="languagename">
                     <option value="" selected disabled>Select language</option>
-                    <option [value]="lang"  *ngFor="let lang of language" >{{lang}}</option>
+                    <option [value]="lang" *ngFor="let lang of language">{{lang}}</option>
                 </select>
-            </div> 
-           
-             <div class="col-6 mar-b">
-                <div class="lebel"> Case</div>
-                <select formControlName="case" class="form-select form-control"  (change)="onCaseChange($event)">
-                        <option value="" selected disabled>Select Case</option>
-                        <optgroup label="Cesim Case">
-                            <option [value]="cesimcase" *ngFor="let cesimcase of cesimCaseOptions">{{cesimcase}}</option>
-                          
-                        </optgroup>
-                        <optgroup label="Your Case">
-                            <option [value]="instructorcase" *ngFor="let instructorcase of yourCaseOptions">{{instructorcase}}</option>
-                           
-                        </optgroup>
-                    </select>
             </div>
-            <!-- change for multi case end 19/05/25 -->
-
+            <div class="col-6 mar-b">
+                <div class="lebel"> Case</div>
+                <select formControlName="case" class="form-select form-control" (change)="onCaseChange($event)">
+                    <option value="" selected disabled>Select Case</option>
+                    <optgroup label="Cesim Case">
+                        <option [value]="cesimcase" *ngFor="let cesimcase of cesimCaseOptions">{{cesimcase}}</option>
+                    </optgroup>
+                    <optgroup label="Your Case">
+                        <option [value]="instructorcase" *ngFor="let instructorcase of yourCaseOptions">
+                            {{instructorcase}}</option>
+                    </optgroup>
+                </select>
+            </div>
             <div class="col-6 mar-b">
                 <div class="lebel">No of license. </div>
                 <input formControlName="licenseno" class="form-control" type="text">
@@ -90,7 +79,15 @@
                 <div class="lebel">No of credit </div>
                 <input formControlName="creditno" class="form-control" type="number">
             </div>
-             
+            <div class="col-6 mar-b">
+                <div class="lebel">Select Time Zone</div>
+                <select formControlName="timezone" class="form-select form-control">
+                    <option value="" disabled selected>Select Your Time Zone</option>
+                    <option *ngFor="let z of zones" [value]="z.id">
+                        {{ z.id }} — {{ z.label }}
+                    </option>
+                </select>
+            </div>
             <div class="col-2 mar-b save" style="display:flex;align-items:center">
                 <button [disabled]="checkloading || isButtonDisabled" class="submit-button"
                     (click)="courseassign()">Assign</button>

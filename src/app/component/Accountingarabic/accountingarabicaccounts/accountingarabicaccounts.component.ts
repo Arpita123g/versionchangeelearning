@@ -42,7 +42,7 @@ interface barchart {
 @Component({
   selector: 'app-accountingarabicaccounts',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatDialogModule, NgApexchartsModule,MatIconModule],
+  imports: [CommonModule, FormsModule, MatDialogModule, NgApexchartsModule, MatIconModule],
   templateUrl: './accountingarabicaccounts.component.html',
   styleUrls: ['./accountingarabicaccounts.component.scss']
 })
@@ -72,13 +72,10 @@ export class AccountingArabicaccountsComponent extends AbstractComponent {
   incomestatementgraph: any = ['c10', 'c11', 'c12', 'c13', 'c14', 'c15'];
   cashflowgraph: any = ['c18', 'c19', 'c20', 'c21', 'c22'];
   optionalcase: any = ["balancesheetstatus", "incomestatementstatus", "cashflowstatus", "foodforthoughtstatus",];
-  // optional: any[] = [];
-
-  ////getting success api call this line will be removed(Arpita)
-  optional: any[] = [true,true,true,true];
+  optional: any[] = [true, true, true, true];
 
   optionEnabled: any = [true, true, true];
-  attempt:number=0;
+  attempt: number = 0;
 
   constructor(_router: Router, _login: LoginService,
     _global: GlobalService, _alert: SnackbaralertService, _api: ApiService,
@@ -86,11 +83,7 @@ export class AccountingArabicaccountsComponent extends AbstractComponent {
     super(_login, _api, _alert, _global, _router, _restapiservice);
 
     this.balancesheetchart = {
-      series: [
-        // {
-        //   data: [586202, 315002, 271200]
-        // }
-      ],
+      series: [],
       chart: {
         height: 250,
         type: 'bar',
@@ -138,11 +131,7 @@ export class AccountingArabicaccountsComponent extends AbstractComponent {
     }
 
     this.incomestatementchart = {
-      series: [
-        // {
-        //   data: [400000, 288000, 173000, 113000, 89000, 71200]
-        // }
-      ],
+      series: [],
       chart: {
         height: 250,
         type: 'bar',
@@ -190,11 +179,7 @@ export class AccountingArabicaccountsComponent extends AbstractComponent {
     }
 
     this.cashflowstatementchart = {
-      series: [
-        // {
-        //   data: [0, -157000, -310000, 476000, 8200,]
-        // }
-      ],
+      series: [],
       chart: {
         height: 250,
         type: 'bar',
@@ -254,10 +239,10 @@ export class AccountingArabicaccountsComponent extends AbstractComponent {
         next: (data: any) => {
           if (data.status == "Success") {
             if (data.resultList != null) {
-              this.attempt=data.resultList[0].attempt;
+              this.attempt = data.resultList[0].attempt;
 
               this._global.casemanagementid.next(data.resultList[0].accountingarabiccmid);
-              if ((data.resultList[0].ag8 == 'yes') || (data.resultList[0].ag8 == 'Yes')|| (this.timefinished)) {
+              if ((data.resultList[0].ag8 == 'yes') || (data.resultList[0].ag8 == 'Yes') || (this.timefinished)) {
                 this.checkdisable = true;
               }
 
@@ -317,27 +302,25 @@ export class AccountingArabicaccountsComponent extends AbstractComponent {
       })
   }
 
-  inputtablevalue(cellname: string, index: number) {
 
+  inputtablevalue(cellname: string, index: number) {
     if ((this.result[index] >= 0) && (this.result[index] < 10000001)) {
       this.valueWrite(cellname, index);
     } else {
       this.result[index] = 0;
       this._alert.error("The expected range is between 0 to 10000000");
     }
-
   }
+
 
   valueWrite(cellname: string, index: number) {
     let apiname = '/accountingarabic/singleinputaccountingarabic';
     let accountingData = {
       [cellname]: this.result[index]
     }
-
     this._api.accountingDataWrite("accountingarabic", 1,
       accountingData, apiname, 'accountingarabiccmid').subscribe((data: any) => {
         if (data.status == 'Success') {
-          // this.checkloading = true;
           this.getFetchData();
         } else {
           this.checkloading = false;
@@ -348,6 +331,8 @@ export class AccountingArabicaccountsComponent extends AbstractComponent {
         this.driveerrorLog(error, apiname);
       })
   }
+
+
 
   openDialog(): void {
     this.dialog.open(AccountingArabicfoodforthoughtComponent, {

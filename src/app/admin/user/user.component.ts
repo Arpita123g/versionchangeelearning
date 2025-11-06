@@ -19,6 +19,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
+import { SimulationCaseService } from 'src/app/service/simulation-case.service';
 
 @Component({
   selector: 'app-user',
@@ -74,7 +75,7 @@ export class UserComponent implements OnInit {
   //toDisplay = false;
   icon = 'keyboard_arrow_down';
   Emailsub: Subscription;
-  useremail: string | undefined;
+  useremail: string | null | undefined;
   Rolesub: Subscription;
   userrole: string = '';
   StatusClass = 'coursecode';
@@ -122,10 +123,11 @@ export class UserComponent implements OnInit {
     public _restapiservice: RestapiService,
     public _api: ApiService,
     private activatedRoute: ActivatedRoute,
-  private cdr: ChangeDetectorRef) {
+    private simulationCaseServices: SimulationCaseService,
+    private cdr: ChangeDetectorRef) {
 
     this.Emailsub = this._global.useremail.subscribe((data) => {
-      this.useremail = (data ?? undefined) as string | undefined;
+      this.useremail = data;
     });
 
     this.Rolesub = this._global.usermode.subscribe((data: any) => {
@@ -137,6 +139,29 @@ export class UserComponent implements OnInit {
 
   }
 
+  language: string[] = [
+    'English',
+    'Hindi',
+    'French',
+    'Spanish',
+  ];
+  // zones: Zone[] = [
+  //   { id: 'Asia/Kolkata', label: 'India (Asia/Kolkata)' },
+  //   { id: 'America/Mexico_City', label: 'Mexico City (America/Mexico_City)' },
+  //   { id: 'America/Sao_Paulo', label: 'São Paulo (America/Sao_Paulo)' },
+  //   { id: 'America/Argentina/Buenos_Aires', label: 'Buenos Aires (America/Argentina/Buenos_Aires)' },
+  //   { id: 'Europe/Paris', label: 'France (Europe/Paris)' }
+  // ];
+  // selectedZone = this.zones[0].id;
+
+  selectedZone: string = '';
+  zones: { id: string; label: string }[] = [
+    { id: 'Asia/India', label: 'GMT +5:30' },
+    { id: 'America/Mexico_City', label: 'GMT -6:00' },
+    { id: 'America/Sao_Paulo', label: 'GMT -3:00' },
+    { id: 'America/Argentina/Buenos_Aires', label: 'GMT -3:00' },
+    { id: 'Europe/Paris', label: 'GMT +2:00' }
+  ];
   ngOnInit(): void {
     this.checkloading = true;
     this.buildform();
@@ -151,13 +176,40 @@ export class UserComponent implements OnInit {
         simulationControl?.disable();
       }
     });
+    // this.zones = this.zones.map(e => ({ ...e, offsetLabel: this.getGMTOffsetLabel(e.id) }))
+
   }
-  language: string[] = [
-    'English',
-    'Hindi',
-    'French',
-    'Spanish',
-  ];
+
+  // getGMTOffsetLabel(timeZone: string): string {
+  //   const parts = new Date().toLocaleString('en-US', { timeZone, timeZoneName: 'short' });
+  //   const match = parts.match(/GMT[+-]\d{1,2}(:?\d{2})?/i);
+  //   if (match) return match[0];
+
+  //   // fallback (less reliable): approximate by comparing UTC/local times
+  //   try {
+  //     const now = new Date();
+  //     const utc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),
+  //       now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
+  //     // produce a locale string in target tz then parse back
+  //     const localStr = now.toLocaleString('en-US', { timeZone });
+  //     const local = new Date(localStr);
+  //     const offsetMinutes = (utc - local.getTime()) / 60000;
+  //     const sign = offsetMinutes <= 0 ? '+' : '-';
+  //     const absMin = Math.abs(offsetMinutes);
+  //     const h = Math.floor(absMin / 60);
+  //     const m = Math.floor(absMin % 60);
+  //     return `GMT${sign}${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+  //   } catch {
+  //     return 'GMT';
+  //   }
+  // }
+
+  // onChange(zoneId: string) {
+  //   this.selectedZone = zoneId;
+  //   // do whatever you need with the selection
+  //   console.log('Selected timezone:', zoneId);
+  // }
+
 
   getFullUrl(coursecode: string): string {
     return `${window.location.origin}/studentregister/${coursecode}`;
@@ -191,39 +243,15 @@ export class UserComponent implements OnInit {
         if (data.status == 'Success') {
           let message = data.message;
 
-          // Check if the response has instructorcount directly
-          if (data.instructorcount !== undefined) {
-            this.totalItems = data.instructorcount;
-          } else {
-            try {
-              // Check if message is already a JSON object
-              if (typeof message === 'object') {
-                this.totalItems = message.instructorcount || 0;
-              } else if (typeof message === 'string') {
-                // Check if it's a simple success message
-                if (message.toLowerCase().includes('success')) {
-                  console.log('API call successful, but no instructor count returned. Using default value.');
-                  this.totalItems = 0; // or fetch from another endpoint
-                } else {
-                  // Try to parse as JSON string
-                  // Step 1: Replace single quotes around the value to make it valid JSON
-                  message = message.replace(/'/g, '"');
+          // Step 1: Replace single quotes around the value to make it valid JSON
+          message = message.replace(/'/g, '"');
 
-                  // Step 2: Parse the corrected string to a JSON object
-                  const jsonObject = JSON.parse(message);
+          // Step 2: Parse the corrected string to a JSON object
+          const jsonObject = JSON.parse(message);
 
-                  // Step 3: Access the instructorcount value
-                  const instructorCount = jsonObject.instructorcount;
-                  this.totalItems = instructorCount;
-                }
-              }
-            } catch (error) {
-              console.warn('Failed to parse instructor count message:', message, error);
-              // Fallback: set a default value or handle the error gracefully
-              this.totalItems = 0;
-            }
-          }
-          
+          // Step 3: Access the instructorcount value
+          const instructorCount = jsonObject.instructorcount;
+          this.totalItems = instructorCount;
           // console.log("c",instructorCount); // Output: 417
           this.getTableData();
         }
@@ -272,7 +300,7 @@ export class UserComponent implements OnInit {
   onPageChange(event: PageEvent): void {
     this.currentPage = event.pageIndex;
     this.pageSize = event.pageSize;
-    console.log("more",this.currentPage,this.pageSize)
+    console.log("more", this.currentPage, this.pageSize)
     this.getTableData();
   }
 
@@ -417,6 +445,104 @@ export class UserComponent implements OnInit {
     );
   }
 
+
+  // search() {
+
+  //   if (this.searchFlag == 'instructor') {
+  //     let body = {
+  //       email: this.useremail,
+  //       status: 'active',
+  //       caller: 'webadmin',
+  //       usermode: 'admin',
+  //       searchtype: 'instructormail',
+  //       searchcontent: this.instructormailidforsearch,
+  //     };
+
+  //     this._restapiservice.getRegisterUserListForUSerComp(body).subscribe((data: any) => {
+  //       if (data.status == 'Success') {
+  //         this.ELEMENT_DATA = data.resultList;
+  //         this.dataSource = new MatTableDataSource<PeriodicElement>(
+  //           this.ELEMENT_DATA
+  //         );
+  //         if (this.paginator) this.dataSource.paginator = this.paginator;
+  //       } else {
+  //         this._alert.error(data.message)
+  //       }
+  //     });
+  //   } else {
+
+  //     this._global.coursecode.next('')
+  //     this._global.studentemail.next(this.studentemailsearch)
+  //     this._router.navigate(['/auth/component/studentmngsec']);
+
+  //   }
+  // }
+
+  // search with coursecod add 29/04/2025....
+  // search() {
+  //   if (this.searchFlag === 'instructor' || this.searchFlag === 'coursecode') {
+  //     const searchtype = this.searchFlag === 'instructor' ? 'instructormail' : 'coursecode';
+  //     const searchcontent = this.searchFlag === 'instructor' ? this.instructormailidforsearch : this.searchcoursecode;
+
+  //     const body = {
+  //       email: this.useremail,
+  //       status: 'active',
+  //       caller: 'webadmin',
+  //       usermode: 'admin',
+  //       searchtype,
+  //       searchcontent,
+  //     };
+
+  //     this._restapiservice.getRegisterUserListForUSerComp(body).subscribe((data: any) => {
+  //       if (data.status === 'Success') {
+  //         this.ELEMENT_DATA = data.resultList;
+  //         this.dataSource = new MatTableDataSource<PeriodicElement>(this.ELEMENT_DATA);
+  //         if (this.paginator) this.dataSource.paginator = this.paginator;
+  //       } else {
+  //         this._alert.error(data.message);
+  //       }
+  //     });
+  //   } else {
+  //     this._global.coursecode.next('');
+  //     this._global.studentemail.next(this.studentemailsearch);
+  //     this._router.navigate(['/auth/component/studentmngsec']);
+  //   }
+  // }
+
+  // search() {
+  //   if (['instructor', 'coursecode'].includes(this.searchFlag)) {
+  //     const searchtype = this.searchFlag === 'instructor' ? 'instructormail' : 'coursecode';
+  //     const searchcontent = this.searchFlag === 'instructor'
+  //       ? this.instructormailidforsearch
+  //       : this.searchcoursecode;
+
+  //     const body = {
+  //       email: this.useremail,
+  //       status: 'active',
+  //       caller: 'webadmin',
+  //       usermode: 'admin',
+  //       searchtype,
+  //       searchcontent,
+  //     };
+
+  //     this._restapiservice.getRegisterUserListForUSerComp(body).subscribe({
+  //       next: (data: any) => {
+  //         if (data.status === 'Success') {
+  //           this.ELEMENT_DATA = data.resultList;
+  //           this.dataSource = new MatTableDataSource<PeriodicElement>(this.ELEMENT_DATA);
+  //           if (this.paginator) this.dataSource.paginator = this.paginator;
+  //         } else {
+  //           this._alert.error(data.message);
+  //         }
+  //       }
+  //     });
+  //   } else {
+  //     this._global.coursecode.next('');
+  //     this._global.studentemail.next(this.studentemailsearch);
+  //     this._router.navigate(['/auth/component/studentmngsec']);
+  //   }
+  // }
+
   search() {
     if (this.searchFlag == 'instructor') {
       let body = {
@@ -486,13 +612,14 @@ export class UserComponent implements OnInit {
       instructormailidforsearch: [''],
       languagename: ['', [Validators.required]],
       ///////////////////////////////
-      case: ['', [Validators.required]]
+      case: ['', [Validators.required]],
+      timezone: ['', [Validators.required]]
     });
   }
 
   /////////////////////////////// for multiple case testing 19/05/25
   createdcasetype: string = '';
-  cesimCaseOptions:string[] = [];
+  cesimCaseOptions: string[] = [];
   yourCaseOptions: string[] = [];
   onCaseChange(event: Event) {
     const selectedValue = (event.target as HTMLSelectElement).value;
@@ -538,7 +665,7 @@ export class UserComponent implements OnInit {
       return;
     }
     this.cesimCaseOptions = [];
-  
+
     // if(simulationName == "Business Basics"){
     //   this.cesimCaseOptions.push("Local tea shop case");
     // }
@@ -555,6 +682,9 @@ export class UserComponent implements OnInit {
     //   this.cesimCaseOptions.push("Automotive case");
     // }
     // if(simulationName == "Promotions & Segments"){
+    //   this.cesimCaseOptions.push("Fmcg case");
+    // }
+    // if(simulationName == "Promotions & Segments New"){
     //   this.cesimCaseOptions.push("Fmcg case");
     // }
     // if(simulationName == "Sales & Target"){
@@ -625,6 +755,9 @@ export class UserComponent implements OnInit {
     //   "Promotions & Segments": [
     //     "Fmcg case",
     //   ],
+    //   "Promotions & Segments New": [
+    //     "Fmcg case",
+    //   ],
     //   "Value Chain": [
     //     "Smartphone value case",
     //   ],
@@ -675,14 +808,14 @@ export class UserComponent implements OnInit {
     // if (casesToPush) {
     //   this.cesimCaseOptions.push(...casesToPush);
     // }
-    
 
 
 
 
-    this.cesimCaseOptions = this.getCasesForSimulation(simulationName);
-    
-    let apiName ="/primarycourse/fetchassigncaselist";
+
+    this.cesimCaseOptions = this.simulationCaseServices.getCases(simulationName);
+
+    let apiName = "/primarycourse/fetchassigncaselist";
     let body = {
       email: instructorEmail,
       caller: "webinstructor",
@@ -691,48 +824,20 @@ export class UserComponent implements OnInit {
       searchtype: "yourcasefromadmin",
       instructorpanelid: 0,
       searchcontent: "",
-      coursedetailsid:0,
+      coursedetailsid: 0,
     }
     this._api.fetchYourCaseList(
-      body,apiName,
+      body, apiName,
     ).subscribe((data: any) => {
       this.yourCaseOptions = [];
       if (data.status === "Success") {
-        for(let i=0; i<data.resultList.length; i++){
+        for (let i = 0; i < data.resultList.length; i++) {
           this.yourCaseOptions.push(data.resultList[i].coursename);
         }
         // this.yourCaseOptions = data.resultList[0].coursename;
         this.checkloading = false;
       }
     });
-  }
-  private getCasesForSimulation(simulationName: string): string[] {
-    const simulationCasesMap: { [key: string]: string[] } = {
-      'Business Basics': ['Local tea shop case'],
-      'Product & Consumer': ['Gaming case'],
-      'Change Management Module': ['Merger & Acquisition case'],
-      'Logistics': ['Local 4 PL case'],
-      'Financial Analysis': ['Automotive case'],
-      'Promotions & Segments': ['Fmcg case'],
-      'Sales & Target': ['Fmcg case'],
-      'Portfolio Management': ['Brokerage firm case'],
-      'Value Chain': ['Smartphone value case'],
-      'CVP Analysis': ['Garment manufacturing case'],
-      'Accounting': ['Local paper firm case'],
-      'Accounting Arabic': ['Local paper firm case'],
-      'Pricing': ['Airlines case'],
-      'Mergers & Acquisition': ['Automotive case'],
-      'HRP': ['Clothing online case'],
-      'Design Thinking': ['Smartphone case'],
-      'CRM': ['Technology case'],
-      'Innovation': ['Go to market tech case'],
-      'Ordering Basics': ['Art firm case'],
-      'STP': ['Smartphone design case'],
-      'Ecommerce': ['Clothing case'],
-      'Capital Budgeting': ['Insurance company case'],
-      'IT Management': ['Consulting case'],
-    };
-    return simulationCasesMap[simulationName] || [];
   }
 
 
@@ -757,7 +862,29 @@ export class UserComponent implements OnInit {
       if (this.createcoursegroup.valid) {
         if ((this.createcoursegroup.value.nooflicense > 0) &&
           (this.createcoursegroup.value.noofcredit >= 0 && this.createcoursegroup.value.noofcredit <= 20)) {
-          this.isButtonDisabled = true;
+
+          /////////////////////////////////// for time zone
+          // const selectedZoneObj = this.zones.find(z => z.id === this.selectedZone);
+          // const timezoneLabel = selectedZoneObj
+          //   ? `${selectedZoneObj.label} (${selectedZoneObj.offsetLabel})`
+          //   : this.selectedZone;
+          // const timezoneLabel = selectedZoneObj
+          //   ? `${selectedZoneObj.offsetLabel}`
+          //   : this.selectedZone;
+          // const timezoneLabel = selectedZoneObj ? selectedZoneObj.offsetLabel : '';
+          /////////////////////////////////////////
+          const selectedZoneId = this.createcoursegroup.value.timezone;
+          const selectedZoneObj = this.zones.find(z => z.id === selectedZoneId);
+
+          if (!selectedZoneObj) {
+            this._alert.error("Please select a timezone");
+            this.checkloading = false;
+            return;
+          }
+
+          const timezoneId = selectedZoneObj.id;
+          const timezoneLabel = selectedZoneObj.label;
+
           let body = {
             email: this.useremail,
             instructormailid: this.createcoursegroup.value.instructormailid.toLowerCase(),
@@ -775,15 +902,20 @@ export class UserComponent implements OnInit {
             gamelanguage: this.createcoursegroup.value.languagename,
             createdcasename: this.createcoursegroup.value.case,
             createdcasetype: this.createdcasetype,
+            timezoneid: timezoneLabel,
+            timezone: timezoneId
 
           };
           console.log("body", body);
           this._restapiservice.saveCourse(body).subscribe((data: any) => {
             if (data.status == 'Success') {
+              this.isButtonDisabled = true;
               this.getTableData();
               this._alert.success(data.message);
               this.createcoursegroup.reset();
+              this.selectedZone = '';
               this.checkloading = false;
+              this.isadd = false;
             } else {
               this.checkloading = false;
               this._alert.error(data.message);
@@ -880,7 +1012,7 @@ export class UserComponent implements OnInit {
 
   checkstorage() {
     localStorage.getItem("islogin");
-    this.useremail = localStorage.getItem("email") ?? undefined;
+    this.useremail = localStorage.getItem("email");
   }
 
 
@@ -1223,6 +1355,7 @@ export class AddCourseUserComponent implements OnInit {
     private _alert: SnackbaralertService,
     public dialog: MatDialog,
     public _api: ApiService,
+    private simulationCaseServices: SimulationCaseService,
     public dialogRef: MatDialogRef<AddCourseUserComponent>,
 
   ) {
@@ -1248,8 +1381,15 @@ export class AddCourseUserComponent implements OnInit {
     'Hindi',
     'French',
     'Spanish',
-
   ];
+  zones: { id: string; label: string }[] = [
+    { id: 'Asia/Kolkata', label: 'GMT +5:30' },
+    { id: 'America/Mexico_City', label: 'GMT -6:00' },
+    { id: 'America/Sao_Paulo', label: 'GMT -3:00' },
+    { id: 'America/Argentina/Buenos_Aires', label: 'GMT -3:00' },
+    { id: 'Europe/Paris', label: 'GMT +2:00' }
+  ];
+  selectedZone: string = '';
 
   public buildForm() {
     this.addcoursegroup = this.form.group({
@@ -1258,12 +1398,13 @@ export class AddCourseUserComponent implements OnInit {
       licenseno: ['', [Validators.required]],
       creditno: ['', [Validators.required]],
       languagename: ['', [Validators.required]],
-      case: ['', [Validators.required]]
+      case: ['', [Validators.required]],
+      timezone: ['', [Validators.required]]
 
     });
   }
   createdcasetype: string = '';
-  cesimCaseOptions:string[] = [];
+  cesimCaseOptions: string[] = [];
   yourCaseOptions: string[] = [];
   onCaseChange(event: Event) {
     const selectedValue = (event.target as HTMLSelectElement).value;
@@ -1277,11 +1418,13 @@ export class AddCourseUserComponent implements OnInit {
     }
   }
   onSelectSimulation(event: Event) {
-    const simulationName =(event.target as HTMLSelectElement).value;
+    const simulationName = (event.target as HTMLSelectElement).value;
     this.cesimCaseOptions = [];
-   
-    this.cesimCaseOptions = this.getCasesForSimulation(simulationName);
-    let apiName ="/primarycourse/fetchassigncaselist";
+    // if(simulationName == "Business Basics"){
+    //   this.cesimCaseOptions.push("Local tea shop case");
+    // }
+    this.cesimCaseOptions = this.simulationCaseServices.getCases(simulationName);
+    let apiName = "/primarycourse/fetchassigncaselist";
     let body = {
       email: this.data.email,
       caller: "webinstructor",
@@ -1290,14 +1433,14 @@ export class AddCourseUserComponent implements OnInit {
       searchtype: "yourcasefromadmin",
       instructorpanelid: 0,
       searchcontent: "",
-      coursedetailsid:0,
+      coursedetailsid: 0,
     }
     this._api.fetchYourCaseList(
-      body,apiName,
+      body, apiName,
     ).subscribe((data: any) => {
       if (data.status === "Success") {
         this.yourCaseOptions = [];
-        for(let i=0; i<data.resultList.length; i++){
+        for (let i = 0; i < data.resultList.length; i++) {
           this.yourCaseOptions.push(data.resultList[i].coursename);
         }
         // this.yourCaseOptions = data.resultList[0].coursename;
@@ -1306,41 +1449,22 @@ export class AddCourseUserComponent implements OnInit {
     });
   }
 
-  private getCasesForSimulation(simulationName: string): string[] {
-    const simulationCasesMap: { [key: string]: string[] } = {
-      'Business Basics': ['Local tea shop case'],
-      'Product & Consumer': ['Gaming case'],
-      'Change Management Module': ['Merger & Acquisition case'],
-      'Logistics': ['Local 4 PL case'],
-      'Financial Analysis': ['Automotive case'],
-      'Promotions & Segments': ['Fmcg case'],
-      'Sales & Target': ['Fmcg case'],
-      'Portfolio Management': ['Brokerage firm case'],
-      'Value Chain': ['Smartphone value case'],
-      'CVP Analysis': ['Garment manufacturing case'],
-      'Accounting': ['Local paper firm case'],
-      'Accounting Arabic': ['Local paper firm case'],
-      'Pricing': ['Airlines case'],
-      'Mergers & Acquisition': ['Automotive case'],
-      'HRP': ['Clothing online case'],
-      'Design Thinking': ['Smartphone case'],
-      'CRM': ['Technology case'],
-      'Innovation': ['Go to market tech case'],
-      'Ordering Basics': ['Art firm case'],
-      'STP': ['Smartphone design case'],
-      'Ecommerce': ['Clothing case'],
-      'Capital Budgeting': ['Insurance company case'],
-      'IT Management': ['Consulting case'],
-    };
-    return simulationCasesMap[simulationName] || [];
-  }
-
   courseassign() {
     this.checkloading = true;
     if (this.addcoursegroup.valid) {
       if ((this.addcoursegroup.value.licenseno > 0) &&
         (this.addcoursegroup.value.creditno >= 0 && this.addcoursegroup.value.creditno <= 20)) {
         this.isButtonDisabled = true;
+        const selectedZoneId = this.addcoursegroup.value.timezone;
+        const selectedZoneObj = this.zones.find(z => z.id === selectedZoneId);
+
+        if (!selectedZoneObj) {
+          this._alert.error("Please select a timezone");
+          this.checkloading = false;
+          return;
+        }
+        const timezoneId = selectedZoneObj.id;
+        const timezoneLabel = selectedZoneObj.label;
         let body = {
           email: this.useremail,
           instructormailid: this.data.email.toLowerCase(),
@@ -1358,6 +1482,8 @@ export class AddCourseUserComponent implements OnInit {
           gamelanguage: this.addcoursegroup.value.languagename,
           createdcasename: this.addcoursegroup.value.case,
           createdcasetype: this.createdcasetype,
+          timezoneid: timezoneLabel,
+          timezone: timezoneId
         };
         console.log("body", body);
 

@@ -86,7 +86,7 @@
                                     <input class="checkfrominput_new" type="checkbox" value="index"
                                         id="flexCheckDefault"
                                         [checked]="(result.ecommercegamedata)?(result.ecommercegamedata[item.cellvalue1]===1):false"
-                                        (click)="writemarketingvalue(item.cellvalue1,'checkbox',$event,'','','')" />
+                                        (click)="writemarketingvalue(item.cellvalue1,'checkbox',$event,'','','')" [disabled]="inputDisabled"/>
                                     <label class="form-check-label" for="flexCheckDefault">
                                     </label>
                                 </div>
@@ -153,7 +153,7 @@
                                         <input class="checkfrominput_new" type="checkbox" value="index"
                                             id="flexCheckDefault"
                                             [checked]="(result.ecommercegamedata)?(result.ecommercegamedata[item.cellvalue]===1):false"
-                                            (click)="writemarketingvalue(item.cellvalue,'checkbox',$event,'','','')" />
+                                            (click)="writemarketingvalue(item.cellvalue,'checkbox',$event,'','','')" [disabled]="inputDisabled"/>
                                     </div>
                                 </div>
                                 <div class="routesandtechcostcard pb-3">
@@ -164,7 +164,7 @@
                                     <input class="checkfrominput_new" type="checkbox" value="index"
                                         id="flexCheckDefault"
                                         [checked]="(result.ecommercegamedata)?(result.ecommercegamedata[item.costvalue]===1):false"
-                                        (click)="writemarketingvalue(item.costvalue,'checkbox',$event,'','','')" />
+                                        (click)="writemarketingvalue(item.costvalue,'checkbox',$event,'','','')" [disabled]="inputDisabled"/>
                                     <label class="form-check-label" for="flexCheckDefault">
                                     </label>
                                 </div>
@@ -231,7 +231,7 @@
                                         <input class="checkfrominput_new" type="checkbox" value="index"
                                             id="flexCheckDefault"
                                             [checked]="(result.ecommercegamedata)?(result.ecommercegamedata[item.cellvalue]===1):false"
-                                            (click)="writemarketingvalue(item.cellvalue,'checkbox',$event,'','','')" />
+                                            (click)="writemarketingvalue(item.cellvalue,'checkbox',$event,'','','')" [disabled]="inputDisabled"/>
                                     </div>
                                 </div>
                                 <div class="routesandtechcostcard pb-3">
@@ -242,7 +242,7 @@
                                     <input class="checkfrominput_new" type="checkbox" value="index"
                                         id="flexCheckDefault"
                                         [checked]="(result.ecommercegamedata)?(result.ecommercegamedata[item.costvalue]===1):false"
-                                        (click)="writemarketingvalue(item.costvalue,'checkbox',$event,'','','')" />
+                                        (click)="writemarketingvalue(item.costvalue,'checkbox',$event,'','','')" [disabled]="inputDisabled"/>
                                     <label class="form-check-label" for="flexCheckDefault">
                                     </label>
                                 </div>
@@ -368,8 +368,7 @@
                                 <div class="routesandtechcostcard pb-3">
                                     <h3>Priority</h3>
                                     <select class="input-no_box-drop_New" [(ngModel)]="selectedOption[a]"
-                                    (change)="writemarketingvalue(item.priority, 'select', $event, '', '', '')">
-                                    >
+                                    (change)="writemarketingvalue(item.priority, 'select', $event, '', '', '')" [disabled]="inputDisabled">
                                         <option value="" selected disabled>Select Your Option</option>
                                         <option *ngFor="let option of options" [value]="option">{{option}}</option>
                                     </select>
@@ -383,7 +382,7 @@
                                     </label>
                                     <select class="input-no_box-drop_New" [id]="'carddrop-' + a"
                                         [(ngModel)]="campaigncardOption[a]"
-                                        (change)="writemarketingvalue(item.leadcell, 'select', $event, '', '', '')">
+                                        (change)="writemarketingvalue(item.leadcell, 'select', $event, '', '', '')" [disabled]="inputDisabled"
                                         >
                                         <option value="" selected disabled hidden>Select Your Option</option>
                                         <option *ngFor="let item of campaigncard" [value]="item">{{item}}</option>

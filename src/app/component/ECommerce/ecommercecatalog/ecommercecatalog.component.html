@@ -60,7 +60,7 @@
                   <td style="text-align: center; height: 2rem; vertical-align: middle;">
                     <input style="float: none;" class="checkfrominput_new" type="checkbox"
                       [checked]="result.ecommercegamedata?result.ecommercegamedata[row[0]]===1:false"
-                      (click)="writegameData($event,row[0],'catalog')" />
+                      (click)="writegameData($event,row[0],'catalog')" [disabled]="inputDisabled"/>
                   </td>
 
 
@@ -131,7 +131,7 @@
 
                     <input type="checkbox"
                       [checked]="result.ecommercegamedata?(result.ecommercegamedata[table.inputcell]===1?true:false):false"
-                      (click)="writegameData($event,table.inputcell,'supplier')" />
+                      (click)="writegameData($event,table.inputcell,'supplier')"  [disabled]="inputDisabled"/>
                   </td>
                 </tr>
               </tbody>
@@ -199,7 +199,7 @@
                   <td>
                     <input class="input-no_box" type="number"
                       [ngModel]="(result.ecommercegamedata[row[3]]*100)|number:'1.0-0'"
-                      (focusout)="writegameData($event,row[3],'price1')" />
+                      (focusout)="writegameData($event,row[3],'price1')" [disabled]="inputDisabled"/>
                   </td>
                   <td>
                     {{result.ecommercegamedata[row[4]]|number:'1.0-0'}}
@@ -207,7 +207,7 @@
                   <td>
 
                     <input class="input-no_box" type="number" [ngModel]="(result.ecommercegamedata[row[5]]*100)|number:'1.0-0'"
-                      (focusout)="writegameData($event,row[5],'price2')" />
+                      (focusout)="writegameData($event,row[5],'price2')" [disabled]="inputDisabled"/>
                   </td>
                   <td>
                     {{result.ecommercegamedata[row[6]]|number:'1.0-0'}}
@@ -275,7 +275,7 @@
                   <td>
 
                     <input class="input-no_box" type="number" [ngModel]="result.ecommercegamedata[row[3]]"
-                      (focusout)="writegameData($event,row[3],'order')" />
+                      (focusout)="writegameData($event,row[3],'order')" [disabled]="inputDisabled"/>
                   </td>
                   <td>
                     {{result.ecommercegamedata[row[4]]|number:'1.0-0'}}

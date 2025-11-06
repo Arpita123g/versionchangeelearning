@@ -14,11 +14,40 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { PromotionsigmentnewcampaignsComponent } from '../promotionsigmentnewcampaigns/promotionsigmentnewcampaigns.component';
+import { PromotionsigmentnewchannelsComponent } from '../promotionsigmentnewchannels/promotionsigmentnewchannels.component';
+import { PromotionsigmentnewcommunicationmixComponent } from '../promotionsigmentnewcommunicationmix/promotionsigmentnewcommunicationmix.component';
+import { PromotionsigmentnewdecisionchecklistComponent } from '../promotionsigmentnewdecisionchecklist/promotionsigmentnewdecisionchecklist.component';
+import { PromotionsigmentnewfoodforthoughtComponent } from '../promotionsigmentnewfoodforthought/promotionsigmentnewfoodforthought.component';
+import { PromotionsigmentnewreportComponent } from '../promotionsigmentnewreport/promotionsigmentnewreport.component';
+import { PromotionsigmentnewmarketComponent } from '../promotionsigmentnewmarket/promotionsigmentnewmarket.component';
+import { PromotionsigmentnewsynopsisComponent } from '../promotionsigmentnewsynopsis/promotionsigmentnewsynopsis.component';
+import { ReadingComponent } from 'src/app/common/reading/reading.component';
+import { MicrosimleaderboardgeneralComponent } from 'src/app/common/microsimleaderboardgeneral/microsimleaderboardgeneral.component';
+import { ForumcourseComponent } from 'src/app/common/forumcourse/forumcourse.component';
+import { ForumindividualComponent } from 'src/app/common/forumindividual/forumindividual.component';
+import { PromotionsigmentnewintroductionComponent } from '../promotionsigmentnewintroduction/promotionsigmentnewintroduction.component';
+import { PromotionsigmentnewmarketresearchComponent } from '../promotionsigmentnewmarketresearch/promotionsigmentnewmarketresearch.component';
 
 @Component({
   selector: 'app-promotionsigmentnewheader',
   standalone: true,
-  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule,
+    PromotionsigmentnewintroductionComponent,
+    PromotionsigmentnewcampaignsComponent,
+    PromotionsigmentnewchannelsComponent,
+    PromotionsigmentnewcommunicationmixComponent,
+    PromotionsigmentnewdecisionchecklistComponent,
+    PromotionsigmentnewfoodforthoughtComponent,
+    PromotionsigmentnewmarketresearchComponent,
+    PromotionsigmentnewmarketComponent,
+    PromotionsigmentnewreportComponent,
+    PromotionsigmentnewsynopsisComponent,
+    ReadingComponent,
+    MicrosimleaderboardgeneralComponent,
+    ForumcourseComponent,
+    ForumindividualComponent
+  ],
   templateUrl: './promotionsigmentnewheader.component.html',
   styleUrls: ['./promotionsigmentnewheader.component.scss']
 })

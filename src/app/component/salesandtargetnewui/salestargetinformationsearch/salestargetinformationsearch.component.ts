@@ -24,6 +24,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgxSimpleTextEditorModule } from 'ngx-simple-text-editor';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { DomSanitizer } from '@angular/platform-browser';
 
 interface barChart {
   series: ApexAxisChartSeries;
@@ -108,7 +109,8 @@ export class SalestargetinformationsearchComponent extends AbstractComponent {
   productgraphvaluestaticData = [11435, 9910, 7623, 9148]
   constructor(_router: Router, _login: LoginService,
     _global: GlobalService, _alert: SnackbaralertService, _api: ApiService,
-    _restapiservice: RestapiService, public dialog: MatDialog) {
+    _restapiservice: RestapiService, public dialog: MatDialog,
+    private sanitizer: DomSanitizer) {
     super(_login, _api, _alert, _global, _router, _restapiservice);
 
 
@@ -835,6 +837,7 @@ export class SalestargetinformationsearchComponent extends AbstractComponent {
   showShruti: boolean = false;
 
   rajasContent: string = "Rajas Shah is a dynamic and extroverted manager with an innate ability to connect and build relationships. His expertise lies in networking, making him an asset in the Modern Trade segment. Rajas thrives in social interactions and uses his extroverted nature to engage with clients, stakeholders, and team members. His enthusiasm and people skills contribute to his success in establishing and nurturing partnerships in the Modern Trade channel. With a penchant for creating connections, Rajas is well-suited to foster collaborative relationships and drive sales in this dynamic sector.";
+  // ruchitaContent: string = "Ruchita Roy, the HORECA manager, is characterized by her process-oriented approach and analytical mindset. She is a thinker personality who excels in carefully planning and executing strategies. Ruchita's strength lies in her ability to break down complex processes into manageable steps and ensure that every aspect of the HORECA channel is managed efficiently. Her logical thinking and attention to detail make her an ideal leader for a channel that demands precision and coordination. Ruchita's thoughtful approach ensures that the HORECA segment operates smoothly and <span style='font-weight: 500; color: black;'> aligns with the company's goals.</span>"
   ruchitaContent: string = "Ruchita Roy, the HORECA manager, is characterized by her process-oriented approach and analytical mindset. She is a thinker personality who excels in carefully planning and executing strategies. Ruchita's strength lies in her ability to break down complex processes into manageable steps and ensure that every aspect of the HORECA channel is managed efficiently. Her logical thinking and attention to detail make her an ideal leader for a channel that demands precision and coordination. Ruchita's thoughtful approach ensures that the HORECA segment operates smoothly and aligns with the company's goals."
   shrutiContent: string = "Shruti Mishra is a natural leader with a harmonizer personality that brings balance and unity to her role as the Retail Manager. Her inherent leadership qualities and ability to bring diverse individuals together are her strengths. Shruti fosters a sense of teamwork and collaboration within her team, ensuring that everyone works cohesively toward shared objectives. Her harmonizing nature enables her to mediate conflicts and create a positive working environment in the Retail segment. With Shruti's leadership, the retail channel not only achieves its sales targets but also functions smoothly and harmoniously."
   rajasButtonColor: string = 'blue';
@@ -863,6 +866,14 @@ export class SalestargetinformationsearchComponent extends AbstractComponent {
       return this.rajasContent.slice(0, 150) + "...";
     }
   }
+  // getRuchitaContent() {
+    // if (this.showRuchita) {
+    //   return this.sanitizer.bypassSecurityTrustHtml(this.ruchitaContent);
+    // } else {
+    //   return this.sanitizer.bypassSecurityTrustHtml(this.ruchitaContent.slice(0, 150) + "...");
+    // }
+
+  // }
   getRuchitaContent() {
     if (this.showRuchita) {
       return this.ruchitaContent;

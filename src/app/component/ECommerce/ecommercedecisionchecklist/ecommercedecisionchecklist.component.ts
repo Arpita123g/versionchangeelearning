@@ -434,7 +434,8 @@ export class EcommercedecisionchecklistComponent extends AbstractComponent {
           kpivaluearray: this.kpivaluearray,
 
         },
-        panelClass: 'custom-dialog-container'
+        panelClass: 'custom-dialog-container',
+        position:{top:'20px'}
       });
 
       dialogRef.afterClosed().subscribe(result => {
@@ -455,7 +456,7 @@ export class EcommercedecisionchecklistComponent extends AbstractComponent {
 @Component({
   selector: 'app-ecommercedecisionchecliecommerceopup',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, MatButtonModule, RouterModule],
+  imports: [CommonModule, MatDialogModule, MatButtonModule, RouterModule,FormsModule],
   templateUrl: './ecommercedecisioncheclistpopup.html',
   styleUrls: ['./ecommercedecisionchecklist.component.scss']
 })

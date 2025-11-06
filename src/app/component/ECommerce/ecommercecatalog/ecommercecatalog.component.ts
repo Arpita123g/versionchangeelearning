@@ -27,6 +27,7 @@ import {
 } from 'ng-apexcharts';
 import { MatIconModule } from '@angular/material/icon';
 import { TippyDirective } from 'src/app/common/directive/tippy.directive';
+import { FormsModule } from '@angular/forms';
 interface barChart {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -43,7 +44,8 @@ interface barChart {
 @Component({
   selector: 'app-ecommercecatalog',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, RouterModule, MatButtonModule, NgApexchartsModule, MatIconModule, TippyDirective],
+  imports: [CommonModule, MatDialogModule, RouterModule, MatButtonModule,
+     NgApexchartsModule, MatIconModule, TippyDirective,FormsModule],
   templateUrl: './ecommercecatalog.component.html',
   styleUrls: ['./ecommercecatalog.component.scss']
 })

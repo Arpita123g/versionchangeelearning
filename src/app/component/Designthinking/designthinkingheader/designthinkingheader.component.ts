@@ -26,11 +26,13 @@ import { ReadingComponent } from 'src/app/common/reading/reading.component';
 import { MicrosimleaderboardgeneralComponent } from 'src/app/common/microsimleaderboardgeneral/microsimleaderboardgeneral.component';
 import { ForumindividualComponent } from 'src/app/common/forumindividual/forumindividual.component';
 import { ForumcourseComponent } from 'src/app/common/forumcourse/forumcourse.component';
+import { DesignthinkingintroductionComponent } from '../designthinkingintroduction/designthinkingintroduction.component';
 
 @Component({
   selector: 'app-designthinkingheader',
   standalone: true,
   imports: [CommonModule, MatDialogModule, RouterModule, MatIconModule, MatTooltipModule,
+    DesignthinkingintroductionComponent,
     DesignthinkingdecisionchecklistComponent,
     DesignthinkingobserveComponent,
     DesignthinkingempathizeComponent,

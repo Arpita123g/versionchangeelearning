@@ -12,11 +12,12 @@ import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 
 @Component({
   selector: 'app-promotionsigmentnewsynopsis',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatIconModule],
+  imports: [CommonModule, FormsModule, MatIconModule,TippyDirective],
   templateUrl: './promotionsigmentnewsynopsis.component.html',
   styleUrls: ['./promotionsigmentnewsynopsis.component.scss'],
   animations: [

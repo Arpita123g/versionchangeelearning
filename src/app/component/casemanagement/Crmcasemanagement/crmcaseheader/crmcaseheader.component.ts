@@ -11,6 +11,8 @@ import { CrmcaseleadComponent } from '../crmcaselead/crmcaselead.component';
 import { CrmcasemarketComponent } from '../crmcasemarket/crmcasemarket.component';
 import { CrmcaseinformationComponent } from '../crmcaseinformation/crmcaseinformation.component';
 import { CrmcasemoduleComponent } from '../crmcasemodule/crmcasemodule.component';
+import { CrmcasefoodforthoughtComponent } from '../crmcasefoodforthought/crmcasefoodforthought.component';
+import { CrmcaseresourceComponent } from '../crmcaseresource/crmcaseresource.component';
 
 @Component({
   selector: 'app-crmcaseheader',
@@ -21,6 +23,8 @@ import { CrmcasemoduleComponent } from '../crmcasemodule/crmcasemodule.component
     CrmcaseinformationComponent,
     CrmcaseleadComponent,
     CrmcasemoduleComponent, 
+    CrmcasefoodforthoughtComponent,
+    CrmcaseresourceComponent
   ],
   templateUrl: './crmcaseheader.component.html',
   styleUrls: ['./crmcaseheader.component.scss']

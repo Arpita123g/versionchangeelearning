@@ -15,6 +15,7 @@ import { SharedserviceService } from 'src/app/service/sharedservice.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
 import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 import { NgxSimpleTextEditorModule } from 'ngx-simple-text-editor';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-crmcasemarket',
@@ -35,19 +36,22 @@ export class CrmcasemarketComponent extends AbstractComponent {
   config: EditorConfig = {
     buttons: [],
   };
-
   selectedLanguage: string = "english";
-  attempt: string = "1";
+  Instructorelementdetailssub: Subscription;
+  instructorcarddetails: any = [];
 
   constructor(_router: Router, _login: LoginService,
     _global: GlobalService, _alert: SnackbaralertService, _api: ApiService,
-    _restapiservice: RestapiService, public dialog: MatDialog,    private sharedState: SharedserviceService
-    ) {
+    _restapiservice: RestapiService, public dialog: MatDialog) {
     super(_login, _api, _alert, _global, _router, _restapiservice);
+    this.Instructorelementdetailssub = this._global.instructorelementdetails.subscribe((data) => {
+      this.instructorcarddetails = data;
+    });
   }
 
   override ngOnInit(): void {
     // this.defaultcase = this.casemanagementcoursedata.defaultcase;
+    this.getOutlookData();
      let caseType = localStorage.getItem('selectedTab')
     if ((caseType == 'cesimcase') || (caseType == 'sharedcase')) {
       this.defaultcase = 'yes'
@@ -55,80 +59,61 @@ export class CrmcasemarketComponent extends AbstractComponent {
       this.defaultcase = 'no'
 
     }
-    // this.getOutlookData(this.attempt, this.selectedLanguage);
+   
+  }
 
+  getOutlookData() {
 
-    this.sharedState.selectedLanguage$.subscribe(lang => {
-      this.selectedLanguage = lang;
-      this.tryFetching();
-    });
+    let getSelectTab = localStorage.getItem('selectedTab');
+    if (getSelectTab == 'cesimcase')  {
+      let apiname = "/crmgamemaster/fetchcrmgamemaster"
+      this._api.fetchaCaseFromMaster1(this.instructorcarddetails.courseDetails.simulation, this.instructorcarddetails.courseDetails.createdcasename, this.instructorcarddetails.coursedetailsid).subscribe(
+        {
+          next: (data: any) => {
+            if (data.status == "Success") {
+              if (data.resultList != null) {
+                for (let i = 0; i < data.resultList.length; i++) {
+                  let outlookdata = data.resultList[i].b5;
+                  this.outlooktextcontent[i] = outlookdata;
   
-    this.sharedState.attempt$.subscribe(attempt => {
-      this.attempt = attempt;
-      this.tryFetching();
-    });
-  }
-
-  tryFetching() {
-    if (this.selectedLanguage && this.attempt) {
-      this.getOutlookData(this.attempt, this.selectedLanguage);
-    }
-  }
-
-  // getOutlookData() {
-  //   // let apiname = "/crmgamecm/fetchcrmgamecm"
-  //   let apiname = "/crmgamelm/fetchcrmgamelm";
-
-  //   this._api.fetchCaseManagementData(apiname).subscribe(
-  //     {
-  //       next: (data: any) => {
-  //         if (data.status == "Success") {
-  //           if (data.resultList != null) {
-  //             for (let i = 0; i < data.resultList.length; i++) {
-  //               // let outlookdata = data.resultList[i].b5;
-  //               let outlookdata = data.resultList[i].b23;
-
-  //               this.outlooktextcontent[i] = outlookdata;
-
-  //             }
-  //             this.contentvalue = this.outlooktextcontent[0];
-  //           }
-
-  //         }
-  //       }, error: (error: any) => {
-  //         this.checkloading = false;
-  //         this.driveerrorLog(error, apiname);
-  //       }
-  //     })
-  // }
-
-  // for market coming from language...
-  getOutlookData(attempt: string, selectedLanguage: string) {
-    let apiname = "/crmgamelm/fetchcrmgamelm";
-
-    this._api.fetchgamelm(apiname, this.attempt, selectedLanguage).subscribe(
-      {
-        next: (data: any) => {
-          if (data.status == "Success") {
-            if (data.resultList != null) {
-              for (let i = 0; i < data.resultList.length; i++) {
-                let outlookdata = data.resultList[i][selectedLanguage].b23;
-                // this.outlooktextcontent[i] = outlookdata;
-                this.outlooktextcontent[i] = outlookdata.replace(/\n/g, '<br>');
+                }
+                this.contentvalue = this.outlooktextcontent[0];
               }
-              this.contentvalue = this.outlooktextcontent[0];
+  
             }
+  
+  
+          }, error: (error: any) => {
             this.checkloading = false;
-
+            this.driveerrorLog(error, apiname);
           }
-        }, error: (error: any) => {
-          this.checkloading = false;
-          this.driveerrorLog(error, apiname);
-        }
-      })
-  }
+        })
+    } else {
+      let apiname = "/crmgamecm/fetchcrmgamecm"
+      this._api.fetchCaseManagementData(apiname).subscribe(
+        {
+          next: (data: any) => {
+            if (data.status == "Success") {
+              if (data.resultList != null) {
+                for (let i = 0; i < data.resultList.length; i++) {
+                  let outlookdata = data.resultList[i].b5;
+                  this.outlooktextcontent[i] = outlookdata;
+  
+                }
+                this.contentvalue = this.outlooktextcontent[0];
+              }
+  
+            }
+          }, error: (error: any) => {
+            this.checkloading = false;
+            this.driveerrorLog(error, apiname);
+          }
+        })
+    }
 
- 
+
+   
+  }
 
   contentvaluechange() {
     let round = this.selectedround;
@@ -158,15 +143,6 @@ export class CrmcasemarketComponent extends AbstractComponent {
 
   }
 
-  // roundclick(index: number, round: string) {
-  //   this.selectedButton = round;
-  //   this.checked = !this.checked;
-  //   this.selectedround = index + 1;
-  //   // this.headingvalue = this.outlooktextheading[index];
-  //   this.contentvalue = this.outlooktextcontent[index];
-    
-
-  // }
   roundclick(index: number, round: string) {
     this.selectedButton = round;
     this.checked = !this.checked;
@@ -174,10 +150,6 @@ export class CrmcasemarketComponent extends AbstractComponent {
     // this.headingvalue = this.outlooktextheading[index];
     this.contentvalue = this.outlooktextcontent[index];
 
-
-    // this.selectedRound = round;
-    let attemptNumber = this.selectedButton.split(" ");
-    this.attempt = attemptNumber[1];
-    this.getOutlookData( this.attempt,this.selectedLanguage)
   }
+
 }

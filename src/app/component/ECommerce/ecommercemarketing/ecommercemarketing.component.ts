@@ -13,11 +13,13 @@ import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
 import { EcommercefoodforthoughtComponent } from '../ecommercefoodforthought/ecommercefoodforthought.component';
 import { TippyDirective } from 'src/app/common/directive/tippy.directive';
 import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-ecommercemarketing',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, RouterModule, MatButtonModule, MatIconModule, TippyDirective],
+  imports: [CommonModule, MatDialogModule, RouterModule,
+     MatButtonModule, MatIconModule, TippyDirective,FormsModule],
   templateUrl: './ecommercemarketing.component.html',
   styleUrls: ['./ecommercemarketing.component.scss']
 })

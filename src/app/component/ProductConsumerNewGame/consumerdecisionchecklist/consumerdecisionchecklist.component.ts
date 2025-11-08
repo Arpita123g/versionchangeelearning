@@ -425,12 +425,12 @@ export class ConsumerdecisionchecklistComponent extends AbstractComponent {
 
 }
 
-
-// decision checklist popup...............
 @Component({
   selector: 'app-consumerdecisionchecklistpopup',
-  templateUrl: './consumerdecisionchecklistpopup.html',
-  styleUrls: ['./consumerdecisionchecklist.component.scss']
+  standalone:true,
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
 
 })
 export class ConsumerdecisionchecklistpopupComponent extends AbstractComponent {

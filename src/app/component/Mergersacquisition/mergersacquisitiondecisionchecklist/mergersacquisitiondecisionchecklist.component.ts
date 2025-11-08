@@ -11,6 +11,8 @@ import { SharedserviceService } from 'src/app/service/sharedservice.service';
 import { SnackbaralertService } from 'src/app/service/snackbaralert.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @Component({
   selector: 'app-mergersacquisitiondecisionchecklist',
@@ -756,14 +758,12 @@ export class MergersacquisitiondecisionchecklistComponent extends AbstractCompon
 
 }
 
-
-// Mergersacquisitionpopup............
-
-
 @Component({
   selector: 'app-mergersacquisitionpopup',
-  templateUrl: './mergersacquisitionpopup.html',
-  styleUrls: ['./mergersacquisitiondecisionchecklist.component.scss']
+  standalone:true,
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
 })
 export class MergersacquisitionpopupComponent extends AbstractComponent {
   showtab: boolean = true;

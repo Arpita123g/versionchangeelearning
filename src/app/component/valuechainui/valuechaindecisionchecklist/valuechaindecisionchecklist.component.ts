@@ -627,15 +627,13 @@ export class ValuechaindecisionchecklistComponent extends AbstractComponent {
 }
 
 
-
-// popup...........
-
 @Component({
   selector: 'app-valuechaindecisinchecklistPopup',
   standalone: true,
   imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
-  templateUrl: './valuechaindecisinchecklistPopup.html',
-  styleUrls: ['./valuechaindecisionchecklist.component.scss']
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+
 
 })
 

@@ -40,12 +40,12 @@ export class StpgamesynopsisComponent extends AbstractComponent {
   dropdownvalue: any = [];
   submitprove: string = "";
   retry: string = "";
-  disabled: boolean = false;
+  // disabled: boolean = false;
   coursename: string = "";
   feedbackvalue: string = "";
   optionalcase: any = ["foodforthoughtstatus"];
   state: string = 'default';
-  isButtonDisabled: boolean = false;
+  // isButtonDisabled: boolean = false;
   databasecellname: string[] = [
     "cj8", "cj9", "cj10", "cj11", "cj12", "cj13", "cj14", "cj15", "cj16", "cj17", "cj18", //10
     "ck8", "ck9", "ck10", "ck11", "ck12", "ck13", "ck14", "ck15", "ck16", "ck17", "ck18", //21
@@ -124,7 +124,7 @@ export class StpgamesynopsisComponent extends AbstractComponent {
                 }
               }
               if ((this.submitprove == "no") || (this.submitprove == "No") || (this.submitprove == null)) {
-                this.disabled = true;
+                this.isdisabled = true;
                 this.getFetchData(String(Number(this.noofattempt) - 1));
               } else {
                 let attempt = data.resultList[0].attempt;
@@ -203,51 +203,51 @@ export class StpgamesynopsisComponent extends AbstractComponent {
     this.getFetchData(attempt[1]);
   }
 
-  exit() {
-    this.isButtonDisabled = true;
-    if (this.studentelementdetailsvalue.numberofattemptsleft == 0) {
-      this._router.navigate(['auth/component/studentdashboardheader']);
-    } else {
-      if (this.disabled == false) {
-        this.checkloading = true;
+  // exit() {
+  //   this.isButtonDisabled = true;
+  //   if (this.studentelementdetailsvalue.numberofattemptsleft == 0) {
+  //     this._router.navigate(['auth/component/studentdashboardheader']);
+  //   } else {
+  //     if (this.disabled == false) {
+  //       this.checkloading = true;
 
-       let body = {
-          email: this.useremail,
-          usermode: "student",
-          caller: "student",
-          action: "update",
-          coursecode: this.coursecode,
-          spreadsheetid: this.studentspreadsheetid,
-          currentround:Number(this.noofattempt)
-        };
-        this._login.updatecourseattempt(body).subscribe((data: any) => {
-          if (data.status == 'Success') {
-            let status = "exit";
-            this._login.sendDrivemailLog(status).subscribe(
-              {
-                next: (data: any) => {
-                  this._login.exitOnLastAttempt();
-                  this._router.navigate(['auth/component/studentdashboardheader']);
+  //      let body = {
+  //         email: this.useremail,
+  //         usermode: "student",
+  //         caller: "student",
+  //         action: "update",
+  //         coursecode: this.coursecode,
+  //         spreadsheetid: this.studentspreadsheetid,
+  //         currentround:Number(this.noofattempt)
+  //       };
+  //       this._login.updatecourseattempt(body).subscribe((data: any) => {
+  //         if (data.status == 'Success') {
+  //           let status = "exit";
+  //           this._login.sendDrivemailLog(status).subscribe(
+  //             {
+  //               next: (data: any) => {
+  //                 this._login.exitOnLastAttempt();
+  //                 this._router.navigate(['auth/component/studentdashboardheader']);
 
-                }, error: (error: any) => {
-                  this.isButtonDisabled = false;
-                  this.checkloading = false;
-                  this.driveerrorLog(error, "/maillog/drivemaillog");
-                }
-              })
+  //               }, error: (error: any) => {
+  //                 this.isButtonDisabled = false;
+  //                 this.checkloading = false;
+  //                 this.driveerrorLog(error, "/maillog/drivemaillog");
+  //               }
+  //             })
 
-          }
-        }, (error: any) => {
-          this.isButtonDisabled = false;
-          this.checkloading = false;
-          this.driveerrorLog(error, '/student/updatecourseattempt');
-        })
-      } else {
-        this.isButtonDisabled = false;
-        this._alert.error("Please submit your decisions first")
-      }
-    }
-  }
+  //         }
+  //       }, (error: any) => {
+  //         this.isButtonDisabled = false;
+  //         this.checkloading = false;
+  //         this.driveerrorLog(error, '/student/updatecourseattempt');
+  //       })
+  //     } else {
+  //       this.isButtonDisabled = false;
+  //       this._alert.error("Please submit your decisions first")
+  //     }
+  //   }
+  // }
 
 
   downloadreporthrpgame() {

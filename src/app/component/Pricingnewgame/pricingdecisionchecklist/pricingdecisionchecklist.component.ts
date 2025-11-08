@@ -369,15 +369,13 @@ export class PricingdecisionchecklistComponent extends AbstractComponent {
 
 }
 
-
-// pricing popup
-
 @Component({
   selector: 'app-pricingpopup',
   standalone:true,
   imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
-  templateUrl: './pricingpopup.html',
-  styleUrls: ['./pricingdecisionchecklist.component.scss']
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+
 })
 export class PricingpopupComponent extends AbstractComponent {
   showtab: boolean = true;

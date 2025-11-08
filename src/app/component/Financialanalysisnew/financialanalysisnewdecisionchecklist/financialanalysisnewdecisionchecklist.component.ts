@@ -707,16 +707,13 @@ export class FinancialanalysisnewdecisionchecklistComponent extends AbstractComp
 }
 
 
-
-// popup ...........
-
-
 @Component({
   selector: 'app-financialanalysisnewdecisionchecklistpopup.component',
   standalone: true,
   imports: [CommonModule, MatDialogModule, MatButtonModule, RouterModule],
-  templateUrl: './financialanalysisnewpopup.component.html',
-  styleUrls: ['./financialanalysisnewdecisionchecklist.component.scss']
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+
 })
 
 export class Financialanalysisnewdecisionchecklistpopup extends AbstractComponent {

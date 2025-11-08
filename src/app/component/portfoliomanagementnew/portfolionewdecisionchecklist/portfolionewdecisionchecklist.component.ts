@@ -523,16 +523,13 @@ export class PortfolionewdecisionchecklistComponent extends AbstractComponent {
 }
 
 
-
-
-//.............pop-up....................          
-
 @Component({
   selector: 'app-portfolionewdecisionchecklistpopup',
   standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './portfolionewdecisionchecklistpopup.html',
-  styleUrls: ['./portfolionewdecisionchecklist.component.scss']
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+
 })
 
 export class Portfolionewdecisionchecklistpopup extends AbstractComponent {

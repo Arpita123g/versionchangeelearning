@@ -60,18 +60,6 @@ export class HrpgamedecisionchecklistComponent extends AbstractComponent {
   ];
 
 
-  // blankInputMessage: any = ['', 'Logistics & Supply Chain', 'Design & Production', 'Technical',
-  //   'Customer Experience', 'Administration', 'Online Job Portals', 'Campus Recruitment', 'Employee Referral Programs',
-  //   'Social Media and Company Website', 'Recruitment Agencies and Headhunters', 'Sales & Marketing, New Joinee Hike %',
-  //   'Logistics & Supply Chain, New Joinee Hike %', 'Design & Production, New Joinee Hike %', 'Technical, New Joinee Hike %',
-  //   'Customer Experience, New Joinee Hike %', 'Administration, New Joinee Hike %', 'Sales & Marketing, Existing Employee Hike %',
-  //   'Logistics & Supply Chain, Existing Employee Hike %', 'Design & Production, Existing Employee Hike %', 'Technical, Existing Employee Hike %',
-  //   'Customer Experience, Existing Employee Hike %', 'Administration, Existing Employee Hike %', 'Digital Marketing Mastery',
-  //   'Advanced E-commerce Analytics', 'Augmented Reality (AR) in Fashion E-commerce', 'Customer Service Excellence',
-  //   'Sustainable Fashion and Ethical Production', 'Remote Work Flexibility Policy', 'Continuous Learning and Development Policy',
-  //   'Comprehensive Health and Wellness Policy', 'Inclusive and Diverse Hiring Policy',
-  // ];
-
 
   constructor(_router: Router, _login: LoginService,
     _global: GlobalService, _alert: SnackbaralertService, _api: ApiService,
@@ -430,16 +418,13 @@ export class HrpgamedecisionchecklistComponent extends AbstractComponent {
 
 }
 
-
-// HrpGame Popup .......
-
-
 @Component({
   selector: 'app-hrpgamedecisionchecklistpopup',
   standalone: true,
   imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule, TippyDirective],
-  templateUrl: './hrpgamedecisionchecklistpopup.html',
-  styleUrls: ['./hrpgamedecisionchecklist.component.scss']
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+
 })
 
 export class HrpgamedecisionchecklistPopup extends AbstractComponent {

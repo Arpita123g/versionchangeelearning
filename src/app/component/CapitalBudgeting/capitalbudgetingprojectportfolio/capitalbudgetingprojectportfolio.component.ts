@@ -25,15 +25,6 @@ export class CapitalbudgetingprojectportfolioComponent extends AbstractComponent
   foodforthought: boolean = true;
   inputDisabled: boolean = false;
   result: any = [];
-  constructor(_router: Router, _login: LoginService,
-    _global: GlobalService, _alert: SnackbaralertService, _api: ApiService,
-    _restapiservice: RestapiService, public dialog: MatDialog) {
-    super(_login, _api, _alert, _global, _router, _restapiservice);
-  }
-
-  override ngOnInit(): void {
-    this.getFetchData();
-  }
   marketExpression = [
     {
       heading: "Global Outreach Initiative",
@@ -213,6 +204,18 @@ export class CapitalbudgetingprojectportfolioComponent extends AbstractComponent
       ExpectedRate: 'ap20',
     },
   ];
+
+  constructor(_router: Router, _login: LoginService,
+    _global: GlobalService, _alert: SnackbaralertService, _api: ApiService,
+    _restapiservice: RestapiService, public dialog: MatDialog) {
+    super(_login, _api, _alert, _global, _router, _restapiservice);
+  }
+
+  override ngOnInit(): void {
+    this.getFetchData();
+  }
+
+
 
   getFetchData() {
     let apiname = '/cbgame/fetchcbgame';

@@ -407,16 +407,13 @@ export class SalestargetdecisionchecklistComponent extends AbstractComponent {
 }
 
 
-
-
-// popup.................
-
 @Component({
   selector: 'app-salestargetpopup',
   standalone: true,
   imports: [CommonModule, FormsModule,MatDialogModule],
-  templateUrl: './salestargetpopup.html',
-  styleUrls: ['./salestargetdecisionchecklist.component.scss']
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+
 })
 
 export class SalesTargetpopuppopupComponent extends AbstractComponent {

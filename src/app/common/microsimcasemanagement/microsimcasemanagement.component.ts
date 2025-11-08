@@ -243,7 +243,7 @@ export class PrimarycourseselectpopupComponent {
 export class GamecopyComponent extends AbstractComponent {
   instructorpanelid: string = '';
   coursename: string = '';
-  isButtonDisabled: boolean = false;
+  // isButtonDisabled: boolean = false;
   protected data = inject(MAT_DIALOG_DATA);
   protected dialogRef = inject(MatDialogRef<GamecopyComponent>);
   myForm = new FormGroup({

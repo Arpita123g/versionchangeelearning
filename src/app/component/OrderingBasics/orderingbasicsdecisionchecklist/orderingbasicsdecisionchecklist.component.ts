@@ -328,8 +328,11 @@ export class OrderingbasicsdecisionchecklistComponent extends AbstractComponent 
 
 @Component({
   selector: 'app-orderingbasicsdecisionpopup',
-  templateUrl: './orderingbasicsdecisionpopup.html',
-  styleUrls: ['./orderingbasicsdecisionchecklist.component.scss']
+  standalone:true,
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+  
 })
 export class Orderingbasicsdecisionpopup extends AbstractComponent {
   resultarray: any = [];

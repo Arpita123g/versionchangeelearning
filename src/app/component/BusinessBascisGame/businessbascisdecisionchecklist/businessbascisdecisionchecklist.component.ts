@@ -281,8 +281,8 @@ export class BusinessbascisdecisionchecklistComponent extends AbstractComponent 
 
         },
         panelClass: 'centertop-dialog',
-        width: '520px',
-        maxWidth: '95vw',
+        // width: '520px',
+        // maxWidth: '95vw',
         position: { top: '20px' },
         
       });
@@ -318,7 +318,7 @@ export class BusinessbascisdecisionchecklistComponent extends AbstractComponent 
         width: '60%',
         data: this.errorlist,
         panelClass: 'centertop-dialog',
-        position: { top: '20px' }
+       
 
       });
       dialogRef.afterClosed().subscribe(result => {

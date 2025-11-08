@@ -121,14 +121,11 @@ export class CapitalbudgetingdecisionchecklistComponent extends AbstractComponen
               } for (let i = 14; i < 28; i++) {
                 this.previousResulList[i] = data.resultList[0].cbgamedata[this.tableData[1].body[i - 14].value];
               }
-
-
               this.getFetchData(this.noofattempt);
             }
 
           } else {
             this.checkloading = false;
-
           }
         }, error: (error: any) => {
           this.checkloading = false;
@@ -343,8 +340,9 @@ export class CapitalbudgetingdecisionchecklistComponent extends AbstractComponen
   selector: 'app-capitalbudgetingdecisionchecklistpopup',
   standalone: true,
   imports: [CommonModule, FormsModule, MatIconModule, TippyDirective],
-  templateUrl: './capitalbudgetingdecisionchecklistpopup.html',
-  styleUrls: ['./capitalbudgetingdecisionchecklist.component.scss']
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+
 })
 
 export class CapitalbudgetingdecisionchecklistPopup extends AbstractComponent {

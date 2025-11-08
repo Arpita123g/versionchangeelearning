@@ -384,8 +384,9 @@ export class DesignthinkingdecisionchecklistComponent extends AbstractComponent 
   selector: 'app-designthinkingpopup',
   standalone: true,
   imports: [CommonModule, MatDialogModule, MatButtonModule, RouterModule,FormsModule],
-  templateUrl: './designthinkingpopup.html',
-  styleUrls: ['./designthinkingdecisionchecklist.component.scss']
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+
 })
 
 export class DesignthinkingPopup extends AbstractComponent {

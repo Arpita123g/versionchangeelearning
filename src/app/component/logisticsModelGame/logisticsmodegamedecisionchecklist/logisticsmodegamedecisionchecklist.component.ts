@@ -413,18 +413,13 @@ export class LogisticsmodegamedecisionchecklistComponent extends AbstractCompone
   // }
 }
 
-
-
-///////////................
-
-
-
 @Component({
   selector: 'app-logisticsmodegamepopup',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './logisticsmodegamepopup.html',
-  styleUrls: ['./logisticsmodegamedecisionchecklist.component.scss']
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+
 })
 export class LogisticsmodegamepopupComponent extends AbstractComponent {
   showtab: boolean = true;

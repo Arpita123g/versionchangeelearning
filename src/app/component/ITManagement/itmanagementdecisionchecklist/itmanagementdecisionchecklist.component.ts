@@ -421,8 +421,9 @@ export class ItmanagementdecisionchecklistComponent extends AbstractComponent {
   selector: 'app-itmanagementdecisionchecklistpopup',
   standalone: true,
   imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
-  templateUrl: './itmanagementdecisionchecklistpopup.html',
-  styleUrls: ['./itmanagementdecisionchecklist.component.scss']
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+
 })
 export class ItmanagementdecisionchecklistPopup extends AbstractComponent {
   showtab: boolean = true;

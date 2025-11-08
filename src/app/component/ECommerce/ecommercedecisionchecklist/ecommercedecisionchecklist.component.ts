@@ -457,8 +457,9 @@ export class EcommercedecisionchecklistComponent extends AbstractComponent {
   selector: 'app-ecommercedecisionchecliecommerceopup',
   standalone: true,
   imports: [CommonModule, MatDialogModule, MatButtonModule, RouterModule,FormsModule],
-  templateUrl: './ecommercedecisioncheclistpopup.html',
-  styleUrls: ['./ecommercedecisionchecklist.component.scss']
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+
 })
 export class Ecommercedecisionchecliecommerceopup extends AbstractComponent {
   showtab: boolean = true;

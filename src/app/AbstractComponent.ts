@@ -300,6 +300,8 @@ export abstract class AbstractComponent implements OnInit {
   casemanagementid: number = 0;
   timerfinishedsub: Subscription;
   timefinished: boolean = false;
+  isButtonDisabled:boolean = false;
+  isdisabled:boolean = false;
 
   rounds = [
     'Round 1',
@@ -561,6 +563,51 @@ export abstract class AbstractComponent implements OnInit {
       });
   }
 
+  exit() {
+    this.isButtonDisabled = true;
+    if (this.studentelementdetailsvalue.numberofattemptsleft == 0) {
+      this._router.navigate(['auth/component/studentdashboardheader']);
+    } else {
+      if (this.isdisabled == false) {
+        this.checkloading = true;
+
+       let body = {
+          email: this.useremail,
+          usermode: "student",
+          caller: "student",
+          action: "update",
+          coursecode: this.coursecode,
+          spreadsheetid: this.studentspreadsheetid,
+          currentround:Number(this.noofattempt)
+        };
+        this._login.updatecourseattempt(body).subscribe((data: any) => {
+          if (data.status == 'Success') {
+            let status = "exit";
+            this._login.sendDrivemailLog(status).subscribe(
+              {
+                next: (data: any) => {
+                  this._login.exitOnLastAttempt();
+                  this._router.navigate(['auth/component/studentdashboardheader']);
+
+                }, error: (error: any) => {
+                  this.isButtonDisabled = false;
+                  this.checkloading = false;
+                  this.driveerrorLog(error, "/maillog/drivemaillog");
+                }
+              })
+
+          }
+        }, (error: any) => {
+          this.isButtonDisabled = false;
+          this.checkloading = false;
+          this.driveerrorLog(error, '/student/updatecourseattempt');
+        })
+      } else {
+        this.isButtonDisabled = false;
+        this._alert.error("Please submit your decisions first")
+      }
+    }
+  }
  
 
   ngOnDestroy() {

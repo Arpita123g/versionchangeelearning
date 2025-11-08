@@ -38,14 +38,14 @@ export class ValuechainsynopsisComponent extends AbstractComponent {
   dropdownvalue: any = [];
   submitprove: string = "";
   retry: string = "";
-  disabled: boolean = false;
+  // disabled: boolean = false;
   coursename: string = "";
   feedbackvalue: string = "";
   responseresult: any = [];
   optionalcase: any = ["foodforthoughtstatus", "componentsupplierstatus", "transportationstatus", "distributormarginsstatus", "innovationservicesstatus",];
   state: string = 'default';
   cashfromfinancing: number = 0;
-  isButtonDisabled: boolean = false;
+  // isButtonDisabled: boolean = false;
 
   constructor(_router: Router, _login: LoginService,
     _global: GlobalService, _alert: SnackbaralertService, _api: ApiService,
@@ -93,7 +93,7 @@ export class ValuechainsynopsisComponent extends AbstractComponent {
                 }
               }
               if ((this.submitprove == "no") || (this.submitprove == "No") || (this.submitprove == null)) {
-                this.disabled = true;
+                this.isdisabled = true;
                 this.getFetchData(String(Number(attempt) - 1));
               } else {
                 let attempt = data.resultList[0].attempt;
@@ -182,51 +182,51 @@ export class ValuechainsynopsisComponent extends AbstractComponent {
     this.getFetchData(attempt[1]);
   }
 
-  exit() {
-    this.isButtonDisabled = true;
-    if (this.studentelementdetailsvalue.numberofattemptsleft == 0) {
-      this._router.navigate(['auth/component/studentdashboardheader']);
-    } else {
-      if (this.disabled == false) {
-        this.checkloading = true;
+  // exit() {
+  //   this.isButtonDisabled = true;
+  //   if (this.studentelementdetailsvalue.numberofattemptsleft == 0) {
+  //     this._router.navigate(['auth/component/studentdashboardheader']);
+  //   } else {
+  //     if (this.disabled == false) {
+  //       this.checkloading = true;
 
-       let body = {
-          email: this.useremail,
-          usermode: "student",
-          caller: "student",
-          action: "update",
-          coursecode: this.coursecode,
-          spreadsheetid: this.studentspreadsheetid,
-          currentround:Number(this.noofattempt)
-        };
-        this._login.updatecourseattempt(body).subscribe((data: any) => {
-          if (data.status == 'Success') {
-            let status = "exit";
-            this._login.sendDrivemailLog(status).subscribe(
-              {
-                next: (data: any) => {
-                  this._login.exitOnLastAttempt();
-                  this._router.navigate(['auth/component/studentdashboardheader']);
+  //      let body = {
+  //         email: this.useremail,
+  //         usermode: "student",
+  //         caller: "student",
+  //         action: "update",
+  //         coursecode: this.coursecode,
+  //         spreadsheetid: this.studentspreadsheetid,
+  //         currentround:Number(this.noofattempt)
+  //       };
+  //       this._login.updatecourseattempt(body).subscribe((data: any) => {
+  //         if (data.status == 'Success') {
+  //           let status = "exit";
+  //           this._login.sendDrivemailLog(status).subscribe(
+  //             {
+  //               next: (data: any) => {
+  //                 this._login.exitOnLastAttempt();
+  //                 this._router.navigate(['auth/component/studentdashboardheader']);
 
-                }, error: (error: any) => {
-                  this.isButtonDisabled = false;
-                  this.checkloading = false;
-                  this.driveerrorLog(error, "/maillog/drivemaillog");
-                }
-              })
+  //               }, error: (error: any) => {
+  //                 this.isButtonDisabled = false;
+  //                 this.checkloading = false;
+  //                 this.driveerrorLog(error, "/maillog/drivemaillog");
+  //               }
+  //             })
 
-          }
-        }, (error: any) => {
-          this.isButtonDisabled = false;
-          this.checkloading = false;
-          this.driveerrorLog(error, '/student/updatecourseattempt');
-        })
-      } else {
-        this.isButtonDisabled = false;
-        this._alert.error("Please submit your decisions first")
-      }
-    }
-  }
+  //         }
+  //       }, (error: any) => {
+  //         this.isButtonDisabled = false;
+  //         this.checkloading = false;
+  //         this.driveerrorLog(error, '/student/updatecourseattempt');
+  //       })
+  //     } else {
+  //       this.isButtonDisabled = false;
+  //       this._alert.error("Please submit your decisions first")
+  //     }
+  //   }
+  // }
 
   downloadreportvaluechainigment() {
     let apiname = '/valuechain/fetchvaluechain';

@@ -385,14 +385,13 @@ export class StpgamedecisionchecklistComponent extends AbstractComponent {
 
 
 
-// stpgame popup
-
 @Component({
   selector: 'app-stpgamedecisionchecklistpopup',
   standalone: true,
   imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
-  templateUrl: './stpgamedecisionchecklistpopup.html',
-  styleUrls: ['./stpgamedecisionchecklist.component.scss']
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+
 })
 export class StpgamedecisionchecklistPopup extends AbstractComponent {
 

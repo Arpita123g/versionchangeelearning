@@ -351,8 +351,9 @@ export class ChangemanagementnewdecisionchecklistComponent extends AbstractCompo
   selector: 'app-changemanagementnewdecisionchecklistpopup',
   standalone: true,
   imports: [CommonModule, FormsModule, MatDialogModule],
-  templateUrl: './changemanagementnewdecisionchecklistpopup.component.html',
-  styleUrls: ['./changemanagementnewdecisionchecklist.component.scss']
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+
 })
 
 export class ChangemanagementnewdecisionchecklistpopupComponent extends AbstractComponent {

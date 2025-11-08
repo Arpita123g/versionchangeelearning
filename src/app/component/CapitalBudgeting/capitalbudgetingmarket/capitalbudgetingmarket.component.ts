@@ -21,11 +21,8 @@ import { NgxEditorModule } from 'ngx-editor';
 })
 export class CapitalbudgetingmarketComponent extends AbstractComponent {
   @Output() newEvent = new EventEmitter<any>();
-  outlooktextheading: any = []
   outlooktextcontent: any = []
   foodforthought: boolean = true;
-  topstatus: boolean = true;
-  headingvalue: string = '';
   contentvalue: string = '';
   result: any = [];
 
@@ -48,7 +45,12 @@ export class CapitalbudgetingmarketComponent extends AbstractComponent {
     this.fetchData();
   }
 
-  
+  formatValue(value: any, index: number): any {
+    if ([1, 3, 5, 7, 11, 13, 15, 17].includes(index)) {
+      return (parseFloat(value) * 100).toFixed(1) + '%';
+    }
+    return value;
+  }
 
   fetchData() {
     let apiname = '/cbgame/fetchcbgame';
@@ -83,12 +85,8 @@ export class CapitalbudgetingmarketComponent extends AbstractComponent {
         }
       })
   }
-  formatValue(value: any, index: number): any {
-    if ([1, 3, 5, 7, 11, 13, 15, 17].includes(index)) {
-      return (parseFloat(value) * 100).toFixed(1) + '%';
-    }
-    return value;
-  }
+
+  
   
   openDialog(): void {
     this.dialog.open(CapitalbudgetingfoodforthoughtComponent, {

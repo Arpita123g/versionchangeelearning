@@ -474,8 +474,9 @@ export class InnovationdecisionchecklistComponent extends AbstractComponent {
   selector: 'app-innovationdecisionchecklistpopup',
   standalone: true,
   imports: [CommonModule, MatDialogModule, RouterModule],
-  templateUrl: './innovationdecisionchecklistpopup.html',
-  styleUrls: ['./innovationdecisionchecklist.component.scss']
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+
 })
 export class InnovationdecisionchecklistPopup extends AbstractComponent {
 

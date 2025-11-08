@@ -619,8 +619,9 @@ export class HrmfintechDecisionchecklistComponent extends AbstractComponent {
   selector: 'app-hrmfintechpopup',
   standalone: true,
   imports: [CommonModule, MatDialogModule, RouterModule],
-  templateUrl: './hrmfintechpopup.html',
-  styleUrls: ['./hrmfintech-decisionchecklist.component.scss']
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+
 })
 
 export class Hrmfintechpopup extends AbstractComponent {

@@ -396,8 +396,9 @@ export class PromotionsigmentnewdecisionchecklistComponent extends AbstractCompo
   selector: 'app-promotionsigmentnewpopup',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './promotionsigmentnewpopup.html',
-  styleUrls: ['./promotionsigmentnewdecisionchecklist.component.scss']
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+
 })
 
 export class PromotionsigmentnewpopupComponent extends AbstractComponent {

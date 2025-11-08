@@ -393,8 +393,10 @@ export class HrpgamedecisionchecklistComponent extends AbstractComponent {
 
 @Component({
   selector: 'app-hrpgamedecisionchecklistpopup',
-  templateUrl: './hrpgamedecisionchecklistpopup.html',
-  styleUrls: ['./hrpgamedecisionchecklist.component.scss']
+  standalone:true,
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
 })
 
 export class HrpgamedecisionchecklistPopup extends AbstractComponent {

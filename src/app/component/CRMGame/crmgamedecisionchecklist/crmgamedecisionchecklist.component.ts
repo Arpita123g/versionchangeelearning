@@ -449,13 +449,14 @@ export class CrmgamedecisionchecklistComponent extends AbstractComponent {
   selector: 'app-crmgamedecisionsubmitpopup',
   standalone: true,
   imports: [CommonModule, FormsModule, MatIconModule, TippyDirective],
-  templateUrl: './crmgamedecisionsubmitpopup.html',
-  styleUrls: ['./crmgamedecisionchecklist.component.scss']
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+
 })
 export class CrmgamedecisionsubmitPopup extends AbstractComponent {
 
   showtab: boolean = true;
-  isButtonDisabled: boolean = false;
+  // isButtonDisabled: boolean = false;
 
   constructor(_router: Router, _login: LoginService,
     _global: GlobalService, _alert: SnackbaralertService, _api: ApiService,

@@ -23,6 +23,23 @@ import { MatIconModule } from '@angular/material/icon';
 export class CapitalbudgetingintroductionComponent extends AbstractComponent {
   foodforthought: boolean = true;
 
+  textLines: string[] = [
+    "You will start with a snapshot of the company you are going to manage and a glimpse into the economic climate. Key macroeconomic factors are highlighted to help you understand the financial context.",
+    "You are presented with a variety of projects, each with distinct characteristics and risk levels. The challenge lies in selecting projects that align with the company's goals and risk tolerance.",
+    "Faced with financial constraints, you have to strategically allocate funds among chosen projects to maximize returns while staying within the budgetary limits.",
+    "Post-implementation, a comprehensive report reveals the consequences of your choices, detailing the financial outcomes of projects and highlighting any unexpected events that may have influenced results.",
+  ]
+
+  truncatedText: string[] = this.textLines.map((text) => text.substring(0, 90) + (text.length > 90 ? '...' : ''));
+  showAll: boolean[] = [false, false, false, false, false, false];
+
+  cards = [
+    { title: 'Market', image: '../../../../assets/images/capitalbudgeting/market.svg', text: this.textLines[0], truncatedText: this.truncatedText[0], showAll: this.showAll },
+    { title: 'Project Portfolio', image: '.../../../../assets/images/capitalbudgeting/projectportfulio.svg', text: this.textLines[1], truncatedText: this.truncatedText[1], showAll: this.showAll },
+    { title: 'Decide', image: '../../../../assets/images/capitalbudgeting/decide.svg', text: this.textLines[2], truncatedText: this.truncatedText[2], showAll: this.showAll },
+    { title: 'Reports', image: '../../../../assets/images/capitalbudgeting/reports.svg', text: this.textLines[3], truncatedText: this.truncatedText[3], showAll: this.showAll },
+  ]
+
   constructor(_router: Router, _login: LoginService,
     _global: GlobalService, _alert: SnackbaralertService, _api: ApiService,
     _restapiservice: RestapiService, public dialog: MatDialog,
@@ -61,22 +78,7 @@ export class CapitalbudgetingintroductionComponent extends AbstractComponent {
       })
   }
 
-  textLines: string[] = [
-    "You will start with a snapshot of the company you are going to manage and a glimpse into the economic climate. Key macroeconomic factors are highlighted to help you understand the financial context.",
-    "You are presented with a variety of projects, each with distinct characteristics and risk levels. The challenge lies in selecting projects that align with the company's goals and risk tolerance.",
-    "Faced with financial constraints, you have to strategically allocate funds among chosen projects to maximize returns while staying within the budgetary limits.",
-    "Post-implementation, a comprehensive report reveals the consequences of your choices, detailing the financial outcomes of projects and highlighting any unexpected events that may have influenced results.",
-  ]
-
-  truncatedText: string[] = this.textLines.map((text) => text.substring(0, 90) + (text.length > 90 ? '...' : ''));
-  showAll: boolean[] = [false, false, false, false, false, false];
-
-  cards = [
-    { title: 'Market', image: '../../../../assets/images/capitalbudgeting/market.svg', text: this.textLines[0], truncatedText: this.truncatedText[0], showAll: this.showAll },
-    { title: 'Project Portfolio', image: '.../../../../assets/images/capitalbudgeting/projectportfulio.svg', text: this.textLines[1], truncatedText: this.truncatedText[1], showAll: this.showAll },
-    { title: 'Decide', image: '../../../../assets/images/capitalbudgeting/decide.svg', text: this.textLines[2], truncatedText: this.truncatedText[2], showAll: this.showAll },
-    { title: 'Reports', image: '../../../../assets/images/capitalbudgeting/reports.svg', text: this.textLines[3], truncatedText: this.truncatedText[3], showAll: this.showAll },
-  ]
+ 
 
   toggleshow(index: number) {
     this.showAll[index] = !this.showAll[index];

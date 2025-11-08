@@ -770,12 +770,12 @@ export class ProjectmanagementdecisionchecklistComponent extends AbstractCompone
   }
 }
 
-// ProjectManagementPopUp
-
 @Component({
   selector: 'app-projectmanagementdecisionchecklistpopup',
-  templateUrl: './projectmanagementdecisionchecklistpopup.html',
-  styleUrls: ['./projectmanagementdecisionchecklist.component.scss'],
+  standalone:true,
+  imports: [CommonModule, FormsModule,MatIconModule,NgApexchartsModule],
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
 })
 export class ProjectmanagementdecisionchecklistPopup extends AbstractComponent {
   showtab: boolean = true;

@@ -516,8 +516,9 @@ export class CvpanalysisdecisionchecklistComponent extends AbstractComponent {
   selector: 'app-cvpanalysisdecisionsubmitpopup',
   standalone: true,
   imports: [CommonModule, FormsModule, MatIconModule, NgApexchartsModule,MatDialogModule],
-  templateUrl: './cvpanalysisdecisionsubmitpopup.html',
-  styleUrls: ['./cvpanalysisdecisionchecklist.component.scss']
+  templateUrl: '../../../common/submit-popup/submitpopup.component.html',
+  styleUrls: ['../../../common/submit-popup/submitpopup.component.scss'],
+
 
 })
 
